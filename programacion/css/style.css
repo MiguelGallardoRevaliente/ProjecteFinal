@@ -50,14 +50,14 @@ body{
 .form input{
     width: 47%;
     padding: 6px 10px;
-    margin: 15px 0px;
+    margin: 10px 0px;
     border: none;
     border-radius: 3px;
     font-size: 1.3em;
 }
 
 .form input[type="submit"]{
-    padding: 10px 30px;
+    padding: 5px 30px;
     margin: 10px 0px;
     width: 50%;
     border: none;
@@ -66,18 +66,21 @@ body{
     background-color: #FF6363;
     color: white;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .form input[type="submit"]:hover{
     background-color: #FF4D4D;
 }
 
-.container a {
+.container button {
     color: #6375CF;
     font-size: 1.3em;
     font-weight: 400;
     text-decoration: underline;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .container .register{
