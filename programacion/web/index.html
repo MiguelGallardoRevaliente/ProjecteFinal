@@ -54,6 +54,17 @@
         }
     </script>
 -->
-<script src="index.js"></script>
+    <script src="../index.js" type="module">
+        let register = document.getElementsByClassName('register');
+        register[0].addEventListener('click', () => {
+            fetch("http://localhost:1234/", {
+                method: 'POST',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Data: ',data)        
+                })
+        });
+    </script>
 </body>
 </html>
