@@ -88,3 +88,6 @@ body{
     text-decoration: none;
 }
 
+#register{
+    display: none;
+}

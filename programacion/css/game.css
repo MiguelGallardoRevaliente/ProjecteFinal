@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kings&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 body{
     background-image: url(../img/backgroundgame.jpg);
     background-size: cover;
@@ -36,22 +39,52 @@ header .logo img{
 
 header .logo h1{
     font-size: 3em;
+    font-family: "MedievalSharp", cursive;
 }
 
-header nav{}
 
 header nav ul{
     margin: 0px;
     max-width: 100%;
+    font-family: "koho", sans-serif;
     padding: 0px;
     text-decoration: none;
     list-style:none;
+    cursor: pointer;
 
 }
 
 header nav ul li{
-    padding: 30px 30px;
+    padding: 25px 33px;
     font-size: 33px;
-    box-shadow: 0px 5px 5px  rgb(0, 0, 0);
+    box-shadow: -10px 5px 5px  rgb(0, 0, 0);
+    text-align: center;
+}
+
+header nav ul li:hover{
+    background-color: #3b3b3b;
+}
+
+header .config{
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+header .config:hover{
+    background-color: #3b3b3b;
+}
+
+header .config i{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+header .config h1{
+    font-family: "koho", sans-serif;
+    font-weight: 200;
     text-align: center;
 }
