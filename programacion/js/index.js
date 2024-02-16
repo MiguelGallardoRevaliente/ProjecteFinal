@@ -1,10 +1,18 @@
-function showRegister() {
-    var loginContainer = document.getElementById('login');
-    var registerContainer = document.getElementById('register');
+import express from 'express'
 
-    // Oculta el contenedor de inicio de sesión
-    loginContainer.style.display = 'none';
+const app = express()
+app.disable('x-powered-by')
 
-    // Muestra el contenedor de registro
-    registerContainer.style.display = 'block';
-}
+const PORT = process.env.PORT ?? 1234
+
+app.get('/', (req, res) => {
+  res.send('Hello, world!')
+})
+
+app.post('/', (req, res) => {
+  console.log(req.body)
+})
+
+app.listen(PORT, () => {
+  console.log('server listening on port http://localhost:' + PORT)
+})
