@@ -17,3 +17,20 @@
     color: rgb(255, 255, 255);
     font-size: 50px;
 }
+
+#fullscreenIcon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para el icono de pantalla completa y salida de pantalla completa */
+#fullscreenIcon.fullscreen .bx-fullscreen {
+    display: none;
+}
+
+#fullscreenIcon.exitedFullscreen .bx-exit-fullscreen {
+    display: none;
+}
