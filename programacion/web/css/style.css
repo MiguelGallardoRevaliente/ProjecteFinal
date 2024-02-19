@@ -56,20 +56,9 @@ body{
     font-size: 1.3em;
 }
 
-.form input[type="submit"]{
-    padding: 5px 30px;
-    margin: 10px 0px;
-    width: 50%;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.5em;
-    background-color: #FF6363;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
 
-.form input[type="submit"]:hover{
+
+.form button:hoveri{
     background-color: #FF4D4D;
 }
 
@@ -81,6 +70,20 @@ body{
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+.form button{
+    padding: 5px 30px;
+    margin: 10px 0px;
+    width: 50%;
+    border: none;
+    text-decoration: none!important;
+    border-radius: 5px;
+    font-size: 1.5em;
+    background-color: #FF6363;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    
 }
 
 .container .register{
