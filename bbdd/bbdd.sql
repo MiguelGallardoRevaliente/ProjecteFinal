@@ -1,5 +1,10 @@
 CREATE database IF NOT EXISTS chamous;
 
-CREATE TABLE users (
+USE chamous;
 
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+	id 		BINARY(16) PRIMARY KEY DEFAULT(UUID_TO_BIN(UUID())),
+    nombre 	VARCHAR(255) NOT NULL
 );
