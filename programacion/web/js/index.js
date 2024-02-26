@@ -8,8 +8,19 @@ function showRegister () {
   // Muestra el contenedor de registro
   registerContainer.style.display = 'block'
 }
-
 const fullscreenIcon = document.getElementById('fullscreenIcon')
+
+function showforgot(){
+  const loginContainer = document.getElementById('login')
+  const forgotContainer = document.getElementById('forgot')
+
+  // Oculta el contenedor de inicio de sesión
+  loginContainer.style.display = 'none'
+
+  // Muestra el contenedor de registro
+  forgotContainer.style.display = 'block'
+
+}
 
 // Función para alternar entre pantalla completa y salida de pantalla completa
 function toggleFullscreen () {
@@ -40,4 +51,18 @@ document.addEventListener('fullscreenchange', function () {
 
 function logIn () {
   window.location.href = '/intro'
+}
+
+
+//introduccion
+
+function mostrarHowtoplay(){
+  const introContainer = document.getElementById('intro')
+  const howtoplayContainer = document.getElementById('howtoplay')
+
+  // Oculta el contenedor de inicio de sesión
+  introContainer.style.display = 'none'
+
+  // Muestra el contenedor de registro
+  howtoplayContainer.style.display = 'block'
 }

@@ -27,8 +27,8 @@
             <input type="text" name="username" id="username" placeholder="Username">
             <input type="password" name="password" id="password" placeholder="Password">
             <button type="submit" id="login" onclick="logIn()">Log In</button>
-            <button type="submit" class="register" onclick="showRegister()">Register</button><br>
-            <button type="submit">Forgot your password?</button>
+            <button type="submit" class="register" onclick="showRegister()">Register</button>
+            <button type="submit"  onclick="showforgot()" id="bfpassword">Forgot your password?</button>
         </form>
     </div>
 
@@ -47,33 +47,16 @@
     </div>
 
 
+    <div class="container" id="forgot">
+        <h1>Forgot your password?</h1>
+        <p>Enter your new Password</p>
+        <form class="form">
+            <input type="password" name="passwordR" id="passwordR" placeholder="Password" required>
+            <input type="text" name="rpasswordR" id="rpasswordR" placeholder="Repeat Password" required>
+            <button type="submit" id="register-button">Change Password</button>
+        </form>
 
 
-    <!-- SCRIPT PARA PANTALLA COMPLETA
-    <script>
-        // Verifica si el navegador es compatible con la función de pantalla completa
-        if (document.documentElement.requestFullscreen) {
-            // Agrega un evento para escuchar el clic y activar pantalla completa
-            document.addEventListener('click', function () {
-                document.documentElement.requestFullscreen();
-            });
-        } else {
-            console.error('La función de pantalla completa no es compatible con este navegador.');
-        }
-    </script>
--->
-    <script type="module">
-        let logIn = document.getElementById('login');
-        logIn.addEventListener('click', () => {
-            fetch("http://localhost:1234/", {
-                method: 'POST',
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log('Data: ',data)        
-                })
-        });
-    </script>
     <script src="js/index.js"></script>
 
 </body>
