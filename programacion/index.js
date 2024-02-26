@@ -15,8 +15,9 @@ app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'web/index.html'))
 })
 
-app.post('/', (req, res) => {
-  console.log(req.body)
+app.get('/intro', (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/introduccion.html'))
 })
 
 const PORT = process.env.PORT ?? 1234
