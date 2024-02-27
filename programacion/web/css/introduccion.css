@@ -79,3 +79,62 @@ body{
 #howtoplay{
     display: none;
 }
+
+#howtoplay h1{
+    font-size: 3em;
+    font-family: "Merienda";
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #FF6363;
+    font-weight: 400;
+}
+
+#howtoplay p{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-family: "KoHo", sans-serif;
+    font-weight: 400;
+    margin: 20px 5%;
+}
+
+#howtoplay .types{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 5%;
+}
+
+#howtoplay .types-left{
+    width: 35%;
+    text-align: left;
+}
+
+#howtoplay .types-right{
+    width: 65%;
+    text-align: left;
+}
+
+#howtoplay .types-left .all-types {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap; /* Para que las imágenes se envuelvan en nuevas líneas al llenar la fila */
+    justify-content: space-between; /* Para distribuir las imágenes uniformemente en cada fila */
+    gap: 10px;
+}
+
+#howtoplay .types-left .all-types img {
+    width: calc(33.33% - 10px); 
+    border-radius: 100px;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.all-types img:hover{
+    scale: 1.2;
+}
+
+.all-types img[title] {
+    font-weight: bold;
+    color: #333; 
+    font-size: 14px;
+}
