@@ -9,6 +9,30 @@
     <title>Chamous</title>
     <script type="module">
         const form = document.querySelector('form');
+        const login = document.getElementById('login');
+
+        login.addEventListener('click', async () => {
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: document.getElementById('username').value,
+                    password: document.getElementById('password').value
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/intro'
+                    } else if (response.status === 401) {
+                        alert('User or password incorrects')
+                    }
+                })
+                .catch(error => {
+                    console.error('Error', error)
+                });
+        })
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -20,7 +44,7 @@
         <i class='bx bx-fullscreen'></i>
         <i class='bx bx-exit-fullscreen'></i>
     </div>
-    <div class="container" id="login">
+    <div class="container" id="divLogin">
         <h1>Start session and travel to Chamous</h1>
         <p>Log In and Continue your adventure</p>
         <form class="form">
@@ -41,7 +65,7 @@
             <input type="text" name="email" id="email" placeholder="email" required>
             <input type="text" name="usernameR" id="usernameR" placeholder="Username" required>
             <input type="password" name="passwordR" id="passwordR" placeholder="Password" required>
-            <input type="text" name="rpasswordR" id="rpasswordR" placeholder="Repeat Password" required>
+            <input type="password" name="rpasswordR" id="rpasswordR" placeholder="Repeat Password" required>
             <button type="submit" id="register-button">Register</button>
         </form>
     </div>
@@ -51,9 +75,9 @@
         <h1>Forgot your password?</h1>
         <p>Enter your new Password</p>
         <form class="form">
-            <input type="password" name="passwordR" id="passwordR" placeholder="Password" required>
-            <input type="text" name="rpasswordR" id="rpasswordR" placeholder="Repeat Password" required>
-            <button type="submit" id="register-button">Change Password</button>
+            <input type="password" name="newPassword" id="newPassword" placeholder="Password" required>
+            <input type="password" name="newPasswordR" id="newPasswordR" placeholder="Repeat Password" required>
+            <button type="submit" id="change-password">Change Password</button>
         </form>
 
 
