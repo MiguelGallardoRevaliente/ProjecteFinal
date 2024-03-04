@@ -6,10 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/introduccion.css">
     <link rel="stylesheet" href="css/basic.css">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Chamous</title>
-</head>
+    <script type="module">
+        const form = document.querySelector('form')
+        const startToPlay = document.getElementById('startToPlay')
 
+        startToPlay.addEventListener('click', function () {
+            fetch('/start', {
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/menu'
+                    } else if (response.status === 401) {
+                        alert('User or password incorrects')
+                    }
+                })
+                .catch(error => {
+                    console.error('Error', error)
+                })
+        })
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+        })
+    </script>
+</head>
 <body>
     <div id="fullscreenIcon" class="icon">
         <i class='bx bx-fullscreen'></i>
@@ -54,6 +77,7 @@
                 <img src="img/icons/efectivity.png" alt="">
             </div>
         </div>
+        <!-- Hay que hacer el boton de start to play u otro apartado de explicacion -->
     </div>
     <script src="js/index.js"></script>
 </body>

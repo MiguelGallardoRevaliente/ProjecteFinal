@@ -18,14 +18,18 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username: document.getElementById('username').value,
-                    password: document.getElementById('password').value
+                    usernameLogin: document.getElementById('username').value,
+                    passwordLogin: document.getElementById('password').value
                 })
             })
-                .then(response => {
-                    if (response.ok) {
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.isFirstLog === 1) {
                         window.location.href = '/intro'
-                    } else if (response.status === 401) {
+                    } else if (data.isFirstLog === 0) {
+                        window.location.href = '/menu'
+                    } else {
                         alert('User or password incorrects')
                     }
                 })

@@ -43,3 +43,5 @@ INSERT INTO users (nombre, apellidos, user, password, email)
 	VALUES ('Miguel', 'Gallardo Revaliente', 'Chimpy', 'chimpy123', 'migallre@gmail.com');
 
 SELECT *, BIN_TO_UUID(id) FROM users;
+
+UPDATE users SET first_log = true WHERE user = 'Chimpy' AND password = 'chimpy123';
