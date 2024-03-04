@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
     mazo_seleccionado INT,
     first_log BOOL DEFAULT true
 );
-
+/*
 CREATE TABLE IF NOT EXISTS cartas (
 	id INT PRIMARY KEY auto_increment,
     nombre VARCHAR(255),
@@ -37,3 +37,9 @@ CREATE TABLE IF NOT EXISTS mazos (
     id_usuario BINARY(16),
     FOREIGN KEY (id_usuario) REFERENCES users(id)
 );	
+*/
+
+INSERT INTO users (nombre, apellidos, user, password, email)
+	VALUES ('Miguel', 'Gallardo Revaliente', 'Chimpy', 'chimpy123', 'migallre@gmail.com');
+
+SELECT *, BIN_TO_UUID(id) FROM users;

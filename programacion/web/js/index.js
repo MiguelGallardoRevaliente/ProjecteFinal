@@ -10,7 +10,7 @@ function showRegister () {
 }
 const fullscreenIcon = document.getElementById('fullscreenIcon')
 
-function showforgot(){
+function showforgot() {
   const loginContainer = document.getElementById('login')
   const forgotContainer = document.getElementById('forgot')
 
@@ -19,7 +19,6 @@ function showforgot(){
 
   // Muestra el contenedor de registro
   forgotContainer.style.display = 'block'
-
 }
 
 // Función para alternar entre pantalla completa y salida de pantalla completa
@@ -50,13 +49,11 @@ document.addEventListener('fullscreenchange', function () {
 })
 
 function logIn () {
-  window.location.href = '/intro'
+  // window.location.href = '/intro'
 }
 
-
-//introduccion
-
-function mostrarHowtoplay(){
+// introduccion
+function mostrarHowtoplay() {
   const introContainer = document.getElementById('intro')
   const howtoplayContainer = document.getElementById('howtoplay')
 
