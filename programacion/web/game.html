@@ -17,10 +17,10 @@
         </div>
         <nav>
             <ul>
-                <li>HOME</li>
-                <li>INVENTARY</li>
-                <li>SHOP</li>
-                <li>INFORMATION</li>
+                <li onclick="mostrarHome()">HOME</li>
+                <li onclick="mostrarInventory()">INVENTARY</li>
+                <li onclick="mostrarShop()">SHOP</li>
+                <li onclick="mostrarInformation()">INFORMATION</li>
             </ul>
         </nav>
         <div class="config">
@@ -28,6 +28,15 @@
             <h1>SETTING</h1>
         </div>
     </header>
-    <div class=""></div>
+    <div id="home">
+        <button id="searchGame">START TO PLAY</button>
+    </div>
+    <div id="inventory"></div>
+    <div id="shop"></div>
+    <div  id="information">
+        
+    </div>
+   
 </body>
+<script src="js/game.js"></script>
 </html>

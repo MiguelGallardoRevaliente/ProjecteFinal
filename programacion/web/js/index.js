@@ -64,3 +64,4 @@ function mostrarHowtoplay () {
   // Muestra el contenedor de registro
   howtoplayContainer.style.display = 'block'
 }
+
