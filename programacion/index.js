@@ -67,8 +67,24 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
   try {
-    const { name, surname, email, username, password } = req.body
-    console.log(req.body)
+    const { name, surname, email, username, password, rpassword } = req.body
+    const [users] = await connection.execute('SELECT * FROM users')
+
+    for (const user of users) {
+      if (user.user === username) {
+        return res.status(200).json({ message: 'userExists' })
+      } else if (user.email === email) {
+        return res.status(200).json({ message: 'emailExists' })
+      }
+    }
+
+    if (password !== rpassword) {
+      return res.status(200).json({ message: 'samePwd' })
+    }
+    await connection.execute(
+      'INSERT INTO users (nombre, apellidos, email, user, password) VALUES (?, ?, ?, ?, ?)', [name, surname, email, username, password]
+    )
+    return res.status(200).json({ message: 'registered' })
   } catch (e) {
     console.error(e)
   }
