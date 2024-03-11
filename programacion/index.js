@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unreachable */
 import express from 'express'
 import cors from 'cors'
 import { join, dirname } from 'path'
