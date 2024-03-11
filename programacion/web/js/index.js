@@ -49,10 +49,6 @@ document.addEventListener('fullscreenchange', function () {
   }
 })
 
-function logIn () {
-  // window.location.href = '/intro'
-}
-
 // introduccion
 function mostrarHowtoplay () {
   const introContainer = document.getElementById('intro')
@@ -64,4 +60,3 @@ function mostrarHowtoplay () {
   // Muestra el contenedor de registro
   howtoplayContainer.style.display = 'block'
 }
-
