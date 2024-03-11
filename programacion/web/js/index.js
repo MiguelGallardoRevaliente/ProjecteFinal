@@ -12,7 +12,7 @@ function showRegister () {
 const fullscreenIcon = document.getElementById('fullscreenIcon')
 
 function showforgot () {
-  const loginContainer = document.getElementById('login')
+  const loginContainer = document.getElementById('divLogin')
   const forgotContainer = document.getElementById('forgot')
 
   // Oculta el contenedor de inicio de sesión
