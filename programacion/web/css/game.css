@@ -229,23 +229,39 @@ header .config h1{
     align-items: center;
     justify-content: left;
     gap: 20px;
+    padding: 10px;
+    background-color: #3d3d3d;    ;
 }
 
 #shop .container .all .filtrer form input[type="text"]{
-    padding: 5px;
+    padding: 2px;
     width: 300px;
     box-shadow: 1px 1px 3px #272727 inset;
     border: none;
     background: #9D9D9D;
     color: black;
+    font-size: 25px;
 }
 
 #shop .container .all .filtrer form select{
-    padding: 5px;
+    padding: 2px;
     box-shadow: 1px 1px 3px #272727 inset;
     border: none;
     background: #9D9D9D;
     color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+#shop .container .all .filtrer form button{
+    padding: 2px;
+    box-shadow: 3px 3px 5px #272727;
+    border: none;
+    background: #9D9D9D;
+    width: 37px;
+    height: 37px;
+    color: rgb(0, 0, 0);
+    font-size: 35px;
+    cursor: pointer;
+
 }
 
 /*inventory*/
