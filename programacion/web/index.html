@@ -9,6 +9,7 @@
     <title>Chamous</title>
     <script type="module">
         const form = document.querySelector('form');
+        const registerForm = document.getElementById('registerForm');
         const login = document.getElementById('login');
         const register = document.getElementById('register-button');
 
@@ -40,10 +41,7 @@
         })
 
         register.addEventListener('click', async () => {
-            if(register.passwordR.value != register.rpasswordR.value){
-                alert('Passwords do not match')
-                return
-            }
+            console.log('Hola')
             fetch('/register', {
                 method: 'POST',
                 headers: {
@@ -54,28 +52,42 @@
                     surname: document.getElementById('surname').value,
                     email: document.getElementById('email').value,
                     username: document.getElementById('usernameR').value,
-                    password: document.getElementById('passwordR').value
+                    password: document.getElementById('passwordR').value,
+                    rpassword: document.getElementById('rpasswordR').value
                 })
             })
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    if (data.isFirstLog === 1) {
-                        window.location.href = '/intro'
-                    } else if (data.isFirstLog === 0) {
-                        window.location.href = '/menu'
+                    if (data.message === 'registered') {
+                        window.location.href = '/'
+                    } else if (data.message === 'samePwd') {
+                        alert('Passwords do not match')
+                        const password = document.getElementById('passwordR');
+                        const rpassword = document.getElementById('rpasswordR');
+                        password.value = ''
+                        rpassword.value = ''
+                    } else if (data.message === 'userExists') {
+                        alert('User already taken')
+                    } else if (data.message === 'emailExists') {
+                        alert('Email already taken')
                     } else {
-                        alert('User or password incorrects')
+                        alert('Error')
                     }
                 })
                 .catch(error => {
-                    console.error('Error', error)
+                    console.error('Error: ', error)
                 });
         })
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
         });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+
     </script>
 </head>
 <body>
@@ -98,7 +110,7 @@
     <div class="container" id="register">
         <h1>Register</h1>
         <p>Register and start your adventure</p>
-        <form class="form">
+        <form class="form" id="registerForm">
             <input type="text" name="name" id="name" placeholder="Name" required>
             <input type="text" name="surname" id="surname" placeholder="surname" required>
             <input type="text" name="email" id="email" placeholder="email" required>
