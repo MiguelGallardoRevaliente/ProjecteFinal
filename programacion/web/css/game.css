@@ -282,5 +282,58 @@ header .config h1{
     display: none;
     min-height: 100vh;
     padding: 70px;
+}
 
+/*Settings*/
+
+#settings{
+    font-family: "koho", sans-serif;
+    margin-left: calc(15%);
+    padding: 0px 0px;
+    font-size: 30px;
+    border: none;
+    border-radius:5px;
+    background-color: #292929;
+    display: none;
+    min-height: 100vh;
+    padding: 70px;
+}
+
+#settings .container{
+    color: white;
+    
+}
+
+#settings .container h1{
+    font-size: 2em;
+    border-left: 20px solid #ffffff;
+    padding-left: 20px;
+    
+}
+
+#settings .container h2{
+    font-size: 1.5em;
+    margin: 20px 0px;
+    border-bottom: 1px solid #ffffff;
+}
+
+#settings .container h3{
+    font-size: 1em;
+    margin: 0px 0px;
+}
+
+#settings .setting div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 550px;
+    margin: 20px 0px;
+}
+
+#settings .setting div input[type="range"]{
+    width: 300px;
+    height: 20px;
+    background-color: #9D9D9D;
+    border: none;
+    box-shadow: 1px 1px 3px #272727 inset;
 }

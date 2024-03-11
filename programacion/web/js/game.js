@@ -3,6 +3,7 @@ const home = document.getElementById('home')
 const information = document.getElementById('information')
 const inventory = document.getElementById('inventory')
 const shop = document.getElementById('shop')
+const settings = document.getElementById('settings')
 
 function mostrarInformation () {
   home.style.display = 'none'
@@ -16,6 +17,7 @@ function mostrarInventory () {
   information.style.display = 'none'
   shop.style.display = 'none'
   inventory.style.display = 'block'
+  settings.style.display = 'none'
 }
 
 function mostrarShop () {
@@ -23,6 +25,7 @@ function mostrarShop () {
   information.style.display = 'none'
   inventory.style.display = 'none'
   shop.style.display = 'block'
+  settings.style.display = 'none'
 }
 
 function mostrarHome () {
@@ -30,7 +33,17 @@ function mostrarHome () {
   inventory.style.display = 'none'
   shop.style.display = 'none'
   home.style.display = 'block'
+  settings.style.display = 'none'
 }
+
+function mostrarSettings () {
+  home.style.display = 'none'
+  information.style.display = 'none'
+  inventory.style.display = 'none'
+  shop.style.display = 'none'
+  settings.style.display = 'block'
+}
+
 
 //FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
 const shopcards = document.getElementById('shop_cards')
