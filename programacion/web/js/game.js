@@ -31,3 +31,28 @@ function mostrarHome () {
   shop.style.display = 'none'
   home.style.display = 'block'
 }
+
+//FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
+const shopcards = document.getElementById('shop_cards')
+const shopchests = document.getElementById('shop_chests')
+const allcards = document.getElementById('allcards')
+
+function mostrarShopCards () {
+  allcards.style.display = 'block'
+  allchests.style.display = 'none'
+  shopchests.style.boxShadow = '1px 1px 5px black inset';
+  shopcards.style.boxShadow = '1px 1px 5px black';
+  shopcards.style.backgroundColor = 'gray';
+  shopchests.style.backgroundColor = '#292929';
+  
+}
+
+function mostrarShopChests () {
+  allcards.style.display = 'none'
+  allchests.style.display = 'block'
+  shopcards.style.boxShadow = '1px 1px 5px black inset';
+  shopchests.style.boxShadow = '1px 1px 5px black';
+  shopchests.style.backgroundColor = 'gray';
+  shopcards.style.backgroundColor = '#292929';
+
+}

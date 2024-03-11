@@ -210,18 +210,21 @@ header .config h1{
     background: transparent;
     border: none;
     font-size: 50px;
-    box-shadow: 1px 3px 5px black inset;
+    box-shadow: 1px 3px 5px black;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
+ .active {
+        box-shadow: 1px 3px 5px black inset;
+      }
 
 #shop .container .all .filtrer{
     padding: 10px;
     display: flex;
     justify-content: left;
     align-items: center;
-    box-shadow: 0px 4px 4px black;
+   
 }
 
 #shop .container .all .filtrer form{
@@ -230,7 +233,8 @@ header .config h1{
     justify-content: left;
     gap: 20px;
     padding: 10px;
-    background-color: #3d3d3d;    ;
+    background-color: #3d3d3d;  
+    box-shadow: 1px 3px 5px black;
 }
 
 #shop .container .all .filtrer form input[type="text"]{
@@ -251,6 +255,7 @@ header .config h1{
     color: rgb(0, 0, 0);
     font-size: 25px;
 }
+
 #shop .container .all .filtrer form button{
     padding: 2px;
     box-shadow: 3px 3px 5px #272727;

@@ -38,10 +38,10 @@
         <div class="container">
             <div class="top">
                 <h1>SHOP</h1>
-                <button><i class='bx bxs-memory-card'></i></button>
-                <button><i class='bx bxs-box'></i></button>
+                <button onclick="mostrarShopCards()" id="shop_cards"><i class='bx bxs-memory-card'></i></button>
+                <button onclick="mostrarShopChests()" id="shop_chests"><i class='bx bxs-box'></i></button>
             </div>
-            <div class="all">
+            <div id="allcards" class="all">
                 <div class="filtrer">
                     <form>
                         <label for="search">Search</label>
@@ -68,6 +68,47 @@
                         <button><i class='bx bx-search'></i></button>
                     </form>
                 </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Price</th>
+                                <th>Type</th>
+                                <th>Rank</th>
+                                <th>date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img style="width: 30px;" src="img/Neutro/Radiante/MazaPanadero.jpg"></td>
+                                <td>Maza Panadero</td>
+                                <td>Neutro</td>
+                                <td>Radiant</td>
+                                <td>1000</td>
+                                <td>12:00 - 06/09</td>
+                            </tr>
+                            <tr>
+                                <td>Maza Panadero</td>
+                                <td>Neutro</td>
+                                <td>EXTraudinary</td>
+                                <td>1000</td>
+                                <td>12:00 - 06/09</td>
+                            </tr>
+                            <tr>
+                                <td>MazaPanadero</td>
+                                <td>Water</td>
+                                <td>EXC</td>
+                                <td>1000</td>
+                                <td>12:00 - 06/09</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="allchests" class="all">
+
             </div>
         </div>
     </div>
