@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kings&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-body{
+html, body{
     background-image: url(../img/backgroundgame.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,6 +10,8 @@ body{
     min-height: 100vh;
     margin: 0px;
     padding: 0px;
+    scrollbar-width: none;
+    
 
 }
 
@@ -17,6 +19,7 @@ header{
     position: fixed;
     height: 100vh;
     width: 15%;
+    box-shadow: 3px 0px 5px  rgb(0, 0, 0);
     background-color: #292929;
     display: flex;
     flex-direction: column;
@@ -62,7 +65,7 @@ header nav ul li{
     padding: 25px 0px;
     font-size: 33px;
     width: 100%;
-    box-shadow: -10px 5px 5px  rgb(0, 0, 0);
+    box-shadow: 0px 5px 5px  rgb(0, 0, 0);
     text-align: center;
 }
 
@@ -77,6 +80,7 @@ header .config{
     align-items: center;
     justify-content: center;
     gap: 20px;
+    box-shadow: 0px -5px 5px black;
 }
 
 header .config:hover{
@@ -121,4 +125,141 @@ header .config h1{
     background-color: #3b3b3b;
     box-shadow: 1px 3px 3px  rgb(0, 0, 0) inset;
     transform: translateY(8px);
+}
+
+/*Information*/
+
+#information{
+    font-family: "koho", sans-serif;
+    margin-left: calc(15%);
+    padding: 0px 0px;
+    font-size: 30px;
+    border: none;
+    border-radius:5px;
+    background-color: #292929;
+    display: none;
+    min-height: 100vh;
+    padding: 70px;
+
+}
+
+#information .container{
+    color: white;
+    
+}
+
+#information .container h1{
+    font-size: 2em;
+    border-left: 20px solid #ffffff;
+    padding-left: 20px;
+    
+}
+
+#information .container h2{
+    font-size: 1em;
+    margin: 20px 0px;
+    border-bottom: 1px solid #ffffff;
+}
+
+#information .container li{
+    font-size: 0.8em;
+}
+
+#information .container p{
+    font-size: 0.8em;
+    margin: 20px 0px;
+}
+
+/*Shop*/
+#shop{
+    font-family: "koho", sans-serif;
+    margin-left: calc(15%);
+    padding: 0px 0px;
+    font-size: 30px;
+    border: none;
+    border-radius:5px;
+    background-color: #292929;
+    display: none;
+    min-height: 100vh;
+    padding: 0px;
+
+}
+
+#shop .container{
+    color: white;  
+    margin: 0px 70px; 
+}
+
+#shop .container .top{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 20px;
+    gap: 0px;
+}
+
+#shop .container .top h1{
+    margin-right: 30px;
+}
+
+#shop .container .top button{
+    padding: 0px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background: transparent;
+    border: none;
+    font-size: 50px;
+    box-shadow: 1px 3px 5px black inset;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#shop .container .all .filtrer{
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 0px 4px 4px black;
+}
+
+#shop .container .all .filtrer form{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 20px;
+}
+
+#shop .container .all .filtrer form input[type="text"]{
+    padding: 5px;
+    width: 300px;
+    box-shadow: 1px 1px 3px #272727 inset;
+    border: none;
+    background: #9D9D9D;
+    color: black;
+}
+
+#shop .container .all .filtrer form select{
+    padding: 5px;
+    box-shadow: 1px 1px 3px #272727 inset;
+    border: none;
+    background: #9D9D9D;
+    color: rgb(0, 0, 0);
+}
+
+/*inventory*/
+
+#inventory{
+    font-family: "koho", sans-serif;
+    margin-left: calc(15%);
+    padding: 0px 0px;
+    font-size: 30px;
+    border: none;
+    border-radius:5px;
+    background-color: #292929;
+    display: none;
+    min-height: 100vh;
+    padding: 70px;
+
 }
