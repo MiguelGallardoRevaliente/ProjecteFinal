@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 function showRegister () {
-  const loginContainer = document.getElementById('login')
+  const loginContainer = document.getElementById('divLogin')
   const registerContainer = document.getElementById('register')
 
   // Oculta el contenedor de inicio de sesión

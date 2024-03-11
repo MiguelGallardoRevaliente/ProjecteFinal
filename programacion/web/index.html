@@ -10,6 +10,7 @@
     <script type="module">
         const form = document.querySelector('form');
         const login = document.getElementById('login');
+        const register = document.getElementById('register-button');
 
         login.addEventListener('click', async () => {
             fetch('/login', {
@@ -20,6 +21,40 @@
                 body: JSON.stringify({
                     usernameLogin: document.getElementById('username').value,
                     passwordLogin: document.getElementById('password').value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.isFirstLog === 1) {
+                        window.location.href = '/intro'
+                    } else if (data.isFirstLog === 0) {
+                        window.location.href = '/menu'
+                    } else {
+                        alert('User or password incorrects')
+                    }
+                })
+                .catch(error => {
+                    console.error('Error', error)
+                });
+        })
+
+        register.addEventListener('click', async () => {
+            if(register.passwordR.value != register.rpasswordR.value){
+                alert('Passwords do not match')
+                return
+            }
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    surname: document.getElementById('surname').value,
+                    email: document.getElementById('email').value,
+                    username: document.getElementById('usernameR').value,
+                    password: document.getElementById('passwordR').value
                 })
             })
                 .then(response => response.json())

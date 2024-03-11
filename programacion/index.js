@@ -65,6 +65,15 @@ app.post('/login', async (req, res) => {
   }
 })
 
+app.post('/register', async (req, res) => {
+  try {
+    const { name, surname, email, username, password } = req.body
+    console.log(req.body)
+  } catch (e) {
+    console.error(e)
+  }
+})
+
 app.post('/start', async (req, res) => {
   try {
     console.log(username, '/', password)
