@@ -67,7 +67,7 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
   try {
-    const { name, surname, email, username, password, rpassword } = req.body
+    const { name, surname, email, username, password, rPassword } = req.body
     const [users] = await connection.execute('SELECT * FROM users')
 
     for (const user of users) {
@@ -78,7 +78,7 @@ app.post('/register', async (req, res) => {
       }
     }
 
-    if (password !== rpassword) {
+    if (password !== rPassword) {
       return res.status(200).json({ message: 'samePwd' })
     }
     await connection.execute(
@@ -88,6 +88,28 @@ app.post('/register', async (req, res) => {
   } catch (e) {
     console.error(e)
   }
+})
+
+app.post('/forgot', async (req, res) => {
+  const { email, newPassword, newPasswordR } = req.body
+  const [users] = await connection.execute('SELECT * FROM users WHERE email = ?', [email])
+  if (users.length === 0) {
+    return res.status(200).json({ message: 'emailNotExists' })
+  }
+
+  if (newPassword !== newPasswordR) {
+    return res.status(200).json({ message: 'samePwd' })
+  }
+
+  if (users[0].password === newPassword) {
+    console.log('Same password as before')
+    return res.status(200).json({ message: 'pswAlreadyExists' })
+  }
+
+  await connection.execute(
+    'UPDATE users SET password = ? WHERE email = ?', [newPassword, email]
+  )
+  return res.status(200).json({ message: 'changed' })
 })
 
 app.post('/start', async (req, res) => {
