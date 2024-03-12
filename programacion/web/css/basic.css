@@ -34,3 +34,19 @@
 #fullscreenIcon.exitedFullscreen .bx-exit-fullscreen {
     display: none;
 }
+
+#atras {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#atras2{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}

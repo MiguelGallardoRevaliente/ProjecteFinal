@@ -69,3 +69,34 @@ function mostrarShopChests () {
   shopcards.style.backgroundColor = '#292929';
 
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var audio = document.getElementById('audio');
+  var volumeControl = document.getElementById('volumeControl');
+
+  audio.volume = volumeControl.value / 100;
+
+  volumeControl.addEventListener('input', function () {
+      audio.volume = volumeControl.value / 100;
+  });
+});
+
+var botones = document.querySelectorAll('button');
+
+function reproducirSonido() {
+    var audioClick = new Audio('img/click.mp3');
+    audioClick.play();
+}
+
+botones.forEach(function(boton) {
+    boton.addEventListener('click', function() {
+        reproducirSonido();
+    });
+});
+
+var otrosElementos = document.querySelectorAll('.otroElemento');
+otrosElementos.forEach(function(elemento) {
+    elemento.addEventListener('click', function() {
+        reproducirSonido();
+    });
+});

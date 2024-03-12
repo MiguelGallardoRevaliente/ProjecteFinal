@@ -137,6 +137,8 @@
     </script>
 </head>
 <body>
+   
+   <audio src="img/[Non Copyrighted Music] @ScottBuckley - Phoenix [Epic].mp3" autoplay loop></audio>
     <div id="fullscreenIcon" class="icon">
         <i class='bx bx-fullscreen'></i>
         <i class='bx bx-exit-fullscreen'></i>
@@ -154,6 +156,7 @@
     </div>
 
     <div class="container" id="register">
+        
         <h1>Register</h1>
         <p>Register and start your adventure</p>
         <form class="form" id="registerForm">
@@ -169,6 +172,13 @@
 
 
     <div class="container" id="forgot">
+        <i id="atras2" class='bx bx-arrow-back'></i>
+        <script>
+            document.getElementById('atras2').addEventListener('click', () => {
+                document.getElementById('forgot').style.display = 'none';
+                document.getElementById('divLogin').style.display = 'block';
+            })
+        </script>
         <h1>Forgot your password?</h1>
         <p>Enter your new Password</p>
         <form class="form" id="forgotForm">
