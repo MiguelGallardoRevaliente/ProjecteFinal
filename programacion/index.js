@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { sendEmail } from './controller/mail.js'
 
 import mysql from 'mysql2/promise'
 
@@ -37,7 +38,7 @@ app.get('/intro', (req, res) => {
   res.sendFile(join(__dirname, 'web/introduccion.html'))
 })
 
-app.get('/menu', (req, res) => {
+app.get('/game', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/game.html'))
 })
@@ -90,7 +91,7 @@ app.post('/register', async (req, res) => {
 
 app.post('/forgot', async (req, res) => {
   const { email, newPassword, newPasswordR } = req.body
-  const [users] = await connection.execute('SELECT * FROM users WHERE email = ?', [email])
+  const [users] = await connection.execute('SELECT password, BIN_TO_UUID(id) AS id FROM users WHERE email = ?', [email])
   if (users.length === 0) {
     return res.status(200).json({ message: 'emailNotExists' })
   }
@@ -104,9 +105,13 @@ app.post('/forgot', async (req, res) => {
     return res.status(200).json({ message: 'pswAlreadyExists' })
   }
 
-  await connection.execute(
-    'UPDATE users SET password = ? WHERE email = ?', [newPassword, email]
-  )
+  const response = {}
+  const request = {
+    to: email,
+    subject: 'Recuperación de contraseña',
+    text: `Change your password in the following link: http://localhost:1234/change?id=${users[0].id}`
+  }
+  sendEmail(request, response)
   return res.status(200).json({ message: 'changed' })
 })
 
