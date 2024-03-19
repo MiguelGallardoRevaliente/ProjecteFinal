@@ -284,6 +284,48 @@ header .config h1{
     padding: 70px;
 }
 
+
+#inventory .container{
+    color: white;  
+    margin: 0px 70px; 
+}
+
+#inventory .container .top{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 20px;
+    gap: 0px;
+}
+
+#inventory .container .top h1{
+    margin-right: 30px;
+}
+
+#inventory .container .top button{
+    padding: 0px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    background: transparent;
+    border: none;
+    font-size: 50px;
+    box-shadow: 1px 3px 5px black;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#inventory .container .all .filtrer{
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+   
+}
+
+
+
 /*Settings*/
 
 #settings{
