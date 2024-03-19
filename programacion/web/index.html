@@ -66,7 +66,7 @@
                 .then(data => {
                     console.log(data)
                     if (data.message === 'registered') {
-                        window.location.href = '/'
+                        window.location.href = '/login'
                     } else if (data.message === 'samePwd') {
                         alert('Passwords do not match')
                         const password = document.getElementById('passwordR');
@@ -100,21 +100,10 @@
                 .then(data => {
                     console.log(data)
                     if (data.message === 'changed') {
-                        window.location.href = '/'
-                    } else if (data.message === 'samePwd') {
-                        alert('Passwords do not match')
-                        const newPassword = document.getElementById('newPassword');
-                        const newPasswordR = document.getElementById('newPasswordR');
-                        newPassword.value = ''
-                        newPasswordR.value = ''
+                        localStorage.setItem('email', document.getElementById('emailF').value)
+                        window.close()
                     } else if (data.message === 'emailNotExists') {
                         alert('Email does not exist')
-                    } else if (data.message === 'pswAlreadyExists') {
-                        alert('You cannot use the same password as before')
-                        const newPassword = document.getElementById('newPassword');
-                        const newPasswordR = document.getElementById('newPasswordR');
-                        newPassword.value = ''
-                        newPasswordR.value = ''
                     } else {
                         alert('Error')
                     }

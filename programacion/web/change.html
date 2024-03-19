@@ -9,6 +9,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
     <script type='module'>
+        const email = localStorage.getItem('email')
+        if (!email) {
+            window.location.href = '/login'
+        }
+
         const urlParams = new URLSearchParams(window.location.search)
         const id = urlParams.get('id')
 
@@ -38,6 +43,7 @@
                         console.log(data)
                         if (data.message === 'changed') {
                             alert('Password changed successfully')
+                            localStorage.removeItem('email')
                             window.location.href = '/login'
                         } else if (data.message === 'samePwd') {
                             alert('Passwords must be the same')
