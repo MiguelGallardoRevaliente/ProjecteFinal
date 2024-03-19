@@ -8,7 +8,53 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/basic.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
-    <script src='index.js'></script>
+    <script type='module'>
+        const urlParams = new URLSearchParams(window.location.search)
+        const id = urlParams.get('id')
+
+        console.log(id)
+
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const newPassword = document.getElementById('newPassword').value
+            const newPasswordR = document.getElementById('newPasswordR').value
+
+            if (newPassword === newPasswordR) {
+                fetch('/change-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        newPassword: newPassword,
+                        newPasswordR: newPasswordR
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.message === 'changed') {
+                            alert('Password changed successfully')
+                            window.location.href = '/login'
+                        } else if (data.message === 'samePwd') {
+                            alert('Passwords must be the same')
+                        } else if (data.message === 'pswAlreadyExists') {
+                            alert('Password already exists')
+                        } else {
+                            alert('Error')
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error', error)
+                    });
+            } else {
+                alert('Passwords do not match')
+            }
+        })
+    </script>
 </head>
 <style>
     .form input{

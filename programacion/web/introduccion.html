@@ -9,16 +9,28 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Chamous</title>
     <script type="module">
+        const username = localStorage.getItem('username')
+        
+        if (!username) {
+            window.location.href = '/login'
+        }
         const form = document.querySelector('form')
         const startToPlay = document.getElementById('startToPlay')
 
         startToPlay.addEventListener('click', function () {
             fetch('/start', {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: localStorage.getItem('username'),
+                    password: localStorage.getItem('password')
+                })
             })
                 .then(response => {
                     if (response.ok) {
-                        window.location.href = '/game'
+                        window.location.href = '/'
                     } else if (response.status === 401) {
                         alert('User or password incorrects')
                     }

@@ -29,12 +29,16 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
+                    localStorage.setItem('username', document.getElementById('username').value)
+                    localStorage.setItem('password', document.getElementById('password').value)
                     if (data.isFirstLog === 1) {
                         window.location.href = '/intro'
                     } else if (data.isFirstLog === 0) {
-                        window.location.href = '/game'
+                        window.location.href = '/'
                     } else {
                         alert('User or password incorrects')
+                        localStorage.removeItem('username')
+                        localStorage.removeItem('password')
                     }
                 })
                 .catch(error => {
@@ -89,9 +93,7 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: document.getElementById('emailF').value,
-                    newPassword: document.getElementById('newPassword').value,
-                    newPasswordR: document.getElementById('newPasswordR').value
+                    email: document.getElementById('emailF').value
                 })
             })
                 .then(response => response.json())

@@ -25,12 +25,17 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 
 const connection = await mysql.createConnection(connectionString)
 
-let username = ''
-let password = ''
-
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/index.html'))
+})
+
+app.get('/change', (req, res) => {
+  const id = req.query.id
+  if (id) {
+    res.header('Allow-Control-Allow-Origin', '*')
+    res.sendFile(join(__dirname, 'web/change.html'))
+  }
 })
 
 app.get('/intro', (req, res) => {
@@ -38,7 +43,7 @@ app.get('/intro', (req, res) => {
   res.sendFile(join(__dirname, 'web/introduccion.html'))
 })
 
-app.get('/game', (req, res) => {
+app.get('/', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/game.html'))
 })
@@ -52,8 +57,6 @@ app.post('/login', async (req, res) => {
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
-      username = usernameLogin
-      password = passwordLogin
       return res.status(200).json({ message: 'Credenciales correctas', isFirstLog: firstLog })
     } else {
       return res.status(401).json({ message: 'Credenciales incorrectas' })
@@ -90,19 +93,10 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/forgot', async (req, res) => {
-  const { email, newPassword, newPasswordR } = req.body
+  const { email } = req.body
   const [users] = await connection.execute('SELECT password, BIN_TO_UUID(id) AS id FROM users WHERE email = ?', [email])
   if (users.length === 0) {
     return res.status(200).json({ message: 'emailNotExists' })
-  }
-
-  if (newPassword !== newPasswordR) {
-    return res.status(200).json({ message: 'samePwd' })
-  }
-
-  if (users[0].password === newPassword) {
-    console.log('Same password as before')
-    return res.status(200).json({ message: 'pswAlreadyExists' })
   }
 
   const response = {}
@@ -115,14 +109,29 @@ app.post('/forgot', async (req, res) => {
   return res.status(200).json({ message: 'changed' })
 })
 
+app.post('/change-password', async (req, res) => {
+  const { id, newPassword, newPasswordR } = req.body
+  if (newPassword !== newPasswordR) {
+    return res.status(200).json({ message: 'samePwd' })
+  }
+  const { password } = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+  if (password === newPassword) {
+    return res.status(200).json({ message: 'pswAlreadyExists' })
+  }
+  await connection.execute(
+    'UPDATE users SET password = ? WHERE BIN_TO_UUID(id) = ?', [newPassword, id]
+  )
+  return res.status(200).json({ message: 'changed' })
+})
+
 app.post('/start', async (req, res) => {
   try {
-    console.log(username, '/', password)
+    const { username, password } = req.body
     await connection.execute(
       'UPDATE users SET first_log = false WHERE user = ? AND password = ?', [username, password]
     )
     console.log('Se actualizó la bbdd')
-    res.status(200).json({ message: username })
+    res.status(200).json({ message: 'updated' })
   } catch (e) {
     console.error(e)
   }
