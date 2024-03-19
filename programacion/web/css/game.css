@@ -316,15 +316,52 @@ header .config h1{
     cursor: pointer;
 }
 
-#inventory .container .all .filtrer{
-    padding: 10px;
+#inventory .container .allcards .filtrer{
     display: flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: right;
+    gap: 10px;
    
 }
 
+#inventory .container .allcards .filtrer form select{
+    padding: 2px;
+    box-shadow: 1px 1px 3px #272727 inset;
+    border: none;
+    background: #9D9D9D;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    padding: 5px;
+}
 
+
+#inventory .container .allcards .filtrer option{
+    background-color: #9D9D9D;
+    padding: 4px;
+}
+
+/*wrap*/
+#inventory .container .allcards .yourCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+    align-items: center;
+    margin-top: 5%;
+
+}
+.yourCards img{
+    width: 250px;
+    height: auto;
+    border-radius: 0px;
+    box-shadow: 1px 3px 5px black;
+    cursor: pointer;
+    transition: 0.2s;
+
+}
+
+.yourCards img:hover{
+    scale: 1.2;
+}
 
 /*Settings*/
 
