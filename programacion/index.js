@@ -80,6 +80,9 @@ app.post('/register', async (req, res) => {
       }
     }
 
+    console.log(password)
+    console.log(rPassword)
+
     if (password !== rPassword) {
       return res.status(200).json({ message: 'samePwd' })
     }
