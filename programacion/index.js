@@ -138,9 +138,10 @@ app.post('/start', async (req, res) => {
 })
 
 const PORT = process.env.PORT ?? 1234
+const HOST = '0.0.0.0'
 
 app.use(express.static(join(__dirname, 'web')))
 
-app.listen(PORT, () => {
-  console.log(`server listening on port http://localhost:${PORT}`)
+app.listen(PORT, HOST, () => {
+  console.log(`Listening from http://34.244.53.193:${PORT}`)
 })
