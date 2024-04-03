@@ -18,7 +18,7 @@ const DEFAULT_CONFIG = {
   user: 'root',
   port: 3306,
   password: '',
-  database: 'chamous'
+  database: 'chamousdb'
 }
 
 const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
