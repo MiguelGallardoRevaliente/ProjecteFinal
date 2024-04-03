@@ -6,13 +6,6 @@ import { sendEmail } from './controller/mail.js'
 
 import mysql from 'mysql2/promise'
 
-const app = express()
-app.use(express.json())
-app.use(cors())
-app.disable('x-powered-by')
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
 const DEFAULT_CONFIG = {
   host: 'localhost',
   user: 'root',
@@ -24,6 +17,13 @@ const DEFAULT_CONFIG = {
 const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 
 const connection = await mysql.createConnection(connectionString)
+
+const app = express()
+app.use(express.json())
+app.use(cors())
+app.disable('x-powered-by')
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
