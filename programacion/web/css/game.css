@@ -363,7 +363,7 @@ header .config h1{
 #inventory .container .allcards .yourCards{
     
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;  
     align-items: center;
     margin-top: 5%;
@@ -375,12 +375,13 @@ header .config h1{
     width: 350px;
     height: 500px;
     position: relative;
+    transition: all 0.3s;
 
 }
 
 
 .yourCards .carta:hover{
-    scale: 1.2;
+    scale: 1.1;
 }
 
 
