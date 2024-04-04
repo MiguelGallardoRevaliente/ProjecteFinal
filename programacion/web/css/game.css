@@ -462,15 +462,21 @@ header .config h1{
     box-shadow: 1px 1px 3px #272727 inset;
 }
 #settings .setting form button{
-padding: 0px;
-width: 60px;
-height: 60px;
-display: flex;
-background: transparent;
-border: none;
-font-size: 50px;
-box-shadow: 1px 3px 5px black;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    padding: 0px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    box-shadow: 1px 3px 5px black;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #d30000;
+    color: white;
+}
+
+#settings .setting form button:active{
+    box-shadow: 1px 1px 3px black inset;
 }
