@@ -32,19 +32,15 @@ async function mostrarInventory () {
       data.forEach(card => {
         const cardDiv = document.createElement('div')
         cardDiv.className = 'carta'
-        cardDiv.background = card.foto
+        cardDiv.style.backgroundImage = `url(${card.foto})`
         const nombreCarta = document.createElement('p')
         nombreCarta.className = 'nombreCarta'
         nombreCarta.innerHTML = card.nombre
-        const ataque = document.createElement('p')
-        ataque.className = 'ataque'
-        ataque.innerHTML = card.ataque
-        const vida = document.createElement('p')
-        vida.className = 'vida'
-        vida.innerHTML = card.vida
+        const ataqueVida = document.createElement('p')
+        ataqueVida.className = 'ataque-vida'
+        ataqueVida.innerHTML = card.ataque + ' / ' + card.vida
         cardDiv.appendChild(nombreCarta)
-        cardDiv.appendChild(ataque)
-        cardDiv.appendChild(vida)
+        cardDiv.appendChild(ataqueVida)
         yourCards.appendChild(cardDiv)
       })
     })
