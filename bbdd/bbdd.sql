@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
     mazo_seleccionado INT,
     first_log BOOL DEFAULT true
 );
-/*
+
 CREATE TABLE IF NOT EXISTS cartas (
 	id INT PRIMARY KEY auto_increment,
     nombre VARCHAR(255),
@@ -27,9 +27,11 @@ CREATE TABLE IF NOT EXISTS cartas (
     vida INT,
     costo_mana INT,
     tipo VARCHAR(255),
-    foto VARCHAR(255)
+    foto VARCHAR(255),
+    id_ataque INT,
+    FOREIGN KEY (id_ataque) REFERENCES ataques(id)
 );
-
+/*
 CREATE TABLE IF NOT EXISTS mazos (
 	id INT PRIMARY KEY auto_increment,
     nombre VARCHAR(255),
@@ -38,6 +40,15 @@ CREATE TABLE IF NOT EXISTS mazos (
     FOREIGN KEY (id_usuario) REFERENCES users(id)
 );	
 */
+
+CREATE TABLE IF NOT EXISTS ataques (
+	id INT PRIMARY KEY auto_increment,
+    nombre VARCHAR(255),
+    tipo VARCHAR(255),
+    cambio INT,
+    estadistica VARCHAR(255),
+    duracion INT
+);
 
 INSERT INTO users (nombre, apellidos, user, password, email)
 	VALUES ('Miguel', 'Gallardo Revaliente', 'Chimpy', 'chimpy123', 'migallre@gmail.com');

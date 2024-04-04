@@ -1,4 +1,5 @@
-//DEJAR DE MOSTRAR UN DIV #HOME
+/* eslint-disable no-unused-vars */
+// DEJAR DE MOSTRAR UN DIV #HOME
 const home = document.getElementById('home')
 const information = document.getElementById('information')
 const inventory = document.getElementById('inventory')
@@ -12,12 +13,19 @@ function mostrarInformation () {
   information.style.display = 'block'
 }
 
-function mostrarInventory () {
+async function mostrarInventory () {
   home.style.display = 'none'
   information.style.display = 'none'
   shop.style.display = 'none'
   inventory.style.display = 'block'
   settings.style.display = 'none'
+  fetch('/cards', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
 }
 
 function mostrarShop () {
@@ -44,8 +52,7 @@ function mostrarSettings () {
   settings.style.display = 'block'
 }
 
-
-//FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
+// FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
 const shopcards = document.getElementById('shop_cards')
 const shopchests = document.getElementById('shop_chests')
 const allcards = document.getElementById('allcards')
@@ -53,50 +60,48 @@ const allcards = document.getElementById('allcards')
 function mostrarShopCards () {
   allcards.style.display = 'block'
   allchests.style.display = 'none'
-  shopchests.style.boxShadow = '1px 1px 5px black inset';
-  shopcards.style.boxShadow = '1px 1px 5px black';
-  shopcards.style.backgroundColor = 'gray';
-  shopchests.style.backgroundColor = '#292929';
-  
+  shopchests.style.boxShadow = '1px 1px 5px black inset'
+  shopcards.style.boxShadow = '1px 1px 5px black'
+  shopcards.style.backgroundColor = 'gray'
+  shopchests.style.backgroundColor = '#292929'
 }
 
 function mostrarShopChests () {
   allcards.style.display = 'none'
   allchests.style.display = 'block'
-  shopcards.style.boxShadow = '1px 1px 5px black inset';
-  shopchests.style.boxShadow = '1px 1px 5px black';
-  shopchests.style.backgroundColor = 'gray';
-  shopcards.style.backgroundColor = '#292929';
-
+  shopcards.style.boxShadow = '1px 1px 5px black inset'
+  shopchests.style.boxShadow = '1px 1px 5px black'
+  shopchests.style.backgroundColor = 'gray'
+  shopcards.style.backgroundColor = '#292929'
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  var audio = document.getElementById('audio');
-  var volumeControl = document.getElementById('volumeControl');
+  var audio = document.getElementById('audio')
+  var volumeControl = document.getElementById('volumeControl')
 
-  audio.volume = volumeControl.value / 100;
+  audio.volume = volumeControl.value / 100
 
   volumeControl.addEventListener('input', function () {
-      audio.volume = volumeControl.value / 100;
-  });
-});
+    audio.volume = volumeControl.value / 100
+  })
+})
 
-var botones = document.querySelectorAll('button');
+var botones = document.querySelectorAll('button')
 
-function reproducirSonido() {
-    var audioClick = new Audio('img/click.mp3');
-    audioClick.play();
+function reproducirSonido () {
+  var audioClick = new Audio('img/click.mp3')
+  audioClick.play()
 }
 
-botones.forEach(function(boton) {
-    boton.addEventListener('click', function() {
-        reproducirSonido();
-    });
-});
+botones.forEach(function (boton) {
+  boton.addEventListener('click', function () {
+    reproducirSonido()
+  })
+})
 
-var otrosElementos = document.querySelectorAll('.otroElemento');
-otrosElementos.forEach(function(elemento) {
-    elemento.addEventListener('click', function() {
-        reproducirSonido();
-    });
-});
+var otrosElementos = document.querySelectorAll('.otroElemento')
+otrosElementos.forEach(function (elemento) {
+  elemento.addEventListener('click', function () {
+    reproducirSonido()
+  })
+})

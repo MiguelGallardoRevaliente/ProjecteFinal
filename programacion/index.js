@@ -48,6 +48,15 @@ app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'web/game.html'))
 })
 
+app.get('/cards', async (req, res) => {
+  try {
+    const [cards] = await connection.execute('SELECT * FROM cartas')
+    res.status(200).json(cards)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
