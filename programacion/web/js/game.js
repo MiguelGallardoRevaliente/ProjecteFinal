@@ -22,6 +22,7 @@ async function mostrarInventory () {
   inventory.style.display = 'block'
   settings.style.display = 'none'
   const yourCards = document.getElementsByClassName('yourCards')[0]
+  yourCards.innerHTML = ''
   fetch('http://13.53.190.234/cards', {
     method: 'GET'
   })
@@ -31,19 +32,15 @@ async function mostrarInventory () {
       data.forEach(card => {
         const cardDiv = document.createElement('div')
         cardDiv.className = 'carta'
-        cardDiv.innerHTML = `<img src="${card.foto}" alt="carta">`
+        cardDiv.style.backgroundImage = `url(${card.foto})`
         const nombreCarta = document.createElement('p')
         nombreCarta.className = 'nombreCarta'
         nombreCarta.innerHTML = card.nombre
-        const ataque = document.createElement('p')
-        ataque.className = 'ataque'
-        ataque.innerHTML = card.ataque
-        const vida = document.createElement('p')
-        vida.className = 'vida'
-        vida.innerHTML = card.vida
+        const ataqueVida = document.createElement('p')
+        ataqueVida.className = 'ataque-vida'
+        ataqueVida.innerHTML = card.ataque + ' / ' + card.vida
         cardDiv.appendChild(nombreCarta)
-        cardDiv.appendChild(ataque)
-        cardDiv.appendChild(vida)
+        cardDiv.appendChild(ataqueVida)
         yourCards.appendChild(cardDiv)
       })
     })
