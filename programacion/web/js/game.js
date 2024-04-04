@@ -33,10 +33,13 @@ async function mostrarInventory () {
         cardDiv.className = 'carta'
         cardDiv.innerHTML = `<img src="${card.foto}" alt="carta">`
         const nombreCarta = document.createElement('p')
+        nombreCarta.className = 'nombreCarta'
         nombreCarta.innerHTML = card.nombre
         const ataque = document.createElement('p')
+        ataque.className = 'ataque'
         ataque.innerHTML = card.ataque
         const vida = document.createElement('p')
+        vida.className = 'vida'
         vida.innerHTML = card.vida
         cardDiv.appendChild(nombreCarta)
         cardDiv.appendChild(ataque)
