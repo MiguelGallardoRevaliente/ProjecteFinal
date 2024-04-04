@@ -361,10 +361,10 @@ header .config h1{
 
 /*wrap*/
 #inventory .container .allcards .yourCards{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: left;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;  
     align-items: center;
     margin-top: 5%;
 
@@ -378,13 +378,24 @@ header .config h1{
 
 }
 
+
 .yourCards .carta:hover{
     scale: 1.2;
 }
 
-.yourCards .carta p{
+
+.yourCards .carta p {
     position: absolute;
-    top: 0%;
+    font-size: 16px;
+    color: black;
+    margin: 0px;
+    font-weight: 800;
+}
+
+.yourCards .carta .nombreCarta {
+    top: 55%;
+    left: 28px;
+    margin: 10px 40px;
 }
 
 /*Settings*/
