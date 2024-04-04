@@ -29,7 +29,7 @@ async function mostrarInventory () {
       data.forEach(card => {
         const cardDiv = document.createElement('div')
         cardDiv.className = 'carta'
-        cardDiv.innerHTML = `<img src="${card.foto}" alt="carta">`
+        cardDiv.innerHTML = '<img src="/home/ubuntu/ProjecteFinal/programacion/web/img/Oscuridad/Excepcional/fenrir_f.png" alt="carta">'
         yourCards.appendChild(cardDiv)
       })
     })
