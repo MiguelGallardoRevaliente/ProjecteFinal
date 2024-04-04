@@ -19,12 +19,19 @@ async function mostrarInventory () {
   shop.style.display = 'none'
   inventory.style.display = 'block'
   settings.style.display = 'none'
+  const yourCards = document.getElementsByClassName('yourCards')[0]
   fetch('/cards', {
     method: 'GET'
   })
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      data.forEach(card => {
+        const cardDiv = document.createElement('div')
+        cardDiv.className = 'carta'
+        cardDiv.innerHTML = `<img src="${card.image}" alt="carta">`
+        yourCards.appendChild(cardDiv)
+      })
     })
 }
 
