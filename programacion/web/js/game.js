@@ -38,6 +38,9 @@ async function mostrarInventory () {
         ataque.innerHTML = card.ataque
         const vida = document.createElement('p')
         vida.innerHTML = card.vida
+        cardDiv.appendChild(nombreCarta)
+        cardDiv.appendChild(ataque)
+        cardDiv.appendChild(vida)
         yourCards.appendChild(cardDiv)
       })
     })
