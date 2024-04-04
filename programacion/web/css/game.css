@@ -369,18 +369,22 @@ header .config h1{
     margin-top: 5%;
 
 }
-.yourCards img{
-    width: 250px;
-    height: auto;
-    border-radius: 0px;
-    box-shadow: 1px 3px 5px black;
-    cursor: pointer;
-    transition: 0.2s;
+.yourCards .carta{
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 500px;
+    position: relative;
 
 }
 
-.yourCards img:hover{
+.yourCards .carta:hover{
     scale: 1.2;
+}
+
+.yourCards .carta p{
+    position: absolute;
+    top: 0%;
 }
 
 /*Settings*/
