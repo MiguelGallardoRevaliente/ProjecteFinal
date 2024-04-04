@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
-    const [cards] = await connection.execute('SELECT * FROM cartas')
+    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
