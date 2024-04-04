@@ -475,6 +475,7 @@ header .config h1{
     cursor: pointer;
     background-color: #d30000;
     color: white;
+    margin-top: 5%;
 }
 
 #settings .setting form button:active{
