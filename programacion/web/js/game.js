@@ -32,7 +32,7 @@ async function mostrarInventory () {
       data.forEach(card => {
         const cardDiv = document.createElement('div')
         cardDiv.className = 'carta'
-        cardDiv.innerHTML = `<img src="${card.foto}" alt="carta">`
+        cardDiv.background = card.foto
         const nombreCarta = document.createElement('p')
         nombreCarta.className = 'nombreCarta'
         nombreCarta.innerHTML = card.nombre
