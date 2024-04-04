@@ -461,3 +461,16 @@ header .config h1{
     border: none;
     box-shadow: 1px 1px 3px #272727 inset;
 }
+#settings .setting form button{
+padding: 0px;
+width: 60px;
+height: 60px;
+display: flex;
+background: transparent;
+border: none;
+font-size: 50px;
+box-shadow: 1px 3px 5px black;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+}
