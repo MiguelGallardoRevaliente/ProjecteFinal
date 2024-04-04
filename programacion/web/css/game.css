@@ -479,4 +479,5 @@ header .config h1{
 
 #settings .setting form button:active{
     box-shadow: 1px 1px 3px black inset;
+    margin-top: 5%;
 }
