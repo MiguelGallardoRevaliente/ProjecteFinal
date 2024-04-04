@@ -27,7 +27,7 @@
             const newPasswordR = document.getElementById('newPasswordR').value
 
             if (newPassword === newPasswordR) {
-                fetch('/change-password', {
+                fetch('http://13.53.190.234/change-password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

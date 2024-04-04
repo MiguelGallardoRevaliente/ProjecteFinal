@@ -22,7 +22,7 @@ async function mostrarInventory () {
   inventory.style.display = 'block'
   settings.style.display = 'none'
   const yourCards = document.getElementsByClassName('yourCards')[0]
-  fetch('/cards', {
+  fetch('http://13.53.190.234/cards', {
     method: 'GET'
   })
     .then(response => response.json())
