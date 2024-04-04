@@ -11,6 +11,8 @@ function mostrarInformation () {
   inventory.style.display = 'none'
   shop.style.display = 'none'
   information.style.display = 'block'
+  const yourCards = document.getElementsByClassName('yourCards')[0]
+  yourCards.innerHTML = ''
 }
 
 async function mostrarInventory () {
@@ -47,6 +49,8 @@ function mostrarShop () {
   inventory.style.display = 'none'
   shop.style.display = 'block'
   settings.style.display = 'none'
+  const yourCards = document.getElementsByClassName('yourCards')[0]
+  yourCards.innerHTML = ''
 }
 
 function mostrarHome () {
@@ -55,6 +59,8 @@ function mostrarHome () {
   shop.style.display = 'none'
   home.style.display = 'block'
   settings.style.display = 'none'
+  const yourCards = document.getElementsByClassName('yourCards')[0]
+  yourCards.innerHTML = ''
 }
 
 function mostrarSettings () {
@@ -63,6 +69,8 @@ function mostrarSettings () {
   inventory.style.display = 'none'
   shop.style.display = 'none'
   settings.style.display = 'block'
+  const yourCards = document.getElementsByClassName('yourCards')[0]
+  yourCards.innerHTML = ''
 }
 
 // FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
