@@ -104,10 +104,10 @@ header .config h1{
     position: absolute;
     top: 0;
     right: 0;
-    width: 10%;
+    width: 15%;
     background-color: #292929;
-    height: 100px;
-    clip-path: polygon(0 0, 100% 0%, 100% 63%, 28% 63%);
+    height: 150px;
+    clip-path: polygon(5% 0, 100% 0%, 100% 63%, 28% 63%);
 }
 
 #searchGame{
