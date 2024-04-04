@@ -106,6 +106,8 @@ header .config h1{
     right: 0;
     width: 10%;
     background-color: #292929;
+    height: 100px;
+    clip-path: polygon(0 0, 100% 0%, 100% 63%, 28% 63%);
 }
 
 #searchGame{
