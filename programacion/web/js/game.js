@@ -38,7 +38,7 @@ async function mostrarInventory () {
         nombreCarta.innerHTML = card.nombre
         const ataqueVida = document.createElement('p')
         ataqueVida.className = 'ataque-vida'
-        ataqueVida.innerHTML = card.ataque + ' / ' + card.vida
+        ataqueVida.innerHTML = card.ataque + '/' + card.vida
         cardDiv.appendChild(nombreCarta)
         cardDiv.appendChild(ataqueVida)
         yourCards.appendChild(cardDiv)
