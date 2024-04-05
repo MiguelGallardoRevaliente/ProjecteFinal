@@ -62,7 +62,7 @@ header nav ul{
 }
 
 
-header nav ul li{
+header nav ul a{
     padding: 25px 0px;
     font-size: 33px;
     width: 100%;
