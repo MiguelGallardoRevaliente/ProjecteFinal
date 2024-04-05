@@ -62,36 +62,6 @@ app.get('/cards', async (req, res) => {
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
     const [cards] = await connection.execute(query)
-    console.log(orderBy)
-    console.log(orderDirection)
-    res.status(200).json(cards)
-  } catch (err) {
-    console.error(err)
-  }
-})
-
-app.get('/ordenarCartas', async (req, res) => {
-  try {
-    let [cards] = []
-    const { orden } = req.params.orden
-    switch (orden) {
-      case 'rareza':
-        console.log('rareza')
-        cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-        break
-      case 'manaUp':
-        console.log('manaUp')
-        cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana DESC;')
-        break
-      case 'manaDown':
-        console.log('manaDown')
-        cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana ASC;')
-        break
-      default:
-        console.log('default')
-        cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-        break
-    }
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
@@ -116,9 +86,7 @@ app.get('/settings', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
-    console.log(req.body)
     const [rows] = await connection.execute('SELECT * FROM users WHERE user = ? AND password = ?', [usernameLogin, passwordLogin])
-    console.log(rows[0].first_log)
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
