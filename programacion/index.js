@@ -59,13 +59,16 @@ app.get('/cards', async (req, res) => {
     const idCartas = await connection.query(
       'SELECT * FROM users_cartas WHERE id = ?', [id]
     )
-    let query = 'SELECT * FROM cartas WHERE id_cartas IN (?)'
+
+    console.log(idCartas)
+
+    let query = 'SELECT * FROM cartas'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
-    const [cards] = await connection.execute(query, [idCartas[0].id])
+    const [cards] = await connection.execute(query)
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
