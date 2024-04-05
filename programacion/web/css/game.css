@@ -123,7 +123,7 @@ header .config a{
     box-shadow: 3px 3px 5px rgb(0, 0, 0);
     display: flex;
     justify-content: right;
-    align-items: baseline;
+    align-items: self-start;
     padding: 0px 20px;
     gap: 80px;
 }
@@ -136,7 +136,7 @@ header .config a{
 }
 
 .perfil .divOro img{
-    width: 50px;
+    width: 30px;
 }
 
 .perfil .divUser, .perfil .divOro{
