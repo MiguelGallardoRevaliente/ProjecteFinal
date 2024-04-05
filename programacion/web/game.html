@@ -25,20 +25,22 @@
                 .then(response => response.json())
                 .then(data => {
                 console.log(data)
-                data.forEach(card => {
-                    const cardDiv = document.createElement('div')
-                    cardDiv.className = 'carta'
-                    cardDiv.style.backgroundImage = `url(${card.foto})`
-                    const nombreCarta = document.createElement('p')
-                    nombreCarta.className = 'nombreCarta'
-                    nombreCarta.innerHTML = card.nombre
-                    const ataqueVida = document.createElement('p')
-                    ataqueVida.className = 'ataque-vida'
-                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
-                    cardDiv.appendChild(nombreCarta)
-                    cardDiv.appendChild(ataqueVida)
-                    yourCards.appendChild(cardDiv)
-                })
+                    const divOro = document.createElement('div')
+                    const rubiImg = document.createElement('img')
+                    rubiImg.src = 'img/rubi.png'
+                    const rubi = document.createElement('p')
+                    rubi.innerHTML = data.oro
+                    divOro.appendChild(rubiImg)
+                    divOro.appendChild(rubi)
+                    const divUser = document.createElement('div')
+                    const username = document.createElement('p')
+                    username = data.user
+                    const userFoto = document.createElement('img')
+                    userFoto.src = data.foto_perfil
+                    divUser.appendChild(userFoto)
+                    divUser.appendChild(username)
+                    perfil.appendChild(divOro)
+                    perfil.appendChild(divUser)
                 })
         }
     </script>
