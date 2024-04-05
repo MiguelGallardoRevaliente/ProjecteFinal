@@ -58,7 +58,7 @@ app.get('/cards', async (req, res) => {
     const id = req.query.id
     console.log(id)
     const idCartas = await connection.query(
-      'SELECT * FROM users_cartas WHERE id_user = ?', [id]
+      'SELECT * FROM users_cartas WHERE UUID_TO_BIN(id_user) = ?', [id]
     )
 
     console.log(idCartas)
