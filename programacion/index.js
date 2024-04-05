@@ -61,7 +61,7 @@ app.get('/cards', async (req, res) => {
       'SELECT id_carta FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id]
     )
 
-    console.log(idCartas)
+    console.log(idCartas[0])
 
     let query = 'SELECT * FROM cartas WHERE id IN (?)'
     const orderBy = req.query.ordenType || 'rareza'
@@ -69,7 +69,7 @@ app.get('/cards', async (req, res) => {
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
-    const [cards] = await connection.execute(query, [idCartas.id_carta])
+    const [cards] = await connection.execute(query, [idCartas[0].id_carta])
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
