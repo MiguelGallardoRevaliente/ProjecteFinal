@@ -73,11 +73,11 @@ header nav ul a{
     color: rgb(255, 255, 255);
 }
 
-header nav ul li:hover{
+header nav ul a:hover{
     background-color: #3b3b3b;
 }
 
-header nav ul li:active{
+header nav ul a:active{
     background-color: #3b3b3b;
 }
 
@@ -194,7 +194,7 @@ header .config a{
 /*Shop*/
 #shop{
     font-family: "koho", sans-serif;
-    margin-left: calc(15%);
+    margin-left: 300px;
     padding: 0px 0px;
     font-size: 30px;
     border: none;
@@ -428,7 +428,7 @@ header .config a{
 
 #settings{
     font-family: "koho", sans-serif;
-    margin-left: calc(15%);
+    margin-left: 300px;
     padding: 0px 0px;
     font-size: 30px;
     border: none;
