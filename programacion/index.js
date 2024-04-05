@@ -55,30 +55,9 @@ app.get('/inventory', async (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
-    let [cards] = []
-    if (!req.query.orden) {
-      cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-    } else {
-      const orden = req.query.orden
-      console.log(orden)
-      switch (orden) {
-        case 'manaUp':
-          console.log('manaUp')
-          cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana DESC;')
-          console.log('manaUp')
-          break
-        case 'manaDown':
-          console.log('manaDown')
-          cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana ASC;')
-          console.log('manaDown')
-          break
-        default:
-          console.log('default')
-          cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-          console.log('default')
-          break
-      }
-    }
+    const [cards] = await connection.execute(
+      'SELECT * FROM cartas ORDER BY ? ?;', [req.query.ordenType, req.query.orden]
+    )
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
