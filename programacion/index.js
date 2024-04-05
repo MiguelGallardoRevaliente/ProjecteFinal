@@ -57,7 +57,7 @@ app.get('/cards', async (req, res) => {
   try {
     const id = req.query.id
     const idCartas = await connection.query(
-      'SELECT * FROM users_cartas WHERE id = ?', [id]
+      'SELECT * FROM users_cartas WHERE id_user = ?', [id]
     )
 
     console.log(idCartas)
