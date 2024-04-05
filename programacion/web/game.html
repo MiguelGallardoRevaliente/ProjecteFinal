@@ -14,9 +14,8 @@
             window.location.href = '/login'
         }
 
-        const perfil = document.getElementsByClassName('perfil')[0]
-
         window.onload = () => {
+            const perfil = document.getElementsByClassName('perfil')[0]
             perfil.innerHTML = ''
             const id = localStorage.getItem('id')
             fetch(`http://13.53.190.234/infoUser?id=${id}`, {
@@ -24,7 +23,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                console.log(data)
+                    console.log(data)
                     const divOro = document.createElement('div')
                     const rubiImg = document.createElement('img')
                     rubiImg.src = 'img/rubi.png'
