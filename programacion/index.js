@@ -55,8 +55,10 @@ app.get('/inventory', async (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
-    let [cards] = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-    if (req.query.orden) {
+    let [cards] = []
+    if (!req.query.orden) {
+      cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
+    } else {
       const orden = req.query.orden
       console.log(orden)
       switch (orden) {
