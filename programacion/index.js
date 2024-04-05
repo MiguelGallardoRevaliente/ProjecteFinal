@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 app.get('/infoUser', async (req, res) => {
   try {
-    const { id } = req.query.id
+    const id = req.query.id
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
     console.log(user[0])
     return res.status(200).json(user[0])
@@ -67,7 +67,6 @@ app.get('/inventory', async (req, res) => {
 app.get('/cards', async (req, res) => {
   try {
     const id = req.query.id
-    console.log(id)
     const idCartas = await connection.query(
       'SELECT id_carta FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id]
     )
