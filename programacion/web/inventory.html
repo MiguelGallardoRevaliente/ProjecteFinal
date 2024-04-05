@@ -17,7 +17,7 @@
         window.onload = () => {
             const yourCards = document.getElementsByClassName('yourCards')[0]
             yourCards.innerHTML = ''
-            fetch('http://13.53.190.234/cards?ordenType=rareza$orden=DESC', {
+            fetch('http://13.53.190.234/cards', {
                 method: 'GET'
             })
                 .then(response => response.json())
