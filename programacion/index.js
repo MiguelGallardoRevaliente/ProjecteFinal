@@ -48,9 +48,38 @@ app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'web/game.html'))
 })
 
+app.get('/inventory', async (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/inventory.html'))
+})
+
 app.get('/cards', async (req, res) => {
   try {
     const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
+    res.status(200).json(cards)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
+app.get('/ordenarCartas', async (req, res) => {
+  try {
+    let [cards] = []
+    const { orden } = req.query
+    switch (orden) {
+      case 'rareza':
+        cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
+        break
+      case 'manaUp':
+        cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana DESC;')
+        break
+      case 'manaDown':
+        cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana ASC;')
+        break
+      default:
+        cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
+        break
+    }
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)

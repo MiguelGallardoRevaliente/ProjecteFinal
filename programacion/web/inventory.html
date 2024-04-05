@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home - Chamous</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type='module'>
+        const username = localStorage.getItem('username')
+        
+        if (!username) {
+            window.location.href = '/login'
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logoC.png" alt="">
+            <h1>CHAMOUS</h1>
+        </div>
+        <nav>
+            <ul>
+                <li onclick="mostrarHome()">HOME</li>
+                <li onclick="mostrarInventory()">INVENTARY</li>
+                <li onclick="mostrarShop()">SHOP</li>
+                <li onclick="mostrarInformation()">INFORMATION</li>
+            </ul>
+        </nav>
+        <div class="config">
+            <i class='bx bx-cog' ></i>
+            <h1 onclick="mostrarSettings()">SETTING</h1>
+        </div>
+    </header>
+    <div id="inventory">
+        <div class="container">
+            <div class="links">
+                <div> <button><i class='bx bxs-memory-card'></i></button></div>
+           <div>
+            <button ><i class='bx bxs-box'></i></button>
+        </div>
+        <div>
+            <button ><i class='bx bxs-box'></i></button>
+            </div>  
+        </div>
+            <div class="top">
+                <h1>INVENTORY</h1>
+               
+            </div>
+            <div class="allcards">
+                <div class="filtrer">
+                    <span>Order By</span>
+                    <form>
+                        <select name="" id="">
+                            <option value="">Quality</option>
+                            <option value="">Mayor Maná</option>
+                            <option value="">Menor Maná</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="yourCards">
+                </div>
+            </div>
+            <div class="allchests"></div>
+            <div class="allmazos"></div>
+        </div>
+    </div>
+    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
+    <script src="js/game.js"></script>
+</body>
+</html>

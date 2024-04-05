@@ -8,19 +8,11 @@ const settings = document.getElementById('settings')
 
 function mostrarInformation () {
   home.style.display = 'none'
-  inventory.style.display = 'none'
   shop.style.display = 'none'
   information.style.display = 'block'
-  const yourCards = document.getElementsByClassName('yourCards')[0]
-  yourCards.innerHTML = ''
 }
 
 async function mostrarInventory () {
-  home.style.display = 'none'
-  information.style.display = 'none'
-  shop.style.display = 'none'
-  inventory.style.display = 'block'
-  settings.style.display = 'none'
   const yourCards = document.getElementsByClassName('yourCards')[0]
   yourCards.innerHTML = ''
   fetch('http://13.53.190.234/cards', {
@@ -49,7 +41,6 @@ async function mostrarInventory () {
 function mostrarShop () {
   home.style.display = 'none'
   information.style.display = 'none'
-  inventory.style.display = 'none'
   shop.style.display = 'block'
   settings.style.display = 'none'
   const yourCards = document.getElementsByClassName('yourCards')[0]
@@ -58,7 +49,6 @@ function mostrarShop () {
 
 function mostrarHome () {
   information.style.display = 'none'
-  inventory.style.display = 'none'
   shop.style.display = 'none'
   home.style.display = 'block'
   settings.style.display = 'none'
