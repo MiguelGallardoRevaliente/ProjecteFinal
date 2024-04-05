@@ -29,14 +29,14 @@
                         const rubiImg = document.createElement('img')
                         rubiImg.src = 'img/rubi.png'
                         const rubi = document.createElement('p')
-                        rubi.innerHTML = data.oro
+                        rubi.innerHTML = user.oro
                         divOro.appendChild(rubiImg)
                         divOro.appendChild(rubi)
                         const divUser = document.createElement('div')
                         const username = document.createElement('p')
-                        username = data.user
+                        username = user.user
                         const userFoto = document.createElement('img')
-                        userFoto.src = data.foto_perfil
+                        userFoto.src = user.foto_perfil
                         divUser.appendChild(userFoto)
                         divUser.appendChild(username)
                         perfil.appendChild(divOro)
