@@ -63,14 +63,17 @@ app.get('/cards', async (req, res) => {
         case 'manaUp':
           console.log('manaUp')
           cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana DESC;')
+          console.log('manaUp')
           break
         case 'manaDown':
           console.log('manaDown')
           cards = await connection.execute('SELECT * FROM cartas ORDER BY costo_mana ASC;')
+          console.log('manaDown')
           break
         default:
           console.log('default')
           cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
+          console.log('default')
           break
       }
     }
