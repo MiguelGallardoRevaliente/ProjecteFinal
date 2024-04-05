@@ -58,7 +58,7 @@ app.get('/cards', async (req, res) => {
     const id = req.query.id
     console.log(id)
     const idCartas = await connection.query(
-      'SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = BIN_TO_UUID(?)', [id]
+      'SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id]
     )
 
     console.log(idCartas)
@@ -94,7 +94,7 @@ app.get('/settings', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
-    const [rows] = await connection.execute('SELECT * FROM users WHERE user = ? AND password = ?', [usernameLogin, passwordLogin])
+    const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log FROM users WHERE user = ? AND password = ?', [usernameLogin, passwordLogin])
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
