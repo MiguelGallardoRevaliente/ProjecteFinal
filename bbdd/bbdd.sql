@@ -31,6 +31,14 @@ CREATE TABLE IF NOT EXISTS cartas (
     id_ataque INT,
     FOREIGN KEY (id_ataque) REFERENCES ataques(id)
 );
+
+CREATE TABLE IF NOT EXISTS users_cartas (
+	id_users_carta INT PRIMARY KEY auto_increment,
+    id_user BINARY(16),
+    id_carta INT,
+    FOREIGN KEY (id_user) REFERENCES users(id),
+    FOREIGN KEY (id_carta) REFERENCES cartas(id)
+);
 /*
 CREATE TABLE IF NOT EXISTS mazos (
 	id INT PRIMARY KEY auto_increment,

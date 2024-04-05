@@ -31,6 +31,7 @@
                     console.log(data)
                     localStorage.setItem('username', document.getElementById('username').value)
                     localStorage.setItem('password', document.getElementById('password').value)
+                    localStorage.setItem('id', data.id)
                     if (data.isFirstLog === 1) {
                         window.location.href = '/intro'
                     } else if (data.isFirstLog === 0) {
@@ -39,6 +40,7 @@
                         alert('User or password incorrects')
                         localStorage.removeItem('username')
                         localStorage.removeItem('password')
+                        localStorage.removeItem('id')
                     }
                 })
                 .catch(error => {

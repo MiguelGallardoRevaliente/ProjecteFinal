@@ -55,13 +55,17 @@ app.get('/inventory', async (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
-    let query = 'SELECT * FROM cartas'
+    const id = req.query.id
+    const idCartas = await connection.query(
+      'SELECT * FROM users_cartas WHERE id = ?', [id]
+    )
+    let query = 'SELECT * FROM cartas WHERE id_cartas IN (?)'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
-    const [cards] = await connection.execute(query)
+    const [cards] = await connection.execute(query, [idCartas[0].id])
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
@@ -90,7 +94,7 @@ app.post('/login', async (req, res) => {
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
-      return res.status(200).json({ message: 'Credenciales correctas', isFirstLog: firstLog })
+      return res.status(200).json({ message: 'Credenciales correctas', isFirstLog: firstLog, id: rows[0].id })
     } else {
       return res.status(401).json({ message: 'Credenciales incorrectas' })
     }
