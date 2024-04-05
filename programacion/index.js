@@ -63,14 +63,15 @@ app.get('/cards', async (req, res) => {
 
     console.log(idCartas[0])
 
-    let query = 'SELECT * FROM cartas WHERE id IN (?)'
+    let query = 'SELECT * FROM cartas'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
-    const [cards] = await connection.execute(query, [idCartas[0].id_carta])
-    res.status(200).json(cards)
+    const [cards] = await connection.execute(query)
+    const filteredCards = cards.filter(card => idCartas[0].includes(card.id_carta));
+    res.status(200).json(filteredCards)
   } catch (err) {
     console.error(err)
   }
