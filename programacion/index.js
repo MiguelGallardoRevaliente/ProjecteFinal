@@ -55,15 +55,6 @@ app.get('/inventory', async (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
-    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-    res.status(200).json(cards)
-  } catch (err) {
-    console.error(err)
-  }
-})
-
-app.get('/ordenarCartas', async (req, res) => {
-  try {
     let [cards] = []
     const { orden } = req.params.orden
     switch (orden) {
