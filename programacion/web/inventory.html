@@ -14,7 +14,7 @@
             window.location.href = '/login'
         }
 
-        window.onload = () => {
+        function fetchCards () {
             const yourCards = document.getElementsByClassName('yourCards')[0]
             yourCards.innerHTML = ''
             fetch('http://13.53.190.234/cards', {
@@ -39,6 +39,16 @@
                 })
                 })
         }
+
+        window.onload = () => {
+            fetchCards()
+        }
+
+        const quality = document.getElementById('quality')
+
+        quality.addEventListener('change', () => {
+            fetchCards()
+        })
     </script>
 </head>
 <body>
@@ -78,11 +88,11 @@
             <div class="allcards">
                 <div class="filtrer">
                     <span>Order By</span>
-                    <form>
-                        <select name="" id="">
-                            <option value="">Quality</option>
-                            <option value="">Mayor Maná</option>
-                            <option value="">Menor Maná</option>
+                    <form action="" class="form">
+                        <select name="quality" id="quality">
+                            <option value="rareza">Quality</option>
+                            <option value="manaUp">Mayor Maná</option>
+                            <option value="manaDown">Menor Maná</option>
                         </select>
                     </form>
                 </div>
