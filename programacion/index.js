@@ -56,10 +56,7 @@ app.get('/inventory', async (req, res) => {
 app.get('/cards', async (req, res) => {
   try {
     let [cards] = []
-    let { orden } = req.params.orden
-    if (!orden) {
-      orden = 'rareza'
-    }
+    const { orden } = req.query.orden
     switch (orden) {
       case 'rareza':
         console.log('rareza')
