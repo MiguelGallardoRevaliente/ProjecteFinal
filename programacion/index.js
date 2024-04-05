@@ -48,6 +48,17 @@ app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'web/game.html'))
 })
 
+app.get('/infoUser', async (req, res) => {
+  try {
+    const { id } = req.query.id
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    console.log(user[0])
+    return res.status(200).json(user[0])
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 app.get('/inventory', async (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/inventory.html'))
@@ -72,7 +83,7 @@ app.get('/cards', async (req, res) => {
     const [cards] = await connection.execute(query)
     console.log(cards)
     const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
-    
+
     const filteredCards = cards.filter(card => idCartasSet.has(card.id))
     console.log(filteredCards)
     res.status(200).json(filteredCards)

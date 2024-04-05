@@ -13,6 +13,34 @@
         if (!username) {
             window.location.href = '/login'
         }
+
+        const perfil = document.getElementsByClassName('perfil')[0]
+
+        window.onload = () => {
+            perfil.innerHTML = ''
+            const id = localStorage.getItem('id')
+            fetch(`http://13.53.190.234/infoUser?id=${id}`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                console.log(data)
+                data.forEach(card => {
+                    const cardDiv = document.createElement('div')
+                    cardDiv.className = 'carta'
+                    cardDiv.style.backgroundImage = `url(${card.foto})`
+                    const nombreCarta = document.createElement('p')
+                    nombreCarta.className = 'nombreCarta'
+                    nombreCarta.innerHTML = card.nombre
+                    const ataqueVida = document.createElement('p')
+                    ataqueVida.className = 'ataque-vida'
+                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
+                    cardDiv.appendChild(nombreCarta)
+                    cardDiv.appendChild(ataqueVida)
+                    yourCards.appendChild(cardDiv)
+                })
+                })
+        }
     </script>
 </head>
 <body>
