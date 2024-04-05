@@ -26,6 +26,7 @@
                     console.log(data)
                     data.forEach((user) => {
                         const divOro = document.createElement('div')
+                        divOro.classList.add('divOro')
                         const rubiImg = document.createElement('img')
                         rubiImg.src = 'img/rubi.png'
                         const rubi = document.createElement('p')
@@ -33,6 +34,7 @@
                         divOro.appendChild(rubiImg)
                         divOro.appendChild(rubi)
                         const divUser = document.createElement('div')
+                        divUser.classList.add('divUser')
                         const username = document.createElement('p')
                         username.innerHTML = user.user
                         const userFoto = document.createElement('img')
