@@ -70,8 +70,7 @@ app.get('/cards', async (req, res) => {
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
     const [cards] = await connection.execute(query)
-    console.log(cards)
-    const filteredCards = cards.filter(card => idCartas[0].includes(card.id_carta))
+    const filteredCards = cards.filter(card => idCartas[0].includes(card.id))
     console.log(filteredCards)
     res.status(200).json(filteredCards)
   } catch (err) {
