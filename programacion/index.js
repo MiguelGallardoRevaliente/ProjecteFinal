@@ -63,13 +63,13 @@ app.get('/cards', async (req, res) => {
 
     console.log(idCartas)
 
-    let query = 'SELECT * FROM cartas'
+    let query = 'SELECT * FROM cartas WHERE id IN (?)'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
-    const [cards] = await connection.execute(query)
+    const [cards] = await connection.execute(query, [idCartas.id_carta])
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
