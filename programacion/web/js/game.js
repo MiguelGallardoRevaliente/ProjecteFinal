@@ -12,32 +12,6 @@ function mostrarInformation () {
   information.style.display = 'block'
 }
 
-async function mostrarInventory () {
-  const yourCards = document.getElementsByClassName('yourCards')[0]
-  yourCards.innerHTML = ''
-  fetch('http://13.53.190.234/cards', {
-    method: 'GET'
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      data.forEach(card => {
-        const cardDiv = document.createElement('div')
-        cardDiv.className = 'carta'
-        cardDiv.style.backgroundImage = `url(${card.foto})`
-        const nombreCarta = document.createElement('p')
-        nombreCarta.className = 'nombreCarta'
-        nombreCarta.innerHTML = card.nombre
-        const ataqueVida = document.createElement('p')
-        ataqueVida.className = 'ataque-vida'
-        ataqueVida.innerHTML = card.ataque + '/' + card.vida
-        cardDiv.appendChild(nombreCarta)
-        cardDiv.appendChild(ataqueVida)
-        yourCards.appendChild(cardDiv)
-      })
-    })
-}
-
 function mostrarShop () {
   home.style.display = 'none'
   information.style.display = 'none'

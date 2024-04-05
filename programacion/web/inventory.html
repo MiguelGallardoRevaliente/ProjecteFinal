@@ -13,6 +13,32 @@
         if (!username) {
             window.location.href = '/login'
         }
+
+        window.onload(() => {
+            const yourCards = document.getElementsByClassName('yourCards')[0]
+            yourCards.innerHTML = ''
+            fetch('http://13.53.190.234/cards', {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                console.log(data)
+                data.forEach(card => {
+                    const cardDiv = document.createElement('div')
+                    cardDiv.className = 'carta'
+                    cardDiv.style.backgroundImage = `url(${card.foto})`
+                    const nombreCarta = document.createElement('p')
+                    nombreCarta.className = 'nombreCarta'
+                    nombreCarta.innerHTML = card.nombre
+                    const ataqueVida = document.createElement('p')
+                    ataqueVida.className = 'ataque-vida'
+                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
+                    cardDiv.appendChild(nombreCarta)
+                    cardDiv.appendChild(ataqueVida)
+                    yourCards.appendChild(cardDiv)
+                })
+                })
+        })
     </script>
 </head>
 <body>
@@ -24,7 +50,7 @@
         <nav>
             <ul>
                 <li onclick="mostrarHome()">HOME</li>
-                <li onclick="mostrarInventory()">INVENTARY</li>
+                <a href="/inventory" onclick="mostrarInventory()">INVENTARY</a>
                 <li onclick="mostrarShop()">SHOP</li>
                 <li onclick="mostrarInformation()">INFORMATION</li>
             </ul>
@@ -37,7 +63,7 @@
     <div id="inventory">
         <div class="container">
             <div class="links">
-                <div> <button><i class='bx bxs-memory-card'></i></button></div>
+                <div><button><i class='bx bxs-memory-card'></i></button></div>
            <div>
             <button ><i class='bx bxs-box'></i></button>
         </div>
