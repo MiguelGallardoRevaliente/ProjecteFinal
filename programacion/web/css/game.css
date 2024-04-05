@@ -282,7 +282,7 @@ header .config h1{
 
 #inventory{
     font-family: "koho", sans-serif;
-    margin-left: calc(15%);
+    margin-left: 300px;
     padding: 0px 0px;
     font-size: 30px;
     border: none;
