@@ -146,7 +146,6 @@ header .config h1{
     padding: 0px 0px;
     font-size: 30px;
     border: none;
-    border-radius:5px;
     background-color: #292929;
     display: none;
     min-height: 100vh;
@@ -188,7 +187,6 @@ header .config h1{
     padding: 0px 0px;
     font-size: 30px;
     border: none;
-    border-radius:5px;
     background-color: #292929;
     display: none;
     min-height: 100vh;
@@ -288,7 +286,6 @@ header .config h1{
     padding: 0px 0px;
     font-size: 30px;
     border: none;
-    border-radius:5px;
     background-color: #292929;
     /*display: none;*/
     min-height: 100vh;
@@ -390,7 +387,6 @@ header .config h1{
 
 }
 
-
 .yourCards .carta:hover{
     scale: 1.15;
 }
@@ -426,7 +422,6 @@ header .config h1{
     padding: 0px 0px;
     font-size: 30px;
     border: none;
-    border-radius:5px;
     background-color: #292929;
     display: none;
     min-height: 100vh;

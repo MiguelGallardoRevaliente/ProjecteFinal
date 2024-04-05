@@ -53,15 +53,6 @@ app.get('/inventory', async (req, res) => {
   res.sendFile(join(__dirname, 'web/inventory.html'))
 })
 
-app.get('/cards', async (req, res) => {
-  try {
-    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
-    res.status(200).json(cards)
-  } catch (err) {
-    console.error(err)
-  }
-})
-
 app.get('/ordenarCartas', async (req, res) => {
   try {
     let [cards] = []
@@ -84,6 +75,21 @@ app.get('/ordenarCartas', async (req, res) => {
   } catch (err) {
     console.error(err)
   }
+})
+
+app.get('/shop', (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/shop.html'))
+})
+
+app.get('/information', (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/information.html'))
+})
+
+app.get('/settings', (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
 app.post('/login', async (req, res) => {

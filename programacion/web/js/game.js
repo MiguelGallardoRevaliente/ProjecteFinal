@@ -6,40 +6,6 @@ const inventory = document.getElementById('inventory')
 const shop = document.getElementById('shop')
 const settings = document.getElementById('settings')
 
-function mostrarInformation () {
-  home.style.display = 'none'
-  shop.style.display = 'none'
-  information.style.display = 'block'
-}
-
-function mostrarShop () {
-  home.style.display = 'none'
-  information.style.display = 'none'
-  shop.style.display = 'block'
-  settings.style.display = 'none'
-  const yourCards = document.getElementsByClassName('yourCards')[0]
-  yourCards.innerHTML = ''
-}
-
-function mostrarHome () {
-  information.style.display = 'none'
-  shop.style.display = 'none'
-  home.style.display = 'block'
-  settings.style.display = 'none'
-  const yourCards = document.getElementsByClassName('yourCards')[0]
-  yourCards.innerHTML = ''
-}
-
-function mostrarSettings () {
-  home.style.display = 'none'
-  information.style.display = 'none'
-  inventory.style.display = 'none'
-  shop.style.display = 'none'
-  settings.style.display = 'block'
-  const yourCards = document.getElementsByClassName('yourCards')[0]
-  yourCards.innerHTML = ''
-}
-
 // FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
 const shopcards = document.getElementById('shop_cards')
 const shopchests = document.getElementById('shop_chests')
@@ -64,8 +30,8 @@ function mostrarShopChests () {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  var audio = document.getElementById('audio')
-  var volumeControl = document.getElementById('volumeControl')
+  const audio = document.getElementById('audio')
+  const volumeControl = document.getElementById('volumeControl')
 
   audio.volume = volumeControl.value / 100
 
@@ -74,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
-var botones = document.querySelectorAll('button')
+const botones = document.querySelectorAll('button')
 
 function reproducirSonido () {
-  var audioClick = new Audio('img/click.mp3')
+  const audioClick = new Audio('img/click.mp3')
   audioClick.play()
 }
 
@@ -87,7 +53,7 @@ botones.forEach(function (boton) {
   })
 })
 
-var otrosElementos = document.querySelectorAll('.otroElemento')
+const otrosElementos = document.querySelectorAll('.otroElemento')
 otrosElementos.forEach(function (elemento) {
   elemento.addEventListener('click', function () {
     reproducirSonido()

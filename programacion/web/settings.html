@@ -13,15 +13,6 @@
         if (!username) {
             window.location.href = '/login'
         }
-
-        const form = document.getElementsByClassName('form')[0]
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault()
-            localStorage.removeItem('username')
-            localStorage.removeItem('password')
-            window.location.href = '/login'
-        })
     </script>
 </head>
 <body>
@@ -43,11 +34,28 @@
             <a href="/settings">SETTINGS</a>
         </div>
     </header>
-    <div id="home">
-        <div class="perfil">
-
+    <div id="settings">
+        <div class="container">
+            <h1>SETTINGS</h1>
+            <div class="settings">
+                <div class="setting">
+                    <h2>Sound</h2>
+                    <div>
+                    <h3>General Sound</h3>
+                    <input type="range" min="0" max="100" value="100">
+                    </div>
+                    <div>
+                    <h3>Music</h3>
+                    <input type="range" id="volumeControl" min="0" max="100" value="100">
+                    </div>
+                    <div class="logout">
+                        <form action="" class="form">
+                            <button type="submit">Log Out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button id="searchGame">SEARCH BATTLE</button>
     </div>
     <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
     <script src="js/game.js"></script>

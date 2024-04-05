@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home - Chamous</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type='module'>
+        const username = localStorage.getItem('username')
+        
+        if (!username) {
+            window.location.href = '/login'
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logoC.png" alt="">
+            <h1>CHAMOUS</h1>
+        </div>
+        <nav>
+            <ul>
+                <a href="/">HOME</a>
+                <a href="/inventory">INVENTARY</a>
+                <a href="/shop">SHOP</a>
+                <a href="/information">INFORMATION</a>
+            </ul>
+        </nav>
+        <div class="config">
+            <i class='bx bx-cog'></i>
+            <a href="/settings">SETTINGS</a>
+        </div>
+    </header>
+    <div id="information">
+        <div class="container">
+            <h1>INFORMATION</h1>
+            <p>Welcome al emocionante mundo de Chamous Sumérgete en una experiencia única llena de aventuras, desafíos y misterios por descubrir.</p>
+    
+            <h2>How to play?</h2>
+            <p>Not info...</p>
+
+            <h2>Cards & Types</h2>
+            <p>9 Types of Radiants and 5 rankings</p>
+                
+    
+            <h2>Chamous Lore</h2>
+            <p>Centuries ago, in a magical and enigmatic world known as Chamous, the primordial energy of the universe converged into a unique epicenter: a floating city 
+                high above the clouds, also named Chamous. This city, suspended between the skies and the stars, was the core of life and magic that flowed through the vast
+                landscape of Chamous.
+            </p>
+            <p>In Chamous, the energy of the world, known as the "Radiance," manifested in nine distinct forms, each representing a unique and unparalleled power. These powers,
+                in turn, were personified by nine legendary beings who became the guardians of Chamous. Each guardian was imbued with the essential power of one of the Nine Radiances, 
+                and their duty was to preserve the magical balance that sustained the world.
+            </p>
+            <p>The Nine Radiances, and their respective guardians, were:</p>
+            <ul>
+                <li>Awesome, the Radiance of Light: Guardian of light and positive energy.</li>
+                <li>Warlock/Waño, the Radiance of Darkness: Custodian of shadows and dark magic.</li>
+                <li>Chimpy, the Radiance of Wind: Lord of winds and skies.</li>
+                <li>GuRex, the Radiance of Water: Protector of oceans and waters.</li>
+                <li>Tumse, the Radiance of the Forest: Defender of the earth and nature.</li>
+                <li>Maza, the Neutral Radiance: Maintainer of balance and neutrality.</li>
+                <li>Yasai, the Radiance of Poison: Guardian of toxicity and cunning.</li>
+                <li>Rauru, the Radiance of Fire: Master of fire and flames.</li>
+                <li>Morrality, the Radiance of Rock: Custodian of solidity and resilience.</li>
+            </ul>
+            <p>Chamous, despite its apparent peace, witnesses a growing internal conflict. Differences of opinion among the guardians on how to use the Radiance to maintain harmony
+                trigger tensions. While some advocate for the equitable and collaborative use of powers, others crave more control and dominance.</p>
+
+            <p>
+                The internal conflict threatens to shatter the delicate balance of Chamous, and players find themselves in the midst of a struggle to preserve the essence of the Nine
+                 Radiances and restore fading harmony. Will they be able to overcome internal divisions and protect Chamous from the threat that arises from within?</p>
+            
+        </div>
+        
+    </div>
+    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
+    <script src="js/game.js"></script>
+</body>
+</html>
