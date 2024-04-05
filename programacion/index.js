@@ -71,7 +71,9 @@ app.get('/cards', async (req, res) => {
 
     const [cards] = await connection.execute(query)
     console.log(cards)
-    const filteredCards = cards.filter(card => idCartas[0].includes(card.id))
+    const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
+    
+    const filteredCards = cards.filter(card => idCartasSet.has(card.id))
     console.log(filteredCards)
     res.status(200).json(filteredCards)
   } catch (err) {
