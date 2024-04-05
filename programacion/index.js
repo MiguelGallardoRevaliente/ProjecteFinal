@@ -70,8 +70,6 @@ app.get('/cards', async (req, res) => {
       'SELECT id_carta FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id]
     )
 
-    console.log(idCartas[0])
-
     let query = 'SELECT * FROM cartas'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
@@ -79,11 +77,9 @@ app.get('/cards', async (req, res) => {
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
     const [cards] = await connection.execute(query)
-    console.log(cards)
     const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
 
     const filteredCards = cards.filter(card => idCartasSet.has(card.id))
-    console.log(filteredCards)
     res.status(200).json(filteredCards)
   } catch (err) {
     console.error(err)
@@ -135,9 +131,6 @@ app.post('/register', async (req, res) => {
       }
     }
 
-    console.log(password)
-    console.log(rPassword)
-
     if (password !== rPassword) {
       return res.status(200).json({ message: 'samePwd' })
     }
@@ -188,7 +181,6 @@ app.post('/start', async (req, res) => {
     await connection.execute(
       'UPDATE users SET first_log = false WHERE user = ? AND password = ?', [username, password]
     )
-    console.log('Se actualizó la bbdd')
     res.status(200).json({ message: 'updated' })
   } catch (e) {
     console.error(e)
