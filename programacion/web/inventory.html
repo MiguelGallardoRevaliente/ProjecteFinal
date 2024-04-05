@@ -45,11 +45,16 @@
         quality.addEventListener('change', () => {
             const yourCards = document.getElementsByClassName('yourCards')[0]
             yourCards.innerHTML = ''
+            let ordenType = quality.value
             let orden = 'DESC'
+            if (ordenType !== 'rareza') {
+                ordenType = 'costo_mana'
+            }
+            
             if (quality.value === 'manaDown') {
                 orden = 'ASC'
             }
-            fetch(`http://13.53.190.234/cards?ordenType=${quality.value}&orden=${orden}`, {
+            fetch(`http://13.53.190.234/cards?ordenType=${ordenType}&orden=${orden}`, {
                 method: 'GET'
             })
                 .then(response => response.json())
