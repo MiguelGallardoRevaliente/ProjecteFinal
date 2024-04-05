@@ -147,7 +147,6 @@ header .config h1{
     font-size: 30px;
     border: none;
     background-color: #292929;
-    display: none;
     min-height: 100vh;
     padding: 70px;
 
@@ -188,7 +187,6 @@ header .config h1{
     font-size: 30px;
     border: none;
     background-color: #292929;
-    display: none;
     min-height: 100vh;
     padding: 0px;
 
@@ -423,7 +421,6 @@ header .config h1{
     font-size: 30px;
     border: none;
     background-color: #292929;
-    display: none;
     min-height: 100vh;
     padding: 70px;
 }
