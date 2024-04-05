@@ -24,22 +24,24 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    const divOro = document.createElement('div')
-                    const rubiImg = document.createElement('img')
-                    rubiImg.src = 'img/rubi.png'
-                    const rubi = document.createElement('p')
-                    rubi.innerHTML = data.oro
-                    divOro.appendChild(rubiImg)
-                    divOro.appendChild(rubi)
-                    const divUser = document.createElement('div')
-                    const username = document.createElement('p')
-                    username = data.user
-                    const userFoto = document.createElement('img')
-                    userFoto.src = data.foto_perfil
-                    divUser.appendChild(userFoto)
-                    divUser.appendChild(username)
-                    perfil.appendChild(divOro)
-                    perfil.appendChild(divUser)
+                    data.forEach((user) => {
+                        const divOro = document.createElement('div')
+                        const rubiImg = document.createElement('img')
+                        rubiImg.src = 'img/rubi.png'
+                        const rubi = document.createElement('p')
+                        rubi.innerHTML = data.oro
+                        divOro.appendChild(rubiImg)
+                        divOro.appendChild(rubi)
+                        const divUser = document.createElement('div')
+                        const username = document.createElement('p')
+                        username = data.user
+                        const userFoto = document.createElement('img')
+                        userFoto.src = data.foto_perfil
+                        divUser.appendChild(userFoto)
+                        divUser.appendChild(username)
+                        perfil.appendChild(divOro)
+                        perfil.appendChild(divUser)
+                    })
                 })
         }
     </script>

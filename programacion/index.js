@@ -52,7 +52,7 @@ app.get('/infoUser', async (req, res) => {
   try {
     const id = req.query.id
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    return res.status(200).json(user[0])
+    return res.status(200).json(user)
   } catch (err) {
     console.error(err)
   }
