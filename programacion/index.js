@@ -55,13 +55,15 @@ app.get('/inventory', async (req, res) => {
 
 app.get('/cards', async (req, res) => {
   try {
+    let query = 'SELECT * FROM cartas'
     const orderBy = req.query.ordenType || 'rareza'
     const orderDirection = req.query.orden || 'DESC'
+
+    query += ` ORDER BY ${orderBy} ${orderDirection};`
+
+    const [cards] = await connection.execute(query)
     console.log(orderBy)
     console.log(orderDirection)
-    const [cards] = await connection.execute(
-      'SELECT * FROM cartas ORDER BY ? ?;', [orderBy, orderDirection]
-    )
     res.status(200).json(cards)
   } catch (err) {
     console.error(err)
