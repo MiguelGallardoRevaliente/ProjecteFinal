@@ -65,7 +65,7 @@ app.get('/cards', async (req, res) => {
 app.get('/ordenarCartas', async (req, res) => {
   try {
     let [cards] = []
-    const { orden } = req.query
+    const { orden } = req.params.orden
     switch (orden) {
       case 'rareza':
         cards = await connection.execute('SELECT * FROM cartas ORDER BY rareza DESC;')
