@@ -123,11 +123,14 @@ app.get('/abrirSobre', async (req, res) => {
           break
       }
     })
+    console.log(arrayCartas)
     const randomCards = []
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * arrayCartas.length)
       randomCards.push(arrayCartas[randomIndex])
     }
+
+    console.log(randomCards)
 
     return res.status(200).json(randomCards)
   } catch (err) {
