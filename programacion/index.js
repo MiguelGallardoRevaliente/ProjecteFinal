@@ -100,25 +100,30 @@ app.get('/abrirSobre', async (req, res) => {
       switch (carta.rareza) {
         case '1':
           for (let i = 0; i < 5; i++) {
+            console.log('Buenas')
             arrayCartas.push(carta)
           }
           break
         case '2':
           for (let i = 0; i < 4; i++) {
+            console.log('Buenas')
             arrayCartas.push(carta)
           }
           break
         case '3':
           for (let i = 0; i < 3; i++) {
+            console.log('Buenas')
             arrayCartas.push(carta)
           }
           break
         case '4':
           for (let i = 0; i < 2; i++) {
+            console.log('Buenas')
             arrayCartas.push(carta)
           }
           break
         case '5':
+          console.log('Buenas')
           arrayCartas.push(carta)
           break
       }
