@@ -43,6 +43,8 @@
                     const ataqueEspecial = document.createElement('p')
                     ataqueEspecial.className = 'ataque-especial'
 
+                    console.log(data.ataque[i])
+
                     let textoAtaqueEspecial = data.ataque[i][0].nombre + ' - ' + data.ataque[i][0].tipo
 
                     if (data.ataque[i][0].tipo) {
