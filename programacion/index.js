@@ -91,44 +91,50 @@ app.get('/cards', async (req, res) => {
 app.get('/abrirSobre', async (req, res) => {
   try {
     const id = req.query.id
-    console.log(id)
-    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    console.log(user)
-    const [cartasUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id])
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
+    if (user[0].sobres === 0) return res.status(200).json({ message: 'noSobres' })
+    const [cartasUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?;', [id])
     const cartasUserId = cartasUser.map((carta) => carta.id_carta)
     const arrayCartas = []
     const [cartas] = await connection.execute('SELECT * FROM cartas;')
     cartas.forEach((carta) => {
       if (carta.rareza === 1) {
         for (let i = 0; i < 5; i++) {
-          console.log('Buenas')
           arrayCartas.push(carta)
         }
       } else if (carta.rareza === 2) {
         for (let i = 0; i < 4; i++) {
-          console.log('Buenas')
           arrayCartas.push(carta)
         }
       } else if (carta.rareza === 3) {
         for (let i = 0; i < 3; i++) {
-          console.log('Buenas')
           arrayCartas.push(carta)
         }
       } else if (carta.rareza === 4) {
         for (let i = 0; i < 2; i++) {
-          console.log('Buenas')
           arrayCartas.push(carta)
         }
       } else {
-        console.log('Buenas')
         arrayCartas.push(carta)
       }
     })
-    console.log(arrayCartas)
+
     const randomCards = []
     for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * arrayCartas.length)
-      const duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+      let duplicated = true
+      let randomIndex
+
+      if (user[0].sobres_iniciales < 2) {
+        while (duplicated) {
+          const randomIndex = Math.floor(Math.random() * arrayCartas.length)
+          duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+        }
+        await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
+      } else {
+        randomIndex = Math.floor(Math.random() * arrayCartas.length)
+        duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+      }
+
       randomCards.push({
         id: arrayCartas[randomIndex].id,
         nomCarta: arrayCartas[randomIndex].nombre,
@@ -136,7 +142,7 @@ app.get('/abrirSobre', async (req, res) => {
       })
     }
 
-    console.log(randomCards)
+    await connection.execute('UPDATE users SET sobres = sobres - 1 WHERE BIN_TO_UUID(id) = ?', [id])
 
     return res.status(200).json(randomCards)
   } catch (err) {
