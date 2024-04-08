@@ -94,6 +94,8 @@ app.get('/abrirSobre', async (req, res) => {
     console.log(id)
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
     console.log(user)
+    const [cartasUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?', [id])
+    const cartasUserId = cartasUser.map((carta) => carta.id_carta)
     const arrayCartas = []
     const [cartas] = await connection.execute('SELECT * FROM cartas;')
     cartas.forEach((carta) => {
@@ -126,7 +128,11 @@ app.get('/abrirSobre', async (req, res) => {
     const randomCards = []
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * arrayCartas.length)
-      randomCards.push(arrayCartas[randomIndex])
+      const duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+      randomCards.push({
+        id: arrayCartas[randomIndex].id,
+        duplicate: duplicated
+      })
     }
 
     console.log(randomCards)
