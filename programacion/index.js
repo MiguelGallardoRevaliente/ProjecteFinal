@@ -76,6 +76,8 @@ app.get('/cards', async (req, res) => {
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
 
+    console.log(query)
+
     const [cards] = await connection.execute(query)
     const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
 
