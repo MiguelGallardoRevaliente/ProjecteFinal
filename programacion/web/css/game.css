@@ -357,7 +357,7 @@ header .config a{
 
 /*inventory*/
 
-#inventory{
+#inventory, #chests{
     font-family: "koho", sans-serif;
     margin-left: 300px;
     padding: 0px 0px;
@@ -370,12 +370,12 @@ header .config a{
 }
 
 
-#inventory .container{
+#inventory .container, #chests .container{
     color: white;  
     margin: 0px 70px; 
 }
 
-#inventory .container .links{
+#inventory .container .links, #chests .container .links{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -387,7 +387,7 @@ header .config a{
    
 }
 
-#inventory .container .links div {
+#inventory .container .links div, #chests .container .links div{
     width: 150px;
     height: 50px;
     display: flex;
@@ -397,7 +397,7 @@ header .config a{
     background-color: #000000;
     margin-right: -50px;
 }
-#inventory .container .top{
+#inventory .container .top, #chests .container .top{
     display: flex;
     align-items: center;
     justify-content: left;
@@ -405,11 +405,11 @@ header .config a{
     gap: 0px;
 }
 
-#inventory .container .top h1{
+#inventory .container .top h1, #chests .container .top h1{
     margin-right: 30px;
 }
 
-#inventory .container .top button{
+#inventory .container .top button, #chests .container .top button{
     padding: 0px;
     width: 60px;
     height: 60px;
@@ -494,13 +494,6 @@ header .config a{
     font-family: "Goldman", sans-serif;
 }
 
-#inventory .allchests{
-    display: none;
-}
-#inventory .allmazos{
-    display: none;
-
-}
 /*Settings*/
 
 #settings{

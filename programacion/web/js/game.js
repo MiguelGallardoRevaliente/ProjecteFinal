@@ -13,9 +13,8 @@ const allcards = document.getElementById('allcards')
 
 
 // FUNCION PARA CAMBIAR DE PAGINA EN "INVENTORY"
-const inventoryCards = document.getElementsByClassName('allcards')
-const inventoryChests = document.getElementsByClassName('allchests')
-const inventoryMazos = document.getElementById('allmazos')
+const inventoryCards = document.getElementById('inventory')
+const inventoryChests = document.getElementById('chests')
 
 function mostrarShopCards () {
   allcards.style.display = 'block'
@@ -36,32 +35,22 @@ function mostrarShopChests () {
 }
 
 function mostrarInventoryCards () {
-  inventoryMazos.style.display = 'none'
-  inventoryChests.style.display = 'none'
   inventoryCards.style.display = 'block'
+  inventoryChests.style.display = 'none'
+  inventoryChests.style.boxShadow = '1px 1px 5px black inset'
+  inventoryCards.style.boxShadow = '1px 1px 5px black'
   inventoryCards.style.backgroundColor = 'gray'
   inventoryChests.style.backgroundColor = '#292929'
-  inventoryMazos.style.backgroundColor = '#292929'
 }
 
 function mostrarInventoryChests () {
-  inventoryMazos.style.display = 'none'
   inventoryCards.style.display = 'none'
   inventoryChests.style.display = 'block'
+  inventoryCards.style.boxShadow = '1px 1px 5px black inset'
+  inventoryChests.style.boxShadow = '1px 1px 5px black'
   inventoryChests.style.backgroundColor = 'gray'
   inventoryCards.style.backgroundColor = '#292929'
-  inventoryMazos.style.backgroundColor = '#292929'
 }
-
-function mostrarInventoryMazos () {
-  inventoryCards.style.display = 'none'
-  inventoryChests.style.display = 'none'
-  inventoryMazos.style.display = 'block'
-  inventoryMazos.style.backgroundColor = 'gray'
-  inventoryCards.style.backgroundColor = '#292929'
-  inventoryChests.style.backgroundColor = '#292929'
-}
-
 
 document.addEventListener('DOMContentLoaded', function () {
   const audio = document.getElementById('audio')
