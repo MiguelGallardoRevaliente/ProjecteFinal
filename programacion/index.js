@@ -97,35 +97,29 @@ app.get('/abrirSobre', async (req, res) => {
     const arrayCartas = []
     const [cartas] = await connection.execute('SELECT * FROM cartas;')
     cartas.forEach((carta) => {
-      switch (carta.rareza) {
-        case '1':
-          for (let i = 0; i < 5; i++) {
-            console.log('Buenas')
-            arrayCartas.push(carta)
-          }
-          break
-        case '2':
-          for (let i = 0; i < 4; i++) {
-            console.log('Buenas')
-            arrayCartas.push(carta)
-          }
-          break
-        case '3':
-          for (let i = 0; i < 3; i++) {
-            console.log('Buenas')
-            arrayCartas.push(carta)
-          }
-          break
-        case '4':
-          for (let i = 0; i < 2; i++) {
-            console.log('Buenas')
-            arrayCartas.push(carta)
-          }
-          break
-        case '5':
+      if (carta.rareza === 1) {
+        for (let i = 0; i < 5; i++) {
           console.log('Buenas')
           arrayCartas.push(carta)
-          break
+        }
+      } else if (carta.rareza === 2) {
+        for (let i = 0; i < 4; i++) {
+          console.log('Buenas')
+          arrayCartas.push(carta)
+        }
+      } else if (carta.rareza === 3) {
+        for (let i = 0; i < 3; i++) {
+          console.log('Buenas')
+          arrayCartas.push(carta)
+        }
+      } else if (carta.rareza === 4) {
+        for (let i = 0; i < 2; i++) {
+          console.log('Buenas')
+          arrayCartas.push(carta)
+        }
+      } else {
+        console.log('Buenas')
+        arrayCartas.push(carta)
       }
     })
     console.log(arrayCartas)
