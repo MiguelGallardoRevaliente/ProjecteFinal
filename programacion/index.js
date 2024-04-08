@@ -88,6 +88,53 @@ app.get('/cards', async (req, res) => {
   }
 })
 
+app.get('/abrirSobre', async (req, res) => {
+  try {
+    const { id } = req.query.id
+    console.log(id)
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    console.log(user)
+    const arrayCartas = []
+    const [cartas] = await connection.execute('SELECT * FROM cartas;')
+    cartas.forEach((carta) => {
+      switch (carta.rareza) {
+        case '1':
+          for (let i = 0; i < 5; i++) {
+            arrayCartas.push(carta)
+          }
+          break
+        case '2':
+          for (let i = 0; i < 4; i++) {
+            arrayCartas.push(carta)
+          }
+          break
+        case '3':
+          for (let i = 0; i < 3; i++) {
+            arrayCartas.push(carta)
+          }
+          break
+        case '4':
+          for (let i = 0; i < 2; i++) {
+            arrayCartas.push(carta)
+          }
+          break
+        case '5':
+          arrayCartas.push(carta)
+          break
+      }
+    })
+    const randomCards = []
+    for (let i = 0; i < 4; i++) {
+      const randomIndex = Math.floor(Math.random() * arrayCartas.length)
+      randomCards.push(arrayCartas[randomIndex])
+    }
+
+    return res.status(200).json(randomCards)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 app.get('/shop', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/shop.html'))

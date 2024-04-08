@@ -78,6 +78,20 @@
                 })
                 })
         })
+
+        const form = document.getElementsByClassName('form')[1]
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            fetch(`/abrirSobre?id=${id}`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
+        })
     </script>
 </head>
 <body>
@@ -136,10 +150,13 @@
                 <div><button ><i class='bx bxs-box'></i></button></div>  
             </div>
             <div class="top">
-                <h1>CHESTS</h1>
+                <h1>PACKS</h1>
             </div>
             <div class="allChests">
                 <!--Chests with bbdd-->
+                <form action="" class="form">
+                    <button type="submit">Abrir sobre mai friend</button>
+                </form>
             </div>
         </div>
     </div>
