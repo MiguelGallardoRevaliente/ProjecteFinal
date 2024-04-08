@@ -131,6 +131,7 @@ app.get('/abrirSobre', async (req, res) => {
       const duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
       randomCards.push({
         id: arrayCartas[randomIndex].id,
+        nomCarta: arrayCartas[randomIndex].nombre,
         duplicate: duplicated
       })
     }
