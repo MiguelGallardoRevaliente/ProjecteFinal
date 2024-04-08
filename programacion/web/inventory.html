@@ -111,13 +111,18 @@
 
                     if (data.ataques[i][0].cambio !== null) {
                         if (data.ataques[i][0].tipo === 'power-up') {
+                            console.log('Hola', i)
                             textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
+                            console.log('Adios', i)
                             textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
+                    } else {
+                        console.log(i)
                     }
 
                     if(data.ataques[i][0].duracion !== null) {
+                        console.log(i)
                         textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
