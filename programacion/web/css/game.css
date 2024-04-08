@@ -122,10 +122,9 @@ header .config a{
     clip-path: polygon(5% 0, 100% 0%, 100% 63%, 28% 63%);
     box-shadow: 3px 3px 5px rgb(0, 0, 0);
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: self-start;
     padding: 0px 20px;
-    gap: 80px;
 }
 
 .perfil .divUser img{
@@ -133,6 +132,10 @@ header .config a{
     border-radius: 50px;
     border: 3px solid white;
 
+}
+
+.perfil .divOro{
+    margin-left: 150px;
 }
 
 .perfil .divOro img{
@@ -148,6 +151,7 @@ header .config a{
 .perfil .divOro p , .perfil .divUser p{
     font-size: 30px;
     color: white;
+    font-family: "koho", sans-serif;
 }
 
 
