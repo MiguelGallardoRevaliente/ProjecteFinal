@@ -37,19 +37,11 @@ function mostrarShopChests () {
 function mostrarInventoryCards () {
   inventoryCards.style.display = 'block'
   inventoryChests.style.display = 'none'
-  inventoryChests.style.boxShadow = '1px 1px 5px black inset'
-  inventoryCards.style.boxShadow = '1px 1px 5px black'
-  inventoryCards.style.backgroundColor = 'gray'
-  inventoryChests.style.backgroundColor = '#292929'
 }
 
 function mostrarInventoryChests () {
   inventoryCards.style.display = 'none'
   inventoryChests.style.display = 'block'
-  inventoryCards.style.boxShadow = '1px 1px 5px black inset'
-  inventoryChests.style.boxShadow = '1px 1px 5px black'
-  inventoryChests.style.backgroundColor = 'gray'
-  inventoryCards.style.backgroundColor = '#292929'
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -364,11 +364,13 @@ header .config a{
     font-size: 30px;
     border: none;
     background-color: #292929;
-    /*display: none;*/
     min-height: 100vh;
     padding: 70px;
 }
 
+#chests{
+    display: none;
+}
 
 #inventory .container, #chests .container{
     color: white;  
