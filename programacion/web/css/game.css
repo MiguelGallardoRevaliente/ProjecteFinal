@@ -174,19 +174,20 @@ header .config a {
     justify-content: space-between;
     display: none;
     padding: 10px;
-
 }
 
 
 #changeFoto .changeFoto-iconos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0px;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 10px;
     align-items: center;
+    overflow-y: auto;
+    max-height: 250px;
 }
 
 .changeFoto-iconos img {
-    width: 50px;
+    width: 95px;
     border-radius: 50px;
     border: 3px solid white;
 }
@@ -388,7 +389,7 @@ header .config a {
     position: absolute;
     top: 0px;
     left: 0px;
-    margin-left: 250px;
+    margin-left: 300px;
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
