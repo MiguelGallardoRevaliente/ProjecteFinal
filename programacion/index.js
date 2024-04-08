@@ -71,7 +71,7 @@ app.get('/cards', async (req, res) => {
     )
 
     let query = 'SELECT * FROM cartas'
-    const orderBy = req.query.ordenType || 'rareza'
+    const orderBy = req.query.ordenType || 'tipo'
     const orderDirection = req.query.orden || 'DESC'
 
     query += ` ORDER BY ${orderBy} ${orderDirection};`
