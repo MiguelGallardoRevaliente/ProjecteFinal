@@ -398,7 +398,7 @@ header .config a {
 #inventory .container .links div,
 #chests .container .links div {
     width: 150px;
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -411,10 +411,19 @@ header .config a {
 #chests .container .links div button {
     border: none;
     background-color: transparent;
-    font-size: 50px;
+    font-size: 40px;
     margin: 0;
     padding: 0;
+}
 
+#inventory .container .links div button i,
+#chests .container .links div button i {
+    color: white;
+}
+
+#inventory .container .links div button:hover .links div,
+#chests .container .links div button:hover .links div {
+    color: #696969;
 }
 
 #inventory .container .top,
