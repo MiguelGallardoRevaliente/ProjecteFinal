@@ -134,7 +134,6 @@ app.get('/abrirSobre', async (req, res) => {
           duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
           duplicated = randomCardsId.includes(arrayCartas[randomIndex].id)
         }
-        await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
       } else {
         randomIndex = Math.floor(Math.random() * arrayCartas.length)
         duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
@@ -147,6 +146,10 @@ app.get('/abrirSobre', async (req, res) => {
         nomCarta: arrayCartas[randomIndex].nombre,
         duplicate: duplicated
       })
+    }
+
+    if (user[0].sobres_iniciales < 2) {
+      await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
     }
 
     await connection.execute('UPDATE users SET sobres = sobres - 1 WHERE BIN_TO_UUID(id) = ?', [id])
