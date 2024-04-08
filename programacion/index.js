@@ -92,6 +92,7 @@ app.get('/abrirSobre', async (req, res) => {
   try {
     const id = req.query.id
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
+    console.log(user)
     if (user[0].sobres === 0) return res.status(200).json({ message: 'noSobres' })
     const [cartasUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?;', [id])
     const cartasUserId = cartasUser.map((carta) => carta.id_carta)
