@@ -406,13 +406,15 @@ header .config a {
 }
 
 #inventory .container,
-#chests .container {
+#chests .container,
+#mazos .container {
     color: white;
     margin: 0px 70px;
 }
 
 #inventory .container .links,
-#chests .container .links {
+#chests .container .links, 
+#mazos .container .links{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -424,7 +426,8 @@ header .config a {
 }
 
 #inventory .container .links div,
-#chests .container .links div {
+#chests .container .links div,
+#mazos .container .links div{
     width: 150px;
     height: 70px;
     display: flex;
@@ -435,12 +438,19 @@ header .config a {
     margin-right: -50px;
 }
 
+#inventory .container .links div:hover,
+#chests .container .links div:hover ,
+#mazos .container .links div:hover{
+    background-color: #3d3d3d;
+}
+
 #especial-link{
     clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%) !important;
 }
 
 #inventory .container .links div button, 
-#chests .container .links div button {
+#chests .container .links div button ,
+#mazos .container .links div button{
     border: none;
     background-color: transparent;
     font-size: 40px;
@@ -449,17 +459,20 @@ header .config a {
 }
 
 #inventory .container .links div button i,
-#chests .container .links div button i {
+#chests .container .links div button i ,
+#mazos .container .links div button i{
     color: white;
 }
 
 #inventory .container .links div button:hover .links div,
-#chests .container .links div button:hover .links div {
+#chests .container .links div button:hover .links div ,
+#mazos .container .links div button:hover .links div{
     color: #696969;
 }
 
 #inventory .container .top,
-#chests .container .top {
+#chests .container .top ,
+#mazos .container .top{
     display: flex;
     align-items: center;
     justify-content: left;
@@ -468,12 +481,14 @@ header .config a {
 }
 
 #inventory .container .top h1,
-#chests .container .top h1 {
+#chests .container .top h1,
+#mazos .container .top h1{
     margin-right: 30px;
 }
 
 #inventory .container .top button,
-#chests .container .top button {
+#chests .container .top button,
+#mazos .container .top button{
     padding: 0px;
     width: 60px;
     height: 60px;

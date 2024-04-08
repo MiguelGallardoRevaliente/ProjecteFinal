@@ -15,6 +15,7 @@ const allchests = document.getElementById('allchests')
 // FUNCION PARA CAMBIAR DE PAGINA EN "INVENTORY"
 const inventoryCards = document.getElementById('inventory')
 const inventoryChests = document.getElementById('chests')
+const inventoryMazos = document.getElementById('mazos')
 
 const changeFoto = document.getElementById('changeFoto')
 
@@ -39,11 +40,19 @@ function mostrarShopChests () {
 function mostrarInventoryCards () {
   inventoryCards.style.display = 'block'
   inventoryChests.style.display = 'none'
+  inventoryMazos.style.display = 'none'
 }
 
 function mostrarInventoryChests () {
   inventoryCards.style.display = 'none'
   inventoryChests.style.display = 'block'
+  inventoryMazos.style.display = 'none'
+}
+
+function mostrarInventoryMazos () {
+  inventoryCards.style.display = 'none'
+  inventoryChests.style.display = 'none'
+  inventoryMazos.style.display = 'block'
 }
 
 document.addEventListener('DOMContentLoaded', function () {
