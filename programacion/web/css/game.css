@@ -212,6 +212,11 @@ header .config a {
     width: 95px;
     border-radius: 50px;
     border: 3px solid white;
+    transition: all 0.2 ease;
+}
+
+.changeFoto-iconos img:hover{
+    filter: brightness(1.2);
 }
 
 #searchGame {
