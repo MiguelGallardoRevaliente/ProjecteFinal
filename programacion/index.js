@@ -123,17 +123,21 @@ app.get('/abrirSobre', async (req, res) => {
     const randomCards = []
     for (let i = 0; i < 4; i++) {
       let duplicated = true
+      let duplicatedUser = true
       let randomIndex
 
       if (user[0].sobres_iniciales < 2) {
-        while (duplicated) {
+        while (duplicated || duplicatedUser) {
           randomIndex = Math.floor(Math.random() * arrayCartas.length)
-          duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+          duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
+          duplicated = randomCards.includes(arrayCartas[randomIndex].id)
         }
         await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
       } else {
         randomIndex = Math.floor(Math.random() * arrayCartas.length)
-        duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
+        duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
+        duplicated = randomCards.includes(arrayCartas[randomIndex].id)
+        if (duplicated || duplicatedUser) duplicated = true
       }
 
       randomCards.push({
@@ -144,6 +148,12 @@ app.get('/abrirSobre', async (req, res) => {
     }
 
     await connection.execute('UPDATE users SET sobres = sobres - 1 WHERE BIN_TO_UUID(id) = ?', [id])
+
+    randomCards.forEach(async (carta) => {
+      if (!carta.duplicate) {
+        await connection.execute('INSERT INTO users_cartas (id_user, id_carta) VALUES (UUID_TO_BIN(?), ?);', [id, carta.id])
+      }
+    })
 
     return res.status(200).json(randomCards)
   } catch (err) {
