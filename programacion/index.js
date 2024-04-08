@@ -127,7 +127,7 @@ app.get('/abrirSobre', async (req, res) => {
 
       if (user[0].sobres_iniciales < 2) {
         while (duplicated) {
-          const randomIndex = Math.floor(Math.random() * arrayCartas.length)
+          randomIndex = Math.floor(Math.random() * arrayCartas.length)
           duplicated = cartasUserId.includes(arrayCartas[randomIndex].id)
         }
         await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
