@@ -193,7 +193,7 @@ app.post('/changeProfilePicture', async (req, res) => {
   try {
     const { profilePicture, id } = req.body
     await connection.execute(
-      'UPDATE users SET profile_picture = ? WHERE BIN_TO_UUID(id) = ?', [profilePicture, id]
+      'UPDATE users SET foto_perfil = ? WHERE BIN_TO_UUID(id) = ?', [profilePicture, id]
     )
     res.status(200).json({ message: 'updated' })
   } catch (e) {
