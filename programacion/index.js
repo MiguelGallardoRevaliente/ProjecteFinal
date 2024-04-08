@@ -89,7 +89,11 @@ app.get('/cards', async (req, res) => {
     })
 
     const ataques = await Promise.all(ataquesPromises)
-    res.status(200).json(filteredCards, ataques)
+    const datos = {
+      filteredCards,
+      ataques
+    }
+    res.status(200).json(datos)
   } catch (err) {
     console.error(err)
   }
