@@ -23,20 +23,13 @@
     background-color: #a8bbbf;
   }
   
-
-html,
-body {
-    background-image: url(../img/backgroundgame.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body{
     width: 100%;
     min-height: 100vh;
     margin: 0px;
     padding: 0px;
     scrollbar-width: none;
-
-
+    background-color: #292929;
 }
 
 header {
@@ -390,7 +383,8 @@ header .config a {
 /*inventory*/
 
 #inventory,
-#chests {
+#chests,
+#mazos {
     font-family: "koho", sans-serif;
     margin-left: 300px;
     padding: 0px 0px;
@@ -401,7 +395,8 @@ header .config a {
     padding: 70px;
 }
 
-#chests {
+#chests,
+#mazos {
     display: none;
 }
 
