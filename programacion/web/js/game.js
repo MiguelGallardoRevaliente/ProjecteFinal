@@ -10,8 +10,7 @@ const settings = document.getElementById('settings')
 const shopcards = document.getElementById('shop_cards')
 const shopchests = document.getElementById('shop_chests')
 const allcards = document.getElementById('allcards')
-
-
+const allchests = document.getElementById('allchests')
 // FUNCION PARA CAMBIAR DE PAGINA EN "INVENTORY"
 const inventoryCards = document.getElementById('inventory')
 const inventoryChests = document.getElementById('chests')
@@ -46,13 +45,14 @@ function mostrarInventoryChests () {
   inventoryChests.style.display = 'block'
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   // Verificar si el clic no proviene de userFoto ni de changeFoto
+  const userFoto = document.getElementById('userFoto')
   if (event.target !== userFoto && event.target !== changeFoto) {
-      // Ocultar el elemento con ID 'changeFoto'
-      changeFoto.style.display = 'none';
+    // Ocultar el elemento con ID 'changeFoto'
+    changeFoto.style.display = 'none'
   }
-});
+})
 
 document.addEventListener('DOMContentLoaded', function () {
   const audio = document.getElementById('audio')
@@ -89,5 +89,15 @@ const setProfilePicture = (event) => {
   const userFoto = document.getElementById('userFoto')
   userFoto.src = event.target.src
   console.log(event.target.src)
+  const idUser = localStorage.getItem('id')
   document.getElementById('changeFoto').style.display = 'none'
+  fetch('/changeProfilePicture', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ profilePicture: event.target.src, id: idUser })
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
 }

@@ -189,6 +189,18 @@ app.post('/start', async (req, res) => {
   }
 })
 
+app.post('/changeProfilePicture', async (req, res) => {
+  try {
+    const { profilePicture, id } = req.body
+    await connection.execute(
+      'UPDATE users SET profile_picture = ? WHERE BIN_TO_UUID(id) = ?', [profilePicture, id]
+    )
+    res.status(200).json({ message: 'updated' })
+  } catch (e) {
+    console.error(e)
+  }
+})
+
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 
