@@ -48,7 +48,7 @@
             yourCards.innerHTML = ''
             let ordenType = quality.value
             let orden = 'DESC'
-            if (ordenType !== 'rareza') {
+            if (ordenType !== 'rareza' && ordenType !== 'tipo') {
                 ordenType = 'costo_mana'
             }
             
