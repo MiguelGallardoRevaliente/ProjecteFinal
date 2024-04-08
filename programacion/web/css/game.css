@@ -407,6 +407,10 @@ header .config a {
     margin-right: -50px;
 }
 
+#especial-link{
+    clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%) !important;
+}
+
 #inventory .container .links div button, 
 #chests .container .links div button {
     border: none;
