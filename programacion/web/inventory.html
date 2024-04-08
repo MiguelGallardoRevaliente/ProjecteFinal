@@ -45,20 +45,21 @@
 
                     let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataques[i][0].tipo === null) {
+                    if (data.ataques[i][0].cambio !== null) {
                         if (data.ataques[i][0].tipo === 'power-up') {
                             textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
                             textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
+                    } else {
                     }
 
-                    if(data.ataques[i][0].duracion === null) {
+                    if(data.ataques[i][0].duracion !== null) {
                         textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
                     ataqueEspecial.innerHTML = textoAtaqueEspecial
-                    
+
                     cardDiv.appendChild(nombreCarta)
                     cardDiv.appendChild(ataqueEspecial)
                     cardDiv.appendChild(ataqueVida)
@@ -111,18 +112,14 @@
 
                     if (data.ataques[i][0].cambio !== null) {
                         if (data.ataques[i][0].tipo === 'power-up') {
-                            console.log('Hola', i)
                             textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
-                            console.log('Adios', i)
                             textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
                     } else {
-                        console.log(i)
                     }
 
                     if(data.ataques[i][0].duracion !== null) {
-                        console.log(i)
                         textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
