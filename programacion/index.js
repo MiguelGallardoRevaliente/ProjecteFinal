@@ -90,7 +90,7 @@ app.get('/cards', async (req, res) => {
 
 app.get('/abrirSobre', async (req, res) => {
   try {
-    const { id } = req.query.id
+    const id = req.query.id
     console.log(id)
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
     console.log(user)
