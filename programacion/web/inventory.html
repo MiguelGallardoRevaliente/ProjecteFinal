@@ -109,7 +109,7 @@
 
                     let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataques[i][0].tipo) {
+                    if (data.ataques[i][0].tipo !== null) {
                         if (data.ataques[i][0].tipo === 'power-up') {
                             textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
@@ -117,7 +117,7 @@
                         }
                     }
 
-                    if(data.ataques[i][0].duracion) {
+                    if(data.ataques[i][0].duracion !== null) {
                         textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
@@ -129,23 +129,6 @@
                     yourCards.appendChild(cardDiv)
                 }
                 })
-                /*data.forEach(card => {
-                    const cardDiv = document.createElement('div')
-                    cardDiv.className = 'carta'
-                    cardDiv.style.backgroundImage = `url(${card.foto})`
-                    const nombreCarta = document.createElement('p')
-                    nombreCarta.className = 'nombreCarta'
-                    nombreCarta.innerHTML = card.nombre
-                    const ataqueVida = document.createElement('p')
-                    ataqueVida.className = 'ataque-vida'
-                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
-                    const ataqueEspecial = document.createElement('p')
-                    ataqueEspecial.className = 'ataque-especial'
-                    ataqueEspecial.innerHTML = 
-                    cardDiv.appendChild(nombreCarta)
-                    cardDiv.appendChild(ataqueVida)
-                    yourCards.appendChild(cardDiv)
-                })*/
         })
 
         const form = document.getElementsByClassName('form')[1]
