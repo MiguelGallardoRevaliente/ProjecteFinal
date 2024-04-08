@@ -493,6 +493,14 @@ header .config a{
     font-weight: 800;
     font-family: "Goldman", sans-serif;
 }
+
+#inventory .allchests{
+    display: none;
+}
+#inventory .allmazos{
+    display: none;
+
+}
 /*Settings*/
 
 #settings{
