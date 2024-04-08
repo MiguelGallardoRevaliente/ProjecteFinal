@@ -126,17 +126,19 @@ app.get('/abrirSobre', async (req, res) => {
       let duplicatedUser = true
       let randomIndex
 
+      const randomCardsId = randomCards.map((carta) => carta.id)
+
       if (user[0].sobres_iniciales < 2) {
         while (duplicated || duplicatedUser) {
           randomIndex = Math.floor(Math.random() * arrayCartas.length)
           duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
-          duplicated = randomCards.includes(arrayCartas[randomIndex].id)
+          duplicated = randomCardsId.includes(arrayCartas[randomIndex].id)
         }
         await connection.execute('UPDATE users SET sobres_iniciales = sobres_iniciales + 1 WHERE BIN_TO_UUID(id) = ?;', [id])
       } else {
         randomIndex = Math.floor(Math.random() * arrayCartas.length)
         duplicatedUser = cartasUserId.includes(arrayCartas[randomIndex].id)
-        duplicated = randomCards.includes(arrayCartas[randomIndex].id)
+        duplicated = randomCardsId.includes(arrayCartas[randomIndex].id)
         if (duplicated || duplicatedUser) duplicated = true
       }
 
