@@ -83,7 +83,12 @@ app.get('/cards', async (req, res) => {
 
     const filteredCards = cards.filter(card => idCartasSet.has(card.id))
 
-    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [filteredCards.id])
+    const ataquesPromises = filteredCards.map(async (card) => {
+      const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card.id])
+      return ataques
+    })
+
+    const ataques = await Promise.all(ataquesPromises)
     res.status(200).json(filteredCards, ataques)
   } catch (err) {
     console.error(err)
