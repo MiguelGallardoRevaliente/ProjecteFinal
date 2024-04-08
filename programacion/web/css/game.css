@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Kings&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 
-html, body{
+html,
+body {
     background-image: url(../img/backgroundgame.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,15 +13,15 @@ html, body{
     margin: 0px;
     padding: 0px;
     scrollbar-width: none;
-    
+
 
 }
 
-header{
+header {
     position: fixed;
     height: 100vh;
     width: 300px;
-    box-shadow: 3px 0px 5px  rgb(0, 0, 0);
+    box-shadow: 3px 0px 5px rgb(0, 0, 0);
     background-color: #292929;
     display: flex;
     flex-direction: column;
@@ -29,28 +30,29 @@ header{
     color: white;
 }
 
-header .logo{
+header .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
 }
-header .logo img{
-    width: 40%;    
+
+header .logo img {
+    width: 40%;
 }
 
 
-header .logo h1{
+header .logo h1 {
     font-size: 3em;
     font-family: "MedievalSharp", cursive;
 }
 
-header nav{
+header nav {
     width: 100%;
 }
 
-header nav ul{
+header nav ul {
     margin: 0px;
     max-width: 100%;
     font-family: "koho", sans-serif;
@@ -63,25 +65,25 @@ header nav ul{
     flex-direction: column;
 }
 
-header nav ul a{
+header nav ul a {
     padding: 25px 0px;
     font-size: 33px;
     width: 100%;
-    box-shadow: 0px 3px 5px  rgb(0, 0, 0);
+    box-shadow: 0px 3px 5px rgb(0, 0, 0);
     text-align: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
 
-header nav ul a:hover{
+header nav ul a:hover {
     background-color: #3b3b3b;
 }
 
-header nav ul a:active{
+header nav ul a:active {
     background-color: #3b3b3b;
 }
 
-header .config{
+header .config {
     cursor: pointer;
     width: 100%;
     display: flex;
@@ -92,16 +94,16 @@ header .config{
     box-shadow: 0px -2px 5px black;
 }
 
-header .config:hover{
+header .config:hover {
     background-color: #3b3b3b;
 }
 
-header .config i{
+header .config i {
     font-size: 30px;
     color: rgb(255, 255, 255);
 }
 
-header .config a{
+header .config a {
     font-family: "koho", sans-serif;
     font-weight: 200;
     text-align: center;
@@ -112,7 +114,7 @@ header .config a{
 }
 
 /*menu*/
-.perfil{
+.perfil {
     position: absolute;
     top: 0;
     right: 0;
@@ -127,28 +129,30 @@ header .config a{
     padding: 0px 20px;
 }
 
-.perfil .divUser img{
+.perfil .divUser img {
     width: 70px;
     border-radius: 50px;
     border: 3px solid white;
 
 }
 
-.perfil .divOro{
+.perfil .divOro {
     margin-left: 150px;
 }
 
-.perfil .divOro img{
+.perfil .divOro img {
     width: 30px;
 }
 
-.perfil .divUser, .perfil .divOro{
+.perfil .divUser,
+.perfil .divOro {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.perfil .divOro p , .perfil .divUser p{
+.perfil .divOro p,
+.perfil .divUser p {
     font-size: 30px;
     color: white;
     font-family: "koho", sans-serif;
@@ -156,29 +160,27 @@ header .config a{
 
 /*ChangeFoto*/
 
-#changeFoto{
+#changeFoto {
     position: absolute;
-    top: 150px;
-    left: 0;
+    top: 100px;
+    right: 0;
     border-radius: 10px;
     background-color: #292929;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 250px;
     box-shadow: 3px 3px 5px rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: center;
     display: none;
+
 }
 
-#changeFoto button{
-    padding: 0px;
-    width: 100px;
-    height: 100px;
+#changeFoto button {
     display: flex;
     background: transparent;
     border: none;
-    font-size: 50px;
+    font-size: 30px;
     box-shadow: 1px 3px 5px black;
     align-items: center;
     justify-content: center;
@@ -186,16 +188,23 @@ header .config a{
     background-color: #d30000;
     color: white;
     margin: 0px auto;
+
 }
 
-#changeFoto .changeFoto-iconos{
+#changeFoto .changeFoto-iconos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0px;
     align-items: center;
-
 }
-#searchGame{
+
+.changeFoto-iconos img {
+    width: 42px;
+    border-radius: 50px;
+    border: 3px solid white;
+}
+
+#searchGame {
     font-family: "koho", sans-serif;
     position: absolute;
     bottom: 0;
@@ -207,25 +216,26 @@ header .config a{
     background-color: #292929;
     color: white;
     border: none;
-    border-radius:2px;
-    box-shadow: 1px 8px 2px  rgb(0, 0, 0);
+    border-radius: 2px;
+    box-shadow: 1px 8px 2px rgb(0, 0, 0);
     cursor: pointer;
 }
 
-#searchGame:hover{
+
+#searchGame:hover {
     background-color: #3b3b3b;
     ;
 }
 
-#searchGame:active{
+#searchGame:active {
     background-color: #3b3b3b;
-    box-shadow: 1px 3px 3px  rgb(0, 0, 0) inset;
+    box-shadow: 1px 3px 3px rgb(0, 0, 0) inset;
     transform: translateY(8px);
 }
 
 /*Information*/
 
-#information{
+#information {
     font-family: "koho", sans-serif;
     margin-left: 280px;
     padding: 0px 0px;
@@ -237,35 +247,35 @@ header .config a{
 
 }
 
-#information .container{
+#information .container {
     color: white;
-    
+
 }
 
-#information .container h1{
+#information .container h1 {
     font-size: 2em;
     border-left: 20px solid #ffffff;
     padding-left: 20px;
-    
+
 }
 
-#information .container h2{
+#information .container h2 {
     font-size: 1em;
     margin: 20px 0px;
     border-bottom: 1px solid #ffffff;
 }
 
-#information .container li{
+#information .container li {
     font-size: 0.8em;
 }
 
-#information .container p{
+#information .container p {
     font-size: 0.8em;
     margin: 20px 0px;
 }
 
 /*Shop*/
-#shop{
+#shop {
     font-family: "koho", sans-serif;
     margin-left: 300px;
     padding: 0px 0px;
@@ -277,12 +287,12 @@ header .config a{
 
 }
 
-#shop .container{
-    color: white;  
-    margin: 0px 70px; 
+#shop .container {
+    color: white;
+    margin: 0px 70px;
 }
 
-#shop .container .top{
+#shop .container .top {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -290,11 +300,11 @@ header .config a{
     gap: 0px;
 }
 
-#shop .container .top h1{
+#shop .container .top h1 {
     margin-right: 30px;
 }
 
-#shop .container .top button{
+#shop .container .top button {
     padding: 0px;
     width: 60px;
     height: 60px;
@@ -307,29 +317,30 @@ header .config a{
     justify-content: center;
     cursor: pointer;
 }
- .active {
-        box-shadow: 1px 3px 5px black inset;
-      }
 
-#shop .container .all .filtrer{
+.active {
+    box-shadow: 1px 3px 5px black inset;
+}
+
+#shop .container .all .filtrer {
     padding: 10px;
     display: flex;
     justify-content: left;
     align-items: center;
-   
+
 }
 
-#shop .container .all .filtrer form{
+#shop .container .all .filtrer form {
     display: flex;
     align-items: center;
     justify-content: left;
     gap: 20px;
     padding: 10px;
-    background-color: #3d3d3d;  
+    background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
 }
 
-#shop .container .all .filtrer form input[type="text"]{
+#shop .container .all .filtrer form input[type="text"] {
     padding: 2px;
     width: 280px;
     box-shadow: 1px 1px 3px #272727 inset;
@@ -339,7 +350,7 @@ header .config a{
     font-size: 25px;
 }
 
-#shop .container .all .filtrer form select{
+#shop .container .all .filtrer form select {
     padding: 2px;
     box-shadow: 1px 1px 3px #272727 inset;
     border: none;
@@ -348,7 +359,7 @@ header .config a{
     font-size: 25px;
 }
 
-#shop .container .all .filtrer form button{
+#shop .container .all .filtrer form button {
     padding: 2px;
     box-shadow: 3px 3px 5px #272727;
     border: none;
@@ -363,7 +374,8 @@ header .config a{
 
 /*inventory*/
 
-#inventory, #chests{
+#inventory,
+#chests {
     font-family: "koho", sans-serif;
     margin-left: 300px;
     padding: 0px 0px;
@@ -374,16 +386,18 @@ header .config a{
     padding: 70px;
 }
 
-#chests{
+#chests {
     display: none;
 }
 
-#inventory .container, #chests .container{
-    color: white;  
-    margin: 0px 70px; 
+#inventory .container,
+#chests .container {
+    color: white;
+    margin: 0px 70px;
 }
 
-#inventory .container .links, #chests .container .links{
+#inventory .container .links,
+#chests .container .links {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -392,10 +406,11 @@ header .config a{
     align-items: center;
     border-bottom: 2px solid black;
     background-color: #3d3d3d;
-   
+
 }
 
-#inventory .container .links div, #chests .container .links div{
+#inventory .container .links div,
+#chests .container .links div {
     width: 150px;
     height: 50px;
     display: flex;
@@ -405,7 +420,9 @@ header .config a{
     background-color: #000000;
     margin-right: -50px;
 }
-#inventory .container .top, #chests .container .top{
+
+#inventory .container .top,
+#chests .container .top {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -413,11 +430,13 @@ header .config a{
     gap: 0px;
 }
 
-#inventory .container .top h1, #chests .container .top h1{
+#inventory .container .top h1,
+#chests .container .top h1 {
     margin-right: 30px;
 }
 
-#inventory .container .top button, #chests .container .top button{
+#inventory .container .top button,
+#chests .container .top button {
     padding: 0px;
     width: 60px;
     height: 60px;
@@ -431,14 +450,14 @@ header .config a{
     cursor: pointer;
 }
 
-#inventory .container .allcards .filtrer{
+#inventory .container .allcards .filtrer {
     display: flex;
     justify-content: right;
     gap: 10px;
-   
+
 }
 
-#inventory .container .allcards .filtrer form select{
+#inventory .container .allcards .filtrer form select {
     padding: 2px;
     box-shadow: 1px 1px 3px #272727 inset;
     border: none;
@@ -449,22 +468,23 @@ header .config a{
 }
 
 
-#inventory .container .allcards .filtrer option{
+#inventory .container .allcards .filtrer option {
     background-color: #9D9D9D;
     padding: 4px;
 }
 
 /*wrap*/
-#inventory .container .allcards .yourCards{
-    
+#inventory .container .allcards .yourCards {
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;  
+    gap: 20px;
     align-items: center;
     margin-top: 5%;
 
 }
-.yourCards .carta{
+
+.yourCards .carta {
     background-size: contain;
     background-repeat: no-repeat;
     width: 350px;
@@ -474,7 +494,7 @@ header .config a{
 
 }
 
-.yourCards .carta:hover{
+.yourCards .carta:hover {
     scale: 1.15;
 }
 
@@ -493,7 +513,7 @@ header .config a{
     margin: 0px;
 }
 
-.yourCards .carta .ataque-vida{
+.yourCards .carta .ataque-vida {
     bottom: 0;
     right: 0;
     margin: 40px 35px !important;
@@ -504,7 +524,7 @@ header .config a{
 
 /*Settings*/
 
-#settings{
+#settings {
     font-family: "koho", sans-serif;
     margin-left: 300px;
     padding: 0px 0px;
@@ -515,30 +535,30 @@ header .config a{
     padding: 70px;
 }
 
-#settings .container{
+#settings .container {
     color: white;
-    
+
 }
 
-#settings .container h1{
+#settings .container h1 {
     font-size: 2em;
     border-left: 20px solid #ffffff;
     padding-left: 20px;
-    
+
 }
 
-#settings .container h2{
+#settings .container h2 {
     font-size: 1.5em;
     margin: 20px 0px;
     border-bottom: 1px solid #ffffff;
 }
 
-#settings .container h3{
+#settings .container h3 {
     font-size: 1em;
     margin: 0px 0px;
 }
 
-#settings .setting div{
+#settings .setting div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -546,14 +566,15 @@ header .config a{
     margin: 20px 0px;
 }
 
-#settings .setting div input[type="range"]{
+#settings .setting div input[type="range"] {
     width: 300px;
     height: 20px;
     background-color: #9D9D9D;
     border: none;
     box-shadow: 1px 1px 3px #272727 inset;
 }
-#settings .setting form button{
+
+#settings .setting form button {
     padding: 0px;
     width: 120px;
     height: 40px;
@@ -570,7 +591,7 @@ header .config a{
     margin-top: 5%;
 }
 
-#settings .setting form button:active{
+#settings .setting form button:active {
     box-shadow: 1px 1px 3px black inset;
     margin-top: 5%;
 }

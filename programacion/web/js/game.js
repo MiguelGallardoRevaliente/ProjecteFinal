@@ -48,7 +48,6 @@ function mostrarInventoryChests () {
 
 function mostrarChangeFoto() {
   changeFoto.style.display = 'block'
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
