@@ -46,9 +46,13 @@ function mostrarInventoryChests () {
   inventoryChests.style.display = 'block'
 }
 
-function mostrarChangeFoto() {
-  changeFoto.style.display = 'block'
-}
+document.addEventListener('click', function(event) {
+  // Verificar si el clic no proviene de userFoto ni de changeFoto
+  if (event.target !== userFoto && event.target !== changeFoto) {
+      // Ocultar el elemento con ID 'changeFoto'
+      changeFoto.style.display = 'none';
+  }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
   const audio = document.getElementById('audio')
