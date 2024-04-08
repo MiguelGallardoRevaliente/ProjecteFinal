@@ -82,7 +82,9 @@ app.get('/cards', async (req, res) => {
     const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
 
     const filteredCards = cards.filter(card => idCartasSet.has(card.id))
-    res.status(200).json(filteredCards)
+
+    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [filteredCards.id])
+    res.status(200).json(filteredCards, ataques)
   } catch (err) {
     console.error(err)
   }
