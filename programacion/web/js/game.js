@@ -47,7 +47,10 @@ function mostrarInventoryChests () {
 }
 
 document.addEventListener('click', function (event) {
-  if (event.target !== changeFoto) {
+  // Verificar si el clic no proviene de userFoto ni de changeFoto
+  const userFoto = document.getElementById('userFoto')
+  if (event.target !== userFoto && event.target !== changeFoto) {
+    // Ocultar el elemento con ID 'changeFoto'
     changeFoto.style.display = 'none'
   }
 })
