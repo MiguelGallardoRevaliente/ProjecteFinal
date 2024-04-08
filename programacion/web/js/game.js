@@ -84,3 +84,10 @@ otrosElementos.forEach(function (elemento) {
     reproducirSonido()
   })
 })
+
+const setProfilePicture = (event) => {
+  const userFoto = document.getElementById('userFoto')
+  userFoto.src = event.target.src
+  console.log(event.target.src)
+  document.getElementById('changeFoto').style.display = 'none'
+}
