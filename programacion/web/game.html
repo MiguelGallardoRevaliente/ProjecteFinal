@@ -36,6 +36,7 @@
                         const divUser = document.createElement('div')
                         divUser.classList.add('divUser')
                         const userFoto = document.createElement('img')
+                        userFoto.id = 'userFoto'
                         userFoto.src = user.foto_perfil
                         userFoto.onclick = () => {
                             document.getElementById('changeFoto').style.display = 'block'
@@ -48,6 +49,13 @@
                         perfil.appendChild(divUser)
                     })
                 })
+        }
+
+        const setProfilePicture = () => {
+            const userFoto = document.getElementById('userFoto')
+            userFoto.src = event.target.src
+            console.log(event.target.src)
+            document.getElementById('changeFoto').style.display = 'none'
         }
     </script>
 </head>
@@ -79,14 +87,14 @@
     <div id="changeFoto">
         <div class="changeFoto-iconos">
             <!--Imagenes de iconos-->
-            <img src="img/foto_perfil/awesome.jpg">
-            <img src="img/foto_perfil/chimpy.jpg">
-            <img src="img/foto_perfil/gurex.jpg">
-            <img src="img/foto_perfil/maza.jpg">
-            <img src="img/foto_perfil/morrality.jpg">
-            <img src="img/foto_perfil/tumse.jpg">
-            <img src="img/foto_perfil/waño.jpg">
-            <img src="img/foto_perfil/yasai.jpg">
+            <img src="img/foto_perfil/awesome.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/chimpy.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/gurex.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/maza.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/morrality.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/tumse.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/waño.jpg" onclick="setProfilePicture()">
+            <img src="img/foto_perfil/yasai.jpg" onclick="setProfilePicture()">
         </div>
     </div>
     <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
