@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 // DEJAR DE MOSTRAR UN DIV #HOME
 const home = document.getElementById('home')
