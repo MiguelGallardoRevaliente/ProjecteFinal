@@ -24,20 +24,46 @@
                 .then(response => response.json())
                 .then(data => {
                 console.log(data)
-                data.forEach(card => {
+                const length = data.filteredCards.length
+                for (let i = 0; i < length; i++) {
+                    const card = data.filteredCards[i]
+
                     const cardDiv = document.createElement('div')
                     cardDiv.className = 'carta'
                     cardDiv.style.backgroundImage = `url(${card.foto})`
+
                     const nombreCarta = document.createElement('p')
                     nombreCarta.className = 'nombreCarta'
                     nombreCarta.innerHTML = card.nombre
+
                     const ataqueVida = document.createElement('p')
                     ataqueVida.className = 'ataque-vida'
                     ataqueVida.innerHTML = card.ataque + '/' + card.vida
+
+                    const ataqueEspecial = document.createElement('p')
+                    ataqueEspecial.className = 'ataque-especial'
+
+                    let textoAtaqueEspecial = data.ataque[i][0].nombre + ' - ' + data.ataque[i][0].tipo
+
+                    if (data.ataque[i][0].tipo) {
+                        if (data.ataque[i][0].tipo === 'power-up') {
+                            textoAtaqueEspecial += ' ; +' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                        } else {
+                            textoAtaqueEspecial += ' ; -' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                        }
+                    }
+
+                    if(data.ataque[i][0].duracion) {
+                        textoAtaqueEspecial += ' ; ' + data.ataque[i][0].duracion + ' turnos'
+                    }
+
+                    ataqueEspecial.innerHTML = textoAtaqueEspecial
+                    
                     cardDiv.appendChild(nombreCarta)
+                    cardDiv.appendChild(ataqueEspecial)
                     cardDiv.appendChild(ataqueVida)
                     yourCards.appendChild(cardDiv)
-                })
+                }
                 })
         }
 
@@ -96,7 +122,7 @@
                     }
 
                     ataqueEspecial.innerHTML = textoAtaqueEspecial
-                    
+
                     cardDiv.appendChild(nombreCarta)
                     cardDiv.appendChild(ataqueEspecial)
                     cardDiv.appendChild(ataqueVida)
