@@ -43,20 +43,20 @@
                     const ataqueEspecial = document.createElement('p')
                     ataqueEspecial.className = 'ataque-especial'
 
-                    console.log(data.ataque[i])
+                    console.log(data.ataques)
 
-                    let textoAtaqueEspecial = data.ataque[i][0].nombre + ' - ' + data.ataque[i][0].tipo
+                    let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataque[i][0].tipo) {
-                        if (data.ataque[i][0].tipo === 'power-up') {
-                            textoAtaqueEspecial += ' ; +' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                    if (data.ataques[i][0].tipo) {
+                        if (data.ataques[i][0].tipo === 'power-up') {
+                            textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
-                            textoAtaqueEspecial += ' ; -' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                            textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
                     }
 
-                    if(data.ataque[i][0].duracion) {
-                        textoAtaqueEspecial += ' ; ' + data.ataque[i][0].duracion + ' turnos'
+                    if(data.ataques[i][0].duracion) {
+                        textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
                     ataqueEspecial.innerHTML = textoAtaqueEspecial
@@ -109,18 +109,18 @@
                     const ataqueEspecial = document.createElement('p')
                     ataqueEspecial.className = 'ataque-especial'
 
-                    let textoAtaqueEspecial = data.ataque[i][0].nombre + ' - ' + data.ataque[i][0].tipo
+                    let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataque[i][0].tipo) {
-                        if (data.ataque[i][0].tipo === 'power-up') {
-                            textoAtaqueEspecial += ' ; +' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                    if (data.ataques[i][0].tipo) {
+                        if (data.ataques[i][0].tipo === 'power-up') {
+                            textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         } else {
-                            textoAtaqueEspecial += ' ; -' + data.ataque[i][0].cambio + ' ' + data.ataque[i][0].estadistica
+                            textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
                     }
 
-                    if(data.ataque[i][0].duracion) {
-                        textoAtaqueEspecial += ' ; ' + data.ataque[i][0].duracion + ' turnos'
+                    if(data.ataques[i][0].duracion) {
+                        textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
                     }
 
                     ataqueEspecial.innerHTML = textoAtaqueEspecial
