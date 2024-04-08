@@ -156,7 +156,7 @@ header .config a{
 
 /*ChangeFoto*/
 
-.changeFoto{
+#changeFoto{
     position: absolute;
     top: 150px;
     left: 0;
@@ -171,7 +171,7 @@ header .config a{
     display: none;
 }
 
-.changeFoto button{
+#changeFoto button{
     padding: 0px;
     width: 100px;
     height: 100px;
@@ -188,7 +188,13 @@ header .config a{
     margin: 0px auto;
 }
 
+#changeFoto .changeFoto-iconos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    align-items: center;
 
+}
 #searchGame{
     font-family: "koho", sans-serif;
     position: absolute;

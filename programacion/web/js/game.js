@@ -16,6 +16,8 @@ const allcards = document.getElementById('allcards')
 const inventoryCards = document.getElementById('inventory')
 const inventoryChests = document.getElementById('chests')
 
+const changeFoto = document.getElementById('changeFoto')
+
 function mostrarShopCards () {
   allcards.style.display = 'block'
   allchests.style.display = 'none'
@@ -42,6 +44,11 @@ function mostrarInventoryCards () {
 function mostrarInventoryChests () {
   inventoryCards.style.display = 'none'
   inventoryChests.style.display = 'block'
+}
+
+function mostrarChangeFoto() {
+  changeFoto.style.display = 'block'
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
