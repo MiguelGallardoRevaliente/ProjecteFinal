@@ -391,7 +391,6 @@ header .config a {
     font-size: 30px;
     border: none;
     background-color: #292929;
-    min-height: 100vh;
     padding: 70px;
 }
 
