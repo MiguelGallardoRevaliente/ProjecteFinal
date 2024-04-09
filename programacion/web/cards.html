@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home - Chamous</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type='module'>
+        const username = localStorage.getItem('username')
+
+        if (!username) {
+            window.location.href = '/login'
+        }
+
+        window.onload = () => {
+            const yourCards = document.getElementsByClassName('yourCards')[0]
+            yourCards.innerHTML = ''
+            const id = localStorage.getItem('id')
+            fetch(`http://13.53.190.234/cards?id=${id}`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    const length = data.filteredCards.length
+                    for (let i = 0; i < length; i++) {
+                        const card = data.filteredCards[i]
+
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'carta'
+                        cardDiv.style.backgroundImage = `url(${card.foto})`
+
+                        const nombreCarta = document.createElement('p')
+                        nombreCarta.className = 'nombreCarta'
+                        nombreCarta.innerHTML = card.nombre
+
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.className = 'ataque-vida'
+                        ataqueVida.innerHTML = card.ataque + '/' + card.vida
+
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
+                        const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        cardDiv.appendChild(nombreCarta)
+                        cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
+                    }
+                })
+        }
+
+        const quality = document.getElementById('quality')
+
+        quality.addEventListener('change', () => {
+            const yourCards = document.getElementsByClassName('yourCards')[0]
+            yourCards.innerHTML = ''
+            let ordenType = quality.value
+            let orden = 'DESC'
+            if (ordenType !== 'rareza' && ordenType !== 'tipo') {
+                ordenType = 'costo_mana'
+            }
+
+            if (quality.value === 'manaDown') {
+                orden = 'ASC'
+            }
+            const id = localStorage.getItem('id')
+            fetch(`http://13.53.190.234/cards?id=${id}&ordenType=${ordenType}&orden=${orden}`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    const length = data.filteredCards.length
+                    for (let i = 0; i < length; i++) {
+                        const card = data.filteredCards[i]
+
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'carta'
+                        cardDiv.style.backgroundImage = `url(${card.foto})`
+
+                        const nombreCarta = document.createElement('p')
+                        nombreCarta.className = 'nombreCarta'
+                        nombreCarta.innerHTML = card.nombre
+
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.className = 'ataque-vida'
+                        ataqueVida.innerHTML = card.ataque + '/' + card.vida
+
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
+                        const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        cardDiv.appendChild(nombreCarta)
+                        cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
+                    }
+                })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logoC.png" alt="">
+            <h1>CHAMOUS</h1>
+        </div>
+        <nav>
+            <ul>
+                <a href="/">HOME</a>
+                <a href="/inventory">INVENTARY</a>
+                <a href="/shop">SHOP</a>
+                <a href="/information">INFORMATION</a>
+            </ul>
+        </nav>
+        <div class="config">
+            <i class='bx bx-cog'></i>
+            <a href="/settings">SETTINGS</a>
+        </div>
+    </header>
+    <div id="inventory">
+        <div class="container">
+            <div class="links">
+                <div id="especial-link" onclick="window.location.reload()"><button><i class='bx bxs-memory-card'></i></button></div>
+                <div onclick="window.location.href='/inventory/decks'"><button><i class='bx bxs-box'></i></button></div>
+                <div onclick="window.location.href='/inventory/packs'"><button><i class='bx bxs-box'></i></button></div>
+            </div>
+            <div class="top">
+                <h1>INVENTORY</h1>
+            </div>
+            <div class="allcards">
+                <div class="filtrer">
+                    <span>Order By</span>
+                    <form action="" class="form">
+                        <select name="quality" id="quality">
+                            <option value="tipo">Type</option>
+                            <option value="rareza">Quality</option>
+                            <option value="manaUp">Mayor Maná</option>
+                            <option value="manaDown">Menor Maná</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="yourCards">
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio>
+    <script src="js/game.js"></script>
+</body>
+</html>

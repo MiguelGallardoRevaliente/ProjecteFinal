@@ -63,6 +63,21 @@ app.get('/inventory', async (req, res) => {
   res.sendFile(join(__dirname, 'web/inventory.html'))
 })
 
+app.get('/inventory/cards', async (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/cards.html'))
+})
+
+app.get('/inventory/decks', async (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/deks.html'))
+})
+
+app.get('/inventory/packs', async (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/packs.html'))
+})
+
 app.get('/cards', async (req, res) => {
   try {
     const id = req.query.id
