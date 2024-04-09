@@ -45,14 +45,15 @@
                         ataqueVida.className = 'ataque-vida'
                         ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
 
-                        // const ataqueEspecial = document.createElement('p')
-                        // ataqueEspecial.className = 'ataque-especial'
-                        // const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
-                        // ataqueEspecial.innerHTML = textoAtaqueEspecial
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
+                        const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
 
                         cardDiv.appendChild(nombreCarta)
-                        // cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueEspecial)
                         cardDiv.appendChild(ataqueVida)
+                        resultado.appendChild(cardDiv)
                     })
                 })
         })
