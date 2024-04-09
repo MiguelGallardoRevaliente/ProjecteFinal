@@ -17,47 +17,114 @@
             window.location.href = '/login'
         }
 
-        const form = document.getElementsByClassName('form')[0]
-        const resultado = document.getElementsByClassName('resultado_sobre')[0]
+        const sobresDivGeneral = document.getElementsByClassName('sobres_god_divGeneral')[0]
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            const id = localStorage.getItem('id')
-            fetch(`/abrirSobre?id=${id}`, {
+        window.onload = () => {
+            fetch('/checkPacks', {
                 method: 'GET'
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    resultado.innerHTML = ''
-                    document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
-                    data.forEach((card) => {
-                        console.log(card.carta)
-                        console.log(card.ataque)
-                        const cardDiv = document.createElement('div')
-                        cardDiv.className = 'carta'
-                        cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+            .then(response => response.json())
+            .then(data => {
+                if (data.sobres >= 0) {
+                    sobresDivGeneral.style.display = 'none'
+                } else {
+                    for (let i = 0; i < data.sobres; i++) {
+                        const sobreDiv = document.createElement('div')
+                        sobreDiv.className = 'sobre'
+                        const formDiv = document.createElement('div')
+                        formDiv.className = 'form'
+                        const button = document.createElement('button')
+                        button.innerHTML = 'Abrir'
+                        button.type = 'submit'
+                        formDiv.appendChild(button)
+                        sobreDiv.appendChild(formDiv)
+                        sobresDivGeneral.appendChild(sobreDiv)
 
-                        const nombreCarta = document.createElement('p')
-                        nombreCarta.className = 'nombreCarta'
-                        nombreCarta.innerHTML = card.carta.nombre
+                        // Agrega el event listener al formulario actual
+                        formDiv.addEventListener('submit', (e) => {
+                            e.preventDefault()
+                            const id = localStorage.getItem('id')
+                            fetch(`/abrirSobre?id=${id}`, {
+                                method: 'GET'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data)
+                                resultado.innerHTML = ''
+                                document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
+                                data.forEach((card) => {
+                                    console.log(card.carta)
+                                    console.log(card.ataque)
+                                    const cardDiv = document.createElement('div')
+                                    cardDiv.className = 'carta'
+                                    cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
-                        const ataqueVida = document.createElement('p')
-                        ataqueVida.className = 'ataque-vida'
-                        ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
+                                    const nombreCarta = document.createElement('p')
+                                    nombreCarta.className = 'nombreCarta'
+                                    nombreCarta.innerHTML = card.carta.nombre
 
-                        const ataqueEspecial = document.createElement('p')
-                        ataqueEspecial.className = 'ataque-especial'
-                        const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+                                    const ataqueVida = document.createElement('p')
+                                    ataqueVida.className = 'ataque-vida'
+                                    ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
 
-                        cardDiv.appendChild(nombreCarta)
-                        cardDiv.appendChild(ataqueEspecial)
-                        cardDiv.appendChild(ataqueVida)
-                        resultado.appendChild(cardDiv)
-                    })
-                })
-        })
+                                    const ataqueEspecial = document.createElement('p')
+                                    ataqueEspecial.className = 'ataque-especial'
+                                    const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                                    ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                                    cardDiv.appendChild(nombreCarta)
+                                    cardDiv.appendChild(ataqueEspecial)
+                                    cardDiv.appendChild(ataqueVida)
+                                    resultado.appendChild(cardDiv)
+                                })
+                            })
+                        })
+                    }
+                }
+            })
+        }      
+
+        // const form = document.getElementsByClassName('form')[0]
+        // const resultado = document.getElementsByClassName('resultado_sobre')[0]
+
+        // form.addEventListener('submit', (e) => {
+        //     e.preventDefault()
+        //     const id = localStorage.getItem('id')
+        //     fetch(`/abrirSobre?id=${id}`, {
+        //         method: 'GET'
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data)
+        //             resultado.innerHTML = ''
+        //             document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
+        //             data.forEach((card) => {
+        //                 console.log(card.carta)
+        //                 console.log(card.ataque)
+        //                 const cardDiv = document.createElement('div')
+        //                 cardDiv.className = 'carta'
+        //                 cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+
+        //                 const nombreCarta = document.createElement('p')
+        //                 nombreCarta.className = 'nombreCarta'
+        //                 nombreCarta.innerHTML = card.carta.nombre
+
+        //                 const ataqueVida = document.createElement('p')
+        //                 ataqueVida.className = 'ataque-vida'
+        //                 ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
+
+        //                 const ataqueEspecial = document.createElement('p')
+        //                 ataqueEspecial.className = 'ataque-especial'
+        //                 const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
+        //                 ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+        //                 cardDiv.appendChild(nombreCarta)
+        //                 cardDiv.appendChild(ataqueEspecial)
+        //                 cardDiv.appendChild(ataqueVida)
+        //                 resultado.appendChild(cardDiv)
+        //             })
+        //         })
+        // })
     </script>
 </head>
 
