@@ -399,11 +399,6 @@ header .config a {
     padding: 70px;
 }
 
-#chests,
-#mazos {
-    display: none;
-}
-
 #inventory .container,
 #chests .container,
 #mazos .container {

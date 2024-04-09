@@ -39,24 +39,6 @@ function mostrarShopChests () {
   shopcards.style.backgroundColor = '#292929'
 }
 
-function mostrarInventoryCards () {
-  inventoryCards.style.display = 'block'
-  inventoryChests.style.display = 'none'
-  inventoryMazos.style.display = 'none'
-}
-
-function mostrarInventoryChests () {
-  inventoryCards.style.display = 'none'
-  inventoryChests.style.display = 'block'
-  inventoryMazos.style.display = 'none'
-}
-
-function mostrarInventoryMazos () {
-  inventoryCards.style.display = 'none'
-  inventoryChests.style.display = 'none'
-  inventoryMazos.style.display = 'block'
-}
-
 function mostrarSobreGod () {
   sobresGod.style.display = 'block'
 }
