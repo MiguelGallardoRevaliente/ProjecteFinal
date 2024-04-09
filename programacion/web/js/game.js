@@ -19,7 +19,7 @@ const inventoryMazos = document.getElementById('mazos')
 
 const changeFoto = document.getElementById('changeFoto')
 
-const sobresGod = document.getElementById('sobres_god') 
+const sobresGod = document.getElementById('sobres_god')
 
 function mostrarShopCards () {
   allcards.style.display = 'block'
