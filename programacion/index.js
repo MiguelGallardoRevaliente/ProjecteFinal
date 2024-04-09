@@ -80,7 +80,12 @@ app.get('/inventory/packs', async (req, res) => {
   res.sendFile(join(__dirname, 'web/packs.html'))
 })
 
-app.get('/cards', async (req, res) => {
+app.get('/inventory/css/game.css', (req, res) => {
+  // Enviar el archivo CSS con la URL modificada
+  res.sendFile(join(__dirname, 'web/css/game.css'))
+})
+
+app.get('/getCards', async (req, res) => {
   try {
     const id = req.query.id
     const idCartas = await connection.query(
