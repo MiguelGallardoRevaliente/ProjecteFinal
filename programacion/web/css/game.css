@@ -30,6 +30,7 @@ body {
     padding: 0px;
     scrollbar-width: none;
     background-color: #292929;
+    user-select: none;
 }
 
 header {
