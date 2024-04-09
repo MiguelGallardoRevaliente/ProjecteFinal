@@ -82,14 +82,14 @@ app.get('/getCards', async (req, res) => {
 
     let query = 'SELECT * FROM cartas'
     const orderBy = req.query.ordenType || 'tipo'
-    const orderDirection = req.query.orden || 'ASC'
+    const orderDirection = req.query.orden || 'DESC'
 
     if (orderBy !== 'rareza' && orderBy !== 'tipo') {
-      query += ` ORDER BY ${orderBy} ${orderDirection}, rareza DESC, tipo ASC;`
+      query += ` ORDER BY ${orderBy} ${orderDirection}, rareza DESC, tipo DESC;`
     } else if (orderBy === 'tipo') {
       query += ` ORDER BY ${orderBy} ${orderDirection}, rareza DESC;`
     } else if (orderBy === 'rareza') {
-      query += ` ORDER BY ${orderBy} ${orderDirection}, tipo ASC;`
+      query += ` ORDER BY ${orderBy} ${orderDirection}, tipo DESC;`
     }
 
     const [cards] = await connection.execute(query)
