@@ -626,6 +626,7 @@ header .config a {
     height: 100%;
     background: transparent;
     border: none;
+    border-radius: 3px;
 }
 
 
@@ -655,9 +656,10 @@ header .config a {
     background-image: url(../img/sobre.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 450px;
-    height: 500px;
-    
+    width: 500px;
+    height: 700px;
+    box-shadow: 0px 0px 50px white;
+    border-radius: 3px;
 }
 
 .sobres_god_divGeneral form button{
