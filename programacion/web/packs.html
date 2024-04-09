@@ -17,6 +17,33 @@
             window.location.href = '/login'
         }
 
+        window.onload = () => {
+            const allChests = document.getElementsByClassName('allChests')[0]
+            allChests.innerHTML = ''
+            const id = localStorage.getItem('id')
+            fetch(`http://13.53.190.234/checkPacks?id=${id}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.sobres >= 0) {
+                    allChests.style.display = 'none'
+                } else {
+                    for (let i = 0; i < data; i++) {
+                        const sobreDiv = document.createElement('div')
+                        sobreDiv.className = 'sobre'
+                        const button = document.createElement('button')
+                        button.innerHTML = 'Hola'
+                        button.setAttribute('onclick', 'mostrarSobreGod()')
+                        sobreDiv.appendChild(button)
+                        allChests.appendChild(sobreDiv)
+
+                    }
+                }
+            })
+        }      
+
         const form = document.getElementsByClassName('form')[0]
         const resultado = document.getElementsByClassName('resultado_sobre')[0]
 
@@ -91,9 +118,6 @@
                 <h1>PACKS</h1>
             </div>
             <div class="allChests">
-                <div class="sobre">
-                    <button onclick="mostrarSobreGod()">Hola</button>
-                </div>
             </div>
         </div>
     </div>

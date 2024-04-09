@@ -19,13 +19,11 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 const app = express()
+app.use(express.json())
 app.use(cors())
 app.disable('x-powered-by')
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
-const staticFilesPath = join(__dirname, 'web')
-app.use('/static', express.static(staticFilesPath))
 
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
@@ -109,6 +107,16 @@ app.get('/getCards', async (req, res) => {
   }
 })
 
+app.get('/checkPacks', async (req, res) => {
+  try {
+    const id = req.query.id
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    return res.status(200).json(user[0].sobres)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 app.get('/abrirSobre', async (req, res) => {
   try {
     const id = req.query.id
@@ -164,6 +172,7 @@ app.get('/abrirSobre', async (req, res) => {
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [arrayCartas[randomIndex].id_ataque])
 
       randomCards.push({
+        id: arrayCartas[randomIndex].id,
         carta: arrayCartas[randomIndex],
         ataque: ataque[0],
         duplicate: duplicated
