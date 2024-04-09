@@ -596,6 +596,25 @@ header .config a {
 
 }
 
+#chests .allChests .sobre{
+    width: 500px;
+    height: 400px;
+    background-image: url(../img/sobre.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chests .allChests .sobre button{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+
 /*sobres*/
 #sobres_god{
     position: absolute;
