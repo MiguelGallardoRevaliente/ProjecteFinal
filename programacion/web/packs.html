@@ -20,7 +20,7 @@
         const sobresDivGeneral = document.getElementsByClassName('sobres_god_divGeneral')[0]
 
         window.onload = () => {
-            fetch('/checkPacks', {
+            fetch(`/checkPacks?id=${localStorage.getItem('id')}`, {
                 method: 'GET'
             })
             .then(response => response.json())
