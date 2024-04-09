@@ -569,12 +569,14 @@ header .config a {
     color: black;
     margin: 0px;
     font-weight: 800;
+    user-select: none;
 }
 
 .yourCards .carta .nombreCarta {
     top: 55%;
     left: 30px;
     margin: 0px;
+
 }
 
 .yourCards .carta .ataque-vida {
@@ -591,6 +593,7 @@ header .config a {
     font-size: 11px !important;
     font-weight: 600 !important;
     left: 40px;
+
 }
 
 /*Settings*/
