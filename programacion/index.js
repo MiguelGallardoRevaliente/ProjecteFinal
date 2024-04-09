@@ -84,7 +84,11 @@ app.get('/getCards', async (req, res) => {
     const orderBy = req.query.ordenType || 'tipo'
     const orderDirection = req.query.orden || 'DESC'
 
-    query += ` ORDER BY ${orderBy} ${orderDirection};`
+    if (orderBy !== 'rareza') {
+      query += ` ORDER BY ${orderBy} ${orderDirection}, rareza DESC;`
+    } else {
+      query += ` ORDER BY ${orderBy} ${orderDirection};`
+    }
 
     const [cards] = await connection.execute(query)
     const idCartasSet = new Set(idCartas[0].map(item => item.id_carta))
