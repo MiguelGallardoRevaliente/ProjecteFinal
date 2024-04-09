@@ -161,8 +161,11 @@ app.get('/abrirSobre', async (req, res) => {
         if (duplicated || duplicatedUser) duplicated = true
       }
 
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [arrayCartas[randomIndex].id_ataque])
+
       randomCards.push({
         carta: arrayCartas[randomIndex],
+        ataque: ataque[0],
         duplicate: duplicated
       })
     }

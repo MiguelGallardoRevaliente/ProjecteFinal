@@ -32,6 +32,27 @@
                     resultado.innerHTML = ''
                     data.forEach((card) => {
                         console.log(card.carta)
+                        console.log(card.ataque)
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'carta'
+                        cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+
+                        const nombreCarta = document.createElement('p')
+                        nombreCarta.className = 'nombreCarta'
+                        nombreCarta.innerHTML = card.carta.nombre
+
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.className = 'ataque-vida'
+                        ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
+
+                        // const ataqueEspecial = document.createElement('p')
+                        // ataqueEspecial.className = 'ataque-especial'
+                        // const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
+                        // ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        cardDiv.appendChild(nombreCarta)
+                        // cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueVida)
                     })
                 })
         })
