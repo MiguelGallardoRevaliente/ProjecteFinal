@@ -678,7 +678,7 @@ header .config a {
     height: 700px;
     box-shadow: 0px 0px 50px white;
     border-radius: 3px;
-    animation: boxShadow 1s infinite alternate;
+    animation: boxShadow 3s infinite;
 }
 
 @keyframes boxShadow {
