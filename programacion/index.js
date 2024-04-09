@@ -70,7 +70,7 @@ app.get('/inventory/cards', async (req, res) => {
 
 app.get('/inventory/decks', async (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
-  res.sendFile(join(__dirname, 'web/deks.html'))
+  res.sendFile(join(__dirname, 'web/decks.html'))
 })
 
 app.get('/inventory/packs', async (req, res) => {
