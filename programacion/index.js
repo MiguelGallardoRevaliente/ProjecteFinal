@@ -19,7 +19,6 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 const app = express()
-app.use(express.json())
 app.use(cors())
 app.disable('x-powered-by')
 
