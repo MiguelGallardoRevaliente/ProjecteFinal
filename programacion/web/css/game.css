@@ -596,19 +596,28 @@ header .config a {
 
 }
 
+#chests .allChests{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    align-items: center;
+    margin-top: 5%;
+
+}
+
 #chests .allChests .sobre{
-    width: 500px;
-    height: 400px;
     background-image: url(../img/sobre.png);
     background-size: contain;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transition: all 0.2s;
+
 }
 
 #chests .allChests .sobre button{
-    width: 100%;
+    width: 400px;
     height: 100%;
     background: transparent;
     border: none;
