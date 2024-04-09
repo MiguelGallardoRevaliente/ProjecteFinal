@@ -630,8 +630,7 @@ header .config a {
 }
 
 .resultado_sobre {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
     gap: 20px;
     align-items: center;
     margin-top: 5%;
