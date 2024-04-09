@@ -23,6 +23,11 @@
     background-color: #a8bbbf;
 }
 
+*{
+    user-select: none;
+
+}
+
 body {
     width: 100%;
     min-height: 100vh;
@@ -30,7 +35,6 @@ body {
     padding: 0px;
     scrollbar-width: none;
     background-color: #292929;
-    user-select: none;
 }
 
 header {
