@@ -19,13 +19,11 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 const app = express()
+app.use(express.json())
 app.use(cors())
 app.disable('x-powered-by')
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
-const staticFilesPath = join(__dirname, 'web')
-app.use('/static', express.static(staticFilesPath))
 
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
