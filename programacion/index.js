@@ -25,6 +25,9 @@ app.disable('x-powered-by')
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const staticFilesPath = join(__dirname, 'web')
+app.use('/static', express.static(staticFilesPath))
+
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/index.html'))
