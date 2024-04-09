@@ -60,29 +60,19 @@ app.get('/infoUser', async (req, res) => {
   }
 })
 
-app.get('/inventory', async (req, res) => {
-  res.header('Allow-Control-Allow-Origin', '*')
-  res.sendFile(join(__dirname, 'web/inventory.html'))
-})
-
-app.get('/inventory/cards', async (req, res) => {
+app.get('/cards', async (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/cards.html'))
 })
 
-app.get('/inventory/decks', async (req, res) => {
+app.get('/decks', async (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/decks.html'))
 })
 
-app.get('/inventory/packs', async (req, res) => {
+app.get('/packs', async (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/packs.html'))
-})
-
-app.get('/inventory/css/game.css', (req, res) => {
-  // Enviar el archivo CSS con la URL modificada
-  res.sendFile(join(__dirname, 'web/css/game.css'))
 })
 
 app.get('/getCards', async (req, res) => {

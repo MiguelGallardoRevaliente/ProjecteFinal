@@ -9,6 +9,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type='module'>
+        localStorage.setItem('inventory', 'decks')
+        inventoryLink.href = `/${localStorage.getItem('inventory')}`
         const username = localStorage.getItem('username')
 
         if (!username) {
@@ -25,7 +27,7 @@
         <nav>
             <ul>
                 <a href="/">HOME</a>
-                <a href="/inventory">INVENTARY</a>
+                <a href="/cards" id="inventoryLink">INVENTORY</a>
                 <a href="/shop">SHOP</a>
                 <a href="/information">INFORMATION</a>
             </ul>
