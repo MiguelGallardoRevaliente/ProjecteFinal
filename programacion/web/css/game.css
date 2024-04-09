@@ -603,9 +603,6 @@ header .config a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
     display: none;
 }
 .sobres_god_divGeneral{
@@ -643,6 +640,30 @@ header .config a {
     margin-top: 5%;
 
 }
+
+/*resultadoSobre*/
+.resultado_sobre{
+     display: flex;
+     height: 100vh;
+     margin: auto;
+     justify-content: center;
+     align-items: center;
+     gap: 30px;
+}
+
+.resultado_sobre .carta{
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.resultado_sobre .carta:hover{
+    scale: 1.15;
+}
+
 /*Settings*/
 
 #settings {
