@@ -635,18 +635,17 @@ header .config a {
     gap: 20px;
     align-items: center;
     margin-top: 5%;
+    padding: 120px;
 }
 
 .resultado_sobre .carta {
     background-size: contain;
     background-repeat: no-repeat;
-    width: 350px;
-    height: 500px;
+    width: 100%;
+    height: 100vh;
     position: relative;
-    transition: all 0.2s;
-
+    transition: all 0.2s;   
 }
-
 
 
 /*sobres*/
