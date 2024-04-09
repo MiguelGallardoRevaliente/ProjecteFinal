@@ -43,22 +43,7 @@
 
                         const ataqueEspecial = document.createElement('p')
                         ataqueEspecial.className = 'ataque-especial'
-
-                        let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
-
-                        if (data.ataques[i][0].cambio !== null) {
-                            if (data.ataques[i][0].tipo === 'power-up') {
-                                textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
-                            } else {
-                                textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
-                            }
-                        } else {
-                        }
-
-                        if (data.ataques[i][0].duracion !== null) {
-                            textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
-                        }
-
+                        const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
                         ataqueEspecial.innerHTML = textoAtaqueEspecial
 
                         cardDiv.appendChild(nombreCarta)
