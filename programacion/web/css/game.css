@@ -596,6 +596,9 @@ header .config a {
 
 }
 
+/*sobres*/
+sobres
+
 /*Settings*/
 
 #settings {
@@ -604,8 +607,6 @@ header .config a {
     padding: 0px 0px;
     font-size: 30px;
     border: none;
-    background-color: #292929;
-    min-height: 100vh;
     padding: 70px;
 }
 
