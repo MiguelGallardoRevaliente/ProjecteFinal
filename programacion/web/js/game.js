@@ -19,6 +19,8 @@ const inventoryMazos = document.getElementById('mazos')
 
 const changeFoto = document.getElementById('changeFoto')
 
+const sobresGod = document.getElementById('sobres_god') 
+
 function mostrarShopCards () {
   allcards.style.display = 'block'
   allchests.style.display = 'none'
@@ -53,6 +55,10 @@ function mostrarInventoryMazos () {
   inventoryCards.style.display = 'none'
   inventoryChests.style.display = 'none'
   inventoryMazos.style.display = 'block'
+}
+
+function mostrarSobreGod () {
+  sobresGod.style.display = 'block'
 }
 
 document.addEventListener('DOMContentLoaded', function () {
