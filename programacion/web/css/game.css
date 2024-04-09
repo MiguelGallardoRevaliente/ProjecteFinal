@@ -593,6 +593,7 @@ header .config a {
     font-size: 11px !important;
     font-weight: 600 !important;
     left: 40px;
+    max-width: 270px;
 
 }
 
