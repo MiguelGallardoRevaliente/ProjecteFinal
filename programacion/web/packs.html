@@ -17,10 +17,11 @@
             window.location.href = '/login'
         }
 
-        const allChests = document.getElementsByClassName('allChests')[0]
-
         window.onload = () => {
-            fetch(`/checkPacks?id=${localStorage.getItem('id')}`, {
+            const allChests = document.getElementsByClassName('allChests')[0]
+            allChests.innerHTML = ''
+            const id = localStorage.getItem('id')
+            fetch(`http://13.53.190.234/checkPacks?id=${id}`, {
                 method: 'GET'
             })
             .then(response => response.json())
