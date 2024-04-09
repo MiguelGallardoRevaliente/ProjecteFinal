@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -9,7 +10,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type='module'>
         const username = localStorage.getItem('username')
-        
+
         if (!username) {
             window.location.href = '/login'
         }
@@ -23,48 +24,48 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                console.log(data)
-                const length = data.filteredCards.length
-                for (let i = 0; i < length; i++) {
-                    const card = data.filteredCards[i]
+                    console.log(data)
+                    const length = data.filteredCards.length
+                    for (let i = 0; i < length; i++) {
+                        const card = data.filteredCards[i]
 
-                    const cardDiv = document.createElement('div')
-                    cardDiv.className = 'carta'
-                    cardDiv.style.backgroundImage = `url(${card.foto})`
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'carta'
+                        cardDiv.style.backgroundImage = `url(${card.foto})`
 
-                    const nombreCarta = document.createElement('p')
-                    nombreCarta.className = 'nombreCarta'
-                    nombreCarta.innerHTML = card.nombre
+                        const nombreCarta = document.createElement('p')
+                        nombreCarta.className = 'nombreCarta'
+                        nombreCarta.innerHTML = card.nombre
 
-                    const ataqueVida = document.createElement('p')
-                    ataqueVida.className = 'ataque-vida'
-                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.className = 'ataque-vida'
+                        ataqueVida.innerHTML = card.ataque + '/' + card.vida
 
-                    const ataqueEspecial = document.createElement('p')
-                    ataqueEspecial.className = 'ataque-especial'
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
 
-                    let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
+                        let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataques[i][0].cambio !== null) {
-                        if (data.ataques[i][0].tipo === 'power-up') {
-                            textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                        if (data.ataques[i][0].cambio !== null) {
+                            if (data.ataques[i][0].tipo === 'power-up') {
+                                textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                            } else {
+                                textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                            }
                         } else {
-                            textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
-                    } else {
+
+                        if (data.ataques[i][0].duracion !== null) {
+                            textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
+                        }
+
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        cardDiv.appendChild(nombreCarta)
+                        cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
                     }
-
-                    if(data.ataques[i][0].duracion !== null) {
-                        textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
-                    }
-
-                    ataqueEspecial.innerHTML = textoAtaqueEspecial
-
-                    cardDiv.appendChild(nombreCarta)
-                    cardDiv.appendChild(ataqueEspecial)
-                    cardDiv.appendChild(ataqueVida)
-                    yourCards.appendChild(cardDiv)
-                }
                 })
         }
 
@@ -78,7 +79,7 @@
             if (ordenType !== 'rareza' && ordenType !== 'tipo') {
                 ordenType = 'costo_mana'
             }
-            
+
             if (quality.value === 'manaDown') {
                 orden = 'ASC'
             }
@@ -88,48 +89,48 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                console.log(data)
-                const length = data.filteredCards.length
-                for (let i = 0; i < length; i++) {
-                    const card = data.filteredCards[i]
+                    console.log(data)
+                    const length = data.filteredCards.length
+                    for (let i = 0; i < length; i++) {
+                        const card = data.filteredCards[i]
 
-                    const cardDiv = document.createElement('div')
-                    cardDiv.className = 'carta'
-                    cardDiv.style.backgroundImage = `url(${card.foto})`
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'carta'
+                        cardDiv.style.backgroundImage = `url(${card.foto})`
 
-                    const nombreCarta = document.createElement('p')
-                    nombreCarta.className = 'nombreCarta'
-                    nombreCarta.innerHTML = card.nombre
+                        const nombreCarta = document.createElement('p')
+                        nombreCarta.className = 'nombreCarta'
+                        nombreCarta.innerHTML = card.nombre
 
-                    const ataqueVida = document.createElement('p')
-                    ataqueVida.className = 'ataque-vida'
-                    ataqueVida.innerHTML = card.ataque + '/' + card.vida
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.className = 'ataque-vida'
+                        ataqueVida.innerHTML = card.ataque + '/' + card.vida
 
-                    const ataqueEspecial = document.createElement('p')
-                    ataqueEspecial.className = 'ataque-especial'
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
 
-                    let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
+                        let textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].tipo
 
-                    if (data.ataques[i][0].cambio !== null) {
-                        if (data.ataques[i][0].tipo === 'power-up') {
-                            textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                        if (data.ataques[i][0].cambio !== null) {
+                            if (data.ataques[i][0].tipo === 'power-up') {
+                                textoAtaqueEspecial += ' ; +' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                            } else {
+                                textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
+                            }
                         } else {
-                            textoAtaqueEspecial += ' ; -' + data.ataques[i][0].cambio + ' ' + data.ataques[i][0].estadistica
                         }
-                    } else {
+
+                        if (data.ataques[i][0].duracion !== null) {
+                            textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
+                        }
+
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        cardDiv.appendChild(nombreCarta)
+                        cardDiv.appendChild(ataqueEspecial)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
                     }
-
-                    if(data.ataques[i][0].duracion !== null) {
-                        textoAtaqueEspecial += ' ; ' + data.ataques[i][0].duracion + ' turnos'
-                    }
-
-                    ataqueEspecial.innerHTML = textoAtaqueEspecial
-
-                    cardDiv.appendChild(nombreCarta)
-                    cardDiv.appendChild(ataqueEspecial)
-                    cardDiv.appendChild(ataqueVida)
-                    yourCards.appendChild(cardDiv)
-                }
                 })
         })
 
@@ -148,6 +149,7 @@
         })
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -170,9 +172,10 @@
     <div id="inventory">
         <div class="container">
             <div class="links">
-                <div id="especial-link" onclick="window.location.reaload()"><button><i class='bx bxs-memory-card'></i></button></div>
+                <div id="especial-link" onclick="window.location.reaload()"><button><i
+                            class='bx bxs-memory-card'></i></button></div>
                 <div onclick="mostrarInventoryChests()"><button><i class='bx bxs-box'></i></button></div>
-                <div onclick="mostrarInventoryMazos()"><button ><i class='bx bxs-box'></i></button></div>  
+                <div onclick="mostrarInventoryMazos()"><button><i class='bx bxs-box'></i></button></div>
             </div>
             <div class="top">
                 <h1>INVENTORY</h1>
@@ -199,9 +202,10 @@
     <div id="chests">
         <div class="container">
             <div class="links">
-                <div id="especial-link" onclick="mostrarInventoryCards()"><button><i class='bx bxs-memory-card'></i></button></div>
-                <div><button ><i class='bx bxs-box'></i></button></div>
-                <div onclick="mostrarInventoryMazos()"><button ><i class='bx bxs-box'></i></button></div>  
+                <div id="especial-link" onclick="mostrarInventoryCards()"><button><i
+                            class='bx bxs-memory-card'></i></button></div>
+                <div><button><i class='bx bxs-box'></i></button></div>
+                <div onclick="mostrarInventoryMazos()"><button><i class='bx bxs-box'></i></button></div>
             </div>
             <div class="top">
                 <h1>PACKS</h1>
@@ -211,15 +215,16 @@
                     <button onclick="mostrarSobreGod()">Hola</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div id="mazos">
         <div class="container">
             <div class="links">
-                <div id="especial-link" onclick="mostrarInventoryCards()"><button><i class='bx bxs-memory-card'></i></button></div>
-                <div onclick="mostrarInventoryChests()"><button ><i class='bx bxs-box'></i></button></div>
-                <div><button ><i class='bx bxs-box'></i></button></div>  
+                <div id="especial-link" onclick="mostrarInventoryCards()"><button><i
+                            class='bx bxs-memory-card'></i></button></div>
+                <div onclick="mostrarInventoryChests()"><button><i class='bx bxs-box'></i></button></div>
+                <div><button><i class='bx bxs-box'></i></button></div>
             </div>
             <div class="top">
                 <h1>"Mazos"</h1>
@@ -233,19 +238,22 @@
                 <div></div>
                 <div></div>
                 <div></div>
-               
+
             </div>
         </div>
     </div>
     <div id="sobres_god">
-        <div class="sobre">
-            <div style="width: 300px; height: 200px; background-color: red;"></div>
+        <div class="sobres_god_divGeneral">
+            <div class="sobre">
+                <div style="width: 300px; height: 200px; background-color: red;"></div>
+            </div>
+            <form action="" class="form">
+                <button type="submit">Abrir</button>
+            </form>
         </div>
-        <form action="" class="form">
-            <button type="submit">Abrir</button>
-        </form>
     </div>
-    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
+    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio>
     <script src="js/game.js"></script>
 </body>
+
 </html>
