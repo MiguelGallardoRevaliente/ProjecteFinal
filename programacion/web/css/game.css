@@ -618,7 +618,7 @@ header .config a {
 }
 
 #chests .allChests .sobre:hover{
-    scale: 1.05;
+    scale: 1.03;
 }
 
 #chests .allChests .sobre button{
@@ -631,7 +631,7 @@ header .config a {
 
 /*sobres*/
 #sobres_god{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -652,10 +652,12 @@ header .config a {
 }
 
 .sobres_god_divGeneral .sobre{
-    background-color: #232323;
-    box-shadow: 0px 0px 15px black inset;
-    width: 400px;
+    background-image: url(../img/sobre.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 450px;
     height: 500px;
+    
 }
 
 .sobres_god_divGeneral form button{
