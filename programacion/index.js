@@ -162,8 +162,7 @@ app.get('/abrirSobre', async (req, res) => {
       }
 
       randomCards.push({
-        id: arrayCartas[randomIndex].id,
-        nomCarta: arrayCartas[randomIndex].nombre,
+        carta: arrayCartas[randomIndex],
         duplicate: duplicated
       })
     }

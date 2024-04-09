@@ -18,6 +18,7 @@
         }
 
         const form = document.getElementsByClassName('form')[0]
+        const resultado = document.getElementsByClassName('resultado_sobre')[0]
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -28,6 +29,7 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
+                    resultado.innerHTML = ''
                 })
         })
     </script>
@@ -82,10 +84,6 @@
         </div>
         <!--Este es el div que mostrare cuando el div "sobre" desaparezca de la pantalla entonces mostrara las 4 cartas que se mostraran en este div-->
       <div class="resultado_sobre">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div> 
       </div>
     </div>
     <script src="js/game.js"></script>
