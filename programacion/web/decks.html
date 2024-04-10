@@ -19,7 +19,7 @@
 
         window.onload = () => {
             const allMazos = document.getElementsByClassName('allMazos')[0]
-            allMazos.innerHTML = ''
+            // allMazos.innerHTML = ''
             const id = localStorage.getItem('id')
             fetch(`/getDecks?id=${id}`, {
                 method: 'GET'
@@ -27,6 +27,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                const decks = data.decks
+                const cartas = data.cartas
             })
         }
 
