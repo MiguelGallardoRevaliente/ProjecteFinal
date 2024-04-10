@@ -222,19 +222,13 @@ app.get('/settings', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
-    let validado = false
     const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log, password FROM users WHERE user = ?', [usernameLogin])
     console.log(rows[0])
-    bcrypt.compare(passwordLogin, rows[0].password)
-      .then(result => {
-        if (result) {
-          validado = true
-        }
-      })
-      .catch(err => {
-        console.error('Error al comparar las contraseñas:', err)
-      })
-    if (!validado) return res.status(200).json({ message: 'Credenciales incorrectas' })
+    const result = await bcrypt.compare(passwordLogin, rows[0].password)
+
+    if (!result) {
+      return res.status(200).json({ message: 'Credenciales incorrectas' })
+    }
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
