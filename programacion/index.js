@@ -255,7 +255,7 @@ app.post('/register', async (req, res) => {
       'INSERT INTO users (nombre, apellidos, email, user, password) VALUES (?, ?, ?, ?, ?)', [name, surname, email, username, password]
     )
     const id = await connection.execute('SELECT BIN_TO_UUID(id) AS id FROM users WHERE user = ?', [username])
-    console.log(id[0].id)
+    console.log(id)
     return res.status(200).json({ message: 'registered' })
   } catch (e) {
     console.error(e)
