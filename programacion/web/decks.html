@@ -17,6 +17,19 @@
             window.location.href = '/login'
         }
 
+        window.onload = () => {
+            const allMazos = document.getElementsByClassName('allMazos')[0]
+            allMazos.innerHTML = ''
+            const id = localStorage.getItem('id')
+            fetch(`/getDecks?id=${id}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+        }
+
         const mazos = document.getElementsByClassName('mazo')
 
         mazos[0].style.display = 'grid'
