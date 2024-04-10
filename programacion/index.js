@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import bcrypt from 'bcrypt'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { sendEmail } from './controller/mail.js'
@@ -221,13 +222,24 @@ app.get('/settings', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
-    const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log FROM users WHERE user = ? AND password = ?', [usernameLogin, passwordLogin])
+    let validado = false
+    const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log, password FROM users WHERE user = ?', [usernameLogin])
+    bcrypt.compare(passwordLogin, rows[0].password)
+      .then(result => {
+        if (result) {
+          validado = true
+        }
+      })
+      .catch(err => {
+        console.error('Error al comparar las contraseñas:', err)
+      })
+    if (!validado) return res.status(200).json({ message: 'Credenciales incorrectas' })
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
       console.log('Autenticación exitosa')
       return res.status(200).json({ message: 'Credenciales correctas', isFirstLog: firstLog, id: rows[0].id })
     } else {
-      return res.status(401).json({ message: 'Credenciales incorrectas' })
+      return res.status(200).json({ message: 'Credenciales incorrectas' })
     }
   } catch (error) {
     console.error('Error en la autenticación:', error)
@@ -251,11 +263,16 @@ app.post('/register', async (req, res) => {
     if (password !== rPassword) {
       return res.status(200).json({ message: 'samePwd' })
     }
+    const hashedPassword = await bcrypt.hash(password, 10)
     await connection.execute(
-      'INSERT INTO users (nombre, apellidos, email, user, password) VALUES (?, ?, ?, ?, ?)', [name, surname, email, username, password]
+      'INSERT INTO users (nombre, apellidos, email, user, password) VALUES (?, ?, ?, ?, ?)', [name, surname, email, username, hashedPassword]
     )
+
     const id = await connection.execute('SELECT BIN_TO_UUID(id) AS id FROM users WHERE user = ?', [username])
-    console.log(id[0][0].id)
+    for (let i = 0; i < 3; i++) {
+      await connection.execute('INSERT INTO mazos (numero, id_user) VALUES (?, UUID_TO_BIN(?))', [i + 1, id[0][0].id])
+    }
+
     return res.status(200).json({ message: 'registered' })
   } catch (e) {
     console.error(e)
