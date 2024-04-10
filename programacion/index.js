@@ -296,12 +296,18 @@ app.post('/change-password', async (req, res) => {
   if (newPassword !== newPasswordR) {
     return res.status(200).json({ message: 'samePwd' })
   }
+
   const { password } = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-  if (password === newPassword) {
+  console.log(password)
+  const result = await bcrypt.compare(newPassword, password)
+
+  if (!result) {
     return res.status(200).json({ message: 'pswAlreadyExists' })
   }
+
+  const newHashedPassword = await bcrypt.hash(newPassword, 10)
   await connection.execute(
-    'UPDATE users SET password = ? WHERE BIN_TO_UUID(id) = ?', [newPassword, id]
+    'UPDATE users SET password = ? WHERE BIN_TO_UUID(id) = ?', [newHashedPassword, id]
   )
   return res.status(200).json({ message: 'changed' })
 })
