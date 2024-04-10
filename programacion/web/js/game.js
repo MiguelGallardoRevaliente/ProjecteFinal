@@ -93,22 +93,22 @@ const setProfilePicture = (event) => {
 
 function mazoAtras () {
   const mazo = document.getElementsByClassName('mazo')
-  if (mazo[0].style.display !== 'flex') {
+  if (mazo[0].style.display !== 'grid') {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) - 1
     mazoActual.textContent = nuevoMazo
-    mazo[nuevoMazo - 1].style.display = 'flex'
+    mazo[nuevoMazo - 1].style.display = 'grid'
     mazo[nuevoMazo].style.display = 'none'
   }
 }
 
 function siguienteMazo () {
   const mazo = document.getElementsByClassName('mazo')
-  if (mazo[2].style.display !== 'flex') {
+  if (mazo[2].style.display !== 'grid') {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) + 1
     mazoActual.textContent = nuevoMazo
-    mazo[nuevoMazo - 1].style.display = 'flex'
+    mazo[nuevoMazo - 1].style.display = 'grid'
     mazo[nuevoMazo - 2].style.display = 'none'
   }
 }
