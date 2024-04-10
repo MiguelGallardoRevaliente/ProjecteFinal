@@ -285,7 +285,7 @@ app.post('/forgot', async (req, res) => {
   const request = {
     to: email,
     subject: 'Recuperación de contraseña',
-    text: `Change your password in the following link: http://localhost:1234/change?id=${users[0].id}`
+    text: `Change your password in the following link: http://13.53.190.253/change?id=${users[0].id}`
   }
   sendEmail(request, response)
   return res.status(200).json({ message: 'changed' })
@@ -293,6 +293,7 @@ app.post('/forgot', async (req, res) => {
 
 app.post('/change-password', async (req, res) => {
   const { id, newPassword, newPasswordR } = req.body
+  console.log(id)
   if (newPassword !== newPasswordR) {
     return res.status(200).json({ message: 'samePwd' })
   }
