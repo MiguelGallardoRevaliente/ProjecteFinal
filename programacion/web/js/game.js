@@ -90,3 +90,14 @@ const setProfilePicture = (event) => {
     .then(response => response.json())
     .then(data => console.log(data))
 }
+
+function mazoAtras () {
+  const mazo = document.getElementsByClassName('mazo')
+  if (mazo[0].style.display !== 'block') {
+    const mazoActual = document.getElementsByClassName('mazoActual')[0]
+    const nuevoMazo = parseInt(mazoActual.textContent) - 1
+    mazoActual.textContent = nuevoMazo
+    mazo[nuevoMazo].style.display = 'block'
+    mazo[nuevoMazo - 1].style.display = 'none'
+  }
+}
