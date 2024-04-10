@@ -547,6 +547,10 @@ header .config a {
     display: flex;
 }
 
+.mazo {
+    display: none;
+}
+
 .yourCards .carta {
     background-size: contain;
     background-repeat: no-repeat;

@@ -97,7 +97,18 @@ function mazoAtras () {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) - 1
     mazoActual.textContent = nuevoMazo
-    mazo[nuevoMazo].style.display = 'block'
+    mazo[nuevoMazo].style.display = 'flex'
     mazo[nuevoMazo - 1].style.display = 'none'
+  }
+}
+
+function siguienteMazo () {
+  const mazo = document.getElementsByClassName('mazo')
+  if (mazo[2].style.display !== 'block') {
+    const mazoActual = document.getElementsByClassName('mazoActual')[0]
+    const nuevoMazo = parseInt(mazoActual.textContent) + 1
+    mazoActual.textContent = nuevoMazo
+    mazo[nuevoMazo - 1].style.display = 'block'
+    mazo[nuevoMazo - 2].style.display = 'none'
   }
 }
