@@ -121,7 +121,10 @@ app.get('/getDecks', async (req, res) => {
     const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ?', [id])
     const [mazoCartas] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?', [decks[0].id])
     console.log(mazoCartas)
-    const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [mazoCartas.id_carta])
+    let [cartas] = []
+    if (mazoCartas.length > 0) {
+      [cartas] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [mazoCartas.id_carta])
+    }
     const datos = {
       decks,
       cartas,
