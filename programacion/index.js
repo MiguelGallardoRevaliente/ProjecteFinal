@@ -302,7 +302,7 @@ app.post('/change-password', async (req, res) => {
   console.log(user[0])
   const result = await bcrypt.compare(newPassword, user[0].password)
 
-  if (!result) {
+  if (result) {
     return res.status(200).json({ message: 'pswAlreadyExists' })
   }
 
