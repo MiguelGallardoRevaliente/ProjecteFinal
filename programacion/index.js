@@ -224,6 +224,7 @@ app.post('/login', async (req, res) => {
     const { usernameLogin, passwordLogin } = req.body
     let validado = false
     const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log, password FROM users WHERE user = ?', [usernameLogin])
+    console.log(rows[0])
     bcrypt.compare(passwordLogin, rows[0].password)
       .then(result => {
         if (result) {
