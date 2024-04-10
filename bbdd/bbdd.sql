@@ -58,6 +58,14 @@ CREATE TABLE IF NOT EXISTS ataques (
     duracion INT
 );
 
+CREATE TABLE IF NOT EXISTS mazos (
+	id INT PRIMARY KEY auto_increment,
+    nombre VARCHAR(255) DEFAULT 'Mazo',
+    numero INT,
+    id_user BINARY(16),
+    FOREIGN KEY (id_user) REFERENCES user(id)
+);
+
 INSERT INTO users (nombre, apellidos, user, password, email)
 	VALUES ('Miguel', 'Gallardo Revaliente', 'Chimpy', 'chimpy123', 'migallre@gmail.com');
 
