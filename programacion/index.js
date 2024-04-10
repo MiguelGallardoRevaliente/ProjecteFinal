@@ -298,9 +298,9 @@ app.post('/change-password', async (req, res) => {
     return res.status(200).json({ message: 'samePwd' })
   }
 
-  const { password } = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-  console.log(password)
-  const result = await bcrypt.compare(newPassword, password)
+  const [user] = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+  console.log(user[0])
+  const result = await bcrypt.compare(newPassword, user[0].password)
 
   if (!result) {
     return res.status(200).json({ message: 'pswAlreadyExists' })
