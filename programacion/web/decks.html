@@ -30,6 +30,23 @@
                 const cartas = data.arrayCartasDeck
                 console.log(decks)
                 console.log(cartas)
+                decks.forEach(deck => {
+                    const mazo = document.createElement('div')
+                    mazo.classList.add('mazo')
+                    cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
+                    for (let i = 0; i < 8; i++) {
+                        const carta = document.createElement('div')
+                        carta.classList.add('carta')
+                        if (cartas[i]) {
+                            const img = document.createElement('img')
+                            img.src = cartas[i].img
+                            img.alt = cartas[i].nombre
+                            carta.appendChild(img)
+                        }
+                        mazo.appendChild(carta)
+                    }
+                    allMazos.appendChild(mazo)
+                })
             })
         }
 
@@ -70,36 +87,6 @@
                 <h1>DECKS</h1>
             </div>
             <div class="allMazos">
-                <div class="mazo" style="display: grid;">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="mazo">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="mazo">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
             </div>
             <div class="pasar">
                 <button onclick="mazoAtras()"> < </button>
