@@ -26,6 +26,7 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 const decks = data.decks
                 const cartas = data.arrayCartasDeck
                 console.log(decks)
@@ -48,6 +49,12 @@
                     }
                     allMazos.appendChild(mazo)
                 })
+                const mazos = document.getElementsByClassName('mazo')
+                for (let i = 0; i < mazos.length; i++) {
+                    if (i + 1 !== 0) {
+                        mazos[i].style.display = 'none'
+                    }
+                }
             })
         }
 
