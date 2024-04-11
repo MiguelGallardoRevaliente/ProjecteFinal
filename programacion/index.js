@@ -134,11 +134,13 @@ app.get('/getDecks', async (req, res) => {
           const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?;', [carta.id_carta, deck.id])
           console.log(mazoCarta)
 
-          const cartaObj = {
-            cartas,
-            mazoCarta: mazoCarta[0].id_mazo
+          if (mazoCarta.length > 0) {
+            const cartaObj = {
+              cartas,
+              mazoCarta: mazoCarta[0].id_mazo
+            }
+            arrayCartasDeck.push(cartaObj)
           }
-          arrayCartasDeck.push(cartaObj)
         }
       }
     }
