@@ -126,12 +126,12 @@ app.get('/getDecks', async (req, res) => {
     const idCartas = mazoCartas.map(item => item.id_carta).filter(Boolean)
     console.log('Francisco: ' + idCartas)
     console.log('Pacheco: ' + mazoCartas)
-    mazoCartas.forEach(async (carta) => {
+    await Promise.all(mazoCartas.forEach(async (carta) => {
       console.log('Manolo: ' + carta.id_carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
       console.log('Paco: ' + cartas)
-      await arrayCartasDeck.push(cartas)
-    })
+      arrayCartasDeck.push(cartas)
+    }))
     console.log('Eustaquio: ' + arrayCartasDeck)
     const datos = {
       decks,
