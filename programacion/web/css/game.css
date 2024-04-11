@@ -649,7 +649,7 @@ header .config a {
     animation: appearFromTop 0.5s ease forwards;  
 }
 
-.resultado_sobre .salir{
+.salir{
     position: absolute;
     top: 70%;
     left: 50%;
@@ -657,7 +657,7 @@ header .config a {
     
 }
 
-.resultado_sobre .salir i{
+.salir i{
     font-size: 50px;
     color: white;
     cursor: pointer;
