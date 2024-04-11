@@ -41,8 +41,8 @@
                         carta.classList.add('carta')
                         if (cartasMazo[i]) {
                             const img = document.createElement('img')
-                            img.src = cartasMazo[i].img
-                            img.alt = cartasMazo[i].nombre
+                            img.src = cartasMazo[i].cartas[0].foto
+                            img.alt = cartasMazo[i].cartas[0].nombre
                             carta.appendChild(img)
                         }
                         mazo.appendChild(carta)
