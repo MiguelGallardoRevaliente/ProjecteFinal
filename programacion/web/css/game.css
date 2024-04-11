@@ -561,7 +561,7 @@ header .config a {
 }
 
 .yourCards .carta:hover {
-    scale: 1.15;
+    scale: 1.10;
 }
 
 
@@ -616,7 +616,7 @@ header .config a {
     height: 488px;
     position: relative;
     transition: all 0.2s;
-    box-shadow: 0px 0px 15px black;
+    box-shadow: 5px 5px 10px black;
 
 }
 
