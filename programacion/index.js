@@ -129,6 +129,7 @@ app.get('/getDecks', async (req, res) => {
     for (const mazoCartas of mazoCartasArray) {
       for (const carta of mazoCartas) {
         for (const deck of decks) {
+          console.log(deck)
           const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
           const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?;', [carta.id_carta, deck.id])
           console.log(mazoCarta)
