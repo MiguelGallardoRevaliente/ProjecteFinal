@@ -548,6 +548,7 @@ header .config a {
     height: 300px;
     background: #3d3d3d;
     display: flex;
+    cursor: pointer;
 }
 
 .yourCards .carta {
