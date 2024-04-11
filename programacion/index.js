@@ -133,7 +133,7 @@ app.get('/getDecks', async (req, res) => {
 
         const cartaObj = {
           cartas,
-          mazoCarta: mazoCarta[0].id_mazo_carta
+          mazoCarta: mazoCarta[0].id_mazo
         }
         arrayCartasDeck.push(cartaObj)
       }
