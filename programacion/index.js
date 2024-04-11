@@ -130,6 +130,7 @@ app.get('/getDecks', async (req, res) => {
       for (const carta of mazoCartas) {
         const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
         const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ?;', [carta.id_carta])
+        console.log(mazoCarta)
 
         const cartaObj = {
           cartas,
