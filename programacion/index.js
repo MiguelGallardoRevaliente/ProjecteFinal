@@ -125,8 +125,8 @@ app.get('/getDecks', async (req, res) => {
     console.log(idCartas)
     console.log(mazoCartas)
     mazoCartas.forEach(async (carta) => {
-      console.log(carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
+      console.log(cartas)
       arrayCartasDeck.push(cartas)
     })
     console.log(arrayCartasDeck)
@@ -312,7 +312,7 @@ app.post('/forgot', async (req, res) => {
   const request = {
     to: email,
     subject: 'Recuperación de contraseña',
-    text: `Change your password in the following link: http://13.53.190.253/change?id=${users[0].id}`
+    text: `Change your password in the following link: http://13.53.190.234/change?id=${users[0].id}`
   }
   sendEmail(request, response)
   return res.status(200).json({ message: 'changed' })
