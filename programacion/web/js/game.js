@@ -91,6 +91,18 @@ const setProfilePicture = (event) => {
     .then(data => console.log(data))
 }
 
+function getCartas (mazoActual) {
+  const cartasNoMazo = document.getElementById('cartas-no-mazo')
+  cartasNoMazo.style.display = 'grid'
+  fetch(`/getCardsDeck?mazo=${mazoActual}`, {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+}
+
 function mazoAtras () {
   const mazo = document.getElementsByClassName('mazo')
   if (mazo[0].style.display !== 'grid') {
