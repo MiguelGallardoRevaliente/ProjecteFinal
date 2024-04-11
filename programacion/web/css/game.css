@@ -47,7 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
-    z-index: 100;
+    z-index: 00;
 }
 
 header .logo {
@@ -250,7 +250,7 @@ header .config a {
 
 #information {
     font-family: "koho", sans-serif;
-    margin-left: 280px;
+    margin-left: 300px;
     padding: 0px 0px;
     font-size: 30px;
     border: none;
