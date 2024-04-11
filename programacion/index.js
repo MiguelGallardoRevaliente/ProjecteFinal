@@ -125,7 +125,7 @@ app.get('/getDecks', async (req, res) => {
     console.log(idCartas)
     console.log(mazoCartas)
     mazoCartas.forEach(async (carta) => {
-      console.log(carta.id_carta)
+      console.log('Manolo: ' + carta.id_carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
       console.log(cartas)
       arrayCartasDeck.push(cartas)
