@@ -119,13 +119,8 @@ app.get('/getDecks', async (req, res) => {
     const arrayCartasDeck = []
     const id = req.query.id
     const [mazoActual] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    console.log(mazoActual)
     const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [id, mazoActual[0].mazo_seleccionado])
-    console.log(decks)
     const [mazoCartas] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?', [decks[0].id])
-    const idCartas = mazoCartas.map(item => item.id_carta).filter(Boolean)
-    console.log('Francisco: ' + idCartas)
-    console.log('Pacheco: ' + mazoCartas)
     await Promise.all(mazoCartas.forEach(async (carta) => {
       console.log('Manolo: ' + carta.id_carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
