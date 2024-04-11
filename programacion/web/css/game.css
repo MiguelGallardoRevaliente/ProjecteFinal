@@ -47,6 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
+    z-index: 100;
 }
 
 header .logo {
@@ -450,6 +451,7 @@ header .config a {
     font-size: 40px;
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 #inventory .container .links div button i,
