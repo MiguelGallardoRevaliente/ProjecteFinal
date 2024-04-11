@@ -163,8 +163,10 @@ app.get('/getCardsDeck', async (req, res) => {
   try {
     const mazo = req.query.mazo
     const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo])
+    console.log(cartasMazo)
     const cartasMazoId = cartasMazo.map(carta => carta.id_carta)
-    const [cards] = await connection.execute('SELECT * FROM cartas WHERE id NOT IN (?);', [cartasMazoId])
+    console.log(cartasMazoId)
+    const [cards] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartasMazoId])
     return res.status(200).json(cards)
   } catch (err) {
     console.error(err)
