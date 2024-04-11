@@ -162,13 +162,19 @@ app.get('/getDecks', async (req, res) => {
 app.get('/getCardsDeck', async (req, res) => {
   try {
     const mazo = req.query.mazo
+
     const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo])
     console.log(cartasMazo)
+
     const cartasMazoId = cartasMazo.map(carta => carta.id_carta)
     console.log(cartasMazoId)
+
     const [cards] = await connection.execute('SELECT * FROM cartas;')
-    console.log(cards)
-    return res.status(200).json(cards)
+
+    const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
+    console.log(filteredCards)
+
+    return res.status(200).json(filteredCards)
   } catch (err) {
     console.error(err)
   }
