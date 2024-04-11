@@ -130,7 +130,7 @@ app.get('/getDecks', async (req, res) => {
       console.log('Manolo: ' + carta.id_carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
       console.log('Paco: ' + cartas)
-      arrayCartasDeck.push(cartas)
+      await arrayCartasDeck.push(cartas)
     })
     console.log('Eustaquio: ' + arrayCartasDeck)
     const datos = {
