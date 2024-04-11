@@ -741,19 +741,27 @@ header .config a {
     width: 120px;
     height: 40px;
     display: flex;
-    background: transparent;
     border: none;
     font-size: 25px;
-    box-shadow: 1px 3px 5px black;
+    box-shadow: 0px 4px 1px white;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: #d30000;
+    background-color: #4386B7;
     color: white;
-    margin-top: 5%;
+    margin-top: 30px;
+    border-radius: 4px;
 
 }
 
+.sobres_god_divGeneral form button:hover {
+    background-color: #2f678f;
+}
+
+.sobres_god_divGeneral form button:active {
+    box-shadow: 0px 1px 1px white inset;
+    translate: translateY(4px);
+}
 
 /*Settings*/
 
