@@ -33,14 +33,15 @@
                 decks.forEach(deck => {
                     const mazo = document.createElement('div')
                     mazo.classList.add('mazo')
-                    cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
+                    const cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
+                    console.log(cartasMazo)
                     for (let i = 0; i < 8; i++) {
                         const carta = document.createElement('div')
                         carta.classList.add('carta')
-                        if (cartas[i]) {
+                        if (cartasMazo[i]) {
                             const img = document.createElement('img')
-                            img.src = cartas[i].img
-                            img.alt = cartas[i].nombre
+                            img.src = cartasMazo[i].img
+                            img.alt = cartasMazo[i].nombre
                             carta.appendChild(img)
                         }
                         mazo.appendChild(carta)
