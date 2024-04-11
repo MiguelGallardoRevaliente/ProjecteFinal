@@ -125,13 +125,12 @@ app.get('/getDecks', async (req, res) => {
       const [mazoCartas2] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?;', [deck.id])
       mazoCartasArray.push(mazoCartas2)
     }
-    console.log(mazoCartasArray)
+
     for (const mazoCartas of mazoCartasArray) {
       for (const deck of decks) {
         for (const carta of mazoCartas) {
           const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
           const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?;', [carta.id_carta, deck.id])
-          console.log(mazoCarta)
 
           if (mazoCarta.length > 0) {
             const cartaId = cartas[0].id
@@ -148,7 +147,7 @@ app.get('/getDecks', async (req, res) => {
         }
       }
     }
-    console.log(arrayCartasDeck)
+
     const datos = {
       decks,
       arrayCartasDeck,
