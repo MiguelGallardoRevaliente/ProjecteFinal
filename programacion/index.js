@@ -343,6 +343,7 @@ app.post('/change-password', async (req, res) => {
 app.post('/start', async (req, res) => {
   try {
     const { username, password } = req.body
+    console.log(username + ' / ' + password)
     await connection.execute(
       'UPDATE users SET first_log = false WHERE user = ? AND password = ?', [username, password]
     )
