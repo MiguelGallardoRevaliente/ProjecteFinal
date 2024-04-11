@@ -26,10 +26,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 const decks = data.decks
-                const cartas = data.cartas
-                
+                const cartas = data.arrayCartasDeck
+                console.log(decks)
+                console.log(cartas)
             })
         }
 
