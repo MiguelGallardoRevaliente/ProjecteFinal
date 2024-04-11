@@ -122,8 +122,8 @@ app.get('/getDecks', async (req, res) => {
     const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ?', [id])
     const [mazoCartas] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?', [decks[0].id])
     const idCartas = mazoCartas.map(item => item.id_carta).filter(Boolean)
-    console.log(idCartas)
-    console.log(mazoCartas)
+    console.log('Francisco: ' + idCartas)
+    console.log('Pacheco: ' + mazoCartas)
     mazoCartas.forEach(async (carta) => {
       console.log('Manolo: ' + carta.id_carta)
       const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
