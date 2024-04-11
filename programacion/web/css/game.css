@@ -411,7 +411,7 @@ header .config a {
     position: absolute;
     top: 0px;
     left: 0px;
-    margin-left: 300px;
+    margin-left: 285px;
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
@@ -429,6 +429,7 @@ header .config a {
     clip-path: polygon(0 0, 66% 0, 100% 100%, 33% 100%);
     background-color: #000000;
     margin-right: -50px;
+    cursor: pointer;
 }
 
 #inventory .container .links div:hover,
