@@ -139,7 +139,14 @@ app.get('/getDecks', async (req, res) => {
               cartas,
               mazoCarta: mazoCarta[0].id_mazo
             }
-            arrayCartasDeck.push(cartaObj)
+
+            const index = arrayCartasDeck.findIndex(item =>
+              item.cartas === cartaObj.cartas && item.mazoCarta === cartaObj.mazoCarta
+            )
+
+            if (index === -1) {
+              arrayCartasDeck.push(cartaObj)
+            }
           }
         }
       }
