@@ -121,10 +121,10 @@ app.get('/getDecks', async (req, res) => {
     const [mazoActual] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
     const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ?;', [id])
     const mazoCartasArray = []
-    decks.forEach(async (deck) => {
+    for (const deck of decks) {
       const [mazoCartas2] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?;', [deck.id])
       mazoCartasArray.push(mazoCartas2)
-    })
+    }
     console.log(mazoCartasArray)
     const [mazoCartas] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?;', [decks[0].id])
     for (const carta of mazoCartas) {
