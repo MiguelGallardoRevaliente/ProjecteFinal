@@ -631,10 +631,12 @@ header .config a {
 
 .resultado_sobre {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 20px;
     align-items: center;
-    margin-top: 5%;
+    height: 100vh;
+    padding: 0px 50px;
+    place-items: center;
 }
 
 .resultado_sobre .carta {
@@ -645,6 +647,21 @@ header .config a {
     position: relative;
     transition: all 0.2s;
     animation: appearFromTop 0.5s ease forwards;  
+}
+
+.resultado_sobre .salir{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.resultado_sobre .salir i{
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+
 }
 
 @keyframes appearFromTop {
