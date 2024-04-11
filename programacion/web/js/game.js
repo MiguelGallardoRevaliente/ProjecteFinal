@@ -45,7 +45,8 @@ function mostrarSobreGod () {
   sobresGod.style.display = 'block'
 }
 
-function mostrarResultadoSobre () {
+function salirResultadoSobre () {
+  innerHTML = ''
   resultadoSobre.style.display = 'none'
 }
 
