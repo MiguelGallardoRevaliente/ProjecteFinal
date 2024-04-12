@@ -160,6 +160,13 @@ function mazoAtras () {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) - 1
     mazoActual.textContent = nuevoMazo
+    fetch('/nuevoMazo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nuevoMazo, id: localStorage.getItem('id') })
+    })
     mazo[nuevoMazo - 1].style.display = 'grid'
     mazo[nuevoMazo].style.display = 'none'
   }
