@@ -590,6 +590,7 @@ header .config a {
 
 }
 
+
 #mazos .container .allMazos .mazo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -618,16 +619,22 @@ header .config a {
 
 #cartas-no-mazo {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #232323;
+}
+
+#cartas-no-mazo .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     place-items: center;
-    width: 1300px;
-    height: 1000px;
     background: #232323;
+    width: 1500px;
+    height: 1000px;
 }
 
 #chests .allChests {

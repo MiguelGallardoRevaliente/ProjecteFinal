@@ -100,7 +100,9 @@ const setProfilePicture = (event) => {
 
 function getCartas (mazoActual) {
   const cartasNoMazo = document.getElementById('cartas-no-mazo')
-  cartasNoMazo.style.display = 'grid'
+  const cartas = document.getElementsByClassName('cartas')[0]
+  cartasNoMazo.style.display = 'flex'
+  cartas.innerHTML = ''
   fetch(`/getCardsDeck?mazo=${mazoActual}`, {
     method: 'GET'
   })
