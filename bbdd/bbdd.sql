@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     user VARCHAR(255) NOT NULL,
     password TEXT NOT NULL,
     email VARCHAR(255) NOT NULL,
-    oro INT DEFAULT 0,
+    oro INT DEFAULT 1000,
     foto_perfil TEXT,
     mazo_seleccionado INT,
     first_log BOOL DEFAULT true
@@ -63,7 +63,15 @@ CREATE TABLE IF NOT EXISTS mazos (
     nombre VARCHAR(255) DEFAULT 'Mazo',
     numero INT,
     id_user BINARY(16),
-    FOREIGN KEY (id_user) REFERENCES user(id)
+    FOREIGN KEY (id_user) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS mazo_cartas (
+	id_mazo_carta INT PRIMARY KEY auto_increment,
+	id_mazo INT,
+    id_carta INT,
+    FOREIGN KEY (id_mazo) REFERENCES mazos(id),
+    FOREIGN KEY (id_carta) REFERENCES cartas(id)
 );
 
 INSERT INTO users (nombre, apellidos, user, password, email)
