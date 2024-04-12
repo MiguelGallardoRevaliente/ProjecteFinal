@@ -140,7 +140,7 @@ function getCartas (mazoActual) {
 }
 
 function guardarCarta (carta, id, mazoActual) {
-  console.log(carta)
+  console.log('Carta', carta)
   fetch('/guardarCarta', {
     method: 'POST',
     headers: {
