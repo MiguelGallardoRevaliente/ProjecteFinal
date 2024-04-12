@@ -47,7 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
-    z-index: 00;
+    z-index: 1;
 }
 
 header .logo {
@@ -407,16 +407,16 @@ header .config a {
 }
 
 #mazos .container{
-    margin-left: 0% !important;
-
+    margin: 0% !important;
+    position: relative;
 }
 
 #inventory .container .links,
 #chests .container .links,
 #mazos .container .links {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: -70px;
+    left: -390px;
     margin-left: 300px;
     display: flex;
     align-items: center;
@@ -619,12 +619,13 @@ header .config a {
 
 #cartas-no-mazo {
     position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: #232323;
 }
 
 #cartas-no-mazo .cartas {
@@ -634,7 +635,7 @@ header .config a {
     place-items: center;
     background: #232323;
     width: 1500px;
-    height: 1000px;
+    height: 800px;
 }
 
 #chests .allChests {
