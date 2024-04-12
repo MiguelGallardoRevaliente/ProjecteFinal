@@ -421,6 +421,16 @@ app.post('/guardarCarta', async (req, res) => {
     console.log(idCartaMazo)
     console.log(mazoActual)
 
+    if (idCartaMazo === 0) {
+      await connection.execute(
+        'INSERT INTO mazo_cartas (id_mazo, id_carta) VALUES (?, ?)', [mazoActual, idCarta]
+      )
+    } else {
+      await connection.execute(
+        'UPDATE mazo_cartas SET id_carta = ? WHERE id = ? AND id_mazo = ?', [idCarta, idCartaMazo, mazoActual]
+      )
+    }
+
     return res.status(200).json({ message: 'updated' })
   } catch (err) {
     console.error(err)
