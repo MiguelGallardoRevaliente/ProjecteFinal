@@ -413,10 +413,10 @@ app.post('/changeProfilePicture', async (req, res) => {
 
 app.post('/guardarCarta', async (req, res) => {
   try {
-    // const idCarta = req.body.idCarta
+    const idCarta = req.body.idCarta
     const mazoActual = req.body.mazoActual
 
-    console.log(mazoActual)
+    console.log(idCarta)
 
     return res.status(200).json({ message: 'updated' })
   } catch (err) {

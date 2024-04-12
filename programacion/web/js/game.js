@@ -116,7 +116,7 @@ function getCartas (mazoActual) {
         const cardDiv = document.createElement('div')
         cardDiv.className = 'carta'
         cardDiv.style.backgroundImage = `url(${card.foto})`
-        cardDiv.setAttribute('onclick', `guardarCarta(this, ${card.id}, ${mazoActual})`)
+        cardDiv.setAttribute('onclick', `guardarCarta(${card.id}, ${mazoActual})`)
 
         const nombreCarta = document.createElement('p')
         nombreCarta.className = 'nombreCarta'
@@ -139,14 +139,13 @@ function getCartas (mazoActual) {
     })
 }
 
-function guardarCarta (carta, id, mazoActual) {
-  console.log('Carta', carta)
+function guardarCarta (idCarta, mazoActual) {
   fetch('/guardarCarta', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ idCarta: id, mazoActual })
+    body: JSON.stringify({ idCarta, mazoActual })
   })
     .then(response => response.json())
     .then(data => {
