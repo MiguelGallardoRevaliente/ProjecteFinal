@@ -109,19 +109,32 @@ function getCartas (mazoActual) {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      data.forEach(element => {
-        const card = element
-        const carta = document.createElement('div')
-        carta.className = 'carta'
-        carta.style.backgroundImage = `url(${card.url})`
-        const nombre = document.createElement('p')
-        nombre.textContent = card.nombre
+      const length = data.filteredCards.length
+      for (let i = 0; i < length; i++) {
+        const card = data.filteredCards[i]
+
+        const cardDiv = document.createElement('div')
+        cardDiv.className = 'carta'
+        cardDiv.style.backgroundImage = `url(${card.foto})`
+
+        const nombreCarta = document.createElement('p')
+        nombreCarta.className = 'nombreCarta'
+        nombreCarta.innerHTML = card.nombre
+
         const ataqueVida = document.createElement('p')
-        ataqueVida.textContent = `${card.ataque}/${card.vida}`
-        carta.appendChild(nombre)
-        carta.appendChild(ataqueVida)
-        cartas.appendChild(carta)
-      })
+        ataqueVida.className = 'ataque-vida'
+        ataqueVida.innerHTML = card.ataque + '/' + card.vida
+
+        const ataqueEspecial = document.createElement('p')
+        ataqueEspecial.className = 'ataque-especial'
+        const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
+        ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+        cardDiv.appendChild(nombreCarta)
+        cardDiv.appendChild(ataqueEspecial)
+        cardDiv.appendChild(ataqueVida)
+        cartas.appendChild(cardDiv)
+      }
     })
 }
 

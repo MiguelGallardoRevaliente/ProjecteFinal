@@ -172,14 +172,15 @@ app.get('/getCardsDeck', async (req, res) => {
     const [cards] = await connection.execute('SELECT * FROM cartas;')
 
     const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
-    console.log(filteredCards)
 
     const ataquesId = filteredCards.map(card => card.id_ataque)
+    console.log(ataquesId)
 
     const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [ataquesId])
+    console.log(ataques)
 
     const data = {
-      cartas: filteredCards,
+      filteredCards,
       ataques
     }
 
