@@ -54,6 +54,9 @@
                 for (let i = 0; i < mazos.length; i++) {
                     if (i + 1 !== data.mazoActual) {
                         mazos[i].style.display = 'none'
+                    } else {
+                        const mazoActualText = document.getElementsByClassName('mazoActual')[0]
+                        mazoActualText.innerHTML = data.mazoActual
                     }
                 }
             })
@@ -93,7 +96,7 @@
             </div>
             <div class="pasar">
                 <button onclick="mazoAtras()"> < </button>
-                <p class="mazoActual">1</p>
+                <p class="mazoActual"></p>
                 <button onclick="siguienteMazo()"> > </button>
             </div>
             <div id="cartas-no-mazo">
