@@ -414,14 +414,9 @@ app.post('/changeProfilePicture', async (req, res) => {
 app.post('/guardarCarta', async (req, res) => {
   try {
     // const idCarta = req.body.idCarta
-    const idUser = req.body.idUser
     const mazoActual = req.body.mazoActual
 
-    console.log(idUser)
     console.log(mazoActual)
-
-    const [mazoId] = await connection.execute('SELECT * FROM mazos WHERE numero = ? AND BIN_TO_UUID(id_user) = ?;', [mazoActual, idUser])
-    console.log(mazoId)
 
     return res.status(200).json({ message: 'updated' })
   } catch (err) {
