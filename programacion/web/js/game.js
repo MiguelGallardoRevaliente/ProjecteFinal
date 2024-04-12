@@ -155,7 +155,8 @@ function guardarCarta (idCarta, mazoActual, idCartaMazo) {
 
 function mazoAtras () {
   const mazo = document.getElementsByClassName('mazo')
-  if (mazo[0].textContent !== '1') {
+  const mazoActual = document.getElementsByClassName('mazoActual')[0]
+  if (mazoActual.textContent !== '1') {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) - 1
     mazoActual.textContent = nuevoMazo
@@ -166,7 +167,8 @@ function mazoAtras () {
 
 function siguienteMazo () {
   const mazo = document.getElementsByClassName('mazo')
-  if (mazo[2].style.display !== 'grid') {
+  const mazoActual = document.getElementsByClassName('mazoActual')[0]
+  if (mazoActual.textContent !== '3') {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) + 1
     mazoActual.textContent = nuevoMazo
