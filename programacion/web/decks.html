@@ -32,7 +32,8 @@
                 console.log(decks)
                 console.log(cartas)
                 decks.forEach(deck => {
-                    const deckName = deck.nombre + ' ' + data.mazoActual
+                    const deckName = document.createElement('h3') 
+                    deckName.textContent = nombre + ' ' + data.mazoActual
                     const mazo = document.createElement('div')
                     mazo.classList.add('mazo')
                     const cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
