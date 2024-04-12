@@ -176,15 +176,18 @@ app.get('/getCardsDeck', async (req, res) => {
     const ataquesId = filteredCards.map(card => card.id_ataque)
     console.log(ataquesId)
 
-    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [ataquesId])
-    console.log(ataques)
+    const ataquesPromises = filteredCards.map(async (card) => {
+      const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card.id])
+      return ataques
+    })
 
-    const data = {
+    const ataques = await Promise.all(ataquesPromises)
+    const datos = {
       filteredCards,
       ataques
     }
 
-    return res.status(200).json(data)
+    return res.status(200).json(datos)
   } catch (err) {
     console.error(err)
   }
