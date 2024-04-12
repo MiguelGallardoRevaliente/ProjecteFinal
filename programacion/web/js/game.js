@@ -160,6 +160,8 @@ function mazoAtras () {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) - 1
     mazoActual.textContent = nuevoMazo
+    const deckName = document.getElementById('deckName')
+    deckName.textContent = 'Deck ' + mazoActual
     fetch('/nuevoMazo', {
       method: 'POST',
       headers: {
@@ -179,6 +181,8 @@ function siguienteMazo () {
     const mazoActual = document.getElementsByClassName('mazoActual')[0]
     const nuevoMazo = parseInt(mazoActual.textContent) + 1
     mazoActual.textContent = nuevoMazo
+    const deckName = document.getElementById('deckName')
+    deckName.textContent = 'Deck ' + mazoActual
     fetch('/nuevoMazo', {
       method: 'POST',
       headers: {
