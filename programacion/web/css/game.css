@@ -617,12 +617,15 @@ header .config a {
 }
 
 #cartas-no-mazo {
-    align-self: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     place-items: center;
-    height: 70%;
+    height: 800px;
     background: #232323;
 }
 
