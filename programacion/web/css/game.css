@@ -532,39 +532,13 @@ header .config a {
 
 /*wrap*/
 #inventory .container .allcards .yourCards {
-
+    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     place-items: center;
     margin-top: 5%;
-
-}
-
-#mazos .container .allMazos .mazo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin: auto;
-    gap: 20px;
-    width: 900px;
-    align-items: center;
-    margin-top: 5%;
-    background: #232323;
-    padding: 20px;
-    box-shadow: 0px 0px 15px black inset;
-}
-
-#mazos .container .allMazos .mazo div {
-    width: 210px;
-    height: 300px;
-    background: #3d3d3d;
-    display: flex;
-    cursor: pointer;
-}
-
-#mazos .container .allMazos .mazo div:hover{
-    background: #4d4d4d;
-
+    
 }
 
 .yourCards .carta {
@@ -614,6 +588,42 @@ header .config a {
     left: 40px;
     max-width: 270px;
 
+}
+
+#mazos .container .allMazos .mazo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: auto;
+    gap: 20px;
+    width: 900px;
+    align-items: center;
+    margin-top: 5%;
+    background: #232323;
+    padding: 20px;
+    box-shadow: 0px 0px 15px black inset;
+}
+
+#mazos .container .allMazos .mazo div {
+    width: 210px;
+    height: 300px;
+    background: #3d3d3d;
+    display: flex;
+    cursor: pointer;
+}
+
+#mazos .container .allMazos .mazo div:hover{
+    background: #4d4d4d;
+
+}
+
+#cartas-no-mazo {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    place-items: center;
+    height: 70%;
+    background: #232323;
 }
 
 #chests .allChests {
