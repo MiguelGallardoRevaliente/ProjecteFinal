@@ -109,6 +109,16 @@ function getCartas (mazoActual) {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      data.forEach(card => {
+        const carta = document.createElement('div')
+        carta.className = 'carta'
+        carta.style.backgroundImage = `url(${card.url})`
+        const nombre = document.createElement('p')
+        nombe.textContent = card.nombre
+        const ataqueVida = document.createElement('p')
+        ataqueVida.textContent = `${card.ataque}/${card.vida}`
+        cartas.appendChild(carta)
+      })
     })
 }
 

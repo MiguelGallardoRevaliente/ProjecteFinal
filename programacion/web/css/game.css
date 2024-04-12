@@ -412,7 +412,17 @@ header .config a {
 }
 
 #inventory .container .links,
-#chests .container .links,
+#chests .container .links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 300px;
+    display: flex;
+    align-items: center;
+    background-color: #3d3d3d;
+
+}
+
 #mazos .container .links {
     position: absolute;
     top: -70px;
@@ -421,7 +431,6 @@ header .config a {
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
-
 }
 
 #inventory .container .links div,
