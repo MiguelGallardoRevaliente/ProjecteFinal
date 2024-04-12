@@ -437,6 +437,19 @@ app.post('/guardarCarta', async (req, res) => {
   }
 })
 
+app.post('/nuevoMazo', async (req, res) => {
+  try {
+    const id = req.body.id
+    const nuevoMazo = req.body.nuevoMazo
+    await connection.execute(
+      'UPDATE users SET mazo_seleccionado = ? WHERE BIN_TO_UUID(id) = ?', [nuevoMazo, id]
+    )
+    return res.status(200).json({ message: 'updated' })
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 
