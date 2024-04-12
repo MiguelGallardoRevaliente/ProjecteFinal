@@ -406,6 +406,11 @@ header .config a {
     margin: 0px 70px;
 }
 
+#mazos .container{
+    margin-left: 0% !important;
+
+}
+
 #inventory .container .links,
 #chests .container .links,
 #mazos .container .links {
@@ -476,6 +481,10 @@ header .config a {
     gap: 0px;
 }
 
+#mazos .container .top{
+    margin-left: 5% !important;
+}
+
 #inventory .container .top h1,
 #chests .container .top h1,
 #mazos .container .top h1 {
@@ -535,7 +544,9 @@ header .config a {
 #mazos .container .allMazos .mazo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: auto;
     gap: 20px;
+    width: 900px;
     align-items: center;
     margin-top: 5%;
     background: #232323;
@@ -544,11 +555,16 @@ header .config a {
 }
 
 #mazos .container .allMazos .mazo div {
-    width: 200px;
+    width: 210px;
     height: 300px;
     background: #3d3d3d;
     display: flex;
     cursor: pointer;
+}
+
+#mazos .container .allMazos .mazo div:hover{
+    background: #4d4d4d;
+
 }
 
 .yourCards .carta {
