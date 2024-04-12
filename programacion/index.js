@@ -413,7 +413,7 @@ app.post('/changeProfilePicture', async (req, res) => {
 
 app.post('/guardarCarta', async (req, res) => {
   try {
-    const idCarta = req.body.idCarta
+    const idCarta = req.body.idCarta || 0
     const mazoActual = req.body.mazoActual
 
     console.log(idCarta)
