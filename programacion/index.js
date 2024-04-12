@@ -164,17 +164,12 @@ app.get('/getCardsDeck', async (req, res) => {
     const mazo = req.query.mazo
 
     const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo])
-    console.log(cartasMazo)
 
     const cartasMazoId = cartasMazo.map(carta => carta.id_carta)
-    console.log(cartasMazoId)
 
     const [cards] = await connection.execute('SELECT * FROM cartas;')
 
     const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
-
-    const ataquesId = filteredCards.map(card => card.id_ataque)
-    console.log(ataquesId)
 
     const ataquesPromises = filteredCards.map(async (card) => {
       const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card.id])
