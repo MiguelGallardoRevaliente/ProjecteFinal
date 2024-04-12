@@ -640,7 +640,7 @@ header .config a {
     height: 800px;
 }
 
-#cartas-no-mazo .cartas {
+#cartas-no-mazo {
     display: none;
 }
 
