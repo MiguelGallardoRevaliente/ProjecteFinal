@@ -422,6 +422,9 @@ app.post('/guardarCarta', async (req, res) => {
     const idUser = req.body.idUser
     const mazoActual = req.body.mazoActual
 
+    console.log(idUser)
+    console.log(mazoActual)
+
     const [mazoId] = await connection.execute('SELECT id FROM mazos WHERE numero = ? AND id_user = UUID_TO_BIN(?);', [mazoActual, idUser])
     console.log(mazoId)
 
