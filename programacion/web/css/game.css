@@ -604,8 +604,7 @@ header .config a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
-    align-items: center;
-    margin-top: 5%;
+    place-items: center;
 
 }
 
