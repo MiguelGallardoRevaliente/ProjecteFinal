@@ -618,6 +618,7 @@ header .config a {
     position: relative;
     transition: all 0.2s;
     box-shadow: 5px 5px 10px black;
+    border-radius: 5px;
 
 }
 
