@@ -412,7 +412,7 @@ header .config a {
     position: absolute;
     top: 0px;
     left: 0px;
-    margin-left: 285px;
+    margin-left: 300px;
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
@@ -659,8 +659,8 @@ header .config a {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 40px 38px !important;
-    font-size: 18px !important;
+    margin: 22px 32px !important;
+    font-size: 15px !important;
     font-weight: 800;
     font-family: "Goldman", sans-serif;
 }
@@ -668,15 +668,15 @@ header .config a {
 .resultado_sobre .carta .ataque-especial{
     position: absolute;
     top: 75%;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    left: 40px;
-    max-width: 270px;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    left: 35px;
+    max-width: 240px;
 }
 
 .resultado_sobre .carta .nombreCarta{
     position: absolute;
-    top: 55%;
+    top: 56.5%;
     left: 30px;
     margin: 0px;
 }
