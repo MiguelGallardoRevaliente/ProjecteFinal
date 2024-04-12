@@ -176,7 +176,7 @@ app.get('/getCardsDeck', async (req, res) => {
     const ataquesId = filteredCards.map(card => card.id_ataque)
     console.log(ataquesId)
 
-    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [ataquesId])
+    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [ataquesId])
     console.log(ataques)
 
     const data = {
