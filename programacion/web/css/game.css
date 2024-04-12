@@ -415,7 +415,7 @@ header .config a {
 #chests .container .links {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -20px;
     margin-left: 300px;
     display: flex;
     align-items: center;
@@ -426,8 +426,7 @@ header .config a {
 #mazos .container .links {
     position: absolute;
     top: -70px;
-    left: -390px;
-    margin-left: 300px;
+    left: -90px;
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
