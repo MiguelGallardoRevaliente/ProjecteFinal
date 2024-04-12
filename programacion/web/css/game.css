@@ -617,6 +617,8 @@ header .config a {
 
 }
 
+/* CSS PARA EL DIV DONDE SE MUESTRAN LAS CARTAS CUANDO QUIERES PONER UNA EN EL MAZO */
+
 #cartas-no-mazo {
     position: absolute;
     top: 0;
@@ -637,6 +639,12 @@ header .config a {
     width: 1500px;
     height: 800px;
 }
+
+#cartas-no-mazo .cartas {
+    display: none;
+}
+
+/* CSS PARA EL DIV DONDE SE MUESTRAN LAS CARTAS CUANDO QUIERES PONER UNA EN EL MAZO */
 
 #chests .allChests {
     display: grid;
