@@ -32,6 +32,7 @@
                 console.log(decks)
                 console.log(cartas)
                 decks.forEach(deck => {
+                    const deckName = deck.nombre + ' ' + data.mazoActual
                     const mazo = document.createElement('div')
                     mazo.classList.add('mazo')
                     const cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
@@ -46,6 +47,7 @@
                             img.alt = cartasMazo[i].cartas[0].nombre
                             carta.appendChild(img)
                         }
+                        mazo.appendChild(deckName)
                         mazo.appendChild(carta)
                     }
                     allMazos.appendChild(mazo)
