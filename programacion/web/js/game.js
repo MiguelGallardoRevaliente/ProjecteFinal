@@ -195,8 +195,8 @@ function siguienteMazo () {
   }
 }
 
-function salirMostrarCartas (data) {
-  console.log(data)
+function salirMostrarCartas () {
+  const data = JSON.parse(localStorage.getItem('cartas'))
   let foundDuplicate = false
 
   if (data.length === 0) {
