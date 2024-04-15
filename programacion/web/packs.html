@@ -90,11 +90,32 @@
                         ataqueEspecial.innerHTML = textoAtaqueEspecial
 
                         if  (card.duplicate) {
+                            const divQuickSell = document.createElement('div')
                             const quickSell = document.createElement('button')
                             quickSell.innerHTML = 'Quick sell'
                             quickSell.id = 'quickSell'
                             quickSell.setAttribute('onclick', `quickSell(${card.carta.id})`)
-                            cardDiv.appendChild(quickSell)
+                            const divOro = document.createElement('div')
+                            divOro.className = 'divOro'
+                            const imgRubi = document.createElement('img')
+                            imgRubi.src = 'img/rubi.png'
+                            const precioQuickSell = document.createElement('p')
+                            if(card.carta.rareza === 5) {
+                                precioQuickSell.innerHTML = '10000'
+                            } else if (card.carta.rareza === 4) {
+                                precioQuickSell.innerHTML = '1000'
+                            } else if (card.carta.rareza === 3) {
+                                precioQuickSell.innerHTML = '100'
+                            } else if (card.carta.rareza === 2) {
+                                precioQuickSell.innerHTML = '50'
+                            } else {
+                                precioQuickSell.innerHTML = '10'
+                            }
+                            divQuickSell.appendChild(quickSell)
+                            divOro.appendChild(imgRubi)
+                            divOro.appendChild(precioQuickSell)
+                            divQuickSell.appendChild(divOro)
+                            cardDiv.appendChild(divQuickSell)
                             const putOnMarket = document.createElement('button')
                             putOnMarket.innerHTML = 'Put on market'
                             putOnMarket.id = 'putOnMarket'
