@@ -842,6 +842,7 @@ header .config a {
     outline-color: rgba(255, 255, 255, 0.5);
     outline-offset: 0px;
     border: 1px solid rgb(0, 255, 234);
+    animation: mostrar 1s 1s ease forwards;
   }
   
   .salir button:hover {
@@ -861,6 +862,16 @@ header .config a {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+@keyframes mostrar {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    
 }
 
 .carta:nth-child(1) {
