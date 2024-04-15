@@ -59,12 +59,10 @@
                     console.log(data)
                     resultado.innerHTML = ''
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
-                    data.forEach((card) => {
-                        console.log(card)
-                        console.log(card.carta)
-                        console.log(card.ataque)
+                    data.forEach((card, index) => {
+                        console.log(index)
                         const cardDiv = document.createElement('div')
-                        cardDiv.className = 'carta'
+                        cardDiv.classList.add = ('carta ')
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
                         const nombreCarta = document.createElement('p')
