@@ -96,7 +96,7 @@
                         divSalir.className = 'salir'
                         const botonGuardar = document.createElement('button')
                         botonGuardar.innerHTML = 'Guardar'
-                        botonGuardar.setAttribute('onclick', `salirMostrarCartas('${JSON.stringify(data)}')`)
+                        botonGuardar.setAttribute('onclick', `salirMostrarCartas(${JSON.stringify(data)})`)
                         divSalir.appendChild(botonGuardar)
                         resultado.appendChild(divSalir)
 
