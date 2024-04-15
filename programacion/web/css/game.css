@@ -855,7 +855,7 @@ header .config a {
 }
 
 .QuickSell button:hover{
-    background-color: #02e2e2;
+    background-color: #00b1b1;
 }
 
 .QuickSell .divOro{
@@ -873,7 +873,8 @@ header .config a {
 
 #putOnMarket{
     position: absolute;
-    bottom: -50px;
+    bottom: -82px;
+    padding: 5px;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #232323;
@@ -884,6 +885,10 @@ header .config a {
     align-items: center;
     gap: 10px;
 
+}
+
+#putOnMarket:hover{
+    background-color: #00b1b1;
 }
 
 .salir{
