@@ -195,7 +195,7 @@ function siguienteMazo () {
   }
 }
 
-function salirMostrarCartas (dataString) {
-  const data = JSON.parse(dataString)
+function salirMostrarCartas (data) {
+  data = JSON.parse(data)
   console.log(data)
 }
