@@ -60,10 +60,21 @@
                     resultado.innerHTML = ''
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card, index) => {
-                        console.log(index)
                         const cardDiv = document.createElement('div')
                         cardDiv.className = 'carta carta-' + index
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+
+                        if(card.carta.rareza === 5) {
+                            cardDiv.style.boxShadow = '0px 0px 40px yellow'
+                        } else if (card.carta.rareza === 4) {
+                            cardDiv.style.boxShadow = '0px 0px 40px red'
+                        } else if (card.carta.rareza === 3) {
+                            cardDiv.style.boxShadow = '0px 0px 40px purple'
+                        } else if (card.carta.rareza === 2) {
+                            cardDiv.style.boxShadow = '0px 0px 40px green'
+                        } else {
+                            cardDiv.style.boxShadow = '0px 0px 40px grey'
+                        }
 
                         const nombreCarta = document.createElement('p')
                         nombreCarta.className = 'nombreCarta'
