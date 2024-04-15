@@ -59,6 +59,7 @@
                     resultado.innerHTML = ''
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card) => {
+                        console.log(card)
                         console.log(card.carta)
                         console.log(card.ataque)
                         const cardDiv = document.createElement('div')
@@ -77,6 +78,19 @@
                         ataqueEspecial.className = 'ataque-especial'
                         const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
                         ataqueEspecial.innerHTML = textoAtaqueEspecial
+
+                        if  (card.duplicate) {
+                            const quickSell = document.createElement('button')
+                            quickSell.innerHTML = 'Quick sell'
+                            quickSell.id = 'quickSell'
+                            quickSell.setAttribute('onclick', `quickSell(${card.carta.id})`)
+                            cardDiv.appendChild(quickSell)
+                            const putOnMarket = document.createElement('button')
+                            putOnMarket.innerHTML = 'Put on market'
+                            putOnMarket.id = 'putOnMarket'
+                            putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
+                            cardDiv.appendChild(putOnMarket)
+                        }
 
                         const divSalir = document.createElement('div')
                         divSalir.className = 'salir'
