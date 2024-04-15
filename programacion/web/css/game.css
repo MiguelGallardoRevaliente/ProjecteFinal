@@ -47,7 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
-    z-index: 1;
+    z-index: 00;
 }
 
 header .logo {
@@ -406,36 +406,22 @@ header .config a {
     margin: 0px 70px;
 }
 
-<<<<<<< Updated upstream
 #mazos .container{
-    margin: 0% !important;
-    position: relative;
-=======
-#mazos .container {
     margin-left: 0% !important;
 
->>>>>>> Stashed changes
 }
 
 #inventory .container .links,
-#chests .container .links {
+#chests .container .links,
+#mazos .container .links {
     position: absolute;
-    top: 0;
-    left: -20px;
+    top: 0px;
+    left: 0px;
     margin-left: 300px;
     display: flex;
     align-items: center;
     background-color: #3d3d3d;
 
-}
-
-#mazos .container .links {
-    position: absolute;
-    top: -70px;
-    left: -90px;
-    display: flex;
-    align-items: center;
-    background-color: #3d3d3d;
 }
 
 #inventory .container .links div,
@@ -495,7 +481,7 @@ header .config a {
     gap: 0px;
 }
 
-#mazos .container .top {
+#mazos .container .top{
     margin-left: 5% !important;
 }
 
@@ -546,7 +532,7 @@ header .config a {
 
 /*wrap*/
 #inventory .container .allcards .yourCards {
-    
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
@@ -576,7 +562,7 @@ header .config a {
     cursor: pointer;
 }
 
-#mazos .container .allMazos .mazo div:hover {
+#mazos .container .allMazos .mazo div:hover{
     background: #4d4d4d;
 
 }
@@ -630,29 +616,6 @@ header .config a {
 
 }
 
-/*mazos cartas-noMazos*/
-
-.cartas-no-mazo .cartas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    place-items: center;
-    margin-top: 5%;
-}
-
-cartas-no-mazo .cartas .carta {
-
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 350px;
-    height: 500px;
-    position: relative;
-    transition: all 0.2s;
-}
-
-.cartas-no-mazo .cartas .carta:hover {
-    scale: 1.10;
-}
 
 #chests .allChests {
     display: grid;
@@ -704,12 +667,12 @@ cartas-no-mazo .cartas .carta {
     height: 400px;
     position: relative;
     transition: all 0.2s;
-    animation: appearFromTop 0.5s ease forwards;
+    animation: appearFromTop 0.5s ease forwards;  
     box-shadow: 0px 0px 40px red;
     border-radius: 10px;
 }
 
-.resultado_sobre .carta .ataque-vida {
+.resultado_sobre .carta .ataque-vida{
     position: absolute;
     bottom: 0;
     right: 0;
@@ -719,7 +682,7 @@ cartas-no-mazo .cartas .carta {
     font-family: "Goldman", sans-serif;
 }
 
-.resultado_sobre .carta .ataque-especial {
+.resultado_sobre .carta .ataque-especial{
     position: absolute;
     top: 75%;
     font-size: 10px !important;
@@ -728,22 +691,22 @@ cartas-no-mazo .cartas .carta {
     max-width: 240px;
 }
 
-.resultado_sobre .carta .nombreCarta {
+.resultado_sobre .carta .nombreCarta{
     position: absolute;
     top: 56.5%;
     left: 30px;
     margin: 0px;
 }
 
-.salir {
+.salir{
     position: absolute;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    
 }
 
-.salir button {
+.salir button{
     padding: 10px;
     width: 120px;
     height: 40px;
@@ -758,7 +721,6 @@ cartas-no-mazo .cartas .carta {
         transform: translateY(-100%);
         opacity: 0;
     }
-
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -768,15 +730,12 @@ cartas-no-mazo .cartas .carta {
 .carta:nth-child(1) {
     animation-delay: 0.1s;
 }
-
 .carta:nth-child(2) {
     animation-delay: 0.2s;
 }
-
 .carta:nth-child(3) {
     animation-delay: 0.3s;
 }
-
 .carta:nth-child(4) {
     animation-delay: 0.4s;
 }
@@ -820,10 +779,9 @@ cartas-no-mazo .cartas .carta {
     0% {
         box-shadow: 0px 0px 20px white;
     }
-
-    100% {
+    100%{
         box-shadow: 0px 0px 50px black;
-
+    
     }
 }
 
@@ -850,7 +808,7 @@ cartas-no-mazo .cartas .carta {
 }
 
 .sobres_god_divGeneral form button:active {
-    box-shadow: 0px 1px 1px white;
+    box-shadow: 0px 1px 1px white ;
     transform: translateY(4px);
 }
 
