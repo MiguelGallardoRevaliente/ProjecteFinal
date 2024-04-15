@@ -103,6 +103,7 @@ function getCartas (mazoActual, idCartaMazo) {
   const cartas = document.getElementsByClassName('cartas')[0]
   cartasNoMazo.style.display = 'flex'
   cartas.innerHTML = ''
+  document.body.style.overflow = 'hidden'
   fetch(`/getCardsDeck?mazo=${mazoActual}`, {
     method: 'GET'
   })
