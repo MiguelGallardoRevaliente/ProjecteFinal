@@ -839,6 +839,7 @@ header .config a {
     align-items: center;
     bottom: -50px;
     gap: 10px;
+    left: 50%;
 }
 
 .QuickSell button{
@@ -846,6 +847,7 @@ header .config a {
     background-color: #232323;
     color: white;
     border: 1px solid #02e2e2;
+    transition: 0.2 all ease;
     
 }
 

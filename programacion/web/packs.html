@@ -92,10 +92,10 @@
                         quickSell.id = 'quickSell'
                         quickSell.setAttribute('onclick', `quickSell(${card.carta.id}, ${oroCarta}, '${cartaClass}')`)
 
-                        divQuickSell.appendChild(quickSell)
                         divOro.appendChild(imgRubi)
                         divOro.appendChild(precioQuickSell)
-                        divQuickSell.appendChild(divOro)
+                        quickSell.appendChild(divOro)
+                        divQuickSell.appendChild(quickSell)
                         cardDiv.appendChild(divQuickSell)
 
                         const putOnMarket = document.createElement('button')
