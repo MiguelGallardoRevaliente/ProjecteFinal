@@ -567,6 +567,11 @@ header .config a {
 
 }
 
+#deckName{
+    width: 900px;
+    margin: auto;
+}
+
 .yourCards .carta {
     background-size: contain;
     background-repeat: no-repeat;
