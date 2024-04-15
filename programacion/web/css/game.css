@@ -649,6 +649,8 @@ header .config a {
 .pasar{
     display: flex;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .pasar button{
@@ -664,6 +666,7 @@ header .config a {
     box-shadow: 1px 1px 3px white;
     cursor: pointer;
 }
+
 
 #chests .allChests {
     display: grid;
