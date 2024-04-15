@@ -833,14 +833,14 @@ header .config a {
     margin: 0px;
 }
 
-.quickGame{
+.QuickSell{
     position: absolute;
     display: flex;
     align-items: center;
     bottom: -10%;
 }
 
-.quickGame button{
+.QuickSell button{
     padding: 3px;
     background-color: #232323;
     color: white;
@@ -849,18 +849,18 @@ header .config a {
     
 }
 
-.quickGame button:hover{
+.QuickSell button:hover{
     background-color: #e2b902;
 }
 
-.quickGame .divOro{
+.QuickSell .divOro{
     display: flex;
     align-items: center;
     gap: 10px;
     
 }
 
-.quickGame .divOro img{
+.QuickSell .divOro img{
     width: 30px;
     height: 30px;
 }
