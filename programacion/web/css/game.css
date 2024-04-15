@@ -768,7 +768,6 @@ header .config a {
     position: relative;
     transition: all 0.2s;
     transform: translateY(-1000px);
-    box-shadow: 0px 0px 40px red;
     border-radius: 10px;
 }
 
