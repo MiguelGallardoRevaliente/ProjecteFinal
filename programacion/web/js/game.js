@@ -201,12 +201,12 @@ function salirMostrarCartas (data) {
   data.forEach((card) => {
     if (card.duplicate) {
       foundDuplicate = true
-
-      alert('Hay una carta duplicada')
     }
   })
 
   if (!foundDuplicate) {
     window.location.reload()
+  } else {
+    alert('Hay cartas duplicada')
   }
 }
