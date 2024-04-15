@@ -210,3 +210,8 @@ function salirMostrarCartas (data) {
     alert('Hay cartas duplicada')
   }
 }
+
+function quickSell (cartaId, oroCarta) {
+  const arrayCartas = localStorage.getItem('cartas')
+  console.log(arrayCartas)
+}
