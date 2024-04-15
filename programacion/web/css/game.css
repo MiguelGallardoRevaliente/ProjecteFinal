@@ -406,9 +406,15 @@ header .config a {
     margin: 0px 70px;
 }
 
+<<<<<<< Updated upstream
+#mazos .container{
+    margin: 0% !important;
+    position: relative;
+=======
 #mazos .container {
     margin-left: 0% !important;
-    position: relative;
+
+>>>>>>> Stashed changes
 }
 
 #inventory .container .links,
@@ -626,7 +632,7 @@ header .config a {
 
 /*mazos cartas-noMazos*/
 
-#cartas-no-mazo .cartas {
+.cartas-no-mazo .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
@@ -634,7 +640,7 @@ header .config a {
     margin-top: 5%;
 }
 
-#cartas-no-mazo .cartas .carta {
+cartas-no-mazo .cartas .carta {
 
     background-size: contain;
     background-repeat: no-repeat;
@@ -644,11 +650,10 @@ header .config a {
     transition: all 0.2s;
 }
 
-#cartas-no-mazo .cartas .carta:hover {
+.cartas-no-mazo .cartas .carta:hover {
     scale: 1.10;
 }
 
-/*chests*/
 #chests .allChests {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
