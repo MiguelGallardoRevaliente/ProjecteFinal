@@ -837,19 +837,20 @@ header .config a {
     position: absolute;
     display: flex;
     align-items: center;
-    bottom: -10%;
+    bottom: -50px;
+    gap: 10px;
 }
 
 .QuickSell button{
-    padding: 3px;
+    padding: 5px;
     background-color: #232323;
     color: white;
-    border: none;
+    border: 1px solid #02e2e2;
     
 }
 
 .QuickSell button:hover{
-    background-color: #e2b902;
+    background-color: #02e2e2;
 }
 
 .QuickSell .divOro{
