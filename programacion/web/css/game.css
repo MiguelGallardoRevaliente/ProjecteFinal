@@ -716,6 +716,15 @@ header .config a {
     cursor: pointer;
 }
 
+.pasar button:hover{
+    background: #3d3d3d;
+}
+
+.pasar button:active{
+    background-color: rgb(211, 211, 211);
+    color: black;
+}
+
 
 #chests .allChests {
     display: grid;
