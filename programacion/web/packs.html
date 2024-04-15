@@ -55,6 +55,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
+                    const arrayCartas = data
                     console.log(data)
                     resultado.innerHTML = ''
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'

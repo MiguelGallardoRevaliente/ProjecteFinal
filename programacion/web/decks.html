@@ -26,7 +26,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                const arrayCartas = [...data]
                 console.log(arrayCartas)
                 const decks = data.decks
                 const cartas = data.arrayCartasDeck
