@@ -668,23 +668,28 @@ header .config a {
     font-weight: 400 !important;
     left: 35px;
     max-width: 240px;
+    color: black;
 
 }
 
 #cartas-no-mazo .cartas .carta .ataque-vida{
-    position: absolute;
     bottom: 0;
     right: 0;
-    margin: 22px 32px !important;
-    font-size: 15px !important;
+    margin: 40px 38px !important;
+    font-size: 18px !important;
     font-weight: 800;
     font-family: "Goldman", sans-serif;
+    position: absolute;
+    user-select: none;
+    color: black;
 }
 
 #cartas-no-mazo .cartas .carta .nombreCarta{
     position: absolute;
-    top: 56.5%;
+    top: 55%;
     left: 30px;
+    font-size: 16px;
+    color: black;
     margin: 0px;
 }
 
