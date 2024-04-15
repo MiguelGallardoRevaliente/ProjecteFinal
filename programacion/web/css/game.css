@@ -844,11 +844,13 @@ header .config a {
 }
 
 .QuickSell button{
-    padding: 0px;
     background-color: #232323;
     color: white;
     border: 1px solid #02e2e2;
-    transition: 0.2 all ease;
+    transition: d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     
 }
 
@@ -874,6 +876,13 @@ header .config a {
     bottom: -50px;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: #232323;
+    color: white;
+    border: 1px solid #02e2e2;
+    transition: d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
 }
 
