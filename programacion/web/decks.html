@@ -26,18 +26,16 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                const arrayCartas = [...data]
+                console.log(arrayCartas)
                 const decks = data.decks
                 const cartas = data.arrayCartasDeck
-                console.log(decks)
-                console.log(cartas)
                 decks.forEach(deck => {
                     const deckName = document.getElementById('deckName')
                     deckName.textContent = deck.nombre + ' ' + data.mazoActual
                     const mazo = document.createElement('div')
                     mazo.classList.add('mazo')
                     const cartasMazo = cartas.filter(carta => carta.mazoCarta === deck.id)
-                    console.log(cartasMazo)
                     for (let i = 0; i < 8; i++) {
                         const carta = document.createElement('div')
                         carta.classList.add('carta')
