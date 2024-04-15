@@ -656,6 +656,9 @@ header .config a {
     transition: all 0.2s;
 }
 
+#cartas-no-mazo {
+    display: none;
+}
 
 /*Decks - Pasar*/
 
