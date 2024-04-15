@@ -637,10 +637,13 @@ header .config a {
 
 #cartas-no-mazo button {
     position: absolute;
-    top: 50px;
-    right: 50px;
+    top: 0;
+    right: 0;
     background-color: transparent;
     border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 #cartas-no-mazo .cartas {
