@@ -450,6 +450,19 @@ app.post('/nuevoMazo', async (req, res) => {
   }
 })
 
+app.post('/quickSell', async (req, res) => {
+  try {
+    const id = req.body.id
+    const oroCarta = req.body.oroCarta
+    await connection.execute(
+      'UPDATE users SET oro = oro + ? WHERE BIN_TO_UUID(id) = ?', [oroCarta, id]
+    )
+    return res.status(200).json({ message: 'updated' })
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 
