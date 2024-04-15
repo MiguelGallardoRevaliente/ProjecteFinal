@@ -191,6 +191,7 @@
 
                         if  (card.duplicate) {
                             const divQuickSell = document.createElement('div')
+                            divQuickSell.className = 'QuickSell'
                             const divOro = document.createElement('div')
                             divOro.className = 'divOro'
 
@@ -238,7 +239,7 @@
                         divSalir.className = 'salir'
                         const botonGuardar = document.createElement('button')
                         botonGuardar.innerHTML = 'Guardar'
-                        botonGuardar.setAttribute('onclick', `salirMostrarCartas()`)
+                        botonGuardar.setAttribute('onclick', `salirMostrarCartas(${JSON.stringify(data)})`)
                         divSalir.appendChild(botonGuardar)
                         resultado.appendChild(divSalir)
 
