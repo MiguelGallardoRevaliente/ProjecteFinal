@@ -198,6 +198,11 @@ function siguienteMazo () {
 function salirMostrarCartas (data) {
   console.log(data)
   let foundDuplicate = false
+
+  if (data.length === 0) {
+    window.location.reload()
+  }
+
   data.forEach((card) => {
     if (card.duplicate) {
       foundDuplicate = true
