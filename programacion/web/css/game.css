@@ -841,6 +841,7 @@ header .config a {
             transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
     outline-color: rgba(255, 255, 255, 0.5);
     outline-offset: 0px;
+    border: 1px solid rgb(0, 255, 234);
   }
   
   .salir button:hover {
@@ -931,7 +932,7 @@ header .config a {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: #4386B7;
+    background: linear-gradient(45deg, #4386B7, #83D2F3); /* Degradado */
     color: white;
     margin-top: 30px;
     border-radius: 4px;
@@ -939,7 +940,7 @@ header .config a {
 }
 
 .sobres_god_divGeneral form button:hover {
-    background-color: #2f678f;
+    background: linear-gradient(45deg, #83D2F3, #4386B7);
 }
 
 .sobres_god_divGeneral form button:active {
