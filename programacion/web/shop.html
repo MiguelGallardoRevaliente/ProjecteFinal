@@ -20,9 +20,9 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const name = document.getElementById('name')
-            const quality = document.getElementById('quality')
-            const type = document.getElementById('type')
+            const name = document.getElementById('name').value
+            const quality = document.getElementById('quality').value
+            const type = document.getElementById('type').value
             console.log(name)
             console.log(quality)
             console.log(type)
