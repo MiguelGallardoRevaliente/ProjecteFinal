@@ -840,10 +840,11 @@ header .config a {
     bottom: -50px;
     gap: 10px;
     left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .QuickSell button{
-    padding: 5px;
+    padding: 0px;
     background-color: #232323;
     color: white;
     border: 1px solid #02e2e2;
@@ -859,12 +860,21 @@ header .config a {
     display: flex;
     align-items: center;
     color: white;
+    height: 25px;
     
 }
 
 .QuickSell .divOro img{
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
+}
+
+#putOnMarket{
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .salir{
