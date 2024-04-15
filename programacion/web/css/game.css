@@ -767,7 +767,7 @@ header .config a {
     height: 400px;
     position: relative;
     transition: all 0.2s;
-    transform: translateY(-1000px);
+    transform: translateY(-1000px); 
     border-radius: 10px;
 }
 
@@ -815,7 +815,7 @@ header .config a {
 
 .salir{
     position: absolute;
-    top: 70%;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     
@@ -825,7 +825,6 @@ header .config a {
     padding: 10px;
     width: 120px;
     height: 40px;
-    display: flex;
     background-color: #232323;
     color: white;
     border-radius: 3px;
