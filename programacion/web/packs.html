@@ -24,7 +24,7 @@
         window.onload = () => {
             const cartas = JSON.parse(localStorage.getItem('cartas'))
             console.log(cartas)
-            if (cartas) {
+            if (cartas.length > 0) {
                 sobresGod.style.display = 'block'
                 resultado.innerHTML = ''
                 document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
