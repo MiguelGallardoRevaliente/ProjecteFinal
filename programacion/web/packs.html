@@ -21,8 +21,9 @@
         const resultado = document.getElementsByClassName('resultado_sobre')[0]
 
         window.onload = () => {
-            if (localStorage.getItem('cartas')) {
-                const cartas = JSON.parse(localStorage.getItem('cartas'))
+            console.log(localStorage.getItem('cartas'))
+            const cartas = JSON.parse(localStorage.getItem('cartas'))
+            if (cartas) {
                 resultado.innerHTML = ''
                 document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                 cartas.forEach((card, index) => {
