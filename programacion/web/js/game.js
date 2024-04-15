@@ -194,3 +194,7 @@ function siguienteMazo () {
     mazo[nuevoMazo - 2].style.display = 'none'
   }
 }
+
+function salirMostrarCartas (data) {
+  console.log(data)
+}
