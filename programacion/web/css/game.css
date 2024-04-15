@@ -616,6 +616,33 @@ header .config a {
 
 }
 
+/**/
+
+#cartas-no-mazo{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block !important;
+}
+
+#cartas-no-mazo .cartas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    place-items: center;
+    margin-top: 5%;
+}
+
+#cartas-no-mazo .cartas .carta{
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transition: all 0.2s;
+}
 
 #chests .allChests {
     display: grid;
