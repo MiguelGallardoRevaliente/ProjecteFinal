@@ -842,8 +842,9 @@ header .config a {
     outline-color: rgba(255, 255, 255, 0.5);
     outline-offset: 0px;
     border: 1px solid rgb(0, 255, 234);
+    opacity: 0;
     animation: mostrar 1s 1s ease forwards;
-    animation-delay: 3s;
+    
   }
   
   .salir button:hover {
