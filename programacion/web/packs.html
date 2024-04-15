@@ -22,7 +22,7 @@
         const sobresGod = document.getElementById('sobres_god')
 
         window.onload = () => {
-            const cartas = JSON.parse(localStorage.getItem('cartas'))
+            const cartas = JSON.parse(localStorage.getItem('cartas')) || []
             if (cartas.length > 0) {
                 document.getElementById('cerrarSobre').style.display = 'none'
                 sobresGod.style.display = 'block'

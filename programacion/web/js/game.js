@@ -219,7 +219,7 @@ function salirMostrarCartas () {
   })
 
   if (!foundDuplicate) {
-    localStorage.setItem('cartas', [])
+    localStorage.removeItem('cartas')
     window.location.reload()
   } else {
     alert('Hay cartas duplicada')
