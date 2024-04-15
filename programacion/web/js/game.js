@@ -212,6 +212,6 @@ function salirMostrarCartas (data) {
 }
 
 function quickSell (cartaId, oroCarta) {
-  const arrayCartas = localStorage.getItem('cartas')
+  const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
   console.log(arrayCartas)
 }
