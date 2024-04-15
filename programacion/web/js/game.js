@@ -108,7 +108,6 @@ function getCartas (mazoActual, idCartaMazo) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       const length = data.filteredCards.length
       for (let i = 0; i < length; i++) {
         const card = data.filteredCards[i]
@@ -137,6 +136,11 @@ function getCartas (mazoActual, idCartaMazo) {
         cartas.appendChild(cardDiv)
       }
     })
+}
+
+function cerrarCartasNoMazo () {
+  const cartasNoMazo = document.getElementById('cartas-no-mazo')
+  cartasNoMazo.style.display = 'none'
 }
 
 function guardarCarta (idCarta, mazoActual, idCartaMazo) {
@@ -218,9 +222,7 @@ function salirMostrarCartas () {
 
 function quickSell (cartaId, oroCarta, cartaClass) {
   const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
-  console.log(arrayCartas)
   const cartas = arrayCartas.filter((carta) => carta.id !== cartaId)
-  console.log(cartas)
   fetch('/quickSell', {
     method: 'POST',
     headers: {
