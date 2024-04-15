@@ -15,6 +15,13 @@
         if (!username) {
             window.location.href = '/login'
         }
+
+        const form = document.querySelector('form')[0]
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const 
+        })
     </script>
 </head>
 <body>
@@ -45,10 +52,10 @@
             </div>
             <div id="allcards" class="all">
                 <div class="filtrer">
-                    <form>
+                    <form action="" class="form">
                         <label for="search">Search</label>
-                        <input type="text" >
-                        
+                        <input type="text" name="search" placeholder="Search here...">
+
                         <label for="quality">Quality</label>
                         <select name="quality" id="quality">
                             <option value="none">--</option>
@@ -72,7 +79,7 @@
                             <option value="Forest">Forest</option>
                             <option value="Water">Water</option>
                         </select>
-                        <button><i class='bx bx-search'></i></button>
+                        <button type="submit" id="search"><i class='bx bx-search'></i></button>
                     </form>
                 </div>
                 <div>
