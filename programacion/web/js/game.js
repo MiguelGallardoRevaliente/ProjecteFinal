@@ -199,6 +199,11 @@ function siguienteMazo () {
   }
 }
 
+function cerrarSobre () {
+  const sobresGod = document.getElementById('sobres_god')
+  sobresGod.style.display = 'none'
+}
+
 function salirMostrarCartas () {
   const data = JSON.parse(localStorage.getItem('cartas'))
   let foundDuplicate = false

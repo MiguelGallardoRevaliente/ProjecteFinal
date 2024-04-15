@@ -933,6 +933,17 @@ header .config a {
     justify-content: center;
 }
 
+.sobres_god_divGeneral #cerrarSobre {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
 .sobres_god_divGeneral .sobre {
     background-image: url(../img/sobre.png);
     background-size: contain;
