@@ -635,6 +635,14 @@ header .config a {
     background: #232323b8;
 }
 
+#cartas-no-mazo button {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    background-color: transparent;
+    border: none;
+}
+
 #cartas-no-mazo .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
