@@ -60,9 +60,8 @@
                     resultado.innerHTML = ''
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card, index) => {
-                        console.log(index)
                         const cardDiv = document.createElement('div')
-                        cardDiv.classList.add = ('carta ')
+                        cardDiv.className = 'carta carta-' + index
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
                         const nombreCarta = document.createElement('p')

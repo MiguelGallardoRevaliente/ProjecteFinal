@@ -763,9 +763,24 @@ header .config a {
     position: relative;
     transition: all 0.2s;
     transform: translateY(-1000px);
-    animation: appearFromTop 0.5s ease forwards;  
     box-shadow: 0px 0px 40px red;
     border-radius: 10px;
+}
+
+.carta-0 {
+    animation: appearFromTop 0.5s ease forwards;  
+}
+
+.carta-1 {
+    animation: appearFromTop 0.5s 0.2s ease forwards;  
+}
+
+.carta-2 {
+    animation: appearFromTop 0.5s 0.4s ease forwards;  
+}
+
+.carta-3 {
+    animation: appearFromTop 0.5s 0.6s ease forwards;  
 }
 
 .resultado_sobre .carta .ataque-vida{
