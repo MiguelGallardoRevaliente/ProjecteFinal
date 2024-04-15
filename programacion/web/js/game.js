@@ -214,4 +214,6 @@ function salirMostrarCartas (data) {
 function quickSell (cartaId, oroCarta) {
   const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
   console.log(arrayCartas)
+  const cartas = arrayCartas.filter((carta) => carta.id !== cartaId)
+  console.log(cartas)
 }
