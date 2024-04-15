@@ -833,6 +833,38 @@ header .config a {
     margin: 0px;
 }
 
+.quickGame{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: -10%;
+}
+
+.quickGame button{
+    padding: 3px;
+    background-color: #232323;
+    color: white;
+    clip-path: polygon(12% 0, 100% 0%, 100% 63%, 24% 63%);
+
+    
+}
+
+.quickGame button:hover{
+    background-color: #e2b902;
+}
+
+.quickGame .divOro{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.quickGame .divOro img{
+    width: 30px;
+    height: 30px;
+}
+
 .salir{
     position: absolute;
     bottom: 10%;
