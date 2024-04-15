@@ -772,19 +772,19 @@ header .config a {
 }
 
 .carta-0 {
-    animation: appearFromTop 0.8s ease forwards;  
+    animation: appearFromTop 0.5s ease forwards;  
 }
 
 .carta-1 {
-    animation: appearFromTop 0.8s 0.4s ease forwards;  
+    animation: appearFromTop 0.5s 0.4s ease forwards;  
 }
 
 .carta-2 {
-    animation: appearFromTop 0.8s 0.8s ease forwards;  
+    animation: appearFromTop 0.5s 0.8s ease forwards;  
 }
 
 .carta-3 {
-    animation: appearFromTop 0.8s 1.2s ease forwards;  
+    animation: appearFromTop 0.5s 1.2s ease forwards;  
 }
 
 .resultado_sobre .carta .ataque-vida{
@@ -843,7 +843,7 @@ header .config a {
     outline-offset: 0px;
     border: 1px solid rgb(0, 255, 234);
     opacity: 0;
-    animation: mostrar 1s 1s ease forwards;
+    animation: mostrar 1s 1.4s ease forwards;
     
   }
   
