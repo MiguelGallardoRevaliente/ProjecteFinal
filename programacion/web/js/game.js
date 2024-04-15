@@ -197,4 +197,16 @@ function siguienteMazo () {
 
 function salirMostrarCartas (data) {
   console.log(data)
+  let foundDuplicate = false
+  data.forEach((card) => {
+    if (card.duplicate) {
+      foundDuplicate = true
+
+      alert('Hay una carta duplicada')
+    }
+  })
+
+  if (!foundDuplicate) {
+    window.location.reload()
+  }
 }
