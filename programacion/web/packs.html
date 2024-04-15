@@ -78,6 +78,14 @@
                         const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
                         ataqueEspecial.innerHTML = textoAtaqueEspecial
 
+                        const divSalir = document.createElement('div')
+                        divSalir.className = 'salir'
+                        const botonGuardar = document.createElement('button')
+                        botonGuardar.innerHTML = 'Guardar'
+                        botonGuardar.setAttribute('onclick', 'salirResultadoSobre()')
+                        divSalir.appendChild(botonGuardar)
+                        resultado.appendChild(divSalir)
+
                         cardDiv.appendChild(nombreCarta)
                         cardDiv.appendChild(ataqueEspecial)
                         cardDiv.appendChild(ataqueVida)
@@ -137,9 +145,6 @@
       <div class="resultado_sobre">
       </div>
       <!--Este div tiene que ir dentro de resultado_sobre pero no funciona nspork-->
-      <div class="salir">
-        <button onclick="salirResultadoSobre ()">Guardar</button>
-    </div>
     </div>
     <script src="js/game.js"></script>
 </body>
