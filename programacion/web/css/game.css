@@ -645,6 +645,7 @@ header .config a {
     overflow-y: scroll;
     overflow-x: hidden;
     background: #141313;
+    padding: 20px 10px;
 }
 
 #cartas-no-mazo .cartas .carta{
