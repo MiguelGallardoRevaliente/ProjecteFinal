@@ -20,7 +20,12 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const 
+            const name = document.getElementById('name')
+            const quality = document.getElementById('quality')
+            const type = document.getElementById('type')
+            console.log(name)
+            console.log(quality)
+            console.log(type)
         })
     </script>
 </head>
@@ -54,7 +59,7 @@
                 <div class="filtrer">
                     <form action="" class="form">
                         <label for="search">Search</label>
-                        <input type="text" name="search" placeholder="Search here...">
+                        <input type="text" name="name" id="name">
 
                         <label for="quality">Quality</label>
                         <select name="quality" id="quality">
