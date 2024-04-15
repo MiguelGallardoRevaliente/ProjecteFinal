@@ -843,6 +843,7 @@ header .config a {
     outline-offset: 0px;
     border: 1px solid rgb(0, 255, 234);
     animation: mostrar 1s 1s ease forwards;
+    animation-delay: 3s;
   }
   
   .salir button:hover {
