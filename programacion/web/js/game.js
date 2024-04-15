@@ -211,9 +211,20 @@ function salirMostrarCartas (data) {
   }
 }
 
-function quickSell (cartaId, oroCarta) {
+function quickSell (cartaId, oroCarta, cartaClass) {
   const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
   console.log(arrayCartas)
   const cartas = arrayCartas.filter((carta) => carta.id !== cartaId)
   console.log(cartas)
+  fetch('/quickSell', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id: localStorage.getItem('id'), oroCarta })
+  })
+    .then(response => response.json())
+  const carta = document.getElementsByClassName(cartaClass)[0]
+  carta.style.display = 'none'
+  localStorage.setItem('cartas', JSON.stringify(cartas))
 }
