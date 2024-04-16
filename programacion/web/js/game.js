@@ -242,11 +242,13 @@ function quickSell (cartaId, oroCarta, cartaClass) {
     .then(response => response.json())
 
   let oroTotal = parseInt(localStorage.getItem('oroTotal')) || 0
+  console.log(oroTotal)
   if (oroTotal > 0) {
     oroTotal -= oroCarta
     if (oroTotal < 0) {
       oroTotal = 0
     }
+    console.log(oroTotal)
   }
   localStorage.setItem('oroTotal', oroTotal)
   console.log(localStorage.getItem('oroTotal'))
