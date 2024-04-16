@@ -38,15 +38,15 @@
                     for (let i = 0; i < 8; i++) {
                         const carta = document.createElement('div')
                         carta.classList.add('carta')
-                        carta.setAttribute('onclick', `getCartas(${deck.id}, ${cartasMazo[i] ? cartasMazo[i].cartas[0].id : 0})`)
+                        carta.setAttribute('onclick', `getCartas(${deck.id}, ${cartasMazo[i] ? cartasMazo[i].cards[0].id : 0})`)
                         if (cartasMazo[i]) {
                             const img = document.createElement('img')
-                            img.src = cartasMazo[i].cartas[0].foto
-                            img.alt = cartasMazo[i].cartas[0].nombre
+                            img.src = cartasMazo[i].cards[0].foto
+                            img.alt = cartasMazo[i].cards[0].nombre
                             const nombre = document.createElement('p')
-                            nombre.textContent = cartasMazo[i].cartas[0].nombre
+                            nombre.textContent = cartasMazo[i].cards[0].nombre
                             const ataqueVida = document.createElement('p')
-                            ataqueVida.textContent = `${cartasMazo[i].cartas[0].ataque} / ${cartasMazo[i].cartas[0].vida}`
+                            ataqueVida.textContent = `${cartasMazo[i].cards[0].ataque} / ${cartasMazo[i].cards[0].vida}`
                             carta.appendChild(img)
                         }
                         mazo.appendChild(carta)
