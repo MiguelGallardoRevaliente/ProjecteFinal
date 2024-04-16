@@ -33,7 +33,6 @@
                 cartas.forEach((card, index) => {
                     const cardDiv = document.createElement('div')
                     const cartaClass = 'carta-' + index
-                    cartaClassArray.push(cartaClass)
                     cardDiv.className = 'carta ' + cartaClass
                     cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
@@ -63,6 +62,7 @@
                     ataqueEspecial.innerHTML = textoAtaqueEspecial
 
                     if  (card.duplicate) {
+                        cartaClassArray.push(cartaClass)
                         const divQuickSell = document.createElement('div')
                         divQuickSell.className = 'QuickSell'
                         const divOro = document.createElement('div')
@@ -109,7 +109,6 @@
                         putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
                         cardDiv.appendChild(putOnMarket)
                     }
-                    localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
 
                     cardDiv.appendChild(nombreCarta)
                     cardDiv.appendChild(ataqueEspecial)
@@ -117,6 +116,7 @@
                     resultado.appendChild(cardDiv)
                     
                 })
+                localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
 
                 const divSalir = document.createElement('div')
                 divSalir.className = 'salir' 
@@ -176,7 +176,6 @@
                     data.forEach((card, index) => {
                         const cardDiv = document.createElement('div')
                         const cartaClass = 'carta-' + index
-                        cartaClassArray.push(cartaClass)
                         cardDiv.className = 'carta ' + cartaClass
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
@@ -206,6 +205,7 @@
                         ataqueEspecial.innerHTML = textoAtaqueEspecial
 
                         if  (card.duplicate) {
+                            cartaClassArray.push(cartaClass)
                             const divQuickSell = document.createElement('div')
                             divQuickSell.className = 'QuickSell'
                             const divOro = document.createElement('div')
@@ -258,6 +258,7 @@
                         cardDiv.appendChild(ataqueVida)
                         resultado.appendChild(cardDiv)
                     })
+                    localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
 
                     const divSalir = document.createElement('div')
                     divSalir.className = 'salir' 
