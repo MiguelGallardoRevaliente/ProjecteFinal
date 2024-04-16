@@ -121,7 +121,7 @@
 
                 const quickSellAll = document.createElement('button')
                 quickSellAll.innerHTML = 'Quick sell all'
-                quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(data)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
                 resultado.appendChild(quickSellAll)
 
                 const botonGuardar = document.createElement('button')
@@ -129,6 +129,7 @@
                 botonGuardar.setAttribute('onclick', `salirMostrarCartas()`)
                 divSalir.appendChild(botonGuardar)
                 resultado.appendChild(divSalir)
+
             }
             const allChests = document.getElementsByClassName('allChests')[0]
             allChests.innerHTML = ''
