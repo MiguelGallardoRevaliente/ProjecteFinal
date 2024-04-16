@@ -50,6 +50,9 @@
                             const ataqueVida = document.createElement('p')
                             ataqueVida.textContent = `${cartasMazo[i].cards[0].ataque} / ${cartasMazo[i].cards[0].vida}`
                             carta.appendChild(img)
+                            carta.appendChild(nombre)
+                            carta.appendChild(ataque)
+                            carta.appendChild(ataqueVida)
                         }
                         mazo.appendChild(carta)
                     }
