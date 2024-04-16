@@ -578,6 +578,7 @@ header .config a {
     font-size: 13px;
     top: 52.5%;
     left: 23px;
+    font-weight: 800;
 }
 
 #mazos .container .allMazos .mazo div .ataque{
@@ -590,11 +591,11 @@ header .config a {
 
 #mazos .container .allMazos .mazo div .ataqueVida{
     display: flex;
-    bottom: 15px;
+    bottom: 18px;
     margin: 0px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 800;
-    right: 10px;
+    right: 24px;
     font-family: "Goldman", sans-serif;
 }
 
