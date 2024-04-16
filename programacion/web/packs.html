@@ -157,10 +157,13 @@
                 .then(data => {
                     localStorage.setItem('cartas', JSON.stringify(data))
                     resultado.innerHTML = ''
+                    let oroTotal = 0
+                    const cartaClassArray = []
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card, index) => {
                         const cardDiv = document.createElement('div')
                         const cartaClass = 'carta-' + index
+                        cartaClassArray.push(cartaClass)
                         cardDiv.className = 'carta ' + cartaClass
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
@@ -217,6 +220,8 @@
                                 oroCarta = 10
                             }
 
+                            oroTotal += oroCarta
+
                             const quickSell = document.createElement('button')
                             quickSell.innerHTML = 'Quick sell'
                             quickSell.id = 'quickSell'
@@ -233,10 +238,14 @@
                             putOnMarket.id = 'putOnMarket'
                             putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
                             cardDiv.appendChild(putOnMarket)
+                            const quickSellAll = document.createElement('button')
+                            quickSellAll.innerHTML = 'Quick sell all'
+                            quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                            resultado.appendChild(quickSellAll)
                         }
 
                         const divSalir = document.createElement('div')
-                        divSalir.className = 'salir'
+                        divSalir.className = 'salir' 
                         const botonGuardar = document.createElement('button')
                         botonGuardar.innerHTML = 'Guardar'
                         botonGuardar.setAttribute('onclick', `salirMostrarCartas(${JSON.stringify(data)})`)

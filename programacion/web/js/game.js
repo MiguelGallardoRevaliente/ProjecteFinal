@@ -241,3 +241,9 @@ function quickSell (cartaId, oroCarta, cartaClass) {
   carta.style.display = 'none'
   localStorage.setItem('cartas', JSON.stringify(cartas))
 }
+
+function quickSellAll (cartasArray, oroTotal, cartaClassArray) {
+  console.log(cartasArray)
+  console.log(oroTotal)
+  console.log(cartaClassArray)
+}
