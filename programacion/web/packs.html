@@ -27,7 +27,7 @@
                 document.getElementById('cerrarSobre').style.display = 'none'
                 sobresGod.style.display = 'block'
                 resultado.innerHTML = ''
-                let oroTotal = localStorage.getItem('oroTotal') || 0
+                let oroTotal = parseInt(localStorage.getItem('oroTotal')) || 0
                 const cartaClassArray = []
                 document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                 cartas.forEach((card, index) => {
@@ -169,7 +169,7 @@
                 .then(data => {
                     localStorage.setItem('cartas', JSON.stringify(data))
                     resultado.innerHTML = ''
-                    let oroTotal = localStorage.getItem('oroTotal') || 0
+                    let oroTotal = parseInt(localStorage.getItem('oroTotal')) || 0
                     const cartaClassArray = []
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card, index) => {
