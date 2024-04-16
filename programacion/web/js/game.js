@@ -254,6 +254,9 @@ function quickSell (cartaId, oroCarta, cartaClass) {
 function quickSellAll () {
   const oroTotal = localStorage.getItem('oroTotal')
   console.log(parseInt(localStorage.getItem('oroTotal')))
+  console.log(JSON.parse(localStorage.getItem('cartas')))
+  const cartasNoDuplicadas = JSON.parse(localStorage.getItem('cartas')).filter((carta) => !carta.duplicate)
+  console.log(cartasNoDuplicadas)
   const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
 
   fetch('/quickSell', {
