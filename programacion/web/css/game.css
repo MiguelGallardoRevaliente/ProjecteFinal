@@ -546,7 +546,7 @@ header .config a {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     margin: auto;
     gap: 20px;
-    width: 1100px;
+    width: 110px;
     align-items: center;
     margin-top: 5%;
     background: #232323;
@@ -560,11 +560,42 @@ header .config a {
     background: #3d3d3d;
     display: flex;
     cursor: pointer;
+    position: relative;
 }
 
 #mazos .container .allMazos .mazo div:hover{
     background: #4d4d4d;
 
+}
+
+#mazos .container .allMazos .mazo div p{
+    color: black;
+    position: absolute;
+
+}
+
+#mazos .container .allMazos .mazo div .nombre{
+    font-size: 13px;
+    top: 52.5%;
+    left: 23px;
+}
+
+#mazos .container .allMazos .mazo div .ataque{
+    font-size: 9px;
+    top: 75%;
+    max-width: 200px;
+    left: 28px;
+    font-weight: 500;
+}
+
+#mazos .container .allMazos .mazo div .ataqueVida{
+    display: flex;
+    bottom: 15px;
+    margin: 0px;
+    font-size: 17px;
+    font-weight: 800;
+    right: 10px;
+    font-family: "Goldman", sans-serif;
 }
 
 #deckName{
