@@ -134,6 +134,7 @@ app.get('/getDecks', async (req, res) => {
 
           if (mazoCarta.length > 0) {
             const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [cartas[0].id_ataque])
+            console.log(ataques)
 
             const cartaId = cartas[0].id
             const mazoCartaId = mazoCarta[0].id_mazo
