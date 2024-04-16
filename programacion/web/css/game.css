@@ -578,6 +578,7 @@ header .config a {
     font-size: 13px;
     top: 52.5%;
     left: 23px;
+    font-weight: 800;
 }
 
 #mazos .container .allMazos .mazo div .ataque{
