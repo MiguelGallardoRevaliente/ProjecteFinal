@@ -27,10 +27,13 @@
                 document.getElementById('cerrarSobre').style.display = 'none'
                 sobresGod.style.display = 'block'
                 resultado.innerHTML = ''
+                let oroTotal = 0
+                const cartaClassArray = []
                 document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                 cartas.forEach((card, index) => {
                     const cardDiv = document.createElement('div')
                     const cartaClass = 'carta-' + index
+                    cartaClassArray.push(cartaClass)
                     cardDiv.className = 'carta ' + cartaClass
                     cardDiv.style.backgroundImage = `url(${card.carta.foto})`
 
@@ -87,6 +90,7 @@
                             oroCarta = 10
                         }
 
+                        oroTotal += oroCarta
                         const quickSell = document.createElement('button')
                         quickSell.innerHTML = 'Quick sell'
                         quickSell.id = 'quickSell'
@@ -105,20 +109,26 @@
                         cardDiv.appendChild(putOnMarket)
                     }
 
-                    const divSalir = document.createElement('div')
-                    divSalir.className = 'salir'
-                    const botonGuardar = document.createElement('button')
-                    botonGuardar.innerHTML = 'Guardar'
-                    botonGuardar.setAttribute('onclick', `salirMostrarCartas(${JSON.stringify(cartas)})`)
-                    divSalir.appendChild(botonGuardar)
-                    resultado.appendChild(divSalir)
-
                     cardDiv.appendChild(nombreCarta)
                     cardDiv.appendChild(ataqueEspecial)
                     cardDiv.appendChild(ataqueVida)
                     resultado.appendChild(cardDiv)
                     
                 })
+
+                const divSalir = document.createElement('div')
+                divSalir.className = 'salir' 
+
+                const quickSellAll = document.createElement('button')
+                quickSellAll.innerHTML = 'Quick sell all'
+                quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                resultado.appendChild(quickSellAll)
+
+                const botonGuardar = document.createElement('button')
+                botonGuardar.innerHTML = 'Guardar'
+                botonGuardar.setAttribute('onclick', `salirMostrarCartas()`)
+                divSalir.appendChild(botonGuardar)
+                resultado.appendChild(divSalir)
             }
             const allChests = document.getElementsByClassName('allChests')[0]
             allChests.innerHTML = ''
