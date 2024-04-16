@@ -253,18 +253,30 @@ function quickSell (cartaId, oroCarta, cartaClass) {
   }
   localStorage.setItem('oroTotal', oroTotal)
   console.log(localStorage.getItem('oroTotal'))
+
   const carta = document.getElementsByClassName(cartaClass)[0]
   carta.style.display = 'none'
   localStorage.setItem('cartas', JSON.stringify(cartas))
-  localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArrayFiltered))
+
+  if (cartaClassArrayFiltered.length === 0) {
+    localStorage.removeItem('cartaClassArray')
+  } else {
+    localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArrayFiltered))
+  }
+
+  if (cartas.length === 0) {
+    window.location.reload()
+  }
 }
 
 function quickSellAll () {
   const oroTotal = localStorage.getItem('oroTotal')
   console.log(parseInt(localStorage.getItem('oroTotal')))
   console.log(JSON.parse(localStorage.getItem('cartas')))
+
   const cartasNoDuplicadas = JSON.parse(localStorage.getItem('cartas')).filter((carta) => !carta.duplicate)
   console.log(cartasNoDuplicadas)
+
   const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
 
   fetch('/quickSell', {
@@ -281,6 +293,11 @@ function quickSellAll () {
     const carta = document.getElementsByClassName(cartaClass)[0]
     carta.style.display = 'none'
   })
+
   localStorage.removeItem('cartaClassArray')
   localStorage.setItem('oroTotal', 0)
+
+  if (cartasNoDuplicadas.length === 0) {
+    window.location.reload()
+  }
 }
