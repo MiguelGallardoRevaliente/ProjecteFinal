@@ -45,6 +45,8 @@
                             img.alt = cartasMazo[i].cards[0].nombre
                             const nombre = document.createElement('p')
                             nombre.textContent = cartasMazo[i].cards[0].nombre
+                            const ataque = document.createElement('p')
+                            ataque.textContent = cartasMazo[i].ataques[0].descripcion
                             const ataqueVida = document.createElement('p')
                             ataqueVida.textContent = `${cartasMazo[i].cards[0].ataque} / ${cartasMazo[i].cards[0].vida}`
                             carta.appendChild(img)

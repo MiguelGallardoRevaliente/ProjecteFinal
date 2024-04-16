@@ -134,16 +134,14 @@ app.get('/getDecks', async (req, res) => {
           const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?;', [carta.id_carta, deck.id])
 
           if (mazoCarta.length > 0) {
+            const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta.id_ataque])
             const cartaId = cartas[0].id
             const mazoCartaId = mazoCarta[0].id_mazo
-            arrayCartasDeck.forEach(obj => {
-              console.log(obj)
-              console.log(obj.cards[0].id)
-            })
 
-            if (!arrayCartasDeck.some(obj => obj.cards[0].id === cartaId && obj.mazoCarta === mazoCartaId)) {
+            if (!arrayCartasDeck.some(obj => obj.cards[0].id === cartaId && obj.mazoCarta === mazoCartaId && obj.ataques[0].id === ataques[0].id)) {
               const cartaObj = {
                 cards: cartas,
+                ataques: ataques[0],
                 mazoCarta: mazoCartaId
               }
               arrayCartasDeck.push(cartaObj)
