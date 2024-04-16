@@ -281,5 +281,5 @@ function quickSellAll () {
     carta.style.display = 'none'
   })
   localStorage.removeItem('cartaClassArray')
-  localStorage.removeItem('oroTotal')
+  localStorage.setItem('oroTotal', 0)
 }
