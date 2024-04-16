@@ -242,6 +242,10 @@
 
                         const divSalir = document.createElement('div')
                         divSalir.className = 'salir' 
+                        const quickSellAll = document.createElement('button')
+                        quickSellAll.innerHTML = 'Quick sell all'
+                        quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                        resultado.appendChild(quickSellAll)
                         const botonGuardar = document.createElement('button')
                         botonGuardar.innerHTML = 'Guardar'
                         botonGuardar.setAttribute('onclick', `salirMostrarCartas(${JSON.stringify(data)})`)
