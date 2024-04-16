@@ -109,6 +109,7 @@
                         putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
                         cardDiv.appendChild(putOnMarket)
                     }
+                    localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
 
                     cardDiv.appendChild(nombreCarta)
                     cardDiv.appendChild(ataqueEspecial)
