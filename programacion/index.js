@@ -163,11 +163,11 @@ app.get('/getCardsDeck', async (req, res) => {
   try {
     const mazo = req.query.mazo
 
-    const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ? ORDER BY tipo DESC;', [mazo])
+    const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo])
 
     const cartasMazoId = cartasMazo.map(carta => carta.id_carta)
 
-    const [cards] = await connection.execute('SELECT * FROM cartas;')
+    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY tipo DESC;')
 
     const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
 
