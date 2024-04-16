@@ -26,6 +26,7 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 const decks = data.decks
                 const cartas = data.arrayCartasDeck
                 decks.forEach(deck => {
@@ -42,6 +43,10 @@
                             const img = document.createElement('img')
                             img.src = cartasMazo[i].cartas[0].foto
                             img.alt = cartasMazo[i].cartas[0].nombre
+                            const nombre = document.createElement('p')
+                            nombre.textContent = cartasMazo[i].cartas[0].nombre
+                            const ataqueVida = document.createElement('p')
+                            ataqueVida.textContent = `${cartasMazo[i].cartas[0].ataque} / ${cartasMazo[i].cartas[0].vida}`
                             carta.appendChild(img)
                         }
                         mazo.appendChild(carta)
