@@ -27,7 +27,7 @@
                 document.getElementById('cerrarSobre').style.display = 'none'
                 sobresGod.style.display = 'block'
                 resultado.innerHTML = ''
-                let oroTotal = 0
+                let oroTotal = localStorage.getItem('oroTotal') || 0
                 const cartaClassArray = []
                 document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                 cartas.forEach((card, index) => {
@@ -91,6 +91,7 @@
                         }
 
                         oroTotal += oroCarta
+                        localStorage.setItem('oroTotal', oroTotal)
                         const quickSell = document.createElement('button')
                         quickSell.innerHTML = 'Quick sell'
                         quickSell.id = 'quickSell'
@@ -121,7 +122,7 @@
 
                 const quickSellAll = document.createElement('button')
                 quickSellAll.innerHTML = 'Quick sell all'
-                quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(cartas)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(cartas)}, ${localStorage.getItem('oroTotal')}, ${JSON.stringify(cartaClassArray)})`) 
                 resultado.appendChild(quickSellAll)
 
                 const botonGuardar = document.createElement('button')
@@ -168,7 +169,7 @@
                 .then(data => {
                     localStorage.setItem('cartas', JSON.stringify(data))
                     resultado.innerHTML = ''
-                    let oroTotal = 0
+                    let oroTotal = localStorage.getItem('oroTotal') || 0
                     const cartaClassArray = []
                     document.getElementsByClassName('sobres_god_divGeneral')[0].style.display = 'none'
                     data.forEach((card, index) => {
@@ -232,7 +233,7 @@
                             }
 
                             oroTotal += oroCarta
-
+                            localStorage.setItem('oroTotal', oroTotal)
                             const quickSell = document.createElement('button')
                             quickSell.innerHTML = 'Quick sell'
                             quickSell.id = 'quickSell'
@@ -262,7 +263,7 @@
 
                     const quickSellAll = document.createElement('button')
                     quickSellAll.innerHTML = 'Quick sell all'
-                    quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
+                    quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${localStorage.getItem('oroTotal')}, ${JSON.stringify(cartaClassArray)})`) 
                     resultado.appendChild(quickSellAll)
 
                     const botonGuardar = document.createElement('button')

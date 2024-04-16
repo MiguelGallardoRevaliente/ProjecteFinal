@@ -229,6 +229,7 @@ function salirMostrarCartas () {
 function quickSell (cartaId, oroCarta, cartaClass) {
   const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
   const cartas = arrayCartas.filter((carta) => carta.id !== cartaId)
+
   fetch('/quickSell', {
     method: 'POST',
     headers: {
@@ -237,6 +238,11 @@ function quickSell (cartaId, oroCarta, cartaClass) {
     body: JSON.stringify({ id: localStorage.getItem('id'), oroCarta })
   })
     .then(response => response.json())
+
+  let oroTotal = localStorage.getItem('oroTotal') || 0
+  oroTotal -= oroCarta
+  localStorage.setItem('oroTotal', oroTotal)
+
   const carta = document.getElementsByClassName(cartaClass)[0]
   carta.style.display = 'none'
   localStorage.setItem('cartas', JSON.stringify(cartas))
