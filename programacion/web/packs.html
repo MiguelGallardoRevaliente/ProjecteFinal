@@ -238,10 +238,6 @@
                             putOnMarket.id = 'putOnMarket'
                             putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
                             cardDiv.appendChild(putOnMarket)
-                            const quickSellAll = document.createElement('button')
-                            quickSellAll.innerHTML = 'Quick sell all'
-                            quickSellAll.setAttribute('onclick', `quickSellAll(${JSON.stringify(card)}, ${oroTotal}, ${JSON.stringify(cartaClassArray)})`) 
-                            resultado.appendChild(quickSellAll)
                         }
 
                         const divSalir = document.createElement('div')
@@ -256,7 +252,6 @@
                         cardDiv.appendChild(ataqueEspecial)
                         cardDiv.appendChild(ataqueVida)
                         resultado.appendChild(cardDiv)
-                        
                     })
                 })
         })
