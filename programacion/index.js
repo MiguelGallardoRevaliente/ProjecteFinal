@@ -144,7 +144,7 @@ app.get('/getDecks', async (req, res) => {
             const ataqueId = ataques[0].id
             const mazoCartaId = mazoCarta[0].id_mazo
 
-            if (!arrayCartasDeck.some(obj => obj.cartas.length > 0 && obj.cartas[0].id === cartaId && obj.mazoCarta === mazoCartaId && obj.ataques[0].id === ataqueId)) {
+            if (!arrayCartasDeck.some(obj => obj.cartas && obj.cartas.length > 0 && obj.cartas[0].id === cartaId && obj.mazoCarta === mazoCartaId && obj.ataques[0].id === ataqueId)) {
               const cartaObj = {
                 cards: cartas,
                 ataques,
