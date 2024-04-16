@@ -561,6 +561,7 @@ header .config a {
     display: flex;
     cursor: pointer;
     position: relative;
+    border-radius: 15px;
 }
 
 #mazos .container .allMazos .mazo div:hover{
@@ -815,7 +816,7 @@ header .config a {
 .resultado_sobre .carta {
     background-size: contain;
     background-repeat: no-repeat;
-    width: 290px;
+    width: 287px;
     height: 400px;
     position: relative;
     transition: all 0.2s;
