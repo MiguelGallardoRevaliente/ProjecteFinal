@@ -228,7 +228,9 @@ function salirMostrarCartas () {
 
 function quickSell (cartaId, oroCarta, cartaClass) {
   const arrayCartas = JSON.parse(localStorage.getItem('cartas'))
+  console.log(arrayCartas)
   const cartas = arrayCartas.filter((carta) => carta.id !== cartaId)
+  console.log(cartas)
 
   fetch('/quickSell', {
     method: 'POST',
