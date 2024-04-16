@@ -137,7 +137,7 @@ app.get('/getDecks', async (req, res) => {
             const cartaId = cartas[0].id
             const mazoCartaId = mazoCarta[0].id_mazo
             arrayCartasDeck.forEach(obj => {
-              console.log(obj)
+              console.log(obj.cartas[0].id)
             })
 
             if (!arrayCartasDeck.some(obj => obj.cartas[0].id === cartaId && obj.mazoCarta === mazoCartaId)) {
