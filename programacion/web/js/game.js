@@ -251,10 +251,8 @@ function quickSell (cartaId, oroCarta, cartaClass) {
   localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArrayFiltered))
 }
 
-function quickSellAll (cartasArray, cartaClassArray) {
+function quickSellAll () {
   console.log(localStorage.getItem('oroTotal'))
   console.log(JSON.parse(localStorage.getItem('cartas')))
   console.log(JSON.parse(localStorage.getItem('cartaClassArray')))
-  console.log(cartasArray)
-  console.log(cartaClassArray)
 }
