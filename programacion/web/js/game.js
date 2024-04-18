@@ -302,6 +302,7 @@ function quickSellAll () {
   }
 }
 
-function putOnMarket (idCarta) {
+function putOnMarket (idCarta, rareza) {
   console.log(idCarta)
+  console.log(rareza)
 }

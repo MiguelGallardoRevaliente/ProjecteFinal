@@ -106,7 +106,7 @@
                         const putOnMarket = document.createElement('button')
                         putOnMarket.innerHTML = 'Put on market'
                         putOnMarket.id = 'putOnMarket'
-                        putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
+                        putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id}, ${card.carta.rareza})`)
                         cardDiv.appendChild(putOnMarket)
                     }
 
@@ -250,7 +250,7 @@
                             const putOnMarket = document.createElement('button')
                             putOnMarket.innerHTML = 'Put on market'
                             putOnMarket.id = 'putOnMarket'
-                            putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id})`)
+                            putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id}, ${card.carta.rareza})`)
                             cardDiv.appendChild(putOnMarket)
                         }
 
