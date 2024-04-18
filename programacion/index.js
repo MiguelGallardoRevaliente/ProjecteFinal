@@ -19,12 +19,12 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 
 const connection = await mysql.createConnection(connectionString)
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const app = express()
-app.use(express.json())
+app.use(express.static(join(__dirname, 'web')))
 app.use(cors())
 app.disable('x-powered-by')
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
@@ -467,15 +467,6 @@ app.post('/quickSell', async (req, res) => {
   }
 })
 
-const PORT = process.env.PORT ?? 1234
-const HOST = '0.0.0.0'
-
-app.use(express.static(join(__dirname, 'web')))
-
-app.listen(PORT, HOST, () => {
-  console.log(`Listening from http://13.53.190.234/:${PORT}`)
-})
-
 app.post('/putOnMarket', async (req, res) => {
   try {
     const id = req.body.id
@@ -489,4 +480,11 @@ app.post('/putOnMarket', async (req, res) => {
   } catch (err) {
     console.error(err)
   }
+})
+
+const PORT = process.env.PORT ?? 1234
+const HOST = '0.0.0.0'
+
+app.listen(PORT, HOST, () => {
+  console.log(`Listening from http://13.53.190.234/:${PORT}`)
 })
