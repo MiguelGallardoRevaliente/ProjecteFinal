@@ -281,6 +281,12 @@
         const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
         putOnMarketForm.addEventListener('submit', (e) => {
             e.preventDefault()
+            const precio = document.getElementById('precio').value
+            const rareza = document.getElementById('putOnMarket').value
+            const cartaId = document.getElementById('putOnMarket').value
+            console.log(precio)
+            console.log(rareza)
+            console.log(cartaId)
         })
     </script>
 </head>
