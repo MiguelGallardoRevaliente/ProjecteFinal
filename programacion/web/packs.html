@@ -290,7 +290,7 @@
         })
 
         const precio = document.getElementById('precio')
-        precio.addEventListener('input', () => {
+        precio.addEventListener('change', () => {
             const rareza = parseInt(document.getElementById('rareza').value)
             if (rareza === 5) {
                 if (precio.value < 1000) {
