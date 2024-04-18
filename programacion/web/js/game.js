@@ -305,4 +305,6 @@ function quickSellAll () {
 function putOnMarket (idCarta, rareza) {
   console.log(idCarta)
   console.log(rareza)
+  const putOnMarket = document.getElementsByClassName('put_on_market')[0]
+  putOnMarket.style.display = 'flex'
 }

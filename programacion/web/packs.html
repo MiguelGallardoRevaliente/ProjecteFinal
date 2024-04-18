@@ -277,6 +277,11 @@
                     resultado.appendChild(divSalir)
                 })
         })
+
+        const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
+        putOnMarketForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+        })
     </script>
 </head>
 
@@ -326,6 +331,12 @@
         </div>
         <!--Este es el div que mostrare cuando el div "sobre" desaparezca de la pantalla entonces mostrara las 4 cartas que se mostraran en este div-->
       <div class="resultado_sobre">
+      </div>
+      <div class="put_on_market">
+        <form action="" class="put_on_market_form">
+            <input type="number" name="precio" id="precio" required>
+            <button type="submit">Put On Market</button>
+        </form>
       </div>
       <!--Este div tiene que ir dentro de resultado_sobre pero no funciona nspork-->
     </div>
