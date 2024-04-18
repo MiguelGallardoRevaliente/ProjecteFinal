@@ -307,6 +307,19 @@ function putOnMarket (idCarta, rareza) {
   console.log(rareza)
   const putOnMarket = document.getElementsByClassName('put_on_market')[0]
   putOnMarket.style.display = 'flex'
+  const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
+  const inputRareza = document.createElement('input')
+  inputRareza.type = 'hidden'
+  inputRareza.name = 'rareza'
+  inputRareza.id = 'rareza'
+  inputRareza.value = rareza
+  const inputIdCarta = document.createElement('input')
+  inputIdCarta.type = 'hidden'
+  inputIdCarta.name = 'idCarta'
+  inputIdCarta.id = 'idCarta'
+  inputIdCarta.value = idCarta
+  putOnMarketForm.appendChild(inputRareza)
+  putOnMarketForm.appendChild(inputIdCarta)
   const precio = document.getElementById('precio')
   if (rareza === 5) {
     precio.placeholder = 'min. 1000 - max. 5000'
@@ -324,17 +337,4 @@ function putOnMarket (idCarta, rareza) {
     precio.placeholder = 'min. 10 - max. 50'
     precio.value = 10
   }
-  const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
-  const inputRareza = document.createElement('input')
-  inputRareza.type = 'hidden'
-  inputRareza.name = 'rareza'
-  inputRareza.id = 'rareza'
-  inputRareza.value = rareza
-  const inputIdCarta = document.createElement('input')
-  inputIdCarta.type = 'hidden'
-  inputIdCarta.name = 'idCarta'
-  inputIdCarta.id = 'idCarta'
-  inputIdCarta.value = idCarta
-  putOnMarketForm.appendChild(inputRareza)
-  putOnMarketForm.appendChild(inputIdCarta)
 }
