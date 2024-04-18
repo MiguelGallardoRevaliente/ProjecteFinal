@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     user VARCHAR(255) NOT NULL,
     password TEXT NOT NULL,
     email VARCHAR(255) NOT NULL,
-    oro INT DEFAULT 1000,
+    oro INT DEFAULT 0,
     foto_perfil TEXT,
     mazo_seleccionado INT,
     first_log BOOL DEFAULT true
@@ -53,9 +53,14 @@ CREATE TABLE IF NOT EXISTS ataques (
 	id INT PRIMARY KEY auto_increment,
     nombre VARCHAR(255),
     tipo VARCHAR(255),
+    tipo_secundario VARCHAR(255),
     cambio INT,
+    cambio_secundario INT,
     estadistica VARCHAR(255),
-    duracion INT
+    estadistica_secundaria VARCHAR(255),
+    duracion INT,
+    duracion_secundaria INT,
+    descripcion TEXT
 );
 
 CREATE TABLE IF NOT EXISTS mazos (
@@ -71,6 +76,15 @@ CREATE TABLE IF NOT EXISTS mazo_cartas (
 	id_mazo INT,
     id_carta INT,
     FOREIGN KEY (id_mazo) REFERENCES mazos(id),
+    FOREIGN KEY (id_carta) REFERENCES cartas(id)
+);
+
+CREATE TABLE IF NOT EXISTS mercado_cartas (
+	id_carta_mercado INT PRIMARY KEY auto_increment,
+    id_user BINARY(16),
+    id_carta INT,
+    precio INT,
+    FOREIGN KEY (id_user) REFERENCES users(id),
     FOREIGN KEY (id_carta) REFERENCES cartas(id)
 );
 
