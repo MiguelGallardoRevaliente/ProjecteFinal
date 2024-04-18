@@ -475,7 +475,7 @@ app.post('/putOnMarket', async (req, res) => {
     console.log(id)
     console.log(idCarta)
     console.log(precio)
-    await connection.execute('INSERT INTO mercado_cartas values (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)', [id, idCarta, precio])
+    await connection.execute('INSERT INTO mercado_cartas (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)', [id, idCarta, precio])
     return res.status(200).json({ message: 'Uploaded into the market' })
   } catch (err) {
     console.error(err)
