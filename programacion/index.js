@@ -475,3 +475,17 @@ app.use(express.static(join(__dirname, 'web')))
 app.listen(PORT, HOST, () => {
   console.log(`Listening from http://13.53.190.234/:${PORT}`)
 })
+
+app.post('/putOnMarket', async (req, res) => {
+  try {
+    const id = req.body.id
+    const idCarta = req.body.idCarta
+    const precio = req.body.precio
+    console.log(id)
+    console.log(idCarta)
+    console.log(precio)
+    return res.status(200).json({ message: 'mondongo' })
+  } catch (err) {
+    console.error(err)
+  }
+})

@@ -287,6 +287,17 @@
             console.log(precio)
             console.log(rareza)
             console.log(cartaId)
+            fetch('/putOnMarket', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ precio, id: localStorage.getItem('id'), cartaId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
         })
 
         const precio = document.getElementById('precio')
@@ -375,10 +386,12 @@
       <div class="resultado_sobre">
       </div>
       <div class="put_on_market">
-        <form action="" class="put_on_market_form">
-            <input type="number" name="precio" id="precio" required>
-            <button type="submit">Put On Market</button>
-        </form>
+        <div class="put_on_market_less_div">
+            <form action="" class="put_on_market_form">
+                <input type="number" name="precio" id="precio" required>
+                <button type="submit">Put On Market</button>
+            </form>
+        </div>
       </div>
       <!--Este div tiene que ir dentro de resultado_sobre pero no funciona nspork-->
     </div>
