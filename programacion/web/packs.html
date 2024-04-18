@@ -292,7 +292,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ precio, id: localStorage.getItem('id'), cartaId })
+                body: JSON.stringify({ precio, id: localStorage.getItem('id'), idCarta: cartaId })
             })
                 .then(response => response.json())
                 .then(data => {
