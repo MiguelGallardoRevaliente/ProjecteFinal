@@ -284,9 +284,6 @@
             const precio = parseInt(document.getElementById('precio').value)
             const rareza = parseInt(document.getElementById('rareza').value)
             const cartaId = parseInt(document.getElementById('idCarta').value)
-            console.log(precio)
-            console.log(rareza)
-            console.log(cartaId)
             fetch('/putOnMarket', {
                 method: 'POST',
                 headers: {
