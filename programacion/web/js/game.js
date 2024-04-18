@@ -301,3 +301,7 @@ function quickSellAll () {
     window.location.reload()
   }
 }
+
+function putOnMarket (idCarta) {
+  console.log(idCarta)
+}
