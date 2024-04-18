@@ -242,20 +242,16 @@ function quickSell (cartaId, oroCarta, cartaClass) {
     .then(response => response.json())
 
   let oroTotal = parseInt(localStorage.getItem('oroTotal')) || 0
-  console.log(oroTotal)
-  console.log(oroCarta)
   if (oroTotal > 0) {
     oroTotal = oroTotal - oroCarta
     if (oroTotal < 0) {
       oroTotal = 0
     }
-    console.log(oroTotal)
   }
   localStorage.setItem('oroTotal', oroTotal)
-  console.log(localStorage.getItem('oroTotal'))
 
   const carta = document.getElementsByClassName(cartaClass)[0]
-  carta.style.display = 'none'
+  carta.remove()
   localStorage.setItem('cartas', JSON.stringify(cartas))
 
   if (cartaClassArrayFiltered.length === 0) {
@@ -271,11 +267,8 @@ function quickSell (cartaId, oroCarta, cartaClass) {
 
 function quickSellAll () {
   const oroTotal = localStorage.getItem('oroTotal')
-  console.log(parseInt(localStorage.getItem('oroTotal')))
-  console.log(JSON.parse(localStorage.getItem('cartas')))
 
   const cartasNoDuplicadas = JSON.parse(localStorage.getItem('cartas')).filter((carta) => !carta.duplicate)
-  console.log(cartasNoDuplicadas)
 
   const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
 
@@ -291,7 +284,7 @@ function quickSellAll () {
   localStorage.setItem('cartas', JSON.stringify(cartasNoDuplicadas))
   cartaClassArray.forEach(cartaClass => {
     const carta = document.getElementsByClassName(cartaClass)[0]
-    carta.style.display = 'none'
+    carta.remove()
   })
 
   localStorage.removeItem('cartaClassArray')

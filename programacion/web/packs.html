@@ -298,6 +298,16 @@
                         alert(data.error)
                     } else {
                         alert('Carta puesta en el mercado')
+                        const cartas = JSON.parse(localStorage.getItem('cartas'))
+                        console.log(cartas)
+                        const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
+                        cartas.splice(cartaIndex, 1)
+                        const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
+                        const carta = document.getElementsByClassName(cartaClassArray[cartaIndex])[0]
+                        carta.remove()
+                        cartaClassArray.splice(cartaIndex, 1)
+                        localStorage.setItem('cartas', JSON.stringify(cartas))
+                        localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
                         window.location.reload()
                     }
                 })
