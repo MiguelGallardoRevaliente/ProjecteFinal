@@ -288,6 +288,42 @@
             console.log(rareza)
             console.log(cartaId)
         })
+
+        const precio = document.getElementById('precio')
+        precio.addEventListener('input', () => {
+            const rareza = parseInt(document.getElementById('rareza').value)
+            if (rareza === 5) {
+                if (precio.value < 1000) {
+                    precio.value = 1000
+                } else if (precio.value > 5000) {
+                    precio.value = 5000
+                }
+            } else if (rareza === 4) {
+                if (precio.value < 500) {
+                    precio.value = 500
+                } else if (precio.value > 1000) {
+                    precio.value = 1000
+                }
+            } else if (rareza === 3) {
+                if (precio.value < 100) {
+                    precio.value = 100
+                } else if (precio.value > 500) {
+                    precio.value = 500
+                }
+            } else if (rareza === 2) {
+                if (precio.value < 50) {
+                    precio.value = 50
+                } else if (precio.value > 100) {
+                    precio.value = 100
+                }
+            } else {
+                if (precio.value < 10) {
+                    precio.value = 10
+                } else if (precio.value > 50) {
+                    precio.value = 50
+                }
+            }
+        })
     </script>
 </head>
 
