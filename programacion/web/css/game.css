@@ -460,11 +460,6 @@ header .config a {
     background-color: #3d3d3d;
 }
 
-#especial-link {
-    clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%) !important;
-    background-color: var(--background-color) !important;
-}
-
 #inventory .container .links div button,
 #chests .container .links div button,
 #mazos .container .links div button {
