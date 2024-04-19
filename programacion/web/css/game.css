@@ -418,12 +418,11 @@ header .config a {
     position: absolute;
     top: 0px;
     left: 0px;
-    /* margin-left: 300px; */
     display: flex;
     align-items: center;
     background-color: #141414;
     width: 100%;
-    margin-left: 300px;
+    margin-left: 306px;
 
 }
 
