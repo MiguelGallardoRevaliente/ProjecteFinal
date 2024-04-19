@@ -47,7 +47,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
-    z-index: 00;
+    z-index: 10;
 }
 
 header .logo {
@@ -417,10 +417,11 @@ header .config a {
     position: absolute;
     top: 0px;
     left: 0px;
-    margin-left: 300px;
+    /* margin-left: 300px; */
     display: flex;
     align-items: center;
-    background-color: #3d3d3d;
+    background-color: #141414;
+    width: 100%;
 
 }
 
@@ -433,9 +434,11 @@ header .config a {
     align-items: center;
     justify-content: center;
     clip-path: polygon(0 0, 66% 0, 100% 100%, 33% 100%);
-    background-color: #000000;
+    background-color: #121212;
     margin-right: -50px;
     cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
 }
 
 #inventory .container .links div:hover,
@@ -446,6 +449,8 @@ header .config a {
 
 #especial-link {
     clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%) !important;
+    margin-left: 300px;
+    background-color: #292929 !important;
 }
 
 #inventory .container .links div button,
