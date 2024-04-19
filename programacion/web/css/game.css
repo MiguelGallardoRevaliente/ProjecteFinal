@@ -307,7 +307,7 @@ header .config a {
     border: none;
     background-color: var(--background-color);
     min-height: 100vh;
-    padding: 0px;
+    padding: 70px;
 
 }
 
@@ -325,7 +325,9 @@ header .config a {
 }
 
 #shop .container .top h1 {
-    margin-right: 30px;
+    font-size: 2em;
+    border-left: 20px solid #ffffff;
+    padding-left: 20px;
 }
 
 #shop .container .top button {
