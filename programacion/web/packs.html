@@ -309,6 +309,7 @@
                         const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
                         cartas.splice(cartaIndex, 1)
                         const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
+                        console.log(cartaClassArray)
                         const carta = document.getElementsByClassName(cartaClassArray[cartaIndex])[0]
                         carta.remove()
                         cartaClassArray.splice(cartaIndex, 1)
