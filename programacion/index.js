@@ -289,7 +289,9 @@ app.get('/getShopCards', async (req, res) => {
   const id = req.query.id
   console.log(id)
   const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
-  console.log(shop)
+  const cardId = shop.map(carta => carta.id_carta)
+  const [cards] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cardId])
+  console.log(cards)
   return res.status(200).json({ message: 'updated' })
 })
 
