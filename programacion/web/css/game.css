@@ -328,6 +328,7 @@ header .config a {
     font-size: 2em;
     border-left: 20px solid #ffffff;
     padding-left: 20px;
+    margin-right: 30px;
 }
 
 #shop .container .top button {
@@ -549,11 +550,12 @@ header .config a {
 
 /*wrap*/
 #inventory .container .allcards .yourCards {
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     place-items: center;
+    justify-content: center;
+    align-items: center;
     margin-top: 5%;
 
 }
