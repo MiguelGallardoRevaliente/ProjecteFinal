@@ -310,6 +310,8 @@
                         cartas.splice(cartaIndex, 1)
                         const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
                         console.log(cartaClassArray)
+                        console.log(cartaIndex)
+                        console.log(cartaClassArray[cartaIndex])
                         const carta = document.getElementsByClassName(cartaClassArray[cartaIndex])[0]
                         carta.remove()
                         cartaClassArray.splice(cartaIndex, 1)
