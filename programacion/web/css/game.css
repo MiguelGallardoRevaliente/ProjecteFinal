@@ -506,7 +506,9 @@ header .config a {
 #inventory .container .top h1,
 #chests .container .top h1,
 #mazos .container .top h1 {
-    margin-right: 30px;
+    font-size: 2em;
+    border-left: 20px solid #ffffff;
+    padding-left: 20px;
 }
 
 #inventory .container .top button,
