@@ -337,7 +337,7 @@ function putOnMarket (idCarta, rareza) {
   putOnMarket.appendChild(putOnMarketForm)
 
   const precio = document.getElementById('precio')
-  const maxAndMin = document.getElementsByClassName('maxAndMin')[0]
+  const maxAndMin = document.getElementById('maxAndMin')
   if (rareza === 5) {
     maxAndMin.innerHTML = 'min. 1000 - max. 5000'
     precio.value = 1000
