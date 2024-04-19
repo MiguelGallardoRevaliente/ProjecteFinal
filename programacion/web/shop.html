@@ -19,7 +19,7 @@
         window.onload = () => {
             const shopCardsBody = document.getElementsByClassName('shop_cards_body')[0]
 
-            fetch(`/getShopCards?${localStorage.getItem('id')}`, {
+            fetch(`/getShopCards?id=${localStorage.getItem('id')}`, {
                 method: 'GET'
             })
                 .then(res => res.json())
