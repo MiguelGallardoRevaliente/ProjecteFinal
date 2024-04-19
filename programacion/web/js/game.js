@@ -332,6 +332,9 @@ function putOnMarket (idCarta, rareza) {
 
   const maxAndMin = document.createElement('p')
 
+  putOnMarket.appendChild(maxAndMin)
+  putOnMarket.appendChild(putOnMarketForm)
+
   const precio = document.getElementById('precio')
   if (rareza === 5) {
     maxAndMin.textContent = 'min. 1000 - max. 5000'
@@ -349,7 +352,4 @@ function putOnMarket (idCarta, rareza) {
     maxAndMin.textContent = 'min. 10 - max. 50'
     precio.value = 10
   }
-
-  putOnMarket.appendChild(maxAndMin)
-  putOnMarket.appendChild(putOnMarketForm)
 }
