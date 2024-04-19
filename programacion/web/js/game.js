@@ -297,6 +297,7 @@ function quickSellAll () {
 
 function putOnMarket (idCarta, rareza) {
   const putOnMarket = document.getElementsByClassName('put_on_market')[0]
+  putOnMarket.innerHTML = ''
   putOnMarket.style.display = 'flex'
 
   const putOnMarketForm = document.createElement('form')
