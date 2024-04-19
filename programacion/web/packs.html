@@ -298,6 +298,12 @@
                         alert(data.error)
                     } else {
                         alert('Carta puesta en el mercado')
+                        const putOnMarket = document.getElementsByClassName('putOnMarket')[0]
+                        putOnMarket.style.display = 'none'
+                        const rareza = document.getElementById('rareza')
+                        const cartaId = document.getElementById('idCarta')
+                        rareza.remove()
+                        cartaId.remove()
                         const cartas = JSON.parse(localStorage.getItem('cartas'))
                         console.log(cartas)
                         const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
