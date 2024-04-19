@@ -806,6 +806,7 @@ header .config a {
     background: transparent;
     border: none;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .resultado_sobre {
