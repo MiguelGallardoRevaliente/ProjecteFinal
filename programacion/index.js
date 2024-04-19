@@ -171,7 +171,7 @@ app.get('/getCardsDeck', async (req, res) => {
 
     const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY tipo DESC, rareza DESC;')
 
-    const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
+    const filteredCards = cards.filter(card => cartasMazoId.includes(card.id))
 
     for (const carta of filteredCards) {
       console.log(carta)
