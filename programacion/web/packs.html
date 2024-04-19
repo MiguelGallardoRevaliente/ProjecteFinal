@@ -301,9 +301,9 @@
                         const putOnMarket = document.getElementsByClassName('put_on_market')[0]
                         putOnMarket.style.display = 'none'
                         const rareza = document.getElementById('rareza')
-                        const cartaId = document.getElementById('idCarta')
+                        const cartaIdInput = document.getElementById('idCarta')
                         rareza.remove()
-                        cartaId.remove()
+                        cartaIdInput.remove()
                         const cartas = JSON.parse(localStorage.getItem('cartas'))
                         console.log(cartas)
                         const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
