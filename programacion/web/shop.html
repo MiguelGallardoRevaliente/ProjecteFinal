@@ -17,6 +17,11 @@
         }
 
         window.onload = () => {
+            const shopcards = document.getElementById('shop_cards')
+            const shopchests = document.getElementById('shop_chests')
+            shopchests.style.boxShadow = '1px 1px 5px black inset'
+            shopcards.style.boxShadow = '1px 1px 5px black'
+
             const shopCardsBody = document.getElementsByClassName('shop_cards_body')[0]
 
             fetch(`/getShopCards?id=${localStorage.getItem('id')}`, {
