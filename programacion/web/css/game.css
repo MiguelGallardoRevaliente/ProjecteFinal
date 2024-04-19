@@ -34,6 +34,7 @@ body {
     padding: 0px;
     scrollbar-width: none;
     background-color: #292929;
+    overflow-x: hidden;
 }
 
 header {
@@ -422,6 +423,7 @@ header .config a {
     align-items: center;
     background-color: #141414;
     width: 100%;
+    margin-left: 300px;
 
 }
 
@@ -439,7 +441,7 @@ header .config a {
     cursor: pointer;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-}
+
 
 #inventory .container .links div:hover,
 #chests .container .links div:hover,
@@ -449,7 +451,6 @@ header .config a {
 
 #especial-link {
     clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%) !important;
-    margin-left: 300px;
     background-color: #292929 !important;
 }
 
