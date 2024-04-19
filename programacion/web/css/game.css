@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 
 :root {
-    --background-color: var(#292929);
+    --background-color: #292929;
     --text-color: white;
-    --hover-active: var(#3b3b3b);
+    --hover-active: #3b3b3b;
     --box-shadow: #272727;
     --principal-red: #d30000;
     --principal-cian: #02e2e2;
