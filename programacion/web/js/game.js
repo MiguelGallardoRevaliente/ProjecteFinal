@@ -339,19 +339,19 @@ function putOnMarket (idCarta, rareza) {
   const precio = document.getElementById('precio')
   const maxAndMin = document.getElementsByClassName('maxAndMin')[0]
   if (rareza === 5) {
-    maxAndMin.textContent = 'min. 1000 - max. 5000'
+    maxAndMin.innerHTML = 'min. 1000 - max. 5000'
     precio.value = 1000
   } else if (rareza === 4) {
-    maxAndMin.textContent = 'min. 500 - max. 1000'
+    maxAndMin.innerHTML = 'min. 500 - max. 1000'
     precio.value = 500
   } else if (rareza === 3) {
-    maxAndMin.textContent = 'min. 100 - max. 500'
+    maxAndMin.innerHTML = 'min. 100 - max. 500'
     precio.value = 100
   } else if (rareza === 2) {
-    maxAndMin.textContent = 'min. 50 - max. 100'
+    maxAndMin.innerHTML = 'min. 50 - max. 100'
     precio.value = 50
   } else {
-    maxAndMin.textContent = 'min. 10 - max. 50'
+    maxAndMin.innerHTML = 'min. 10 - max. 50'
     precio.value = 10
   }
 }
