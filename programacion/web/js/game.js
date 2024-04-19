@@ -300,6 +300,9 @@ function putOnMarket (idCarta, rareza) {
   putOnMarket.innerHTML = ''
   putOnMarket.style.display = 'flex'
 
+  const putOnMarketInsideDiv = document.createElement('div')
+  putOnMarketInsideDiv.className = 'put_on_market_inside'
+
   const putOnMarketForm = document.createElement('form')
   putOnMarketForm.action = ''
   putOnMarketForm.class = 'put_on_market_form'
@@ -334,8 +337,9 @@ function putOnMarket (idCarta, rareza) {
   const maxAndMinP = document.createElement('p')
   maxAndMinP.id = 'maxAndMin'
 
-  putOnMarket.appendChild(maxAndMinP)
-  putOnMarket.appendChild(putOnMarketForm)
+  putOnMarketInsideDiv.appendChild(maxAndMinP)
+  putOnMarketInsideDiv.appendChild(putOnMarketForm)
+  putOnMarket.appendChild(putOnMarketInsideDiv)
 
   const precio = document.getElementById('precio')
   const maxAndMin = document.getElementById('maxAndMin')
