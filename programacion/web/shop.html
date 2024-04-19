@@ -16,6 +16,47 @@
             window.location.href = '/login'
         }
 
+        window.onload = () => {
+            const shopCardsBody = document.getElementsByClassName('shop_cards_body')[0]
+
+            fetch(`/getShopCards?${localStorage.getItem('id')}`, {
+                method: 'GET'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // data.forEach(card => {
+                    //     const tr = document.createElement('tr')
+                    //     const img = document.createElement('img')
+                    //     img.src = card.img
+                    //     img.style.width = '30px'
+                    //     tr.appendChild(img)
+                    //     const name = document.createElement('td')
+                    //     name.innerText = card.nombre
+                    //     tr.appendChild(name)
+                    //     const type = document.createElement('td')
+                    //     type.innerText = card.tipo
+                    //     tr.appendChild(type)
+                    //     const rank = document.createElement('td')
+                    //     if (card.rango === 5) {
+                    //         rank.innerText = 'R'
+                    //     } else if (card.rango === 4) {
+                    //         rank.innerText = 'EXT'
+                    //     } else if (card.rango === 3) {
+                    //         rank.innerText = 'EXC'
+                    //     } else if (card.rango === 2) {
+                    //         rank.innerText = 'ESP'
+                    //     } else if (card.rango === 1) {
+                    //         rank.innerText = 'C'
+                    //     }
+                    //     tr.appendChild(rank)
+                    //     const price = document.createElement('td')
+                    //     price.innerText = card.precio
+                    //     tr.appendChild(price)
+                    //     shopCardsBody.appendChild(tr)
+                    // })
+                })
+        }
+
         const form = document.getElementsByClassName('form')[0]
 
         form.addEventListener('submit', (e) => {
@@ -87,7 +128,7 @@
                         <button type="submit" id="search"><i class='bx bx-search'></i></button>
                     </form>
                 </div>
-                <div>
+                <div class="shop_cards">
                     <table>
                         <thead>
                             <tr>
@@ -96,31 +137,29 @@
                                 <th>Price</th>
                                 <th>Type</th>
                                 <th>Rank</th>
-                                <th>date</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="shop_cards_body">
                             <tr>
                                 <td><img style="width: 30px;" src="/img/Neutro/Radiante/MazaCartaFinal.png"></td>
                                 <td>Maza Panadero</td>
                                 <td>Neutro</td>
                                 <td>Radiant</td>
                                 <td>1000</td>
-                                <td>12:00 - 06/09</td>
                             </tr>
                             <tr>
+                                <td><img style="width: 30px;" src="/img/Neutro/Radiante/MazaCartaFinal.png"></td>
                                 <td>Maza Panadero</td>
                                 <td>Neutro</td>
                                 <td>EXTraudinary</td>
                                 <td>1000</td>
-                                <td>12:00 - 06/09</td>
                             </tr>
                             <tr>
+                                <td><img style="width: 30px;" src="/img/Neutro/Radiante/MazaCartaFinal.png"></td>
                                 <td>MazaPanadero</td>
                                 <td>Water</td>
                                 <td>EXC</td>
                                 <td>1000</td>
-                                <td>12:00 - 06/09</td>
                             </tr>
                         </tbody>
                     </table>
