@@ -173,6 +173,10 @@ app.get('/getCardsDeck', async (req, res) => {
 
     const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
 
+    for (const carta of filteredCards) {
+      console.log(carta)
+    }
+
     const ataquesPromises = filteredCards.map(async (card) => {
       const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card.id])
       return ataques
