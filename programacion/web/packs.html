@@ -23,6 +23,7 @@
 
         window.onload = () => {
             const cards = document.getElementById('cards')
+            cards.style.clipPath = 'polygon(0 0, 66% 0, 100% 100%, 0% 100%)'
             cards.style.backgroundColor = '#121212'
             const decks = document.getElementById('decks')
             decks.style.backgroundColor = '#121212'
@@ -127,12 +128,10 @@
                 const divSalir = document.createElement('div')
                 divSalir.className = 'salir' 
 
-                if (cartaClassArray.length > 0) {
-                    const quickSellAll = document.createElement('button')
-                    quickSellAll.innerHTML = 'Quick sell all'
-                    quickSellAll.setAttribute('onclick', `quickSellAll()`) 
-                    divSalir.appendChild(quickSellAll)
-                }
+                const quickSellAll = document.createElement('button')
+                quickSellAll.innerHTML = 'Quick sell all'
+                quickSellAll.setAttribute('onclick', `quickSellAll()`) 
+                divSalir.appendChild(quickSellAll)
 
                 const botonGuardar = document.createElement('button')
                 botonGuardar.innerHTML = 'Guardar'
@@ -273,12 +272,10 @@
                     const divSalir = document.createElement('div')
                     divSalir.className = 'salir' 
 
-                    if (cartaClassArray.length > 0) {
-                        const quickSellAll = document.createElement('button')
-                        quickSellAll.innerHTML = 'Quick sell all'
-                        quickSellAll.setAttribute('onclick', `quickSellAll()`) 
-                        divSalir.appendChild(quickSellAll)
-                    }
+                    const quickSellAll = document.createElement('button')
+                    quickSellAll.innerHTML = 'Quick sell all'
+                    quickSellAll.setAttribute('onclick', `quickSellAll()`) 
+                    divSalir.appendChild(quickSellAll)
 
                     const botonGuardar = document.createElement('button')
                     botonGuardar.innerHTML = 'Guardar'
