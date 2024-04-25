@@ -101,9 +101,10 @@ const setProfilePicture = (event) => {
 function getCartas (mazoActual, idCartaMazo) {
   const cartasNoMazo = document.getElementById('cartas-no-mazo')
   const cartas = document.getElementsByClassName('cartas')[0]
+  const idUsuario = localStorage.getItem('id')
   cartasNoMazo.style.display = 'flex'
   cartas.innerHTML = ''
-  fetch(`/getCardsDeck?mazo=${mazoActual}`, {
+  fetch(`/getCardsDeck?mazo=${mazoActual}&idUsuario=${idUsuario}`, {
     method: 'GET'
   })
     .then(response => response.json())
