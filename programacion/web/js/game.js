@@ -46,6 +46,32 @@ function mostrarShopChests () {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      data.forEach(chest => {
+        const chestDiv = document.createElement('div')
+        chestDiv.className = 'chest'
+        chestDiv.style.backgroundImage = 'url(img/sobre.png)'
+
+        const infoDiv = document.createElement('div')
+        const cantidad = document.createElement('p')
+        cantidad.className = 'cantidad'
+        cantidad.innerHTML = chest.cantidad
+
+        const precioDiv = document.createElement('div')
+        const precio = document.createElement('p')
+        precio.className = 'precio'
+        precio.innerHTML = chest.precio
+        const rubiImg = document.createElement('img')
+        rubiImg.src = url('img/rubi.png')
+        rubiImg.alt = 'rubi'
+        precioDiv.appendChild(precio)
+        precioDiv.appendChild(rubiImg)
+
+        infoDiv.appendChild(cantidad)
+        infoDiv.appendChild(precioDiv)
+
+        chestDiv.appendChild(infoDiv)
+        allchests.appendChild(chestDiv)
+      })
     })
 }
 
