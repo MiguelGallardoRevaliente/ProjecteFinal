@@ -172,7 +172,7 @@ app.get('/getCardsDeck', async (req, res) => {
 
     const [cardsUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?;', [idUsuario])
 
-    const [cards] = await connection.execute('SELECT * FROM cartass ORDER BY tipo DESC, rareza DESC;')
+    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY tipo DESC, rareza DESC;')
 
     const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
 
