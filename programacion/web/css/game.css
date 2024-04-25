@@ -691,6 +691,7 @@ header .config p{
     justify-content: center;
     align-items: center;
     background: #232323b8;
+    z-index: 100;
 }
 
 #cartas-no-mazo button {
