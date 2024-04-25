@@ -164,27 +164,30 @@ app.get('/getDecks', async (req, res) => {
 app.get('/getCardsDeck', async (req, res) => {
   try {
     const mazo = req.query.mazo
+    const idUsuario = req.query.idUsuario
 
     const [cartasMazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo])
 
     const cartasMazoId = cartasMazo.map(carta => carta.id_carta)
 
-    const [cards] = await connection.execute('SELECT * FROM cartas ORDER BY tipo DESC, rareza DESC;')
+    const [cardsUser] = await connection.execute('SELECT * FROM users_cartas WHERE BIN_TO_UUID(id_user) = ?;', [idUsuario])
 
-    const filteredCards = cards.filter(card => cartasMazoId.includes(card.id))
+    const [cards] = await connection.execute('SELECT * FROM cartass ORDER BY tipo DESC, rareza DESC;')
 
-    for (const carta of filteredCards) {
-      console.log(carta)
-    }
+    const filteredCards = cards.filter(card => !cartasMazoId.includes(card.id))
 
-    const ataquesPromises = filteredCards.map(async (card) => {
+    const cartasUserId = cardsUser.map(carta => carta.id_carta)
+
+    const filteredCardsUser = filteredCards.filter(card => cartasUserId.includes(card.id))
+
+    const ataquesPromises = filteredCardsUser.map(async (card) => {
       const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card.id])
       return ataques
     })
 
     const ataques = await Promise.all(ataquesPromises)
     const datos = {
-      filteredCards,
+      filteredCards: filteredCardsUser,
       ataques
     }
 
