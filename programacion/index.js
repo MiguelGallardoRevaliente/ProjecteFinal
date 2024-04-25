@@ -313,6 +313,15 @@ app.get('/getShopCards', async (req, res) => {
   return res.status(200).json(arrayCartas)
 })
 
+app.get('/getShopChests', async (req, res) => {
+  try {
+    const [chestsShop] = await connection.execute('SELECT * FROM tienda_sobres;')
+    return res.status(200).json(chestsShop)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 app.get('/information', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/information.html'))

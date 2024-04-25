@@ -39,6 +39,14 @@ function mostrarShopChests () {
   shopchests.style.boxShadow = '1px 1px 5px black'
   shopchests.style.backgroundColor = 'gray'
   shopcards.style.backgroundColor = '#292929'
+  allchests.innerHTML = ''
+  fetch('/getShopChests', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
 }
 
 function mostrarSobreGod () {
