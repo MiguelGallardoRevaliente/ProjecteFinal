@@ -58,7 +58,7 @@ header {
     align-items: center;
     justify-content: space-between;
     color: white;
-    z-index: 0;
+    z-index: 2;
 }
 
 header .logo {
@@ -1069,6 +1069,7 @@ header .config p{
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     display: none;
+    z-index: 100;
 }
 
 #cerrarSobre {
