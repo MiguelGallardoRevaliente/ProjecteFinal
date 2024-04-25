@@ -453,6 +453,10 @@ header .config p{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+#inventory .container .links div {
+    clip-path: polygon(0 0, 66% 0, 100% 100%, 0 100%);
+}
+
 
 #inventory .container .links div:hover,
 #chests .container .links div:hover,
