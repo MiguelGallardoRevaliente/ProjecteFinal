@@ -61,7 +61,7 @@ function mostrarShopChests () {
         precio.className = 'precio'
         precio.innerHTML = chest.precio
         const rubiImg = document.createElement('img')
-        rubiImg.src = url('img/rubi.png')
+        rubiImg.src = 'img/rubi.png'
         rubiImg.alt = 'rubi'
         precioDiv.appendChild(precio)
         precioDiv.appendChild(rubiImg)
