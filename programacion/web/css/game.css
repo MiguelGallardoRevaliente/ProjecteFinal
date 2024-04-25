@@ -134,14 +134,13 @@ header .config i {
     color: rgb(255, 255, 255);
 }
 
-header .config a {
+header .config p{
     font-family: "koho", sans-serif;
     font-weight: 200;
     text-align: center;
     font-size: 33px;
     color: white;
     text-decoration: none;
-
 }
 
 /*menu*/
