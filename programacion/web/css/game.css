@@ -134,7 +134,19 @@ header .config i {
     color: rgb(255, 255, 255);
 }
 
+<<<<<<< Updated upstream
 header .config a {
+=======
+header .config a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+header .config p{
+>>>>>>> Stashed changes
     font-family: "koho", sans-serif;
     font-weight: 200;
     text-align: center;
