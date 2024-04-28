@@ -1199,13 +1199,13 @@ header .config p{
     width: 120px;
     height: 40px;
     display: flex;
-   
+    background-color: transparent;
     font-size: 25px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: red !important;
-    color: white;
+    border: none;
 }
 
 #settings .setting form button:active {
