@@ -133,7 +133,7 @@ header .config i {
     color: rgb(255, 255, 255);
 }
 
-header .config a{
+header .config a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,7 +141,7 @@ header .config a{
     text-decoration: none;
 }
 
-header .config p{
+header .config p {
     font-family: "koho", sans-serif;
     font-weight: 200;
     text-align: center;
@@ -407,6 +407,20 @@ header .config p{
 
 }
 
+/*shop-sobres*/
+
+#allchests .chest {
+    width: 400px;
+    height: 558px;
+    background: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px black;
+    cursor: pointer;
+}
+
+
 /*inventory*/
 
 #inventory,
@@ -428,7 +442,7 @@ header .config p{
     margin: 0px 70px;
 }
 
-#mazos .container{
+#mazos .container {
     margin: 0% !important;
 
 }
@@ -502,7 +516,7 @@ header .config p{
     gap: 0px;
 }
 
-#mazos .container .top{
+#mazos .container .top {
     margin-left: 5% !important;
 }
 
@@ -589,25 +603,25 @@ header .config p{
     border-radius: 15px;
 }
 
-#mazos .container .allMazos .mazo div:hover{
+#mazos .container .allMazos .mazo div:hover {
     background: #4d4d4d;
 
 }
 
-#mazos .container .allMazos .mazo div p{
+#mazos .container .allMazos .mazo div p {
     color: black;
     position: absolute;
 
 }
 
-#mazos .container .allMazos .mazo div .nombre{
+#mazos .container .allMazos .mazo div .nombre {
     font-size: 13px;
     top: 52.5%;
     left: 23px;
     font-weight: 800;
 }
 
-#mazos .container .allMazos .mazo div .ataque{
+#mazos .container .allMazos .mazo div .ataque {
     font-size: 9px;
     top: 75%;
     max-width: 200px;
@@ -615,7 +629,7 @@ header .config p{
     font-weight: 500;
 }
 
-#mazos .container .allMazos .mazo div .ataqueVida{
+#mazos .container .allMazos .mazo div .ataqueVida {
     display: flex;
     bottom: 18px;
     margin: 0px;
@@ -625,7 +639,7 @@ header .config p{
     font-family: "Goldman", sans-serif;
 }
 
-#deckName{
+#deckName {
     width: 1100px;
     margin: auto;
 }
@@ -681,7 +695,7 @@ header .config p{
 
 /*cartas-no-mazos*/
 
-#cartas-no-mazo{
+#cartas-no-mazo {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -718,7 +732,7 @@ header .config p{
     padding: 20px 10px;
 }
 
-#cartas-no-mazo .cartas .carta{
+#cartas-no-mazo .cartas .carta {
     background-size: contain;
     background-repeat: no-repeat;
     width: 300px;
@@ -731,7 +745,7 @@ header .config p{
     display: none;
 }
 
-#cartas-no-mazo .cartas .carta .ataque-especial{
+#cartas-no-mazo .cartas .carta .ataque-especial {
     position: absolute;
     top: 75%;
     font-size: 10px !important;
@@ -742,7 +756,7 @@ header .config p{
 
 }
 
-#cartas-no-mazo .cartas .carta .ataque-vida{
+#cartas-no-mazo .cartas .carta .ataque-vida {
     bottom: 0;
     right: 0;
     margin: 26px 30px !important;
@@ -754,7 +768,7 @@ header .config p{
     color: black;
 }
 
-#cartas-no-mazo .cartas .carta .nombreCarta{
+#cartas-no-mazo .cartas .carta .nombreCarta {
     position: absolute;
     top: 56%;
     left: 30px;
@@ -765,21 +779,21 @@ header .config p{
 
 /*Decks - Pasar*/
 
-.top-deck{
+.top-deck {
     display: flex;
     justify-content: space-between;
     width: 1100px;
     margin: auto;
 }
 
-.pasar{
+.pasar {
     display: flex;
     gap: 10px;
     align-items: center;
     justify-content: center;
 }
 
-.pasar button{
+.pasar button {
     width: 30px;
     height: 30px;
     font-size: 25px;
@@ -793,11 +807,11 @@ header .config p{
     cursor: pointer;
 }
 
-.pasar button:hover{
+.pasar button:hover {
     background: #3d3d3d;
 }
 
-.pasar button:active{
+.pasar button:active {
     background-color: rgb(211, 211, 211);
     color: black;
 }
@@ -854,27 +868,27 @@ header .config p{
     height: 400px;
     position: relative;
     transition: all 0.2s;
-    transform: translateY(-1000px); 
+    transform: translateY(-1000px);
     border-radius: 10px;
 }
 
 .carta-0 {
-    animation: appearFromTop 0.5s ease forwards;  
+    animation: appearFromTop 0.5s ease forwards;
 }
 
 .carta-1 {
-    animation: appearFromTop 0.5s 0.4s ease forwards;  
+    animation: appearFromTop 0.5s 0.4s ease forwards;
 }
 
 .carta-2 {
-    animation: appearFromTop 0.5s 0.8s ease forwards;  
+    animation: appearFromTop 0.5s 0.8s ease forwards;
 }
 
 .carta-3 {
-    animation: appearFromTop 0.5s 1.2s ease forwards;  
+    animation: appearFromTop 0.5s 1.2s ease forwards;
 }
 
-.resultado_sobre .carta .ataque-vida{
+.resultado_sobre .carta .ataque-vida {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -884,7 +898,7 @@ header .config p{
     font-family: "Goldman", sans-serif;
 }
 
-.resultado_sobre .carta .ataque-especial{
+.resultado_sobre .carta .ataque-especial {
     position: absolute;
     top: 75%;
     font-size: 10px !important;
@@ -893,14 +907,14 @@ header .config p{
     max-width: 240px;
 }
 
-.resultado_sobre .carta .nombreCarta{
+.resultado_sobre .carta .nombreCarta {
     position: absolute;
     top: 56.5%;
     left: 30px;
     margin: 0px;
 }
 
-.QuickSell{
+.QuickSell {
     position: absolute;
     display: flex;
     align-items: center;
@@ -910,7 +924,7 @@ header .config p{
     transform: translate(-50%, -50%);
 }
 
-.QuickSell button{
+.QuickSell button {
     background-color: #232323;
     color: white;
     border: 1px solid var(--principal-cian);
@@ -918,27 +932,27 @@ header .config p{
     display: flex;
     align-items: center;
     gap: 10px;
-    
+
 }
 
-.QuickSell button:hover{
+.QuickSell button:hover {
     background-color: #00b1b1;
 }
 
-.QuickSell .divOro{
+.QuickSell .divOro {
     display: flex;
     align-items: center;
     color: white;
     height: 25px;
-    
+
 }
 
-.QuickSell .divOro img{
+.QuickSell .divOro img {
     width: 17px;
     height: 17px;
 }
 
-#putOnMarket{
+#putOnMarket {
     position: absolute;
     bottom: -82px;
     padding: 5px;
@@ -954,7 +968,7 @@ header .config p{
 
 }
 
-#putOnMarket:hover{
+#putOnMarket:hover {
     background-color: #00b1b1;
 }
 
@@ -983,15 +997,15 @@ header .config p{
     justify-content: center;
 }
 
-.salir{
+.salir {
     position: absolute;
     bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
 }
 
-.salir button{
+.salir button {
     padding: 10px;
     width: 120px;
     height: 40px;
@@ -1008,28 +1022,29 @@ header .config p{
     outline-offset: 0px;
     text-shadow: none;
     -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-            transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
     outline-color: rgba(255, 255, 255, 0.5);
     outline-offset: 0px;
     border: 1px solid rgb(0, 255, 234);
     opacity: 0;
     animation: mostrar 1s 1.4s ease forwards;
-    
-  }
-  
-  .salir button:hover {
+
+}
+
+.salir button:hover {
     border: 1px solid;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
     outline-offset: 15px;
     outline-color: rgba(255, 255, 255, 0);
     text-shadow: 1px 1px 2px #427388;
-  }
+}
 
 @keyframes appearFromTop {
     0% {
         transform: translateY(-1000px);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -1040,21 +1055,25 @@ header .config p{
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
-    
+
 }
 
 .carta:nth-child(1) {
     animation-delay: 0.1s;
 }
+
 .carta:nth-child(2) {
     animation-delay: 0.2s;
 }
+
 .carta:nth-child(3) {
     animation-delay: 0.3s;
 }
+
 .carta:nth-child(4) {
     animation-delay: 0.4s;
 }
@@ -1110,9 +1129,10 @@ header .config p{
     0% {
         box-shadow: 0px 0px 20px white;
     }
-    100%{
+
+    100% {
         box-shadow: 0px 0px 50px black;
-    
+
     }
 }
 
@@ -1127,7 +1147,8 @@ header .config p{
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background: linear-gradient(45deg, #4386B7, #83D2F3); /* Degradado */
+    background: linear-gradient(45deg, #4386B7, #83D2F3);
+    /* Degradado */
     color: white;
     margin-top: 30px;
     border-radius: 4px;
@@ -1140,7 +1161,7 @@ header .config p{
 }
 
 .sobres_god_divGeneral form button:active {
-    box-shadow: 0px 1px 1px white ;
+    box-shadow: 0px 1px 1px white;
     transform: translateY(4px);
 }
 
@@ -1213,14 +1234,14 @@ header .config p{
     margin-top: 5%;
 }
 
-#settings .changePassword{
+#settings .changePassword {
     display: flex;
     align-items: center;
     justify-content: left !important;
     gap: 10px;
 }
 
-#settings .changePassword label{
+#settings .changePassword label {
     background-color: #5f5f5f;
     box-shadow: 1px 1px 5px #000000 inset;
     border-radius: 10px;
@@ -1228,12 +1249,12 @@ header .config p{
     width: 150px;
 }
 
-#settings .changePassword button{
+#settings .changePassword button {
     background: transparent;
     border: none;
 }
 
-#settings .changePassword button i{
+#settings .changePassword button i {
     font-size: 25px;
     color: white;
 }
