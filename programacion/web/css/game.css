@@ -421,6 +421,10 @@ header .config p {
     position: relative;
 }
 
+#allchests .chest:hover{
+    transform: scale(1.1);
+}
+
 #allchests .chest div{
     position: absolute;
     bottom: -13%;
@@ -429,6 +433,7 @@ header .config p {
     align-items: center;
     justify-content: center;
     left: 50%;
+    gap: 10px;
     transform: translate(-50%, -50%);
     
 }
