@@ -420,6 +420,18 @@ header .config p {
     cursor: pointer;
 }
 
+#allchests .chest div{
+    position: absolute;
+    bottom: -15%;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
 
 /*inventory*/
 
