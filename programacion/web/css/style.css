@@ -189,34 +189,11 @@ body{
         }
 
         .container h1 {
-            font-size: 1.4em;
+            font-size: 1.6em;
         }
 
         .container p {
-            font-size: 0.8em;
-        }
-
-        .form input {
-            width: 100%;
-        }
-
-        .form button {
-            width: 100%;
-        }
-    }
-
-    @media screen and (max-width: 380px){
-    
-        .container {
-            padding: 10px 10px;
-        }
-
-        .container h1 {
-            font-size: 1.2em;
-        }
-
-        .container p {
-            font-size: 0.6em;
+            font-size: 1em;
         }
 
         .form input {
