@@ -418,11 +418,12 @@ header .config p {
     border-radius: 5px;
     box-shadow: 1px 1px 10px black;
     cursor: pointer;
+    position: relative;
 }
 
 #allchests .chest div{
     position: absolute;
-    bottom: -15%;
+    bottom: -13%;
     margin: 0px;
     display: flex;
     align-items: center;
@@ -430,6 +431,15 @@ header .config p {
     left: 50%;
     transform: translate(-50%, -50%);
     
+}
+
+#allchests .chest div .precio{
+    margin: 0px;
+}
+
+#allchests .chest div .cantidad{
+   position: absolute;
+   bottom: 0;
 }
 
 
