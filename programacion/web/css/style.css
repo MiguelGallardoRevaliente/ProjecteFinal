@@ -135,3 +135,29 @@ body{
 #forgot .form button{
     width: 100%;
 }
+
+    @media screen and (max-width: 768px){
+        body {
+            background-image: none;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .container h1 {
+            font-size: 2em;
+        }
+
+        .container p {
+            font-size: 1.2em;
+        }
+
+        .form input {
+            width: 100%;
+        }
+
+        .form button {
+            width: 100%;
+        }
+    }
