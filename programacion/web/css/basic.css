@@ -50,3 +50,11 @@
     font-size: 30px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+   #atras2 {
+       top: 10px;
+       left: 10px;
+   }
+}
+
