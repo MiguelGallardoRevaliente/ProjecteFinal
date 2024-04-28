@@ -181,3 +181,49 @@ body{
             width: 90%;
         }
     }
+
+    @media screen and (max-width: 480px){
+    
+        .container {
+            padding: 10px 20px;
+        }
+
+        .container h1 {
+            font-size: 1.4em;
+        }
+
+        .container p {
+            font-size: 0.8em;
+        }
+
+        .form input {
+            width: 100%;
+        }
+
+        .form button {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 380px){
+    
+        .container {
+            padding: 10px 10px;
+        }
+
+        .container h1 {
+            font-size: 1.2em;
+        }
+
+        .container p {
+            font-size: 0.6em;
+        }
+
+        .form input {
+            width: 100%;
+        }
+
+        .form button {
+            width: 100%;
+        }
+    }
