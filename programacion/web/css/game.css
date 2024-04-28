@@ -419,10 +419,11 @@ header .config p {
     box-shadow: 1px 1px 10px black;
     cursor: pointer;
     position: relative;
+    transition: all 0.2s;
 }
 
 #allchests .chest:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 #allchests .chest div{
