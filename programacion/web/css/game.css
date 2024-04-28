@@ -1216,7 +1216,7 @@ header .config p{
 #settings .changePassword{
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: left !important;
     gap: 10px;
 }
 
