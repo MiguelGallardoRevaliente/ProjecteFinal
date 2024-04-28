@@ -905,15 +905,18 @@ header .config p {
 }
 
 .carta-1 {
-    animation: appearFromTop 0.3s 2s ease forwards;
+    animation: appearFromTop 0.3s ease forwards;
+    animation-delay: 1s;
 }
 
 .carta-2 {
-    animation: appearFromTop 0.3s 3s ease forwards;
+    animation: appearFromTop 0.3s ease forwards;
+    animation-delay: 2s;
 }
 
 .carta-3 {
-    animation: appearFromTop 0.3s 4s ease forwards;
+    animation: appearFromTop 0.3s ease forwards;
+    animation-delay: 3s;
 }
 
 .resultado_sobre .carta .ataque-vida {
