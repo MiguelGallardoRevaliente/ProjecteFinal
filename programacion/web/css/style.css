@@ -151,10 +151,33 @@ body{
         }
 
         .form input {
-            width: 100%;
+            width: 80%;
         }
 
         .form button {
-            width: 100%;
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 480px){
+    
+        .container {
+            padding: 10px 20px;
+        }
+
+        .container h1 {
+            font-size: 1.5em;
+        }
+
+        .container p {
+            font-size: 1em;
+        }
+
+        .form input {
+            width: 90%;
+        }
+
+        .form button {
+            width: 90%;
         }
     }
