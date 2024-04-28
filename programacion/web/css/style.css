@@ -182,25 +182,3 @@ body{
         }
     }
 
-    @media screen and (max-width: 480px){
-    
-        .container {
-            padding: 10px 20px;
-        }
-
-        .container h1 {
-            font-size: 1.6em;
-        }
-
-        .container p {
-            font-size: 1em;
-        }
-
-        .form input {
-            width: 100%;
-        }
-
-        .form button {
-            width: 100%;
-        }
-    }
