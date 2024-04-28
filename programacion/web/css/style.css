@@ -159,14 +159,14 @@ body{
         }
     }
 
-    @media screen and (max-width: 480px){
+    @media screen and (max-width: 580px){
     
         .container {
-            padding: 10px 20px;
+            padding: 10px 30px;
         }
 
         .container h1 {
-            font-size: 1.5em;
+            font-size: 1.6em;
         }
 
         .container p {
