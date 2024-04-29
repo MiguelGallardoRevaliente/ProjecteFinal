@@ -1061,8 +1061,7 @@ header .config p {
 }
 
 .put_on_market_inside form button:hover{
-    background-color: #3d3d3d;
-    color: white;
+    background-color: var(--hover-active);
 }
 
 .salir {
