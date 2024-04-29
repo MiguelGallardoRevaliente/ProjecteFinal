@@ -52,6 +52,7 @@ function mostrarShopChests () {
         chestDiv.style.backgroundImage = 'url(img/sobre.png)'
 
         const infoDiv = document.createElement('div')
+        infoDiv.className = 'info'
         const cantidad = document.createElement('p')
         cantidad.className = 'cantidad'
         cantidad.innerHTML = 'Quantity: ' + chest.cantidad
