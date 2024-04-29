@@ -386,10 +386,6 @@ function buyCard (idCarta, precio) {
   })
     .then(response => response.json())
     .then(data => {
-      if (data.error) {
-        alert(data.error)
-      } else {
-        window.location.reload()
-      }
+      console.log(data)
     })
 }
