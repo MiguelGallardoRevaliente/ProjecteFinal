@@ -116,12 +116,6 @@
                         putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id}, ${card.carta.rareza})`)
                         cardDiv.appendChild(putOnMarket)
 
-                        //boton para cancelar compra que simplemente salga de el div
-                        const cancelarCompra = document.createElement('button')
-                        cancelarCompra.innerHTML = 'Cancelar compra'
-                        cancelarCompra.id = 'cancelarCompra'
-                        cardDiv.appendChild(cancelarCompra)
-
                     }
 
                     cardDiv.appendChild(nombreCarta)
