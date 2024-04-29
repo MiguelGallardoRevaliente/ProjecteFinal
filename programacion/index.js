@@ -517,6 +517,21 @@ app.post('/putOnMarket', async (req, res) => {
   }
 })
 
+app.post('/buyCard', async (req, res) => {
+  try {
+    const id = req.body.id
+    const idCarta = req.body.idCarta
+    const precio = req.body.precio
+    console.log(id)
+    console.log(idCarta)
+    console.log(precio)
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    console.log(user[0])
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 

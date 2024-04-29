@@ -400,3 +400,21 @@ function putOnMarket (idCarta, rareza) {
     precio.value = 10
   }
 }
+
+function buyCard (idCarta, precio) {
+  fetch('/buyCard', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ idCarta, precio, id: localStorage.getItem('id') })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
+      } else {
+        window.location.reload()
+      }
+    })
+}
