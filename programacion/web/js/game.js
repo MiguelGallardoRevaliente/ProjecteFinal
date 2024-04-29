@@ -376,7 +376,10 @@ function putOnMarket (idCarta, rareza) {
   }
 }
 
-function buyCard (idCarta, precio) {
+function buyCard (idCarta, precio, nombre) {
+  const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
+  confirmarDiv.style.display = 'flex'
+  document.getElementsByClassName('nombre_carta_confirmar')[0].textContent = 'Are you sure you want to buy ' + nombre + ' for ' + precio + ' of gold?'
   fetch('/buyCard', {
     method: 'POST',
     headers: {
