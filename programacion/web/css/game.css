@@ -1042,7 +1042,7 @@ header .config p {
     border: none;
     background: #9D9D9D;
     color: black;
-    font-size: 25px;
+    font-size: 18px;
 
 }
 
@@ -1052,8 +1052,9 @@ header .config p {
     border: none;
     background: #9D9D9D;
     color: rgb(0, 0, 0);
-    font-size: 20px;
+    font-size: 17px;
     cursor: pointer;
+    margin-top: 10px;
 
 }
 
