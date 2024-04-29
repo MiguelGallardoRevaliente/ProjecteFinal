@@ -527,6 +527,10 @@ app.post('/buyCard', async (req, res) => {
     console.log(precio)
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
     console.log(user[0])
+    if (user[0].oro < precio) {
+      return res.status(200).json({ message: 'Not enough gold' })
+    }
+    return res.status(200).json({ message: 'Card bought' })
   } catch (err) {
     console.error(err)
   }

@@ -401,6 +401,49 @@ function putOnMarket (idCarta, rareza) {
   }
 }
 
+const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
+putOnMarketForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const precio = parseInt(document.getElementById('precio').value)
+  const rareza = parseInt(document.getElementById('rareza').value)
+  const cartaId = parseInt(document.getElementById('idCarta').value)
+  fetch('/putOnMarket', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ precio, id: localStorage.getItem('id'), idCarta: cartaId })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if (data.error) {
+        alert(data.error)
+      } else {
+        const putOnMarket = document.getElementsByClassName('put_on_market')[0]
+        putOnMarket.style.display = 'none'
+        alert('Carta puesta en el mercado')
+        const rareza = document.getElementById('rareza')
+        const cartaIdInput = document.getElementById('idCarta')
+        rareza.remove()
+        cartaIdInput.remove()
+        const cartas = JSON.parse(localStorage.getItem('cartas'))
+        console.log(cartas)
+        const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
+        cartas.splice(cartaIndex, 1)
+        const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
+        console.log(cartaClassArray)
+        console.log(cartaIndex)
+        console.log(cartaClassArray[cartaIndex])
+        const carta = document.getElementsByClassName(cartaClassArray[cartaIndex])[0]
+        carta.remove()
+        cartaClassArray.splice(cartaIndex, 1)
+        localStorage.setItem('cartas', JSON.stringify(cartas))
+        localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
+      }
+    })
+})
+
 function buyCard (idCarta, precio) {
   fetch('/buyCard', {
     method: 'POST',
