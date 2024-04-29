@@ -54,7 +54,7 @@ function mostrarShopChests () {
         const infoDiv = document.createElement('div')
         const cantidad = document.createElement('p')
         cantidad.className = 'cantidad'
-        cantidad.innerHTML = chest.cantidad
+        cantidad.innerHTML = 'Quantity: ' + chest.cantidad
 
         const precioDiv = document.createElement('div')
         const precio = document.createElement('p')
