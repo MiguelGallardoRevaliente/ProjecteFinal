@@ -337,21 +337,11 @@ function quickSellAll () {
 
 function putOnMarket (idCarta, rareza) {
   const putOnMarket = document.getElementsByClassName('put_on_market')[0]
-  putOnMarket.innerHTML = ''
   putOnMarket.style.display = 'flex'
 
-  const putOnMarketInsideDiv = document.createElement('div')
   putOnMarketInsideDiv.className = 'put_on_market_inside'
 
-  const putOnMarketForm = document.createElement('form')
-  putOnMarketForm.action = ''
-  putOnMarketForm.class = 'put_on_market_form'
-
-  const inputPrecio = document.createElement('input')
-  inputPrecio.type = 'number'
-  inputPrecio.name = 'precio'
-  inputPrecio.id = 'precio'
-  inputPrecio.required = true
+  const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
 
   const inputRareza = document.createElement('input')
   inputRareza.type = 'hidden'
@@ -365,21 +355,8 @@ function putOnMarket (idCarta, rareza) {
   inputIdCarta.id = 'idCarta'
   inputIdCarta.value = idCarta
 
-  const buttonPutOnMarket = document.createElement('button')
-  buttonPutOnMarket.type = 'submit'
-  buttonPutOnMarket.textContent = 'Put On Market'
-
-  putOnMarketForm.appendChild(inputPrecio)
   putOnMarketForm.appendChild(inputRareza)
   putOnMarketForm.appendChild(inputIdCarta)
-  putOnMarketForm.appendChild(buttonPutOnMarket)
-
-  const maxAndMinP = document.createElement('p')
-  maxAndMinP.id = 'maxAndMin'
-
-  putOnMarketInsideDiv.appendChild(maxAndMinP)
-  putOnMarketInsideDiv.appendChild(putOnMarketForm)
-  putOnMarket.appendChild(putOnMarketInsideDiv)
 
   const precio = document.getElementById('precio')
   const maxAndMin = document.getElementById('maxAndMin')
