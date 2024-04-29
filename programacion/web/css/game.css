@@ -1030,6 +1030,39 @@ header .config p {
     justify-content: center;
 }
 
+.put_on_market_inside #maxAndMin{
+    margin: 0px;
+    margin-top: 30px;
+}
+
+.put_on_market_inside form input{
+    padding: 2px;
+    width: 280px;
+    box-shadow: 1px 1px 3px var(--box-shadow) inset;
+    border: none;
+    background: #9D9D9D;
+    color: black;
+    font-size: 25px;
+
+}
+
+.put_on_market_inside form button{
+    padding: 2px;
+    box-shadow: 3px 3px 5px var(--box-shadow);
+    border: none;
+    background: #9D9D9D;
+    width: 37px;
+    height: 37px;
+    color: rgb(0, 0, 0);
+    font-size: 35px;
+    cursor: pointer;
+
+}
+
+.put_on_market_inside form button:hover{
+    background-color: #3d3d3d;
+}
+
 .salir {
     position: absolute;
     bottom: 10%;
