@@ -34,7 +34,7 @@
                     console.log(data)
                     data.forEach(card => {
                         const tr = document.createElement('tr')
-                        tr.setAttribute('onclick', `buyCard(${card.carta.id}, ${card.precio})`)
+                        tr.setAttribute('onclick', `buyCard(${card.carta.id}, ${card.precio}, ${card.carta.nombre})`)
                         const img = document.createElement('img')
                         img.src = card.carta.foto
                         img.style.width = '30px'
@@ -153,6 +153,11 @@
                         <tbody class="shop_cards_body">
                         </tbody>
                     </table>
+                </div>
+                <div class="confirmar_compra_carta">
+                    <h2 class="nombre_carta_confirmar"></h2>
+                    <button onclick="confirmarCompra()">BUY</button>
+                    <button onclick="cancelarCompraCarta()">CANCEL</button>
                 </div>
             </div>
             <div id="allchests" class="all">
