@@ -34,7 +34,7 @@
                     console.log(data)
                     data.forEach(card => {
                         const tr = document.createElement('tr')
-                        tr.setAttribute('onclick', `buyCard(${card.carta.id}, ${card.precio}, ${card.carta.nombre})`)
+                        tr.setAttribute('onclick', `buyCard(${card.carta.id}, ${card.precio}, 'Manuel')`)
                         const img = document.createElement('img')
                         img.src = card.carta.foto
                         img.style.width = '30px'
