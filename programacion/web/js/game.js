@@ -339,8 +339,6 @@ function putOnMarket (idCarta, rareza) {
   const putOnMarket = document.getElementsByClassName('put_on_market')[0]
   putOnMarket.style.display = 'flex'
 
-  putOnMarketInsideDiv.className = 'put_on_market_inside'
-
   const putOnMarketForm = document.getElementsByClassName('put_on_market_form')[0]
 
   const inputRareza = document.createElement('input')
