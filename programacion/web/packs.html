@@ -115,6 +115,13 @@
                         putOnMarket.id = 'putOnMarket'
                         putOnMarket.setAttribute('onclick', `putOnMarket(${card.carta.id}, ${card.carta.rareza})`)
                         cardDiv.appendChild(putOnMarket)
+
+                        //boton para cancelar compra
+                        const cancelarCompra = document.createElement('button')
+                        cancelarCompra.innerHTML = 'Cancelar'
+                        cancelarCompra.id = 'cancelarCompra'
+                        
+
                     }
 
                     cardDiv.appendChild(nombreCarta)

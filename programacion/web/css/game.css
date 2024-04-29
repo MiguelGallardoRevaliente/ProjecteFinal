@@ -1016,7 +1016,7 @@ header .config p {
 .put_on_market_inside{
     width: 300px;
     height: 150px;
-    background-color: black;
+    background-color: var(--background-color);
 }
 
 .put_on_market {
