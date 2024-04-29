@@ -63,8 +63,12 @@ function mostrarShopChests () {
         const rubiImg = document.createElement('img')
         rubiImg.src = 'img/rubi.png'
         rubiImg.alt = 'rubi'
+        const comprarButton = document.createElement('button')
+        comprarButton.textContent = 'Buy'
+        comprarButton.setAttribute('onclick', 'comprarChest()')
         precioDiv.appendChild(precio)
         precioDiv.appendChild(rubiImg)
+        precioDiv.appendChild(comprarButton)
 
         infoDiv.appendChild(cantidad)
         infoDiv.appendChild(precioDiv)
