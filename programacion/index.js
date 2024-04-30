@@ -295,7 +295,7 @@ app.get('/shop', (req, res) => {
 app.get('/getShopCards', async (req, res) => {
   const id = req.query.id
   const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
-  console.log(shop)
+
   const arrayCartas = []
   for (const carta of shop) {
     const [card] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
