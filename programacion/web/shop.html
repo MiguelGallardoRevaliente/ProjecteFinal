@@ -38,6 +38,10 @@
                         const img = document.createElement('img')
                         img.src = card.carta.foto
                         img.style.width = '30px'
+                        img.style.display = 'flex'
+                        img.style.justifyContent = 'center'
+                        img.style.alignItems = 'center'
+                        img.style.marginLeft = '20px'
                         tr.appendChild(img)
                         const name = document.createElement('td')
                         name.innerText = card.carta.nombre
