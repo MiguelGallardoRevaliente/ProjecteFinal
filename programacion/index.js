@@ -317,6 +317,11 @@ app.get('/filterMarket', async (res, req) => {
   const quality = req.query.quality
   const type = req.query.type
 
+  console.log(id)
+  console.log(name)
+  console.log(quality)
+  console.log(type)
+
   const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
   console.log(shop)
 
