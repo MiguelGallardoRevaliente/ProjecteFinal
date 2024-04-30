@@ -312,12 +312,10 @@ app.get('/getShopCards', async (req, res) => {
 })
 
 app.get('/filterMarket', async (res, req) => {
-  const id = req.query.id
   const name = req.query.name
   const quality = req.query.quality
   const type = req.query.type
 
-  console.log(id)
   console.log(name)
   console.log(quality)
   console.log(type)
