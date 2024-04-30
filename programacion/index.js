@@ -518,11 +518,18 @@ app.post('/putOnMarket', async (req, res) => {
 app.post('/confirmBuy', async (req, res) => {
   try {
     const id = req.body.id
+    const idCarta = req.body.idCarta
     const precio = req.body.precio
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    const [userCard] = await connection.execute('SELECT * FROM users_cartas WHERE id_carta = ? AND id_user = UUID_TO_BIN(?)', [idCarta, id])
     if (user[0].oro < precio) {
       return res.status(200).json({ message: 'Not enough gold' })
     }
+
+    if (userCard.length > 0) {
+      return res.status(200).json({ message: 'Card in possession' })
+    }
+
     return res.status(200).json({ message: 'Enough gold' })
   } catch (err) {
     console.error(err)
@@ -532,16 +539,12 @@ app.post('/confirmBuy', async (req, res) => {
 app.post('/buyCard', async (req, res) => {
   try {
     const id = req.body.id
+    const idMercado = req.body.idMercado
     const idCarta = req.body.idCarta
     const precio = req.body.precio
-    console.log(id)
-    console.log(idCarta)
-    console.log(precio)
-    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    console.log(user[0])
-    if (user[0].oro < precio) {
-      return res.status(200).json({ message: 'Not enough gold' })
-    }
+    await connection.execute('UPDATE users SET oro = oro - ? WHERE BIN_TO_UUID(id) = ?', [precio, id])
+    await connection.execute('DELETE FROM mercado_cartas WHERE id_carta_mercado = ?', [idMercado])
+    await connection.execute('INSERT INTO users_cartas (id_user, id_carta) VALUES (UUID_TO_BIN(?), ?)', [id, idCarta])
     return res.status(200).json({ message: 'Card bought' })
   } catch (err) {
     console.error(err)
