@@ -353,7 +353,7 @@ app.get('/filterMarket', async (req, res) => {
     }
   }
 
-  return res.status(200).json({ message: 'filtered' })
+  return res.status(200).json({ arrayCartas })
 })
 
 app.get('/getShopChests', async (req, res) => {
