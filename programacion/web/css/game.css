@@ -1316,7 +1316,6 @@ header .config p {
 
 #settings .setting form button {
     padding: 0px;
-    width: 120px;
     height: 40px;
     display: flex;
     background-color: transparent;
@@ -1326,11 +1325,16 @@ header .config p {
     cursor: pointer;
     color: red !important;
     border: none;
+    gap: 15px;
+}
+
+#settings .setting form button:hover {
+    scale: 1.05;
+    color: rgb(255, 42, 42)(--principal-red);
 }
 
 #settings .setting form button:active {
-    box-shadow: 1px 1px 3px black inset;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 #settings .changePassword {
