@@ -431,6 +431,10 @@ header .config p {
     border-left: 1px solid white;
 }
 
+#shop #allcards .shop_cards table thead tr{
+    box-shadow: none;
+}
+
 /*shop-sobres*/
 
 #allchests .chest {
