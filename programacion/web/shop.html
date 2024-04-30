@@ -74,6 +74,9 @@
             const name = document.getElementById('name').value
             const quality = document.getElementById('quality').value
             const type = document.getElementById('type').value
+            if (name === '') {
+                name = '---'
+            }
             console.log(id)
             console.log(name)
             console.log(quality)
