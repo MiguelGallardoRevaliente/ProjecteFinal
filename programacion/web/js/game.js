@@ -419,7 +419,7 @@ function confirmarCompra (idMercado, idCarta, precio) {
     })
 }
 
-function cancelarComprarCarta () {
+function cancelarCompraCarta () {
   const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
   confirmarDiv.style.display = 'none'
 }
