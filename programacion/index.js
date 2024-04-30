@@ -311,6 +311,46 @@ app.get('/getShopCards', async (req, res) => {
   return res.status(200).json(arrayCartas)
 })
 
+app.get('/filterMarket', async (res, req) => {
+  const id = req.query.id
+  const name = req.query.name
+  const quality = req.query.quality
+  const type = req.query.type
+
+  const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
+  console.log(shop)
+
+  const arrayCartas = []
+  for (const carta of shop) {
+    let query = 'SELECT * FROM cartas WHERE id = ?'
+    const params = [carta.id_carta]
+
+    if (name !== '') {
+      query += ' AND nombre LIKE ?'
+      params.push(`%${name}%`)
+    } else if (quality !== 'none') {
+      query += ' AND rareza = ?'
+      params.push(quality)
+    } else if (type !== 'none') {
+      query += ' AND tipo = ?'
+      params.push(type)
+    }
+
+    const [card] = await connection.execute(query, params)
+    if (card.length > 0) {
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card[0].id_ataque])
+      arrayCartas.push({
+        id: carta.id_carta_mercado,
+        carta: card[0],
+        ataque: ataque[0],
+        precio: carta.precio
+      })
+    }
+  }
+
+  return res.status(200).json({ message: 'filtered' })
+})
+
 app.get('/getShopChests', async (req, res) => {
   try {
     const [chestsShop] = await connection.execute('SELECT * FROM tienda_sobres;')

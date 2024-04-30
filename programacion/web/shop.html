@@ -76,6 +76,14 @@
             console.log(name)
             console.log(quality)
             console.log(type)
+
+            fetch(`/filterMarket?id=${localStorage.getItem('id')}&name=${name}&quality=${quality}&type=${type}`, {
+                method: 'GET'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
         })
     </script>
 </head>
