@@ -95,41 +95,47 @@
                 .then(data => {
                     shopCardsBody.innerHTML = ''
                     console.log(data)
-                    data.forEach(card => {
+                    if (data.length === 0) {
                         const tr = document.createElement('tr')
-                        tr.setAttribute('onclick', `buyCard( ${card.id}, ${card.carta.id}, ${card.precio}, '${card.carta.nombre}')`)
-                        const img = document.createElement('img')
-                        img.src = card.carta.foto
-                        img.style.width = '30px'
-                        img.style.display = 'flex'
-                        img.style.justifyContent = 'center'
-                        img.style.alignItems = 'center'
-                        img.style.marginLeft = '20px'
-                        tr.appendChild(img)
-                        const name = document.createElement('td')
-                        name.innerText = card.carta.nombre
-                        tr.appendChild(name)
-                        const type = document.createElement('td')
-                        type.innerText = card.carta.tipo
-                        tr.appendChild(type)
-                        const rank = document.createElement('td')
-                        if (card.carta.rareza === 5) {
-                            rank.innerText = 'R'
-                        } else if (card.carta.rareza === 4) {
-                            rank.innerText = 'EXT'
-                        } else if (card.carta.rareza === 3) {
-                            rank.innerText = 'EXC'
-                        } else if (card.carta.rareza === 2) {
-                            rank.innerText = 'ESP'
-                        } else if (card.carta.rareza === 1) {
-                            rank.innerText = 'C'
-                        }
-                        tr.appendChild(rank)
-                        const price = document.createElement('td')
-                        price.innerText = card.precio
-                        tr.appendChild(price)
+                        tr.innerHTML = '<td colspan="5">No cards found</td>'
                         shopCardsBody.appendChild(tr)
-                    })
+                    } else {
+                        data.forEach(card => {
+                            const tr = document.createElement('tr')
+                            tr.setAttribute('onclick', `buyCard( ${card.id}, ${card.carta.id}, ${card.precio}, '${card.carta.nombre}')`)
+                            const img = document.createElement('img')
+                            img.src = card.carta.foto
+                            img.style.width = '30px'
+                            img.style.display = 'flex'
+                            img.style.justifyContent = 'center'
+                            img.style.alignItems = 'center'
+                            img.style.marginLeft = '20px'
+                            tr.appendChild(img)
+                            const name = document.createElement('td')
+                            name.innerText = card.carta.nombre
+                            tr.appendChild(name)
+                            const type = document.createElement('td')
+                            type.innerText = card.carta.tipo
+                            tr.appendChild(type)
+                            const rank = document.createElement('td')
+                            if (card.carta.rareza === 5) {
+                                rank.innerText = 'R'
+                            } else if (card.carta.rareza === 4) {
+                                rank.innerText = 'EXT'
+                            } else if (card.carta.rareza === 3) {
+                                rank.innerText = 'EXC'
+                            } else if (card.carta.rareza === 2) {
+                                rank.innerText = 'ESP'
+                            } else if (card.carta.rareza === 1) {
+                                rank.innerText = 'C'
+                            }
+                            tr.appendChild(rank)
+                            const price = document.createElement('td')
+                            price.innerText = card.precio
+                            tr.appendChild(price)
+                            shopCardsBody.appendChild(tr)
+                        })
+                    }
                 })
         })
     </script>
@@ -183,8 +189,8 @@
                             <option value="none">--</option>
                             <option value="Wind">Wind</option>
                             <option value="Poison">Poison</option>
-                            <option value="Rocks">Rocks</option>
-                            <option value="Dark">Dark</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Darkness">Darkness</option>
                             <option value="Neutral">Neutral</option>
                             <option value="Light">Light</option>
                             <option value="Fire">Fire</option>
