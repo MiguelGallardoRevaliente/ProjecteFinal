@@ -437,6 +437,23 @@ header .config p {
     cursor: default;
 }
 
+
+/*mensajes_compra_tabla*/
+.confirmar_compra_carta{
+
+}
+
+.confirmar_compra_carta button{
+    padding: 5px;
+    box-shadow: 3px 3px 5px var(--box-shadow);
+    border: none;
+    background: #9D9D9D;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 /*shop-sobres*/
 
 #allchests .chest {
