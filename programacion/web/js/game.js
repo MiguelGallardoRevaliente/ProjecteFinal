@@ -397,6 +397,7 @@ function buyCard (idMercado, idCarta, precio, nombre) {
 
         const buttonConfirmar = document.createElement('button')
         buttonConfirmar.textContent = 'BUY'
+        buttonConfirmar.className = 'comprar_confirmar'
         buttonConfirmar.setAttribute('onclick', `confirmarCompra(${idMercado}, ${idCarta}, ${precio})`)
 
         formConfirmar.appendChild(buttonConfirmar)
@@ -422,4 +423,6 @@ function confirmarCompra (idMercado, idCarta, precio) {
 function cancelarCompraCarta () {
   const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
   confirmarDiv.style.display = 'none'
+  const buttonConfirmar = document.getElementsByClassName('comprar_confirmar')[0]
+  buttonConfirmar.remove()
 }
