@@ -302,7 +302,7 @@ app.get('/getShopCards', async (req, res) => {
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card[0].id_ataque])
 
     arrayCartas.push({
-      id: carta.id,
+      id: carta.id_carta_mercado,
       carta: card[0],
       ataque: ataque[0],
       precio: carta.precio
