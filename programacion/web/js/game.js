@@ -377,10 +377,33 @@ function putOnMarket (idCarta, rareza) {
 }
 
 function buyCard (idCarta, precio, nombre) {
-  console.log(idCarta, precio, nombre)
-  const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
-  confirmarDiv.style.display = 'flex'
-  document.getElementsByClassName('nombre_carta_confirmar')[0].textContent = 'Are you sure you want to buy ' + nombre + ' for ' + precio + ' of gold?'
+  fetch('/confirmBuy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ precio, id: localStorage.getItem('id') })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Not enough gold') {
+        alert('Not enough gold')
+      } else {
+        const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
+        confirmarDiv.style.display = 'flex'
+        const formConfirmar = document.getElementsByClassName('form_compra_carta')[0]
+
+        const buttonConfirmar = document.createElement('button')
+        buttonConfirmar.textContent = 'BUY'
+        buttonConfirmar.setAttribute('onclick', `confirmarCompra(${idCarta}, ${precio})`)
+
+        formConfirmar.appendChild(buttonConfirmar)
+        document.getElementsByClassName('nombre_carta_confirmar')[0].textContent = 'Are you sure you want to buy ' + nombre + ' for ' + precio + ' of gold?'
+      }
+    })
+}
+
+function confirmarCompra (idCarta, precio) {
   fetch('/buyCard', {
     method: 'POST',
     headers: {

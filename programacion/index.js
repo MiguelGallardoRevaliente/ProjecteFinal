@@ -304,7 +304,7 @@ app.get('/getShopCards', async (req, res) => {
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [card[0].id_ataque])
 
     arrayCartas.push({
-      id: card[0].id,
+      id: carta.id,
       carta: card[0],
       ataque: ataque[0],
       precio: carta.precio
@@ -512,6 +512,20 @@ app.post('/putOnMarket', async (req, res) => {
     console.log(precio)
     await connection.execute('INSERT INTO mercado_cartas (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)', [id, idCarta, precio])
     return res.status(200).json({ message: 'Uploaded into the market' })
+  } catch (err) {
+    console.error(err)
+  }
+})
+
+app.post('/confirmBuy', async (req, res) => {
+  try {
+    const id = req.body.id
+    const precio = req.body.precio
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    if (user[0].oro < precio) {
+      return res.status(200).json({ message: 'Not enough gold' })
+    }
+    return res.status(200).json({ message: 'Enough gold' })
   } catch (err) {
     console.error(err)
   }
