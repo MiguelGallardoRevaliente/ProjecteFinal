@@ -333,10 +333,14 @@ app.get('/filterMarket', async (req, res) => {
     if (name !== '---') {
       query += ' AND nombre LIKE ?'
       params.push(`%${name}%`)
-    } else if (quality !== 'none') {
+    }
+
+    if (quality !== 'none') {
       query += ' AND rareza = ?'
       params.push(quality)
-    } else if (type !== 'none') {
+    }
+
+    if (type !== 'none') {
       query += ' AND tipo = ?'
       params.push(type)
     }
