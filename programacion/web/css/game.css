@@ -409,25 +409,25 @@ header .config p {
 
 
 /*table*/
-#shop .allcards .shop_cards{
+#shop #allcards .shop_cards{
     margin-top: 5%;
 }
 
-#shop .allcards .shop_cards table{
+#shop #allcards .shop_cards table{
     width: 100%;
     text-align: center;
 }
 
-#shop .allcards .shop_cards table tr{
+#shop #allcards .shop_cards table tr{
     box-shadow: 0px 3px 3px black;
     margin: auto;
 }
 
-#shop .allcards .shop_cards table tr:hover{
+#shop #allcards .shop_cards table tr:hover{
     background-color: #3d3d3d;
 }
 
-#shop .allcards .shop_cards table th{
+#shop #allcards .shop_cards table th{
     border-left: 1px solid white;
 }
 
