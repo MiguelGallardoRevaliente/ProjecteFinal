@@ -70,19 +70,17 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const id = localStorage.getItem('id')
             const name = document.getElementById('name').value
             const quality = document.getElementById('quality').value
             const type = document.getElementById('type').value
             if (name === '') {
                 name = '---'
             }
-            console.log(id)
             console.log(name)
             console.log(quality)
             console.log(type)
 
-            fetch(`/filterMarket?id=${id}&name=${name}&quality=${quality}&type=${type}`, {
+            fetch(`/filterMarket?id=${localStorage.getItem('id')}&name=${name}&quality=${quality}&type=${type}`, {
                 method: 'GET'
             })
                 .then(res => res.json())

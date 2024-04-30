@@ -330,7 +330,7 @@ app.get('/filterMarket', async (res, req) => {
     let query = 'SELECT * FROM cartas WHERE id = ?'
     const params = [carta.id_carta]
 
-    if (name !== '') {
+    if (name !== '---') {
       query += ' AND nombre LIKE ?'
       params.push(`%${name}%`)
     } else if (quality !== 'none') {
