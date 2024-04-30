@@ -311,7 +311,7 @@ app.get('/getShopCards', async (req, res) => {
   return res.status(200).json(arrayCartas)
 })
 
-app.get('/filterMarket', async (res, req) => {
+app.get('/filterMarket', async (req, res) => {
   const id = req.query.id
   const name = req.query.name
   const quality = req.query.quality
