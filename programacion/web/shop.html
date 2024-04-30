@@ -70,7 +70,7 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const name = document.getElementById('name').value
+            let name = document.getElementById('name').value
             const quality = document.getElementById('quality').value
             const type = document.getElementById('type').value
             if (name === '') {
