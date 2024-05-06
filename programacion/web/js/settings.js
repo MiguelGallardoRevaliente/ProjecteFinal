@@ -22,16 +22,3 @@ function editPassword () {
   changePasswordDiv.appendChild(saveButton)
   changePasswordDiv.appendChild(cancelButton)
 }
-
-function showPassword () {
-  const id = localStorage.getItem('id')
-  fetch('/password/' + id, {
-    method: 'GET'
-  })
-    .then(response => response.json())
-    .then(data => {
-      const password = data
-      const passwordLabel = document.getElementById('password_label')
-      passwordLabel.innerHTML = password
-    })
-}
