@@ -56,19 +56,19 @@
                 <div class="setting">
                     <h2>Sound</h2>
                     <div>
-                    <h3>General Sound</h3>
-                    <input type="range" min="0" max="100" value="100">
+                        <h3>General Sound</h3>
+                        <input type="range" min="0" max="100" value="100">
                     </div>
                     <div>
-                    <h3>Music</h3>
-                    <input type="range" id="volumeControl" min="0" max="100" value="100">
+                        <h3>Music</h3>
+                        <input type="range" id="volumeControl" min="0" max="100" value="100">
                     </div>
-                    <h2>USER</h2>
+                    <h2>User</h2>
                     <h3>Change Password</h3>
                     <div class="changePassword">
-                        <label for="">******</label> <!--Aqui pones la contra actual con puntitos-->
-                        <button><i class='bx bxs-edit-alt'></i></button>
-                        <button><i class='bx bx-low-vision' ></i></button>
+                        <label id="passwordLabel" for="">******</label>
+                        <button id="editar" onclick="editPassword()"><i class='bx bxs-edit-alt'></i></button>
+                        <button id="ver" onclick="showPassword()"><i class='bx bx-low-vision' ></i></button>
                     </div>
                     <div class="logout">
                         <form action="" class="form">
@@ -82,5 +82,6 @@
     </div>
     <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
     <script src="js/game.js"></script>
+    <script src="js/settings.js"></script>
 </body>
 </html>
