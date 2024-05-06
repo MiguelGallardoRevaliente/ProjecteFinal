@@ -430,8 +430,10 @@ function cancelarCompraCarta () {
 }
 
 function comprarChest (precio, cantidad) {
-  console.log(precio)
-  console.log(cantidad)
+  const confirmacion = document.getElementsByClassName('confirmacion')[0]
+  if (confirmacion) {
+    confirmacion.remove()
+  }
   fetch('/buyChest', {
     method: 'POST',
     headers: {
@@ -449,6 +451,7 @@ function comprarChest (precio, cantidad) {
         const confirmacion = document.createElement('p')
         confirmacion.textContent = 'You have bought ' + cantidad + ' chests for ' + precio + ' of gold'
         confirmacion.style.color = 'green'
+        confirmacion.className = 'confirmacion'
         chest.appendChild(confirmacion)
       }
     })
