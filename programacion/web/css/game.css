@@ -1411,12 +1411,12 @@ header .config p {
         font-size: 30px;
     }
 
-    #open-header:active #header{
+    #open-header:active header{
         display: block;
     }
 
-    #header {
-        display: none;
+    header {
+        display: none !important;
     }
 }
 
