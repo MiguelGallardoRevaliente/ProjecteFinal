@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 function editPassword () {
-  const id = document.getElementById('id').value
+  const id = localStorage.getItem('id')
   fetch('/password/' + id, {
     method: 'GET'
   })
