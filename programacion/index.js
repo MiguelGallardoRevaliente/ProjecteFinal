@@ -379,16 +379,6 @@ app.get('/settings', (req, res) => {
   res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
-app.get('/password/:id', async (req, res) => {
-  try {
-    const id = req.params.id
-    const [user] = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    return res.status(200).json(user[0].password)
-  } catch (err) {
-    console.error(err)
-  }
-})
-
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
