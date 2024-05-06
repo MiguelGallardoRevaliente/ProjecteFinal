@@ -600,6 +600,22 @@ app.post('/buyCard', async (req, res) => {
   }
 })
 
+app.post('/buyChest', async (req, res) => {
+  try {
+    const id = req.body.id
+    const precio = req.body.precio
+    const cantidad = req.body.cantidad
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    if (user[0].oro < precio) {
+      return res.status(200).json({ message: 'Not enough gold' })
+    }
+    await connection.execute('UPDATE users SET oro = oro - ?, sobres = sobres + ? WHERE BIN_TO_UUID(id) = ?', [precio, cantidad, id])
+    return res.status(200).json({ message: 'Chest bought' })
+  } catch (e) {
+    console.error(e)
+  }
+})
+
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 

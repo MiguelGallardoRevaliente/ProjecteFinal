@@ -432,15 +432,24 @@ function cancelarCompraCarta () {
 function comprarChest (precio, cantidad) {
   console.log(precio)
   console.log(cantidad)
-  // fetch('/comprarChest', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify({ precio, idUsuario })
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data)
-  //   })
+  fetch('/comprarChest', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ precio, cantidad, id: localStorage.getItem('id') })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if (data.message === 'Not enough gold') {
+        alert('Not enough gold')
+      } else {
+        const chest = document.getElementsByClassName('chest')[0]
+        const confirmacion = document.createElement('p')
+        confirmacion.textContent = 'You have bought ' + cantidad + ' chests for ' + precio + ' of gold'
+        confirmacion.style.color = 'green'
+        chest.appendChild(confirmacion)
+      }
+    })
 }
