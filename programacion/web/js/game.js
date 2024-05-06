@@ -22,7 +22,10 @@ const changeFoto = document.getElementById('changeFoto')
 const sobresGod = document.getElementById('sobres_god')
 
 const resultadoSobre = document.getElementsByClassName('resultado_sobre')
-
+const header = document.getElementById('header')
+function mostrarHeader (){
+  header.style.display = 'block'
+}
 function mostrarShopCards () {
   allcards.style.display = 'block'
   allchests.style.display = 'none'
