@@ -432,7 +432,7 @@ function cancelarCompraCarta () {
 function comprarChest (precio, cantidad) {
   console.log(precio)
   console.log(cantidad)
-  fetch('/comprarChest', {
+  fetch('/buyChest', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
