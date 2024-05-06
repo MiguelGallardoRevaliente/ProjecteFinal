@@ -64,12 +64,29 @@ function mostrarShopChests () {
         const rubiImg = document.createElement('img')
         rubiImg.src = 'img/rubi.png'
         rubiImg.alt = 'rubi'
+        const comprarForm = document.createElement('form')
+        comprarForm.setAttribute('method', 'POST')
+        comprarForm.setAttribute('action', '')
+        comprarForm.className = 'comprar_chest_form'
+        const precioInput = document.createElement('input')
+        precioInput.type = 'hidden'
+        precioInput.name = 'precio'
+        precioInput.value = chest.precio
+        comprarForm.appendChild(precioInput)
+        const cantidadInput = document.createElement('input')
+        cantidadInput.type = 'hidden'
+        cantidadInput.name = 'cantidad'
+        cantidadInput.value = chest.cantidad
+        comprarForm.appendChild(cantidadInput)
         const comprarButton = document.createElement('button')
+        comprarButton.type = 'submit'
         comprarButton.textContent = 'Buy'
-        comprarButton.setAttribute('onclick', 'comprarChest()')
+        comprarButton.className = 'comprar_chest'
+        comprarForm.appendChild(comprarButton)
+
         precioDiv.appendChild(precio)
         precioDiv.appendChild(rubiImg)
-        precioDiv.appendChild(comprarButton)
+        precioDiv.appendChild(comprarForm)
 
         infoDiv.appendChild(cantidad)
         infoDiv.appendChild(precioDiv)
@@ -426,3 +443,23 @@ function cancelarCompraCarta () {
   const buttonConfirmar = document.getElementsByClassName('comprar_confirmar')[0]
   buttonConfirmar.remove()
 }
+
+const comprarChestForm = document.getElementsByClassName('comprar_chest_form')[0]
+comprarChestForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+  const precio = document.getElementsByClassName('precio')[0].textContent
+  const cantidad = document.getElementsByClassName('cantidad')[0].textContent
+  console.log(precio)
+  console.log(cantidad)
+  // fetch('/comprarChest', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({ precio, idUsuario })
+  // })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data)
+  //   })
+})
