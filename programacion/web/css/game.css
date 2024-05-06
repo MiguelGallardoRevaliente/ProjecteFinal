@@ -1392,6 +1392,37 @@ header .config p {
 
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "HEADER"*/
 
+/*a partir de 1000px se esconde y con un boton se muestra*/
+
+@media (max-width: 1000px) {
+    
+    #open-header{
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-color: var(--background-color);
+        color: white;
+        border: none;
+        border-radius: 2px;
+    }
+    #open-header i{
+        font-size: 30px;
+    }
+
+    #open-header:active header{
+        display: block;
+    }
+
+    header {
+        display: none !important;
+    }
+
+    #information, #shop, #inventory, #chests, #mazos, #settings {
+        margin-left: 0px;
+    }
+}
 
 /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
