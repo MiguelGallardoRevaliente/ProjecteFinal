@@ -64,29 +64,14 @@ function mostrarShopChests () {
         const rubiImg = document.createElement('img')
         rubiImg.src = 'img/rubi.png'
         rubiImg.alt = 'rubi'
-        const comprarForm = document.createElement('form')
-        comprarForm.setAttribute('method', 'POST')
-        comprarForm.setAttribute('action', '')
-        comprarForm.className = 'comprar_chest_form'
-        const precioInput = document.createElement('input')
-        precioInput.type = 'hidden'
-        precioInput.name = 'precio'
-        precioInput.value = chest.precio
-        comprarForm.appendChild(precioInput)
-        const cantidadInput = document.createElement('input')
-        cantidadInput.type = 'hidden'
-        cantidadInput.name = 'cantidad'
-        cantidadInput.value = chest.cantidad
-        comprarForm.appendChild(cantidadInput)
         const comprarButton = document.createElement('button')
-        comprarButton.type = 'submit'
         comprarButton.textContent = 'Buy'
         comprarButton.className = 'comprar_chest'
-        comprarForm.appendChild(comprarButton)
+        comprarButton.setAttribute('onclick', `comprarChest(${chest.precio}, ${chest.cantidad})`)
 
         precioDiv.appendChild(precio)
         precioDiv.appendChild(rubiImg)
-        precioDiv.appendChild(comprarForm)
+        precioDiv.appendChild(comprarButton)
 
         infoDiv.appendChild(cantidad)
         infoDiv.appendChild(precioDiv)
@@ -444,11 +429,7 @@ function cancelarCompraCarta () {
   buttonConfirmar.remove()
 }
 
-const comprarChestForm = document.getElementsByClassName('comprar_chest_form')[0]
-comprarChestForm.addEventListener('submit', function (event) {
-  event.preventDefault()
-  const precio = document.getElementsByClassName('precio')[0].textContent
-  const cantidad = document.getElementsByClassName('cantidad')[0].textContent
+function comprarChest (precio, cantidad) {
   console.log(precio)
   console.log(cantidad)
   // fetch('/comprarChest', {
@@ -462,4 +443,4 @@ comprarChestForm.addEventListener('submit', function (event) {
   //   .then(data => {
   //     console.log(data)
   //   })
-})
+}
