@@ -440,7 +440,7 @@ header .config p {
 
 /*mensajes_compra_tabla*/
 .confirmar_compra_carta{
-
+    display: none;
 }
 
 .confirmar_compra_carta button{
