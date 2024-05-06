@@ -1418,6 +1418,10 @@ header .config p {
     header {
         display: none !important;
     }
+
+    #information, #shop, #inventory, #chests, #mazos, #settings {
+        margin-left: 0px;
+    }
 }
 
 /*
