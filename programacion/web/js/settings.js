@@ -31,7 +31,7 @@ function showPassword () {
     .then(response => response.json())
     .then(data => {
       const password = data
-      const passwordLabel = document.getElementsByClassName('password_label')[0]
+      const passwordLabel = document.getElementById('password_label')
       passwordLabel.innerHTML = password
     })
 }
