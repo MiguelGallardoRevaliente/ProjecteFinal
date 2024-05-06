@@ -1421,6 +1421,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 1000px) {
 
+    #information{
+        padding: 20px;
+    }
+
     #information .container {
         padding: 0px 5px;
     }
@@ -1449,6 +1453,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 }
 
 @media (max-width: 800px) {
+
+    #information .container {
+        padding: 0px 10px;
+    }
 
     #information .container {
         padding: 0px 5px;
