@@ -1253,7 +1253,7 @@ header .config p {
 
 @keyframes boxShadow {
     0% {
-        box-shadow: 0px 0px 20px white;
+        box-shadow: 0px 0px 20px rgb(87, 87, 87);
     }
 
     100% {
