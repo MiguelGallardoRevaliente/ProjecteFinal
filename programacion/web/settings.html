@@ -26,6 +26,10 @@
             localStorage.removeItem('inventory')
             window.location.href = '/login'
         })
+
+        volumeControl.addEventListener('input', function () {
+            audio.volume = volumeControl.value / 100
+        })
     </script>
 </head>
 <body>

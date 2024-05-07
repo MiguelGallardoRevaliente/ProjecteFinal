@@ -97,16 +97,10 @@ function salirResultadoSobre () {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const audio = document.getElementById('audio')
-  const volumeControl = document.getElementById('volumeControl')
+  const audio = document.getElementById('audio') || 100
+  const volumeControl = document.getElementById('volumeControl') || 100
 
-  if (audio && volumeControl) {
-    audio.volume = volumeControl.value / 100
-  }
-
-  volumeControl.addEventListener('input', function () {
-    audio.volume = volumeControl.value / 100
-  })
+  audio.volume = volumeControl.value / 100
 })
 
 const botones = document.querySelectorAll('button')
