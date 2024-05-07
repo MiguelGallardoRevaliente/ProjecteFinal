@@ -98,7 +98,7 @@ function salirResultadoSobre () {
 
 document.addEventListener('DOMContentLoaded', function () {
   const audio = document.getElementById('audio') ?? null
-  const volumeControl = document.getElementById('volumeControl').value ?? 100
+  const volumeControl = document.getElementById('volumeControl') ? document.getElementById('volumeControl').value : 100
 
   if (audio) {
     audio.volume = volumeControl / 100
