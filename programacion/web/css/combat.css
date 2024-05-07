@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kings&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+
+:root {
+    --background-color: #292929;
+    --text-color: white;
+    --hover-active: #3b3b3b;
+    --box-shadow: #272727;
+    --principal-red: #d30000;
+    --principal-cian: #02e2e2;
+
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #535353;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+* {
+    user-select: none;
+
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../img/background-combat.png);
+    scrollbar-width: none;
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
