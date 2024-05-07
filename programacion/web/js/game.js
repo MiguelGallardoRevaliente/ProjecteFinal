@@ -99,7 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const audio = document.getElementById('audio')
   const volumeControl = document.getElementById('volumeControl')
 
-  audio.volume = volumeControl.value / 100
+  if (audio && volumeControl) {
+    audio.volume = volumeControl.value / 100
+  }
 
   volumeControl.addEventListener('input', function () {
     audio.volume = volumeControl.value / 100
