@@ -97,10 +97,12 @@ function salirResultadoSobre () {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const audio = document.getElementById('audio')
+  const audio = document.getElementById('audio') ?? null
   const volumeControl = document.getElementById('volumeControl').value ?? 100
 
-  audio.volumne = volumeControl / 100
+  if (audio) {
+    audio.volume = volumeControl / 100
+  }
 })
 
 const botones = document.querySelectorAll('button')
