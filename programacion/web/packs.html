@@ -63,10 +63,13 @@
                     ataqueVida.className = 'ataque-vida'
                     ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
 
-                    const ataqueEspecial = document.createElement('p')
-                    ataqueEspecial.className = 'ataque-especial'
-                    const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                    ataqueEspecial.innerHTML = textoAtaqueEspecial
+                    if (card.ataque) {
+                        const ataqueEspecial = document.createElement('p')
+                        ataqueEspecial.className = 'ataque-especial'
+                        const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+                        cardDiv.appendChild(ataqueEspecial)
+                    }
 
                     if  (card.duplicate) {
                         cartaClassArray.push(cartaClass)
@@ -119,7 +122,6 @@
                     }
 
                     cardDiv.appendChild(nombreCarta)
-                    cardDiv.appendChild(ataqueEspecial)
                     cardDiv.appendChild(ataqueVida)
                     resultado.appendChild(cardDiv)
                     
@@ -207,10 +209,13 @@
                         ataqueVida.className = 'ataque-vida'
                         ataqueVida.innerHTML = card.carta.ataque + '/' + card.carta.vida
 
-                        const ataqueEspecial = document.createElement('p')
-                        ataqueEspecial.className = 'ataque-especial'
-                        const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                        ataqueEspecial.innerHTML = textoAtaqueEspecial
+                        if (card.ataque) {
+                            const ataqueEspecial = document.createElement('p')
+                            ataqueEspecial.className = 'ataque-especial'
+                            const textoAtaqueEspecial = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                            ataqueEspecial.innerHTML = textoAtaqueEspecial
+                            cardDiv.appendChild(ataqueEspecial)
+                        }
 
                         if  (card.duplicate) {
                             cartaClassArray.push(cartaClass)
@@ -263,7 +268,6 @@
                         }
 
                         cardDiv.appendChild(nombreCarta)
-                        cardDiv.appendChild(ataqueEspecial)
                         cardDiv.appendChild(ataqueVida)
                         resultado.appendChild(cardDiv)
                     })
