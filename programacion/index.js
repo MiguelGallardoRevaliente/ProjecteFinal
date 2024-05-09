@@ -642,10 +642,6 @@ const HOST = '0.0.0.0'
 
 app.use(express.static(join(__dirname, 'web')))
 
-app.listen(PORT, HOST, () => {
-  console.log(`Listening from http://13.53.190.234/:${PORT}`)
-})
-
 server.listen(PORT, HOST, () => {
   console.log(`Listening from http://13.53.190.234/:${PORT}`)
 })
