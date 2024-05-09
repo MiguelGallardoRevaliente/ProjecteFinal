@@ -9,6 +9,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type='module'>
+        import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
+
         const inventory = localStorage.getItem('inventory') || 'cards'
         inventoryLink.href = `/${inventory}`
         const username = localStorage.getItem('username')
@@ -16,6 +18,12 @@
         if (!username) {
             window.location.href = '/login'
         }
+
+        const socket = io({
+            auth: { // --> Siempre pegado dentro de los mensajes
+                username: username
+            }
+        })
 
         document.addEventListener('click', function (event) {
             // Verificar si el clic no proviene de userFoto ni de changeFoto
@@ -61,7 +69,12 @@
                         perfil.appendChild(divUser)
                     })
                 })
-        }
+            }
+
+            document.getElementById('searchGame').addEventListener('click', () => {
+                console.log('searching game')
+                socket.emit('searchGame', { username })
+            })
     </script>
     <style>
         html,
