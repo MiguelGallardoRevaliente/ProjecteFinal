@@ -39,7 +39,7 @@ io.on('connection', async (socket) => {
   console.log('A user has connected')
 
   // Escuchar el evento 'buscar-partida'
-  socket.on('buscar-partida', () => {
+  socket.on('search-battle', () => {
     console.log('Se recibió una solicitud de búsqueda de partida')
 
     // Aquí puedes agregar la lógica para manejar la solicitud de búsqueda de partida
