@@ -53,16 +53,19 @@
                             const nombre = document.createElement('p')
                             nombre.classList.add('nombre')
                             nombre.textContent = cartasMazo[i].cards[0].nombre
-                            const ataque = document.createElement('p')
-                            ataque.classList.add('ataque')
-                            ataque.textContent = cartasMazo[i].ataques[0].nombre + ' - ' + cartasMazo[i].ataques[0].descripcion
-                            const ataqueVida = document.createElement('p')
-                            ataqueVida.classList.add('ataqueVida')
-                            ataqueVida.textContent = `${cartasMazo[i].cards[0].ataque}/${cartasMazo[i].cards[0].vida}`
+                            if (cartasMazo[i].ataques[0]) {
+                                const ataque = document.createElement('p')
+                                ataque.classList.add('ataque')
+                                ataque.textContent = cartasMazo[i].ataques[0].nombre + ' - ' + cartasMazo[i].ataques[0].descripcion
+                                const ataqueVida = document.createElement('p')
+                                ataqueVida.classList.add('ataqueVida')
+                                ataqueVida.textContent = `${cartasMazo[i].cards[0].ataque}/${cartasMazo[i].cards[0].vida}`
+                                carta.appendChild(ataque)
+                                carta.appendChild(ataqueVida)
+                            }
+                            
                             carta.appendChild(img)
                             carta.appendChild(nombre)
-                            carta.appendChild(ataque)
-                            carta.appendChild(ataqueVida)
                         }
                         mazo.appendChild(carta)
                     }
