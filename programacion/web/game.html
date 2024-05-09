@@ -8,7 +8,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
     <script type='module'>
         const inventory = localStorage.getItem('inventory') || 'cards'
         inventoryLink.href = `/${inventory}`
@@ -18,11 +17,8 @@
             window.location.href = '/login'
         }
 
-        const socket = io()
-
         document.getElementById('searchGame').addEventListener('click', () => {
             socket.emit('search-battle');
-            console.log('Solicitud de búsqueda de partida enviada al servidor');
         })
 
         document.addEventListener('click', function (event) {
