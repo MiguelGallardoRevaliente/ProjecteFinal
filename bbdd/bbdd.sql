@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS cartas (
     tipo VARCHAR(255),
     foto VARCHAR(255),
     id_ataque INT,
+    searching BOOLEAN DEFAULT false,
+    fighting BOOLEAN DEFAULT false,
     FOREIGN KEY (id_ataque) REFERENCES ataques(id)
 );
 

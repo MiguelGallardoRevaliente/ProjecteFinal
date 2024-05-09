@@ -1,9 +1,13 @@
 import express from 'express'
 import cors from 'cors'
 import bcrypt from 'bcrypt'
+
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { sendEmail } from './controller/mail.js'
+
+import { Server } from 'socket.io'
+import { createServer } from 'node:http'
 
 import mysql from 'mysql2/promise'
 
@@ -20,11 +24,20 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 const app = express()
+const server = createServer(app)
+const io = new Server(server, {
+  connectionStateRecovery: {}
+})
+
 app.use(express.json())
 app.use(cors())
 app.disable('x-powered-by')
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+io.on('connection', async (socket) => {
+  console.log('A user has connected')
+})
 
 app.get('/login', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
