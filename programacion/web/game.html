@@ -22,7 +22,7 @@
         }
 
         document.getElementById('searchGame').addEventListener('click', () => {
-            socket.emit('search-battle', username);
+            socket.emit('search-battle', { username: username });
         })
 
         document.addEventListener('click', function (event) {
