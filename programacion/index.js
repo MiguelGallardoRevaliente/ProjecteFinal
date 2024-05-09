@@ -342,13 +342,7 @@ app.get('/filterMarket', async (req, res) => {
   const quality = req.query.quality
   const type = req.query.type
 
-  console.log(id)
-  console.log(name)
-  console.log(quality)
-  console.log(type)
-
   const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
-  console.log(shop)
 
   const arrayCartas = []
   for (const carta of shop) {
@@ -408,7 +402,6 @@ app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
     const [rows] = await connection.execute('SELECT BIN_TO_UUID(id) AS id, first_log, password FROM users WHERE user = ?', [usernameLogin])
-    console.log(rows[0])
     const result = await bcrypt.compare(passwordLogin, rows[0].password)
 
     if (!result) {
@@ -478,13 +471,13 @@ app.post('/forgot', async (req, res) => {
 
 app.post('/change-password', async (req, res) => {
   const { id, newPassword, newPasswordR } = req.body
-  console.log(id)
+
   if (newPassword !== newPasswordR) {
     return res.status(200).json({ message: 'samePwd' })
   }
 
   const [user] = await connection.execute('SELECT password FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-  console.log(user[0])
+
   const result = await bcrypt.compare(newPassword, user[0].password)
 
   if (result) {
@@ -527,10 +520,6 @@ app.post('/guardarCarta', async (req, res) => {
     const idCarta = req.body.idCarta
     const idCartaMazo = req.body.idCartaMazo
     const mazoActual = req.body.mazoActual
-
-    console.log(idCarta)
-    console.log(idCartaMazo)
-    console.log(mazoActual)
 
     if (idCartaMazo === 0) {
       await connection.execute(
@@ -579,9 +568,7 @@ app.post('/putOnMarket', async (req, res) => {
     const id = req.body.id
     const idCarta = req.body.idCarta
     const precio = req.body.precio
-    console.log(id)
-    console.log(idCarta)
-    console.log(precio)
+
     await connection.execute('INSERT INTO mercado_cartas (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)', [id, idCarta, precio])
     return res.status(200).json({ message: 'Uploaded into the market' })
   } catch (err) {
