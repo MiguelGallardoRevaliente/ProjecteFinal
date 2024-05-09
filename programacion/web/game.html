@@ -25,6 +25,11 @@
             socket.emit('search-battle', { username: username });
         })
 
+        socket.on('battle-found', (data) => {
+            localStorage.setItem('opponent', data.opponent)
+            window.location.href = '/battle'
+        })
+
         document.addEventListener('click', function (event) {
             // Verificar si el clic no proviene de userFoto ni de changeFoto
             const userFoto = document.getElementById('userFoto')

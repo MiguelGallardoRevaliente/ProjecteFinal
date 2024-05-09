@@ -47,6 +47,10 @@ io.on('connection', async (socket) => {
 
     const [userSearching] = await connection.execute('SELECT * FROM users WHERE searching = 1 AND user != ?', [data.username])
     console.log(userSearching)
+
+    if (userSearching.length > 0) {
+      io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
+    }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
 })
