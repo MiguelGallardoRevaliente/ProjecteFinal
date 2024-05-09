@@ -39,10 +39,14 @@ io.on('connection', async (socket) => {
   console.log('A user has connected')
 
   // Escuchar el evento 'buscar-partida'
-  socket.on('search-battle', () => {
+  socket.on('search-battle', async () => {
     console.log('Se recibió una solicitud de búsqueda de partida')
+    console.log(socket.username)
 
-    // Aquí puedes agregar la lógica para manejar la solicitud de búsqueda de partida
+    await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [socket.username])
+
+    const [userSearching] = await connection.execute('SELECT * FROM users WHERE searching = 1 AND user != ?', [socket.username])
+    console.log(userSearching)
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
 })
