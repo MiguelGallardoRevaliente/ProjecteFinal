@@ -37,6 +37,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 io.on('connection', async (socket) => {
   console.log('A user has connected')
+
+  // Escuchar el evento 'buscar-partida'
+  socket.on('buscar-partida', () => {
+    console.log('Se recibió una solicitud de búsqueda de partida')
+
+    // Aquí puedes agregar la lógica para manejar la solicitud de búsqueda de partida
+    // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
+  })
 })
 
 app.get('/login', (req, res) => {
