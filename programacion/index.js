@@ -39,14 +39,16 @@ io.on('connection', async (socket) => {
   console.log('A user has connected')
 
   socket.on('search-battle', async (data) => {
-    console.log('Se recibió una solicitud de búsqueda de partida')
-    console.log(data.username)
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
+    console.log(user)
 
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
+      console.log('Búsqueda de partida cancelada')
       io.emit('battle-canceled')
     }
+
+    console.log('Se recibió una solicitud de búsqueda de partida')
 
     await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [data.username])
 
