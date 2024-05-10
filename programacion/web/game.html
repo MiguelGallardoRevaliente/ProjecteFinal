@@ -49,7 +49,7 @@
             document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
         })
 
-        socket.on('battle-error', () => {
+        socket.on('battle-error', (data) => {
             console.log('¡Error al buscar partida!')
             alert(data.message)
             document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
