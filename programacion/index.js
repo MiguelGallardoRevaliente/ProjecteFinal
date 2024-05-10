@@ -50,14 +50,14 @@ io.on('connection', async (socket) => {
       if (user[0].searching === 1) {
         await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       }
-      io.emit('battle-error', { message: 'No se puede buscar partida sin un mazo completo' })
+      io.emit('battle-error', { message: 'No se puede buscar partida sin un mazo completo', username: data.username })
       return
     }
 
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       console.log('Búsqueda de partida cancelada')
-      io.emit('battle-cancelled')
+      io.emit('battle-cancelled', { username: data.username })
       return
     }
 
