@@ -1540,6 +1540,9 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 800px) {
 
+    #information{
+        min-height: none;
+    }
     #information .container {
         padding: 0px 10px;
     }
