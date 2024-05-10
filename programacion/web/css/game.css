@@ -1424,7 +1424,7 @@ header .config p {
     }
 
     header {
-        display: none !important;
+        display: none;
     }
 
     #information, #shop, #inventory, #chests, #mazos, #settings {
