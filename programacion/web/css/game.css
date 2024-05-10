@@ -1400,7 +1400,7 @@ header .config p {
     
     #open-header{
         display: block;
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 0;
         transform: translateY(-50%);
@@ -1421,6 +1421,23 @@ header .config p {
 
     #open-header:active header{
         display: block;
+    }
+
+    #close-header{
+        display: none;
+    }
+
+    #close-header{
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 300px;
+        transform: translateY(-50%);
+        background-color: var(--background-color);
+        color: white;
+        border: none;
+        border-radius: 2px;
+        opacity: 0.6;
     }
 
     header {
