@@ -22,7 +22,7 @@
         }
 
         document.getElementById('searchGame').addEventListener('click', () => {
-            socket.emit('search-battle', { username: username });
+            socket.emit('search-battle', { username: username, id: localStorage.getItem('id') });
             document.getElementById('searchGame').innerHTML = '<i class="bx bx-loader-alt bx-spin bx-rotate-180"></i> SEARCHING BATTLE'
         })
 
@@ -46,6 +46,12 @@
 
         socket.on('battle-cancelled', () => {
             console.log('¡Partida cancelada!')
+            document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+        })
+
+        socket.on('battle-error', () => {
+            console.log('¡Error al buscar partida!')
+            alert(data.message)
             document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
         })
 
