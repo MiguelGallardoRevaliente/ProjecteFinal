@@ -23,6 +23,7 @@
 
         document.getElementById('searchGame').addEventListener('click', () => {
             socket.emit('search-battle', { username: username });
+            document.getElementById('searchGame').innerHTML = '<i class="bx bx-loader-alt bx-spin bx-rotate-180"></i> SEARCHING BATTLE'
         })
 
         socket.on('battle-found', (data) => {
@@ -40,6 +41,7 @@
 
         socket.on('battle-cancelled', () => {
             console.log('¡Partida cancelada!')
+            document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
         })
 
         document.addEventListener('click', function (event) {
