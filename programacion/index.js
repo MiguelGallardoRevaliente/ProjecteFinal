@@ -38,10 +38,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 io.on('connection', async (socket) => {
   console.log('A user has connected')
 
-  // Escuchar el evento 'buscar-partida'
   socket.on('search-battle', async (data) => {
     console.log('Se recibió una solicitud de búsqueda de partida')
     console.log(data.username)
+    const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
+
+    if (user[0].searching === 1) {
+      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
+      io.emit('battle-canceled')
+    }
 
     await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [data.username])
 
@@ -52,6 +57,10 @@ io.on('connection', async (socket) => {
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
     }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
+  })
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected')
   })
 })
 

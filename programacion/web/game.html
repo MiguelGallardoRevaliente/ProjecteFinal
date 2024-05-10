@@ -27,7 +27,13 @@
 
         socket.on('battle-found', (data) => {
             localStorage.setItem('opponent', data.opponent)
-            window.location.href = '/battle'
+            console.log('¡Partida encontrada!')
+            console.log('Usuario 1:', data.user1)
+            console.log('Usuario 2:', data.user2)
+        })
+
+        socket.on('battle-cancelled', () => {
+            console.log('¡Partida cancelada!')
         })
 
         document.addEventListener('click', function (event) {
