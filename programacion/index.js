@@ -40,7 +40,6 @@ io.on('connection', async (socket) => {
 
   socket.on('search-battle', async (data) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
-    console.log(user)
 
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
@@ -54,10 +53,12 @@ io.on('connection', async (socket) => {
     await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [data.username])
 
     const [userSearching] = await connection.execute('SELECT * FROM users WHERE searching = 1 AND user != ?', [data.username])
-    console.log(userSearching)
 
     if (userSearching.length > 0) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
+      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [userSearching[0].user])
+      console.log('User1: ', data.username)
+      console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
     }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
@@ -413,6 +414,11 @@ app.get('/information', (req, res) => {
 app.get('/settings', (req, res) => {
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/settings.html'))
+})
+
+app.get('/battle', (req, res) => {
+  res.header('Allow-Control-Allow-Origin', '*')
+  res.sendFile(join(__dirname, 'web/combat.html'))
 })
 
 app.post('/login', async (req, res) => {
