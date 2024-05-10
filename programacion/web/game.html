@@ -26,7 +26,11 @@
         })
 
         socket.on('battle-found', (data) => {
-            localStorage.setItem('opponent', data.opponent)
+            if(username === data.user1) {
+                localStorage.setItem('opponent', data.user2)
+            } else {
+                localStorage.setItem('opponent', data.user1)
+            }
             console.log('¡Partida encontrada!')
             console.log('Usuario 1:', data.user1)
             console.log('Usuario 2:', data.user2)
