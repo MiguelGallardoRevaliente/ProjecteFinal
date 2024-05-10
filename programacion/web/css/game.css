@@ -47,7 +47,7 @@ body {
     overflow-x: hidden;
 }
 
-#open-header {
+#open-header, #close-header {
     display: none;
 }
 
