@@ -23,9 +23,11 @@ const sobresGod = document.getElementById('sobres_god')
 
 const resultadoSobre = document.getElementsByClassName('resultado_sobre')
 const header = document.getElementById('header')
+const closeHeader = document.getElementById('close-header')
 
 function mostrarHeader () {
   header.style.display = 'flex'
+  closeHeader.style.display = 'block'
 }
 
 function mostrarShopCards () {

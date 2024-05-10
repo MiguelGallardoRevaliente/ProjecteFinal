@@ -1444,10 +1444,14 @@ header .config p {
         padding: 47px 2px;
     }
 
+    close-header{
+        display: none;
+    }
+
     #close-header:hover {
         opacity: 1;
     }
-    
+
     #close-header i {
         font-size: 30px;
     }
