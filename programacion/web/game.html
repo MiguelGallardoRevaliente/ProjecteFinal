@@ -44,15 +44,19 @@
             console.log(username)
         })
 
-        socket.on('battle-cancelled', () => {
-            console.log('¡Partida cancelada!')
-            document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+        socket.on('battle-cancelled', (data) => {
+            if (data.username === username) {
+                console.log('¡Partida cancelada!')
+                document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+            }
         })
 
-        socket.on('battle-error', () => {
-            console.log('¡Error al buscar partida!')
-            alert(data.message)
-            document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+        socket.on('battle-error', (data) => {
+            if (data.username === username) {
+                console.log('¡Error al buscar partida!')
+                alert(data.message)
+                document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+            }
         })
 
         document.addEventListener('click', function (event) {
