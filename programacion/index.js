@@ -41,7 +41,7 @@ io.on('connection', async (socket) => {
   socket.on('search-battle', async (data) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
 
-    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE id_user = UUID_TO_BIN(?) AND numero = ?', [user[0].id, user[0].mazo_seleccionado])
+    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE id_user = BIN_TO_UUID(?) AND numero = ?', [data.id, user[0].mazo_seleccionado])
 
     if (mazo[0].length !== 8) {
       console.log('No se puede buscar partida sin un mazo completo')
