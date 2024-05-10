@@ -994,9 +994,11 @@ header .config p {
 
 .resultado_sobre .carta .nombreCarta {
     position: absolute;
-    top: 56.5%;
-    left: 30px;
+    top: 55.8%;
+    font-size: 15px;
+    left: 28px;
     margin: 0px;
+    font-family: "koho", sans-serif;
 }
 
 .QuickSell {
