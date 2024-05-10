@@ -32,15 +32,14 @@
                 localStorage.setItem('opponent', data.user2)
                 console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
-                window.location.href = '/battle'
             } else if (username === data.user2) {
                 localStorage.setItem('opponent', data.user1)
                 console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
-                window.location.href = '/battle'
             }
             console.log('Usuario 1:', data.user1)
             console.log('Usuario 2:', data.user2)
+            console.log(username)
         })
 
         socket.on('battle-cancelled', () => {
