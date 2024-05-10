@@ -24,10 +24,19 @@ const sobresGod = document.getElementById('sobres_god')
 const resultadoSobre = document.getElementsByClassName('resultado_sobre')
 const header = document.getElementById('header')
 const closeHeader = document.getElementById('close-header')
+const openHeader = document.getElementById('open-header')
 
 function mostrarHeader () {
   header.style.display = 'flex'
   closeHeader.style.display = 'block'
+  openHeader.style.display = 'none'
+
+}
+
+function cerrarHeader () {
+  header.style.display = 'none'
+  closeHeader.style.display = 'none'
+  openHeader.style.display = 'block'
 }
 
 function mostrarShopCards () {
