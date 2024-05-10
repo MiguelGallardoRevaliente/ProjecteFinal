@@ -41,6 +41,13 @@ io.on('connection', async (socket) => {
   socket.on('search-battle', async (data) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
 
+    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE id_user = UUID_TO_BIN(?) AND numero = ?', [user[0].id, user[0].mazo_seleccionado])
+
+    if (mazo[0].length !== 8) {
+      console.log('No se puede buscar partida sin un mazo completo')
+      io.emit('battle-error', { message: 'No se puede buscar partida sin un mazo completo' })
+    }
+
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       console.log('Búsqueda de partida cancelada')
