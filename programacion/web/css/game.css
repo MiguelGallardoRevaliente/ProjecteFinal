@@ -1437,12 +1437,9 @@ header .config p {
         color: white;
         border: none;
         border-radius: 2px;
-        opacity: 0.6;
-    }
-
-    #close-header:hover{
         opacity: 1;
     }
+
 
     #close-header i{
         font-size: 30px;
