@@ -977,8 +977,8 @@ header .config p {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 22px 35px !important;
-    font-size: 15px !important;
+    margin: 24px 34px !important;
+    font-size: 13px !important;
     font-weight: 800;
     font-family: "Goldman", sans-serif;
 }
@@ -994,7 +994,7 @@ header .config p {
 
 .resultado_sobre .carta .nombreCarta {
     position: absolute;
-    top: 55.8%;
+    top: 56%;
     font-size: 15px;
     left: 28px;
     margin: 0px;
@@ -1408,7 +1408,13 @@ header .config p {
         color: white;
         border: none;
         border-radius: 2px;
+        opacity: 0.6;
     }
+
+    open-header:hover{
+        opacity: 1;
+    }
+
     #open-header i{
         font-size: 30px;
     }
