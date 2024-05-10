@@ -1411,7 +1411,7 @@ header .config p {
         opacity: 0.6;
     }
 
-    open-header:hover{
+    #open-header:hover{
         opacity: 1;
     }
 
