@@ -47,7 +47,8 @@ body {
     overflow-x: hidden;
 }
 
-#open-header, #close-header {
+#open-header,
+#close-header {
     display: none;
 }
 
@@ -1445,7 +1446,7 @@ header .config p {
         z-index: 2;
     }
 
-    #close-header{
+    #close-header {
         display: none;
     }
 
@@ -1566,6 +1567,22 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
     #information .container p {
         font-size: 0.5em;
         margin: 10px 0px;
+    }
+
+}
+
+/* 
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
+*/
+
+@media (max-width: 565px) {
+
+    #searchGame {
+        margin: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        bottom: 50px;
     }
 
 }
