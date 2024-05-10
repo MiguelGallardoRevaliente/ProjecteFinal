@@ -41,7 +41,8 @@ io.on('connection', async (socket) => {
   socket.on('search-battle', async (data) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
 
-    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [data.id, user[0].mazo_seleccionado])
+    const [mazoSeleccionado] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [data.id, user[0].mazo_seleccionado])
+    const [mazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazoSeleccionado[0].id])
     console.log(mazo)
 
     if (mazo.length !== 8) {
