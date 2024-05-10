@@ -1581,7 +1581,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         margin: 0px;
         left: 50%;
         transform: translateX(-50%);
-        width: 100%;
+        width: 300px;
         bottom: 50px;
     }
 
