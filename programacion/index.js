@@ -40,7 +40,6 @@ io.on('connection', async (socket) => {
 
   socket.on('search-battle', async (data) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
-    console.log(user)
 
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
@@ -54,7 +53,6 @@ io.on('connection', async (socket) => {
     await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [data.username])
 
     const [userSearching] = await connection.execute('SELECT * FROM users WHERE searching = 1 AND user != ?', [data.username])
-    console.log(userSearching)
 
     if (userSearching.length > 0) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
