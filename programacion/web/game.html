@@ -23,21 +23,29 @@
 
         document.getElementById('searchGame').addEventListener('click', () => {
             socket.emit('search-battle', { username: username });
+            document.getElementById('searchGame').innerHTML = '<i class="bx bx-loader-alt bx-spin bx-rotate-180"></i> SEARCHING BATTLE'
         })
 
         socket.on('battle-found', (data) => {
+            console.log(data)
             if(username === data.user1) {
                 localStorage.setItem('opponent', data.user2)
-            } else {
+                console.log('¡Partida encontrada!')
+                document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+                window.location.href = '/battle'
+            } else if (username === data.user2) {
                 localStorage.setItem('opponent', data.user1)
+                console.log('¡Partida encontrada!')
+                document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
+                window.location.href = '/battle'
             }
-            console.log('¡Partida encontrada!')
             console.log('Usuario 1:', data.user1)
             console.log('Usuario 2:', data.user2)
         })
 
         socket.on('battle-cancelled', () => {
             console.log('¡Partida cancelada!')
+            document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
         })
 
         document.addEventListener('click', function (event) {

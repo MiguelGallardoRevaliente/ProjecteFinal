@@ -45,7 +45,7 @@ io.on('connection', async (socket) => {
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       console.log('Búsqueda de partida cancelada')
-      io.emit('battle-canceled')
+      io.emit('battle-cancelled')
       return
     }
 
@@ -57,6 +57,7 @@ io.on('connection', async (socket) => {
     console.log(userSearching)
 
     if (userSearching.length > 0) {
+      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
     }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
