@@ -46,6 +46,7 @@ io.on('connection', async (socket) => {
     if (mazo[0].length !== 8) {
       console.log('No se puede buscar partida sin un mazo completo')
       io.emit('battle-error', { message: 'No se puede buscar partida sin un mazo completo' })
+      return
     }
 
     if (user[0].searching === 1) {
