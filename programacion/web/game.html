@@ -32,6 +32,10 @@
             console.log('Usuario 2:', data.user2)
         })
 
+        socket.on('battle-cancelled', () => {
+            console.log('¡Partida cancelada!')
+        })
+
         document.addEventListener('click', function (event) {
             // Verificar si el clic no proviene de userFoto ni de changeFoto
             const userFoto = document.getElementById('userFoto')
