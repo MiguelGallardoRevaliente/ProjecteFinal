@@ -1586,3 +1586,30 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
     }
 
 }
+
+/*
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
+*/
+
+@media (max-width: 700px) {
+
+    #settings .setting div {
+
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 5px 0px;
+
+    }
+
+    #settings .changePassword {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: left !important;
+        flex-direction: row !important;
+    }
+
+    .logout{
+        margin-top: 5%;
+    }
+
+}
