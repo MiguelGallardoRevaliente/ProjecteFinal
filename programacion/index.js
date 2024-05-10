@@ -42,9 +42,9 @@ io.on('connection', async (socket) => {
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [data.username])
 
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [data.id, user[0].mazo_seleccionado])
-    console.log(mazo[0])
+    console.log(mazo)
 
-    if (mazo[0].length !== 8) {
+    if (mazo.length !== 8) {
       console.log('No se puede buscar partida sin un mazo completo')
       if (user[0].searching === 1) {
         await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
