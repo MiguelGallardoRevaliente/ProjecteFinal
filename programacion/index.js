@@ -58,6 +58,7 @@ io.on('connection', async (socket) => {
 
     if (userSearching.length > 0) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
+      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [userSearching[0].user])
       console.log('User1: ', data.username)
       console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
