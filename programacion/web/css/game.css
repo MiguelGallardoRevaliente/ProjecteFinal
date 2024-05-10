@@ -47,7 +47,7 @@ body {
     overflow-x: hidden;
 }
 
-#open-header{
+#open-header {
     display: none;
 }
 
@@ -413,41 +413,41 @@ header .config p {
 
 
 /*table*/
-#shop #allcards .shop_cards{
+#shop #allcards .shop_cards {
     margin-top: 5%;
 }
 
-#shop #allcards .shop_cards table{
+#shop #allcards .shop_cards table {
     width: 100%;
     text-align: center;
 }
 
-#shop #allcards .shop_cards table tr{
+#shop #allcards .shop_cards table tr {
     box-shadow: 0px 3px 3px black;
     margin: auto;
     cursor: pointer;
 }
 
-#shop #allcards .shop_cards table tr:hover{
+#shop #allcards .shop_cards table tr:hover {
     background-color: #3d3d3d;
 }
 
-#shop #allcards .shop_cards table th{
+#shop #allcards .shop_cards table th {
     border-left: 1px solid white;
 }
 
-#shop #allcards .shop_cards table thead tr{
+#shop #allcards .shop_cards table thead tr {
     box-shadow: none;
     cursor: default;
 }
 
 
 /*mensajes_compra_tabla*/
-.confirmar_compra_carta{
+.confirmar_compra_carta {
     display: none;
 }
 
-.confirmar_compra_carta button{
+.confirmar_compra_carta button {
     padding: 5px;
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
@@ -473,14 +473,14 @@ header .config p {
     transition: all 0.1s;
 }
 
-#allchests .chest .confirmacion{
+#allchests .chest .confirmacion {
     position: absolute;
     top: -30px;
     margin: 0px;
     font-size: 20px;
 }
 
-#allchests .chest div{
+#allchests .chest div {
     position: absolute;
     bottom: -13%;
     margin: 0px;
@@ -490,16 +490,16 @@ header .config p {
     left: 50%;
     gap: 10px;
     transform: translate(-50%, -50%);
-    
+
 }
 
-#allchests .chest div .precio{
+#allchests .chest div .precio {
     margin: 0px;
 }
 
-#allchests .chest div .cantidad{
-   position: absolute;
-   bottom: 0;
+#allchests .chest div .cantidad {
+    position: absolute;
+    bottom: 0;
 }
 
 
@@ -1060,19 +1060,19 @@ header .config p {
 }
 
 .put_on_market {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-.put_on_market_inside{
+.put_on_market_inside {
     width: 300px;
     height: 150px;
     background-color: var(--background-color);
@@ -1089,14 +1089,14 @@ header .config p {
     justify-content: center;
 }
 
-.put_on_market_inside #maxAndMin{
+.put_on_market_inside #maxAndMin {
     margin: 0px;
     margin-top: 30px;
     text-align: center;
     margin-bottom: 10px;
 }
 
-.put_on_market_inside form input{
+.put_on_market_inside form input {
     padding: 2px;
     box-shadow: 1px 1px 3px var(--box-shadow) inset;
     border: none;
@@ -1107,7 +1107,7 @@ header .config p {
 
 }
 
-.put_on_market_inside form button{
+.put_on_market_inside form button {
     padding: 5px;
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
@@ -1119,7 +1119,7 @@ header .config p {
 
 }
 
-.put_on_market_inside form button:hover{
+.put_on_market_inside form button:hover {
     background-color: var(--hover-active);
 }
 
@@ -1397,8 +1397,8 @@ header .config p {
 /*a partir de 1000px se esconde y con un boton se muestra*/
 
 @media (max-width: 1000px) {
-    
-    #open-header{
+
+    #open-header {
         display: block;
         position: fixed;
         top: 50%;
@@ -1408,26 +1408,28 @@ header .config p {
         color: white;
         border: none;
         border-radius: 2px;
-        opacity: 0.6;
+        opacity: 0.3;
+        clip-path: polygon(0 0, 90% 30%, 90% 70%, 0% 100%);
+        padding: 47px 2px;
     }
 
-    #open-header:hover{
+    #open-header:hover {
         opacity: 1;
     }
 
-    #open-header i{
+    #open-header i {
         font-size: 30px;
     }
 
-    #open-header:active header{
+    #open-header:active header {
         display: block;
     }
 
-    #close-header{
+    #close-header {
         display: none;
     }
 
-    #close-header{
+    #close-header {
         display: block;
         position: fixed;
         top: 50%;
@@ -1441,7 +1443,7 @@ header .config p {
     }
 
 
-    #close-header i{
+    #close-header i {
         font-size: 30px;
     }
 
@@ -1449,7 +1451,12 @@ header .config p {
         display: none;
     }
 
-    #information, #shop, #inventory, #chests, #mazos, #settings {
+    #information,
+    #shop,
+    #inventory,
+    #chests,
+    #mazos,
+    #settings {
         margin-left: 0px;
     }
 }
@@ -1493,7 +1500,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 1000px) {
 
-    #information{
+    #information {
         padding: 20px;
     }
 
