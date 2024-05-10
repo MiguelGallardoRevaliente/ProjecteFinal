@@ -25,7 +25,7 @@ const resultadoSobre = document.getElementsByClassName('resultado_sobre')
 const header = document.getElementById('header')
 
 function mostrarHeader () {
-  header.style.display = 'block'
+  header.style.display = 'flex'
 }
 
 function mostrarShopCards () {
