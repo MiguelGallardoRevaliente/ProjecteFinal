@@ -51,6 +51,7 @@
 
         socket.on('battle-error', () => {
             console.log('¡Error al buscar partida!')
+            alert(data.message)
             document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
         })
 
