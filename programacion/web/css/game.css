@@ -1609,7 +1609,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
     }
 
     .logout{
-        margin-top: 5%;
+        margin-top: 5% !important;
     }
 
 }
