@@ -30,13 +30,15 @@
             console.log(data)
             if(username === data.user1) {
                 localStorage.setItem('opponent', data.user2)
+                console.log('¡Partida encontrada!')
+                window.location.href = '/battle'
             } else {
                 localStorage.setItem('opponent', data.user1)
+                console.log('¡Partida encontrada!')
+                window.location.href = '/battle'
             }
-            console.log('¡Partida encontrada!')
             console.log('Usuario 1:', data.user1)
             console.log('Usuario 2:', data.user2)
-            window.location.href = '/battle'
         })
 
         socket.on('battle-cancelled', () => {
