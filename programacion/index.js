@@ -45,7 +45,7 @@ io.on('connection', async (socket) => {
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       console.log('Búsqueda de partida cancelada')
-      io.emit('battle-canceled')
+      io.emit('battle-cancelled')
       return
     }
 
