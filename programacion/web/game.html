@@ -30,8 +30,8 @@
                         localStorage.removeItem('id')
                         window.location.href = '/login'
                     } else {
-                        if (data.user.fighting) {
-                            window.location.href = '/battle/' + data.id_combate
+                        if (data.combat) {
+                            window.location.href = '/battle/' + data.combat.id_combate
                         }
                     }
                 })
@@ -53,7 +53,7 @@
                 localStorage.setItem('opponent', data.user1)
                 console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
-                window.location.href = '/battle'
+                window.location.href = '/battle/' + data.id_combate
             }
             console.log('Usuario 1:', data.user1)
             console.log('Usuario 2:', data.user2)
