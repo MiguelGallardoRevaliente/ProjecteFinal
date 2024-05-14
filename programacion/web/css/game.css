@@ -1620,17 +1620,3 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
 /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 */
-
-@media (max-width: 1000px){
-
-    #inventory{
-        padding: 20px;
-    }
-
-   
-
-    #inventory .container .links{
-        margin-left: 0px;
-    } 
-
-}
