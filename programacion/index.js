@@ -43,7 +43,6 @@ io.on('connection', async (socket) => {
 
     const [mazoSeleccionado] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [data.id, user[0].mazo_seleccionado])
     const [mazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazoSeleccionado[0].id])
-    console.log(mazo)
 
     if (mazo.length !== 8) {
       console.log('No se puede buscar partida sin un mazo completo')
@@ -75,9 +74,6 @@ io.on('connection', async (socket) => {
 
       const [lastID] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE id_user_1 = UUID_TO_BIN(?) AND id_user_2 = UUID_TO_BIN(?)', [data.id, userSearching[0].id_uuid])
 
-      console.log(lastID[0].id)
-      console.log('User1: ', data.username)
-      console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastID[0].id })
     }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
@@ -92,7 +88,6 @@ app.get('/checkUser', async (req, res) => {
   try {
     const username = req.query.username
     const password = req.query.password
-    console.log(username, password)
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     if (user.length > 0) {
       bcrypt.compare(password, user[0].password, async (err, result) => {

@@ -16,7 +16,6 @@
             fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     if (data.message !== 'userExists') {
                         localStorage.removeItem('username')
                         localStorage.removeItem('password')
