@@ -599,9 +599,6 @@ header .config p {
     gap: 0px;
 }
 
-#mazos .container .top {
-    margin-left: 5% !important;
-}
 
 #inventory .container .top h1,
 #chests .container .top h1,
