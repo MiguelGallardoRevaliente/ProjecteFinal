@@ -1627,9 +1627,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         padding: 20px;
     }
 
-    #inventory .container{
-        margin: 0px;
-    }
+   
 
     #inventory .container .links{
         margin-left: 0px;
