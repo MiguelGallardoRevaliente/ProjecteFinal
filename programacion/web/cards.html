@@ -64,7 +64,7 @@
                         ataqueVida.className = 'ataque-vida'
                         ataqueVida.innerHTML = card.ataque + '/' + card.vida
 
-                        if (data.ataques[i[0]]) {
+                        if (data.ataques[i][0]) {
                             const ataqueEspecial = document.createElement('p')
                             ataqueEspecial.className = 'ataque-especial'
                             const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
@@ -116,7 +116,7 @@
                         ataqueVida.className = 'ataque-vida'
                         ataqueVida.innerHTML = card.ataque + '/' + card.vida
 
-                        if (data.ataques[i[0]]) {
+                        if (data.ataques[i][0]) {
                             const ataqueEspecial = document.createElement('p')
                             ataqueEspecial.className = 'ataque-especial'
                             const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
