@@ -465,6 +465,7 @@ app.get('/battle/:id', (req, res) => {
   const id = req.params
   console.log('manolo', id)
   res.header('Allow-Control-Allow-Origin', '*')
+  console.log(__dirname)
   res.sendFile(join(__dirname, 'web/combat.html'))
 })
 
