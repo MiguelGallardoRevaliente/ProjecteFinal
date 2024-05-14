@@ -93,16 +93,16 @@ app.get('/checkUser', async (req, res) => {
     const username = req.query.username
     const password = req.query.password
     console.log(username, password)
-    const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [username])
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     if (user.length > 0) {
       bcrypt.compare(password, user[0].password, async (err, result) => {
         if (err) {
           throw err
         }
         if (result) {
-          const [combat] = await connection.execute('SELECT * FROM combates WHERE id_user_1 = UUID_TO_BIN(?) OR id_user_2 = UUID_TO_BIN(?)', [user[0].id, user[0].id])
+          const [combat] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?', [user[0].id_uuid, user[0].id_uuid])
           if (combat.length > 0) {
-            return res.status(200).json({ message: 'userExists', user: user[0], combat: combat[0] })
+            return res.status(200).json({ message: 'userExists', user: user[0], combat: combat[0].id })
           } else {
             return res.status(200).json({ message: 'userExists', user: user[0] })
           }
