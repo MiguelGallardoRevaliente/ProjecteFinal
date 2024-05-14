@@ -86,6 +86,7 @@ app.get('/checkUser', async (req, res) => {
   try {
     const username = req.query.username
     const password = req.query.password
+    console.log(username, password)
     const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [username])
     if (user.length > 0) {
       bcrypt.compare(password, user[0].password, (err, result) => {
