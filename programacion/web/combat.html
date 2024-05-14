@@ -22,9 +22,7 @@
                         localStorage.removeItem('id')
                         window.location.href = '/login'
                     } else {
-                        if (!data.user.fighting) {
-                            window.location.href = '/'
-                        }
+                        console.log(data.user)
                     }
                 })
         }
