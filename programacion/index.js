@@ -73,7 +73,7 @@ io.on('connection', async (socket) => {
       await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid])
       const [lastID] = await connection.execute('SELECT LAST_INSERT_ID()')
       const lastInsertedID = lastID[0]['LAST_INSERT_ID()']
-      console.log(lastID)
+      console.log(lastInsertedID)
       console.log('User1: ', data.username)
       console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastInsertedID })
