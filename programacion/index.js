@@ -68,8 +68,8 @@ io.on('connection', async (socket) => {
     const [userSearching] = await connection.execute('SELECT * FROM users WHERE searching = 1 AND user != ?', [data.username])
 
     if (userSearching.length > 0) {
-      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
-      await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [userSearching[0].user])
+      await connection.execute('UPDATE users SET searching = 0 AND fighting = 1 WHERE user = ?', [data.username])
+      await connection.execute('UPDATE users SET searching = 0 AND fighting = 1 WHERE user = ?', [userSearching[0].user])
       console.log('User1: ', data.username)
       console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user })
@@ -80,6 +80,28 @@ io.on('connection', async (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected')
   })
+})
+
+app.get('/checkUser', async (req, res) => {
+  try {
+    const username = req.query.username
+    const password = req.query.password
+    const [user] = await connection.execute('SELECT * FROM users WHERE user = ?', [username])
+    if (user.length > 0) {
+      bcrypt.compare(password, user[0].password, (err, result) => {
+        if (err) {
+          throw err
+        }
+        if (result) {
+          return res.status(200).json({ message: 'userExists' })
+        }
+        return res.status(200).json({ message: 'Password does not match' })
+      })
+    }
+    return res.status(200).json({ message: 'userNotExists' })
+  } catch (err) {
+    console.error(err)
+  }
 })
 
 app.get('/login', (req, res) => {

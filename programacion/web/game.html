@@ -19,6 +19,12 @@
 
         if (!username) {
             window.location.href = '/login'
+        } else {
+            fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
         }
 
         document.getElementById('searchGame').addEventListener('click', () => {
