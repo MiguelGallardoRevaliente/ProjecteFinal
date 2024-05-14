@@ -29,6 +29,10 @@
                         localStorage.removeItem('password')
                         localStorage.removeItem('id')
                         window.location.href = '/login'
+                    } else {
+                        if (data.user.fighting) {
+                            window.location.href = '/battle'
+                        }
                     }
                 })
         }
