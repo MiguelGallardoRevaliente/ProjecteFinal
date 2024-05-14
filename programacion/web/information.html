@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -11,13 +12,14 @@
         const inventory = localStorage.getItem('inventory') || 'cards'
         inventoryLink.href = `/${inventory}`
         const username = localStorage.getItem('username')
-        
+
         if (!username) {
             window.location.href = '/login'
         }
     </script>
 </head>
-<body>    
+
+<body>
     <button onclick="mostrarHeader()" id="open-header"><i class='bx bxs-right-arrow'></i></button>
     <button onclick="cerrarHeader()" id="close-header"><i class='bx bxs-right-arrow'></i></button>
     <header id="header">
@@ -35,36 +37,52 @@
         </nav>
         <div class="config" onclick="window.location.href='/settings'">
             <a href="/settings">
-            <i class='bx bx-cog'></i>
-            <p>SETTINGS</p>
+                <i class='bx bx-cog'></i>
+                <p>SETTINGS</p>
             </a>
         </div>
     </header>
     <div id="information">
         <div class="container">
             <h1>INFORMATION</h1>
-            <p>Welcome al emocionante mundo de Chamous Sumérgete en una experiencia única llena de aventuras, desafíos y misterios por descubrir.</p>
-    
+            <p>Welcome al emocionante mundo de Chamous Sumérgete en una experiencia única llena de aventuras, desafíos y
+                misterios por descubrir.</p>
+
             <h2>How to play?</h2>
-            <p>In this game, you start by choosing 8 cards from a pool of over 200 to form your deck. With your selected deck, you head into battle, 
-                beginning with 20 mana. As you play, you'll use your mana to put cards onto the battlefield. Each card costs a certain amount of mana, 
-                which is deducted from your total mana when played. Once on the battlefield, your cards can attack or be attacked. If a card is eliminated,
-                the mana used to play that card is returned to you. For example, if a card costing 6 mana is eliminated, you get 6 mana back. <br>Each player takes turns,
-                and each turn is limited to one minute. Unique abilities on your cards can only be used once per combat. The game ends when one player runs out of cards,
+            <p>In this game, you start by choosing 8 cards from a pool of over 200 to form your deck. With your selected
+                deck, you head into battle,
+                beginning with 20 mana. As you play, you'll use your mana to put cards onto the battlefield. Each card
+                costs a certain amount of mana,
+                which is deducted from your total mana when played. Once on the battlefield, your cards can attack or be
+                attacked. If a card is eliminated,
+                the mana used to play that card is returned to you. For example, if a card costing 6 mana is eliminated,
+                you get 6 mana back. <br>Each player takes turns,
+                and each turn is limited to one minute. Unique abilities on your cards can only be used once per combat.
+                The game ends when one player runs out of cards,
                 and the player who still has cards remaining wins.
             </p>
 
             <h2>Cards & Types</h2>
-            <p>9 Types of Radiants and 5 rankings</p>
-                
-    
+            <h3>Cards</h3>
+            <img src="img/tipos.png" alt="Foto De las relaciones de tipos">
+            <p>The arrows indicate the effectiveness of different types. If an arrow points to your type, it means that
+                type is strong against you. For example, Darkness and Light are only effective against each other.
+                Neutral type is not effective against any type, but it is also not affected by any other type.</p>
+            <h3>Types</h3>
+            <p></p>
+
+
             <h2>Chamous Lore</h2>
-            <p>Centuries ago, in a magical and enigmatic world known as Chamous, the primordial energy of the universe converged into a unique epicenter: a floating city 
-                high above the clouds, also named Chamous. This city, suspended between the skies and the stars, was the core of life and magic that flowed through the vast
+            <p>Centuries ago, in a magical and enigmatic world known as Chamous, the primordial energy of the universe
+                converged into a unique epicenter: a floating city
+                high above the clouds, also named Chamous. This city, suspended between the skies and the stars, was the
+                core of life and magic that flowed through the vast
                 landscape of Chamous.
             </p>
-            <p>In Chamous, the energy of the world, known as the "Radiance," manifested in nine distinct forms, each representing a unique and unparalleled power. These powers,
-                in turn, were personified by nine legendary beings who became the guardians of Chamous. Each guardian was imbued with the essential power of one of the Nine Radiances, 
+            <p>In Chamous, the energy of the world, known as the "Radiance," manifested in nine distinct forms, each
+                representing a unique and unparalleled power. These powers,
+                in turn, were personified by nine legendary beings who became the guardians of Chamous. Each guardian
+                was imbued with the essential power of one of the Nine Radiances,
                 and their duty was to preserve the magical balance that sustained the world.
             </p>
             <p>The Nine Radiances, and their respective guardians, were:</p>
@@ -79,17 +97,22 @@
                 <li>Rauru, the Radiance of Fire: Master of fire and flames.</li>
                 <li>Morrality, the Radiance of Rock: Custodian of solidity and resilience.</li>
             </ul>
-            <p>Chamous, despite its apparent peace, witnesses a growing internal conflict. Differences of opinion among the guardians on how to use the Radiance to maintain harmony
-                trigger tensions. While some advocate for the equitable and collaborative use of powers, others crave more control and dominance.</p>
+            <p>Chamous, despite its apparent peace, witnesses a growing internal conflict. Differences of opinion among
+                the guardians on how to use the Radiance to maintain harmony
+                trigger tensions. While some advocate for the equitable and collaborative use of powers, others crave
+                more control and dominance.</p>
 
             <p>
-                The internal conflict threatens to shatter the delicate balance of Chamous, and players find themselves in the midst of a struggle to preserve the essence of the Nine
-                 Radiances and restore fading harmony. Will they be able to overcome internal divisions and protect Chamous from the threat that arises from within?</p>
-            
+                The internal conflict threatens to shatter the delicate balance of Chamous, and players find themselves
+                in the midst of a struggle to preserve the essence of the Nine
+                Radiances and restore fading harmony. Will they be able to overcome internal divisions and protect
+                Chamous from the threat that arises from within?</p>
+
         </div>
-        
+
     </div>
-    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
+    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio>
     <script src="js/game.js"></script>
 </body>
+
 </html>
