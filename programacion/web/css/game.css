@@ -1492,8 +1492,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
     }
 
     #information .container h3{
-        font-size: 0.7em;
-        margin: 20px 0px;
+        font-size: 0.7em !important;
+        margin: 20px 0px !important;
     }
 
     #information .container li {
