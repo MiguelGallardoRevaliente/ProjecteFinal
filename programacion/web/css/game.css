@@ -326,7 +326,7 @@ header .config p {
 
 #shop .container {
     color: white;
-    margin: 0px 70px;
+    margin: 0px 0px;
 }
 
 #shop .container .top {
@@ -522,7 +522,7 @@ header .config p {
 #chests .container,
 #mazos .container {
     color: white;
-    margin: 0px 70px;
+    margin: 0px 0px;
 }
 
 #mazos .container {
@@ -1613,6 +1613,24 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
 
     .logout{
         margin-top: 5% !important;
+    }
+
+}
+
+/*
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
+*/
+
+@media (max-width: 1000px){
+
+
+    #inventory .container .links, #chests .container .links, #mazos .container .links{
+        margin-left: 0px;
+    }
+
+   
+    #inventory .container, #chests .container, #mazos .container{
+        margin: 0px;
     }
 
 }
