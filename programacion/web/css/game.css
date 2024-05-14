@@ -1442,7 +1442,7 @@ header .config p {
         border-radius: 2px;
         opacity: 1;
         clip-path: polygon(0 0, 90% 30%, 90% 70%, 0% 100%);
-        padding: 47px 2px;
+        padding: 50px 5px;
         z-index: 2;
     }
 
@@ -1540,6 +1540,9 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 800px) {
 
+    #information{
+        min-height: auto;
+    }
     #information .container {
         padding: 0px 10px;
     }
