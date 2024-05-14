@@ -1623,6 +1623,15 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
         margin-top: 5% !important;
     }
 
+
+}
+
+@media (max-width: 450px) {
+
+    #settings{
+        padding: 20px;
+    }
+
 }
 
 /*
