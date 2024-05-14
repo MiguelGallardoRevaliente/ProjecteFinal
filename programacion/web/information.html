@@ -25,8 +25,8 @@
                         localStorage.removeItem('id')
                         window.location.href = '/login'
                     } else {
-                        if (data.user.fighting) {
-                            window.location.href = '/battle'
+                        if (data.combat) {
+                            window.location.href = '/battle?id=' + data.combat
                         }
                     }
                 })

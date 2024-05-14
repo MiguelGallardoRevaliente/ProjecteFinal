@@ -461,8 +461,8 @@ app.get('/settings', (req, res) => {
   res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
-app.get('/battle/:id', (req, res) => {
-  const id = req.params
+app.get('/battle', (req, res) => {
+  const id = req.query.id
   console.log('manolo', id)
   res.header('Allow-Control-Allow-Origin', '*')
   console.log(__dirname)
