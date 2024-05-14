@@ -1641,4 +1641,30 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         margin: 0px;
     }
 
+    
+
+}
+
+@media (max-width: 500px){
+    /*aqui va el responsive de las cartas de inventory*/
+    #inventory, #chests, #mazos{
+        padding: 70px 20px;
+    }
+}
+
+/*
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
+*/
+@media (max-width: 500px){
+    #chests .allChests .sobre{
+        width: 300px;
+        height: 420px;
+    }
+
+}
+
+@media (max-width: 350px){
+    #chests{
+        padding: 70px 0px;
+    }
 }
