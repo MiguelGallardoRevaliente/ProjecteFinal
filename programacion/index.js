@@ -75,7 +75,7 @@ io.on('connection', async (socket) => {
 
       const [lastID] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE id_user_1 = UUID_TO_BIN(?) AND id_user_2 = UUID_TO_BIN(?)', [data.id, userSearching[0].id_uuid])
 
-      console.log(lastID)
+      console.log(lastID[0].id)
       console.log('User1: ', data.username)
       console.log('User2: ', userSearching[0].user)
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastID[0].id })
