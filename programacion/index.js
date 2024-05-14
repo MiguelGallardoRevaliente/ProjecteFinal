@@ -94,7 +94,7 @@ app.get('/checkUser', async (req, res) => {
           throw err
         }
         if (result) {
-          return res.status(200).json({ message: 'userExists' })
+          return res.status(200).json({ message: 'userExists', user: user[0] })
         } else {
           return res.status(200).json({ message: 'Password does not match' })
         }
