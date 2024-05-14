@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle - Chamous</title>
     <link rel="stylesheet" href="css/combat.css">
+    <script type="module">
+        import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
+
+        const username = localStorage.getItem('username')
+
+        if (!username && !localStorage.getItem('password')) {
+            window.location.href = '/login'
+        } else if (username && localStorage.getItem('password')) {
+            fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.message !== 'userExists') {
+                        localStorage.removeItem('username')
+                        localStorage.removeItem('password')
+                        localStorage.removeItem('id')
+                        window.location.href = '/login'
+                    } else {
+                        if (!data.user.fighting) {
+                            window.location.href = '/'
+                        }
+                    }
+                })
+        }
+    </script>
 </head>
 <body>
     

@@ -458,10 +458,14 @@ app.get('/settings', (req, res) => {
   res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
-app.get('/battle', (req, res) => {
+app.get('/battle/:id', (req, res) => {
+  const id = req.params
+  console.log(id)
   res.header('Allow-Control-Allow-Origin', '*')
   res.sendFile(join(__dirname, 'web/combat.html'))
 })
+
+/* SOLICITUDES POST */
 
 app.post('/login', async (req, res) => {
   try {

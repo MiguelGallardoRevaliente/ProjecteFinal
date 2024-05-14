@@ -29,8 +29,6 @@ CREATE TABLE IF NOT EXISTS cartas (
     tipo VARCHAR(255),
     foto VARCHAR(255),
     id_ataque INT,
-    searching BOOLEAN DEFAULT false,
-    fighting BOOLEAN DEFAULT false,
     FOREIGN KEY (id_ataque) REFERENCES ataques(id)
 );
 
@@ -88,6 +86,14 @@ CREATE TABLE IF NOT EXISTS mercado_cartas (
     precio INT,
     FOREIGN KEY (id_user) REFERENCES users(id),
     FOREIGN KEY (id_carta) REFERENCES cartas(id)
+);
+
+CREATE TABLE IF NOT EXISTS combates (
+	id_combate BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+    id_user_1 BINARY(16),
+    id_user_2 BINARY(16),
+    FOREIGN KEY (id_user_1) REFERENCES users(id),
+    FOREIGN KEY (id_user_2) REFERENCES users(id)
 );
 
 INSERT INTO users (nombre, apellidos, user, password, email)
