@@ -302,6 +302,10 @@ header .config p {
     border-bottom: 1px solid #ffffff;
 }
 
+#information .container h3{
+    font-size: 0.7em ;
+    margin: 20px 0px ;
+}
 #information .container li {
     font-size: 0.8em;
 }
@@ -1491,10 +1495,6 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
         border-bottom: 1px solid #ffffff;
     }
 
-    #information .container h3{
-        font-size: 0.7em !important;
-        margin: 20px 0px !important;
-    }
 
     #information .container li {
         font-size: 0.6em;
@@ -1574,6 +1574,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
         margin: 10px 0px;
     }
 
+}
+
+@media (max-width: 500px){
+    #information .container img{
+        width: 30%;
+    }
 }
 
 /* 
