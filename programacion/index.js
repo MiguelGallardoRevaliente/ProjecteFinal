@@ -70,7 +70,7 @@ io.on('connection', async (socket) => {
     if (userSearching.length > 0) {
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [data.username])
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [userSearching[0].user])
-      await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (?, ?)', [data.id, userSearching[0].id_uuid])
+      await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid])
       const [lastID] = await connection.execute('SELECT LAST_INSERT_ID();')
       console.log(lastID)
       console.log('User1: ', data.username)
