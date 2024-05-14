@@ -470,7 +470,20 @@ app.get('/battle', async (req, res) => {
     return res.status(404)
   }
   res.header('Allow-Control-Allow-Origin', '*')
-  res.sendFile(join(__dirname, '/web/combat.html'))
+  res.sendFile(join(__dirname, '/web/battle.html'))
+})
+
+app.get('/getCardsBattle', async (req, res) => {
+  try {
+    const id = req.query.id
+
+    const [mazoSeleccionado] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
+    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?;', [id, mazoSeleccionado[0].mazo_seleccionado])
+
+    const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo[0].id])
+  } catch (err) {
+    console.error(err)
+  }
 })
 
 /* SOLICITUDES POST */

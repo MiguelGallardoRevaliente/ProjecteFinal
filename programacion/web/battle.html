@@ -21,9 +21,15 @@
                         localStorage.removeItem('password')
                         localStorage.removeItem('id')
                         window.location.href = '/login'
-                    } else {
-                        console.log(data.user)
                     }
+                })
+        }
+
+        window.onload = () => {
+            fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
                 })
         }
     </script>
