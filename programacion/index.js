@@ -71,17 +71,13 @@ io.on('connection', async (socket) => {
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [data.username])
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [userSearching[0].user])
 
-      // Insertar el combate
-      const [insertResult] = await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid])
+      await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid])
 
-      // Obtener el último ID insertado
-      const [lastID] = await connection.execute('SELECT LAST_INSERT_ID()')
-      const lastInsertedID = lastID[0]['LAST_INSERT_ID()']
+      const [lastID] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE id_user_1 = UUID_TO_BIN(?) AND id_user_2 = UUID_TO_BIN(?)', [data.id, userSearching[0].id_uuid])
 
-      console.log(lastInsertedID)
       console.log('User1: ', data.username)
       console.log('User2: ', userSearching[0].user)
-      io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastInsertedID })
+      io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastID[0].id })
     }
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
