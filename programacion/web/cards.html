@@ -12,8 +12,24 @@
         localStorage.setItem('inventory', 'cards')
         const username = localStorage.getItem('username')
 
-        if (!username) {
+        if (!username && !localStorage.getItem('password')) {
             window.location.href = '/login'
+        } else if (username && localStorage.getItem('password')) {
+            fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.message !== 'userExists') {
+                        localStorage.removeItem('username')
+                        localStorage.removeItem('password')
+                        localStorage.removeItem('id')
+                        window.location.href = '/login'
+                    } else {
+                        if (data.user.fighting) {
+                            window.location.href = '/battle'
+                        }
+                    }
+                })
         }
 
         window.onload = () => {

@@ -17,9 +17,9 @@
         inventoryLink.href = `/${inventory}`
         const username = localStorage.getItem('username')
 
-        if (!username) {
+        if (!username && !localStorage.getItem('password')) {
             window.location.href = '/login'
-        } else {
+        } else if (username && localStorage.getItem('password')) {
             fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
                 .then(response => response.json())
                 .then(data => {
