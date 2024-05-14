@@ -302,6 +302,10 @@ header .config p {
     border-bottom: 1px solid #ffffff;
 }
 
+#information .container h3{
+    font-size: 0.7em ;
+    margin: 20px 0px ;
+}
 #information .container li {
     font-size: 0.8em;
 }
@@ -599,9 +603,6 @@ header .config p {
     gap: 0px;
 }
 
-#mazos .container .top {
-    margin-left: 5% !important;
-}
 
 #inventory .container .top h1,
 #chests .container .top h1,
@@ -1494,6 +1495,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
         border-bottom: 1px solid #ffffff;
     }
 
+
     #information .container li {
         font-size: 0.6em;
     }
@@ -1572,6 +1574,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
         margin: 10px 0px;
     }
 
+}
+
+@media (max-width: 500px){
+    #information .container img{
+        width: 100%;
+    }
 }
 
 /* 
