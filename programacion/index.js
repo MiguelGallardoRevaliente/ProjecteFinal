@@ -95,13 +95,16 @@ app.get('/checkUser', async (req, res) => {
         }
         if (result) {
           return res.status(200).json({ message: 'userExists' })
+        } else {
+          return res.status(200).json({ message: 'Password does not match' })
         }
-        return res.status(200).json({ message: 'Password does not match' })
       })
+    } else {
+      return res.status(200).json({ message: 'userNotExists' })
     }
-    return res.status(200).json({ message: 'userNotExists' })
   } catch (err) {
     console.error(err)
+    return res.status(500).json({ message: 'Internal Server Error' })
   }
 })
 
