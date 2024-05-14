@@ -326,7 +326,7 @@ header .config p {
 
 #shop .container {
     color: white;
-    margin: 0px 70px;
+    margin: 0px 0px;
 }
 
 #shop .container .top {
@@ -522,7 +522,7 @@ header .config p {
 #chests .container,
 #mazos .container {
     color: white;
-    margin: 0px 70px;
+    margin: 0px 0px;
 }
 
 #mazos .container {
