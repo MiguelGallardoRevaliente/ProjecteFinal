@@ -48,7 +48,7 @@
                 localStorage.setItem('opponent', data.user2)
                 console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
-                window.location.href = '/battle'
+                window.location.href = '/battle/' + data.id_combate
             } else if (username === data.user2) {
                 localStorage.setItem('opponent', data.user1)
                 console.log('¡Partida encontrada!')
