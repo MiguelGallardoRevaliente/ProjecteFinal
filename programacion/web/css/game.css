@@ -1578,7 +1578,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 500px){
     #information .container img{
-        width: 30%;
+        width: 100%;
     }
 }
 
