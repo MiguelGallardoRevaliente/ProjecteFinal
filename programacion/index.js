@@ -461,11 +461,15 @@ app.get('/settings', (req, res) => {
   res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
-app.get('/battle', (req, res) => {
+app.get('/battle', async (req, res) => {
+  if (!req.query.id) return res.status(404)
   const id = req.query.id
   console.log('manolo', id)
+  const [combate] = await connection.execute('SELECT * FROM combates WHERE BIN_TO_UUID(id_combate) = ?;', [id])
+  if (combate.length === 0) {
+    return res.status(404)
+  }
   res.header('Allow-Control-Allow-Origin', '*')
-  console.log(__dirname)
   res.sendFile(join(__dirname, '/web/combat.html'))
 })
 
