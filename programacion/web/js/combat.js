@@ -2,6 +2,7 @@
 function drop (event) {
   event.preventDefault()
   const data = event.dataTransfer.getData('text')
+  console.log(data)
 }
 
 function allowDrop (event) {
@@ -9,5 +10,5 @@ function allowDrop (event) {
 }
 
 function drag (event) {
-  event.dataTransfer.setData('text', event.target.id)
+  event.dataTransfer.setData('text', event.target.src)
 }
