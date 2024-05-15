@@ -491,27 +491,23 @@ app.get('/getCardsBattle', async (req, res) => {
     const cartasEnCombateUser = []
     for (const carta of cartasCombatesUser) {
       const [cartaEnCombateUser] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
-      console.log(cartaEnCombateUser)
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateUser[0].id_ataque])
       cartasEnCombateUser.push({
         cartaEnCombateUser: cartaEnCombateUser[0],
         ataque: ataque[0]
       })
     }
-    console.log(cartasEnCombateUser)
 
     const [cartasCombatesOpponent] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponent, combate[0].id_combate_uuid])
     const cartasEnCombateOpponent = []
     for (const carta of cartasCombatesOpponent) {
       const [cartaEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
-      console.log(cartaEnCombateOpponent)
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateOpponent[0].id_ataque])
       cartasEnCombateOpponent.push({
         cartaEnCombateOpponent: cartaEnCombateOpponent[0],
         ataque: ataque[0]
       })
     }
-    console.log(cartasEnCombateOpponent)
 
     const cartasCombates = {
       cartasUser: cartasEnCombateUser,

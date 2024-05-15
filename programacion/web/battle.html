@@ -34,6 +34,37 @@
                     const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                     if (data.cartasCombates.cartasOpponent) {
                         const cartasOpponent = data.cartasCombates.cartasOpponent
+                        cartasOpponent.forEach(card => {
+                            const cardDiv = document.createElement('div')
+                            cardDiv.className = 'card'
+                            cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
+                            cardDiv.style.backgroundSize = 'contain'
+                            cardDiv.style.backgroundRepeat = 'no-repeat'
+                            cardDiv.style.backgroundPosition = 'center'
+                            cardDiv.id = card.cartaEnCombateUser.id
+                            cardDiv.draggable = true
+                            cardDiv.setAttribute('ondragstart', 'dragStart(event)')
+
+                            const cardName = document.createElement('p')
+                            cardName.textContent = card.cartaEnCombateUser.nombre
+                            cardName.className = 'cardName'
+
+                            const ataqueVida = document.createElement('p')
+                            ataqueVida.textContent = card.cartaEnCombateUser.ataque + '/' + card.cartaEnCombateUser.vida
+                            ataqueVida.className = 'ataque-vida'
+
+                            if (card.ataque) {
+                                const ataqueEspecial = document.createElement('p')
+                                ataqueEspecial.textContent = card.cartaEnCombateUser.nombre + ' - ' + card.cartaEnCombateUser.descripcion
+                                ataqueEspecial.className = 'ataque-especial'
+
+                                cardDiv.appendChild(ataqueEspecial)
+                            }
+
+                            cardDiv.appendChild(cardName)
+                            cardDiv.appendChild(ataqueVida)
+                            opponentBoard.appendChild(cardDiv)
+                        })
                     }
 
                     const userBoard = document.getElementsByClassName('user-board')[0]
@@ -68,7 +99,7 @@
 
                             cardDiv.appendChild(cardName)
                             cardDiv.appendChild(ataqueVida)
-                            yourCards.appendChild(cardDiv)
+                            userBoard.appendChild(cardDiv)
                         })
                     }
 
