@@ -70,6 +70,7 @@ body {
     padding-left: 70px;
     padding-right: 20px;
     margin: 0px !important;
+    flex-direction: row-reverse;
 }
 
 .user{
@@ -147,31 +148,30 @@ body {
     font-size: 10px;
     color: black;
     margin: 0px;
-    font-weight: 800;
+    font-weight: 600;
     user-select: none;
 }
 
 .yourCards .card .cardName {
-    top: 55%;
-    left: 30px;
+    top: 56%;
+    left: 16px;
     margin: 0px;
-
 }
 
 .yourCards .card .ataque-vida {
     bottom: 0;
     right: 0;
-    margin: 40px 38px !important;
-    font-size: 18px !important;
-    font-weight: 800;
+    margin: 13px 19px !important;
+    font-size: 12px !important;
+    font-weight: 600;
     font-family: "Goldman", sans-serif;
 }
 
 .yourCards .card .ataque-especial {
-    top: 75%;
-    font-size: 11px !important;
+    top: 78%;
+    font-size: 6px !important;
     font-weight: 600 !important;
-    left: 40px;
-    max-width: 270px;
+    left: 22px;
+    max-width: 150px;
 
 }
