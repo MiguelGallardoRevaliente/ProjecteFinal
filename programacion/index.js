@@ -766,7 +766,7 @@ app.post('/playCard', async (req, res) => {
 
     const mazoCartasId = mazoCartas.map(carta => carta.id_carta)
     console.log(mazoCartasId)
-    console.log(mazoCartasId.includes(idCarta))
+    console.log(mazoCartasId.includes(parseInt(idCarta)))
     if (!mazoCartasId.includes(idCarta)) {
       return res.status(200).json({ message: 'Card not in deck' })
     }
