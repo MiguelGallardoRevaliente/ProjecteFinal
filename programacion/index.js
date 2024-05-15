@@ -490,9 +490,9 @@ app.get('/getCardsBattle', async (req, res) => {
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta[0].id_ataque])
 
       userDeckCards.push({
-        user: user[0].user,
-        carta,
-        ataque
+        user: user[0],
+        carta: carta[0],
+        ataque: ataque[0]
       })
     }
 

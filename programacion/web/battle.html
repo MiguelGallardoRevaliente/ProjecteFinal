@@ -30,11 +30,31 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
+                    data.forEach(card => {
+                        const cardElement = document.createElement('div')
+                        cardElement.classList.add('card')
+                        cardElement.innerHTML = `
+                            <img src="${card.image}" alt="${card.name}">
+                            <h3>${card.name}</h3>
+                            <p>${card.description}</p>
+                            <button onclick="selectCard('${card.id}')">Select</button>
+                        `
+                        document.body.appendChild(cardElement)
+                    })
                 })
         }
     </script>
 </head>
 <body>
-    
+    <div class="board">
+
+    </div>
+
+    <div class="cards">
+        <div class="user"></div>
+        
+        <div class="yourCards"></div>
+
+    </div>
 </body>
 </html>
