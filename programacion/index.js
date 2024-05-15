@@ -483,12 +483,11 @@ app.get('/getCardsBattle', async (req, res) => {
     const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo[0].id])
     console.log(mazoCartas)
 
-    const idCartas = mazoCartas.map(carta => carta.id_carta)
-    const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [idCartas])
-
     const userDeckCards = []
-    for (const carta of cartas) {
-      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta.id_ataque])
+    for (const mazoCarta of mazoCartas) {
+      const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [mazoCarta.id_carta])
+
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta[0].id_ataque])
 
       userDeckCards.push({
         carta,
