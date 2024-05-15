@@ -753,6 +753,7 @@ app.post('/playCard', async (req, res) => {
   try {
     const idCarta = req.body.id
     const username = req.body.user
+    console.log(idCarta, username)
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
