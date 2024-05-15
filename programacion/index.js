@@ -480,11 +480,24 @@ app.get('/getCardsBattle', async (req, res) => {
 
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
 
-    const [combate] = await connection.execute('SELECT BIN_TO_UUID(id_user_1) AS id_user_1, BIN_TO_UUID(id_user_2) AS id_user_2 FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
-    if (combate[0].id_user_1 === id) {
-      opponent = combate[0].id_user_2
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
+    if (combate[0].id_user_1_uuid === id) {
+      opponent = combate[0].id_user_2_uuid
     } else {
-      opponent = combate[0].id_user_1
+      opponent = combate[0].id_user_1_uuid
+    }
+
+    const [cartasCombatesUser] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [id, combate[0].id_combate_uuid])
+    const idCartasCombatesUser = cartasCombatesUser.map(carta => carta.id_carta)
+    const [cartasEnCombateUser] = await connection.execute('SELECT * FROM cartas WHERE id_carta = ?', [idCartasCombatesUser])
+
+    const [cartasCombatesOpponent] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponent, combate[0].id_combate_uuid])
+    const idCartasCombatesOpponent = cartasCombatesOpponent.map(carta => carta.id_carta)
+    const [cartasEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id_carta = ?', [idCartasCombatesOpponent])
+
+    const cartasCombates = {
+      cartasUser: cartasEnCombateUser,
+      cartasOpponent: cartasEnCombateOpponent
     }
 
     const [opponentUser] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [opponent])
@@ -508,7 +521,8 @@ app.get('/getCardsBattle', async (req, res) => {
     const data = {
       userDeckCards,
       user: user[0],
-      opponent: opponentUser[0]
+      opponent: opponentUser[0],
+      cartasCombates
     }
 
     return res.status(200).json(data)
@@ -778,7 +792,7 @@ app.post('/playCard', async (req, res) => {
     }
 
     await connection.execute(
-      'INSERT INTO cartas_combates (id_user, id_carta, id_combate, ataque, vida) VALUES (UUID_TO_BIN(?), ?, ?, ?, ?);',
+      'INSERT INTO cartas_combates (id_user, id_carta, id_combate, ataque, vida) VALUES (UUID_TO_BIN(?), ?, UUID_TO_BIN(?), ?, ?);',
       [user[0].id_uuid, idCarta, combate[0].id_combate_uuid, carta[0].ataque, carta[0].vida]
     )
 
