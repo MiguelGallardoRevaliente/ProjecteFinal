@@ -52,6 +52,10 @@
                 console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
                 window.location.href = '/battle?id=' + data.id_combate
+            } else if (username === data.user1 && username === data.user2) {
+                console.log('¡Error al buscar partida!')
+                alert('Error al buscar partida')
+                document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
             }
         })
 
