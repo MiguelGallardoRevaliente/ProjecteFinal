@@ -481,6 +481,24 @@ app.get('/getCardsBattle', async (req, res) => {
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?;', [id, mazoSeleccionado[0].mazo_seleccionado])
 
     const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?;', [mazo[0].id])
+    console.log(mazoCartas)
+
+    const idCartas = mazoCartas.map(carta => carta.id_carta)
+    const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id IN ?;', [idCartas])
+
+    const userDeckCards = []
+    for (const carta of cartas) {
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta.id_ataque])
+
+      userDeckCards.push({
+        carta,
+        ataque
+      })
+    }
+
+    console.log(userDeckCards)
+
+    return res.status(200).json(userDeckCards)
   } catch (err) {
     console.error(err)
   }
