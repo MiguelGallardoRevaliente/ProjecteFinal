@@ -50,3 +50,49 @@ body {
     background-size: cover;
     background-position: center;
 }
+
+.opponent{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(214, 55, 55);
+    padding: 10px 30px;
+}
+
+.user{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: steelblue;
+}
+
+.yourCards {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.yourCards .card{
+    width: 180px;
+    height: 251px;
+    transition: 0.5s ease;
+}
+
+.yourCards .card:hover{
+    transform: translateY(-100px);
+    scale: 1.5;
+}
+
+.opponent img, .user img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
