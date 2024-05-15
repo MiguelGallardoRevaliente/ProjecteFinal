@@ -2,6 +2,7 @@
 function dragStart (event) {
   event.dataTransfer.setData('text', event.target.id)
   event.dataTransfer.setData('src', event.target.src)
+  console.log(event.target.src)
 }
 
 function drop (event) {
