@@ -93,10 +93,6 @@ body {
     scale: 1.5;
 }
 
-.opponent, .user{
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 37% 100%);
-}
-
 .opponent img, .user img{
     width: 70px;
     height: 70px;
