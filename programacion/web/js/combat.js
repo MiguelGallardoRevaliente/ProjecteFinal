@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 function dragStart (event) {
   event.dataTransfer.setData('text', event.target.id)
-  console.log(event.target.src)
+  console.log(event.target.id)
 }
 
 function drop (event) {
