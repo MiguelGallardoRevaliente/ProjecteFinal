@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
+function dragStart (event) {
+  event.dataTransfer.setData('text', event.target.id)
+  event.dataTransfer.setData('src', event.target.src)
+}
+
 function drop (event) {
   event.preventDefault()
-  const data = event.dataTransfer.getData('text')
-  console.log(data)
+  const src = event.dataTransfer.getData('src')
+  console.log(src)
 }
 
-function allowDrop (event) {
+function dragOver (event) {
   event.preventDefault()
-}
-
-function drag (event) {
-  event.dataTransfer.setData('text', event.target.src)
 }
