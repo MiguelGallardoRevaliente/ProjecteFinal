@@ -116,12 +116,16 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .opponent-board, .user-board{
-    border: 1px solid black;
+    border: 3px solid #e9d439;
     height: 300px;
-    width: 70%;
+    width: 85%;
 }
 
 .yourCards .card p {
