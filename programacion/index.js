@@ -484,7 +484,7 @@ app.get('/getCardsBattle', async (req, res) => {
     console.log(mazoCartas)
 
     const idCartas = mazoCartas.map(carta => carta.id_carta)
-    const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id IN ?;', [idCartas])
+    const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [idCartas])
 
     const userDeckCards = []
     for (const carta of cartas) {
