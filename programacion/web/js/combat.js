@@ -2,7 +2,6 @@
 function drop (event) {
   event.preventDefault()
   const data = event.dataTransfer.getData('text')
-  event.target.appendChild(document.getElementById(data))
 }
 
 function allowDrop (event) {
