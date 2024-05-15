@@ -129,7 +129,7 @@ body {
     user-select: none;
 }
 
-.yourCards .card .nombrecarta {
+.yourCards .card .cardName {
     top: 55%;
     left: 30px;
     margin: 0px;
