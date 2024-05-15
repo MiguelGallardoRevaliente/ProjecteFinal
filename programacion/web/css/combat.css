@@ -49,4 +49,58 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+}
+
+.opponent{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(214, 55, 55);
+    padding: 10px 30px;
+}
+
+.user{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: steelblue;
+}
+
+.yourCards {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.yourCards .card{
+    width: 180px;
+    height: 251px;
+    transition: 0.5s ease;
+    margin: -50px -30px;
+}
+
+.yourCards .card:hover{
+    transform: translateY(-74px);
+    scale: 1.5;
+}
+
+.opponent img, .user img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.opponent p, .user p{
+    font-family: 'Goldman', cursive;
+    font-size: 1.5rem;
+    color: white;
 }
