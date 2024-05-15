@@ -30,49 +30,47 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    data.forEach(element => {
-                        const user = document.getElementsByClassName('user')[0]
-                        const profilePicture = document.createElement('img')
-                        profilePicture.src = element.user.foto_perfil
-                        profilePicture.alt = 'Profile Picture', element.user.user
-                        profilePicture.classList.add('profile-picture')
+                    const user = document.getElementsByClassName('user')[0]
+                    const profilePicture = document.createElement('img')
+                    profilePicture.src = data.user.foto_perfil
+                    profilePicture.alt = 'Profile Picture', data.user.user
+                    profilePicture.classList.add('profile-picture')
 
-                        const username = document.createElement('p')
-                        username.textContent = element.user.user
-                        username.classList.add('username')
+                    const username = document.createElement('p')
+                    username.textContent = data.user.user
+                    username.classList.add('username')
 
-                        user.appendChild(profilePicture)
-                        user.appendChild(username)
+                    user.appendChild(profilePicture)
+                    user.appendChild(username)
 
-                        const yourCards = document.getElementsByClassName('yourCards')[0]
+                    const yourCards = document.getElementsByClassName('yourCards')[0]
 
-                        element.userDeckCards.forEach(card => {
-                            const cardDiv = document.createElement('div')
-                            cardDiv.classList.add('card')
-                            cardDiv.style.backgroundImage = `url(${card.carta.foto})`
-                            cardDiv.style.backgroundSize = 'contain'
-                            cardDiv.style.backgroundRepeat = 'no-repeat'
-                            cardDiv.style.backgroundPosition = 'center'
+                    data.userDeckCards.forEach(card => {
+                        const cardDiv = document.createElement('div')
+                        cardDiv.classList.add('card')
+                        cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+                        cardDiv.style.backgroundSize = 'contain'
+                        cardDiv.style.backgroundRepeat = 'no-repeat'
+                        cardDiv.style.backgroundPosition = 'center'
 
-                            const cardName = document.createElement('p')
-                            cardName.textContent = card.carta.nombre
-                            cardName.classList.add('cardName')
+                        const cardName = document.createElement('p')
+                        cardName.textContent = card.carta.nombre
+                        cardName.classList.add('cardName')
 
-                            const ataqueVida = document.createElement('p')
-                            ataqueVida.textContent = card.carta.ataque + '/' + card.carta.vida
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.textContent = card.carta.ataque + '/' + card.carta.vida
 
-                            if (card.ataque) {
-                                const ataqueEspecial = document.createElement('p')
-                                ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                                ataqueEspecial.classList.add('ataque-especial')
+                        if (card.ataque) {
+                            const ataqueEspecial = document.createElement('p')
+                            ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                            ataqueEspecial.classList.add('ataque-especial')
 
-                                cardDiv.appendChild(ataqueEspecial)
-                            }
+                            cardDiv.appendChild(ataqueEspecial)
+                        }
 
-                            cardDiv.appendChild(cardName)
-                            cardDiv.appendChild(ataqueVida)
-                            yourCards.appendChild(cardDiv)
-                        })
+                        cardDiv.appendChild(cardName)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
                     })
                 })
         }
