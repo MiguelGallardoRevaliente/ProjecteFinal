@@ -67,6 +67,8 @@
                         cardDiv.style.backgroundSize = 'contain'
                         cardDiv.style.backgroundRepeat = 'no-repeat'
                         cardDiv.style.backgroundPosition = 'center'
+                        cardDiv.draggable = true
+                        cardDiv.ondragstart = (event) => drag(event, card.carta.id)
 
                         const cardName = document.createElement('p')
                         cardName.textContent = card.carta.nombre
@@ -95,7 +97,8 @@
     <div class="opponent"></div>
 
     <div class="board">
-
+        <div class="opponent-board"></div>
+        <div class="user-board" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
 
     <div class="cards">
@@ -104,5 +107,6 @@
         <div class="yourCards"></div>
 
     </div>
+    <script src="js/combat.js"></script>
 </body>
 </html>

@@ -30,7 +30,6 @@ function mostrarHeader () {
   header.style.display = 'flex'
   closeHeader.style.display = 'block'
   openHeader.style.display = 'none'
-
 }
 
 function cerrarHeader () {
