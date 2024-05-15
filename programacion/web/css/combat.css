@@ -94,9 +94,7 @@ body {
 }
 
 .opponent, .user{
-    width: 180px;
-    height: 251px;
-    transition: 0.5s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 37% 100%);
 }
 
 .opponent img, .user img{
