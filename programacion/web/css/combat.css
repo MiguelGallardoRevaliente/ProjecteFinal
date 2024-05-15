@@ -116,6 +116,11 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    top: 45%;
+    transform: translateY(-50%);
 }
 
 .opponent-board, .user-board{
