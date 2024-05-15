@@ -31,15 +31,45 @@
                 .then(data => {
                     console.log(data)
                     data.forEach(card => {
-                        const cardElement = document.createElement('div')
-                        cardElement.classList.add('card')
-                        cardElement.innerHTML = `
-                            <img src="${card.image}" alt="${card.name}">
-                            <h3>${card.name}</h3>
-                            <p>${card.description}</p>
-                            <button onclick="selectCard('${card.id}')">Select</button>
-                        `
-                        document.body.appendChild(cardElement)
+                        const user = document.getElementsByClassName('user')[0]
+                        const profilePicture = document.createElement('img')
+                        profilePicture.src = card.user.foto_perfil
+                        profilePicture.alt = 'Profile Picture', card.user.user
+                        profilePicture.classList.add('profilePicture')
+
+                        const username = document.createElement('p')
+                        username.textContent = card.user.user
+                        username.classList.add('username')
+
+                        user.appendChild(profilePicture)
+                        user.appendChild(username)
+
+                        const yourCards = document.getElementsByClassName('yourCards')[0]
+                        const cardDiv = document.createElement('div')
+                        cardDiv.classList.add('card')
+                        cardDiv.style.backgroundImage = `url(${card.carta.foto})`
+                        cardDiv.style.backgroundSize = 'contain'
+                        cardDiv.style.backgroundRepeat = 'no-repeat'
+                        cardDiv.style.backgroundPosition = 'center'
+
+                        const cardName = document.createElement('p')
+                        cardName.textContent = card.carta.nombre
+                        cardName.classList.add('cardName')
+
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.textContent = card.carta.ataque + '/' + card.carta.vida
+
+                        if (card.ataque) {
+                            const ataqueEspecial = document.createElement('p')
+                            ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                            ataqueEspecial.classList.add('ataque-especial')
+
+                            cardDiv.appendChild(ataqueEspecial)
+                        }
+
+                        cardDiv.appendChild(cardName)
+                        cardDiv.appendChild(ataqueVida)
+                        yourCards.appendChild(cardDiv)
                     })
                 })
         }
