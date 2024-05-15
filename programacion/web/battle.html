@@ -62,7 +62,7 @@
 
                     data.userDeckCards.forEach(card => {
                         const cardDiv = document.createElement('div')
-                        cardDiv.classList.add('card')
+                        cardDiv.className = 'card'
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
                         cardDiv.style.backgroundSize = 'contain'
                         cardDiv.style.backgroundRepeat = 'no-repeat'
@@ -73,15 +73,16 @@
 
                         const cardName = document.createElement('p')
                         cardName.textContent = card.carta.nombre
-                        cardName.classList.add('cardName')
+                        cardName.className = 'cardName'
 
                         const ataqueVida = document.createElement('p')
                         ataqueVida.textContent = card.carta.ataque + '/' + card.carta.vida
+                        ataqueVida.className = 'ataque-vida'
 
                         if (card.ataque) {
                             const ataqueEspecial = document.createElement('p')
                             ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                            ataqueEspecial.classList.add('ataque-especial')
+                            ataqueEspecial.className = 'ataque-especial'
 
                             cardDiv.appendChild(ataqueEspecial)
                         }
