@@ -119,9 +119,9 @@ body {
 }
 
 .opponent-board, .user-board{
-    border: 1px solid black;
+    border: 3px solid #e9d439;
     height: 300px;
-    width: 70%;
+    width: 85%;
 }
 
 .yourCards .card p {
