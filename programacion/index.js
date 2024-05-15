@@ -765,6 +765,8 @@ app.post('/playCard', async (req, res) => {
     const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazo[0].id])
 
     const mazoCartasId = mazoCartas.map(carta => carta.id_carta)
+    console.log(mazoCartasId)
+    console.log(mazoCartasId.includes(idCarta))
     if (!mazoCartasId.includes(idCarta)) {
       return res.status(200).json({ message: 'Card not in deck' })
     }
