@@ -476,6 +476,9 @@ app.get('/battle', async (req, res) => {
 app.get('/getCardsBattle', async (req, res) => {
   try {
     const id = req.query.id
+    const opponent = req.query.opponent
+
+    const [opponentUser] = await connection.execute('SELECT * FROM users WHERE user = ?', [opponent])
 
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?;', [id, user[0].mazo_seleccionado])
@@ -499,7 +502,8 @@ app.get('/getCardsBattle', async (req, res) => {
 
     const data = {
       userDeckCards,
-      user: user[0]
+      user: user[0],
+      opponent: opponentUser[0]
     }
 
     return res.status(200).json(data)
