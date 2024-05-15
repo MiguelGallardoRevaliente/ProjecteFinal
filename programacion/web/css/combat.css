@@ -93,9 +93,15 @@ body {
     scale: 1.5;
 }
 
+.opponent, .user{
+    width: 180px;
+    height: 251px;
+    transition: 0.5s ease;
+}
+
 .opponent img, .user img{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 
