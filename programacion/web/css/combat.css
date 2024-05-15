@@ -12,6 +12,10 @@
 
 }
 
+p{
+    font-family: 'KoHo', sans-serif;
+}
+
 /* custom scrollbar */
 ::-webkit-scrollbar {
     width: 15px;
@@ -122,7 +126,7 @@ body {
 
 .yourCards .card p {
     position: absolute;
-    font-size: 16px;
+    font-size: 10px;
     color: black;
     margin: 0px;
     font-weight: 800;
