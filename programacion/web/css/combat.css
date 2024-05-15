@@ -104,3 +104,17 @@ body {
     font-size: 1.5rem;
     color: white;
 }
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opponent-board, .user-board{
+    border: 1px solid black;
+    height: 300px;
+    width: 70%;
+}
