@@ -80,7 +80,7 @@ body {
     align-items: center;
     gap: 10px;
     background-color: steelblue;
-    clip-path: polygon(0 0, 25% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
     padding-left: 20px;
     padding-right: 70px;
     margin: 0px !important;
