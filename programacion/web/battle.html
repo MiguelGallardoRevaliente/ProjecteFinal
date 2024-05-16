@@ -143,7 +143,7 @@
 
                     data.userDeckCards.forEach(card => {
                         const cardDiv = document.createElement('div')
-                        cardDiv.className = 'card'
+                        cardDiv.className = 'card' + card.carta.id
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
                         cardDiv.style.backgroundSize = 'contain'
                         cardDiv.style.backgroundRepeat = 'no-repeat'
@@ -153,40 +153,6 @@
                             console.log(card.carta.id)
                             const user = localStorage.getItem('username')
                             socket.emit('play-card', { id: card.carta.id, user })
-                            socket.on('played-card', (data) => {
-                                console.log(data)
-                                const userBoard = document.getElementsByClassName('user-board')[0] 
-
-                                const cardDivPlayed = document.createElement('div')
-                                cardDivPlayed.className = 'card'
-                                cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
-                                cardDivPlayed.style.backgroundSize = 'contain'
-                                cardDivPlayed.style.backgroundRepeat = 'no-repeat'
-                                cardDivPlayed.style.backgroundPosition = 'center'
-                                cardDivPlayed.id = data.carta.id
-
-                                const cardNamePlayed = document.createElement('p')
-                                cardNamePlayed.textContent = data.carta.nombre
-                                cardNamePlayed.className = 'cardName'
-
-                                const ataqueVidaPlayed = document.createElement('p')
-                                ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
-                                ataqueVidaPlayed.className = 'ataque-vida'
-
-                                if (data.ataque) {
-                                    const ataqueEspecialPlayed = document.createElement('p')
-                                    ataqueEspecialPlayed.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
-                                    ataqueEspecialPlayed.className = 'ataque-especial'
-
-                                    cardDivPlayed.appendChild(ataqueEspecialPlayed)
-                                }
-
-                                cardDivPlayed.appendChild(cardNamePlayed)
-                                cardDivPlayed.appendChild(ataqueVidaPlayed)
-                                userBoard.appendChild(cardDivPlayed)
-
-                                cardDiv.remove()
-                            })
                         })
 
                         const cardName = document.createElement('p')
@@ -211,6 +177,47 @@
                     })
                 })
         }
+
+        socket.on('played-card', (data) => {
+            console.log(data)
+
+            const cardDivPlayed = document.createElement('div')
+            cardDivPlayed.className = 'card'
+            cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
+            cardDivPlayed.style.backgroundSize = 'contain'
+            cardDivPlayed.style.backgroundRepeat = 'no-repeat'
+            cardDivPlayed.style.backgroundPosition = 'center'
+            cardDivPlayed.id = data.carta.id
+
+            const cardNamePlayed = document.createElement('p')
+            cardNamePlayed.textContent = data.carta.nombre
+            cardNamePlayed.className = 'cardName'
+
+            const ataqueVidaPlayed = document.createElement('p')
+            ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
+            ataqueVidaPlayed.className = 'ataque-vida'
+
+            if (data.ataque) {
+                const ataqueEspecialPlayed = document.createElement('p')
+                ataqueEspecialPlayed.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
+                ataqueEspecialPlayed.className = 'ataque-especial'
+
+                cardDivPlayed.appendChild(ataqueEspecialPlayed)
+            }
+
+            cardDivPlayed.appendChild(cardNamePlayed)
+            cardDivPlayed.appendChild(ataqueVidaPlayed)
+
+            if (data.user === localStorage.getItem('username')) {
+                const userBoard = document.getElementsByClassName('user-board')[0]
+                userBoard.appendChild(cardDivPlayed)
+
+                document.getElementsByClassName('card' + data.carta.id)[0].remove()
+            } else {
+                const opponentBoard = document.getElementsByClassName('opponent-board')[0]
+                opponentBoard.appendChild(cardDivPlayed)
+            }
+        })
     </script>
 </head>
 <body>
