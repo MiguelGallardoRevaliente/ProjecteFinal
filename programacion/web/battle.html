@@ -10,6 +10,11 @@
 
         const socket = io()
 
+        function dragStart (event) {
+            event.dataTransfer.setData('text', event.target.id)
+            console.log(event.target.id)
+        }
+
         const username = localStorage.getItem('username')
 
         if (!username && !localStorage.getItem('password')) {
