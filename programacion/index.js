@@ -121,6 +121,8 @@ io.on('connection', async (socket) => {
       }
     }
 
+    console.log(mana)
+
     const dataEmit = {
       carta: carta[0],
       ataque: ataque[0],
