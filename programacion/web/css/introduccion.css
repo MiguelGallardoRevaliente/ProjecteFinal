@@ -18,10 +18,10 @@ body{
 
 .container{
     background-color: #292929;
-    padding: 70px 50px;
+    padding: 70px 40px;
     font-family: "KoHo", sans-serif;
-    margin: 0px 15%;
-    border-radius: 10px;
+    border-radius: 5px;
+    width: 1050px;
     color: white;
     text-align: center;
     display: flex;
@@ -43,6 +43,8 @@ body{
 }
 .container_right{
     width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 .container_right h1{
