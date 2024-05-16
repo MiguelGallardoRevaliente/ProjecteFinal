@@ -32,3 +32,14 @@ function mostrarHowtoplay () {
   // Muestra el contenedor de registro
   howtoplayContainer.style.display = 'block'
 }
+
+function atrasHowToPlay (){
+  const introContainer = document.getElementById('intro')
+  const howtoplayContainer = document.getElementById('howtoplay')
+
+  // Oculta el contenedor de inicio de sesión
+  introContainer.style.display = 'flex'
+
+  // Muestra el contenedor de registro
+  howtoplayContainer.style.display = 'none'
+}
