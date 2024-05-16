@@ -37,25 +37,25 @@
                         cartasOpponent.forEach(card => {
                             const cardDiv = document.createElement('div')
                             cardDiv.className = 'card'
-                            cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
+                            cardDiv.style.backgroundImage = `url(${card.cartaEnCombateOpponent.foto})`
                             cardDiv.style.backgroundSize = 'contain'
                             cardDiv.style.backgroundRepeat = 'no-repeat'
                             cardDiv.style.backgroundPosition = 'center'
-                            cardDiv.id = card.cartaEnCombateUser.id
+                            cardDiv.id = card.cartaEnCombateOpponent.id
                             cardDiv.draggable = true
                             cardDiv.setAttribute('ondragstart', 'dragStart(event)')
 
                             const cardName = document.createElement('p')
-                            cardName.textContent = card.cartaEnCombateUser.nombre
+                            cardName.textContent = card.cartaEnCombateOpponent.nombre
                             cardName.className = 'cardName'
 
                             const ataqueVida = document.createElement('p')
-                            ataqueVida.textContent = card.cartaEnCombateUser.ataque + '/' + card.cartaEnCombateUser.vida
+                            ataqueVida.textContent = card.cartaEnCombateOpponent.ataque + '/' + card.cartaEnCombateOpponent.vida
                             ataqueVida.className = 'ataque-vida'
 
                             if (card.ataque) {
                                 const ataqueEspecial = document.createElement('p')
-                                ataqueEspecial.textContent = card.cartaEnCombateUser.nombre + ' - ' + card.cartaEnCombateUser.descripcion
+                                ataqueEspecial.textContent = card.cartaEnCombateOpponent.nombre + ' - ' + card.cartaEnCombateOpponent.descripcion
                                 ataqueEspecial.className = 'ataque-especial'
 
                                 cardDiv.appendChild(ataqueEspecial)
