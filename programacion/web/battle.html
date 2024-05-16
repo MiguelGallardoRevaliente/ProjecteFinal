@@ -111,6 +111,7 @@
                     }
 
                     /*Datos usuarios*/
+                    // Oponente
                     const opponent = document.getElementsByClassName('opponent')[0]
 
                     const opponentProfilePicture = document.createElement('img')
@@ -125,6 +126,7 @@
                     opponent.appendChild(opponentProfilePicture)
                     opponent.appendChild(opponentUsername)
 
+                    //Usuario
                     const user = document.getElementsByClassName('user')[0]
 
                     const profilePicture = document.createElement('img')
@@ -136,11 +138,29 @@
                     username.textContent = data.user.user
                     username.classList.add('username')
 
+                    if (data.user.id_uuid === data.combate.id_user_1_uuid) {
+                        const manaDiv = document.createElement('div')
+                        manaDiv.className = 'mana'
+
+                        const manaImg = document.createElement('img')
+                        manaImg.src = '/img/mana.png'
+
+                        const mana = document.createElement('p')
+                        mana.textContent = data.combate.mana_user_1
+
+                        manaDiv.appendChild(mana)
+                        manaDiv.appendChild(manaImg)
+                        user.appendChild(manaDiv)
+                    } else if (data.user.id_uuid === data.combate.id_user_2_uuid) {
+
+                    }
+
                     user.appendChild(profilePicture)
                     user.appendChild(username)
 
                     const yourCards = document.getElementsByClassName('yourCards')[0]
 
+                    /* Cartas del mazo del usuario */
                     data.userDeckCards.forEach(card => {
                         const cardDiv = document.createElement('div')
                         cardDiv.className = 'card card' + card.carta.id
