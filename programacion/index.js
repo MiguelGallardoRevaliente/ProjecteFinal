@@ -70,7 +70,7 @@ io.on('connection', async (socket) => {
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [data.username])
       await connection.execute('UPDATE users SET searching = 0, fighting = 1 WHERE user = ?', [userSearching[0].user])
 
-      await connection.execute('INSERT INTO combates (id_user_1, id_user_2) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid])
+      await connection.execute('INSERT INTO combates (id_user_1, id_user_2, mana_user_1, mana_user_2, turno) VALUES (UUID_TO_BIN(?), UUID_TO_BIN(?), ?, ?, UUID_TO_BIN(?))', [data.id, userSearching[0].id_uuid, 16, 16, data.id])
 
       const [lastID] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE id_user_1 = UUID_TO_BIN(?) AND id_user_2 = UUID_TO_BIN(?)', [data.id, userSearching[0].id_uuid])
 
@@ -519,7 +519,7 @@ app.get('/getCardsBattle', async (req, res) => {
 
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
 
-    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
     if (combate[0].id_user_1_uuid === id) {
       opponent = combate[0].id_user_2_uuid
     } else {
@@ -575,7 +575,8 @@ app.get('/getCardsBattle', async (req, res) => {
       userDeckCards,
       user: user[0],
       opponent: opponentUser[0],
-      cartasCombates
+      cartasCombates,
+      combate: combate[0]
     }
 
     return res.status(200).json(data)
