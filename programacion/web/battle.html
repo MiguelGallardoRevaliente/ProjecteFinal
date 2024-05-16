@@ -29,7 +29,6 @@
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     /*Board*/
                     const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                     if (data.cartasCombates.cartasOpponent) {
@@ -70,8 +69,12 @@
                     const userBoard = document.getElementsByClassName('user-board')[0]
                     if (data.cartasCombates.cartasUser) {
                         const cartasUser = data.cartasCombates.cartasUser
+                        const userDeckId = data.userDeckId.map(card => card.carta.id)
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
+                            if (userDeckId.includes(card.cartaEnCombateUser.id)) {
+                                console.log('Mongolo')
+                            }
                             cardDiv.className = 'card'
                             cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
                             cardDiv.style.backgroundSize = 'contain'
