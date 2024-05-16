@@ -89,7 +89,7 @@ body{
     display: none;
 }
 
-#howtoplay h1{
+#howtoplay h1, #legend h1{
     font-size: 3em;
     font-family: "Merienda";
     margin-bottom: 0px;
@@ -146,4 +146,16 @@ body{
     font-weight: bold;
     color: #333; 
     font-size: 14px;
+}
+
+#legend .left{
+    width: 50%;
+}
+
+#legend .left ul li{
+    font-size: 1.5em;
+    font-family: "KoHo", sans-serif;
+    font-weight: 400;
+    margin: 20px 5%;
+    list-style: none;
 }
