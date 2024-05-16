@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { io } from 'https://cdn.socket.io/4.7.5/socket.io.esm.min.js'
 
-console.log('Manolete')
 const socket = io()
-console.log('Manolete2')
+
 function dragStart (event) {
   event.dataTransfer.setData('text', event.target.id)
   console.log(event.target.id)
@@ -39,4 +38,3 @@ function drop (event) {
 function dragOver (event) {
   event.preventDefault()
 }
-console.log('Manolete3')
