@@ -334,14 +334,16 @@ body{
 
     .container{
         width: 500px;
+        padding: 50px 40px;
     }
 
     .container_right h1{
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     .container p{
         font-size: 0.8em;
+        margin: 10px;
     }
 
     .container button{
@@ -376,6 +378,13 @@ body{
         font-size: 0.6em;
     }
 
+    .container_left{
+        width: 50%;
+    }
+
+    .container_left img{
+        width: 100%;
+    }
 
 
 }
