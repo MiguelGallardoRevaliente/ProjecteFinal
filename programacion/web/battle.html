@@ -174,11 +174,11 @@
                                 ataqueVidaPlayed.className = 'ataque-vida'
 
                                 if (data.ataque) {
-                                    const ataqueEspecial = document.createElement('p')
-                                    ataqueEspecial.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
-                                    ataqueEspecial.className = 'ataque-especial'
+                                    const ataqueEspecialPlayed = document.createElement('p')
+                                    ataqueEspecialPlayed.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
+                                    ataqueEspecialPlayed.className = 'ataque-especial'
 
-                                    cardDiv.appendChild(ataqueEspecial)
+                                    cardDivPlayed.appendChild(ataqueEspecialPlayed)
                                 }
 
                                 cardDivPlayed.appendChild(cardNamePlayed)
