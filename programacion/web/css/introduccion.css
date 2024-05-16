@@ -305,4 +305,7 @@ body{
     #howtoplay h1, #legend h1{
         font-size: 2.2em;
     }
+    #howtoplay .types{
+        margin: 0px 5%;
+    }
 }
