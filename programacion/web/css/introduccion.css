@@ -329,3 +329,53 @@ body{
         font-size: 0.8em;
     }
 }
+
+@media screen and (max-width: 900px){
+
+    .container{
+        width: 500px;
+    }
+
+    .container_right h1{
+        font-size: 1.5em;
+    }
+
+    .container p{
+        font-size: 0.8em;
+    }
+
+    .container button{
+        font-size: 1em;
+    }
+
+    #howtoplay p{
+        font-size: 1em;
+    }
+
+    #howtoplay h1, #legend h1{
+        font-size: 1.8em;
+    }
+
+    #legend .left ul li{
+        font-size: 0.8em;
+    }
+    #legend .left ul li .R, .EXT, .EXC, .ESP, .C{
+        font-size: 1.5em;
+    }
+    #legend .right .mana img{
+        width: 40px;
+        height: 40px;
+    }
+    #legend .right .ataque-vida h2{
+        font-size: 2em;
+    }
+    #legend .right .mana p{
+        font-size: 0.6em;
+    }
+    #legend .right .ataque-vida p{
+        font-size: 0.6em;
+    }
+
+
+
+}
