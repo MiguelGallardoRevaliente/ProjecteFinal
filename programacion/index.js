@@ -517,7 +517,7 @@ app.get('/getCardsBattle', async (req, res) => {
     const id = req.query.id
     let opponent
 
-    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
 
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
     if (combate[0].id_user_1_uuid === id) {
@@ -553,7 +553,7 @@ app.get('/getCardsBattle', async (req, res) => {
       cartasOpponent: cartasEnCombateOpponent
     }
 
-    const [opponentUser] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [opponent])
+    const [opponentUser] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE BIN_TO_UUID(id) = ?;', [opponent])
 
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?;', [id, user[0].mazo_seleccionado])
 
