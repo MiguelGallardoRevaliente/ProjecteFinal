@@ -55,7 +55,7 @@
 
                             if (card.ataque) {
                                 const ataqueEspecial = document.createElement('p')
-                                ataqueEspecial.textContent = card.cartaEnCombateOpponent.nombre + ' - ' + card.cartaEnCombateOpponent.descripcion
+                                ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
                                 ataqueEspecial.className = 'ataque-especial'
 
                                 cardDiv.appendChild(ataqueEspecial)
@@ -100,7 +100,7 @@
 
                             if (card.ataque) {
                                 const ataqueEspecial = document.createElement('p')
-                                ataqueEspecial.textContent = card.cartaEnCombateUser.nombre + ' - ' + card.cartaEnCombateUser.descripcion
+                                ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
                                 ataqueEspecial.className = 'ataque-especial'
 
                                 cardDiv.appendChild(ataqueEspecial)
