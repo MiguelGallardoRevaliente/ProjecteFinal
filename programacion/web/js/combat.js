@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { io } from 'https://cdn.socket.io/4.7.5/socket.io.esm.min.js'
 
-const socket = io()
+const socket = io('http://13.53.190.234/socket.io/')
 
 function dragStart (event) {
   event.dataTransfer.setData('text', event.target.id)
