@@ -150,6 +150,7 @@ body{
 
 #legend .left{
     width: 50%;
+    margin-left: 5%;
 }
 
 #legend .left h2{
@@ -166,9 +167,9 @@ body{
 
 #legend .left ul li{
     font-size: 1.5em;
-    font-family: "KoHo", sans-serif;
+    font-family: "merienda", sans-serif;
     font-weight: 400;
-    margin: 20px 5%;
+    margin: 0px 5%;
     list-style: none;
 }
 
