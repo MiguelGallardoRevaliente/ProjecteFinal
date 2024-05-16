@@ -143,7 +143,7 @@
 
                     data.userDeckCards.forEach(card => {
                         const cardDiv = document.createElement('div')
-                        cardDiv.className = 'card' + card.carta.id
+                        cardDiv.className = 'card card' + card.carta.id
                         cardDiv.style.backgroundImage = `url(${card.carta.foto})`
                         cardDiv.style.backgroundSize = 'contain'
                         cardDiv.style.backgroundRepeat = 'no-repeat'
