@@ -515,15 +515,15 @@ app.get('/battle', async (req, res) => {
 app.get('/getCardsBattle', async (req, res) => {
   try {
     const id = req.query.id
-    let opponent
+    let opponentId
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
 
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [id, id])
     if (combate[0].id_user_1_uuid === id) {
-      opponent = combate[0].id_user_2_uuid
+      opponentId = combate[0].id_user_2_uuid
     } else {
-      opponent = combate[0].id_user_1_uuid
+      opponentId = combate[0].id_user_1_uuid
     }
 
     const [cartasCombatesUser] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [id, combate[0].id_combate_uuid])
@@ -537,7 +537,7 @@ app.get('/getCardsBattle', async (req, res) => {
       })
     }
 
-    const [cartasCombatesOpponent] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponent, combate[0].id_combate_uuid])
+    const [cartasCombatesOpponent] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     const cartasEnCombateOpponent = []
     for (const carta of cartasCombatesOpponent) {
       const [cartaEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
@@ -553,7 +553,7 @@ app.get('/getCardsBattle', async (req, res) => {
       cartasOpponent: cartasEnCombateOpponent
     }
 
-    const [opponentUser] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE BIN_TO_UUID(id) = ?;', [opponent])
+    const [opponentUser] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE BIN_TO_UUID(id) = ?;', [opponentId])
 
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?;', [id, user[0].mazo_seleccionado])
 
@@ -570,6 +570,9 @@ app.get('/getCardsBattle', async (req, res) => {
         ataque: ataque[0]
       })
     }
+
+    const manaInUse = cartasEnCombateUser.map(carta => carta.cartaEnCombateUser.mana).reduce((a, b) => a + b, 0)
+    console.log(manaInUse)
 
     const data = {
       userDeckCards,
