@@ -38,3 +38,10 @@ function drop (event) {
 function dragOver (event) {
   event.preventDefault()
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const cardDivs = document.querySelectorAll('.card')
+  cardDivs.forEach(cardDiv => {
+    cardDiv.addEventListener('dragstart', dragStart)
+  })
+})
