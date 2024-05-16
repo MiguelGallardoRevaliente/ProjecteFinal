@@ -144,6 +144,7 @@
 
                         const mana = document.createElement('p')
                         mana.textContent = data.combate.mana_user_1
+                        mana.id = 'mana-number'
 
                         manaDiv.appendChild(mana)
                         manaDiv.appendChild(manaImg)
@@ -207,6 +208,13 @@
                 })
         }
 
+        const form = document.querySelector('form')
+        form.addEventListener('submit', (event) => {
+            event.preventDefault()
+            socket.emit('end-turn', { username: localStorage.getItem('username') })
+        })
+
+        /* Recibir mensajes del servidor */
         socket.on('played-card', (data) => {
             const cardDivPlayed = document.createElement('div')
             cardDivPlayed.className = 'card'
@@ -276,5 +284,9 @@
         <div class="yourCards"></div>
 
     </div>
+
+    <form action="" method="post">
+        <button type="submit" class="end-turn">End Turn</button>
+    </form>
 </body>
 </html>

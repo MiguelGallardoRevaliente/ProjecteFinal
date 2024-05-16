@@ -137,16 +137,19 @@ io.on('connection', async (socket) => {
       [user[0].id_uuid, idCarta, combate[0].id_combate_uuid, carta[0].ataque, carta[0].vida]
     )
 
-    let turno
-    if (combate[0].turno_uuid === combate[0].id_user_1_uuid) {
-      turno = combate[0].id_user_2_uuid
-    } else {
-      turno = combate[0].id_user_1_uuid
-    }
-
-    await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [turno, combate[0].id_combate_uuid])
-
     io.emit('played-card', dataEmit)
+  })
+
+  socket.on('change-turn', async (data) => {
+    const username = data.username
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+
+    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+      await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+      await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
+    }
   })
 
   socket.on('disconnect', () => {
