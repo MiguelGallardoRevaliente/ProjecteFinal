@@ -205,6 +205,20 @@
                         cardDiv.appendChild(ataqueVida)
                         yourCards.appendChild(cardDiv)
                     })
+
+                    if (data.combate.turno === data.user.id_uuid) {
+                        const form = document.createElement('form')
+                        form.action = ''
+                        form.method = 'post'
+
+                        const button = document.createElement('button')
+                        button.type = 'submit'
+                        button.className = 'end-turn'
+                        button.textContent = 'End Turn'
+
+                        form.appendChild(button)
+                        document.body.appendChild(form)
+                    }
                 })
         }
 
@@ -291,9 +305,5 @@
         <div class="yourCards"></div>
 
     </div>
-
-    <form action="" method="post">
-        <button type="submit" class="end-turn">End Turn</button>
-    </form>
 </body>
 </html>
