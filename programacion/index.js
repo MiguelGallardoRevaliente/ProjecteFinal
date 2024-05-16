@@ -137,7 +137,14 @@ io.on('connection', async (socket) => {
       [user[0].id_uuid, idCarta, combate[0].id_combate_uuid, carta[0].ataque, carta[0].vida]
     )
 
-    await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].turno === combate[0].id_user_1_uuid ? combate[0].id_user_2_uuid : combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
+    let turno
+    if (combate[0].turno_uuid === combate[0].id_user_1_uuid) {
+      turno = combate[0].id_user_2_uuid
+    } else {
+      turno = combate[0].id_user_1_uuid
+    }
+
+    await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [turno, combate[0].id_combate_uuid])
 
     io.emit('played-card', dataEmit)
   })
