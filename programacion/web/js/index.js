@@ -60,7 +60,7 @@ function atrasLegend (){
   const legendContainer = document.getElementById('legend')
 
   // Oculta el contenedor de inicio de sesión
-  howtoplayContainer.style.display = 'flex'
+  howtoplayContainer.style.display = 'block'
 
   // Muestra el contenedor de registro
   legendContainer.style.display = 'none'
