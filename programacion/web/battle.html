@@ -278,7 +278,7 @@
             }
         })
 
-        socket.on('changed-turn', (data) => {
+        socket.on('ended-turn', (data) => {
             console.log(data)
             if (data.username === localStorage.getItem('username')) {
                 alert('Tu turno ha terminado')
