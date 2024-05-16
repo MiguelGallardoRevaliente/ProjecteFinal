@@ -54,3 +54,14 @@ function mostrarLegend (){
   // Muestra el contenedor de registro
   legendContainer.style.display = 'block'
 }
+
+function atrasLegend (){
+  const howtoplayContainer = document.getElementById('howtoplay')
+  const legendContainer = document.getElementById('legend')
+
+  // Oculta el contenedor de inicio de sesión
+  howtoplayContainer.style.display = 'flex'
+
+  // Muestra el contenedor de registro
+  legendContainer.style.display = 'none'
+}
