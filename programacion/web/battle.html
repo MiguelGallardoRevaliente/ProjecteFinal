@@ -249,8 +249,10 @@
             manaNumber.textContent = data.mana
         })
 
-        socket.on('not-enough-mana', () => {
-            alert('No tienes suficiente mana para jugar esa carta')
+        socket.on('not-enough-mana', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('No tienes suficiente mana para jugar esa carta')
+            }
         })
     </script>
 </head>
