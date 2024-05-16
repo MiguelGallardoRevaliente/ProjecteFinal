@@ -29,6 +29,7 @@
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     /*Board*/
                     const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                     if (data.cartasCombates.cartasOpponent) {
