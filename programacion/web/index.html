@@ -164,7 +164,13 @@
     </div>
 
     <div class="container" id="register">
-        <i id="atras2" class='bx bx-arrow-back'></i>
+        <i id="atras1" class='bx bx-arrow-back'></i>
+        <script>
+            document.getElementById('atras1').addEventListener('click', () => {
+                document.getElementById('register').style.display = 'none';
+                document.getElementById('divLogin').style.display = 'block';
+            })
+        </script>
         <h1>Register</h1>
         <p>Register and start your adventure</p>
         <form class="form" id="registerForm">

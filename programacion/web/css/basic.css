@@ -35,15 +35,7 @@
     display: none;
 }
 
-#atras {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-#atras2{
+#atras2, #atras1{
     position: absolute;
     top: 20px;
     left: 20px;
@@ -52,14 +44,14 @@
 }
 
 @media screen and (max-width: 768px) {
-   #atras2 {
+   #atras2, #atras1 {
        top: 10px;
        left: 10px;
    }
 }
 
 @media screen and (max-width: 500px) {
-    #atras2 {
+    #atras2 , #atras1{
        font-size: 25px;
      
     }
