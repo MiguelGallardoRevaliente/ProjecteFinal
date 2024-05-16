@@ -76,17 +76,19 @@ io.on('connection', async (socket) => {
 
       io.emit('battle-found', { user1: data.username, user2: userSearching[0].user, id_combate: lastID[0].id })
     }
-    // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
 
   socket.on('play-card', async (data) => {
     const idCarta = data.id
-    console.log(idCarta)
     const username = data.user
-    console.log(username)
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
-    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+    if (user[0].id_uuid === combate[0].turno_uuid) {
+      io.emit('not-your-turn', { message: 'Not your turn' })
+      return
+    }
+
     if (combate.length !== 1) {
       io.emit('not-in-match', { message: 'Must be in a match' })
       return
@@ -103,6 +105,21 @@ io.on('connection', async (socket) => {
 
     const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [idCarta])
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+
+    let mana = 0
+    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+      mana = combate[0].mana_user_1 - carta[0].costo_mana
+      if (mana < 0) {
+        io.emit('not-enough-mana', { message: 'Not enough mana' })
+        return
+      }
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+      mana = combate[0].mana_user_2 - carta[0].costo_mana
+      if (mana < 0) {
+        io.emit('not-enough-mana', { message: 'Not enough mana' })
+        return
+      }
+    }
 
     const dataEmit = {
       carta: carta[0],
