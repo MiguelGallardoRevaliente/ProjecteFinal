@@ -149,7 +149,9 @@
                         cardDiv.style.backgroundRepeat = 'no-repeat'
                         cardDiv.style.backgroundPosition = 'center'
                         cardDiv.id = card.carta.id
-                        cardDiv.addEventListener('click', () => console.log(card.cartaEnCombateOpponent.id));
+                        cardDiv.addEventListener('click', () => {
+                            console.log(card.carta.id)
+                        })
 
                         const cardName = document.createElement('p')
                         cardName.textContent = card.carta.nombre
