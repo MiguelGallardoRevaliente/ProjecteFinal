@@ -133,8 +133,23 @@
    
    <audio src="img/[Non Copyrighted Music] @ScottBuckley - Phoenix [Epic].mp3" autoplay loop></audio>
     <div id="fullscreenIcon" class="icon">
-        <i class='bx bx-fullscreen'></i>
-        <i class='bx bx-exit-fullscreen'></i>
+        <i class='bx bxs-volume'></i>
+        <script>
+            const audio = document.querySelector('audio');
+            const volumeIcon = document.querySelector('#fullscreenIcon i');
+            
+            volumeIcon.addEventListener('click', () => {
+                if (audio.muted) {
+                    audio.muted = false;
+                    volumeIcon.classList.remove('bxs-volume-mute');
+                    volumeIcon.classList.add('bxs-volume');
+                } else {
+                    audio.muted = true;
+                    volumeIcon.classList.remove('bxs-volume');
+                    volumeIcon.classList.add('bxs-volume-mute');
+                }
+            });
+        </script>
     </div>
     <div class="container" id="divLogin">
         <h1>Start session and travel to Chamous</h1>
