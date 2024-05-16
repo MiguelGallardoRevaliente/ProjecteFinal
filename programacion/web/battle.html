@@ -206,7 +206,7 @@
                         yourCards.appendChild(cardDiv)
                     })
 
-                    if (data.combate.turno === data.user.id_uuid) {
+                    if (data.combate.turno_uuid === data.user.id_uuid) {
                         const form = document.querySelector('form')
                         form.style.display = 'block'
                     } else {
@@ -279,6 +279,7 @@
         })
 
         socket.on('changed-turn', (data) => {
+            console.log(data)
             if (data.username === localStorage.getItem('username')) {
                 alert('Tu turno ha terminado')
                 const form = document.querySelector('form')
