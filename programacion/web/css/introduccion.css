@@ -173,35 +173,45 @@ body{
 }
 
 #legend .left ul li .R{
-    border: 2px solid white;
     font-size: 2em;
+    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+               1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     color: yellow;
+    font-weight: 900;
 }
 
 
 #legend .left ul li .EXT{
-    border: 2px solid white;
     font-size: 2em;
     color: rgb(240, 0, 0);
+    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    font-weight: 900;
 }
 
 
 #legend .left ul li .EXC{
-    border: 2px solid white;
     font-size: 2em;
     color: rgb(150, 0, 196);
+    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    font-weight: 900;
 }
 
 
 #legend .left ul li .ESP{
-    border: 2px solid white;
     font-size: 2em;
     color: rgb(0, 37, 204);
+    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    font-weight: 900;
 }
 
 
-#legend .left ul li .R{
-    border: 2px solid white;
+#legend .left ul li .C{
     font-size: 2em;
     color: rgb(185, 185, 185);
+    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    font-weight: 900;
 }
