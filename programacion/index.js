@@ -79,7 +79,7 @@ io.on('connection', async (socket) => {
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
 
-  socket.on('playCard', async (data) => {
+  socket.on('play-card', async (data) => {
     const idCarta = data.id
     const username = data.user
 
