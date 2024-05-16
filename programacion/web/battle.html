@@ -240,18 +240,24 @@
                 userBoard.appendChild(cardDivPlayed)
 
                 document.getElementsByClassName('card' + data.carta.id)[0].remove()
+
+                const manaNumber = document.getElementById('mana-number')
+                manaNumber.textContent = data.mana
             } else if (data.user === localStorage.getItem('opponent')) {
                 const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                 opponentBoard.appendChild(cardDivPlayed)
             }
-
-            const manaNumber = document.getElementById('mana-number')
-            manaNumber.textContent = data.mana
         })
 
         socket.on('not-enough-mana', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No tienes suficiente mana para jugar esa carta')
+            }
+        })
+
+        socket.on('not-your-turn', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('No es tu turno')
             }
         })
     </script>
