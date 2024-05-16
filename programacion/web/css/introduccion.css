@@ -152,10 +152,56 @@ body{
     width: 50%;
 }
 
+#legend .left h2{
+    font-size: 2.3em;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#legend .left ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+}
+
 #legend .left ul li{
     font-size: 1.5em;
     font-family: "KoHo", sans-serif;
     font-weight: 400;
     margin: 20px 5%;
     list-style: none;
+}
+
+#legend .left ul li .R{
+    border: 2px solid white;
+    font-size: 2em;
+    color: yellow;
+}
+
+
+#legend .left ul li .EXT{
+    border: 2px solid white;
+    font-size: 2em;
+    color: rgb(240, 0, 0);
+}
+
+
+#legend .left ul li .EXC{
+    border: 2px solid white;
+    font-size: 2em;
+    color: rgb(150, 0, 196);
+}
+
+
+#legend .left ul li .ESP{
+    border: 2px solid white;
+    font-size: 2em;
+    color: rgb(0, 37, 204);
+}
+
+
+#legend .left ul li .R{
+    border: 2px solid white;
+    font-size: 2em;
+    color: rgb(185, 185, 185);
 }
