@@ -244,6 +244,10 @@
                 opponentBoard.appendChild(cardDivPlayed)
             }
         })
+
+        socket.on('not-enough-mana', () => {
+            alert('No tienes suficiente mana para jugar esa carta')
+        })
     </script>
 </head>
 <body>
