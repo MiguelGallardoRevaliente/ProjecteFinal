@@ -294,4 +294,15 @@ body{
         padding: 0px 10px;
         font-size: 1.2em;
     }
+
+    #howtoplay p{
+        font-size: 1.1em;
+    }
+
+    .types-right img{
+        width: 70%;
+    }
+    #howtoplay h1, #legend h1{
+        font-size: 2.2em;
+    }
 }
