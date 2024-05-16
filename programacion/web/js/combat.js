@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 
+const socket = io()
+
 function dragStart (event) {
   event.dataTransfer.setData('text', event.target.id)
   console.log(event.target.id)
 }
-
-const socket = io()
 
 function drop (event) {
   event.preventDefault()
