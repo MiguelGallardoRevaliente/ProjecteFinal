@@ -71,12 +71,14 @@
                         const cartasUser = data.cartasCombates.cartasUser
                         console.log(data.userDeckCards)
                         const userDeckId = data.userDeckCards.map(card => card.carta.id)
-                        console.log(userDeckId)
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
                             if (userDeckId.includes(card.cartaEnCombateUser.id)) {
                                 console.log(userDeckId.indexOf(card.cartaEnCombateUser.id))
                                 data.userDeckCards.slice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
+                                userDeckId.splice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
+                                console.log(data.userDeckCards)
+                                console.log(userDeckId)
                             }
                             cardDiv.className = 'card'
                             cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
