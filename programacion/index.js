@@ -79,6 +79,42 @@ io.on('connection', async (socket) => {
     // Por ejemplo, puedes buscar un oponente disponible y responder al cliente con la información de la partida, etc.
   })
 
+  socket.on('playCard', async (data) => {
+    const idCarta = data.id
+    const username = data.user
+
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+    if (combate.length !== 1) {
+      io.emit('not-in-match', { message: 'Must be in a match' })
+      return
+    }
+
+    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [user[0].id_uuid, user[0].mazo_seleccionado])
+    const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazo[0].id])
+
+    const mazoCartasId = mazoCartas.map(carta => carta.id_carta)
+    if (!mazoCartasId.includes(parseInt(idCarta))) {
+      io.emit('card-not-deck', { message: 'Card not in deck' })
+      return
+    }
+
+    const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [idCarta])
+    const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+
+    const dataEmit = {
+      carta: carta[0],
+      ataque: ataque[0]
+    }
+
+    await connection.execute(
+      'INSERT INTO cartas_combates (id_user, id_carta, id_combate, ataque, vida) VALUES (UUID_TO_BIN(?), ?, UUID_TO_BIN(?), ?, ?);',
+      [user[0].id_uuid, idCarta, combate[0].id_combate_uuid, carta[0].ataque, carta[0].vida]
+    )
+
+    io.emit('played-card', dataEmit)
+  })
+
   socket.on('disconnect', () => {
     console.log('User disconnected')
   })
@@ -490,20 +526,24 @@ app.get('/getCardsBattle', async (req, res) => {
     const [cartasCombatesUser] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [id, combate[0].id_combate_uuid])
     const cartasEnCombateUser = []
     for (const carta of cartasCombatesUser) {
-      const [cartaEnCombateUser] = await connection.execute('SELECT * FROM cartas WHERE id IN (?)', [carta.id_carta])
-      console.log(cartaEnCombateUser)
-      cartasEnCombateUser.push(cartaEnCombateUser[0])
+      const [cartaEnCombateUser] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateUser[0].id_ataque])
+      cartasEnCombateUser.push({
+        cartaEnCombateUser: cartaEnCombateUser[0],
+        ataque: ataque[0]
+      })
     }
-    console.log(cartasEnCombateUser)
 
     const [cartasCombatesOpponent] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponent, combate[0].id_combate_uuid])
     const cartasEnCombateOpponent = []
     for (const carta of cartasCombatesOpponent) {
-      const [cartaEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id IN (?)', [carta.id_carta])
-      console.log(cartaEnCombateOpponent)
-      cartasEnCombateOpponent.push(cartaEnCombateOpponent[0])
+      const [cartaEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateOpponent[0].id_ataque])
+      cartasEnCombateOpponent.push({
+        cartaEnCombateOpponent: cartaEnCombateOpponent[0],
+        ataque: ataque[0]
+      })
     }
-    console.log(cartasEnCombateOpponent)
 
     const cartasCombates = {
       cartasUser: cartasEnCombateUser,
@@ -773,7 +813,7 @@ app.post('/buyChest', async (req, res) => {
   }
 })
 
-app.post('/playCard', async (req, res) => {
+/* app.post('/playCard', async (req, res) => {
   try {
     const idCarta = req.body.id
     const username = req.body.user
@@ -810,7 +850,7 @@ app.post('/playCard', async (req, res) => {
   } catch (err) {
     console.error(err)
   }
-})
+}) */
 
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
