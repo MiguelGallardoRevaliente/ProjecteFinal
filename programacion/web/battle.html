@@ -70,12 +70,11 @@
                     if (data.cartasCombates.cartasUser) {
                         const cartasUser = data.cartasCombates.cartasUser
                         console.log(data.userDeckCards)
-                        const userDeckId = data.userDeckCards.map(card => card.carta.id)
                         console.log(userDeckId)
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
                             if (userDeckId.includes(card.cartaEnCombateUser.id)) {
-                                console.log('Mongolo')
+                                data.userDeckCards.slice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
                             }
                             cardDiv.className = 'card'
                             cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
