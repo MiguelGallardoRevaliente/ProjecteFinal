@@ -60,9 +60,8 @@
 
 @media screen and (max-width: 500px) {
     #atras2 {
-        top: 5px;
-        font-size: 25px;
-        left: 5px;
+       font-size: 25px;
+     
     }
     
 }
