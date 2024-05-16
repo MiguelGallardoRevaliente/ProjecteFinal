@@ -575,7 +575,21 @@ app.get('/getCardsBattle', async (req, res) => {
     for (const carta of cartasCombates.cartasUser) {
       manaInUse += carta.cartaEnCombateUser.costo_mana
     }
-    console.log('Mana:', manaInUse)
+    manaInUse = 16 - manaInUse
+
+    if (manaInUse !== 0) {
+      if (id === combate[0].id_user_1_uuid) {
+        if (combate[0].mana_user_1 !== manaInUse) {
+          console.log('Mana user 1')
+          await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?;', [manaInUse, combate[0].id_combate_uuid])
+        }
+      } else if (id === combate[0].id_user_2_uuid) {
+        if (combate[0].mana_user_2 !== manaInUse) {
+          console.log('Mana user 2')
+          await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?;', [manaInUse, combate[0].id_combate_uuid])
+        }
+      }
+    }
 
     const data = {
       userDeckCards,
