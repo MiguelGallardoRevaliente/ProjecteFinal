@@ -197,5 +197,8 @@ body{
         #bfpassword{
             font-size: 1em;
         }
+        #forgot{
+            padding: 50px;
+        }
     }
     
