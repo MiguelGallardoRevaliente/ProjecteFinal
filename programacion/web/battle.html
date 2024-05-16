@@ -144,6 +144,7 @@
 
                         const manaImg = document.createElement('img')
                         manaImg.src = '/img/mana.png'
+                        manaImg.style.border = 'none'
 
                         const mana = document.createElement('p')
                         mana.textContent = data.combate.mana_user_1
@@ -152,7 +153,19 @@
                         manaDiv.appendChild(manaImg)
                         user.appendChild(manaDiv)
                     } else if (data.user.id_uuid === data.combate.id_user_2_uuid) {
+                        const manaDiv = document.createElement('div')
+                        manaDiv.className = 'mana'
 
+                        const manaImg = document.createElement('img')
+                        manaImg.src = '/img/mana.png'
+                        manaImg.style.border = 'none'
+
+                        const mana = document.createElement('p')
+                        mana.textContent = data.combate.mana_user_2
+
+                        manaDiv.appendChild(mana)
+                        manaDiv.appendChild(manaImg)
+                        user.appendChild(manaDiv)
                     }
 
                     user.appendChild(profilePicture)
