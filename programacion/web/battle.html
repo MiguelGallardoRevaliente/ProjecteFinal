@@ -155,7 +155,35 @@
                             socket.emit('play-card', { id: card.carta.id, user })
                             socket.on('played-card', (data) => {
                                 console.log(data)
-                                // Hacer que se muestre la carta en el board del user
+                                const userBoard = document.getElementsByClassName('user-board')[0] 
+
+                                const cardDivPlayed = document.createElement('div')
+                                cardDivPlayed.className = 'card'
+                                cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
+                                cardDivPlayed.style.backgroundSize = 'contain'
+                                cardDivPlayed.style.backgroundRepeat = 'no-repeat'
+                                cardDivPlayed.style.backgroundPosition = 'center'
+                                cardDivPlayed.id = data.carta.id
+
+                                const cardNamePlayed = document.createElement('p')
+                                cardNamePlayed.textContent = data.carta.nombre
+                                cardNamePlayed.className = 'cardName'
+
+                                const ataqueVidaPlayed = document.createElement('p')
+                                ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
+                                ataqueVidaPlayed.className = 'ataque-vida'
+
+                                if (data.ataque) {
+                                    const ataqueEspecial = document.createElement('p')
+                                    ataqueEspecial.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
+                                    ataqueEspecial.className = 'ataque-especial'
+
+                                    cardDiv.appendChild(ataqueEspecial)
+                                }
+
+                                cardDivPlayed.appendChild(cardNamePlayed)
+                                cardcardDivPlayedDiv.appendChild(ataqueVidaPlayed)
+                                userBoard.appendChild(cardDivPlayed)
                             })
                         })
 
