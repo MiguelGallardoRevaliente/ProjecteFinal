@@ -70,6 +70,7 @@
                     if (data.cartasCombates.cartasUser) {
                         const cartasUser = data.cartasCombates.cartasUser
                         console.log(data.userDeckCards)
+                        const userDeckId = data.userDeckCards.map(card => card.carta.id)
                         console.log(userDeckId)
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
