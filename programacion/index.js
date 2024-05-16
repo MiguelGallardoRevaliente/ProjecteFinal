@@ -571,8 +571,11 @@ app.get('/getCardsBattle', async (req, res) => {
       })
     }
 
-    const manaInUse = cartasEnCombateUser.map(carta => carta.cartaEnCombateUser.mana).reduce((a, b) => a + b, 0)
-    console.log(manaInUse)
+    let manaInUse = 0
+    for (const carta of cartasCombates.cartasUser) {
+      manaInUse += carta.cartaEnCombateUser.costo_mana
+    }
+    console.log('Mana:', manaInUse)
 
     const data = {
       userDeckCards,
