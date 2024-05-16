@@ -155,7 +155,7 @@ body{
 }
 
 #legend .left{
-    width: 50%;
+    width: 45%;
     margin-left: 5%;
 }
 
@@ -224,9 +224,10 @@ body{
 }
 
 #legend .right{
-    width: 50%;
+    width: 55%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 #legend .right .mana{
@@ -265,7 +266,7 @@ body{
 }
 
 #legend .right .ataque-vida h2{
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 800;
     font-family: "goldman", sans-serif;
 }
