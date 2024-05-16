@@ -350,8 +350,20 @@ body{
         font-size: 1em;
     }
 
+    #howtoplay .types-left .all-types{
+        width: 100%;
+    }
+    .types-right h2, .types-left h2{
+        font-size: 1.2em;
+    }
+
+    .types-right img{
+        width: 100%;
+    }
+
     #howtoplay p{
-        font-size: 1em;
+        font-size: 0.9em;
+        margin: 10px;
     }
 
     #howtoplay h1, #legend h1{
