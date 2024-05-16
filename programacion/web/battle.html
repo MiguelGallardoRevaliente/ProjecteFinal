@@ -69,6 +69,7 @@
                     const userBoard = document.getElementsByClassName('user-board')[0]
                     if (data.cartasCombates.cartasUser) {
                         const cartasUser = data.cartasCombates.cartasUser
+                        console.log(data.userDeckId)
                         const userDeckId = data.userDeckId.map(card => card.carta.id)
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
