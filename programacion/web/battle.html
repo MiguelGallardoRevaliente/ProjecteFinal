@@ -281,11 +281,13 @@
         socket.on('ended-turn', (data) => {
             console.log(data)
             if (data.username === localStorage.getItem('username')) {
-                alert('Tu turno ha terminado')
+                const turno = document.getElementById('turno')
+                turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const form = document.querySelector('form')
                 form.style.display = 'none'
             } else if (data.username === localStorage.getItem('opponent')) {
-                alert('Es tu turno')
+                const turno = document.getElementById('turno')
+                turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const form = document.querySelector('form')
                 form.style.display = 'block'
             }
@@ -293,6 +295,7 @@
     </script>
 </head>
 <body>
+    <h3 id="turno"></h3>
     <div class="opponent"></div>
 
     <div class="board">
