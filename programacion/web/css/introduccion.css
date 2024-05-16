@@ -325,4 +325,7 @@ body{
     #legend .right .mana p{
         font-size: 0.8em;
     }
+    #legend .right .ataque-vida p{
+        font-size: 0.8em;
+    }
 }
