@@ -38,7 +38,7 @@ function atrasHowToPlay (){
   const howtoplayContainer = document.getElementById('howtoplay')
 
   // Oculta el contenedor de inicio de sesión
-  introContainer.style.display = 'block'
+  introContainer.style.display = 'flex'
 
   // Muestra el contenedor de registro
   howtoplayContainer.style.display = 'none'
