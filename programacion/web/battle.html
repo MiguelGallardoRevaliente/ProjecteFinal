@@ -158,6 +158,7 @@
 
                         const mana = document.createElement('p')
                         mana.textContent = data.combate.mana_user_2
+                        mana.id = 'mana-number'
 
                         manaDiv.appendChild(mana)
                         manaDiv.appendChild(manaImg)
@@ -243,6 +244,9 @@
                 const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                 opponentBoard.appendChild(cardDivPlayed)
             }
+
+            const manaNumber = document.getElementById('mana-number')
+            manaNumber.textContent = data.mana
         })
 
         socket.on('not-enough-mana', () => {

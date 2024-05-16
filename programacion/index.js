@@ -124,7 +124,8 @@ io.on('connection', async (socket) => {
     const dataEmit = {
       carta: carta[0],
       ataque: ataque[0],
-      user: username
+      user: username,
+      mana
     }
 
     await connection.execute(
