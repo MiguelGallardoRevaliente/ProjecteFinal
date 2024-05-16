@@ -577,10 +577,12 @@ app.get('/getCardsBattle', async (req, res) => {
     }
     console.log('Mana:', manaInUse)
 
-    if (manaInUse > 0) {
+    if (manaInUse !== 0) {
       if (id === combate[0].id_user_1_uuid) {
+        console.log('Mana user 1')
         await connection.execute('UPDATE combates SET mana_user_1 = mana_user_1 - ? WHERE BIN_TO_UUID(id_combate) = ?;', [manaInUse, combate[0].id_combate_uuid])
       } else if (id === combate[0].id_user_2_uuid) {
+        console.log('Mana user 2')
         await connection.execute('UPDATE combates SET mana_user_2 = mana_user_2 - ? WHERE BIN_TO_UUID(id_combate) = ?;', [manaInUse, combate[0].id_combate_uuid])
       }
     }
