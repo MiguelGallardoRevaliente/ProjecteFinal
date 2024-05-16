@@ -148,6 +148,13 @@ body{
     font-size: 14px;
 }
 
+#legend .all{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 5%;
+}
+
 #legend .left{
     width: 50%;
     margin-left: 5%;
@@ -215,4 +222,10 @@ body{
     text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     font-weight: 900;
+}
+
+
+
+#legend .right{
+    width: 50%;
 }
