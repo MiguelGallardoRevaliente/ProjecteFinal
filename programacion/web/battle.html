@@ -213,7 +213,7 @@
                 userBoard.appendChild(cardDivPlayed)
 
                 document.getElementsByClassName('card' + data.carta.id)[0].remove()
-            } else {
+            } else if (data.user === localStorage.getItem('opponent')) {
                 const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                 opponentBoard.appendChild(cardDivPlayed)
             }
