@@ -275,3 +275,23 @@ body{
     font-weight: 800;
     font-family: "goldman", sans-serif;
 }
+
+@media screen and (max-width: 1200px) {
+
+    .container{
+        width: 750px;
+    }
+
+    .container_right h1{
+        font-size: 2.2em;
+    }
+
+    .container p{
+        font-size: 1em;
+    }
+
+    .container button{
+        padding: 0px 10px;
+        font-size: 1.2em;
+    }
+}
