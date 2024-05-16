@@ -150,6 +150,7 @@ io.on('connection', async (socket) => {
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
     }
+    io.emit('changed-turn', { username })
   })
 
   socket.on('disconnect', () => {

@@ -268,6 +268,12 @@
                 alert('No es tu turno')
             }
         })
+
+        socket.on('changed-turn', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('Tu turno ha terminado')
+            }
+        })
     </script>
 </head>
 <body>
