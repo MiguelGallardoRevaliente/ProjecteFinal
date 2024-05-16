@@ -181,3 +181,21 @@ body{
             width: 90%;
         }
     }
+
+    @media screen and (max-width: 480px){
+
+        .container{
+            margin: 10px;
+        }
+        .form input{
+            padding: 4px 6px;
+            font-size: 1em;
+        }
+        .form button{
+            font-size: 1.2em;
+        }
+        #bfpassword{
+            font-size: 1em;
+        }
+    }
+    
