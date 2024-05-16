@@ -81,7 +81,9 @@ io.on('connection', async (socket) => {
 
   socket.on('play-card', async (data) => {
     const idCarta = data.id
+    console.log(idCarta)
     const username = data.user
+    console.log(username)
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])

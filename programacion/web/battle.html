@@ -151,7 +151,7 @@
                         cardDiv.id = card.carta.id
                         cardDiv.addEventListener('click', () => {
                             console.log(card.carta.id)
-                            socket.emit('play-card', { id: card.carta.id, username: username })
+                            socket.emit('play-card', { id: card.carta.id, user: username })
                             socket.on('played-card', (data) => {
                                 console.log(data)
                                 // Hacer que se muestre la carta en el board del user
