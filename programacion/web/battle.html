@@ -75,6 +75,7 @@
                         cartasUser.forEach(card => {
                             const cardDiv = document.createElement('div')
                             if (userDeckId.includes(card.cartaEnCombateUser.id)) {
+                                console.log(userDeckId.indexOf(card.cartaEnCombateUser.id))
                                 data.userDeckCards.slice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
                             }
                             cardDiv.className = 'card'
