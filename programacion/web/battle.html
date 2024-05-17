@@ -331,9 +331,9 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
-                const cardOpponent = document.getElementsByClassName('card-opponent')
+                const cardUser = document.getElementsByClassName('card-user')
                 const attack = document.getElementsByClassName('attack')
-                for (let i = 0; i < cardOpponent.length; i++) {
+                for (let i = 0; i < cardUser.length; i++) {
                     attack[i].remove()
                 }
             } else if (data.username === localStorage.getItem('opponent')) {
