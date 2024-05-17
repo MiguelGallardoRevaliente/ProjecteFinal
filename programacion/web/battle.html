@@ -301,7 +301,7 @@
             buttonAtaque.addEventListener('click', () => {
                 console.log('Atacar')
                 if (cardClicked.length === 1) cardClicked = []
-                cardClicked.push(data.carta.id)
+                cardClicked.push(parseInt(data.carta.id))
                 console.log(cardClicked)
             })
 
@@ -364,7 +364,7 @@
                     buttonAtaque.addEventListener('click', () => {
                         console.log('Atacar')
                         if (cardClicked.length === 1) cardClicked = []
-                        cardClicked.push(cardUser[i].id)
+                        cardClicked.push(parseInt(cardUser[i].id))
                         console.log(cardClicked)
                     })
 
