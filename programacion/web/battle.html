@@ -351,21 +351,14 @@
                 for (let i = 0; i < cardOpponent.length; i++) {
                     console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
-                        cardOpponent[i].style.border = '2px solid red'
-                        setTimeout(() => {
-                            cardOpponent[i].style.border = 'none'
-                        }, 1000)
-                        console.log('Atacado')
+                        ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     if (cardUser[i].id === data.cardAttacked.id) {
-                        cardUser[i].style.border = '2px solid red'
-                        setTimeout(() => {
-                            cardUser[i].style.border = 'none'
-                        }, 1000)
+                        ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
             }
