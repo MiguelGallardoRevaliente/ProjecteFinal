@@ -87,6 +87,10 @@ body {
     margin: 0px !important;
 }
 
+.end-turn {
+    display: none;
+}
+
 .yourCards {
     display: flex;
     position: absolute;
