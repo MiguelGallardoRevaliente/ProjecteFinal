@@ -170,7 +170,6 @@
                     user.appendChild(username)
 
                     // Turno
-
                     const turno = document.getElementById('turno')
                     if (data.combate.turno_uuid === data.user.id_uuid) {
                         turno.textContent = 'Turn: ' + data.user.user
@@ -291,12 +290,12 @@
             console.log(data)
             if (data.username === localStorage.getItem('username')) {
                 const turno = document.getElementById('turno')
-                turno.textContent = 'Turn: ' + localStorage.getItem('username')
+                turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const form = document.querySelector('form')
                 form.style.display = 'block'
             } else if (data.username === localStorage.getItem('opponent')) {
                 const turno = document.getElementById('turno')
-                turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
+                turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const form = document.querySelector('form')
                 form.style.display = 'none'
             }
