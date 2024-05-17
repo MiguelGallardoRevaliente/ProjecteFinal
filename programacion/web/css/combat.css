@@ -251,3 +251,19 @@ button#leave-match{
 button#leave-match:hover{
     background: linear-gradient(180deg, rgba(204, 0, 0, 1) 0%, rgba(237, 0, 0, 1) 35%, rgb(255 0 0) 100%);
 }
+
+#end-turn{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #fb00ff, #0011ff);
+    color: white;
+    font-weight: 1000;
+    font-family: medievalSharp;
+    font-size: 18px;
+    border: none;
+    box-shadow: 1px 3px 4px black;
+}
