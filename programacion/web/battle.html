@@ -224,11 +224,19 @@
                 })
         }
 
-        const form = document.querySelector('form')
-        form.addEventListener('submit', (event) => {
+        /* Formularios */
+        const endTurnForm = document.getElementsByClassName('end-turn')[0]
+        endTurnForm.addEventListener('submit', (event) => {
             event.preventDefault()
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
+        })
+
+        const leaveMatchForm = document.getElementsByClassName('leave-match')[0]
+        leaveMatchForm.addEventListener('submit', (event) => {
+            event.preventDefault()
+            console.log('Leave Match')
+            socket.emit('leave-match', { username: localStorage.getItem('username') })
         })
 
         /* Recibir mensajes del servidor */
@@ -300,9 +308,24 @@
                 form.style.display = 'block'
             }
         })
+
+        socket.on('left-match', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('Has abandonado la partida')
+                localStorage.removeItem('opponent')
+                window.location.href = '/home'
+            } else if (data.username === localStorage.getItem('opponent')) {
+                alert('Tu oponente ha abandonado la partida')
+                localStorage.removeItem('opponent')
+                window.location.href = '/home'
+            }
+        })
     </script>
 </head>
 <body>
+    <form action="" method="post" class="leave-match">
+        <button type="submit" id="leave-match">Leave Match</button>
+    </form>
     <h3 id="turno"></h3>
     <div class="opponent"></div>
 
