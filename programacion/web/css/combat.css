@@ -184,7 +184,7 @@ body {
     font-weight: 600;
 }
 
-.yourCards .card .attack{
+.user-board .card .attack{
     width: 100%;
     height: 100%;
     background-color: transparent;
