@@ -299,13 +299,13 @@
             if (data.username === localStorage.getItem('username')) {
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
-                const form = document.querySelector('form')
-                form.style.display = 'none'
+                const endTurnForm = document.getElementsByClassName('end-turn')[0]
+                endTurnForm.style.display = 'none'
             } else if (data.username === localStorage.getItem('opponent')) {
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
-                const form = document.querySelector('form')
-                form.style.display = 'block'
+                const endTurnForm = document.getElementsByClassName('end-turn')[0]
+                endTurnForm.style.display = 'block'
             }
         })
 

@@ -85,11 +85,15 @@ function mostrarShopChests () {
         comprarButton.className = 'comprar_chest'
         comprarButton.setAttribute('onclick', `comprarChest(${chest.precio}, ${chest.cantidad})`)
 
+        const precioCantidadDiv = document.createElement('div')
+        precioCantidadDiv.className = 'precio-cantidad'
+
         precioDiv.appendChild(precio)
         precioDiv.appendChild(rubiImg)
 
-        infoDiv.appendChild(cantidad)
-        infoDiv.appendChild(precioDiv)
+        precioCantidadDiv.appendChild(cantidad)
+        precioCantidadDiv.appendChild(precioDiv)
+        infoDiv.appendChild(precioCantidadDiv)
         infoDiv.appendChild(comprarButton)
 
         chestDiv.appendChild(infoDiv)
