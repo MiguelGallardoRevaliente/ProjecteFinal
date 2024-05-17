@@ -49,7 +49,7 @@
                             cardDiv.addEventListener('click', () => {
                                 if (cardClicked.length === 1) {
                                     console.log('Pero bueno')
-                                    socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, user: localStorage.getItem('username') })
+                                    socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
                                 }
                             })
 
@@ -295,22 +295,22 @@
                 cardDivPlayed.appendChild(ataqueEspecialPlayed)
             }
 
-            const buttonAtaque = document.createElement('button')
-            buttonAtaque.textContent = 'Attack'
-            buttonAtaque.className = 'attack'
-            buttonAtaque.addEventListener('click', () => {
-                console.log('Atacar')
-                if (cardClicked.length === 1) cardClicked = []
-                cardClicked.push(parseInt(data.carta.id))
-                console.log(cardClicked)
-            })
-
-            cardDivPlayed.appendChild(buttonAtaque)
-
             cardDivPlayed.appendChild(cardNamePlayed)
             cardDivPlayed.appendChild(ataqueVidaPlayed)
 
             if (data.user === localStorage.getItem('username')) {
+                const buttonAtaque = document.createElement('button')
+                buttonAtaque.textContent = 'Attack'
+                buttonAtaque.className = 'attack'
+                buttonAtaque.addEventListener('click', () => {
+                    console.log('Atacar')
+                    if (cardClicked.length === 1) cardClicked = []
+                    cardClicked.push(parseInt(data.carta.id))
+                    console.log(cardClicked)
+                })
+
+                cardDivPlayed.appendChild(buttonAtaque)
+
                 const userBoard = document.getElementsByClassName('user-board')[0]
                 userBoard.appendChild(cardDivPlayed)
 
@@ -319,6 +319,12 @@
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
             } else if (data.user === localStorage.getItem('opponent')) {
+                cardDiv.addEventListener('click', () => {
+                    if (cardClicked.length === 1) {
+                        console.log('Pero bueno')
+                        socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
+                    }
+                })
                 const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                 opponentBoard.appendChild(cardDivPlayed)
             }
@@ -333,6 +339,18 @@
         socket.on('not-your-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No es tu turno')
+            }
+        })
+
+        socket.on('attacked', (data) => {
+            if (data.opponentId === localStorage.getItem('id')) {
+                const userBoard = document.getElementsByClassName('user-board')[0]
+                const cardAttacked = userBoard.querySelector(`#${data.cardAttacked}`)
+                cardAttacked.style.border = '2px solid red'
+                setTimeout(() => {
+                    cardAttacked.style.border = 'none'
+                }, 1000)
+
             }
         })
 
