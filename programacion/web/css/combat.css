@@ -158,7 +158,7 @@ body {
 
 .user-board .card .ataque-especial, .opponent-board .card .ataque-especial{
     position: absolute;
-    top: 78%;
+    top: 75%;
     font-size: 6px !important;
     font-weight: 600 !important;
     left: 22px;
@@ -170,8 +170,8 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 13px 19px !important;
-    font-size: 12px !important;
+    margin: 15px 19px !important;
+    font-size: 10px !important;
     font-weight: 600;
     font-family: "Goldman", sans-serif;
 }
@@ -181,6 +181,8 @@ body {
     top: 56%;
     left: 16px;
     margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
 }
 
 .yourCards .card p {
