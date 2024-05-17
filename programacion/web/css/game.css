@@ -1376,7 +1376,7 @@ header .config p {
 
 #settings .setting div p{
     margin: 3px;
-    font-size: 0.8px;
+    font-size: 0.8em;
 }
 
 #settings .setting div input[type="range"] {

@@ -146,7 +146,38 @@ body {
 .opponent-board, .user-board{
     border: 3px solid #e9d439;
     height: 300px;
-    width: 85%;
+    display: flex;
+    width: 1400px;
+    gap: 10px;
+}
+.user-board .card{
+    width: 175px;
+    height: 244px;
+    position: relative;
+}
+
+.user-board .card .ataque-especial{
+    top: 78%;
+    font-size: 6px !important;
+    font-weight: 600 !important;
+    left: 22px;
+    max-width: 135px;
+
+}
+
+.user-board .card .ataque-vida{
+    bottom: 0;
+    right: 0;
+    margin: 13px 19px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    font-family: "Goldman", sans-serif;
+}
+
+.user-board .card .cardName{
+    top: 56%;
+    left: 16px;
+    margin: 0px;
 }
 
 .yourCards .card p {
