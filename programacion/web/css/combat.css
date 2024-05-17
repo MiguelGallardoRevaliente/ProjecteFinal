@@ -157,6 +157,7 @@ body {
 }
 
 .user-board .card .ataque-especial{
+    position: absolute;
     top: 78%;
     font-size: 6px !important;
     font-weight: 600 !important;
@@ -166,6 +167,7 @@ body {
 }
 
 .user-board .card .ataque-vida{
+    position: absolute;
     bottom: 0;
     right: 0;
     margin: 13px 19px !important;
@@ -175,6 +177,7 @@ body {
 }
 
 .user-board .card .cardName{
+    position: absolute;
     top: 56%;
     left: 16px;
     margin: 0px;
