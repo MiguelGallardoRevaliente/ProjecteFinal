@@ -257,9 +257,7 @@ button#leave-match:hover{
     right: 5%;
     bottom: 5%;
     border-radius: 100px;
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(45deg, #fb00ff, #0011ff);
+    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(80, 80, 80) 35%, rgb(17, 17, 17) 100%);
     color: white;
     font-weight: 1000;
     font-family: medievalSharp;
@@ -267,12 +265,7 @@ button#leave-match:hover{
     border: none;
     box-shadow: 1px 3px 4px black;
     cursor: pointer;
+    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    padding: 10px 30px;
 }
 
-#end-turn:hover{
-    background: linear-gradient(45deg, #fb00ff, #0011ff);
-}
-
-#end-turn i{
-    font-size: 66px;
-}
