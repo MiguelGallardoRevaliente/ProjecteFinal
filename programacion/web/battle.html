@@ -347,26 +347,24 @@
             if (data.opponent === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 console.log(cardOpponent)
-                cardOpponent.forEach(card => {
-                    console.log(card.id)
-                    if (card.id === data.cardAttacked.id) {
-                        card.style.border = '2px solid red'
+                for (let i = 0; i < cardOpponent.length; i++) {
+                    if (cardOpponent[i].id === data.cardAttacked.id) {
+                        cardOpponent[i].style.border = '2px solid red'
                         setTimeout(() => {
-                            card.style.border = 'none'
+                            cardOpponent[i].style.border = 'none'
                         }, 1000)
                     }
-                })
+                }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
-                cardUser.forEach(card => {
-                    console.log(card.id)
-                    if (card.id === data.cardAttacked.id) {
-                        card.style.border = '2px solid red'
+                for (let i = 0; i < cardUser.length; i++) {
+                    if (cardUser[i].id === data.cardAttacked.id) {
+                        cardUser[i].style.border = '2px solid red'
                         setTimeout(() => {
-                            card.style.border = 'none'
+                            cardUser[i].style.border = 'none'
                         }, 1000)
                     }
-                })
+                }
             }
         })
 
