@@ -82,6 +82,8 @@ header .logo img {
 header .logo h1 {
     font-size: 3em;
     font-family: "MedievalSharp", cursive;
+    margin: 0px;
+    margin-top: 8px;
 }
 
 header nav {
@@ -102,8 +104,8 @@ header nav ul {
 }
 
 header nav ul a {
-    padding: 25px 0px;
-    font-size: 33px;
+    padding: 20px 0px;
+    font-size: 30px;
     width: 100%;
     box-shadow: 0px 3px 5px rgb(0, 0, 0);
     text-align: center;
@@ -1374,6 +1376,7 @@ header .config p {
 
 #settings .setting div p{
     margin: 3px;
+    font-size: 0.8px;
 }
 
 #settings .setting div input[type="range"] {
