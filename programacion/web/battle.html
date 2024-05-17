@@ -109,7 +109,10 @@
                             }
 
                             const buttonAtaque = document.createElement('button')
+                            console.log('amigo')
                             buttonAtaque.textContent = 'Attack'
+                            buttonAtaque.className = 'attack'
+                            console.log('amigo2')
                             buttonAtaque.addEventListener('click', () => {
                                 console.log('Atacar')
                                 cardClicked.push(card.cartaEnCombateUser.id)
