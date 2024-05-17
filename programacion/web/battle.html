@@ -348,6 +348,7 @@
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 console.log(cardOpponent)
                 for (let i = 0; i < cardOpponent.length; i++) {
+                    console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (cardOpponent[i].id === data.cardAttacked.id) {
                         cardOpponent[i].style.border = '2px solid red'
                         setTimeout(() => {
