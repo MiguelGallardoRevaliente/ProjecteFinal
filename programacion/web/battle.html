@@ -169,6 +169,15 @@
                     user.appendChild(profilePicture)
                     user.appendChild(username)
 
+                    // Turno
+
+                    const turno = document.getElementById('turno')
+                    if (data.combate.turno_uuid === data.user.id_uuid) {
+                        turno.textContent = 'Turn: ' + data.user.user
+                    } else if (data.combate.turno_uuid === data.opponent.id_uuid) {
+                        turno.textContent = 'Turn: ' + data.opponent.user
+                    }
+
                     const yourCards = document.getElementsByClassName('yourCards')[0]
 
                     /* Cartas del mazo del usuario */
