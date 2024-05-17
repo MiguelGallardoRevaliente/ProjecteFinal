@@ -294,6 +294,17 @@
                 cardDivPlayed.appendChild(ataqueEspecialPlayed)
             }
 
+            const buttonAtaque = document.createElement('button')
+            buttonAtaque.textContent = 'Attack'
+            buttonAtaque.className = 'attack'
+            buttonAtaque.addEventListener('click', () => {
+                console.log('Atacar')
+                cardClicked.push(data.carta.id)
+                console.log(cardClicked)
+            })
+
+            cardDivPlayed.appendChild(buttonAtaque)
+
             cardDivPlayed.appendChild(cardNamePlayed)
             cardDivPlayed.appendChild(ataqueVidaPlayed)
 
@@ -349,7 +360,7 @@
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
                         console.log('Atacar')
-                        cardClicked.push(card.cartaEnCombateUser.id)
+                        cardClicked.push(cardUser[i].id)
                         console.log(cardClicked)
                     })
 
