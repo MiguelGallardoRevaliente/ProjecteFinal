@@ -445,7 +445,7 @@ body{
         }
 
         #legend .right .ataque-vida h2{
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
 
         #legend .right .mana img{
@@ -462,5 +462,10 @@ body{
             font-size: 0.4em;
             text-align: justify;
         }
+        #legend .right .ataque-vida{
+            gap: 5px;
+        }
+
+
 
     }
