@@ -27,6 +27,7 @@
                 })
         }
 
+        let cardClicked = []
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
@@ -44,6 +45,11 @@
                             cardDiv.style.backgroundRepeat = 'no-repeat'
                             cardDiv.style.backgroundPosition = 'center'
                             cardDiv.id = card.cartaEnCombateOpponent.id
+                            cardDiv.addEventListener('click', () => {
+                                if (cardClicked.length === 1) {
+                                    console.log('Pero bueno')
+                                }
+                            })
 
                             const cardName = document.createElement('p')
                             cardName.textContent = card.cartaEnCombateOpponent.nombre
@@ -99,6 +105,13 @@
 
                                 cardDiv.appendChild(ataqueEspecial)
                             }
+
+                            const buttonAtaque = document.createElement('button')
+                            buttonAtaque.textContent = 'Attack'
+                            buttonAtaque.addEventListener('click', () => {
+                                console.log('Atacar')
+                                cardClicked.push(card.cartaEnCombateUser.id)
+                            })
 
                             cardDiv.appendChild(cardName)
                             cardDiv.appendChild(ataqueVida)
