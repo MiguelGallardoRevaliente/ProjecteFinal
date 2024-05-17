@@ -94,6 +94,12 @@ io.on('connection', async (socket) => {
       return
     }
 
+    const [cartaCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND id_carta = ? AND BIN_TO_UUID(id_combate) = ?', [user[0].id_uuid, idCarta, combate[0].id_combate_uuid])
+
+    if (cartaCombate.length > 0) {
+      return
+    }
+
     const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [user[0].id_uuid, user[0].mazo_seleccionado])
     const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazo[0].id])
 
