@@ -60,12 +60,12 @@
 
                             const ataqueVida = document.createElement('p')
                             ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
-                            ataqueVida.className = 'ataque-vida'
+                            ataqueVida.className = 'ataque-vida ataque-vida-opponent'
 
                             if (card.ataque) {
                                 const ataqueEspecial = document.createElement('p')
                                 ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                                ataqueEspecial.className = 'ataque-especial'
+                                ataqueEspecial.className = 'ataque-especial ataque-especial-opponent'
 
                                 cardDiv.appendChild(ataqueEspecial)
                             }
@@ -99,12 +99,12 @@
 
                             const ataqueVida = document.createElement('p')
                             ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
-                            ataqueVida.className = 'ataque-vida'
+                            ataqueVida.className = 'ataque-vida ataque-vida-user'
 
                             if (card.ataque) {
                                 const ataqueEspecial = document.createElement('p')
                                 ataqueEspecial.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
-                                ataqueEspecial.className = 'ataque-especial'
+                                ataqueEspecial.className = 'ataque-especial ataque-especial-user'
 
                                 cardDiv.appendChild(ataqueEspecial)
                             }
@@ -351,6 +351,9 @@
                 for (let i = 0; i < cardOpponent.length; i++) {
                     console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
+                        const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
+                        let ataqueVidaText = ataqueVida.textContent.split('/')
+                        ataqueVidaText = data.vida + '/' + ataqueVidaText[1]
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
@@ -358,6 +361,9 @@
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     if (cardUser[i].id === data.cardAttacked.id) {
+                        const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                        let ataqueVidaText = ataqueVida.textContent.split('/')
+                        ataqueVidaText = data.vida + '/' + ataqueVidaText[1]
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
