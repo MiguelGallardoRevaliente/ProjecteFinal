@@ -485,28 +485,58 @@ header .config p {
     font-size: 20px;
 }
 
-#allchests .chest div {
+#allchests .chest .info {
     position: absolute;
-    bottom: -13%;
+    bottom: -41%;
     margin: 0px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     left: 50%;
-    gap: 10px;
+    /* gap: 12px; */
     transform: translate(-50%, -50%);
 
 }
 
-#allchests .chest div .precio {
-    margin: 0px;
+#allchests .chest .info button{
+    padding: 0px;
+    display: flex;
+    border: none;
+    font-size: 25px;
+    box-shadow: 0px 4px 1px white;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: linear-gradient(45deg, #4386B7, #83D2F3);
+    color: white;
+    margin-top: 30px;
+    border-radius: 4px;
+    transition: all 0.2s;
 }
 
-#allchests .chest div .cantidad {
-    position: absolute;
-    bottom: 0;
+#allchests .chest .info button:hover{
+    background: linear-gradient(45deg, #4386B7, #83D2F3);
+    box-shadow: 0px 2px 1px white;
+    transform: translateY(2px);
 }
 
+#allchests .chest .info div {
+    display: flex;
+    justify-content: center;
+}
+
+#allchests .chest .info .precio-cantidad{
+
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+#allchests .chest div .cantidad{
+
+}
 
 /*inventory*/
 
