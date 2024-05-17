@@ -145,7 +145,7 @@ body {
 
 .opponent-board, .user-board{
     border: 3px solid #e9d439;
-    height: 300px;
+    height: 244px;
     display: flex;
     width: 1400px;
     gap: 10px;
