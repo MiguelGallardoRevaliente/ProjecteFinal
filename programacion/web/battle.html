@@ -345,19 +345,25 @@
         socket.on('attacked', (data) => {
             console.log(data)
             if (data.opponent.user === localStorage.getItem('opponent')) {
-                const userOpponent = document.getElementsByClassName('opponent-board')[0]
-                const cardAttacked = userOpponent.querySelector(`#${data.cardAttacked.id}`)
-                cardAttacked.style.border = '2px solid red'
-                setTimeout(() => {
-                    cardAttacked.style.border = 'none'
-                }, 1000)
+                const cardOpponent = document.getElementsByClassName('card-opponent')
+                cardOpponent.forEach(card => {
+                    if (card.id === data.cardAttacked.id) {
+                        card.style.border = '2px solid red'
+                        setTimeout(() => {
+                            card.style.border = 'none'
+                        }, 1000)
+                    }
+                })
             } else if (data.opponent.user === localStorage.getItem('username')) {
-                const userBoard = document.getElementsByClassName('user-board')[0]
-                const cardAttacked = userBoard.querySelector(`#${data.cardAttacked.id}`)
-                cardAttacked.style.border = '2px solid red'
-                setTimeout(() => {
-                    cardAttacked.style.border = 'none'
-                }, 1000)
+                const cardUser = document.getElementsByClassName('card-user')
+                cardUser.forEach(card => {
+                    if (card.id === data.cardAttacked.id) {
+                        card.style.border = '2px solid red'
+                        setTimeout(() => {
+                            card.style.border = 'none'
+                        }, 1000)
+                    }
+                })
             }
         })
 
