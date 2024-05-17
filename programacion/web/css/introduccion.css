@@ -418,4 +418,49 @@ body{
             width: 100%;
         }
 
+        #howtoplay .types-left .all-types{
+            width: 120%;
+            gap: 3px;
+            justify-content: left;
+        }
+
+        #howtoplay h1, #legend h1{
+            font-size: 1.2em;
+        }
+
+        #howtoplay p{
+            font-size: 0.8em;
+        }
+
+        .types-right h2, .types-left h2{
+            font-size: 1em;
+        }
+
+        .container button{
+            font-size: 0.8em;
+        }
+
+        #legend .left ul li{
+            font-size: 0.5em;
+        }
+
+        #legend .right .ataque-vida h2{
+            font-size: 1.5em;
+        }
+
+        #legend .right .mana img{
+            width: 30px;
+            height: 30px;
+        }
+
+        #legend .right .mana p{
+            font-size: 0.4em;
+            text-align: justify;
+        }
+
+        #legend .right .ataque-vida p{
+            font-size: 0.4em;
+            text-align: justify;
+        }
+
     }
