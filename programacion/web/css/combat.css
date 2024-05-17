@@ -114,9 +114,8 @@ body {
 }
 
 .opponent, .user{
-    width: 200px;
+    min-width: 200px;
 }
-
 .opponent img, .user img{
     width: 70px;
     height: 70px;
@@ -183,6 +182,14 @@ body {
     margin: 0px;
     font-size: 10px;
     font-weight: 600;
+}
+
+.yourCards .card .attack{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .yourCards .card p {
