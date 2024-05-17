@@ -313,11 +313,11 @@
             if (data.username === localStorage.getItem('username')) {
                 alert('Has abandonado la partida')
                 localStorage.removeItem('opponent')
-                window.location.href = '/home'
+                window.location.href = '/'
             } else if (data.username === localStorage.getItem('opponent')) {
                 alert('Tu oponente ha abandonado la partida')
                 localStorage.removeItem('opponent')
-                window.location.href = '/home'
+                window.location.href = '/'
             }
         })
     </script>
