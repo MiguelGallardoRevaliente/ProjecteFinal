@@ -58,7 +58,7 @@
                             cardName.className = 'cardName'
 
                             const ataqueVida = document.createElement('p')
-                            ataqueVida.textContent = card.cartaEnCombateOpponent.ataque + '/' + card.cartaEnCombateOpponent.vida
+                            ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
                             ataqueVida.className = 'ataque-vida'
 
                             if (card.ataque) {
@@ -97,7 +97,7 @@
                             cardName.className = 'cardName'
 
                             const ataqueVida = document.createElement('p')
-                            ataqueVida.textContent = card.cartaEnCombateUser.ataque + '/' + card.cartaEnCombateUser.vida
+                            ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
                             ataqueVida.className = 'ataque-vida'
 
                             if (card.ataque) {

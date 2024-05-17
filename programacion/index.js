@@ -648,6 +648,7 @@ app.get('/getCardsBattle', async (req, res) => {
       const [cartaEnCombateOpponent] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateOpponent[0].id_ataque])
       cartasEnCombateOpponent.push({
+        cartaCombate: carta,
         cartaEnCombateOpponent: cartaEnCombateOpponent[0],
         ataque: ataque[0]
       })
