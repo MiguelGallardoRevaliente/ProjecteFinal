@@ -215,11 +215,11 @@
                     })
 
                     if (data.combate.turno_uuid === data.user.id_uuid) {
-                        const form = document.querySelector('form')
-                        form.style.display = 'block'
+                        const endTurnForm = document.getElementsByClassName('end-turn')[0]
+                        endTurnForm.style.display = 'block'
                     } else {
-                        const form = document.querySelector('form')
-                        form.style.display = 'none'
+                        const endTurnForm = document.getElementsByClassName('end-turn')[0]
+                        endTurnForm.style.display = 'none'
                     }
                 })
         }
