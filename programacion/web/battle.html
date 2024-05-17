@@ -40,7 +40,7 @@
                         const cartasOpponent = data.cartasCombates.cartasOpponent
                         cartasOpponent.forEach(card => {
                             const cardDiv = document.createElement('div')
-                            cardDiv.className = 'card'
+                            cardDiv.className = 'card card-opponent'
                             cardDiv.style.backgroundImage = `url(${card.cartaEnCombateOpponent.foto})`
                             cardDiv.style.backgroundSize = 'contain'
                             cardDiv.style.backgroundRepeat = 'no-repeat'
@@ -85,7 +85,7 @@
                                 data.userDeckCards.splice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
                                 userDeckId.splice(userDeckId.indexOf(card.cartaEnCombateUser.id), 1)
                             }
-                            cardDiv.className = 'card'
+                            cardDiv.className = 'card card-user'
                             cardDiv.style.backgroundImage = `url(${card.cartaEnCombateUser.foto})`
                             cardDiv.style.backgroundSize = 'contain'
                             cardDiv.style.backgroundRepeat = 'no-repeat'
@@ -108,18 +108,19 @@
                                 cardDiv.appendChild(ataqueEspecial)
                             }
 
-                            const buttonAtaque = document.createElement('button')
-                            console.log('amigo')
-                            buttonAtaque.textContent = 'Attack'
-                            buttonAtaque.className = 'attack'
-                            console.log('amigo2')
-                            buttonAtaque.addEventListener('click', () => {
-                                console.log('Atacar')
-                                cardClicked.push(card.cartaEnCombateUser.id)
-                                console.log(cardClicked)
-                            })
+                            if (data.combate.turno_uuid === data.user.id_uuid) {
+                                const buttonAtaque = document.createElement('button')
+                                buttonAtaque.textContent = 'Attack'
+                                buttonAtaque.className = 'attack'
+                                buttonAtaque.addEventListener('click', () => {
+                                    console.log('Atacar')
+                                    cardClicked.push(card.cartaEnCombateUser.id)
+                                    console.log(cardClicked)
+                                })
 
-                            cardDiv.appendChild(buttonAtaque)
+                                cardDiv.appendChild(buttonAtaque)
+                            }
+                            
                             cardDiv.appendChild(cardName)
                             cardDiv.appendChild(ataqueVida)
                             userBoard.appendChild(cardDiv)
@@ -266,7 +267,11 @@
         socket.on('played-card', (data) => {
             playedCard = []
             const cardDivPlayed = document.createElement('div')
-            cardDivPlayed.className = 'card'
+            if (data.user === localStorage.getItem('username')) {
+                cardDivPlayed.className = 'card card.user'
+            } else if (data.user === localStorage.getItem('opponent')) {
+                cardDivPlayed.className = 'card card.opponent'
+            }
             cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
             cardDivPlayed.style.backgroundSize = 'contain'
             cardDivPlayed.style.backgroundRepeat = 'no-repeat'
@@ -325,11 +330,30 @@
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
+
+                const cardOpponent = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < cardOpponent.length; i++) {
+                    cardOpponent[i].removeChild(cardOpponent[i].lastChild)
+                }
             } else if (data.username === localStorage.getItem('opponent')) {
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'block'
+
+                const cardUser = document.getElementsByClassName('card-user')
+                for (let i = 0; i < cardUser.length; i++) {
+                    const buttonAtaque = document.createElement('button')
+                    buttonAtaque.textContent = 'Attack'
+                    buttonAtaque.className = 'attack'
+                    buttonAtaque.addEventListener('click', () => {
+                        console.log('Atacar')
+                        cardClicked.push(card.cartaEnCombateUser.id)
+                        console.log(cardClicked)
+                    })
+
+                    cardUser[i].appendChild(buttonAtaque)
+                }
             }
         })
 
