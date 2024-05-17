@@ -344,8 +344,9 @@
 
         socket.on('attacked', (data) => {
             console.log(data)
-            if (data.opponent.user === localStorage.getItem('opponent')) {
+            if (data.opponent === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
+                console.log(cardOpponent)
                 cardOpponent.forEach(card => {
                     console.log(card.id)
                     if (card.id === data.cardAttacked.id) {
@@ -355,7 +356,7 @@
                         }, 1000)
                     }
                 })
-            } else if (data.opponent.user === localStorage.getItem('username')) {
+            } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
                 cardUser.forEach(card => {
                     console.log(card.id)
