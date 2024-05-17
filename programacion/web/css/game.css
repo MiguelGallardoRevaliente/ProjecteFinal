@@ -487,7 +487,7 @@ header .config p {
 
 #allchests .chest .info {
     position: absolute;
-    bottom: -41%;
+    bottom: -40%;
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -526,6 +526,11 @@ header .config p {
     display: flex;
     justify-content: center;
     margin: 0px;
+    gap: 10px;
+}
+
+#allchests .chest .info div .precio{
+    margin: 0px;
 }
 
 #allchests .chest .info .precio-cantidad{
@@ -533,6 +538,7 @@ header .config p {
     display: flex;
     flex-direction: column;
     width: 400px;
+    gap: 0px;
 }
 
 #allchests .chest div .cantidad{
