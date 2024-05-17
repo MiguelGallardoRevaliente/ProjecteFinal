@@ -265,6 +265,7 @@ button#leave-match:hover{
     border: none;
     box-shadow: 1px 3px 4px black;
     cursor: pointer;
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    padding: 10px 30px;
 }
 
