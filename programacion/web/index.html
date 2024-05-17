@@ -16,7 +16,7 @@
         const changePassword = document.getElementById('change-password');
 
         login.addEventListener('click', async () => {
-            fetch('http://13.53.190.234/login', {
+            fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@
 
         register.addEventListener('click', async () => {
             console.log('Hola')
-            fetch('http://13.53.190.234/register', {
+            fetch('/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -89,7 +89,7 @@
         })
 
         changePassword.addEventListener('click', async () => {
-            fetch('http://13.53.190.234/forgot', {
+            fetch('/forgot', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -48,6 +48,7 @@
                             cardDiv.addEventListener('click', () => {
                                 if (cardClicked.length === 1) {
                                     console.log('Pero bueno')
+                                    socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, user: localStorage.getItem('username') })
                                 }
                             })
 
@@ -111,6 +112,7 @@
                             buttonAtaque.addEventListener('click', () => {
                                 console.log('Atacar')
                                 cardClicked.push(card.cartaEnCombateUser.id)
+                                console.log(cardClicked)
                             })
 
                             cardDiv.appendChild(buttonAtaque)

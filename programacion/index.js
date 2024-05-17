@@ -898,50 +898,11 @@ app.post('/buyChest', async (req, res) => {
   }
 })
 
-/* app.post('/playCard', async (req, res) => {
-  try {
-    const idCarta = req.body.id
-    const username = req.body.user
-    console.log(idCarta, username)
-
-    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
-    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
-    if (combate.length !== 1) {
-      return res.status(200).json({ message: 'Must be in a match' })
-    }
-
-    const [mazo] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ? AND numero = ?', [user[0].id_uuid, user[0].mazo_seleccionado])
-    const [mazoCartas] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazo[0].id])
-
-    const mazoCartasId = mazoCartas.map(carta => carta.id_carta)
-    if (!mazoCartasId.includes(parseInt(idCarta))) {
-      return res.status(200).json({ message: 'Card not in deck' })
-    }
-
-    const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [idCarta])
-    const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-
-    const data = {
-      carta: carta[0],
-      ataque: ataque[0]
-    }
-
-    await connection.execute(
-      'INSERT INTO cartas_combates (id_user, id_carta, id_combate, ataque, vida) VALUES (UUID_TO_BIN(?), ?, UUID_TO_BIN(?), ?, ?);',
-      [user[0].id_uuid, idCarta, combate[0].id_combate_uuid, carta[0].ataque, carta[0].vida]
-    )
-
-    return res.status(200).json(data)
-  } catch (err) {
-    console.error(err)
-  }
-}) */
-
 const PORT = process.env.PORT ?? 1234
 const HOST = '0.0.0.0'
 
 app.use(express.static(join(__dirname, 'web')))
 
 server.listen(PORT, HOST, () => {
-  console.log(`Listening from http://13.53.190.234/:${PORT}`)
+  console.log(`Listening from https://chamous.games:${PORT}/`)
 })
