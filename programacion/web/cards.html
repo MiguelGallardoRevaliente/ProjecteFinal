@@ -42,7 +42,7 @@
             const yourCards = document.getElementsByClassName('yourCards')[0]
             yourCards.innerHTML = ''
             const id = localStorage.getItem('id')
-            fetch(`http://13.53.190.234/getCards?id=${id}`, {
+            fetch(`/getCards?id=${id}`, {
                 method: 'GET'
             })
                 .then(response => response.json())
@@ -94,7 +94,7 @@
                 orden = 'ASC'
             }
             const id = localStorage.getItem('id')
-            fetch(`http://13.53.190.234/getCards?id=${id}&ordenType=${ordenType}&orden=${orden}`, {
+            fetch(`/getCards?id=${id}&ordenType=${ordenType}&orden=${orden}`, {
                 method: 'GET'
             })
                 .then(response => response.json())

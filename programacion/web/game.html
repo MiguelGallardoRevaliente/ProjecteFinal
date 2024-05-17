@@ -88,7 +88,7 @@
             const perfil = document.getElementsByClassName('perfil')[0]
             perfil.innerHTML = ''
             const id = localStorage.getItem('id')
-            fetch(`http://13.53.190.234/infoUser?id=${id}`, {
+            fetch(`/infoUser?id=${id}`, {
                 method: 'GET'
             })
                 .then(response => response.json())
