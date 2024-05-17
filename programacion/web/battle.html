@@ -349,8 +349,11 @@
                 console.log(cardOpponent.length)
                 for (let i = 0; i < cardOpponent.length; i++) {
                     console.log(cardOpponent[i].id, data.cardAttacked.id)
-                    if (cardOpponent[i].id === data.cardAttacked.id) {
+                    if (parserInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         cardOpponent[i].style.border = '2px solid red'
+                        setTimeout(() => {
+                            cardOpponent[i].style.border = 'none'
+                        }, 1000)
                         console.log('Atacado')
                     }
                 }
