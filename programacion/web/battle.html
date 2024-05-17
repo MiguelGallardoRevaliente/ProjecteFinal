@@ -346,7 +346,7 @@
             console.log(data)
             if (data.opponent === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
-                console.log(cardOpponent)
+                console.log(cardOpponent.length)
                 for (let i = 0; i < cardOpponent.length; i++) {
                     console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (cardOpponent[i].id === data.cardAttacked.id) {
