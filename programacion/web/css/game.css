@@ -82,6 +82,8 @@ header .logo img {
 header .logo h1 {
     font-size: 3em;
     font-family: "MedievalSharp", cursive;
+    margin: 0px;
+    margin-top: 8px;
 }
 
 header nav {
@@ -102,8 +104,8 @@ header nav ul {
 }
 
 header nav ul a {
-    padding: 25px 0px;
-    font-size: 33px;
+    padding: 20px 0px;
+    font-size: 30px;
     width: 100%;
     box-shadow: 0px 3px 5px rgb(0, 0, 0);
     text-align: center;
@@ -325,6 +327,7 @@ header .config p {
     background-color: var(--background-color);
     min-height: 100vh;
     padding: 70px;
+    padding-bottom: 0px;
 
 }
 
@@ -485,28 +488,65 @@ header .config p {
     font-size: 20px;
 }
 
-#allchests .chest div {
+#allchests .chest .info {
     position: absolute;
-    bottom: -13%;
+    bottom: -40%;
     margin: 0px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     left: 50%;
-    gap: 10px;
+    /* gap: 12px; */
     transform: translate(-50%, -50%);
 
 }
 
-#allchests .chest div .precio {
+#allchests .chest .info button{
+    padding: 6px 20px;
+    display: flex;
+    border: none;
+    font-size: 25px;
+    box-shadow: 0px 4px 1px white;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: linear-gradient(45deg, #4386B7, #83D2F3);
+    color: white;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+#allchests .chest .info button:hover{
+    background: linear-gradient(45deg, #4386B7, #83D2F3);
+    box-shadow: 0px 2px 1px white;
+    transform: translateY(2px);
+}
+
+#allchests .chest .info div {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    gap: 10px;
+}
+
+#allchests .chest .info div .precio{
     margin: 0px;
 }
 
-#allchests .chest div .cantidad {
-    position: absolute;
-    bottom: 0;
+#allchests .chest .info .precio-cantidad{
+
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 0px;
 }
 
+#allchests .chest div .cantidad{
+    margin: 5px;
+}
 
 /*inventory*/
 
@@ -1330,11 +1370,13 @@ header .config p {
 }
 
 #settings .setting div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 550px;
     margin: 20px 0px;
+}
+
+#settings .setting div p{
+    margin: 3px;
+    font-size: 0.8px;
 }
 
 #settings .setting div input[type="range"] {

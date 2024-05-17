@@ -85,11 +85,17 @@
                         <input type="range" id="volumeControl" min="0" max="100" value="100">
                     </div>
                     <h2>User</h2>
-                    <h3>Change Password</h3>
-                    <div class="changePassword">
-                        <label id="password_label" for="">******</label>
-                        <button id="editar" onclick="editPassword()"><i class='bx bxs-edit-alt'></i></button>
+                   <div class="user">
+                        <h3>Information</h3>
+                        <p>${username}</p>
+                        <p>marc.zaragoza04@gmail.com</p>
+                        <p>Level 1</p>
+                        <p>Experience 0/100</p>
+                        <p>Coins 0</p>
+                        <p>Wins 0</p>
+                        <p></p>
                     </div>
+
                     <div class="logout">
                         <form action="" class="form">
                             <button type="submit">Log Out <i class='bx bx-log-out'></i></button>
@@ -100,7 +106,6 @@
             </div>
         </div>
     </div>
-    <audio id="audio" src="img/Música para la Tierra Media (sin copyright).mp3" autoplay loop></audio> 
     <script src="js/game.js"></script>
     <script src="js/settings.js"></script>
 </body>
