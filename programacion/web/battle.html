@@ -300,6 +300,7 @@
             buttonAtaque.className = 'attack'
             buttonAtaque.addEventListener('click', () => {
                 console.log('Atacar')
+                if (cardClicked.length === 1) cardClicked = []
                 cardClicked.push(data.carta.id)
                 console.log(cardClicked)
             })
@@ -362,6 +363,7 @@
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
                         console.log('Atacar')
+                        if (cardClicked.length === 1) cardClicked = []
                         cardClicked.push(cardUser[i].id)
                         console.log(cardClicked)
                     })
