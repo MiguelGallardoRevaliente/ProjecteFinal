@@ -325,6 +325,7 @@ header .config p {
     background-color: var(--background-color);
     min-height: 100vh;
     padding: 70px;
+    padding-bottom: 0px;
 
 }
 
