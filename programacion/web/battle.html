@@ -343,6 +343,7 @@
         })
 
         socket.on('attacked', (data) => {
+            console.log(data)
             if (data.opponentId === localStorage.getItem('id')) {
                 const userBoard = document.getElementsByClassName('user-board')[0]
                 const cardAttacked = userBoard.querySelector(`#${data.cardAttacked.id}`)

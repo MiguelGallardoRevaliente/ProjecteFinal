@@ -173,11 +173,13 @@ io.on('connection', async (socket) => {
       opponentId = combate[0].id_user_1_uuid
     }
 
+    const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
     const dataEmit = {
       cardAttacking: cartaAttacking[0],
       cardAttacked: cartaAttacked[0],
       vida,
-      opponentId
+      opponent: opponent[0].user
     }
 
     io.emit('attacked', dataEmit)
