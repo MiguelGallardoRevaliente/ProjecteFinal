@@ -351,6 +351,7 @@
                     console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (cardOpponent[i].id === data.cardAttacked.id) {
                         cardOpponent[i].style.border = '2px solid red'
+                        console.log('Atacado')
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
