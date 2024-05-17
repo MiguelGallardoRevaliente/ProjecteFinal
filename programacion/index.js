@@ -732,8 +732,8 @@ app.post('/forgot', async (req, res) => {
   const response = {}
   const request = {
     to: email,
-    subject: 'Recuperación de contraseña',
-    text: `Change your password in the following link: http://13.53.190.234/change?id=${users[0].id}`
+    subject: 'Restore password',
+    text: `Change your password in the following link: https://chamous.games/change?id=${users[0].id}`
   }
   sendEmail(request, response)
   return res.status(200).json({ message: 'changed' })
