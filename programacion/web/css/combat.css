@@ -155,11 +155,6 @@ body {
     position: relative;
 }
 
-.user-board .card:hover{
-    box-shadow: 0px 0px 10px 5px #16f5ea;
-    border-radius: 5px;
-}
-
 .user-board .card .ataque-especial, .opponent-board .card .ataque-especial{
     position: absolute;
     top: 75%;
@@ -195,6 +190,11 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.user-board .card .attack:hover{
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px 4px var(--principal-red);
 }
 
 
