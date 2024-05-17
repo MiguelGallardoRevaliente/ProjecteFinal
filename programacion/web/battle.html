@@ -114,6 +114,7 @@
                                 buttonAtaque.className = 'attack'
                                 buttonAtaque.addEventListener('click', () => {
                                     console.log('Atacar')
+                                    if (cardClicked.length === 1) cardClicked = []
                                     cardClicked.push(card.cartaEnCombateUser.id)
                                     console.log(cardClicked)
                                 })
