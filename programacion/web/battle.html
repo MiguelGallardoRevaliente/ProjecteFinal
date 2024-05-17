@@ -331,9 +331,10 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
-                const attack = document.getElementsByClassName('attack')
+                const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < cardOpponent.length; i++) {
-                    cardOpponent[i].removeChild(attack[i])
+                    const attack = document.getElementsByClassName('attack')
+                    attack[i].remove()
                 }
             } else if (data.username === localStorage.getItem('opponent')) {
                 const turno = document.getElementById('turno')
