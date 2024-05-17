@@ -167,7 +167,7 @@ io.on('connection', async (socket) => {
       console.log('Vida actualizada user 2')
       opponentId = combate[0].id_user_2_uuid
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
-      await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user);', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
+      await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
       console.log('Vida actualizada user 1')
       opponentId = combate[0].id_user_1_uuid
     }
