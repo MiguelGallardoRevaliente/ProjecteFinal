@@ -266,4 +266,13 @@ button#leave-match:hover{
     font-size: 18px;
     border: none;
     box-shadow: 1px 3px 4px black;
+    cursor: pointer;
+}
+
+#end-turn:hover{
+    background: linear-gradient(45deg, #fb00ff, #0011ff);
+}
+
+#end-turn i{
+    font-size: 66px;
 }
