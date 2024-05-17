@@ -292,12 +292,12 @@
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const form = document.querySelector('form')
-                form.style.display = 'block'
+                form.style.display = 'none'
             } else if (data.username === localStorage.getItem('opponent')) {
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const form = document.querySelector('form')
-                form.style.display = 'none'
+                form.style.display = 'block'
             }
         })
     </script>
