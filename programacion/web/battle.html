@@ -345,7 +345,7 @@
         socket.on('attacked', (data) => {
             if (data.opponentId === localStorage.getItem('id')) {
                 const userBoard = document.getElementsByClassName('user-board')[0]
-                const cardAttacked = userBoard.querySelector(`#${data.cardAttacked}`)
+                const cardAttacked = userBoard.querySelector(`#${data.cardAttacked.id}`)
                 cardAttacked.style.border = '2px solid red'
                 setTimeout(() => {
                     cardAttacked.style.border = 'none'
