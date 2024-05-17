@@ -398,5 +398,24 @@ body{
         width: 100%;
     }
 
-
 }
+    @media screen and(max-width: 360px) {
+        
+        .container{
+            width: 300px;
+            padding: 20px 10px;
+        }
+
+        .container_right h1{
+            font-size: 1.2em;
+        }
+
+        .container_left{
+            display: none;
+        }
+
+        .container_right{
+            width: 100%;
+        }
+
+    }
