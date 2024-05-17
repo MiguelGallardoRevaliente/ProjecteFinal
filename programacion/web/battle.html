@@ -336,8 +336,8 @@
         })
 
         socket.on('ended-turn', (data) => {
-            console.log(data)
             if (data.username === localStorage.getItem('username')) {
+                cardClicked = []
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -349,6 +349,7 @@
                 attack.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
+                cardClicked = []
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
