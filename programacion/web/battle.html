@@ -347,6 +347,7 @@
             if (data.opponent.user === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 cardOpponent.forEach(card => {
+                    console.log(card.id)
                     if (card.id === data.cardAttacked.id) {
                         card.style.border = '2px solid red'
                         setTimeout(() => {
@@ -357,6 +358,7 @@
             } else if (data.opponent.user === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
                 cardUser.forEach(card => {
+                    console.log(card.id)
                     if (card.id === data.cardAttacked.id) {
                         card.style.border = '2px solid red'
                         setTimeout(() => {
