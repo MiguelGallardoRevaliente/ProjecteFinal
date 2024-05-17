@@ -28,6 +28,7 @@
         }
 
         let cardClicked = []
+        let playedCard = []
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
@@ -205,8 +206,11 @@
                         cardDiv.style.backgroundPosition = 'center'
                         cardDiv.id = card.carta.id
                         cardDiv.addEventListener('click', () => {
-                            const user = localStorage.getItem('username')
-                            socket.emit('play-card', { id: card.carta.id, user })
+                            if (playedCard.length === 0) {
+                                const user = localStorage.getItem('username')
+                                socket.emit('play-card', { id: card.carta.id, user })
+                                playedCard.push(card.carta.id)
+                            }
                         })
 
                         const cardName = document.createElement('p')
@@ -257,6 +261,7 @@
 
         /* Recibir mensajes del servidor */
         socket.on('played-card', (data) => {
+            playedCard = []
             const cardDivPlayed = document.createElement('div')
             cardDivPlayed.className = 'card'
             cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
