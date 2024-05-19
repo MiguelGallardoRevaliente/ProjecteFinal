@@ -160,11 +160,13 @@ io.on('connection', async (socket) => {
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       opponentId = combate[0].id_user_1_uuid
     }
-    const [cartaAttacked] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
-    // const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
+    // const [cartaAttacked] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
+    const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
+    console.log(cartaAttacked)
 
     // const [cartaAttacking] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
     const [cartaAttacking] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackingId, user[0].id_uuid, combate[0].id_combate_uuid])
+    console.log(cartaAttacking)
 
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
