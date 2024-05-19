@@ -385,7 +385,7 @@
                 for (let i = 0; i < cardUser.length; i++) {
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
-                            cardOpponent[i].remove()
+                            cardUser[i].remove()
                         } else {
                             const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                             let ataqueVidaText = ataqueVida.textContent.split('/')
