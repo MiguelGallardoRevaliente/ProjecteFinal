@@ -162,8 +162,10 @@ io.on('connection', async (socket) => {
     }
     // const [cartaAttackingInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
     const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND id_user = ?;', [cardAttackedId, opponentId])
+    console.log(cartaAttacked)
     // const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
     const [cartaAttacking] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND id_user = ?;', [cardAttackingId, user[0].id_uuid])
+    console.log(cartaAttacking)
 
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
