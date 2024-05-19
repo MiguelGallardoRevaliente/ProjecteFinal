@@ -435,7 +435,7 @@
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
-                        console.log('Manolo', playedCardAttack)
+                        console.log('Manolo', playedCardAttack) /* UPDATE!!! HAY QUE METER LAS COSAS ESTAS EN EL LOCALSTORAGE PARA QUE NO LO EVITEN AL RECARGAR PAGINA */
                         if (playedCardAttack.length !== 0) {
                             alert('Ya has puesto cartas en el tablero, no puedes atacar')
                         }
