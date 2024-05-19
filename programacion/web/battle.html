@@ -320,7 +320,7 @@
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
             } else if (data.user === localStorage.getItem('opponent')) {
-                cardDiv.addEventListener('click', () => {
+                cardDivPlayed.addEventListener('click', () => {
                     if (cardClicked.length === 1) {
                         console.log('Pero bueno')
                         socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
@@ -353,7 +353,7 @@
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
-                        ataqueVidaText = data.vida + '/' + ataqueVidaText[1] // Cambiar
+                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida // Cambiar
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
