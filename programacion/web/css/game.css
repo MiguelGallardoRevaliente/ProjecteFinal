@@ -50,6 +50,7 @@ body {
 #open-header,
 #close-header {
     display: none;
+    cursor: pointer;
 }
 
 header {
