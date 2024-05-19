@@ -270,9 +270,11 @@ button#leave-match:hover{
 }
 
 #end-turn:hover{
-    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(15, 122, 126) 35%, rgb(22, 77, 63) 100%);
+    background: linear-gradient(180deg, rgba(22, 77, 63) 0%, rgb(15, 122, 126) 35%, rgb(0, 204, 204, 1) 100%);
 }
 
 #end-turn:active{
-    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(15, 122, 126) 35%, rgb(22, 77, 63) 100%);
+    background: linear-gradient(180deg, rgb(49, 248, 248) 0%, rgb(36, 152, 156) 35%, rgb(47, 136, 114) 100%);
+    box-shadow: none;
+    transform: translateY(2px);
 }
