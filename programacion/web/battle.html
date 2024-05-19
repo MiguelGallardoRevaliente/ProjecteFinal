@@ -367,7 +367,7 @@
             if (data.opponent === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < cardOpponent.length; i++) {
-                    if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
+                    if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
                             cardOpponent[i].remove()
                         } else {
@@ -383,7 +383,7 @@
             } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
-                    if (parseInt(cardUser[i].id) === data.cardAttacked.id) {
+                    if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
                             cardOpponent[i].remove()
                         } else {
