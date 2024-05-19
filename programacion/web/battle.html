@@ -284,10 +284,6 @@
             cardNamePlayed.textContent = data.carta.nombre
             cardNamePlayed.className = 'cardName'
 
-            const ataqueVidaPlayed = document.createElement('p')
-            ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
-            ataqueVidaPlayed.className = 'ataque-vida'
-
             if (data.ataque) {
                 const ataqueEspecialPlayed = document.createElement('p')
                 ataqueEspecialPlayed.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
@@ -297,9 +293,13 @@
             }
 
             cardDivPlayed.appendChild(cardNamePlayed)
-            cardDivPlayed.appendChild(ataqueVidaPlayed)
 
             if (data.user === localStorage.getItem('username')) {
+                const ataqueVidaPlayed = document.createElement('p')
+                ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
+                ataqueVidaPlayed.className = 'ataque-vida-user'
+                cardDivPlayed.appendChild(ataqueVidaPlayed)
+
                 const buttonAtaque = document.createElement('button')
                 buttonAtaque.textContent = 'Attack'
                 buttonAtaque.className = 'attack'
@@ -320,6 +320,11 @@
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
             } else if (data.user === localStorage.getItem('opponent')) {
+                const ataqueVidaPlayed = document.createElement('p')
+                ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
+                ataqueVidaPlayed.className = 'ataque-vida-opponent'
+                cardDivPlayed.appendChild(ataqueVidaPlayed)
+
                 cardDivPlayed.addEventListener('click', () => {
                     if (cardClicked.length === 1) {
                         console.log('Pero bueno')
@@ -349,6 +354,7 @@
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 console.log(cardOpponent.length)
                 for (let i = 0; i < cardOpponent.length; i++) {
+                    console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
