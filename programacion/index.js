@@ -652,6 +652,7 @@ app.get('/getCardsBattle', async (req, res) => {
 
     const [cartasCombatesUser] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [id, combate[0].id_combate_uuid])
     const cartasEnCombateUser = []
+    const idCartasUser = cartasCombatesUser.map(carta => carta.id_carta)
     for (const carta of cartasCombatesUser) {
       const [cartaEnCombateUser] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaEnCombateUser[0].id_ataque])
@@ -687,14 +688,16 @@ app.get('/getCardsBattle', async (req, res) => {
 
     const userDeckCards = []
     for (const mazoCarta of mazoCartas) {
-      const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [mazoCarta.id_carta])
+      if (!idCartasUser.includes(mazoCarta.id_carta)) {
+        const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [mazoCarta.id_carta])
 
-      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta[0].id_ataque])
+        const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [carta[0].id_ataque])
 
-      userDeckCards.push({
-        carta: carta[0],
-        ataque: ataque[0]
-      })
+        userDeckCards.push({
+          carta: carta[0],
+          ataque: ataque[0]
+        })
+      }
     }
 
     let manaInUse = 0
