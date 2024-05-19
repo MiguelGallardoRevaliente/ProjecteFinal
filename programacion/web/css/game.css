@@ -1636,6 +1636,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         transform: translateX(-50%);
         width: 300px;
         bottom: 50px;
+        font-size: 20px;
+        padding: 16px 0px;
     }
     .perfil {
         position: absolute;
