@@ -267,6 +267,7 @@ button#leave-match:hover{
     box-shadow: 1px 3px 4px black;
     cursor: pointer;
     padding: 15px 40px;
+    transition: 0.3s ease;
 }
 
 #end-turn:hover{
@@ -274,7 +275,7 @@ button#leave-match:hover{
 }
 
 #end-turn:active{
-    background: linear-gradient(180deg, rgb(49, 248, 248) 0%, rgb(36, 152, 156) 35%, rgb(47, 136, 114) 100%);
+    background: linear-gradient(180deg, rgb(49, 248, 248) 0%, rgb(50, 206, 211) 35%, rgb(47, 136, 114) 100%);
     box-shadow: none;
     transform: translateY(2px);
 }
