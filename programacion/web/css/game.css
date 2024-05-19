@@ -1645,12 +1645,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         height: 157px;
         background-color: var(--background-color);
         height: 85px;
-        /* clip-path: polygon(12% 0, 100% 0%, 100% 63%, 12% 63%); */
+        clip-path: none;
         box-shadow: 3px 3px 5px rgb(0, 0, 0);
         display: flex;
         justify-content: right;
         align-items: center;
-        /* gap: 20px; */
+        gap: 0px;
         padding: 0px 20px;
         justify-content: space-between;
         align-items: center;
@@ -1661,6 +1661,9 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
 
     .perfil .divOro p, .perfil .divUser p{
         font-size: 23px;
+    }
+    .perfil .divOro{
+        margin-left: 0px;
     }
 
 }
