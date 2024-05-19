@@ -144,11 +144,12 @@ body {
 }
 
 .opponent-board, .user-board{
-    border: 3px solid #e9d439;
     height: 244px;
     display: flex;
     width: 1400px;
     gap: 10px;
+    box-shadow: 0px 0px 7px gray;
+    border-radius: 10px;
 }
 .user-board .card, .opponent-board .card{
     width: 175px;
@@ -257,7 +258,7 @@ button#leave-match:hover{
     right: 5%;
     bottom: 5%;
     border-radius: 100px;
-    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(80, 80, 80) 35%, rgb(17, 17, 17) 100%);
+    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(15, 122, 126) 35%, rgb(22, 77, 63) 100%);
     color: white;
     font-weight: 1000;
     font-family: medievalSharp;
@@ -265,7 +266,6 @@ button#leave-match:hover{
     border: none;
     box-shadow: 1px 3px 4px black;
     cursor: pointer;
-    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
-    padding: 10px 30px;
+    padding: 15px 40px;
 }
 
