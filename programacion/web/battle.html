@@ -270,6 +270,7 @@
         /* Formularios */
         const endTurnForm = document.getElementsByClassName('end-turn')[0]
         endTurnForm.addEventListener('submit', (event) => {
+            playedCardAttack = []
             event.preventDefault()
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
@@ -406,7 +407,6 @@
         })
 
         socket.on('ended-turn', (data) => {
-            playedCardAttack = []
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []
                 const turno = document.getElementById('turno')
