@@ -1637,6 +1637,31 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         width: 300px;
         bottom: 50px;
     }
+    .perfil {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 320px;
+        height: 157px;
+        background-color: var(--background-color);
+        height: 85px;
+        /* clip-path: polygon(12% 0, 100% 0%, 100% 63%, 12% 63%); */
+        box-shadow: 3px 3px 5px rgb(0, 0, 0);
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        /* gap: 20px; */
+        padding: 0px 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .perfil .divUser img{
+        width: 55px;
+    }
+
+    .perfil .divOro p, .perfil .divUser p{
+        font-size: 23px;
+    }
 
 }
 
