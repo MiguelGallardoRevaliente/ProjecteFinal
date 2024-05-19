@@ -150,11 +150,20 @@ io.on('connection', async (socket) => {
     const cardAttackingId = data.cardAttacking
     const cardAttackedId = data.cardAttacked
     const username = data.username
+    let opponentId
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
-    const [cartaAttacking] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
-    const [cartaAttacked] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+
+    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+      opponentId = combate[0].id_user_2_uuid
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+      opponentId = combate[0].id_user_1_uuid
+    }
+    // const [cartaAttackingInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
+    const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND id_user = ?;', [cardAttackedId, opponentId])
+    // const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
+    const [cartaAttacking] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND id_user = ?;', [cardAttackingId, user[0].id_uuid])
 
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
@@ -164,15 +173,12 @@ io.on('connection', async (socket) => {
 
     console.log(vida)
 
-    let opponentId
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
       console.log('Vida actualizada user 2')
-      opponentId = combate[0].id_user_2_uuid
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
       console.log('Vida actualizada user 1')
-      opponentId = combate[0].id_user_1_uuid
     }
 
     const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
