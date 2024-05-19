@@ -51,6 +51,10 @@
                                 if (cardClicked.length === 1) {
                                     console.log('Pero bueno')
                                     socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
+                                    const OpponentCards = document.getElementsByClassName('card-opponent')
+                                    for (let i = 0; i < OpponentCards.length; i++) {
+                                        OpponentCards[i].style.boxShadow = 'none'
+                                    }
                                 }
                             })
 
@@ -111,13 +115,16 @@
 
                             if (data.combate.turno_uuid === data.user.id_uuid) {
                                 const buttonAtaque = document.createElement('button')
-                                buttonAtaque.textContent = 'Attack'
                                 buttonAtaque.className = 'attack'
                                 buttonAtaque.addEventListener('click', () => {
                                     console.log('Atacar')
                                     if (cardClicked.length === 1) cardClicked = []
                                     cardClicked.push(card.cartaEnCombateUser.id)
                                     console.log(cardClicked)
+                                    const opponentCards = document.getElementsByClassName('card-opponent')
+                                    for (let i = 0; i < opponentCards.length; i++) {
+                                        opponentCards[i].style.boxShadow = '0px 0px 10px red'
+                                    }
                                 })
 
                                 cardDiv.appendChild(buttonAtaque)
@@ -301,7 +308,6 @@
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 const buttonAtaque = document.createElement('button')
-                buttonAtaque.textContent = 'Attack'
                 buttonAtaque.className = 'attack'
                 buttonAtaque.addEventListener('click', () => {
                     console.log('Atacar')
@@ -391,7 +397,7 @@
                 const attacks = document.querySelectorAll('.attack');
 
                 attacks.forEach(attack => {
-                attack.remove()
+                    attack.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
                 cardClicked = []
@@ -403,7 +409,6 @@
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     const buttonAtaque = document.createElement('button')
-                    buttonAtaque.textContent = 'Attack'
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
                         console.log('Atacar')
