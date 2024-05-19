@@ -270,9 +270,9 @@
             playedCard = []
             const cardDivPlayed = document.createElement('div')
             if (data.user === localStorage.getItem('username')) {
-                cardDivPlayed.className = 'card card.user'
+                cardDivPlayed.className = 'card card-user'
             } else if (data.user === localStorage.getItem('opponent')) {
-                cardDivPlayed.className = 'card card.opponent'
+                cardDivPlayed.className = 'card card-opponent'
             }
             cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
             cardDivPlayed.style.backgroundSize = 'contain'
@@ -345,9 +345,6 @@
 
         socket.on('attacked', (data) => {
             console.log(data)
-            console.log(data.opponent)
-            console.log(localStorage.getItem('opponent'))
-            console.log(localStorage.getItem('username'))
             if (data.opponent === localStorage.getItem('opponent')) {
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 console.log(cardOpponent.length)
@@ -362,6 +359,7 @@
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
+                console.log('User attacked :)')
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     if (cardUser[i].id === data.cardAttacked.id) {
