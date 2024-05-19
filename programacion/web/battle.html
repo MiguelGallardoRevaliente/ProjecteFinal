@@ -370,13 +370,14 @@
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         if (data.vida <= 0) {
                             cardOpponent[i].remove()
+                        } else {
+                            const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
+                            let ataqueVidaText = ataqueVida.textContent.split('/')
+                            ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                            ataqueVida.textContent = ataqueVidaText
+                            console.log('Opponent attacked')
+                            ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                         }
-                        const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
-                        let ataqueVidaText = ataqueVida.textContent.split('/')
-                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
-                        ataqueVida.textContent = ataqueVidaText
-                        console.log('Opponent attacked')
-                        ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
@@ -385,13 +386,14 @@
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id) {
                         if (data.vida <= 0) {
                             cardOpponent[i].remove()
+                        } else {
+                            const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                            let ataqueVidaText = ataqueVida.textContent.split('/')
+                            ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                            ataqueVida.textContent = ataqueVidaText
+                            console.log('User attacked')
+                            ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                         }
-                        const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
-                        let ataqueVidaText = ataqueVida.textContent.split('/')
-                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
-                        ataqueVida.textContent = ataqueVidaText
-                        console.log('User attacked')
-                        ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
             }
