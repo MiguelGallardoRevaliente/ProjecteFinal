@@ -1641,7 +1641,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
     }
 
     #searchGame:active{
-        transform: none;
+        transform: translate(-150px, -8px);
     }
 
     .perfil {
