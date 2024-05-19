@@ -269,3 +269,10 @@ button#leave-match:hover{
     padding: 15px 40px;
 }
 
+#end-turn:hover{
+    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(15, 122, 126) 35%, rgb(22, 77, 63) 100%);
+}
+
+#end-turn:active{
+    background: linear-gradient(180deg, rgba(0, 204, 204, 1) 0%, rgb(15, 122, 126) 35%, rgb(22, 77, 63) 100%);
+}
