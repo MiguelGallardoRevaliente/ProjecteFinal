@@ -40,7 +40,7 @@
                     if (data.cartasCombates.cartasOpponent) {
                         const cartasOpponent = data.cartasCombates.cartasOpponent
                         cartasOpponent.forEach(card => {
-                            if (card.cartaCombate.vida <= 0) {
+                            if (card.cartaCombate.vida > 0) {
                                 const cardDiv = document.createElement('div')
                                 cardDiv.className = 'card card-opponent'
                                 cardDiv.style.backgroundImage = `url(${card.cartaEnCombateOpponent.foto})`
