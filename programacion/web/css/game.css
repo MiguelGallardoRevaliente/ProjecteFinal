@@ -1640,8 +1640,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         padding: 16px 0px;
     }
 
-    #searchGame:hover{
-        transform: translate(none);
+    #searchGame:active{
+        transform: none;
     }
 
     .perfil {
