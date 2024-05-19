@@ -279,3 +279,12 @@ button#leave-match:hover{
     box-shadow: none;
     transform: translateY(2px);
 }
+
+#turno{
+    font-size: 25px;
+    font-family: 'MedievalSharp';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    
+}
