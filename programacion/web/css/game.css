@@ -1639,6 +1639,11 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         font-size: 20px;
         padding: 16px 0px;
     }
+
+    #searchGame:hover{
+        transform: translate(none);
+    }
+
     .perfil {
         position: absolute;
         top: 0;
