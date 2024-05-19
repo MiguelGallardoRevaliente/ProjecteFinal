@@ -349,23 +349,24 @@
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 console.log(cardOpponent.length)
                 for (let i = 0; i < cardOpponent.length; i++) {
-                    console.log(cardOpponent[i].id, data.cardAttacked.id)
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
                         ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                        ataqueVida.textContent = ataqueVidaText
                         console.log('Opponent attacked')
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
-                console.log('User attacked :)')
                 const cardUser = document.getElementsByClassName('card-user')
+                console.log(cardUser.length)
                 for (let i = 0; i < cardUser.length; i++) {
-                    if (cardUser[i].id === data.cardAttacked.id) {
+                    if (parseInt(cardUser[i].id) === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
                         ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                        ataqueVida.textContent = ataqueVidaText
                         console.log('User attacked')
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
