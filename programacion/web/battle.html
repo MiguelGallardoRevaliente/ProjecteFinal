@@ -29,7 +29,8 @@
         }
 
         let cardClicked = []
-        let playedCard = []
+        let playedCard = [] /* Para no poner varias veces la misma carta */
+        let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
@@ -120,6 +121,9 @@
                                     const buttonAtaque = document.createElement('button')
                                     buttonAtaque.className = 'attack'
                                     buttonAtaque.addEventListener('click', () => {
+                                        if (playedCardAttack.length !== 0) {
+                                            alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                        }
                                         console.log('Atacar')
                                         if (cardClicked.length === 1) cardClicked = []
                                         cardClicked.push(card.cartaEnCombateUser.id)
@@ -227,6 +231,7 @@
                                 const user = localStorage.getItem('username')
                                 socket.emit('play-card', { id: card.carta.id, user })
                                 playedCard.push(card.carta.id)
+                                playedCardAttack.push(card.carta.id)
                             }
                         })
 
@@ -400,6 +405,7 @@
         })
 
         socket.on('ended-turn', (data) => {
+            playedCardAttack = []
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []
                 const turno = document.getElementById('turno')
