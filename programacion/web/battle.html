@@ -353,7 +353,8 @@
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
-                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida // Cambiar
+                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                        console.log('Opponent attacked')
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
@@ -363,7 +364,8 @@
                     if (cardUser[i].id === data.cardAttacked.id) {
                         const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                         let ataqueVidaText = ataqueVida.textContent.split('/')
-                        ataqueVidaText = data.vida + '/' + ataqueVidaText[1]
+                        ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
+                        console.log('User attacked')
                         ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                     }
                 }
