@@ -297,7 +297,7 @@
             if (data.user === localStorage.getItem('username')) {
                 const ataqueVidaPlayed = document.createElement('p')
                 ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
-                ataqueVidaPlayed.className = 'ataque-vida-user'
+                ataqueVidaPlayed.className = 'ataque-vida ataque-vida-user'
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 const buttonAtaque = document.createElement('button')
@@ -322,7 +322,7 @@
             } else if (data.user === localStorage.getItem('opponent')) {
                 const ataqueVidaPlayed = document.createElement('p')
                 ataqueVidaPlayed.textContent = data.carta.ataque + '/' + data.carta.vida
-                ataqueVidaPlayed.className = 'ataque-vida-opponent'
+                ataqueVidaPlayed.className = 'ataque-vida ataque-vida-opponent'
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 cardDivPlayed.addEventListener('click', () => {
