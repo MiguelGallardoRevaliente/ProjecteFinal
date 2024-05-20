@@ -313,19 +313,23 @@ io.on('connection', async (socket) => {
         for (const carta of cartasAliadas) {
           const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
           if (ataque[0].estadistica === 'vida') {
-            let vida = carta.vida + ataque[0].cambio
-            if (vida > cartaInfo[0].vida) {
-              vida = cartaInfo[0].vida
+            if (!carta.efecto_secundario) {
+              let vida = carta.vida + ataque[0].cambio
+              if (vida > cartaInfo[0].vida) {
+                vida = cartaInfo[0].vida
+              }
+              await connection.execute(
+                'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+                [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
+              )
             }
-            await connection.execute(
-              'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-              [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
-            )
           } else if (ataque[0].estadistica === 'ataque') {
-            await connection.execute(
-              'UPDATE cartas_combates SET ataque = ataque + ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-              [ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
-            )
+            if (!carta.efecto_secundario) {
+              await connection.execute(
+                'UPDATE cartas_combates SET ataque = ataque + ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+                [ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
+              )
+            }
           }
         }
         const [opponentCards] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
@@ -333,7 +337,7 @@ io.on('connection', async (socket) => {
         const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
       }
     }
   })
