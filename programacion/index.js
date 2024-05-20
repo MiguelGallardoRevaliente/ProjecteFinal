@@ -414,7 +414,7 @@ io.on('connection', async (socket) => {
         )
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
+        io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
       }
     }
   })
