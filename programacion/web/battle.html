@@ -141,15 +141,15 @@
                                             if (parseInt(cardDiv.id) === card.cartaEnCombateUser.id) {
                                                 if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                                     alert('This card is immobilized')
-                                                    return
+                                                } else {
+                                                    const tipoSplit = card.ataque.tipo.split('/')
+                                                    console.log(tipoSplit)
+                                                    if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
+                                                        socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                                    } else {
+                                                        console.log(card.ataque.tipo)
+                                                    }
                                                 }
-                                            }
-                                            const tipoSplit = card.ataque.tipo.split('/')
-                                            console.log(tipoSplit)
-                                            if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
-                                                socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
-                                            } else {
-                                                console.log(card.ataque.tipo)
                                             }
                                         })
                                         cardDiv.appendChild(ataqueEspecialButton)
@@ -163,25 +163,23 @@
                                         if (parseInt(cardDiv.id) === card.cartaEnCombateUser.id) {
                                             if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                                 alert('This card is immobilized')
-                                                return
+                                            } else {
+                                                if (playedCardAttack.length !== 0) {
+                                                    alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                                } else {
+                                                    if (cardClicked.length === 1) {
+                                                        cardClicked = []
+                                                        localStorage.setItem('cardClicked', cardClicked)
+                                                    }
+                                                    cardClicked.push(card.cartaEnCombateUser.id)
+                                                    localStorage.setItem('cardClicked',cardClicked)
+                                                    console.log(localStorage.getItem('cardClicked'))
+                                                    const opponentCards = document.getElementsByClassName('card-opponent')
+                                                    for (let i = 0; i < opponentCards.length; i++) {
+                                                        opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                                    }
+                                                }
                                             }
-                                        }
-
-                                        if (playedCardAttack.length !== 0) {
-                                            alert('Ya has puesto cartas en el tablero, no puedes atacar')
-                                            return
-                                        }
-
-                                        if (cardClicked.length === 1) {
-                                            cardClicked = []
-                                            localStorage.setItem('cardClicked', cardClicked)
-                                        }
-                                        cardClicked.push(card.cartaEnCombateUser.id)
-                                        localStorage.setItem('cardClicked',cardClicked)
-                                        console.log(localStorage.getItem('cardClicked'))
-                                        const opponentCards = document.getElementsByClassName('card-opponent')
-                                        for (let i = 0; i < opponentCards.length; i++) {
-                                            opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
                                         }
                                     })
 
@@ -383,19 +381,18 @@
                 buttonAtaque.addEventListener('click', () => {
                     if (playedCardAttack.length !== 0) {
                         alert('Ya has puesto cartas en el tablero, no puedes atacar')
-                        return
-                    }
-
-                    if (cardClicked.length === 1) {
-                        cardClicked = []
-                        localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
-                    }
-                    cardClicked.push(card.cartaEnCombateUser.id)
-                    localStorage.setItem('cardClicked',cardClicked)
-                    console.log(localStorage.getItem('cardClicked'))
-                    const opponentCards = document.getElementsByClassName('card-opponent')
-                    for (let i = 0; i < opponentCards.length; i++) {
-                        opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                    } else {
+                        if (cardClicked.length === 1) {
+                            cardClicked = []
+                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
+                        }
+                        cardClicked.push(card.cartaEnCombateUser.id)
+                        localStorage.setItem('cardClicked',cardClicked)
+                        console.log(localStorage.getItem('cardClicked'))
+                        const opponentCards = document.getElementsByClassName('card-opponent')
+                        for (let i = 0; i < opponentCards.length; i++) {
+                            opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                        }
                     }
                 })
 
@@ -582,27 +579,25 @@
                             if (parseInt(cardUser[i].id) === card.id_carta) {
                                 if (card.efecto_secundario === 'inmovil') {
                                     alert('This card is immobilized')
-                                    return
+                                } else {
+                                    if (playedCardAttack.length !== 0) {
+                                        alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                    } else {
+                                        if (cardClicked.length === 1) {
+                                            cardClicked = []
+                                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
+                                        }
+                                        cardClicked.push(card.cartaEnCombateUser.id)
+                                        localStorage.setItem('cardClicked',cardClicked)
+                                        console.log(localStorage.getItem('cardClicked'))
+                                        const opponentCards = document.getElementsByClassName('card-opponent')
+                                        for (let i = 0; i < opponentCards.length; i++) {
+                                            opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                        }
+                                    }
                                 }
                             }
                         })
-
-                        if (playedCardAttack.length !== 0) {
-                            alert('You have already put cards on the board, you cannot attack')
-                            return
-                        }
-
-                        if (cardClicked.length === 1) {
-                            cardClicked = []
-                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
-                        }
-                        cardClicked.push(parseInt(cardUser[i].id))
-                        localStorage.setItem('cardClicked', cardClicked)
-                        console.log(localStorage.getItem('cardClicked'))
-                        const opponentCards = document.getElementsByClassName('card-opponent')
-                        for (let i = 0; i < opponentCards.length; i++) {
-                            opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-                        }
                     })
 
                     if (data.cartas.cartasCombate[i].ataque_especial === 0) {
@@ -614,18 +609,18 @@
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
-                                        return
+                                    } else {
+                                        const tipoSplit = data.cartas.ataques[i].tipo.split('/')
+                                        console.log(tipoSplit)
+                                        if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
+                                            socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
+                                        } else {
+                                            console.log(data.cartas.ataques[i].tipo)
+                                        }
+                                    
                                     }
                                 }
                             })
-
-                            const tipoSplit = data.cartas.ataques[i].tipo.split('/')
-                            console.log(tipoSplit)
-                            if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
-                                socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
-                            } else {
-                                console.log(data.cartas.ataques[i].tipo)
-                            }
                         })
                         cardUser[i].appendChild(ataqueEspecialButton)
                     }
