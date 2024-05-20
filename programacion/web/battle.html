@@ -141,7 +141,7 @@
                                             const tipoSplit = card.ataque.tipo.split('/')
                                             console.log(tipoSplit)
                                             if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
-                                                socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: cartas.ataque.id, username: localStorage.getItem('username'), tipo: cartas.ataque.tipo })
+                                                socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                             } else {
                                                 console.log(card.ataque.tipo)
                                             }
