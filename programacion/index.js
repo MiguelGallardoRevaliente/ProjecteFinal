@@ -383,15 +383,15 @@ io.on('connection', async (socket) => {
       }
     }
 
+    console.log(cartas)
+
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
-      console.log('Entra User 1', data.username)
       const [cartasUser1] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
       for (const carta of cartasUser1) {
         const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
         if (carta.duracion_efecto <= 1 && carta.efecto_secundario) {
           if (carta.efecto_secundario) {
             if (carta.estadistica_efecto === 'ataque') {
-              console.log('Ataque User 1', cartaInfo[0].ataque)
               await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
             }
           }
@@ -402,14 +402,12 @@ io.on('connection', async (socket) => {
     }
 
     if (user[0].id_uuid === combate[0].id_user_2_uuid) {
-      console.log('Entra', data.username)
       const [cartasUser2] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
       for (const carta of cartasUser2) {
         const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
         if (carta.duracion_efecto && carta.duracion_efecto <= 1) {
           if (carta.efecto_secundario) {
             if (carta.estadistica_efecto === 'ataque') {
-              console.log('Ataque', cartaInfo[0].ataque)
               await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
             }
           }
