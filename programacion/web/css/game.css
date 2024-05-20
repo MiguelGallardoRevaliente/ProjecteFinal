@@ -346,6 +346,11 @@ header .config p {
     gap: 0px;
 }
 
+#shop .container .top .menu{
+    display: flex;
+    gap: 0px;
+}
+
 #shop .container .top h1 {
     font-size: 2em;
     border-left: 20px solid #ffffff;
@@ -2085,83 +2090,48 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
 
 @media (max-width: 550px) {
 
-    #shop .container .allChests .sobre {
+    #shop {
+        padding: 0px;
+        padding-top: 70px;
+        font-size: 25px;
+    }
+
+    #shop .container .top{
+        padding: 0px 20px;
+    }
+
+    #allchests .chest{
         width: 300px;
         height: 420px;
+        margin: auto;
     }
 
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
+    #allchests .chest .precio-cantidad{
+        font-size: 15px;
+    }
+    #allchests .chest .info{
+
+        bottom: -43%;
+
     }
 
-    #shop .container .allChests {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    #allchests .chest .info button{
+        font-size: 20px;
+        padding: 4px 10px;
     }
 
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
+}
+
+@media (max-width: 450px){
+
+    #shop{
+        padding-top: 20px;
     }
 
-    #shop .container .allChests .sobre {
-        width: 300px;
-        height: 420px;
+    #shop .container .top{
+        flex-direction: column;
+        margin-bottom: 40px;
+
     }
 
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests .sobre {
-        width: 300px;
-        height: 420px;
-    }
-
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests .sobre {
-        width: 300px;
-        height: 420px;
-    }
-
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    #shop .container .allChests .sobre button {
-        width: 100%;
-        height: 100%;
-    }
-
-    #shop .container .allChests .sobre {
-        width: 300px
-    }
 }
