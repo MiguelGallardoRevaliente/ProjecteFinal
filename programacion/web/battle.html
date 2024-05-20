@@ -138,7 +138,7 @@
                                         ataqueEspecialButton.className = 'ataque-especial-button'
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
-                                            const tipoSplit = card.ataque[i].tipo.split('/')
+                                            const tipoSplit = card.ataque.tipo.split('/')
                                             console.log(tipoSplit)
                                             if (cartas.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
                                                 socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: cartas.ataque.id, username: localStorage.getItem('username'), tipo: cartas.ataque.tipo })
