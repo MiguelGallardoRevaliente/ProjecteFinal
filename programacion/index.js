@@ -308,6 +308,7 @@ io.on('connection', async (socket) => {
       const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
       const cartasCombateId = cartasCombate.map(carta => carta.id_carta)
       const [cartasInfo] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartasCombateId])
+      console.log('cartasInfo', cartasInfo)
       const ataquesId = cartasInfo.map(carta => carta.id_ataque)
       const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [ataquesId])
 
