@@ -197,53 +197,60 @@
                     opponent.appendChild(opponentProfilePicture)
                     opponent.appendChild(opponentUsername)
 
-                    //Usuario
-                    const user = document.getElementsByClassName('user')[0]
+                   // Usuario
+const user = document.getElementsByClassName('user')[0]
 
-                    const profilePicture = document.createElement('img')
-                    profilePicture.src = data.user.foto_perfil
-                    profilePicture.alt = 'Profile Picture', data.user.user
-                    profilePicture.classList.add('profile-picture')
+const profilePicture = document.createElement('img')
+profilePicture.src = data.user.foto_perfil
+profilePicture.alt = 'Profile Picture', data.user.user
+profilePicture.classList.add('profile-picture')
 
-                    const username = document.createElement('p')
-                    username.textContent = data.user.user
-                    username.classList.add('username')
+const username = document.createElement('p')
+username.textContent = data.user.user
+username.classList.add('username')
 
-                    if (data.user.id_uuid === data.combate.id_user_1_uuid) {
-                        const manaDiv = document.createElement('div')
-                        manaDiv.className = 'mana'
+user.appendChild(profilePicture)
+user.appendChild(username)
 
-                        const manaImg = document.createElement('img')
-                        manaImg.src = '/img/mana.png'
-                        manaImg.style.border = 'none'
-                        manaImg.style.boxShadow = 'none'
+// Crear el div mana fuera del div user
+let manaDiv = null;
 
-                        const mana = document.createElement('p')
-                        mana.textContent = data.combate.mana_user_1
-                        mana.id = 'mana-number'
+if (data.user.id_uuid === data.combate.id_user_1_uuid) {
+    manaDiv = document.createElement('div')
+    manaDiv.className = 'mana'
 
-                        manaDiv.appendChild(mana)
-                        manaDiv.appendChild(manaImg)
-                        user.appendChild(manaDiv)
-                    } else if (data.user.id_uuid === data.combate.id_user_2_uuid) {
-                        const manaDiv = document.createElement('div')
-                        manaDiv.className = 'mana'
+    const manaImg = document.createElement('img')
+    manaImg.src = '/img/mana.png'
+    manaImg.style.border = 'none'
+    manaImg.style.boxShadow = 'none'
 
-                        const manaImg = document.createElement('img')
-                        manaImg.src = '/img/mana.png'
-                        manaImg.style.border = 'none'
+    const mana = document.createElement('p')
+    mana.textContent = data.combate.mana_user_1
+    mana.id = 'mana-number'
 
-                        const mana = document.createElement('p')
-                        mana.textContent = data.combate.mana_user_2
-                        mana.id = 'mana-number'
+    manaDiv.appendChild(mana)
+    manaDiv.appendChild(manaImg)
+} else if (data.user.id_uuid === data.combate.id_user_2_uuid) {
+    manaDiv = document.createElement('div')
+    manaDiv.className = 'mana'
 
-                        manaDiv.appendChild(mana)
-                        manaDiv.appendChild(manaImg)
-                        user.appendChild(manaDiv)
-                    }
+    const manaImg = document.createElement('img')
+    manaImg.src = '/img/mana.png'
+    manaImg.style.border = 'none'
 
-                    user.appendChild(profilePicture)
-                    user.appendChild(username)
+    const mana = document.createElement('p')
+    mana.textContent = data.combate.mana_user_2
+    mana.id = 'mana-number'
+
+    manaDiv.appendChild(mana)
+    manaDiv.appendChild(manaImg)
+}
+
+// Añadir el manaDiv fuera del user div
+if (manaDiv) {
+    user.parentNode.insertBefore(manaDiv, user.nextSibling);
+}
+
 
                     // Turno
                     const turno = document.getElementById('turno')
