@@ -521,7 +521,11 @@
 
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-opponent')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
-                    ataqueVidaUser[i].textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
+                    data.cartas.cartasCombate.forEach(card => {
+                        if (parseInt(ataqueVidaUser[i].id) === card.id_carta) {
+                            ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                        }
+                    })
                 }
 
                 const attacks = document.querySelectorAll('.attack');
@@ -546,7 +550,11 @@
 
                 const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-user')
                 for (let i = 0; i < ataqueVidaOpponent.length; i++) {
-                    ataqueVidaOpponent[i].textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
+                    data.cartas.cartasCombate.forEach(card => {
+                        if (parseInt(ataqueVidaOpponent[i].id) === card.id_carta) {
+                            ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
+                        }
+                    })
                 }
 
                 const cardUser = document.getElementsByClassName('card-user')

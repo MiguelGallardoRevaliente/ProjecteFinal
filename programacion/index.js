@@ -371,7 +371,7 @@ io.on('connection', async (socket) => {
             }
           }
         }
-        // await connection.execute('UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [idCarta, combate[0].id_combate_uuid, user[0].id_uuid])
+        await connection.execute('UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [idCarta, combate[0].id_combate_uuid, user[0].id_uuid])
 
         const [opponentCards] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [user[0].id_uuid, combate[0].id_combate_uuid])
         const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
