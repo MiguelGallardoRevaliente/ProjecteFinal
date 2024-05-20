@@ -1978,6 +1978,34 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         align-items: center;
     }
 
+    #cartas-no-mazo .cartas{
+        width: 660px;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 8px;
+    }
+
+    #cartas-no-mazo .cartas .carta{
+        width: 160px;
+        height: 222px;
+    }
+    
+    #cartas-no-mazo .cartas .carta .ataque-especial{
+        font-size: 8px !important;
+        max-width: 120px;
+        left: 20px;
+    }
+
+    #cartas-no-mazo .cartas .carta .ataque-vida{
+        font-size: 13px !important;
+        margin: 10px 12px !important;
+    }
+
+    #cartas-no-mazo .cartas .carta .nombreCarta{
+        font-size: 10px;
+        top: 55%;
+        left: 15px;
+    }
+
 }
 
     @media (max-width: 500px) {
