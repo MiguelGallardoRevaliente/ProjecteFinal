@@ -1797,7 +1797,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 @media (max-width: 500px) {
 
     #mazos {
-        padding: 0px;
+        padding: 70px 0px;
     }
 
     #mazos .container .top {
