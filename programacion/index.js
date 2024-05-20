@@ -331,8 +331,7 @@ io.on('connection', async (socket) => {
               console.log(carta.ataque, ataque[0].cambio)
               await connection.execute(
                 'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-                [ataqueNumber, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
-                // , tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid
+                [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
               )
               console.log('Ataque', ataqueNumber)
             }
