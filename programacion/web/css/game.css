@@ -2107,7 +2107,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
     }
 
     #allchests .chest .precio-cantidad{
-        font-size: 15px;
+        font-size: 20px;
     }
     #allchests .chest .info{
 
@@ -2132,6 +2132,15 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
         flex-direction: column;
         margin-bottom: 40px;
 
+    }
+
+    #allchests .chest .info div{
+        align-items: center;
+    }
+
+    #allchests .chest .info div img{
+        width: 20px;
+        height: 20px;
     }
 
 }
