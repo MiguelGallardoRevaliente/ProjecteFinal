@@ -2083,19 +2083,22 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
+
+@media (max-width: 550px){
+    .sobres_god_divGeneral .sobre{
+        width: 350px;
+        height: 488px;
+    }
+}
+
 @media (max-width: 500px) {
     #chests .allChests .sobre {
-        width: 300px;
+        width: 300px;   
         height: 420px;
     }
 
 }
 
-@media (max-width: 350px) {
-    #chests {
-        padding: 70px 0px;
-    }
-}
 
 /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
