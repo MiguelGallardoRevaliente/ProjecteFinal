@@ -223,6 +223,7 @@ io.on('connection', async (socket) => {
     console.log(idCarta)
     console.log(username)
     console.log(idAtaque)
+    console.log(tipo)
 
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
@@ -241,10 +242,13 @@ io.on('connection', async (socket) => {
       return
     }
 
+    console.log('hola')
+
     if (tipo === 'area') {
       let mana = 0
       for (const carta of cartaCombate) {
         let vida = carta.vida - ataque[0].cambio
+        console.log(vida)
         const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
         if (vida <= 0) {
           vida = 0
