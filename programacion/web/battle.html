@@ -138,6 +138,12 @@
                                         ataqueEspecialButton.className = 'ataque-especial-button'
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
+                                            if (parseInt(cardDiv.id) === card.cartaEnCombateUser.id) {
+                                                if (card.cartaCombate.efecto_secundario === 'inmovil') {
+                                                    alert('This card is immobilized')
+                                                    return
+                                                }
+                                            }
                                             const tipoSplit = card.ataque.tipo.split('/')
                                             console.log(tipoSplit)
                                             if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
@@ -154,6 +160,13 @@
                                     const buttonAtaque = document.createElement('button')
                                     buttonAtaque.className = 'attack'
                                     buttonAtaque.addEventListener('click', () => {
+                                        if (parseInt(cardDiv.id) === card.cartaEnCombateUser.id) {
+                                            if (card.cartaCombate.efecto_secundario === 'inmovil') {
+                                                alert('This card is immobilized')
+                                                return
+                                            }
+                                        }
+
                                         if (playedCardAttack.length !== 0) {
                                             alert('Ya has puesto cartas en el tablero, no puedes atacar')
                                             return
@@ -565,8 +578,17 @@
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
+                        data.cartas.cartasCombate.forEach(card => {
+                            if (parseInt(cardUser[i].id) === card.id_carta) {
+                                if (card.efecto_secundario === 'inmovil') {
+                                    alert('This card is immobilized')
+                                    return
+                                }
+                            }
+                        })
+
                         if (playedCardAttack.length !== 0) {
-                            alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                            alert('You have already put cards on the board, you cannot attack')
                             return
                         }
 
@@ -588,6 +610,15 @@
                         ataqueEspecialButton.className = 'ataque-especial-button'
                         ataqueEspecialButton.textContent = data.cartas.ataques[i].nombre
                         ataqueEspecialButton.addEventListener('click', () => {
+                            data.cartas.cartasCombate.forEach(card => {
+                                if (parseInt(cardUser[i].id) === card.id_carta) {
+                                    if (card.efecto_secundario === 'inmovil') {
+                                        alert('This card is immobilized')
+                                        return
+                                    }
+                                }
+                            })
+
                             const tipoSplit = data.cartas.ataques[i].tipo.split('/')
                             console.log(tipoSplit)
                             if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
