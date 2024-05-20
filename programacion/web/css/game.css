@@ -2130,6 +2130,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
 
     #shop .container .top{
         flex-direction: column;
+        margin-bottom: 40px;
 
     }
 
