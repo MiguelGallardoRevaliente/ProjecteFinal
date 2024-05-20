@@ -1174,11 +1174,12 @@ header .config p {
     padding: 5px;
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
-    background: #9D9D9D;
-    color: rgb(0, 0, 0);
+    background: #2b2b2b;
+    border: 1px solid #00e3cb;
+    color: rgb(255 255 255);
     font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
 
 }
 
