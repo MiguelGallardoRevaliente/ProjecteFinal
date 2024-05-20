@@ -182,19 +182,19 @@ function getCartas (mazoActual, idCartaMazo) {
         nombreCarta.innerHTML = card.nombre
 
         if (data.ataques[i][0]) {
-          const ataqueVida = document.createElement('p')
-          ataqueVida.className = 'ataque-vida'
-          ataqueVida.innerHTML = card.ataque + '/' + card.vida
-
           const ataqueEspecial = document.createElement('p')
           ataqueEspecial.className = 'ataque-especial'
           const textoAtaqueEspecial = data.ataques[i][0].nombre + ' - ' + data.ataques[i][0].descripcion
           ataqueEspecial.innerHTML = textoAtaqueEspecial
 
           cardDiv.appendChild(ataqueEspecial)
-          cardDiv.appendChild(ataqueVida)
         }
 
+        const ataqueVida = document.createElement('p')
+        ataqueVida.className = 'ataque-vida'
+        ataqueVida.innerHTML = card.ataque + '/' + card.vida
+
+        cardDiv.appendChild(ataqueVida)
         cardDiv.appendChild(nombreCarta)
         cartas.appendChild(cardDiv)
       }
