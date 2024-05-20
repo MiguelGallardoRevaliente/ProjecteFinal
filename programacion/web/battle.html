@@ -469,8 +469,7 @@
                                 manaNumber.textContent = data.mana
                             } else {
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
-                                let ataqueVidaText = ataqueVida.textContent.split('/')
-                                ataqueVidaText = ataqueVidaText[0] + '/' + card.vida
+                                const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
                                 console.log('Opponent attacked')
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
@@ -482,7 +481,7 @@
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
-                    data.userCards.forEach(card => {
+                    data.opponentCards.forEach(card => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 userCards[i].remove()
@@ -490,8 +489,7 @@
                                 manaNumber.textContent = data.mana
                             } else {
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
-                                let ataqueVidaText = ataqueVida.textContent.split('/')
-                                ataqueVidaText = ataqueVidaText[0] + '/' + card.vida
+                                const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
                                 console.log('User attacked')
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
@@ -562,7 +560,7 @@
                         ataqueEspecialButton.addEventListener('click', () => {
                             const tipoSplit = data.cartas.ataques[i].tipo.split('/')
                             if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
-                                socket.emit('special-attack', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
+                                socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
                             } else {
                                 console.log(data.cartas.ataques[i].tipo)
                             }
