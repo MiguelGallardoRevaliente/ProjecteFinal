@@ -519,6 +519,11 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
+                const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
+                for (let i = 0; i < ataqueVidaUser.length; i++) {
+                    ataqueVidaUser[i].textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
+                }
+
                 const attacks = document.querySelectorAll('.attack');
 
                 attacks.forEach(attack => {
@@ -538,6 +543,11 @@
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'block'
+
+                const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
+                for (let i = 0; i < ataqueVidaOpponent.length; i++) {
+                    ataqueVidaOpponent[i].textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
+                }
 
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
