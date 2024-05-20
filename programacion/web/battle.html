@@ -132,6 +132,17 @@
                                     ataqueEspecial.className = 'ataque-especial ataque-especial-user'
 
                                     cardDiv.appendChild(ataqueEspecial)
+
+                                    if (data.combate.turno_uuid === data.user.id_uuid && card.cartaCombate.ataque_especial === 0) {
+                                        const ataqueEspecialButton = document.createElement('button')
+                                        ataqueEspecialButton.className = card.ataque.nombre
+                                        ataqueEspecialButton.addEventListener('click', () => {
+                                            const tipoSplit = card.ataque.tipo.split('/')
+                                            if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
+                                                socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                            }
+                                        })
+                                    }
                                 }
 
                                 if (data.combate.turno_uuid === data.user.id_uuid) {
