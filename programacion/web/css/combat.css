@@ -297,3 +297,22 @@ button#leave-match:hover{
     border: none;
     cursor: pointer;
 }
+.mana {
+    position: absolute;
+    display: flex;
+    left: 70px;
+    bottom: 10%;
+}
+
+.mana img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.mana p {
+    font-family: 'MedievalSharp';
+    margin: 0px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
