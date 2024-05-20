@@ -512,61 +512,6 @@
                                 ataqueVida.textContent = ataqueVidaText
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
-                            if (card.efecto_secundario === 'inmovil') {
-                                const buttonAtaque = document.getElementsByClassName('attack')
-                                buttonAtaque.forEach(attack => {
-                                    attack.remove()
-                                })
-
-                                const ataquesEspeciales = document.getElementsByClassName('ataque-especial-button')
-                                ataquesEspeciales.forEach(ataqueEspecial => {
-                                    ataqueEspecial.remove()
-                                })
-
-                                const buttonAtaqueInmovil = document.createElement('button')
-                                buttonAtaqueInmovil.className = 'attack'
-                                buttonAtaqueInmovil.addEventListener('click', () => {
-                                    if (card.efecto_secundario === 'inmovil') {
-                                        alert('This card is immobilized')
-                                    } else {
-                                        if (playedCardAttack.length !== 0) {
-                                            alert('Ya has puesto cartas en el tablero, no puedes atacar')
-                                        } else {
-                                            if (cardClicked.length === 1) {
-                                                cardClicked = []
-                                                localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
-                                            }
-                                            cardClicked.push(card.id_carta)
-                                            localStorage.setItem('cardClicked',cardClicked)
-                                            const opponentCards = document.getElementsByClassName('card-opponent')
-                                            for (let i = 0; i < opponentCards.length; i++) {
-                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-                                            }
-                                        }
-                                    }
-                                })
-
-                                userCards[i].appendChild(buttonAtaqueInmovil)
-
-                                const ataqueEspecialInmovil = document.createElement('button')
-                                ataqueEspecialInmovil.className = 'ataque-especial-button'
-                                ataqueEspecialInmovil.textContent = data.ataques[index].nombre
-                                ataqueEspecialInmovil.addEventListener('click', () => {
-                                    console.log('Efecto secundario', card.efecto_secundario)
-                                    if (card.efecto_secundario === 'inmovil') {
-                                        alert('This card is immobilized')
-                                    } else {
-                                        const tipoSplit = data.ataques[index].tipo.split('/')
-                                        console.log(tipoSplit)
-                                        if (data.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
-                                            socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.ataques[index].id, username: localStorage.getItem('username'), tipo: data.ataques[index].tipo })
-                                        } else {
-                                            console.log(data.ataques[index].tipo)
-                                        }
-                                    }
-                                })
-                                userCards[i].appendChild(ataqueEspecialInmovil)
-                            }
                         }
                     })
                     userCards[i].style.boxShadow = 'none'
@@ -640,7 +585,7 @@
                     buttonAtaque.addEventListener('click', () => {
                         data.cartas.cartasCombate.forEach(card => {
                             if (parseInt(cardUser[i].id) === card.id_carta) {
-                                if (card.efecto_secundario === 'inmovil') {
+                                if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                     alert('This card is immobilized')
                                 } else {
                                     if (playedCardAttack.length !== 0) {
@@ -670,7 +615,7 @@
                         ataqueEspecialButton.addEventListener('click', () => {
                             data.cartas.cartasCombate.forEach(card => {
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
-                                    if (card.efecto_secundario === 'inmovil') {
+                                    if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
                                         const tipoSplit = data.cartas.ataques[i].tipo.split('/')
