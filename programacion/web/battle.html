@@ -135,7 +135,7 @@
 
                                     if (data.combate.turno_uuid === data.user.id_uuid && card.cartaCombate.ataque_especial === 0) {
                                         const ataqueEspecialButton = document.createElement('button')
-                                        ataqueEspecialButton.className = card.ataque.nombre
+                                        ataqueEspecialButton.className = 'ataque-especial'
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             const tipoSplit = card.ataque.tipo.split('/')
@@ -530,6 +530,7 @@
             } else if (data.username === localStorage.getItem('opponent')) {
                 console.log(data)
                 cardClicked = []
+                localStorage.setItem('cardClicked', cardClicked)
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -560,7 +561,7 @@
 
                     // if (card.cartaCombate.ataque_especial === 0) {
                     //     const ataqueEspecialButton = document.createElement('button')
-                    //     ataqueEspecialButton.className = card.ataque.nombre
+                    //     ataqueEspecialButton.className = 'ataque-especial'
                     //     ataqueEspecialButton.textContent = card.ataque.nombre
                     //     ataqueEspecialButton.addEventListener('click', () => {
                     //         const tipoSplit = card.ataque.tipo.split('/')
