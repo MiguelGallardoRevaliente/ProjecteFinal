@@ -1805,6 +1805,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
     #deckName{
         padding-left: 20px;
+        width: 100px;
     }
 
     #mazos .container .allMazos .mazo {
@@ -1839,6 +1840,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         margin: 0px;
         right: 12px;
     }
+
+    .top-deck {
+       width: 360px;
+    }
+
+
 
 }
 
