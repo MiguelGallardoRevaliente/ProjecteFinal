@@ -328,11 +328,12 @@ io.on('connection', async (socket) => {
           } else if (ataque[0].estadistica === 'ataque') {
             if (!carta.efecto_secundario) {
               const ataqueNumber = carta.ataque + ataque[0].cambio
+              console.log(carta.ataque, ataque[0].cambio)
               await connection.execute(
                 'UPDATE cartas_combates SET ataque = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                 [ataqueNumber, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
               )
-              console.log('Ataque', ataque)
+              console.log('Ataque', ataqueNumber)
             }
           }
         }
