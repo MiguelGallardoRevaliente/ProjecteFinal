@@ -305,10 +305,11 @@ header .config p {
     border-bottom: 1px solid #ffffff;
 }
 
-#information .container h3{
-    font-size: 0.7em ;
-    margin: 20px 0px ;
+#information .container h3 {
+    font-size: 0.7em;
+    margin: 20px 0px;
 }
+
 #information .container li {
     font-size: 0.8em;
 }
@@ -504,7 +505,7 @@ header .config p {
 
 }
 
-#allchests .chest .info button{
+#allchests .chest .info button {
     padding: 6px 20px;
     display: flex;
     border: none;
@@ -520,7 +521,7 @@ header .config p {
     transition: all 0.2s;
 }
 
-#allchests .chest .info button:hover{
+#allchests .chest .info button:hover {
     background: linear-gradient(45deg, #4386B7, #83D2F3);
     box-shadow: 0px 2px 1px white;
     transform: translateY(2px);
@@ -533,11 +534,11 @@ header .config p {
     gap: 10px;
 }
 
-#allchests .chest .info div .precio{
+#allchests .chest .info div .precio {
     margin: 0px;
 }
 
-#allchests .chest .info .precio-cantidad{
+#allchests .chest .info .precio-cantidad {
 
     display: flex;
     flex-direction: column;
@@ -545,7 +546,7 @@ header .config p {
     gap: 0px;
 }
 
-#allchests .chest div .cantidad{
+#allchests .chest div .cantidad {
     margin: 5px;
 }
 
@@ -1375,7 +1376,7 @@ header .config p {
     margin: 20px 0px;
 }
 
-#settings .setting div p{
+#settings .setting div p {
     margin: 3px;
     font-size: 0.8em;
 }
@@ -1456,6 +1457,7 @@ header .config p {
         opacity: 0.6;
         clip-path: polygon(0 0, 90% 30%, 90% 70%, 0% 100%);
         padding: 47px 2px;
+        z-index: 100;
     }
 
     #open-header:hover {
@@ -1585,9 +1587,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 @media (max-width: 800px) {
 
-    #information{
+    #information {
         min-height: auto;
     }
+
     #information .container {
         padding: 0px 10px;
     }
@@ -1619,8 +1622,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INFORMACION"
 
 }
 
-@media (max-width: 500px){
-    #information .container img{
+@media (max-width: 500px) {
+    #information .container img {
         width: 100%;
     }
 }
@@ -1641,7 +1644,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         padding: 16px 0px;
     }
 
-    #searchGame:active{
+    #searchGame:active {
         transform: translate(-150px, 8px);
     }
 
@@ -1659,14 +1662,17 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         justify-content: space-around;
         align-items: center;
     }
-    .perfil .divUser img{
+
+    .perfil .divUser img {
         width: 55px;
     }
 
-    .perfil .divOro p, .perfil .divUser p{
+    .perfil .divOro p,
+    .perfil .divUser p {
         font-size: 23px;
     }
-    .perfil .divOro{
+
+    .perfil .divOro {
         margin-left: 0px;
     }
 
@@ -1697,7 +1703,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
         flex-direction: row !important;
     }
 
-    .logout{
+    .logout {
         margin-top: 5% !important;
     }
 
@@ -1706,7 +1712,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
 
 @media (max-width: 450px) {
 
-    #settings{
+    #settings {
         padding: 20px;
     }
 
@@ -1716,65 +1722,89 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SETTINGS"
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 */
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
 
-    #inventory .container .links, #chests .container .links, #mazos .container .links{
+    #inventory .container .links,
+    #chests .container .links,
+    #mazos .container .links {
         margin-left: 0px;
     }
 
-   
-    #inventory .container, #chests .container, #mazos .container{
+
+    #inventory .container,
+    #chests .container,
+    #mazos .container {
         margin: 0px;
     }
 
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
+
     /*aqui va el responsive de las cartas de inventory*/
-    #inventory, #chests, #mazos{
+    #inventory,
+    #chests,
+    #mazos {
         padding: 70px 20px;
+        font-size: 22px;
     }
-    .yourCards .carta{
+
+    .yourCards .carta {
         width: 142px;
-        height: 198px;    
+        height: 198px;
     }
-    .yourCards .carta p{
+
+    .yourCards .carta p {
         font-size: 10px;
         font-weight: 600;
     }
 
-    .yourCards .carta .nombreCarta{
+    .yourCards .carta .nombreCarta {
         top: 55%;
         left: 15px;
     }
 
-    .yourCards .carta .ataque-vida{
+    .yourCards .carta .ataque-vida {
         font-size: 9px !important;
         margin: 10px 12px !important;
     }
 
-    .yourCards .carta .ataque-especial{
+    .yourCards .carta .ataque-especial {
         top: 75%;
         font-size: 6px !important;
         left: 20px;
         max-width: 100px;
     }
+
+    #inventory .container .allcards .filtrer form select {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    #inventory .container .top h1,
+    #chests .container .top h1,
+    #mazos .container .top h1 {
+        font-size: 2em;
+        border-left: 10px solid #ffffff;
+        padding-left: 10px;
+    }
+
 }
 
 /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
-@media (max-width: 500px){
-    #chests .allChests .sobre{
+@media (max-width: 500px) {
+    #chests .allChests .sobre {
         width: 300px;
         height: 420px;
     }
 
 }
 
-@media (max-width: 350px){
-    #chests{
+@media (max-width: 350px) {
+    #chests {
         padding: 70px 0px;
     }
 }
