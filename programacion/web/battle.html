@@ -506,11 +506,7 @@
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []
-                localStorage.setItem('cardClicked', cardClicked)
-                const opponentCards = document.getElementsByClassName('card-opponent')
-                for (let i = 0; i < opponentCards.length; i++) {
-                    opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-                }                
+                localStorage.setItem('cardClicked', cardClicked)               
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -559,20 +555,20 @@
                         }
                     })
 
-                    // if (card.cartaCombate.ataque_especial === 0) {
-                    //     const ataqueEspecialButton = document.createElement('button')
-                    //     ataqueEspecialButton.className = 'ataque-especial-button'
-                    //     ataqueEspecialButton.textContent = card.ataque.nombre
-                    //     ataqueEspecialButton.addEventListener('click', () => {
-                    //         const tipoSplit = card.ataque.tipo.split('/')
-                    //         if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
-                    //             socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
-                    //         } else {
-                    //             console.log(card.ataque.tipo)
-                    //         }
-                    //     })
-                    //     cardDiv.appendChild(ataqueEspecialButton)
-                    // }
+                    if (cartas.cartasCombate[i].ataque_especial === 0) {
+                        const ataqueEspecialButton = document.createElement('button')
+                        ataqueEspecialButton.className = 'ataque-especial-button'
+                        ataqueEspecialButton.textContent = cartas.ataques[i].nombre
+                        ataqueEspecialButton.addEventListener('click', () => {
+                            const tipoSplit = cartas.ataque[i].tipo.split('/')
+                            if (cartas.ataque[i].tipo === 'area' || tipoSplit[1] === 'area') {
+                                socket.emit('special-attack', { idCartaAttacking: cartas.cartasCombate[i].id_carta, idAtaque: cartas.ataque[i].id, username: localStorage.getItem('username'), tipo: cartas.ataque[i].tipo })
+                            } else {
+                                console.log(cartas.ataque[i].tipo)
+                            }
+                        })
+                        cardUser[i].appendChild(ataqueEspecialButton)
+                    }
 
                     cardUser[i].appendChild(buttonAtaque)
                 }
