@@ -546,9 +546,24 @@
 
                                 userCards[i].appendChild(buttonAtaqueInmovil)
 
+                                const index = data.OpponentCards.indexOf(card)
+
                                 const ataqueEspecialInmovil = document.createElement('button')
                                 ataqueEspecialInmovil.className = 'ataque-especial-button'
-                                ataqueEspecialInmovil.textContent = 'Hola'
+                                ataqueEspecialInmovil.textContent = data.ataques[index].nombre
+                                ataqueEspecialInmovil.addEventListener('click', () => {
+                                    if (card.efecto_secundario === 'inmovil') {
+                                        alert('This card is immobilized')
+                                    } else {
+                                        const tipoSplit = data.ataques[index].tipo.split('/')
+                                        console.log(tipoSplit)
+                                        if (data.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
+                                            socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.ataques[index].id, username: localStorage.getItem('username'), tipo: data.ataques[index].tipo })
+                                        } else {
+                                            console.log(data.ataques[index].tipo)
+                                        }
+                                    }
+                                })
                             }
                         }
                     })
