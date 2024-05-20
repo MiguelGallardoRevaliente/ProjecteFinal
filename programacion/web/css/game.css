@@ -1796,29 +1796,29 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 @media (max-width: 500px) {
 
-#mazos .container .allMazos .mazo{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(79px, 1fr));
-    margin: auto;
-    gap: 4px;
-    width: 329px;
-    align-items: center;
-    margin-top: 5%;
-    background: #232323;
-    padding: 10px;
-    box-shadow: 0px 0px 15px black inset;
-    margin-top: 0px
-}
+    #mazos {
+        padding: 0px;
+    }
 
-#mazos .container .allMazos .mazo div{
-    width: 80px;
-    height: 112px;
-    background: #3d3d3d;
-    display: flex;
-    cursor: pointer;
-    position: relative;
-    border-radius: 15px;
-}
+    #mazos .container .top {
+        padding-left: 20px;
+    }
+    #deckName{
+        padding-left: 20px;
+    }
+
+    #mazos .container .allMazos .mazo {
+        grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+        gap: 4px;
+        width: 360px;
+        padding: 10px;
+        margin-top: 0px;
+    }
+
+    #mazos .container .allMazos .mazo div {
+        width: 87px;
+        height: 121px;
+    }
 
 }
 
