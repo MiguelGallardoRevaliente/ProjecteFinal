@@ -138,11 +138,12 @@
                                         ataqueEspecialButton.className = 'ataque-especial-button'
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
-                                            const tipoSplit = card.ataque.tipo.split('/')
-                                            if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
-                                                socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                            const tipoSplit = data.cartas.ataques[i].tipo.split('/')
+                                            console.log(tipoSplit)
+                                            if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
+                                                socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
                                             } else {
-                                                console.log(card.ataque.tipo)
+                                                console.log(data.cartas.ataques[i].tipo)
                                             }
                                         })
                                         cardDiv.appendChild(ataqueEspecialButton)
