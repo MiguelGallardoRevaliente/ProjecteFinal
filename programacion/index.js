@@ -160,7 +160,7 @@ io.on('connection', async (socket) => {
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       opponentId = combate[0].id_user_1_uuid
     }
-    const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
+    const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
     const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
     // console.log(cartaAttacked)
 
