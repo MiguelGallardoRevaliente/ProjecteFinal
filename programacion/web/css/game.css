@@ -1796,42 +1796,41 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 @media (max-width: 900px){
     #mazos .container .allMazos .mazo {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        width: 800px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        width: 700px;
     }
 
     #mazos .container .allMazos .mazo div {
-        width: 190px;
-        height: 270px;
+        width: 140px;
+        height: 200px;
     }
 
     #mazos .container .allMazos .mazo div .nombre {
         font-size: 10px;
         top: 50.5%;
-        left: 15px;
+        left: 10px;
     }
 
     #mazos .container .allMazos .mazo div .ataque {
         font-size: 7px;
         top: 74%;
-        max-width: 150px;
-        left: 15px;
+        max-width: 70px;
+        left: 10px;
     }
 
     #mazos .container .allMazos .mazo div .ataqueVida {
         font-size: 10px;
         bottom: 6px;
         margin: 0px;
-        right: 13.5px;
+        right: 8.5px;
     }
 
     #deckName {
-        width: 800px;
-        margin: auto;
+        width: 700px;
     }
 
     .top-deck {
-        width: 800px;
+        width: 700px;
     }
 
     .pasar p {
@@ -1843,6 +1842,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         height: 30px;
         font-size: 25px;
     }
+
 
 
 }
