@@ -286,5 +286,5 @@ button#leave-match:hover{
     position: absolute;
     top: 10px;
     left: 10px;
-    
+    margin: 0px;
 }
