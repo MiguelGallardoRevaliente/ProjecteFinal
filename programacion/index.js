@@ -385,7 +385,12 @@ io.on('connection', async (socket) => {
     }
     await connection.execute(
       'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE duracion_efecto > 0 AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-      [combate[0].id_combate_uuid, user[0].id_uuid]
+      [combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
+    )
+
+    await connection.execute(
+      'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE duracion_efecto > 0 AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+      [combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
     )
 
     io.emit('ended-turn', { username, cartas })
