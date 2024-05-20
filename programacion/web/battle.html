@@ -367,6 +367,8 @@
                 ataqueEspecialPlayed.className = 'ataque-especial'
 
                 cardDivPlayed.appendChild(ataqueEspecialPlayed)
+
+                /* AQUI SE PODRIA PONER EL BOTON DE ATAQUE ESPECIAL */
             }
 
             cardDivPlayed.appendChild(cardNamePlayed)
@@ -413,7 +415,6 @@
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 cardDivPlayed.addEventListener('click', () => {
-                    // if ()
                     if (cardClicked.length === 1) {
                         console.log('Pero bueno')
                         socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
@@ -477,12 +478,11 @@
         })
 
         socket.on('special-attacked-area', (data) => {
-            console.log(data)
+            // console.log(data)
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
-                        console.log(parseInt(opponentCards[i].id), card.id_carta)
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 opponentCards[i].remove()
@@ -492,7 +492,6 @@
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
-                                console.log('Opponent attacked')
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                         }
@@ -503,7 +502,6 @@
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
                     data.opponentCards.forEach(card => {
-                        console.log(parseInt(userCards[i].id), card.id_carta)
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 userCards[i].remove()
@@ -513,7 +511,6 @@
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
-                                console.log('User attacked')
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                         }
@@ -543,19 +540,30 @@
                     })
                 }
 
-                const attacks = document.querySelectorAll('.attack');
+                const attacks = document.querySelectorAll('.attack')
 
                 attacks.forEach(attack => {
                     attack.remove()
                 })
 
-                const ataquesEspeciales = document.querySelectorAll('.ataque-especial-button');
+                const ataquesEspeciales = document.querySelectorAll('.ataque-especial-button')
 
                 ataquesEspeciales.forEach(ataqueEspecial => {
                     ataqueEspecial.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
                 console.log('User', data)
+                if (document.querySelectorAll('.attack')) {
+                    const attacks = document.querySelectorAll('.attack')
+                    attacks.forEach(attack => {
+                        attack.remove()
+                    })
+                } else if (document.querySelectorAll('.ataque-especial-button')) {
+                    const ataquesEspeciales = document.querySelectorAll('.ataque-especial-button')
+                    ataquesEspeciales.forEach(ataqueEspecial => {
+                        ataqueEspecial.remove()
+                    })
+                }
                 cardClicked = []
                 localStorage.setItem('cardClicked', cardClicked)
                 const turno = document.getElementById('turno')
@@ -574,6 +582,7 @@
                 }
 
                 for (let i = 0; i < cardUser.length; i++) {
+                    ///// ATAQUEBOTON /////
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
