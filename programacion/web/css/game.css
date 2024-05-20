@@ -1134,6 +1134,10 @@ header .config p {
     position: absolute;
     top: 10px;
     right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .put_on_market {
