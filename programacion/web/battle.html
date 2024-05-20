@@ -28,8 +28,11 @@
                 })
         }
 
-        let cardClicked = JSON.parse(localStorage.getItem('cardClicked')) || []
+        let cardClicked = []
         console.log(localStorage.getItem('cardClicked'))
+        if (llocalStorage.getItem('cardClicked')) {
+            cardClicked.push(localStorage.getItem('cardClicked'))
+        }
         console.log(cardClicked)
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
@@ -37,7 +40,6 @@
                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
             }
         }
-        
         let playedCard = [] /* Para no poner varias veces la misma carta */
         let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
         if (localStorage.getItem('playedCardAttack')) {
