@@ -2084,11 +2084,34 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
 
+@media (max-width: 1350px){
+
+    .resultado_sobre{
+        grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    }
+
+    .resultado_sobre .carta{
+        width: 206px;
+        height: 287px;
+    }
+    .QuickSell button{
+
+    }
+}
+
 @media (max-width: 550px){
+
     .sobres_god_divGeneral .sobre{
         width: 350px;
         height: 488px;
     }
+
+    .sobres_god_divGeneral form button{
+        width: 80px;
+        height: 35px;
+        font-size: 20px;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -2096,6 +2119,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         width: 300px;   
         height: 420px;
     }
+    
 
 }
 
