@@ -513,11 +513,15 @@
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                             if (card.efecto_secundario === 'inmovil') {
-                                const buttonAtaque = document.getElementsByClassName('attack')[i]
-                                buttonAtaque.remove()
+                                const buttonAtaque = document.getElementsByClassName('attack')
+                                buttonAtaque.forEach(attack => {
+                                    attack.remove()
+                                })
 
-                                const ataquesEspeciales = document.getElementsByClassName('ataque-especial-button')[i]
-                                ataquesEspeciales.remove()
+                                const ataquesEspeciales = document.getElementsByClassName('ataque-especial-button')
+                                ataquesEspeciales.forEach(ataqueEspecial => {
+                                    ataqueEspecial.remove()
+                                })
 
                                 const buttonAtaqueInmovil = document.createElement('button')
                                 buttonAtaqueInmovil.className = 'attack'
