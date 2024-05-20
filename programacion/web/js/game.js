@@ -26,6 +26,15 @@ const header = document.getElementById('header')
 const closeHeader = document.getElementById('close-header')
 const openHeader = document.getElementById('open-header')
 
+const put_on_market = document.getElementsByClassName('put_on_market')
+
+function closePutOnMarket() {
+
+  put_on_market.style.display = 'none'
+
+
+}
+
 function mostrarHeader () {
   header.style.display = 'flex'
   closeHeader.style.display = 'block'
