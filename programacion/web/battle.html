@@ -142,6 +142,7 @@
                                                 socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                             }
                                         })
+                                        cardDiv.appendChild(ataqueEspecialButton)
                                     }
                                 }
 
