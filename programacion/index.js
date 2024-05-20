@@ -215,11 +215,14 @@ io.on('connection', async (socket) => {
 
   /* Aqui se recibe la peticion de usar un ataque especial */
   socket.on('special-attack', async (data) => {
-    const idCarta = data.id
+    const idCarta = data.idCartaAttacking
     const username = data.username
     const idAtaque = data.idAtaque
     const tipo = data.tipo
     let opponentId
+    console.log(idCarta)
+    console.log(username)
+    console.log(idAtaque)
 
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
