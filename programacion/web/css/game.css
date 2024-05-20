@@ -1728,14 +1728,37 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         margin: 0px;
     }
 
-    
-
 }
 
 @media (max-width: 500px){
     /*aqui va el responsive de las cartas de inventory*/
     #inventory, #chests, #mazos{
         padding: 70px 20px;
+    }
+    .yourCards .carta{
+        width: 142px;
+        height: 198px;    
+    }
+    .yourCards .carta p{
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .yourCards .carta .nombreCarta{
+        top: 55%;
+        left: 15px;
+    }
+
+    .yourCards .carta .ataque-vida{
+        font-size: 9px !important;
+        margin: 10px 12px !important;
+    }
+
+    .yourCards .carta .ataque-especial{
+        top: 75%;
+        font-size: 6px !important;
+        left: 20px;
+        max-width: 100px;
     }
 }
 
