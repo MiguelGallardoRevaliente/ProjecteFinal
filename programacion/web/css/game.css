@@ -346,7 +346,7 @@ header .config p {
     gap: 0px;
 }
 
-#shop .container .top .menu{
+#shop .container .top .menu {
     display: flex;
     gap: 0px;
 }
@@ -1130,7 +1130,7 @@ header .config p {
     position: relative;
 }
 
-.put_on_market_inside .close{
+.put_on_market_inside .close {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -2084,29 +2084,57 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
 
-@media (max-width: 1350px){
+@media (max-width: 1350px) {
 
-    .resultado_sobre{
+    .resultado_sobre {
         grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
     }
 
-    .resultado_sobre .carta{
+    .resultado_sobre .carta {
         width: 206px;
         height: 287px;
     }
-    .QuickSell button{
 
+    .resultado_sobre .carta .ataque-vida {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 17px 21px !important;
+        font-size: 11px !important;
+        font-weight: 800;
+        font-family: "Goldman", sans-serif;
     }
+
+    .resultado_sobre .carta .ataque-especial {
+        position: absolute;
+        top: 75%;
+        font-size: 7px !important;
+        font-weight: 600 !important;
+        left: 23px;
+        max-width: 163px;
+    }
+
+    .resultado_sobre .carta .nombreCarta {
+        font-size: 12px;
+        left: 21px;
+        font-weight: 800;
+    }
+
+    .QuickSell button {
+        font-size: 12px;
+        width: 120px;
+    }
+
 }
 
-@media (max-width: 550px){
+@media (max-width: 550px) {
 
-    .sobres_god_divGeneral .sobre{
+    .sobres_god_divGeneral .sobre {
         width: 350px;
         height: 488px;
     }
 
-    .sobres_god_divGeneral form button{
+    .sobres_god_divGeneral form button {
         width: 80px;
         height: 35px;
         font-size: 20px;
@@ -2116,10 +2144,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
 @media (max-width: 500px) {
     #chests .allChests .sobre {
-        width: 300px;   
+        width: 300px;
         height: 420px;
     }
-    
+
 
 }
 
@@ -2137,49 +2165,50 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
         font-size: 25px;
     }
 
-    #shop .container .top{
+    #shop .container .top {
         padding: 0px 20px;
     }
 
-    #allchests .chest{
+    #allchests .chest {
         width: 300px;
         height: 420px;
         margin: auto;
     }
 
-    #allchests .chest .precio-cantidad{
+    #allchests .chest .precio-cantidad {
         font-size: 20px;
     }
-    #allchests .chest .info{
+
+    #allchests .chest .info {
 
         bottom: -43%;
 
     }
 
-    #allchests .chest .info button{
+    #allchests .chest .info button {
         font-size: 20px;
         padding: 4px 10px;
     }
 
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
 
-    #shop{
+    #shop {
         padding-top: 20px;
     }
 
-    #shop .container .top{
+    #shop .container .top {
         flex-direction: column;
         margin-bottom: 40px;
 
     }
 
-    #allchests .chest .info div{
+    #allchests .chest .info div {
         align-items: center;
     }
 
-    #allchests .chest .info div img{
+    #allchests .chest .info div img {
         width: 20px;
         height: 20px;
     }
