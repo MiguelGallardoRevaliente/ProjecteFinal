@@ -28,7 +28,7 @@
                 })
         }
 
-        let cardClicked = localStorage.getItem('cardClicked') || []
+        let cardClicked = JSON.parse(localStorage.getItem('cardClicked')) || []
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
             for (let i = 0; i < opponentCards.length; i++) {
@@ -42,7 +42,8 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    /*Board*/
+                    /* BOARD */
+                    // Aqui van las cartas en el tablero del oponente 
                     const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                     if (data.cartasCombates.cartasOpponent) {
                         const cartasOpponent = data.cartasCombates.cartasOpponent
@@ -89,6 +90,7 @@
                         })
                     }
 
+                    // Aqui van las cartas en el tablero del usuario
                     const userBoard = document.getElementsByClassName('user-board')[0]
                     if (data.cartasCombates.cartasUser) {
                         const cartasUser = data.cartasCombates.cartasUser
@@ -134,10 +136,10 @@
 
                                         if (cardClicked.length === 1) {
                                             cardClicked = []
-                                            localStorage.setItem('cardClicked', cardClicked)
+                                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                                         }
                                         cardClicked.push(card.cartaEnCombateUser.id)
-                                        localStorage.setItem('cardClicked', cardClicked)
+                                        localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                                         console.log(cardClicked)
                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                         for (let i = 0; i < opponentCards.length; i++) {
@@ -341,10 +343,10 @@
 
                     if (cardClicked.length === 1) {
                         cardClicked = []
-                        localStorage.setItem('cardClicked', cardClicked)
+                        localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                     }
                     cardClicked.push(card.cartaEnCombateUser.id)
-                    localStorage.setItem('cardClicked', cardClicked)
+                    localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                     console.log(cardClicked)
                     const opponentCards = document.getElementsByClassName('card-opponent')
                     for (let i = 0; i < opponentCards.length; i++) {
@@ -465,10 +467,10 @@
 
                         if (cardClicked.length === 1) {
                             cardClicked = []
-                            localStorage.setItem('cardClicked', cardClicked)
+                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                         }
                         cardClicked.push(card.cartaEnCombateUser.id)
-                        localStorage.setItem('cardClicked', cardClicked)
+                        localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                         console.log(cardClicked)
                         const opponentCards = document.getElementsByClassName('card-opponent')
                         for (let i = 0; i < opponentCards.length; i++) {
