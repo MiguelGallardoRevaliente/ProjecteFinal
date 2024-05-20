@@ -470,6 +470,7 @@
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
+                        console.log(parseInt(opponentCards[i].id), card.id_carta)
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 opponentCards[i].remove()
@@ -490,6 +491,7 @@
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
                     data.opponentCards.forEach(card => {
+                        console.log(parseInt(userCards[i].id), card.id_carta)
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 userCards[i].remove()
