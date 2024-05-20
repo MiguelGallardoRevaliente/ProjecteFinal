@@ -178,6 +178,7 @@ io.on('connection', async (socket) => {
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
       if (vida === 0) {
+        console.log(combate[0].mana_user_2, cartaAttackedInfo[0].costo_mana)
         mana = combate[0].mana_user_2 + cartaAttackedInfo[0].costo_mana
         console.log(mana)
         await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
@@ -185,7 +186,9 @@ io.on('connection', async (socket) => {
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
       if (vida === 0) {
+        console.log(combate[0].mana_user_1, cartaAttackedInfo[0].costo_mana)
         mana = combate[0].mana_user_1 + cartaAttackedInfo[0].costo_mana
+        console.log(mana)
         await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
       }
     }
