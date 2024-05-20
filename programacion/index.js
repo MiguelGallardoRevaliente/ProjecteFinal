@@ -305,8 +305,8 @@ io.on('connection', async (socket) => {
       console.log(tipoSplited[0])
       // let mana = 0
       const [cartasAliadas] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ? AND id_carta != ?;',
-        [user[0].id_uuid, combate[0].id_combate_uuid, idCarta]
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [user[0].id_uuid, combate[0].id_combate_uuid]
       )
 
       if (tipoSplited[0] === 'power-up') {
