@@ -1174,11 +1174,12 @@ header .config p {
     padding: 5px;
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
-    background: #9D9D9D;
-    color: rgb(0, 0, 0);
+    background: #2b2b2b;
+    border: 1px solid #00e3cb;
+    color: rgb(255 255 255);
     font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
 
 }
 
@@ -1835,25 +1836,24 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
     #mazos .container .allMazos .mazo div .nombre {
         font-size: 13px;
-        top: 52.5%;
-        left: 23px;
-        font-weight: 800;
+        top: 51%;
+        left: 20px;
+        font-weight: 600;
     }
 
     #mazos .container .allMazos .mazo div .ataque {
-        font-size: 9px;
+        font-size: 8px;
         top: 75%;
-        max-width: 200px;
-        left: 28px;
-        font-weight: 500;
+        max-width: 162px;
+        left: 23px;
+        font-weight: 600;
     }
 
     #mazos .container .allMazos .mazo div .ataqueVida {
-        font-size: 15px;
-        bottom: 18px;
+        font-size: 12px;
+        bottom: 16px;
         margin: 0px;
-        right: 24px;
-        font-family: "Goldman", sans-serif;
+        right: 21px;
     }
 
     #deckName {
