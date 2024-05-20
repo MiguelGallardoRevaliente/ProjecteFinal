@@ -238,14 +238,18 @@ io.on('connection', async (socket) => {
       opponentId = combate[0].id_user_1_uuid
     }
 
-    const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+    console.log('hola4')
 
-    const [cartaCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND id_carta = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, idCarta, combate[0].id_combate_uuid])
+    const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+    console.log('hola5')
+
+    const [cartaCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
+    console.log(cartaCombate)
     if (cartaCombate.length === 0) {
       return
     }
 
-    console.log('hola4')
+    console.log('hola6')
 
     if (tipo === 'area') {
       let mana = 0
