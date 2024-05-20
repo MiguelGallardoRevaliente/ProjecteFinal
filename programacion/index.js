@@ -286,6 +286,11 @@ io.on('connection', async (socket) => {
       'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
       [user[0].id_uuid, combate[0].id_combate_uuid]
     )
+    const [cartasOpponent] = await connection.execute(
+      'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+      [opponentId, combate[0].id_combate_uuid]
+    )
+
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     if (cartasCombate.length === 0) {
       return
@@ -354,9 +359,6 @@ io.on('connection', async (socket) => {
                 'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                 [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
               )
-            } else {
-              io.emit('already-has-effect', { message: 'Already has effect', username })
-              return
             }
           } else if (ataque[0].estadistica === 'ataque') {
             if (!carta.efecto_secundario) {
@@ -365,9 +367,6 @@ io.on('connection', async (socket) => {
                 'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                 [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
               )
-            } else {
-              io.emit('already-has-effect', { message: 'Already has effect', username })
-              return
             }
           }
         }
@@ -377,6 +376,40 @@ io.on('connection', async (socket) => {
         const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
         await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [opponentId, combate[0].id_combate_uuid])
+
+        io.emit('ended-turn', { username, cartas })
+        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
+      }
+
+      if (tipoSplited[0] === 'power-down') {
+        for (const carta of cartasOpponent) {
+          if (!carta.efecto_secundario) {
+            let ataqueNumber = carta.ataque - ataque[0].cambio
+            if (ataqueNumber < 0) {
+              ataqueNumber = 0
+            }
+            await connection.execute(
+              'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+              [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
+            )
+          }
+        }
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        const [opponentCards] = await connection.execute(
+          'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+          [opponentId, combate[0].id_combate_uuid]
+        )
+        const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
+        await connection.execute(
+          'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
+          [opponentId, combate[0].id_combate_uuid]
+        )
 
         io.emit('ended-turn', { username, cartas })
         io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
