@@ -163,7 +163,9 @@ io.on('connection', async (socket) => {
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     const cartasCombateId = cartasCombate.map(carta => carta.id_carta)
-    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [cartasCombateId])
+    const [cartasInfo] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartasCombateId])
+    const ataquesId = cartasInfo.map(carta => carta.id_ataque)
+    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [ataquesId])
     const cartas = {
       cartasCombate,
       ataques
@@ -247,7 +249,9 @@ io.on('connection', async (socket) => {
       return
     }
     const cartaCombateId = cartaCombate.map(carta => carta.id_carta)
-    const [ataquesCartas] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartaCombateId])
+    const [cartasInfo] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartaCombateId])
+    const ataquesId = cartasInfo.map(carta => carta.id_ataque)
+    const [ataquesCartas] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [ataquesId])
 
     const cartas = {
       cartasCombate: cartaCombate,
@@ -1030,9 +1034,16 @@ app.post('/buyCard', async (req, res) => {
     const idMercado = req.body.idMercado
     const idCarta = req.body.idCarta
     const precio = req.body.precio
+
     await connection.execute('UPDATE users SET oro = oro - ? WHERE BIN_TO_UUID(id) = ?', [precio, id])
+
+    const [mercado] = await connection.execute('SELECT * FROM mercado_cartas WHERE id_carta_mercado = ?', [idMercado])
+    const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [mercado[0].id_user])
+
+    await connection.execute('UPDATE users SET oro = oro + ? WHERE BIN_TO_UUID(id) = ?', [precio, user[0].id])
     await connection.execute('DELETE FROM mercado_cartas WHERE id_carta_mercado = ?', [idMercado])
     await connection.execute('INSERT INTO users_cartas (id_user, id_carta) VALUES (UUID_TO_BIN(?), ?)', [id, idCarta])
+
     return res.status(200).json({ message: 'Card bought' })
   } catch (err) {
     console.error(err)
