@@ -521,7 +521,14 @@
                 attacks.forEach(attack => {
                     attack.remove()
                 })
+
+                const ataquesEspeciales = document.querySelectorAll('.ataque-especial');
+
+                ataquesEspeciales.forEach(ataqueEspecial => {
+                    ataqueEspecial.remove()
+                })
             } else if (data.username === localStorage.getItem('opponent')) {
+                console.log(data)
                 cardClicked = []
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
@@ -550,6 +557,21 @@
                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
                         }
                     })
+
+                    // if (card.cartaCombate.ataque_especial === 0) {
+                    //     const ataqueEspecialButton = document.createElement('button')
+                    //     ataqueEspecialButton.className = card.ataque.nombre
+                    //     ataqueEspecialButton.textContent = card.ataque.nombre
+                    //     ataqueEspecialButton.addEventListener('click', () => {
+                    //         const tipoSplit = card.ataque.tipo.split('/')
+                    //         if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
+                    //             socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                    //         } else {
+                    //             console.log(card.ataque.tipo)
+                    //         }
+                    //     })
+                    //     cardDiv.appendChild(ataqueEspecialButton)
+                    // }
 
                     cardUser[i].appendChild(buttonAtaque)
                 }
