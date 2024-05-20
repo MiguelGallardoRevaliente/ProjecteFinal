@@ -1801,17 +1801,19 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
     #mazos .container .top {
         padding-left: 20px;
+        font-size: 30px;
 
     }
-
+    
     #deckName{
         padding-left: 0px;
-        width: 100px;
+        width: 120px;
         margin: 0px;
+        font-size: 30px;
     }
 
     #mazos .container .allMazos .mazo{
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
         width: 490px;
         padding: 10px;
         margin-top: 0px;
@@ -1819,8 +1821,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
 
     #mazos .container .allMazos .mazo div{
-        width: 140px;
-        height: 180px;
+        width: 115px;
+        height: 165px;
     }
 
     #mazos .container .allMazos .mazo div .nombre{
@@ -1845,6 +1847,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
     .top-deck{
         width: 490px;
+        align-items: center;
     }
 
 }
