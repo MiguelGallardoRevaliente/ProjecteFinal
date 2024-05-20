@@ -319,7 +319,7 @@ io.on('connection', async (socket) => {
               if (vida > cartaInfo[0].vida) {
                 vida = cartaInfo[0].vida
               }
-              console.log(vida)
+              console.log('Vida', vida)
               await connection.execute(
                 'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                 [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
@@ -332,7 +332,7 @@ io.on('connection', async (socket) => {
                 'UPDATE cartas_combates SET ataque = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                 [ataqueNumber, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
               )
-              console.log(ataque)
+              console.log('Ataque', ataque)
             }
           }
         }
