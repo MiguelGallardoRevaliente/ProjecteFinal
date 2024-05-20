@@ -1794,83 +1794,127 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE DECKS*/
 
-@media (max-width: 500px) {
-
+@media (max-width: 700px) {
     #mazos {
         padding: 70px 0px;
     }
 
     #mazos .container .top {
         padding-left: 20px;
+
     }
+
     #deckName{
         padding-left: 0px;
         width: 100px;
         margin: 0px;
     }
 
-    #mazos .container .allMazos .mazo {
-        grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
-        gap: 4px;
-        width: 360px;
+    #mazos .container .allMazos .mazo{
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        width: 490px;
         padding: 10px;
         margin-top: 0px;
+        gap: 5px;
     }
 
-    #mazos .container .allMazos .mazo div {
-        width: 87px;
-        height: 121px;
+    #mazos .container .allMazos .mazo div{
+        width: 140px;
+        height: 180px;
     }
 
-    #mazos .container .allMazos .mazo div .nombre {
-        font-size: 6px;
+    #mazos .container .allMazos .mazo div .nombre{
+        font-size: 8px;
         top: 50.5%;
         left: 10px;
     }
 
-    #mazos .container .allMazos .mazo div .ataque {
-        font-size: 3px;
+    #mazos .container .allMazos .mazo div .ataque{
+        font-size: 5px;
         top: 74%;
         max-width: 70px;
         left: 10px;
     }
 
-    #mazos .container .allMazos .mazo div .ataqueVida {
-        font-size: 6px;
+    #mazos .container .allMazos .mazo div .ataqueVida{
+        font-size: 8px;
         bottom: 6px;
         margin: 0px;
         right: 8.5px;
     }
 
-    .top-deck {
-       width: 360px;
+    .top-deck{
+        width: 490px;
     }
-
-    .pasar p{
-        margin: 0px;
-    }
-    .pasar button{
-        width: 25px;
-        height: 25px;
-        font-size: 22px;
-    }
-
 
 }
 
-/*
+    @media (max-width: 500px) {
+
+
+        #mazos .container .allMazos .mazo {
+            grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+            gap: 4px;
+            width: 360px;
+            padding: 10px;
+            margin-top: 0px;
+        }
+
+        #mazos .container .allMazos .mazo div {
+            width: 87px;
+            height: 121px;
+        }
+
+        #mazos .container .allMazos .mazo div .nombre {
+            font-size: 6px;
+            top: 50.5%;
+            left: 10px;
+        }
+
+        #mazos .container .allMazos .mazo div .ataque {
+            font-size: 3px;
+            top: 74%;
+            max-width: 70px;
+            left: 10px;
+        }
+
+        #mazos .container .allMazos .mazo div .ataqueVida {
+            font-size: 6px;
+            bottom: 6px;
+            margin: 0px;
+            right: 8.5px;
+        }
+
+        .top-deck {
+            width: 360px;
+        }
+
+        .pasar p {
+            margin: 0px;
+        }
+
+        .pasar button {
+            width: 25px;
+            height: 25px;
+            font-size: 22px;
+        }
+
+
+    }
+
+    /*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
-@media (max-width: 500px) {
-    #chests .allChests .sobre {
-        width: 300px;
-        height: 420px;
+    @media (max-width: 500px) {
+        #chests .allChests .sobre {
+            width: 300px;
+            height: 420px;
+        }
+
     }
 
-}
-
-@media (max-width: 350px) {
-    #chests {
-        padding: 70px 0px;
+    @media (max-width: 350px) {
+        #chests {
+            padding: 70px 0px;
+        }
     }
-}
