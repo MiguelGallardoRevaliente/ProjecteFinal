@@ -1795,14 +1795,19 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE DECKS*/
 
 @media (max-width: 900px){
+
+    #mazos {
+        padding: 70px 0px;
+    }
+
     #mazos .container .allMazos .mazo {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         width: 700px;
     }
 
     #mazos .container .allMazos .mazo div {
-        width: 140px;
-        height: 200px;
+       width: 160px;
+        height: 223px;
     }
 
     #mazos .container .allMazos .mazo div .nombre {
