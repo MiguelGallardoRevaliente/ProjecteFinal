@@ -1806,7 +1806,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
     #mazos .container .allMazos .mazo {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        width: 1100px;
+        width: 900px;
     }
 
     #mazos .container .allMazos .mazo div {
@@ -1830,22 +1830,20 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
 
     #mazos .container .allMazos .mazo div .ataqueVida {
-        display: flex;
+        font-size: 15px;
         bottom: 18px;
         margin: 0px;
-        font-size: 15px;
-        font-weight: 800;
         right: 24px;
         font-family: "Goldman", sans-serif;
     }
 
     #deckName {
-        width: 1100px;
-        margin: auto;
+        width: 900px;
+        margin-bottom: 15px;
     }
 
     .top-deck {
-        width: 1100px;
+        width: 900px;
     }
 
     .pasar p {
@@ -1857,6 +1855,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         height: 30px;
         font-size: 25px;
     }
+
 
 }
 
