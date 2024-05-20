@@ -501,7 +501,7 @@
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
-                    data.opponentCards.forEach(card => {
+                    data.opponentCards.forEach(card, index => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 userCards[i].remove()
@@ -546,7 +546,7 @@
 
                                 userCards[i].appendChild(buttonAtaqueInmovil)
 
-                                const index = data.ataques.findIndex(ataque => ataque.id === card.ataque_especial)
+                                console.log(index)
 
                                 const ataqueEspecialInmovil = document.createElement('button')
                                 ataqueEspecialInmovil.className = 'ataque-especial-button'
