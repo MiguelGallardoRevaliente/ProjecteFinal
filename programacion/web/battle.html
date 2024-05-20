@@ -29,6 +29,7 @@
         }
 
         let cardClicked = JSON.parse(localStorage.getItem('cardClicked')) || []
+        console.log(cardClicked)
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
             for (let i = 0; i < opponentCards.length; i++) {
