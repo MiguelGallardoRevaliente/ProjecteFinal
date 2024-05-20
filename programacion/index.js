@@ -1039,6 +1039,7 @@ app.post('/buyCard', async (req, res) => {
 
     const [mercado] = await connection.execute('SELECT *, BIN_TO_UUID(id_user) AS id_user_uuid FROM mercado_cartas WHERE id_carta_mercado = ?', [idMercado])
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [mercado[0].id_user_uuid])
+    console.log(user[0])
 
     await connection.execute('UPDATE users SET oro = oro + ? WHERE BIN_TO_UUID(id) = ?', [precio, user[0].id])
     await connection.execute('DELETE FROM mercado_cartas WHERE id_carta_mercado = ?', [idMercado])
