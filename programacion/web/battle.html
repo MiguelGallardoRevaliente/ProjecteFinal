@@ -28,7 +28,10 @@
                 })
         }
 
-        let cardClicked = [JSON.parse(localStorage.getItem('cardClicked'))] || []
+        let cardClicked = []
+        if (JSON.parse(localStorage.getItem('playedCardAttack'))) {
+            cardClicked.push(JSON.parse(localStorage.getItem('playedCardAttack')))
+        }
         console.log(cardClicked)
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
@@ -37,7 +40,10 @@
             }
         }
         let playedCard = [] /* Para no poner varias veces la misma carta */
-        let playedCardAttack = localStorage.getItem('playedCardAttack') || [] /* Para no poder atacar si has puesto una carta en el tablero */
+        let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
+        if (JSON.parse(localStorage.getItem('playedCardAttack'))) {
+            playedCardAttack.push(JSON.parse(localStorage.getItem('playedCardAttack')))
+        }
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
@@ -248,7 +254,7 @@
                                 socket.emit('play-card', { id: card.carta.id, user })
                                 playedCard.push(card.carta.id)
                                 playedCardAttack.push(card.carta.id)
-                                localStorage.setItem('playedCardAttack', playedCardAttack)
+                                localStorage.setItem('playedCardAttack', JSON.stringify(playedCardAttack))
                             }
                         })
 
@@ -287,7 +293,7 @@
         const endTurnForm = document.getElementsByClassName('end-turn')[0]
         endTurnForm.addEventListener('submit', (event) => {
             playedCardAttack = []
-            localStorage.setItem('playedCardAttack', playedCardAttack)
+            localStorage.setItem('playedCardAttack', JSON.stringify(playedCardAttack))
             event.preventDefault()
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
