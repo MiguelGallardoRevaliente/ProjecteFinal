@@ -478,7 +478,7 @@
         })
 
         socket.on('special-attacked-area', (data) => {
-            // console.log(data)
+            console.log('Special attack', data)
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
@@ -512,6 +512,43 @@
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                            if (card.efecto_secundario === 'inmovil') {
+                                const buttonAtaque = document.getElementsByClassName('attack')[i]
+                                buttonAtaque.remove()
+
+                                const ataquesEspeciales = document.getElementsByClassName('ataque-especial-button')[i]
+                                ataquesEspeciales.remove()
+
+                                const buttonAtaqueInmovil = document.createElement('button')
+                                buttonAtaqueInmovil.className = 'attack'
+                                buttonAtaqueInmovil.addEventListener('click', () => {
+                                    if (card.efecto_secundario === 'inmovil') {
+                                        alert('This card is immobilized')
+                                    } else {
+                                        if (playedCardAttack.length !== 0) {
+                                            alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                        } else {
+                                            if (cardClicked.length === 1) {
+                                                cardClicked = []
+                                                localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
+                                            }
+                                            cardClicked.push(card.id_carta)
+                                            localStorage.setItem('cardClicked',cardClicked)
+                                            console.log(localStorage.getItem('cardClicked'))
+                                            const opponentCards = document.getElementsByClassName('card-opponent')
+                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                            }
+                                        }
+                                    }
+                                })
+
+                                userCards[i].appendChild(buttonAtaqueInmovil)
+
+                                const ataqueEspecialInmovil = document.createElement('button')
+                                ataqueEspecialInmovil.className = 'ataque-especial-button'
+                                ataqueEspecialInmovil.textContent = ''
                             }
                         }
                     })

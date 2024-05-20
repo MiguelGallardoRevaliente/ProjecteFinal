@@ -291,6 +291,16 @@ io.on('connection', async (socket) => {
     if (cartasCombate.length === 0) {
       return
     }
+    for (const cartaCombate of cartasCombate) {
+      const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+      ataques.push(ataque[0])
+    }
+
+    const cartas = {
+      cartasCombate,
+      ataques
+    }
 
     let mana = 0
     if (tipo === 'area') {
@@ -325,17 +335,6 @@ io.on('connection', async (socket) => {
         'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
         [opponentId, combate[0].id_combate_uuid]
       )
-
-      for (const cartaCombate of cartasCombate) {
-        const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-        const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-        ataques.push(ataque[0])
-      }
-  
-      const cartas = {
-        cartasCombate,
-        ataques
-      }
 
       io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
@@ -375,17 +374,6 @@ io.on('connection', async (socket) => {
 
         await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [opponentId, combate[0].id_combate_uuid])
 
-        for (const cartaCombate of cartasCombate) {
-          const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-          const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-          ataques.push(ataque[0])
-        }
-    
-        const cartas = {
-          cartasCombate,
-          ataques
-        }
-
         io.emit('ended-turn', { username, cartas })
         io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
       }
@@ -420,17 +408,6 @@ io.on('connection', async (socket) => {
           [opponentId, combate[0].id_combate_uuid]
         )
 
-        for (const cartaCombate of cartasCombate) {
-          const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-          const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-          ataques.push(ataque[0])
-        }
-
-        const cartas = {
-          cartasCombate,
-          ataques
-        }
-
         io.emit('ended-turn', { username, cartas })
         io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
       }
@@ -459,23 +436,6 @@ io.on('connection', async (socket) => {
             'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
             [opponentId, combate[0].id_combate_uuid]
           )
-
-          for (const cartaCombate of cartasCombate) {
-            const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-            const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-            ataques.push(ataque[0])
-          }
-
-          for (const cartaCombate of cartasCombate) {
-            const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-            const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-            ataques.push(ataque[0])
-          }
-
-          const cartas = {
-            cartasCombate,
-            ataques
-          }
 
           io.emit('ended-turn', { username, cartas })
           io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
