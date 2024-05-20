@@ -1639,7 +1639,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         left: 50%;
         transform: translateX(-50%);
         width: 300px;
-        bottom: 50px;
+        bottom: 30px;
         font-size: 20px;
         padding: 16px 0px;
     }
@@ -1794,7 +1794,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE DECKS*/
 
-@media (max-width: 1500px){
+@media (max-width: 1500px) {
 
     #mazos .container .top {
         padding-left: 70px;
@@ -1859,7 +1859,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 }
 
-@media (max-width: 1300px){
+@media (max-width: 1300px) {
 
     #mazos .container .top {
         padding-left: 20px;
@@ -1875,7 +1875,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
 
     #mazos .container .allMazos .mazo div {
-       width: 160px;
+        width: 160px;
         height: 224px;
     }
 
@@ -1932,15 +1932,15 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         font-size: 25px;
 
     }
-    
-    #deckName{
+
+    #deckName {
         padding-left: 0px;
         width: 120px;
         margin: 0px;
         font-size: 30px;
     }
 
-    #mazos .container .allMazos .mazo{
+    #mazos .container .allMazos .mazo {
         grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
         width: 490px;
         padding: 10px;
@@ -1948,59 +1948,59 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         gap: 5px;
     }
 
-    #mazos .container .allMazos .mazo div{
+    #mazos .container .allMazos .mazo div {
         width: 115px;
         height: 165px;
     }
 
-    #mazos .container .allMazos .mazo div .nombre{
+    #mazos .container .allMazos .mazo div .nombre {
         font-size: 8px;
         top: 50.5%;
         left: 10px;
     }
 
-    #mazos .container .allMazos .mazo div .ataque{
+    #mazos .container .allMazos .mazo div .ataque {
         font-size: 5px;
         top: 74%;
         max-width: 70px;
         left: 10px;
     }
 
-    #mazos .container .allMazos .mazo div .ataqueVida{
+    #mazos .container .allMazos .mazo div .ataqueVida {
         font-size: 8px;
         bottom: 6px;
         margin: 0px;
         right: 8.5px;
     }
 
-    .top-deck{
+    .top-deck {
         width: 490px;
         align-items: center;
     }
 
-    #cartas-no-mazo .cartas{
+    #cartas-no-mazo .cartas {
         width: 660px;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 8px;
     }
 
-    #cartas-no-mazo .cartas .carta{
+    #cartas-no-mazo .cartas .carta {
         width: 160px;
         height: 222px;
     }
-    
-    #cartas-no-mazo .cartas .carta .ataque-especial{
+
+    #cartas-no-mazo .cartas .carta .ataque-especial {
         font-size: 8px !important;
         max-width: 120px;
         left: 20px;
     }
 
-    #cartas-no-mazo .cartas .carta .ataque-vida{
+    #cartas-no-mazo .cartas .carta .ataque-vida {
         font-size: 13px !important;
         margin: 10px 12px !important;
     }
 
-    #cartas-no-mazo .cartas .carta .nombreCarta{
+    #cartas-no-mazo .cartas .carta .nombreCarta {
         font-size: 10px;
         top: 55%;
         left: 15px;
@@ -2008,72 +2008,160 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
 
 }
 
-    @media (max-width: 500px) {
+@media (max-width: 500px) {
 
 
-        #mazos .container .allMazos .mazo {
-            grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
-            gap: 4px;
-            width: 360px;
-            padding: 10px;
-            margin-top: 0px;
-        }
-
-        #mazos .container .allMazos .mazo div {
-            width: 87px;
-            height: 121px;
-        }
-
-        #mazos .container .allMazos .mazo div .nombre {
-            font-size: 6px;
-            top: 50.5%;
-            left: 10px;
-        }
-
-        #mazos .container .allMazos .mazo div .ataque {
-            font-size: 3px;
-            top: 74%;
-            max-width: 70px;
-            left: 10px;
-        }
-
-        #mazos .container .allMazos .mazo div .ataqueVida {
-            font-size: 6px;
-            bottom: 6px;
-            margin: 0px;
-            right: 8.5px;
-        }
-
-        .top-deck {
-            width: 360px;
-        }
-
-        .pasar p {
-            margin: 0px;
-        }
-
-        .pasar button {
-            width: 25px;
-            height: 25px;
-            font-size: 22px;
-        }
-
-
+    #mazos .container .allMazos .mazo {
+        grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+        gap: 4px;
+        width: 360px;
+        padding: 10px;
+        margin-top: 0px;
     }
 
-    /*
+    #mazos .container .allMazos .mazo div {
+        width: 87px;
+        height: 121px;
+    }
+
+    #mazos .container .allMazos .mazo div .nombre {
+        font-size: 6px;
+        top: 50.5%;
+        left: 10px;
+    }
+
+    #mazos .container .allMazos .mazo div .ataque {
+        font-size: 3px;
+        top: 74%;
+        max-width: 70px;
+        left: 10px;
+    }
+
+    #mazos .container .allMazos .mazo div .ataqueVida {
+        font-size: 6px;
+        bottom: 6px;
+        margin: 0px;
+        right: 8.5px;
+    }
+
+    .top-deck {
+        width: 360px;
+    }
+
+    .pasar p {
+        margin: 0px;
+    }
+
+    .pasar button {
+        width: 25px;
+        height: 25px;
+        font-size: 22px;
+    }
+
+
+}
+
+/*
 ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 */
-    @media (max-width: 500px) {
-        #chests .allChests .sobre {
-            width: 300px;
-            height: 420px;
-        }
-
+@media (max-width: 500px) {
+    #chests .allChests .sobre {
+        width: 300px;
+        height: 420px;
     }
 
-    @media (max-width: 350px) {
-        #chests {
-            padding: 70px 0px;
-        }
+}
+
+@media (max-width: 350px) {
+    #chests {
+        padding: 70px 0px;
     }
+}
+
+/*
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
+
+*/
+
+@media (max-width: 550px) {
+
+    #shop .container .allChests .sobre {
+        width: 300px;
+        height: 420px;
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests .sobre {
+        width: 300px;
+        height: 420px;
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests .sobre {
+        width: 300px;
+        height: 420px;
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests .sobre {
+        width: 300px;
+        height: 420px;
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    #shop .container .allChests .sobre button {
+        width: 100%;
+        height: 100%;
+    }
+
+    #shop .container .allChests .sobre {
+        width: 300px
+    }
+}
