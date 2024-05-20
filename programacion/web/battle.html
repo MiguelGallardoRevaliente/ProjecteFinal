@@ -520,11 +520,12 @@
                 endTurnForm.style.display = 'none'
 
                 const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
+                const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < ataqueVidaOpponent.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
-                        console.log(ataqueVidaOpponent[i].id)
+                        console.log(cardOpponent[i].id)
                         console.log(card.id_carta)
-                        if (parseInt(ataqueVidaOpponent[i].id) === card.id_carta) {
+                        if (parseInt(cardOpponent[i].id) === card.id_carta) {
                             ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
@@ -551,17 +552,17 @@
                 endTurnForm.style.display = 'block'
 
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
+                const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
-                        console.log(ataqueVidaUser[i].id)
+                        console.log(cardUser[i].id)
                         console.log(card.id_carta)
-                        if (parseInt(ataqueVidaUser[i].id) === card.id_carta) {
+                        if (parseInt(cardUser[i].id) === card.id_carta) {
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }
 
-                const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
