@@ -140,10 +140,10 @@
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             const tipoSplit = card.ataque.tipo.split('/')
                                             console.log(tipoSplit)
-                                            if (cartas.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
+                                            if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
                                                 socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: cartas.ataque.id, username: localStorage.getItem('username'), tipo: cartas.ataque.tipo })
                                             } else {
-                                                console.log(cartas.ataque.tipo)
+                                                console.log(card.ataque.tipo)
                                             }
                                         })
                                         cardDiv.appendChild(ataqueEspecialButton)
