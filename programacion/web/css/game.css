@@ -1639,7 +1639,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INICIO"
         left: 50%;
         transform: translateX(-50%);
         width: 300px;
-        bottom: 50px;
+        bottom: 30px;
         font-size: 20px;
         padding: 16px 0px;
     }
