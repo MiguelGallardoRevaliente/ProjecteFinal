@@ -521,6 +521,7 @@
 
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
+                console.log('User', data)
                 cardClicked = []
                 localStorage.setItem('cardClicked', cardClicked)               
                 const turno = document.getElementById('turno')
@@ -550,6 +551,7 @@
                     ataqueEspecial.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
+                console.log('Opponent', data)
                 if (document.querySelectorAll('.attack')) {
                     const attacks = document.querySelectorAll('.attack')
                     attacks.forEach(attack => {
