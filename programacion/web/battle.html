@@ -30,7 +30,7 @@
 
         let cardClicked = [] /* Para saber con que carta atacas */
         if (localStorage.getItem('cardClicked')) {
-            cardClicked.push(localStorage.getItem('cardClicked'))
+            cardClicked.push(parseInt(localStorage.getItem('cardClicked')))
         }
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
@@ -43,7 +43,7 @@
         
         let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
         if (localStorage.getItem('playedCardAttack')) {
-            playedCardAttack.push(localStorage.getItem('playedCardAttack'))
+            playedCardAttack.push(parseInt(localStorage.getItem('playedCardAttack')))
         }
         
         window.onload = () => {
