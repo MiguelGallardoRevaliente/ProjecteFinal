@@ -1820,6 +1820,26 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
         height: 121px;
     }
 
+    #mazos .container .allMazos .mazo div .nombre {
+        font-size: 6px;
+        top: 49.5%;
+        left: 10px;
+    }
+
+    #mazos .container .allMazos .mazo div .ataque {
+        font-size: 4px;
+        top: 75%;
+        max-width: 70px;
+        left: 12px;
+    }
+
+    #mazos .container .allMazos .mazo div .ataqueVida {
+        font-size: 7px;
+        bottom: 9px;
+        margin: 0px;
+        right: 12px;
+    }
+
 }
 
 /*
