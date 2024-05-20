@@ -343,6 +343,7 @@
 
         /* Recibir mensajes del servidor */
         socket.on('played-card', (data) => {
+            console.log(data)
             playedCard = []
             const cardDivPlayed = document.createElement('div')
             if (data.user === localStorage.getItem('username')) {
@@ -412,6 +413,7 @@
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 cardDivPlayed.addEventListener('click', () => {
+                    if ()
                     if (cardClicked.length === 1) {
                         console.log('Pero bueno')
                         socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
