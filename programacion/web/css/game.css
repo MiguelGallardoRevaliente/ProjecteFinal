@@ -2100,7 +2100,6 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
         padding: 0px 20px;
     }
 
-
     #allchests .chest{
         width: 300px;
         height: 420px;
@@ -2121,5 +2120,17 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
         padding: 4px 10px;
     }
 
+}
+
+@media (max-width: 450px){
+
+    #shop{
+        padding-top: 20px;
+    }
+
+    #shop .container .top{
+        flex-direction: column;
+
+    }
 
 }
