@@ -28,9 +28,15 @@
                 })
         }
 
-        let cardClicked = []
+        let cardClicked = localStorage.getItem('cardClicked') || []
+        if (cardClicked.length !== 0) {
+            const opponentCards = document.getElementsByClassName('card-opponent')
+            for (let i = 0; i < opponentCards.length; i++) {
+                opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+            }
+        }
         let playedCard = [] /* Para no poner varias veces la misma carta */
-        let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
+        let playedCardAttack = localStorage.getItem('playedCardAttack') || [] /* Para no poder atacar si has puesto una carta en el tablero */
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
                 .then(response => response.json())
@@ -124,10 +130,15 @@
                                         console.log('Manolo', playedCardAttack)
                                         if (playedCardAttack.length !== 0) {
                                             alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                            return
                                         }
                                         console.log('Atacar')
-                                        if (cardClicked.length === 1) cardClicked = []
+                                        if (cardClicked.length === 1) {
+                                            cardClicked = []
+                                            localStorage.setItem('cardClicked', cardClicked)
+                                        }
                                         cardClicked.push(card.cartaEnCombateUser.id)
+                                        localStorage.setItem('cardClicked', cardClicked)
                                         console.log(cardClicked)
                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                         for (let i = 0; i < opponentCards.length; i++) {
@@ -180,6 +191,7 @@
                         const manaImg = document.createElement('img')
                         manaImg.src = '/img/mana.png'
                         manaImg.style.border = 'none'
+                        manaImg.style.boxShadow = 'none'
 
                         const mana = document.createElement('p')
                         mana.textContent = data.combate.mana_user_1
@@ -324,10 +336,15 @@
                     console.log('Manolo', playedCardAttack)
                     if (playedCardAttack.length !== 0) {
                         alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                        return
                     }
                     console.log('Atacar')
-                    if (cardClicked.length === 1) cardClicked = []
-                    cardClicked.push(parseInt(data.carta.id))
+                    if (cardClicked.length === 1) {
+                        cardClicked = []
+                        localStorage.setItem('cardClicked', cardClicked)
+                    }
+                    cardClicked.push(card.cartaEnCombateUser.id)
+                    localStorage.setItem('cardClicked', cardClicked)
                     console.log(cardClicked)
                     const opponentCards = document.getElementsByClassName('card-opponent')
                     for (let i = 0; i < opponentCards.length; i++) {
@@ -390,6 +407,7 @@
                             ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                         }
                     }
+                    cardOpponent[i].style.boxShadow = 'none'
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
@@ -438,10 +456,16 @@
                         console.log('Manolo', playedCardAttack) /* UPDATE!!! HAY QUE METER LAS COSAS ESTAS EN EL LOCALSTORAGE PARA QUE NO LO EVITEN AL RECARGAR PAGINA */
                         if (playedCardAttack.length !== 0) {
                             alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                            return
                         }
                         console.log('Atacar')
-                        if (cardClicked.length === 1) cardClicked = []
-                        cardClicked.push(parseInt(cardUser[i].id))
+                        if (cardClicked.length === 1) {
+                            cardClicked = []
+                            localStorage.setItem('cardClicked', cardClicked)
+                        }
+                        cardClicked.push(card.cartaEnCombateUser.id)
+                        localStorage.setItem('cardClicked', cardClicked)
+                        console.log(cardClicked)
                         const opponentCards = document.getElementsByClassName('card-opponent')
                         for (let i = 0; i < opponentCards.length; i++) {
                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
