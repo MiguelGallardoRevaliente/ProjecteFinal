@@ -458,6 +458,49 @@
 
         socket.on('special-attacked-area', (data) => {
             console.log(data)
+            if (data.opponent === localStorage.getItem('opponent')) {
+                const opponentCards = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < opponentCards.length; i++) {
+                    data.opponentCards.forEach(card => {
+                        if (parseInt(opponentCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                opponentCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
+                                let ataqueVidaText = ataqueVida.textContent.split('/')
+                                ataqueVidaText = ataqueVidaText[0] + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                console.log('Opponent attacked')
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    opponentCards[i].style.boxShadow = 'none'
+                }
+            } else if (data.opponent === localStorage.getItem('username')) {
+                const userCards = document.getElementsByClassName('card-user')
+                for (let i = 0; i < userCards.length; i++) {
+                    data.userCards.forEach(card => {
+                        if (parseInt(userCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                userCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                                let ataqueVidaText = ataqueVida.textContent.split('/')
+                                ataqueVidaText = ataqueVidaText[0] + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                console.log('User attacked')
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    userCards[i].style.boxShadow = 'none'
+                }
+            }
         })
 
         socket.on('ended-turn', (data) => {
