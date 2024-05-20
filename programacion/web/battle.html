@@ -136,6 +136,7 @@
                                     if (data.combate.turno_uuid === data.user.id_uuid && card.cartaCombate.ataque_especial === 0) {
                                         const ataqueEspecialButton = document.createElement('button')
                                         ataqueEspecialButton.className = card.ataque.nombre
+                                        ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             const tipoSplit = card.ataque.tipo.split('/')
                                             if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
