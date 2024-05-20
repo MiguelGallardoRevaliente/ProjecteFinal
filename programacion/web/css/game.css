@@ -1805,13 +1805,13 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
 
     #mazos .container .allMazos .mazo {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         width: 900px;
     }
 
     #mazos .container .allMazos .mazo div {
-        width: 250px;
-        height: 350px;
+        width: 205px;
+        height: 287px;
     }
 
     #mazos .container .allMazos .mazo div .nombre {
