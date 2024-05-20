@@ -342,7 +342,9 @@ io.on('connection', async (socket) => {
 
       io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
-    } else if (tipoSplited[1] === 'area') {
+    }
+
+    if (tipoSplited[1] === 'area') {
       console.log(tipoSplited[0])
       // let mana = 0
 
@@ -415,6 +417,36 @@ io.on('connection', async (socket) => {
 
         io.emit('ended-turn', { username, cartas })
         io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+      }
+
+      if (tipoSplited[0] === 'inmovil') {
+        for (const carta of cartasOpponent) {
+          if (!carta.efecto_secundario) {
+            await connection.execute(
+              'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+              [tipoSplited[0], ataque[0].duracion, carta.id_carta, combate[0].id_combate_uuid, opponentId]
+            )
+          }
+
+          await connection.execute(
+            'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+
+          const [opponentCards] = await connection.execute(
+            'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+            [opponentId, combate[0].id_combate_uuid]
+          )
+          const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
+          await connection.execute(
+            'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
+            [opponentId, combate[0].id_combate_uuid]
+          )
+
+          io.emit('ended-turn', { username, cartas })
+          io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+        }
       }
     }
   })
