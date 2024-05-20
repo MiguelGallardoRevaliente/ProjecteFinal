@@ -151,6 +151,7 @@ io.on('connection', async (socket) => {
     const cardAttackedId = data.cardAttacked
     const username = data.username
     let opponentId
+    const ataques = []
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
@@ -162,10 +163,12 @@ io.on('connection', async (socket) => {
     }
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
-    const cartasCombateId = cartasCombate.map(carta => carta.id_carta)
-    const [cartasInfo] = await connection.execute('SELECT * FROM cartas WHERE id IN (?);', [cartasCombateId])
-    const ataquesId = cartasInfo.map(carta => carta.id_ataque)
-    const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id IN (?);', [ataquesId])
+    for (const cartaCombate of cartasCombate) {
+      const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+      ataques.push(ataque[0])
+    }
+
     const cartas = {
       cartasCombate,
       ataques
