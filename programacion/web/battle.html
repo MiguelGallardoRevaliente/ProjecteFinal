@@ -566,6 +566,7 @@ if (manaDiv) {
                         ataqueEspecialButton.textContent = data.cartas.ataques[i].nombre
                         ataqueEspecialButton.addEventListener('click', () => {
                             const tipoSplit = data.cartas.ataques[i].tipo.split('/')
+                            console.log(tipoSplit)
                             if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
                                 socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
                             } else {
