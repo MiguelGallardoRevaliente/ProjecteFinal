@@ -288,3 +288,12 @@ button#leave-match:hover{
     left: 10px;
     margin: 0px;
 }
+
+.ataque-especial-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: linear-gradient(180deg, rgba(204, 174, 0, 1) 0%, rgba(233, 227, 12, 1) 25%, rgba(248, 255, 142, 1) 50%, rgba(255, 248, 0, 1) 100%);
+    border: none;
+    cursor: pointer;
+}
