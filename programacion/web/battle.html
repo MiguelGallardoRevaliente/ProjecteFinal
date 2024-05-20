@@ -135,7 +135,7 @@
 
                                     if (data.combate.turno_uuid === data.user.id_uuid && card.cartaCombate.ataque_especial === 0) {
                                         const ataqueEspecialButton = document.createElement('button')
-                                        ataqueEspecialButton.className = 'ataque-especial'
+                                        ataqueEspecialButton.className = 'ataque-especial-button'
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             const tipoSplit = card.ataque.tipo.split('/')
@@ -522,7 +522,7 @@
                     attack.remove()
                 })
 
-                const ataquesEspeciales = document.querySelectorAll('.ataque-especial');
+                const ataquesEspeciales = document.querySelectorAll('.ataque-especial-button');
 
                 ataquesEspeciales.forEach(ataqueEspecial => {
                     ataqueEspecial.remove()
@@ -561,7 +561,7 @@
 
                     // if (card.cartaCombate.ataque_especial === 0) {
                     //     const ataqueEspecialButton = document.createElement('button')
-                    //     ataqueEspecialButton.className = 'ataque-especial'
+                    //     ataqueEspecialButton.className = 'ataque-especial-button'
                     //     ataqueEspecialButton.textContent = card.ataque.nombre
                     //     ataqueEspecialButton.addEventListener('click', () => {
                     //         const tipoSplit = card.ataque.tipo.split('/')
