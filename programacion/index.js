@@ -383,16 +383,35 @@ io.on('connection', async (socket) => {
         ataques
       }
     }
-    await connection.execute(
-      'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE duracion_efecto > 0 AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-      [combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
-    )
-    /// ////////////////////////////////////// SEGUIR HACIENDO ////////////////////////////////////// ///
 
-    await connection.execute(
-      'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE duracion_efecto > 0 AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-      [combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
-    )
+    const [cartasUser1] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_1_uuid, combate[0].id_combate_uuid])
+    const [cartasUser2] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
+
+    for (const carta of cartasUser1) {
+      const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
+      if (carta.duracion_efecto <= 1) {
+        if (carta.efecto_secundario) {
+          if (carta.estadistica_efecto === 'ataque') {
+            await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
+          }
+        }
+      } else {
+        await connection.execute('UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
+      }
+    }
+
+    for (const carta of cartasUser2) {
+      const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
+      if (carta.duracion_efecto <= 1) {
+        if (carta.efecto_secundario) {
+          if (carta.estadistica_efecto === 'ataque') {
+            await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
+          }
+        }
+      } else {
+        await connection.execute('UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
+      }
+    }
 
     io.emit('ended-turn', { username, cartas })
   })
