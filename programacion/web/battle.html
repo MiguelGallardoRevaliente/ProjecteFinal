@@ -587,7 +587,7 @@
                                             cardClicked = []
                                             localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                                         }
-                                        cardClicked.push(card.cartaEnCombateUser.id)
+                                        cardClicked.push(card.id_carta)
                                         localStorage.setItem('cardClicked',cardClicked)
                                         console.log(localStorage.getItem('cardClicked'))
                                         const opponentCards = document.getElementsByClassName('card-opponent')
