@@ -127,12 +127,11 @@
                                     const buttonAtaque = document.createElement('button')
                                     buttonAtaque.className = 'attack'
                                     buttonAtaque.addEventListener('click', () => {
-                                        console.log('Manolo', playedCardAttack)
                                         if (playedCardAttack.length !== 0) {
                                             alert('Ya has puesto cartas en el tablero, no puedes atacar')
                                             return
                                         }
-                                        console.log('Atacar')
+
                                         if (cardClicked.length === 1) {
                                             cardClicked = []
                                             localStorage.setItem('cardClicked', cardClicked)
@@ -245,6 +244,7 @@
                                 socket.emit('play-card', { id: card.carta.id, user })
                                 playedCard.push(card.carta.id)
                                 playedCardAttack.push(card.carta.id)
+                                localStorage.setItem('playedCardAttack', playedCardAttack)
                             }
                         })
 
@@ -283,6 +283,7 @@
         const endTurnForm = document.getElementsByClassName('end-turn')[0]
         endTurnForm.addEventListener('submit', (event) => {
             playedCardAttack = []
+            localStorage.setItem('playedCardAttack', playedCardAttack)
             event.preventDefault()
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
@@ -333,12 +334,11 @@
                 const buttonAtaque = document.createElement('button')
                 buttonAtaque.className = 'attack'
                 buttonAtaque.addEventListener('click', () => {
-                    console.log('Manolo', playedCardAttack)
                     if (playedCardAttack.length !== 0) {
                         alert('Ya has puesto cartas en el tablero, no puedes atacar')
                         return
                     }
-                    console.log('Atacar')
+                    
                     if (cardClicked.length === 1) {
                         cardClicked = []
                         localStorage.setItem('cardClicked', cardClicked)
@@ -431,6 +431,11 @@
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []
+                localStorage.setItem('cardClicked', cardClicked)
+                const opponentCards = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < opponentCards.length; i++) {
+                    opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                }                
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
