@@ -250,6 +250,10 @@ io.on('connection', async (socket) => {
 
     const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
+    const [cartasAliadas] = await connection.execute(
+      'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+      [user[0].id_uuid, combate[0].id_combate_uuid]
+    )
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     if (cartasCombate.length === 0) {
       return
@@ -304,10 +308,6 @@ io.on('connection', async (socket) => {
     } else if (tipoSplited[1] === 'area') {
       console.log(tipoSplited[0])
       // let mana = 0
-      const [cartasAliadas] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [user[0].id_uuid, combate[0].id_combate_uuid]
-      )
 
       if (tipoSplited[0] === 'power-up') {
         console.log('hola')
@@ -383,6 +383,11 @@ io.on('connection', async (socket) => {
         ataques
       }
     }
+    await connection.execute(
+      'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE duracion_efecto > 0 AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+      [combate[0].id_combate_uuid, user[0].id_uuid]
+    )
+
     io.emit('ended-turn', { username, cartas })
   })
 
