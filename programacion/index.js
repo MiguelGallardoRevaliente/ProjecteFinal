@@ -378,7 +378,7 @@ io.on('connection', async (socket) => {
         await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [opponentId, combate[0].id_combate_uuid])
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
+        io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
       }
 
       if (tipoSplited[0] === 'power-down') {
