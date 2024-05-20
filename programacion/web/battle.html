@@ -511,7 +511,7 @@
 
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
-                console.log(data)
+                console.log('Opponent', data)
                 cardClicked = []
                 localStorage.setItem('cardClicked', cardClicked)               
                 const turno = document.getElementById('turno')
@@ -519,11 +519,11 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
-                const ataqueVidaUser = document.getElementsByClassName('ataque-vida-opponent')
-                for (let i = 0; i < ataqueVidaUser.length; i++) {
+                const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
+                for (let i = 0; i < ataqueVidaOpponent.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
-                        if (parseInt(ataqueVidaUser[i].id) === card.id_carta) {
-                            ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                        if (parseInt(ataqueVidaOpponent[i].id) === card.id_carta) {
+                            ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }
@@ -540,7 +540,7 @@
                     ataqueEspecial.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
-                console.log(data)
+                console.log('User', data)
                 cardClicked = []
                 localStorage.setItem('cardClicked', cardClicked)
                 const turno = document.getElementById('turno')
@@ -548,11 +548,11 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'block'
 
-                const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-user')
-                for (let i = 0; i < ataqueVidaOpponent.length; i++) {
+                const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
+                for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
-                        if (parseInt(ataqueVidaOpponent[i].id) === card.id_carta) {
-                            ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
+                        if (parseInt(ataqueVidaUser[i].id) === card.id_carta) {
+                            ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }
