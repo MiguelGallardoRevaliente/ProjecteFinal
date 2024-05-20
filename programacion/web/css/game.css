@@ -1750,7 +1750,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "INVENTORY"
     }
 
     .yourCards .carta .ataque-vida{
-        font-size: 9px;
+        font-size: 9px !important;
         margin: 10px 12px !important;
     }
 
