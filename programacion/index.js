@@ -511,6 +511,8 @@ io.on('connection', async (socket) => {
           if (carta.efecto_secundario) {
             if (carta.estadistica_efecto === 'ataque') {
               await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
+            } else {
+              await connection.execute('UPDATE cartas_combates SET efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
             }
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
@@ -527,6 +529,8 @@ io.on('connection', async (socket) => {
           if (carta.efecto_secundario) {
             if (carta.estadistica_efecto === 'ataque') {
               await connection.execute('UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
+            } else {
+              await connection.execute('UPDATE cartas_combates SET efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
             }
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
