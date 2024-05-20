@@ -413,7 +413,7 @@
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 cardDivPlayed.addEventListener('click', () => {
-                    if ()
+                    // if ()
                     if (cardClicked.length === 1) {
                         console.log('Pero bueno')
                         socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
