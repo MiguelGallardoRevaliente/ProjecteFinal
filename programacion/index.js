@@ -443,14 +443,14 @@ io.on('connection', async (socket) => {
             ataques.push(ataque[0])
           }
 
-          const cartas = {
+          const cartasInmovil = {
             cartasCombate,
             ataques
           }
 
-          console.log(cartas)
+          console.log(cartasInmovil)
 
-          io.emit('ended-turn', { username, cartas })
+          io.emit('ended-turn', { username, cartas: cartasInmovil })
           io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
         }
       }
