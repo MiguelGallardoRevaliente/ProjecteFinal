@@ -140,6 +140,8 @@
                                             const tipoSplit = card.ataque.tipo.split('/')
                                             if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
                                                 socket.emit('special-attack', { idCartaAttacking: card.cartaEnCombateUser.id, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                            } else {
+                                                console.log(card.ataque.tipo)
                                             }
                                         })
                                         cardDiv.appendChild(ataqueEspecialButton)
