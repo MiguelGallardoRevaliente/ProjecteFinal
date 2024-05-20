@@ -346,6 +346,11 @@ header .config p {
     gap: 0px;
 }
 
+#shop .container .top .menu{
+    display: flex;
+    gap: 0px;
+}
+
 #shop .container .top h1 {
     font-size: 2em;
     border-left: 20px solid #ffffff;
