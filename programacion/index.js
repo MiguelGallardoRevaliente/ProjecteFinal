@@ -455,6 +455,8 @@ io.on('connection', async (socket) => {
             ataques
           }
 
+          console.log(cartas)
+
           io.emit('ended-turn', { username, cartas })
           io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
         }
