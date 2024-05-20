@@ -522,6 +522,8 @@
                 const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
                 for (let i = 0; i < ataqueVidaOpponent.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
+                        console.log(ataqueVidaOpponent[i].id)
+                        console.log(card.id_carta)
                         if (parseInt(ataqueVidaOpponent[i].id) === card.id_carta) {
                             ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                         }
@@ -551,6 +553,8 @@
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
+                        console.log(ataqueVidaUser[i].id)
+                        console.log(card.id_carta)
                         if (parseInt(ataqueVidaUser[i].id) === card.id_carta) {
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
