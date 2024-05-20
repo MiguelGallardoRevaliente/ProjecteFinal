@@ -478,7 +478,6 @@
         })
 
         socket.on('special-attacked-area', (data) => {
-            console.log('Special attack', data)
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
@@ -514,7 +513,6 @@
                                 ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                             if (card.efecto_secundario === 'inmovil') {
-                                console.log(card)
                                 const buttonAtaque = document.getElementsByClassName('attack')[i]
                                 buttonAtaque.remove()
 
@@ -536,7 +534,6 @@
                                             }
                                             cardClicked.push(card.id_carta)
                                             localStorage.setItem('cardClicked',cardClicked)
-                                            console.log(localStorage.getItem('cardClicked'))
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
@@ -547,12 +544,11 @@
 
                                 userCards[i].appendChild(buttonAtaqueInmovil)
 
-                                console.log(index)
-
                                 const ataqueEspecialInmovil = document.createElement('button')
                                 ataqueEspecialInmovil.className = 'ataque-especial-button'
                                 ataqueEspecialInmovil.textContent = data.ataques[index].nombre
                                 ataqueEspecialInmovil.addEventListener('click', () => {
+                                    console.log('Efecto secundario', card.efecto_secundario)
                                     if (card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
@@ -576,7 +572,6 @@
 
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
-                console.log('Opponent', data)
                 cardClicked = []
                 localStorage.setItem('cardClicked', cardClicked)               
                 const turno = document.getElementById('turno')
@@ -606,7 +601,6 @@
                     ataqueEspecial.remove()
                 })
             } else if (data.username === localStorage.getItem('opponent')) {
-                console.log('User', data)
                 if (document.querySelectorAll('.attack')) {
                     const attacks = document.querySelectorAll('.attack')
                     attacks.forEach(attack => {
