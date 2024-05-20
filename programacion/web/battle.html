@@ -555,16 +555,16 @@
                         }
                     })
 
-                    if (cartas.cartasCombate[i].ataque_especial === 0) {
+                    if (data.cartas.cartasCombate[i].ataque_especial === 0) {
                         const ataqueEspecialButton = document.createElement('button')
                         ataqueEspecialButton.className = 'ataque-especial-button'
-                        ataqueEspecialButton.textContent = cartas.ataques[i].nombre
+                        ataqueEspecialButton.textContent = data.cartas.ataques[i].nombre
                         ataqueEspecialButton.addEventListener('click', () => {
-                            const tipoSplit = cartas.ataque[i].tipo.split('/')
-                            if (cartas.ataque[i].tipo === 'area' || tipoSplit[1] === 'area') {
-                                socket.emit('special-attack', { idCartaAttacking: cartas.cartasCombate[i].id_carta, idAtaque: cartas.ataque[i].id, username: localStorage.getItem('username'), tipo: cartas.ataque[i].tipo })
+                            const tipoSplit = data.cartas.ataque[i].tipo.split('/')
+                            if (data.cartas.ataque[i].tipo === 'area' || tipoSplit[1] === 'area') {
+                                socket.emit('special-attack', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataque[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataque[i].tipo })
                             } else {
-                                console.log(cartas.ataque[i].tipo)
+                                console.log(data.cartas.ataque[i].tipo)
                             }
                         })
                         cardUser[i].appendChild(ataqueEspecialButton)
