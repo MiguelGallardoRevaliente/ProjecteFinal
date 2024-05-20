@@ -28,11 +28,8 @@
                 })
         }
 
-        let cardClicked = []
-        console.log(localStorage.getItem('playedCardAttack'))
-        if (localStorage.getItem('playedCardAttack')) {
-            cardClicked.push(localStorage.getItem('playedCardAttack'))
-        }
+        let cardClicked = JSON.parse(localStorage.getItem('cardClicked')) || []
+        console.log(localStorage.getItem('cardClicked'))
         console.log(cardClicked)
         if (cardClicked.length !== 0) {
             const opponentCards = document.getElementsByClassName('card-opponent')
@@ -40,9 +37,10 @@
                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
             }
         }
+        
         let playedCard = [] /* Para no poner varias veces la misma carta */
         let playedCardAttack = [] /* Para no poder atacar si has puesto una carta en el tablero */
-        if (JSON.parse(localStorage.getItem('playedCardAttack'))) {
+        if (localStorage.getItem('playedCardAttack')) {
             playedCardAttack.push(localStorage.getItem('playedCardAttack'))
         }
         window.onload = () => {
@@ -254,7 +252,7 @@
                                 socket.emit('play-card', { id: card.carta.id, user })
                                 playedCard.push(card.carta.id)
                                 playedCardAttack.push(card.carta.id)
-                                localStorage.setItem('playedCardAttack', JSON.stringify(playedCardAttack))
+                                localStorage.setItem('playedCardAttack', playedCardAttack)
                             }
                         })
 
@@ -293,7 +291,7 @@
         const endTurnForm = document.getElementsByClassName('end-turn')[0]
         endTurnForm.addEventListener('submit', (event) => {
             playedCardAttack = []
-            localStorage.setItem('playedCardAttack', JSON.stringify(playedCardAttack))
+            localStorage.setItem('playedCardAttack', playedCardAttack)
             event.preventDefault()
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
