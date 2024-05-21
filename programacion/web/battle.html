@@ -200,7 +200,7 @@
                                         if (specialAttackCard.length === 1) {
                                             const tipo = specialAttackCard[0].tipo.split('/')
                                             if (tipo[1] === 'aliado' && card.cartaEnCombateUser.id !== specialAttackCard[0].id) {
-                                                console.log('Aliado', card.cartaCombate.id_carta)
+                                                console.log('Manolito el aliado', card.cartaCombate.id_carta)
                                                 const userCards = document.getElementsByClassName('card-user')
                                                 for (let i = 0; i < userCards.length; i++) {
                                                     console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
