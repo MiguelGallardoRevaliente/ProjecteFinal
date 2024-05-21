@@ -201,7 +201,7 @@
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
                                                                     }
                                                                 } else if (card.ataque.tipo === 'revive') {
-                                                                    console.log('Cartas', card)
+                                                                    console.log('Cartas window', data)
                                                                 }
                                                             }
                                                         }
@@ -957,6 +957,8 @@
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
                                                             }
+                                                        }  else if (data.cartas.ataques[index].tipo === 'revive') {
+                                                            console.log('Cartas end', data.cartas.cartaCombate)
                                                         }
                                                     }
                                                 }
