@@ -740,6 +740,7 @@
         })
 
         socket.on('ended-turn', (data) => {
+            console.log('Ended Turn')
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []     
                 specialAttackCard = []        
