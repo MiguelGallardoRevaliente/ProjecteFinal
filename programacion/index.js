@@ -789,6 +789,46 @@ io.on('connection', async (socket) => {
       io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, mana })
     }
+
+    if (tipo === 'power-down') {
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCartaAttacked, opponentId, combate[0].id_combate_uuid]
+      )
+
+      if (!cartaCombate[0].efecto_secundario) {
+        let ataqueNumber = cartaCombate[0].ataque - ataque[0].cambio
+        if (ataqueNumber < 0) {
+          ataqueNumber = 0
+        }
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [ataqueNumber, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCartaAttacked, combate[0].id_combate_uuid, opponentId]
+        )
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+      } else {
+        io.emit('already-has-effect', { message: 'Already has effect', username })
+        return
+      }
+
+      const [opponentCards] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
+      await connection.execute(
+        'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?;',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+
+      io.emit('ended-turn', { username, cartas })
+      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
+    }
   })
 
   /* Aqui se recibe la peticion de usar un ataque especial en area */
