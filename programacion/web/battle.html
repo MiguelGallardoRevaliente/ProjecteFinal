@@ -213,6 +213,7 @@
                                                                             cardDiv.style.backgroundRepeat = 'no-repeat'
                                                                             cardDiv.style.backgroundPosition = 'center'
                                                                             cardDiv.id = cardRevive.cartaEnCombateUser.id
+                                                                            cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
 
                                                                             const cardName = document.createElement('p')
                                                                             cardName.textContent = cardRevive.cartaEnCombateUser.nombre
@@ -1003,7 +1004,7 @@
                                                                     cardDiv.style.backgroundRepeat = 'no-repeat'
                                                                     cardDiv.style.backgroundPosition = 'center'
                                                                     cardDiv.id = cardRevive.id_carta
-                                                                    cardDiv.style.boxShadow = '0px 0px 7px 4px #0BFFFF'
+                                                                    cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
                                                                     cardDiv.addEventListener('click', () => {
                                                                         if (specialAttackCard.length === 1 && specialAttackCard[0].tipo) {
                                                                             console.log('id carta reviviendo', cardRevive.id_carta)
