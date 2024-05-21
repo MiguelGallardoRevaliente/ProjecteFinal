@@ -370,7 +370,8 @@ io.on('connection', async (socket) => {
 
   /* Aqui cuando usas un ataque especial sobre un aliado */
   socket.on('special-attack-ally', async (data) => {
-    const idCarta = data.idCartaAttacking
+    const idCarta = data.idCartaAttacked
+    const idCartaAttacking = data.idCartaAttacking
     const username = data.username
     const idAtaque = data.idAtaque
     const tipo = data.tipo
@@ -429,7 +430,7 @@ io.on('connection', async (socket) => {
 
           await connection.execute(
             'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+            [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
           )
         } else if (ataque[0].estadistica === 'ataque') {
           const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
@@ -440,7 +441,7 @@ io.on('connection', async (socket) => {
 
           await connection.execute(
             'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+            [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
           )
         }
       } else {
