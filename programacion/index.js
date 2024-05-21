@@ -504,7 +504,7 @@ io.on('connection', async (socket) => {
 
       const [opponentCards] = await connection.execute(
         'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [user[0].id_uuid, combate[0].id_combate_uuid]
+        [opponentId, combate[0].id_combate_uuid]
       )
 
       await connection.execute(
@@ -512,28 +512,7 @@ io.on('connection', async (socket) => {
         [opponentId, combate[0].id_combate_uuid]
       )
 
-      const ataquesUser = []
-      const cartasInfoUser = []
-      const [userCards] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [opponentId, combate[0].id_combate_uuid]
-      )
-      for (const cartaCombate of userCards) {
-        const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
-        const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
-        ataquesUser.push(ataque[0])
-        cartasInfoUser.push(carta[0])
-      }
-
-      const cartasUser = {
-        cartasInfo: cartasInfoUser,
-        cartasCombate: opponentCards,
-        ataques: ataquesUser
-      }
-
-      console.log('Cartas', cartasUser)
-
-      io.emit('ended-turn', { username, cartas: cartasUser })
+      io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-ally', { username, opponentCards })
     }
   })
