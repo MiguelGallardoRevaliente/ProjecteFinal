@@ -392,7 +392,6 @@ header .config p {
     padding: 5px 10px;
     background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
-    width: 100%;
 }
 
 #shop .container .all .filtrer form .info{
@@ -2399,26 +2398,27 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
     #shop .container .all .filtrer form{
         gap: 10px;
         padding: 5px 10px;
+        width: 100%;
     }
 
     #shop .container .all .filtrer form label{
-        font-size: 20px;
+        font-size: 18px;
     }
     #shop .container .all .filtrer form input[type="text"]{
         width: 180px;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #shop .container .all .filtrer form select{
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #shop .container .all .filtrer form button{
 
-        width: 27px;
-        height: 27px;
+        width: 25px;
+        height: 25px;
         color: rgb(0, 0, 0);
-        font-size: 25px;
+        font-size: 22px;
 
     }
    
