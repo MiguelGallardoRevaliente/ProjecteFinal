@@ -657,6 +657,8 @@
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
+                                        console.log(index)
+                                        console.log(data.ataques)
                                         console.log(data.ataques[index].tipo)
                                         const tipoSplit = data.ataques[index].tipo.split('/')
                                         console.log(tipoSplit)
