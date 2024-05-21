@@ -468,6 +468,7 @@
         })
 
         socket.on('special-attacked-self', (data) => {
+            console.log('Special Attack Self', data)
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
@@ -653,14 +654,16 @@
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
-                                        const tipoSplit = data.cartas.ataques[i].tipo.split('/')
+                                        const tipoSplit = card.ataque.tipo.split('/')
                                         console.log(tipoSplit)
-                                        if (data.cartas.ataques[i].tipo === 'area' || tipoSplit[1] === 'area') {
-                                            socket.emit('special-attack-area', { idCartaAttacking: data.cartas.cartasCombate[i].id_carta, idAtaque: data.cartas.ataques[i].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[i].tipo })
+                                        if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
+                                            socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                        } else if (card.ataque.tipo === 'power-up' || card.ataque.tipo === 'inmune' || card.ataque.tipo === 'reverse') {
+                                            console.log(card.ataque.tipo)
+                                            socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                         } else {
-                                            console.log(data.cartas.ataques[i].tipo)
+                                            console.log(card.ataque.tipo)
                                         }
-                                    
                                     }
                                 }
                             })
