@@ -392,6 +392,14 @@ header .config p {
     padding: 10px;
     background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
+    width: 100%;
+}
+
+#shop .container .all .filtrer form div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 #shop .container .all .filtrer form input[type="text"] {
@@ -2387,7 +2395,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         font-size: 20px;
     }
     #shop .container .all .filtrer form input[type="text"]{
-        width: 200px;
+        width: 180px;
         font-size: 20px;
     }
 
