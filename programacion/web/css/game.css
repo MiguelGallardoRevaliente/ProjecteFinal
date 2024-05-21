@@ -388,7 +388,7 @@ header .config p {
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 20px;
+    gap: 15px;
     padding: 10px;
     background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
@@ -2128,25 +2128,25 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
-    .resultado_sobre{
+    .resultado_sobre {
         grid-template-columns: repeat(auto-fit, minmax(147px, 1fr));
     }
 
-    .resultado_sobre .carta{
+    .resultado_sobre .carta {
         width: 147px;
         height: 205px;
     }
 
-    .resultado_sobre .carta .ataque-vida{
+    .resultado_sobre .carta .ataque-vida {
         margin: 14px 18px !important;
         font-size: 10px !important;
         font-weight: 800;
         font-family: "Goldman", sans-serif;
     }
 
-    .resultado_sobre .carta .ataque-especial{
+    .resultado_sobre .carta .ataque-especial {
         position: absolute;
         top: 75%;
         font-size: 7px !important;
@@ -2155,13 +2155,13 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         max-width: 120px;
     }
 
-    .resultado_sobre .carta .nombreCarta{
+    .resultado_sobre .carta .nombreCarta {
         font-size: 10px;
         left: 15px;
         font-weight: 800;
     }
 
-    .QuickSell button{
+    .QuickSell button {
         font-size: 10px;
         width: 100px;
         justify-content: space-around;
@@ -2169,7 +2169,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
     .resultado_sobre {
         height: auto;
         grid-template-columns: repeat(auto-fit, minmax(203px, 1fr));
@@ -2215,30 +2215,62 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
 
-    .resultado_sobre{
+    .resultado_sobre {
+        height: auto;
+        grid-template-columns: repeat(auto-fit, minmax(187px, 1fr));
+        margin-top: 10%;
+        gap: 10px;
+        padding: 0px 10px;
+    }
+
+    .resultado_sobre .carta {
+        width: 187px;
+        height: 261px;
+        margin-bottom: 30%;
+    }
+
+    #putOnMarket {
+        bottom: -80px;
+        font-size: 12px;
+        justify-content: center;
+        width: 65%;
+
+    }
+
+    .salir {
+        bottom: 2%;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .resultado_sobre {
         height: auto;
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         margin-top: 10%;
         gap: 10px;
         padding: 0px 10px;
     }
-        
-    .resultado_sobre .carta{
+
+    .resultado_sobre .carta {
         width: 151px;
         height: 211px;
         margin-bottom: 50%;
     }
 
-    #putOnMarket{
+    #putOnMarket {
         bottom: -80px;
         font-size: 12px;
         justify-content: center;
         width: 75%;
-        
+
     }
-    .salir{
+
+    .salir {
         bottom: 2%;
     }
 
@@ -2328,6 +2360,22 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
     #allchests .chest .info div img {
         width: 20px;
         height: 20px;
+    }
+
+}
+
+/*
+ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
+*/
+
+@media (max-width: 1350px) {
+
+    #shop #allcards .shop_cards table tr th {
+        font-size: 10px;
+    }
+
+    #shop #allcards .shop_cards table tr td {
+        font-size: 10px;
     }
 
 }
