@@ -500,9 +500,26 @@
                 cardDivPlayed.appendChild(ataqueVidaPlayed)
 
                 cardDivPlayed.addEventListener('click', () => {
-                    if (cardClicked.length === 1) {
-                        console.log('Peticion 3', cardClicked)
-                        socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
+                    console.log('Carta clickeada', data.carta.id)
+                    if (specialAttackCard.length === 1) {
+                        const tipo = specialAttackCard[0].tipo.split('/')
+                        if (tipo[1] !== 'aliado') {
+                            console.log(data.carta.id)
+                            socket.emit('special-attack-opponent', { idCartaAttacked: data.carta.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                            const opponentCards = document.getElementsByClassName('card-opponent')
+                            for (let i = 0; i < opponentCards.length; i++) {
+                                opponentCards[i].style.boxShadow = 'none'
+                            }
+                        }
+                    } else {
+                        if (cardClicked.length === 1) {
+                            console.log('Peticion 2', cardClicked)
+                            socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
+                            const OpponentCards = document.getElementsByClassName('card-opponent')
+                            for (let i = 0; i < OpponentCards.length; i++) {
+                                OpponentCards[i].style.boxShadow = 'none'
+                            }
+                        }
                     }
                 })
                 const opponentBoard = document.getElementsByClassName('opponent-board')[0]
