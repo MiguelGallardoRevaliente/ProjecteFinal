@@ -2468,3 +2468,45 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
     }   
 
 }
+
+@media (max-width: 700px){
+
+    #shop #allcards .shop_cards table tr th {
+        font-size: 15px;
+    }
+
+    #shop #allcards .shop_cards table tr td {
+        font-size: 15px;
+    }
+
+    #shop #allcards .shop_cards table tr img {
+
+        width: 20px;
+    }
+
+    #shop .container .all .filtrer form{
+        gap: 5px;
+        padding: 3px 5px;
+    }
+
+    #shop .container .all .filtrer form label{
+        font-size: 12px;
+    }
+    #shop .container .all .filtrer form input[type="text"]{
+        width: 120px;
+        font-size: 12px;
+    }
+
+    #shop .container .all .filtrer form select{
+        font-size: 12px;
+    }
+
+    #shop .container .all .filtrer form button{
+
+        width: 20px;
+        height: 20px;
+        font-size: 15px;
+
+    }   
+
+}
