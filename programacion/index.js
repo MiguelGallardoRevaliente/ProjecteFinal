@@ -481,15 +481,9 @@ io.on('connection', async (socket) => {
       if (tipoSplited[0] === 'corrosivo') {
         for (const carta of cartasOpponent) {
           if (!carta.efecto_secundario) {
-            let vida = carta.vida - ataque[0].cambio
-            if (vida < 0) {
-              vida = 0
-            }
-            console.log(carta.vida, ataque[0].cambio)
-            console.log(vida)
             await connection.execute(
-              'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-              [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, opponentId]
+              'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+              [tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, opponentId]
             )
 
             await connection.execute(

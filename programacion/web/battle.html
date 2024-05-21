@@ -534,6 +534,9 @@
                 for (let i = 0; i < ataqueVidaOpponent.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
                         if (parseInt(cardOpponent[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                cardOpponent[i].remove()
+                            }
                             ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
@@ -575,6 +578,9 @@
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
                         if (parseInt(cardUser[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                cardUser[i].remove()
+                            }
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
