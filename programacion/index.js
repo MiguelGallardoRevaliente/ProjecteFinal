@@ -368,6 +368,95 @@ io.on('connection', async (socket) => {
     io.emit('attacked', dataEmit)
   })
 
+  /* Aqui cuando usas un ataque especial sobre un aliado */
+  socket.on('special-attack-ally', async (data) => {
+    const idCarta = data.idCartaAttacking
+    const username = data.username
+    const idAtaque = data.idAtaque
+    const tipo = data.tipo
+    const tipoSplited = tipo.split('/')
+
+    let opponentId
+    const ataques = []
+
+    const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
+    const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
+
+    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+      opponentId = combate[0].id_user_2_uuid
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+      opponentId = combate[0].id_user_1_uuid
+    }
+
+    const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [user[0].id_uuid, combate[0].id_combate_uuid])
+    if (cartasCombate.length === 0) {
+      return
+    }
+    for (const cartaCombate of cartasCombate) {
+      const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
+      const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+      ataques.push(ataque[0])
+    }
+
+    const cartas = {
+      cartasCombate,
+      ataques
+    }
+
+    if (tipoSplited[0] === 'power-up') {
+      const [cartaInfo] = await connection.execute(
+        'SELECT * FROM cartas WHERE id = ?;', [idCarta]
+      )
+
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCarta, user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+
+      if (!cartaCombate[0].efecto_secundario) {
+        if (ataque[0].estadistica === 'vida') {
+          let vida = cartaCombate[0].vida + ataque[0].cambio
+          if (vida > cartaInfo[0].vida) {
+            vida = cartaInfo[0].vida
+          }
+          await connection.execute(
+            'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+
+          await connection.execute(
+            'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        } else if (ataque[0].estadistica === 'ataque') {
+          const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
+          await connection.execute(
+            'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [ataqueNumber, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+
+          await connection.execute(
+            'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        }
+      } else {
+        io.emit('already-has-effect', { message: 'Already has effect', username })
+        return
+      }
+
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+      const [opponentCards] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+
+      io.emit('ended-turn', { username, cartas })
+      io.emit('special-attacked-ally', { opponent: opponent[0].user, username, carta: cartaInfo[0], ataque: ataque[0], opponentCards })
+    }
+  })
+
   /* Aqui se recibe la peticion de usar un ataque especial a el mismo */
   socket.on('special-attack-self', async (data) => {
     const idCarta = data.idCartaAttacking

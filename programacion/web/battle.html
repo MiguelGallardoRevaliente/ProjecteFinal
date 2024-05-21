@@ -138,6 +138,7 @@
                                                     const userCards = document.getElementsByClassName('card-user')
                                                     for (let i = 0; i < userCards.length; i++) {
                                                         console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
+                                                        socket.emit('special-attack-ally', { idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
                                                         if (parseInt(userCards[i].id) !== card.cartaCombate.id_carta) {
                                                             userCards[i].style.boxShadow = 'none'
                                                         }
@@ -540,6 +541,51 @@
             }
         })
 
+        socket.on('special-attacked-ally', (data) => {
+            console.log('Special Attack Ally', data)
+            if (data.opponent === localStorage.getItem('opponent')) {
+                const opponentCards = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < opponentCards.length; i++) {
+                    data.opponentCards.forEach(card => {
+                        if (parseInt(opponentCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                opponentCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
+                                const ataqueVidaText = card.ataque + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    opponentCards[i].style.boxShadow = 'none'
+                }
+            }
+
+            if (data.opponent === localStorage.getItem('username')) {
+                const userCards = document.getElementsByClassName('card-user')
+                for (let i = 0; i < userCards.length; i++) {
+                    data.opponentCards.forEach((card, index) => {
+                        if (parseInt(userCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                userCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                                const ataqueVidaText = card.ataque + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    userCards[i].style.boxShadow = 'none'
+                }
+            }
+        })
+
         socket.on('special-attacked-self', (data) => {
             console.log('Special Attack Self', data)
             if (data.opponent === localStorage.getItem('opponent')) {
@@ -701,6 +747,7 @@
                                 const tipo = specialAttackCard[0].tipo.split('/')
                                 if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                     console.log('Manolito el aliado', card.id_carta)
+                                    socket.emit('special-attack-ally', { idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
                                     const userCards = document.getElementsByClassName('card-user')
                                     for (let i = 0; i < userCards.length; i++) {
                                         userCards[i].style.boxShadow = 'none'
