@@ -2231,6 +2231,13 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         margin-bottom: 50%;
     }
 
+    #putOnMarket{
+        bottom: -80px;
+        font-size: 12px;
+        justify-content: center;
+        width: 75%;
+    }
+
 }
 
 @media (max-width: 550px) {
