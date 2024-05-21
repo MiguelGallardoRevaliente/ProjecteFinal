@@ -959,6 +959,52 @@
                                                             }
                                                         }  else if (data.cartas.ataques[index].tipo === 'revive') {
                                                             console.log('Cartas end', data.cartas)
+                                                            const userBoard = document.getElementsByClassName('user-board')[0]
+                                                            data.cartas.cartasCombates.forEach((cardRevive, index) => {
+                                                                if (cardRevive.vida === 0) {
+                                                                    const cardDiv = document.createElement('div')
+                                                                    cardDiv.className = 'card card-user'
+                                                                    cardDiv.style.backgroundImage = `url(${data.cartas.cartasInfo[index].foto})`
+                                                                    cardDiv.style.backgroundSize = 'contain'
+                                                                    cardDiv.style.backgroundRepeat = 'no-repeat'
+                                                                    cardDiv.style.backgroundPosition = 'center'
+                                                                    cardDiv.id = cardRevive.id_carta
+                                                                    cardDiv.style.boxShadow = '0px 0px 7px 4px #0BFFFF'
+                                                                    cardDiv.addEventListener('click', () => {
+                                                                        if (specialAttackCard.length === 1 && specialAttackCard[0].tipo) {
+                                                                            console.log('id carta reviviendo', cardRevive.id_carta)
+                                                                        } else {
+                                                                            if (playedCard.length === 0) {
+                                                                                const user = localStorage.getItem('username')
+                                                                                socket.emit('play-card', { id: cardRevive.carta.id, user })
+                                                                                playedCard.push(cardRevive.carta.id)
+                                                                                playedCardAttack.push(cardRevive.carta.id)
+                                                                                localStorage.setItem('playedCardAttack', playedCardAttack)
+                                                                            }
+                                                                        }
+                                                                    })
+
+                                                                    const cardName = document.createElement('p')
+                                                                    cardName.textContent = cardRevive.carta.nombre
+                                                                    cardName.className = 'cardName'
+
+                                                                    const ataqueVida = document.createElement('p')
+                                                                    ataqueVida.textContent = cardRevive.ataque + '/' + cardRevive.vida
+                                                                    ataqueVida.className = 'ataque-vida'
+
+                                                                    if (data.cartas.ataques[index]) {
+                                                                        const ataqueEspecial = document.createElement('p')
+                                                                        ataqueEspecial.textContent = data.cartas.ataques[index].nombre + ' - ' + data.cartas.ataques[index].descripcion
+                                                                        ataqueEspecial.className = 'ataque-especial'
+
+                                                                        cardDiv.appendChild(ataqueEspecial)
+                                                                    }
+
+                                                                    cardDiv.appendChild(cardName)
+                                                                    cardDiv.appendChild(ataqueVida)
+                                                                    userBoard.appendChild(cardDiv)
+                                                                }
+                                                            })
                                                         }
                                                     }
                                                 }
