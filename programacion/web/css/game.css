@@ -2162,29 +2162,28 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     }
 
     .resultado_sobre .carta .ataque-vida {
-        margin: 14px 18px !important;
-        font-size: 10px !important;
-        font-weight: 800;
-        font-family: "Goldman", sans-serif;
+        margin: 11px 14px !important;
+        font-size: 9px !important;
+        
     }
 
     .resultado_sobre .carta .ataque-especial {
         position: absolute;
         top: 75%;
-        font-size: 7px !important;
-        font-weight: 600 !important;
-        left: 20px;
-        max-width: 120px;
+        font-size: 6px !important;
+        font-weight: 400 !important;
+        left: 18px;
+        max-width: 115px;
     }
 
     .resultado_sobre .carta .nombreCarta {
         font-size: 10px;
-        left: 15px;
+        left: 14px;
         font-weight: 800;
     }
 
     .QuickSell button {
-        font-size: 10px;
+        font-size: 9px;
         width: 100px;
         justify-content: space-around;
     }
@@ -2209,22 +2208,17 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     }
 
     .resultado_sobre .carta .ataque-vida {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 11px 17px !important;
-        font-size: 9px !important;
-        font-weight: 600;
-        font-family: "Goldman", sans-serif;
+        margin: 16px 21px !important;
+        font-size: 10px !important;
     }
 
     .resultado_sobre .carta .ataque-especial {
         position: absolute;
         top: 75%;
         font-size: 7px !important;
-        font-weight: 600 !important;
-        left: 20px;
-        max-width: 120px;
+        font-weight: 400 !important;
+        left: 22px;
+        max-width: 160px;
     }
 
     .resultado_sobre .carta .nombreCarta {
@@ -2266,27 +2260,24 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     }
 
     .resultado_sobre .carta .ataque-vida {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 11px 17px !important;
-        font-size: 9px !important;
-        font-weight: 600;
-        font-family: "Goldman", sans-serif;
+        
+        margin: 14px 20px !important;
+        font-size: 10px !important;
+       
     }
 
     .resultado_sobre .carta .ataque-especial {
         position: absolute;
         top: 75%;
         font-size: 7px !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         left: 20px;
-        max-width: 120px;
+        max-width: 150px;
     }
 
     .resultado_sobre .carta .nombreCarta {
-        font-size: 12px;
-        left: 20px;
+        font-size: 11px;
+        left: 18px;
         font-weight: 800;
     }
 
@@ -2325,25 +2316,21 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         position: absolute;
         bottom: 0;
         right: 0;
-        margin: 11px 17px !important;
+        margin: 11px 15px !important;
         font-size: 9px !important;
         font-weight: 600;
         font-family: "Goldman", sans-serif;
     }
 
     .resultado_sobre .carta .ataque-especial {
-        position: absolute;
-        top: 75%;
-        font-size: 7px !important;
-        font-weight: 600 !important;
-        left: 20px;
-        max-width: 120px;
+        font-weight: 200 !important;
+        left: 18px;
+        max-width: 115px;
     }
 
     .resultado_sobre .carta .nombreCarta {
-        font-size: 12px;
-        left: 20px;
-        font-weight: 800;
+        font-size: 10px;
+        left: 14px;
     }
 
     .salir {
