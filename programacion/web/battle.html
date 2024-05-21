@@ -418,12 +418,14 @@
         socket.on('not-enough-mana', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No tienes suficiente mana para jugar esa carta')
+                playedCard = []
             }
         })
 
         socket.on('not-your-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No es tu turno')
+                playedCard = []
             }
         })
 
