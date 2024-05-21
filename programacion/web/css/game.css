@@ -387,7 +387,7 @@ header .config p {
 #shop .container .all .filtrer form {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     gap: 15px;
     padding: 10px;
     background-color: #3d3d3d;
@@ -395,12 +395,21 @@ header .config p {
     width: 100%;
 }
 
-#shop .container .all .filtrer form div{
+#shop .container .all .filtrer form .info{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
 }
+
+#shop .container .all .filtrer form .info{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+}
+
 
 #shop .container .all .filtrer form input[type="text"] {
     padding: 2px;
