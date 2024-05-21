@@ -2169,13 +2169,13 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
 }
 
-@media (max-width: 700px){
+@media (max-width: 800px){
     .resultado_sobre {
-        grid-template-columns: repeat(auto-fit, minmax(197px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(203px, 1fr));
     }
 
     .resultado_sobre .carta {
-        width: 197px;
+        width: 203px;
         height: 275px;
     }
 
