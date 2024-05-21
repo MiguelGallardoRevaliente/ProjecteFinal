@@ -514,7 +514,11 @@ io.on('connection', async (socket) => {
 
       const ataquesUser = []
       const cartasInfoUser = []
-      for (const cartaCombate of opponentCards) {
+      const [userCards] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+      for (const cartaCombate of userCards) {
         const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
         const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
         ataquesUser.push(ataque[0])
