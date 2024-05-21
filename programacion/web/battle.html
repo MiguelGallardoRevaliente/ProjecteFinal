@@ -840,7 +840,7 @@
                     buttonAtaque.addEventListener('click', () => {
                         data.cartas.cartasCombate.forEach(card => {
                             if (specialAttackCard.length === 1) {
-                                console.log('Special Attack Card', specialAttackCard)
+                                console.log('Vida', card.vida)
                                 const tipo = specialAttackCard[0].tipo.split('/')
                                 if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                     socket.emit('special-attack-ally', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
@@ -851,11 +851,7 @@
                                     }
                                 }
                             } else {
-                                console.log('Manolete3', card)
-                                console.log('Manolete', cardUser[i].id)
-                                console.log('Manolete2', card.id_carta)
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
-                                    console.log('Manolo', data)
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
@@ -874,20 +870,17 @@
                                     }
                                 }   
                             }
-                            console.log('Card Clicked', cardClicked)
                         })
                     })
 
                     data.cartas.cartasCombate.forEach((card, index) => {
                         if (data.cartas.ataques[index]) {
                             if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
-                                console.log(card)
                                 const ataqueEspecialButton = document.createElement('button')
                                 ataqueEspecialButton.className = 'ataque-especial-button'
                                 ataqueEspecialButton.textContent = data.cartas.ataques[index].nombre
                                 ataqueEspecialButton.addEventListener('click', () => {
                                     if (specialAttackCard.length === 1) {
-                                        console.log('Vida', card.vida)
                                         const tipo = specialAttackCard[0].tipo.split('/')
                                         if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                             const userCards = document.getElementsByClassName('card-user')
@@ -905,7 +898,6 @@
                                             })
                                         }
                                     } else {
-                                        console.log('Manolete3', cardUser[i])
                                         if (parseInt(cardUser[i].id) === card.id_carta) {
                                             if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                                 alert('This card is immobilized')
@@ -929,7 +921,6 @@
                                                             }
                                                         }
                                                     } else {
-                                                        console.log(data.cartas.ataques[index].tipo)
                                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                                         if (data.cartas.ataques[index].tipo === 'unico') {
                                                             for (let i = 0; i < opponentCards.length; i++) {
@@ -948,7 +939,6 @@
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
                                                             }
                                                         }
-                                                        console.log('Special Attack Card', specialAttackCard)
                                                     }
                                                 }
                                             }
