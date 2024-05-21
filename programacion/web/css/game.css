@@ -2123,6 +2123,27 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     .QuickSell button {
         font-size: 12px;
         width: 120px;
+        justify-content: space-around;
+    }
+
+}
+
+@media (max-width: 1000px){
+
+    .resultado_sobre{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .resultado_sobre .carta{
+        width: 160px;
+        height: 224px;
+    }
+
+    .resultado_sobre .carta .ataque-vida{
+        margin: 14px 18px !important;
+        font-size: 10px !important;
+        font-weight: 800;
+        font-family: "Goldman", sans-serif;
     }
 
 }
