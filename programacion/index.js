@@ -192,6 +192,12 @@ io.on('connection', async (socket) => {
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
       if (vida === 0) {
+        if (cartaAttacked[0].efecto_secundario === 'reverse') {
+          await connection.execute(
+            'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+            [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
+          )
+        }
         mana = combate[0].mana_user_2 + cartaAttackedInfo[0].costo_mana
         await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
       }
@@ -248,7 +254,6 @@ io.on('connection', async (socket) => {
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
           // Efecto sigue activo
           if (carta.efecto_secundario === 'corrosivo') {
-            console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
               vida = 0
@@ -285,7 +290,6 @@ io.on('connection', async (socket) => {
                 [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
               )
             } else if (carta.efecto_secundario === 'corrosivo') {
-              console.log('Corrosivo Fin')
               let vida = carta.vida - carta.cambio_estadistica
               if (vida < 0) {
                 vida = 0
@@ -466,8 +470,8 @@ io.on('connection', async (socket) => {
 
       if (!cartaCombate[0].efecto_secundario) {
         await connection.execute(
-          'UPDATE cartas_combates SET vida = ?, ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-          [cartaCombate[0].ataque, combate[0].vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          'UPDATE cartas_combates SET vida = ?, ataque = ?, efecto_secundario = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [cartaCombate[0].ataque, combate[0].vida, tipo, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
         )
 
         await connection.execute(
@@ -804,7 +808,6 @@ io.on('connection', async (socket) => {
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
           // Efecto sigue activo
           if (carta.efecto_secundario === 'corrosivo') {
-            console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
               vida = 0
