@@ -37,7 +37,7 @@
             playedCardAttack.push(parseInt(localStorage.getItem('playedCardAttack')))
         }
 
-        let SpecialAttackCard = [] /* Para saber con que carta usas el ataque especial */
+        let specialAttackCard = [] /* Para saber con que carta usas el ataque especial */
         
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
@@ -132,6 +132,19 @@
                                         ataqueEspecialButton.textContent = card.ataque.nombre
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             if (parseInt(cardDiv.id) === card.cartaEnCombateUser.id) {
+                                                if (specialAttackCard.length === 1) {
+                                                    const tipo = specialAttackCard[0].tipo.split('/')
+                                                    if (tipo[1] === 'aliado') {
+                                                        socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                                    } else {
+                                                        specialAttackCard = []
+                                                        specialAttackCard.push({
+                                                            id: card.cartaCombate.id_carta,
+                                                            idAtaque: card.ataque.id,
+                                                            tipo: card.ataque.tipo
+                                                        })
+                                                    }
+                                                }
                                                 if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                                     alert('This card is immobilized')
                                                 } else {
@@ -144,6 +157,24 @@
                                                         socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                                     } else {
                                                         console.log(card.ataque.tipo)
+                                                        specialAttackCard.push({
+                                                            id: card.cartaCombate.id_carta,
+                                                            idAtaque: card.ataque.id,
+                                                            tipo: card.ataque.tipo
+                                                        })
+                                                        if (tipoSplit[1] && tipoSplit === 'aliado') {
+                                                            const userCards = document.getElementsByClassName('card-user')
+                                                            for (let i = 0; i < userCards.length; i++) {
+                                                                if (parseInt(userCards[i].id) !== card.cartaCombate.id_carta) {
+                                                                    userCards[i].style.boxShadow = '0px 0px 7px 4px green'
+                                                                }
+                                                            }
+                                                        } else {
+                                                            const opponentCards = document.getElementsByClassName('card-opponent')
+                                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
