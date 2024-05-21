@@ -2213,15 +2213,23 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         justify-content: space-around;
     }
 
-    #putOnMarket{
-        width: 120px;
-    }
-
 }
 
 @media (max-width: 600px){
+
+    .resultado_sobre{
+        height: auto;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        margin-top: 10%;
+        gap: 10px;
+        padding: 0px 10px;
+    }
         
-    
+    .resultado_sobre .carta{
+        width: 160px;
+        height: 223px;
+        margin-bottom: 50%;
+    }
 
 }
 
