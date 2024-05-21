@@ -150,6 +150,7 @@ io.on('connection', async (socket) => {
     const cardAttackingId = data.cardAttacking
     const cardAttackedId = data.cardAttacked
     const username = data.username
+
     let opponentId
     const ataques = []
 
@@ -179,6 +180,7 @@ io.on('connection', async (socket) => {
     // console.log(cartaAttacked)
 
     if (cartaAttacked[0].efecto_secundario && cartaAttacked[0].efecto_secundario === 'inmune') {
+      console.log('Carta inmune')
       io.emit('immune-card', { message: 'Card is immune', username })
       return
     }
