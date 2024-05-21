@@ -171,8 +171,8 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 15px 19px !important;
-    font-size: 10px !important;
+    margin: 14px 18px !important;
+    font-size: 9px !important;
     font-weight: 600;
     font-family: "Goldman", sans-serif;
 }
@@ -218,8 +218,8 @@ body {
 .yourCards .card .ataque-vida {
     bottom: 0;
     right: 0;
-    margin: 13px 19px !important;
-    font-size: 12px !important;
+    margin: 14px 19px !important;
+    font-size: 10px !important;
     font-weight: 600;
     font-family: "Goldman", sans-serif;
 }
