@@ -559,7 +559,7 @@ io.on('connection', async (socket) => {
             }
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
-          if (carta.estadistica_efecto === 'corrosivo') {
+          if (carta.efecto_secundario === 'corrosivo') {
             console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
