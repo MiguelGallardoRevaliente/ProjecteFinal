@@ -394,14 +394,14 @@ header .config p {
     box-shadow: 1px 3px 5px black;
 }
 
-#shop .container .all .filtrer form .info{
+#shop .container .all .filtrer form .info {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
 }
 
-#shop .container .all .filtrer form .info div{
+#shop .container .all .filtrer form .info div {
 
     display: flex;
     align-items: center;
@@ -2144,7 +2144,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         justify-content: space-around;
     }
 
-    #putOnMarket{
+    #putOnMarket {
         width: 58%;
     }
 
@@ -2189,7 +2189,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         justify-content: space-around;
     }
 
-    #putOnMarket{
+    #putOnMarket {
         width: 68%;
     }
 
@@ -2365,6 +2365,17 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
         padding: 4px 10px;
     }
 
+    #shop .container .top button {
+        width: 45px;
+        height: 45px;
+        font-size: 35px;
+    }
+
+    #shop .container .top h1 {
+        border-left: 10px solid #ffffff;
+        padding-left: 10px;
+    }
+
 }
 
 @media (max-width: 450px) {
@@ -2404,25 +2415,26 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         font-size: 20px;
     }
 
-    #shop .container .all .filtrer form{
+    #shop .container .all .filtrer form {
         gap: 10px;
         padding: 5px 10px;
         width: 100%;
     }
 
-    #shop .container .all .filtrer form label{
+    #shop .container .all .filtrer form label {
         font-size: 18px;
     }
-    #shop .container .all .filtrer form input[type="text"]{
+
+    #shop .container .all .filtrer form input[type="text"] {
         width: 180px;
         font-size: 18px;
     }
 
-    #shop .container .all .filtrer form select{
+    #shop .container .all .filtrer form select {
         font-size: 18px;
     }
 
-    #shop .container .all .filtrer form button{
+    #shop .container .all .filtrer form button {
 
         width: 25px;
         height: 25px;
@@ -2430,12 +2442,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 
     }
 
-    #shop .container .all .filtrer{
+    #shop .container .all .filtrer {
         padding: 0px;
     }
 }
 
-@media (max-width: 1100px){
+@media (max-width: 1100px) {
 
     #shop #allcards .shop_cards table tr th {
         font-size: 18px;
@@ -2451,36 +2463,37 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
     }
 
 
-    #shop .container .all .filtrer form{
+    #shop .container .all .filtrer form {
         gap: 5px;
         padding: 3px 5px;
     }
 
-    #shop .container .all .filtrer form label{
+    #shop .container .all .filtrer form label {
         font-size: 15px;
     }
-    #shop .container .all .filtrer form input[type="text"]{
+
+    #shop .container .all .filtrer form input[type="text"] {
         width: 150px;
         font-size: 15px;
     }
 
-    #shop .container .all .filtrer form select{
+    #shop .container .all .filtrer form select {
         font-size: 15px;
     }
 
-    #shop .container .all .filtrer form button{
+    #shop .container .all .filtrer form button {
 
         width: 20px;
         height: 20px;
         font-size: 18px;
 
-    }   
+    }
 
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
 
-    #shop{
+    #shop {
         padding: 20px;
     }
 
@@ -2497,34 +2510,35 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         width: 20px !important;
     }
 
-    #shop .container .all .filtrer form{
+    #shop .container .all .filtrer form {
         gap: 5px;
         padding: 3px 5px;
     }
 
-    #shop .container .all .filtrer form label{
+    #shop .container .all .filtrer form label {
         font-size: 12px;
     }
-    #shop .container .all .filtrer form input[type="text"]{
+
+    #shop .container .all .filtrer form input[type="text"] {
         width: 120px;
         font-size: 12px;
     }
 
-    #shop .container .all .filtrer form select{
+    #shop .container .all .filtrer form select {
         font-size: 12px;
     }
 
-    #shop .container .all .filtrer form button{
+    #shop .container .all .filtrer form button {
 
         width: 20px;
         height: 20px;
         font-size: 15px;
 
-    }   
+    }
 
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
 
     shop #allcards .shop_cards table tr th {
         font-size: 10px;
@@ -2539,37 +2553,39 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         width: 15px !important;
     }
 
-    #shop .container .all .filtrer form .info div{
-        gap: 5px;
-    }
-    #shop .container .all .filtrer form .info{
+    #shop .container .all .filtrer form .info div {
         gap: 5px;
     }
 
-    #shop .container .all .filtrer form{
+    #shop .container .all .filtrer form .info {
+        gap: 5px;
+    }
+
+    #shop .container .all .filtrer form {
         gap: 5px;
         padding: 3px 5px;
     }
 
-    #shop .container .all .filtrer form label{
+    #shop .container .all .filtrer form label {
         font-size: 10px;
     }
-    #shop .container .all .filtrer form input[type="text"]{
+
+    #shop .container .all .filtrer form input[type="text"] {
         width: 80px;
         font-size: 10px;
     }
 
-    #shop .container .all .filtrer form select{
+    #shop .container .all .filtrer form select {
         font-size: 10px;
     }
 
-    #shop .container .all .filtrer form button{
+    #shop .container .all .filtrer form button {
 
         width: 17px;
         height: 17px;
         font-size: 12px;
 
-    }   
+    }
 
 
 }
