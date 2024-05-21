@@ -147,6 +147,7 @@ io.on('connection', async (socket) => {
   })
 
   socket.on('attack', async (data) => {
+    console.log('Ataque')
     const cardAttackingId = data.cardAttacking
     const cardAttackedId = data.cardAttacked
     const username = data.username
