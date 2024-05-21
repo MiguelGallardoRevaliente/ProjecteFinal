@@ -337,7 +337,7 @@ io.on('connection', async (socket) => {
 
   /* Aqui se recibe la peticion de usar un ataque especial a el mismo */
   socket.on('special-attack-self', async (data) => {
-    const idCarta = data.idCarta
+    const idCarta = data.idCartaAttacking
     const username = data.username
     const idAtaque = data.idAtaque
     const tipo = data.tipo
