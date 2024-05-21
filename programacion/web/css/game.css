@@ -389,7 +389,7 @@ header .config p {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
     width: 100%;
@@ -435,10 +435,10 @@ header .config p {
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
     background: #9D9D9D;
-    width: 37px;
-    height: 37px;
+    width: 35px;
+    height: 35px;
     color: rgb(0, 0, 0);
-    font-size: 35px;
+    font-size: 32px;
     cursor: pointer;
 
 }
