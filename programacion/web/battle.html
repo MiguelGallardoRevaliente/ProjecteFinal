@@ -887,6 +887,7 @@
                                 ataqueEspecialButton.textContent = data.cartas.ataques[index].nombre
                                 ataqueEspecialButton.addEventListener('click', () => {
                                     if (specialAttackCard.length === 1) {
+                                        console.log('Vida', card.vida)
                                         const tipo = specialAttackCard[0].tipo.split('/')
                                         if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                             const userCards = document.getElementsByClassName('card-user')
