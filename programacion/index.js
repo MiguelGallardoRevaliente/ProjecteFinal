@@ -542,6 +542,7 @@ io.on('connection', async (socket) => {
                 [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
               )
             } else if (carta.efecto_secundario === 'corrosvio') {
+              console.log('Corrosivo fin')
               let vida = carta.vida - carta.cambio_estadistica
               if (vida < 0) {
                 vida = 0
@@ -559,6 +560,7 @@ io.on('connection', async (socket) => {
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
           if (carta.estadistica_efecto === 'corrosivo') {
+            console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
               vida = 0
@@ -589,6 +591,7 @@ io.on('connection', async (socket) => {
                 [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
               )
             } else if (carta.efecto_secundario === 'corrosvio') {
+              console.log('Corrosvio Fin')
               let vida = carta.vida - carta.cambio_estadistica
               if (vida < 0) {
                 vida = 0
@@ -606,6 +609,7 @@ io.on('connection', async (socket) => {
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
           if (carta.estadistica_efecto === 'corrosivo') {
+            console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
               vida = 0
