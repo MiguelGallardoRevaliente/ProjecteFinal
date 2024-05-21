@@ -401,6 +401,7 @@ io.on('connection', async (socket) => {
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [user[0].id_uuid, combate[0].id_combate_uuid])
     if (cartasCombate.length === 0) {
+      console.log('No tienes cartas en combate')
       return
     }
     for (const cartaCombate of cartasCombate) {
@@ -454,6 +455,7 @@ io.on('connection', async (socket) => {
           )
         }
       } else {
+        console.log('Ya tiene efecto')
         io.emit('already-has-effect', { message: 'Already has effect', username })
         return
       }
@@ -489,6 +491,7 @@ io.on('connection', async (socket) => {
           [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
         )
       } else {
+        console.log('Ya tiene efecto')
         io.emit('already-has-effect', { message: 'Already has effect', username })
         return
       }
