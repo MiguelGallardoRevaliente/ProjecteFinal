@@ -2226,8 +2226,8 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     }
         
     .resultado_sobre .carta{
-        width: 160px;
-        height: 223px;
+        width: 151px;
+        height: 211px;
         margin-bottom: 50%;
     }
 
@@ -2236,6 +2236,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         font-size: 12px;
         justify-content: center;
         width: 75%;
+        
+    }
+    .salir{
+        bottom: 2%;
     }
 
 }
