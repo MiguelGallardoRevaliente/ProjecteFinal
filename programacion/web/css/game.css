@@ -2436,6 +2436,12 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         font-size: 18px;
     }
 
+    #shop #allcards .shop_cards table tr img {
+
+        width: 23px;
+    }
+
+
     #shop .container .all .filtrer form{
         gap: 5px;
         padding: 3px 5px;
