@@ -2179,7 +2179,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     .resultado_sobre .carta {
         width: 203px;
         height: 283px;
-        margin-bottom: 25%;
+        margin-bottom: 30%;
     }
 
     .resultado_sobre .carta .ataque-vida {
@@ -2212,6 +2212,17 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         width: 120px;
         justify-content: space-around;
     }
+
+    #putOnMarket{
+        width: 120px;
+    }
+
+}
+
+@media (max-width: 600px){
+        
+    
+
 }
 
 @media (max-width: 550px) {
