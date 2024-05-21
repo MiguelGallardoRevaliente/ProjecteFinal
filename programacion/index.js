@@ -417,9 +417,11 @@ io.on('connection', async (socket) => {
       if (!cartaCombate[0].efecto_secundario) {
         if (ataque[0].estadistica === 'vida') {
           let vida = cartaCombate[0].vida + ataque[0].cambio
+          console.log(cartaInfo[0].vida, ataque[0].cambio)
           if (vida > cartaInfo[0].vida) {
             vida = cartaInfo[0].vida
           }
+          console.log(vida)
           await connection.execute(
             'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
             [vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
