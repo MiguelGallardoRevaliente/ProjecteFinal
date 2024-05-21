@@ -527,6 +527,8 @@ io.on('connection', async (socket) => {
         ataques: ataquesUser
       }
 
+      console.log('Cartas', cartasUser)
+
       io.emit('ended-turn', { username, cartas: cartasUser })
       io.emit('special-attacked-ally', { username, opponentCards })
     }
