@@ -855,7 +855,7 @@
                     })
 
                     data.cartas.cartasCombate.forEach((card, index) => {
-                        if (carta.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
+                        if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
                             console.log(card)
                             const ataqueEspecialButton = document.createElement('button')
                             ataqueEspecialButton.className = 'ataque-especial-button'
