@@ -377,18 +377,11 @@ io.on('connection', async (socket) => {
     const tipo = data.tipo
     const tipoSplited = tipo.split('/')
 
-    let opponentId
     const ataques = []
 
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
-
-    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
-      opponentId = combate[0].id_user_2_uuid
-    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
-      opponentId = combate[0].id_user_1_uuid
-    }
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [user[0].id_uuid, combate[0].id_combate_uuid])
     if (cartasCombate.length === 0) {
