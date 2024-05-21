@@ -393,7 +393,7 @@
             for (let i = 0; i < opponentCards.length; i++) {
                 opponentCards[i].style.boxShadow = 'none'
             }
-            
+
             console.log('End Turn')
             socket.emit('end-turn', { username: localStorage.getItem('username') })
         })
@@ -692,6 +692,7 @@
 
                 for (let i = 0; i < cardUser.length; i++) {
                     ///// ATAQUEBOTON /////
+                    ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
