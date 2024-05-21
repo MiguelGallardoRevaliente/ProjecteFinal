@@ -729,21 +729,42 @@
                         ataqueEspecialButton.addEventListener('click', () => {
                             data.cartas.cartasCombate.forEach((card, index) => {
                                 console.log('Card', card)
-                                if (parseInt(cardUser[i].id) === card.id_carta) {
-                                    if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
-                                        alert('This card is immobilized')
+                                if (specialAttackCard.length === 1) {
+                                    const tipo = specialAttackCard[0].tipo.split('/')
+                                    if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
+                                        console.log('Aliado', card.id_carta)
+                                        const userCards = document.getElementsByClassName('card-user')
+                                        for (let i = 0; i < userCards.length; i++) {
+                                            console.log('Aliado', userCards[i].id, card.id_carta)
+                                            if (parseInt(userCards[i].id) !== card.id_carta) {
+                                                userCards[i].style.boxShadow = 'none'
+                                            }
+                                        }
                                     } else {
-                                        console.log(data)
-                                        console.log(data.cartas.ataques[index].tipo)
-                                        const tipoSplit = data.cartas.ataques[index].tipo.split('/')
-                                        console.log(tipoSplit)
-                                        if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
-                                            socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
-                                        } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
-                                            console.log(data.cartas.ataques[index].tipo)
-                                            socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
+                                        specialAttackCard = []
+                                        specialAttackCard.push({
+                                            id: card.id_carta,
+                                            idAtaque: data.cartas.ataques[index].id,
+                                            tipo: data.cartas.ataques[index].tipo
+                                        })
+                                    }
+                                } else {
+                                    if (parseInt(cardUser[i].id) === card.id_carta) {
+                                        if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
+                                            alert('This card is immobilized')
                                         } else {
+                                            console.log(data)
                                             console.log(data.cartas.ataques[index].tipo)
+                                            const tipoSplit = data.cartas.ataques[index].tipo.split('/')
+                                            console.log(tipoSplit)
+                                            if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
+                                                socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
+                                            } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
+                                                console.log(data.cartas.ataques[index].tipo)
+                                                socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
+                                            } else {
+                                                console.log(data.cartas.ataques[index].tipo)
+                                            }
                                         }
                                     }
                                 }
