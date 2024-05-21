@@ -203,7 +203,7 @@
                                                                 } else if (card.ataque.tipo === 'revive') {
                                                                     console.log('Cartas window', data)
                                                                     const userBoard = document.getElementsByClassName('user-board')[0]
-                                                                    data.cartas.cartasUser.forEach((cardRevive, index) => {
+                                                                    data.cartasCombates.cartasUser.forEach((cardRevive, index) => {
                                                                         if (cardRevive.cartaCombate.vida <= 0) {
                                                                             const cardDiv = document.createElement('div')
                                                                             cardDiv.className = 'card card-user'
