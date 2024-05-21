@@ -767,6 +767,7 @@
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
+                        console.log('Cartas combate', data.cartas.cartasCombate)
                         data.cartas.cartasCombate.forEach(card => {
                             console.log('Manolo', specialAttackCard)
                             if (specialAttackCard.length === 1) {
