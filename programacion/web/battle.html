@@ -684,7 +684,9 @@
                             }
                         }
                     })
-                    opponentCards[i].style.boxShadow = 'none'
+                    if (opponentCards[i]){
+                        opponentCards[i].style.boxShadow = 'none'
+                    }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
