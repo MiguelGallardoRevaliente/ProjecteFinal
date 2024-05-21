@@ -87,12 +87,12 @@
                                                 }
                                             }
                                         }
-                                    }
-                                    if (cardClicked.length === 1) {
-                                        socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
-                                        const OpponentCards = document.getElementsByClassName('card-opponent')
-                                        for (let i = 0; i < OpponentCards.length; i++) {
-                                            OpponentCards[i].style.boxShadow = 'none'
+                                        if (cardClicked.length === 1) {
+                                            socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
+                                            const OpponentCards = document.getElementsByClassName('card-opponent')
+                                            for (let i = 0; i < OpponentCards.length; i++) {
+                                                OpponentCards[i].style.boxShadow = 'none'
+                                            }
                                         }
                                     }
                                 })
@@ -424,18 +424,58 @@
 
         /* Recibir mensajes del servidor */
         socket.on('played-card', (data) => {
+            console.log('Carta jugada', data)
             playedCard = []
             const cardDivPlayed = document.createElement('div')
-            if (data.user === localStorage.getItem('username')) {
-                cardDivPlayed.className = 'card card-user'
-            } else if (data.user === localStorage.getItem('opponent')) {
-                cardDivPlayed.className = 'card card-opponent'
-            }
             cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
             cardDivPlayed.style.backgroundSize = 'contain'
             cardDivPlayed.style.backgroundRepeat = 'no-repeat'
             cardDivPlayed.style.backgroundPosition = 'center'
             cardDivPlayed.id = data.carta.id
+            if (data.user === localStorage.getItem('username')) {
+                cardDivPlayed.className = 'card card-user'
+            } else if (data.user === localStorage.getItem('opponent')) {
+                cardDivPlayed.className = 'card card-opponent'
+                cardDivPlayed.addEventListener('click', () => {
+                    if (specialAttackCard.length === 1) {
+                        const tipo = specialAttackCard[0].tipo.split('/')
+                        if (tipo[1] !== 'aliado') {
+                            console.log(data.carta.id)
+                            socket.emit('special-attack-opponent', { idCartaAttacked: data.carta.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                            const opponentCards = document.getElementsByClassName('card-opponent')
+                            for (let i = 0; i < opponentCards.length; i++) {
+                                opponentCards[i].style.boxShadow = 'none'
+                            }
+                        }
+                    } else {
+                        if (parseInt(cardDiv.id) === data.carta.id) {
+                            if (card.cartaCombate.efecto_secundario === 'inmovil') {
+                                alert('This card is immobilized')
+                            } else {
+                                if (playedCardAttack.length !== 0) {
+                                    alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                                } else {
+                                    if (cardClicked.length === 1) {
+                                        cardClicked = []
+                                    }
+                                    cardClicked.push(data.carta.id)
+                                    const userCards = document.getElementsByClassName('card-user')
+                                    for (let i = 0; i < userCards.length; i++) {
+                                        userCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                    }
+                                }
+                            }
+                        }
+                        if (cardClicked.length === 1) {
+                            socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
+                            const OpponentCards = document.getElementsByClassName('card-opponent')
+                            for (let i = 0; i < OpponentCards.length; i++) {
+                                OpponentCards[i].style.boxShadow = 'none'
+                            }
+                        }
+                    }
+                })
+            }
 
             const cardNamePlayed = document.createElement('p')
             cardNamePlayed.textContent = data.carta.nombre
