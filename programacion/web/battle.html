@@ -70,7 +70,7 @@
                                         }
                                     } else {
                                         if (cardClicked.length === 1) {
-                                            console.log('Peticion 1')
+                                            console.log('Peticion 1', cardClicked)
                                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
                                             const OpponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < OpponentCards.length; i++) {
@@ -432,7 +432,7 @@
                         }
                     } else {
                         if (cardClicked.length === 1) {
-                            console.log('Peticion 2')
+                            console.log('Peticion 2', cardClicked)
                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
                             const OpponentCards = document.getElementsByClassName('card-opponent')
                             for (let i = 0; i < OpponentCards.length; i++) {
@@ -523,7 +523,7 @@
 
                 cardDivPlayed.addEventListener('click', () => {
                     if (cardClicked.length === 1) {
-                        console.log('Peticion 3')
+                        console.log('Peticion 3', cardClicked)
                         socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
                     }
                 })
