@@ -663,7 +663,7 @@
                                         console.log(tipoSplit)
                                         if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
                                             socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
-                                        } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse') {
+                                        } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
                                             console.log(data.cartas.ataques[index].tipo)
                                             socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
                                         } else {

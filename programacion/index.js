@@ -421,6 +421,42 @@ io.on('connection', async (socket) => {
       io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-self', { opponent: username, username: opponent[0].user, opponentCards })
     }
+
+    if (tipo === 'inmune') {
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCarta, user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+
+      if (!cartaCombate[0].efecto_secundario) {
+        await connection.execute(
+          'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+      } else {
+        io.emit('already-has-effect', { message: 'Already has effect', username })
+        return
+      }
+
+      const [opponentCards] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
+      await connection.execute(
+        'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+
+      io.emit('ended-turn', { username, cartas })
+      io.emit('special-attacked-self', { opponent: username, username: opponent[0].user, opponentCards })
+    }
   })
 
   /* Aqui se recibe la peticion de usar un ataque especial en area */
