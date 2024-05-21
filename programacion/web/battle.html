@@ -152,7 +152,7 @@
                                                     console.log(tipoSplit)
                                                     if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
                                                         socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
-                                                    } else if (card.ataque.tipo === 'power-up' || card.ataque.tipo === 'inmune' || card.ataque.tipo === 'reverse') {
+                                                    } else if (card.ataque.tipo === 'power-up' || card.ataque.tipo === 'inmune' || card.ataque.tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
                                                         console.log(card.ataque.tipo)
                                                         socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                                     } else {
