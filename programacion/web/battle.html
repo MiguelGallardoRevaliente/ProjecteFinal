@@ -563,7 +563,7 @@
 
         socket.on('special-attacked-ally', (data) => {
             console.log('Special Attack Ally', data)
-            if (data.opponent === localStorage.getItem('opponent')) {
+            if (data.username === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
@@ -584,7 +584,7 @@
                 }
             }
 
-            if (data.opponent === localStorage.getItem('username')) {
+            if (data.username === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
                     data.opponentCards.forEach((card, index) => {

@@ -449,14 +449,13 @@ io.on('connection', async (socket) => {
         return
       }
 
-      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
       const [opponentCards] = await connection.execute(
         'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
         [user[0].id_uuid, combate[0].id_combate_uuid]
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-ally', { opponent: opponent[0].user, username, opponentCards })
+      io.emit('special-attacked-ally', { username, opponentCards })
     }
   })
 
