@@ -649,6 +649,7 @@
                         ataqueEspecialButton.className = 'ataque-especial-button'
                         ataqueEspecialButton.textContent = data.cartas.ataques[i].nombre
                         ataqueEspecialButton.addEventListener('click', () => {
+                            console.log(data)
                             data.cartas.cartasCombate.forEach(card => {
                                 console.log('Card', card)
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
