@@ -192,6 +192,14 @@
                                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
                                                                     }
+                                                                } else if (card.ataque.tipo === 'corrosivo') {
+                                                                    for (let i = 0; i < opponentCards.length; i++) {
+                                                                        opponentCards[i].style.boxShadow = '0px 0px 7px 4px #B83BDA'
+                                                                    }
+                                                                } else if (card.ataque.tipo === 'inmovil') {
+                                                                    for (let i = 0; i < opponentCards.length; i++) {
+                                                                        opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -555,7 +563,9 @@
                             ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                         }
                     }
-                    cardOpponent[i].style.boxShadow = 'none'
+                    if (cardOpponent[i]) {
+                        cardOpponent[i].style.boxShadow = 'none'
+                    }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const cardUser = document.getElementsByClassName('card-user')
