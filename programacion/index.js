@@ -1061,6 +1061,8 @@ io.on('connection', async (socket) => {
   socket.on('end-turn', async (data) => {
     const username = data.username
     const ataques = []
+    const cartasInfo = []
+    const cartas = []
 
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid, BIN_TO_UUID(turno) as turno_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
@@ -1203,7 +1205,6 @@ io.on('connection', async (socket) => {
       }
     }
 
-    let cartas = []
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
       const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
@@ -1211,9 +1212,11 @@ io.on('connection', async (socket) => {
         const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
         const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
         ataques.push(ataque[0])
+        cartasInfo.push(carta[0])
       }
 
       cartas = {
+        cartasInfo,
         cartasCombate,
         ataques
       }
@@ -1225,9 +1228,11 @@ io.on('connection', async (socket) => {
         const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
         const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
         ataques.push(ataque[0])
+        cartasInfo.push(carta[0])
       }
 
       cartas = {
+        cartasInfo,
         cartasCombate,
         ataques
       }
