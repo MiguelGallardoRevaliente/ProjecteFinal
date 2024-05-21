@@ -2123,7 +2123,105 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
     .QuickSell button {
         font-size: 12px;
         width: 120px;
+        justify-content: space-around;
     }
+
+}
+
+@media (max-width: 1000px){
+
+    .resultado_sobre{
+        grid-template-columns: repeat(auto-fit, minmax(147px, 1fr));
+    }
+
+    .resultado_sobre .carta{
+        width: 147px;
+        height: 205px;
+    }
+
+    .resultado_sobre .carta .ataque-vida{
+        margin: 14px 18px !important;
+        font-size: 10px !important;
+        font-weight: 800;
+        font-family: "Goldman", sans-serif;
+    }
+
+    .resultado_sobre .carta .ataque-especial{
+        position: absolute;
+        top: 75%;
+        font-size: 7px !important;
+        font-weight: 600 !important;
+        left: 20px;
+        max-width: 120px;
+    }
+
+    .resultado_sobre .carta .nombreCarta{
+        font-size: 10px;
+        left: 15px;
+        font-weight: 800;
+    }
+
+    .QuickSell button{
+        font-size: 10px;
+        width: 100px;
+        justify-content: space-around;
+    }
+
+}
+
+@media (max-width: 800px){
+    .resultado_sobre {
+        height: auto;
+        grid-template-columns: repeat(auto-fit, minmax(203px, 1fr));
+        margin-top: 10%;
+    }
+
+    .resultado_sobre .carta {
+        width: 203px;
+        height: 283px;
+        margin-bottom: 30%;
+    }
+
+    .resultado_sobre .carta .ataque-vida {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 16px 20px !important;
+        font-size: 11px !important;
+        font-weight: 800;
+        font-family: "Goldman", sans-serif;
+    }
+
+    .resultado_sobre .carta .ataque-especial {
+        position: absolute;
+        top: 75%;
+        font-size: 7px !important;
+        font-weight: 600 !important;
+        left: 20px;
+        max-width: 120px;
+    }
+
+    .resultado_sobre .carta .nombreCarta {
+        font-size: 12px;
+        left: 20px;
+        font-weight: 800;
+    }
+
+    .QuickSell button {
+        font-size: 12px;
+        width: 120px;
+        justify-content: space-around;
+    }
+
+    #putOnMarket{
+        width: 120px;
+    }
+
+}
+
+@media (max-width: 600px){
+        
+    
 
 }
 
