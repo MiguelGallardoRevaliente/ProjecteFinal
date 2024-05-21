@@ -399,6 +399,7 @@ header .config p {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15px;
 }
 
 #shop .container .all .filtrer form .info div{
@@ -435,10 +436,10 @@ header .config p {
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
     background: #9D9D9D;
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     color: rgb(0, 0, 0);
-    font-size: 32px;
+    font-size: 30px;
     cursor: pointer;
 
 }
