@@ -2387,11 +2387,22 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         font-size: 20px;
     }
     #shop .container .all .filtrer form input[type="text"]{
+        width: 200px;
         font-size: 20px;
     }
 
     #shop .container .all .filtrer form select{
         font-size: 20px;
     }
+
+    #shop .container .all .filtrer form button{
+
+        width: 27px;
+        height: 27px;
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+
+    }
+   
 
 }
