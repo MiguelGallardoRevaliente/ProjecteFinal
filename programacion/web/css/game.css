@@ -55,7 +55,7 @@ body {
 
 header {
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     width: 300px;
     box-shadow: 3px 0px 5px rgb(0, 0, 0);
     background-color: var(--background-color);
