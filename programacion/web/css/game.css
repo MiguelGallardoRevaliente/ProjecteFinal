@@ -1110,6 +1110,7 @@ header .config p {
     bottom: -82px;
     padding: 5px;
     left: 50%;
+    width: 40%;
     transform: translate(-50%, -50%);
     background-color: #232323;
     color: white;
@@ -2143,6 +2144,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         justify-content: space-around;
     }
 
+    #putOnMarket{
+        width: 58%;
+    }
+
 }
 
 @media (max-width: 1000px) {
@@ -2184,6 +2189,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         justify-content: space-around;
     }
 
+    #putOnMarket{
+        width: 68%;
+    }
+
 }
 
 @media (max-width: 800px) {
@@ -2203,9 +2212,9 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
         position: absolute;
         bottom: 0;
         right: 0;
-        margin: 16px 20px !important;
-        font-size: 11px !important;
-        font-weight: 800;
+        margin: 11px 17px !important;
+        font-size: 9px !important;
+        font-weight: 600;
         font-family: "Goldman", sans-serif;
     }
 
