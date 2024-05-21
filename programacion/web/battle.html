@@ -29,15 +29,6 @@
         }
 
         let cardClicked = [] /* Para saber con que carta atacas */
-        if (localStorage.getItem('cardClicked')) {
-            cardClicked.push(parseInt(localStorage.getItem('cardClicked')))
-        }
-        if (cardClicked.length !== 0) {
-            const opponentCards = document.getElementsByClassName('card-opponent')
-            for (let i = 0; i < opponentCards.length; i++) {
-                opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-            }
-        }
 
         let playedCard = [] /* Para no poner varias veces la misma carta */
         
@@ -45,6 +36,8 @@
         if (localStorage.getItem('playedCardAttack')) {
             playedCardAttack.push(parseInt(localStorage.getItem('playedCardAttack')))
         }
+
+        let SpecialAttackCard = [] /* Para saber con que carta usas el ataque especial */
         
         window.onload = () => {
             fetch(`getCardsBattle?id=${localStorage.getItem('id')}`)
@@ -146,6 +139,9 @@
                                                     console.log(tipoSplit)
                                                     if (card.ataque.tipo === 'area' || tipoSplit[1] === 'area') {
                                                         socket.emit('special-attack-area', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
+                                                    } else if (card.ataque.tipo === 'power-up' || card.ataque.tipo === 'inmune' || card.ataque.tipo === 'reverse') {
+                                                        console.log(card.ataque.tipo)
+                                                        socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                                     } else {
                                                         console.log(card.ataque.tipo)
                                                     }
@@ -169,11 +165,8 @@
                                                 } else {
                                                     if (cardClicked.length === 1) {
                                                         cardClicked = []
-                                                        localStorage.setItem('cardClicked', cardClicked)
                                                     }
                                                     cardClicked.push(card.cartaEnCombateUser.id)
-                                                    localStorage.setItem('cardClicked',cardClicked)
-                                                    console.log(localStorage.getItem('cardClicked'))
                                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
@@ -387,11 +380,8 @@
                     } else {
                         if (cardClicked.length === 1) {
                             cardClicked = []
-                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                         }
                         cardClicked.push(card.cartaEnCombateUser.id)
-                        localStorage.setItem('cardClicked',cardClicked)
-                        console.log(localStorage.getItem('cardClicked'))
                         const opponentCards = document.getElementsByClassName('card-opponent')
                         for (let i = 0; i < opponentCards.length; i++) {
                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
@@ -477,6 +467,48 @@
             }
         })
 
+        socket.on('special-attacked-self', (data) => {
+            if (data.opponent === localStorage.getItem('opponent')) {
+                const opponentCards = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < opponentCards.length; i++) {
+                    data.opponentCards.forEach(card => {
+                        if (parseInt(opponentCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                opponentCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
+                                const ataqueVidaText = card.ataque + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    opponentCards[i].style.boxShadow = 'none'
+                }
+            } else if (data.opponent === localStorage.getItem('username')) {
+                const userCards = document.getElementsByClassName('card-user')
+                for (let i = 0; i < userCards.length; i++) {
+                    data.opponentCards.forEach((card, index) => {
+                        if (parseInt(userCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                userCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                                const ataqueVidaText = card.ataque + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    userCards[i].style.boxShadow = 'none'
+                }
+            }
+        })
+
         socket.on('special-attacked-area', (data) => {
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
@@ -522,8 +554,7 @@
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 console.log('User', data)
-                cardClicked = []
-                localStorage.setItem('cardClicked', cardClicked)               
+                cardClicked = []             
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('opponent')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -567,7 +598,6 @@
                     })
                 }
                 cardClicked = []
-                localStorage.setItem('cardClicked', cardClicked)
                 const turno = document.getElementById('turno')
                 turno.textContent = 'Turn: ' + localStorage.getItem('username')
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -601,11 +631,8 @@
                                     } else {
                                         if (cardClicked.length === 1) {
                                             cardClicked = []
-                                            localStorage.setItem('cardClicked', JSON.stringify(cardClicked))
                                         }
                                         cardClicked.push(card.id_carta)
-                                        localStorage.setItem('cardClicked',cardClicked)
-                                        console.log(localStorage.getItem('cardClicked'))
                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                         for (let i = 0; i < opponentCards.length; i++) {
                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
