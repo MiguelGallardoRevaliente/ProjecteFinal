@@ -401,7 +401,7 @@ header .config p {
     justify-content: center;
 }
 
-#shop .container .all .filtrer form .info{
+#shop .container .all .filtrer form .info div{
 
     display: flex;
     align-items: center;
