@@ -824,6 +824,7 @@
                     buttonAtaque.addEventListener('click', () => {
                         data.cartas.cartasCombate.forEach(card => {
                             if (specialAttackCard.length === 1) {
+                                console.log('Special Attack Card', specialAttackCard)
                                 const tipo = specialAttackCard[0].tipo.split('/')
                                 if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                     socket.emit('special-attack-ally', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
