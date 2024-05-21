@@ -163,7 +163,7 @@
                                                             idAtaque: card.ataque.id,
                                                             tipo: card.ataque.tipo
                                                         })
-                                                        if (tipoSplit[1] && tipoSplit === 'aliado') {
+                                                        if (tipoSplit[1] && tipoSplit[1] === 'aliado') {
                                                             const userCards = document.getElementsByClassName('card-user')
                                                             for (let i = 0; i < userCards.length; i++) {
                                                                 console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
