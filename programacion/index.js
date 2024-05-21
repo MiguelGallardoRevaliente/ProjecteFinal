@@ -479,7 +479,7 @@ io.on('connection', async (socket) => {
       if (!cartaCombate.efecto_secundario) {
         await connection.execute(
           'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-          [tipo, ataque[0].duracion, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          [tipoSplited[0], ataque[0].duracion, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
         )
 
         await connection.execute(
