@@ -923,6 +923,10 @@
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
                                                             }
+                                                        } else if (data.cartas.ataques[index].tipo === 'power-down') {
+                                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
+                                                            }
                                                         }
                                                         console.log('Special Attack Card', specialAttackCard)
                                                     }
