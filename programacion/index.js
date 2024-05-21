@@ -619,6 +619,7 @@ io.on('connection', async (socket) => {
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1, vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
             )
+            console.log('Corrosivo2')
           } else {
             await connection.execute(
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
