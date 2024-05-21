@@ -623,6 +623,7 @@
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
                         data.cartas.cartasCombate.forEach(card => {
+                            console.log(card)
                             if (parseInt(cardUser[i].id) === card.id_carta) {
                                 if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                     alert('This card is immobilized')
