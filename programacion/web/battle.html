@@ -705,7 +705,9 @@
                             }
                         }
                     })
-                    userCards[i].style.boxShadow = 'none'
+                    if (userCards[i]){
+                        userCards[i].style.boxShadow = 'none'
+                    }
                 }
             }
         })
