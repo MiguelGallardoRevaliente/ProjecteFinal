@@ -658,18 +658,16 @@
                                         alert('This card is immobilized')
                                     } else {
                                         console.log(data)
-                                        console.log(index)
-                                        console.log(data.ataques)
-                                        console.log(data.ataques[index].tipo)
-                                        const tipoSplit = data.ataques[index].tipo.split('/')
+                                        console.log(data.cartas.ataques[index].tipo)
+                                        const tipoSplit = data.cartas.ataques[index].tipo.split('/')
                                         console.log(tipoSplit)
-                                        if (data.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
-                                            socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.ataques[index].id, username: localStorage.getItem('username'), tipo: data.ataques[index].tipo })
-                                        } else if (data.ataquse[index].tipo === 'power-up' || data.ataques[index].tipo === 'inmune' || data.ataques[index].tipo === 'reverse') {
-                                            console.log(data.ataques[index].tipo)
-                                            socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.ataques[index].id, username: localStorage.getItem('username'), tipo: data.ataques[index].tipo })
+                                        if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
+                                            socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
+                                        } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse') {
+                                            console.log(data.cartas.ataques[index].tipo)
+                                            socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
                                         } else {
-                                            console.log(data.ataques[index].tipo)
+                                            console.log(data.cartas.ataques[index].tipo)
                                         }
                                     }
                                 }
