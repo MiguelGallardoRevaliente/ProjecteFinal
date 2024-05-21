@@ -178,6 +178,11 @@ io.on('connection', async (socket) => {
     const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
     // console.log(cartaAttacked)
 
+    if (cartaAttacked[0].efecto_secundario && cartaAttacked[0].efecto_secundario === 'inmune') {
+      io.emit('immune-card', { message: 'Card is immune', username })
+      return
+    }
+
     // const [cartaAttackingInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
     const [cartaAttacking] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackingId, user[0].id_uuid, combate[0].id_combate_uuid])
     // console.log(cartaAttacking)
@@ -225,6 +230,7 @@ io.on('connection', async (socket) => {
       mana
     }
 
+    /* Duracion del efecto de las cartas del usuario 1 */
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       const [cartasUser1] = await connection.execute(
         'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?',
@@ -289,6 +295,7 @@ io.on('connection', async (socket) => {
       }
     }
 
+    /* Duracion del efecto de las cartas del usuario 2 */
     if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       const [cartasUser2] = await connection.execute(
         'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?',
@@ -444,6 +451,41 @@ io.on('connection', async (socket) => {
             [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
           )
         }
+      } else {
+        io.emit('already-has-effect', { message: 'Already has effect', username })
+        return
+      }
+
+      const [opponentCards] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+
+      await connection.execute(
+        'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?;',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+
+      io.emit('ended-turn', { username, cartas })
+      io.emit('special-attacked-ally', { username, opponentCards })
+    }
+
+    if (tipoSplited[0] === 'inmune') {
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCarta, user[0].id_uuid, combate[0].id_combate_uuid]
+      )
+
+      if (!cartaCombate.efecto_secundario) {
+        await connection.execute(
+          'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [tipo, ataque[0].duracion, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
       } else {
         io.emit('already-has-effect', { message: 'Already has effect', username })
         return

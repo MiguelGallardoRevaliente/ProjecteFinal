@@ -561,6 +561,12 @@
             }
         })
 
+        socket.on('inmune-card', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('This card is immune')
+            }
+        })
+
         socket.on('special-attacked-ally', (data) => {
             console.log('Special Attack Ally', data)
             if (data.username === localStorage.getItem('opponent')) {
