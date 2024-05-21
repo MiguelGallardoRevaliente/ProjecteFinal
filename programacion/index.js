@@ -898,7 +898,7 @@ io.on('connection', async (socket) => {
         [opponentId, combate[0].id_combate_uuid]
       )
 
-      io.emit('ended-turn', { username, cartas })
+      io.emit('ended-turn', { username, cartas, tipo })
       io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
     }
   })
