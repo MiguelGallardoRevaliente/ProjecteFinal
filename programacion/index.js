@@ -344,6 +344,7 @@ io.on('connection', async (socket) => {
 
     let opponentId
     const ataques = []
+    const cartasInfo = []
 
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
@@ -362,10 +363,12 @@ io.on('connection', async (socket) => {
     for (const cartaCombate of cartasCombate) {
       const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
       const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+      cartasInfo.push(carta[0])
       ataques.push(ataque[0])
     }
 
     const cartas = {
+      cartasInfo,
       cartasCombate,
       ataques
     }
