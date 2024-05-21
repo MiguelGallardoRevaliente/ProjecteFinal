@@ -156,6 +156,7 @@
                                                         console.log(card.ataque.tipo)
                                                         socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                                     } else {
+                                                        console.log('Manuel')
                                                         console.log(card.ataque.tipo)
                                                         specialAttackCard.push({
                                                             id: card.cartaCombate.id_carta,
@@ -165,6 +166,7 @@
                                                         if (tipoSplit[1] && tipoSplit === 'aliado') {
                                                             const userCards = document.getElementsByClassName('card-user')
                                                             for (let i = 0; i < userCards.length; i++) {
+                                                                console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
                                                                 if (parseInt(userCards[i].id) !== card.cartaCombate.id_carta) {
                                                                     userCards[i].style.boxShadow = '0px 0px 7px 4px green'
                                                                 }
