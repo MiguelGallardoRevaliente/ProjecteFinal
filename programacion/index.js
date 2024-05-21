@@ -481,7 +481,10 @@ io.on('connection', async (socket) => {
       if (tipoSplited[0] === 'corrosivo') {
         for (const carta of cartasOpponent) {
           if (!carta.efecto_secundario) {
-            const vida = carta.vida - ataque[0].cambio
+            let vida = carta.vida - ataque[0].cambio
+            if (vida < 0) {
+              vida = 0
+            }
             console.log(carta.vida, ataque[0].cambio)
             console.log(vida)
             await connection.execute(
