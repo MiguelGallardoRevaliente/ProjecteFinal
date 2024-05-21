@@ -2326,7 +2326,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
 @media (max-width: 550px) {
 
     #shop {
-        padding: 0px;
+        padding: 0px 10px;
         padding-top: 70px;
         font-size: 25px;
     }
@@ -2470,6 +2470,10 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 }
 
 @media (max-width: 700px){
+
+    #shop{
+        padding: 20px;
+    }
 
     #shop #allcards .shop_cards table tr th {
         font-size: 15px;
