@@ -582,6 +582,7 @@ io.on('connection', async (socket) => {
     if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       const [cartasUser2] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [combate[0].id_user_2_uuid, combate[0].id_combate_uuid])
       for (const carta of cartasUser2) {
+        console.log('Carta', carta)
         const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
         if (carta.duracion_efecto && carta.duracion_efecto <= 1) {
           if (carta.efecto_secundario) {
@@ -614,7 +615,7 @@ io.on('connection', async (socket) => {
             if (vida < 0) {
               vida = 0
             }
-            console.log(vida)
+            console.log('Vida', vida)
             await connection.execute(
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1, vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
