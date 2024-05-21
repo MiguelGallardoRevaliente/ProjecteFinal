@@ -734,9 +734,28 @@ io.on('connection', async (socket) => {
         [vida, idCartaAttacked, combate[0].id_combate_uuid, opponentId]
       )
 
+      let mana = 0
+      if (vida === 0) {
+        if (opponentId === combate[0].id_user_1_uuid) {
+          mana = combate[0].mana_user_1 + cartaInfo[0].costo_mana
+          await connection.execute(
+            'UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?;',
+            [mana, combate[0].id_combate_uuid]
+          )
+        } else if (opponentId === combate[0].id_user_2_uuid) {
+          mana = combate[0].mana_user_2 + cartaInfo[0].costo_mana
+          await connection.execute(
+            'UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?;',
+            [mana, combate[0].id_combate_uuid]
+          )
+        }
+      }
+
+      console.log(mana)
+
       await connection.execute(
         'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-        [idCartaAttacking, combate[0].id_combate_uuid, opponentId]
+        [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
       )
 
       const [opponentCards] = await connection.execute(
@@ -752,7 +771,7 @@ io.on('connection', async (socket) => {
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
+      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, mana })
     }
   })
 

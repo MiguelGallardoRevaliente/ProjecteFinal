@@ -676,8 +676,6 @@
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 opponentCards[i].remove()
-                                const manaNumber = document.getElementById('mana-number')
-                                manaNumber.textContent = data.mana
                             } else {
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
