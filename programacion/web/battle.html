@@ -861,10 +861,11 @@
 
                     console.log(data.cartas)
                     data.cartas.cartasInfo.forEach((carta, indexCarta) => {
-                        if (carta.id_ataque !== null) {
+                        console.log(carta)
+                        if (carta.id_ataque) {
                             let ataqueIndex
                             data.cartas.ataques.forEach((ataque, index) => {
-                                console.log(ataque.id, carta.id_ataque)
+                                console.log()
                                 if (carta.id_ataque === ataque.id) {
                                     ataqueIndex = index
                                 }
