@@ -859,84 +859,72 @@
                         })
                     })
 
-                    console.log(data.cartas)
-                    data.cartas.cartasInfo.forEach((carta, indexCarta) => {
-                        console.log(carta)
-                        if (carta.id_ataque) {
-                            let ataqueIndex
-                            data.cartas.ataques.forEach((ataque, index) => {
-                                console.log(ataque)
-                                if (ataque && carta.id_ataque === ataque.id) {
-                                    ataqueIndex = index
-                                }
-                            })
-                            data.cartas.cartasCombate.forEach((card, index) => {
-                                if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
-                                    console.log(card)
-                                    const ataqueEspecialButton = document.createElement('button')
-                                    ataqueEspecialButton.className = 'ataque-especial-button'
-                                    ataqueEspecialButton.textContent = data.cartas.ataques[ataqueIndex].nombre
-                                    ataqueEspecialButton.addEventListener('click', () => {
-                                        if (specialAttackCard.length === 1) {
-                                            const tipo = specialAttackCard[0].tipo.split('/')
-                                            if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
-                                                const userCards = document.getElementsByClassName('card-user')
-                                                for (let i = 0; i < userCards.length; i++) {
-                                                    if (parseInt(userCards[i].id) !== card.id_carta) {
-                                                        userCards[i].style.boxShadow = 'none'
-                                                    }
+                    data.cartas.cartasCombate.forEach((card, index) => {
+                        if (data.cartas.ataques[index]) {
+                            if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
+                                console.log(card)
+                                const ataqueEspecialButton = document.createElement('button')
+                                ataqueEspecialButton.className = 'ataque-especial-button'
+                                ataqueEspecialButton.textContent = data.cartas.ataques[index].nombre
+                                ataqueEspecialButton.addEventListener('click', () => {
+                                    if (specialAttackCard.length === 1) {
+                                        const tipo = specialAttackCard[0].tipo.split('/')
+                                        if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
+                                            const userCards = document.getElementsByClassName('card-user')
+                                            for (let i = 0; i < userCards.length; i++) {
+                                                if (parseInt(userCards[i].id) !== card.id_carta) {
+                                                    userCards[i].style.boxShadow = 'none'
                                                 }
-                                            } else {
-                                                specialAttackCard = []
-                                                specialAttackCard.push({
-                                                    id: card.id_carta,
-                                                    idAtaque: data.cartas.ataques[ataqueIndex].id,
-                                                    tipo: data.cartas.ataques[ataqueIndex].tipo
-                                                })
                                             }
                                         } else {
-                                            if (parseInt(cardUser[i].id) === card.id_carta) {
-                                                if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
-                                                    alert('This card is immobilized')
+                                            specialAttackCard = []
+                                            specialAttackCard.push({
+                                                id: card.id_carta,
+                                                idAtaque: data.cartas.ataques[index].id,
+                                                tipo: data.cartas.ataques[index].tipo
+                                            })
+                                        }
+                                    } else {
+                                        if (parseInt(cardUser[i].id) === card.id_carta) {
+                                            if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
+                                                alert('This card is immobilized')
+                                            } else {
+                                                const tipoSplit = data.cartas.ataques[index].tipo.split('/')
+                                                if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
+                                                    socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
+                                                } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
+                                                    socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
                                                 } else {
-                                                    const tipoSplit = data.cartas.ataques[ataqueIndex].tipo.split('/')
-                                                    if (data.cartas.ataques[ataqueIndex].tipo === 'area' || tipoSplit[1] === 'area') {
-                                                        socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[ataqueIndex].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[ataqueIndex].tipo })
-                                                    } else if (data.cartas.ataques[index].tipo === 'power-up' || data.cartas.ataques[index].tipo === 'inmune' || data.cartas.ataques[index].tipo === 'reverse' && tipoSplit[1] !== 'aliado') {
-                                                        socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[ataqueIndex].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[ataqueIndex].tipo })
-                                                    } else {
-                                                        specialAttackCard.push({
-                                                            id: card.id_carta,
-                                                            idAtaque: data.cartas.ataques[ataqueIndex].id,
-                                                            tipo: data.cartas.ataques[ataqueIndex].tipo
-                                                        })
-                                                        if (tipoSplit[1] && tipoSplit[1] === 'aliado') {
-                                                            const userCards = document.getElementsByClassName('card-user')
-                                                            for (let i = 0; i < userCards.length; i++) {
-                                                                if (parseInt(userCards[i].id) !== card.id_carta) {
-                                                                    userCards[i].style.boxShadow = '0px 0px 7px 4px green'
-                                                                }
+                                                    specialAttackCard.push({
+                                                        id: card.id_carta,
+                                                        idAtaque: data.cartas.ataques[index].id,
+                                                        tipo: data.cartas.ataques[index].tipo
+                                                    })
+                                                    if (tipoSplit[1] && tipoSplit[1] === 'aliado') {
+                                                        const userCards = document.getElementsByClassName('card-user')
+                                                        for (let i = 0; i < userCards.length; i++) {
+                                                            if (parseInt(userCards[i].id) !== card.id_carta) {
+                                                                userCards[i].style.boxShadow = '0px 0px 7px 4px green'
                                                             }
-                                                        } else {
-                                                            console.log(data.cartas.ataques[ataqueIndex].tipo)
-                                                            const opponentCards = document.getElementsByClassName('card-opponent')
-                                                            if (data.cartas.ataques[ataqueIndex].tipo === 'unico') {
-                                                                for (let i = 0; i < opponentCards.length; i++) {
-                                                                    opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
-                                                                }
+                                                        }
+                                                    } else {
+                                                        console.log(data.cartas.ataques[index].tipo)
+                                                        const opponentCards = document.getElementsByClassName('card-opponent')
+                                                        if (data.cartas.ataques[index].tipo === 'unico') {
+                                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
                                         }
-                                    })
-                                    cardUser[i].appendChild(ataqueEspecialButton)
-                                }
-                            })
+                                    }
+                                })
+                                cardUser[i].appendChild(ataqueEspecialButton)
+                            }
                         }
                     })
-
                     cardUser[i].appendChild(buttonAtaque)
                 }
             }
