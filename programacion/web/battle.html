@@ -430,24 +430,6 @@
                             }
                         }
                     } else {
-                        if (parseInt(cardDivPlayed.id) === data.carta.id) {
-                            if (card.cartaCombate.efecto_secundario === 'inmovil') {
-                                alert('This card is immobilized')
-                            } else {
-                                if (playedCardAttack.length !== 0) {
-                                    alert('Ya has puesto cartas en el tablero, no puedes atacar')
-                                } else {
-                                    if (cardClicked.length === 1) {
-                                        cardClicked = []
-                                    }
-                                    cardClicked.push(data.carta.id)
-                                    const userCards = document.getElementsByClassName('card-user')
-                                    for (let i = 0; i < userCards.length; i++) {
-                                        userCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-                                    }
-                                }
-                            }
-                        }
                         if (cardClicked.length === 1) {
                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
                             const OpponentCards = document.getElementsByClassName('card-opponent')
