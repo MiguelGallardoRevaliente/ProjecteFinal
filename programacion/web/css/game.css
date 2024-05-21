@@ -387,12 +387,30 @@ header .config p {
 #shop .container .all .filtrer form {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     gap: 15px;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: #3d3d3d;
     box-shadow: 1px 3px 5px black;
+    width: 100%;
 }
+
+#shop .container .all .filtrer form .info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#shop .container .all .filtrer form .info div{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+}
+
 
 #shop .container .all .filtrer form input[type="text"] {
     padding: 2px;
@@ -418,10 +436,10 @@ header .config p {
     box-shadow: 3px 3px 5px var(--box-shadow);
     border: none;
     background: #9D9D9D;
-    width: 37px;
-    height: 37px;
+    width: 32px;
+    height: 32px;
     color: rgb(0, 0, 0);
-    font-size: 35px;
+    font-size: 30px;
     cursor: pointer;
 
 }
@@ -2387,7 +2405,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
         font-size: 20px;
     }
     #shop .container .all .filtrer form input[type="text"]{
-        width: 200px;
+        width: 180px;
         font-size: 20px;
     }
 
