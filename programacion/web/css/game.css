@@ -2371,11 +2371,38 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 @media (max-width: 1350px) {
 
     #shop #allcards .shop_cards table tr th {
-        font-size: 10px;
+        font-size: 20px;
     }
 
     #shop #allcards .shop_cards table tr td {
-        font-size: 10px;
+        font-size: 20px;
     }
+
+    #shop .container .all .filtrer form{
+        gap: 10px;
+        padding: 5px 10px;
+    }
+
+    #shop .container .all .filtrer form label{
+        font-size: 20px;
+    }
+    #shop .container .all .filtrer form input[type="text"]{
+        width: 200px;
+        font-size: 20px;
+    }
+
+    #shop .container .all .filtrer form select{
+        font-size: 20px;
+    }
+
+    #shop .container .all .filtrer form button{
+
+        width: 27px;
+        height: 27px;
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+
+    }
+   
 
 }
