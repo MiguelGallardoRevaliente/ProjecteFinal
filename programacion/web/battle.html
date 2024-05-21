@@ -69,6 +69,7 @@
                                             }
                                         }
                                     } else {
+                                        console.log(cardDiv.id, card.cartaEnCombateOpponent.id)
                                         if (parseInt(cardDiv.id) === card.cartaEnCombateOpponent.id) {
                                             if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                                 alert('This card is immobilized')
@@ -448,7 +449,7 @@
                             }
                         }
                     } else {
-                        if (parseInt(cardDiv.id) === data.carta.id) {
+                        if (parseInt(cardDivPlayed.id) === data.carta.id) {
                             if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                 alert('This card is immobilized')
                             } else {
