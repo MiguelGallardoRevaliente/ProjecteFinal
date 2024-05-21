@@ -2438,7 +2438,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 
     #shop #allcards .shop_cards table tr img {
 
-        width: 23px;
+        width: 23px !important;
     }
 
 
@@ -2485,7 +2485,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 
     #shop #allcards .shop_cards table tr img {
 
-        width: 20px;
+        width: 20px !important;
     }
 
     #shop .container .all .filtrer form{
@@ -2527,7 +2527,14 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 
     #shop #allcards .shop_cards table tr img {
 
-        width: 15px;
+        width: 15px !important;
+    }
+
+    #shop .container .all .filtrer form .info div{
+        gap: 5px;
+    }
+    #shop .container .all .filtrer form .info{
+        gap: 5px;
     }
 
     #shop .container .all .filtrer form{
