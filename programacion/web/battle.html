@@ -756,7 +756,8 @@
 
         socket.on('ended-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
-                cardClicked = []             
+                cardClicked = []     
+                specialAttackCard = []        
                 const turno = document.getElementById('turno')
                 turno.textContent = localStorage.getItem('opponent') + ' turn'
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -800,6 +801,7 @@
                     })
                 }
                 cardClicked = []
+                specialAttackCard = []
                 const turno = document.getElementById('turno')
                 turno.textContent = localStorage.getItem('username') + ' turn'
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
@@ -837,7 +839,9 @@
                                     }
                                 }
                             } else {
+                                console.log('Manolete', cardUser[i].id, card.id_carta)
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
+                                    console.log('Manolo', data)
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
