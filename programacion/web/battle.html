@@ -203,10 +203,7 @@
                                                 console.log('Manolito el aliado', card.cartaCombate.id_carta)
                                                 const userCards = document.getElementsByClassName('card-user')
                                                 for (let i = 0; i < userCards.length; i++) {
-                                                    console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
-                                                    if (parseInt(userCards[i].id) !== card.cartaCombate.id_carta) {
-                                                        userCards[i].style.boxShadow = 'none'
-                                                    }
+                                                    userCards[i].style.boxShadow = 'none'
                                                 }
                                             } else {
                                                 specialAttackCard = []
