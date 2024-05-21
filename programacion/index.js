@@ -435,7 +435,7 @@ io.on('connection', async (socket) => {
           console.log(vida)
           await connection.execute(
             'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+            [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
           )
 
           await connection.execute(
@@ -446,7 +446,7 @@ io.on('connection', async (socket) => {
           const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
           await connection.execute(
             'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [ataqueNumber, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+            [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
           )
 
           await connection.execute(
