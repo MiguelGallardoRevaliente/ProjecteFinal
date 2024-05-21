@@ -203,6 +203,37 @@
                                                                 } else if (card.ataque.tipo === 'revive') {
                                                                     console.log('Cartas window', data)
                                                                     const userBoard = document.getElementsByClassName('user-board')[0]
+                                                                    data.cartas.cartasUser.forEach((cardRevive, index) => {
+                                                                        if (cardRevive.cartaCombate.vida <= 0) {
+                                                                            const cardDiv = document.createElement('div')
+                                                                            cardDiv.className = 'card card-user'
+                                                                            cardDiv.style.backgroundImage = `url(${cardRevive.cartaEnCombateUser.foto})`
+                                                                            cardDiv.style.backgroundSize = 'contain'
+                                                                            cardDiv.style.backgroundRepeat = 'no-repeat'
+                                                                            cardDiv.style.backgroundPosition = 'center'
+                                                                            cardDiv.id = cardRevive.cartaEnCombateUser.id
+
+                                                                            const cardName = document.createElement('p')
+                                                                            cardName.textContent = cardRevive.cartaEnCombateUser.nombre
+                                                                            cardName.className = 'cardName'
+
+                                                                            const ataqueVida = document.createElement('p')
+                                                                            ataqueVida.textContent = cardRevive.cartaCombate.ataque + '/' + cardRevive.cartaCombate.vida
+                                                                            ataqueVida.className = 'ataque-vida ataque-vida-user'
+
+                                                                            if (cardRevive.ataque) {
+                                                                                const ataqueEspecial = document.createElement('p')
+                                                                                ataqueEspecial.textContent = cardRevive.ataque.nombre + ' - ' + cardRevive.ataque.descripcion
+                                                                                ataqueEspecial.className = 'ataque-especial ataque-especial-user'
+
+                                                                                cardDiv.appendChild(ataqueEspecial)
+                                                                            }
+
+                                                                            cardDiv.appendChild(cardName)
+                                                                            cardDiv.appendChild(ataqueVida)
+                                                                            userBoard.appendChild(cardDiv)
+                                                                        }
+                                                                    })
                                                                 }
                                                             }
                                                         }
