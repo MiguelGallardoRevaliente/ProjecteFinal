@@ -764,7 +764,27 @@
                                                 console.log(data.cartas.ataques[index].tipo)
                                                 socket.emit('special-attack-self', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
                                             } else {
+                                                console.log('Manuel')
                                                 console.log(data.cartas.ataques[index].tipo)
+                                                specialAttackCard.push({
+                                                    id: card.id_carta,
+                                                    idAtaque: data.cartas.ataques[index].id,
+                                                    tipo: data.cartas.ataques[index].tipo
+                                                })
+                                                if (tipoSplit[1] && tipoSplit[1] === 'aliado') {
+                                                    const userCards = document.getElementsByClassName('card-user')
+                                                    for (let i = 0; i < userCards.length; i++) {
+                                                        console.log('Aliado', userCards[i].id, card.id_carta)
+                                                        if (parseInt(userCards[i].id) !== card.id_carta) {
+                                                            userCards[i].style.boxShadow = '0px 0px 7px 4px green'
+                                                        }
+                                                    }
+                                                } else {
+                                                    const opponentCards = document.getElementsByClassName('card-opponent')
+                                                    for (let i = 0; i < opponentCards.length; i++) {
+                                                        opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                                    }
+                                                }
                                             }
                                         }
                                     }
