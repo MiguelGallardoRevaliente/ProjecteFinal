@@ -562,6 +562,7 @@
         })
 
         socket.on('inmune-card', (data) => {
+            console.log(data)
             if (data.username === localStorage.getItem('username')) {
                 alert('This card is immune')
             }
