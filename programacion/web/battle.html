@@ -205,6 +205,7 @@
                                                                     const userBoard = document.getElementsByClassName('user-board')[0]
                                                                     data.cartasCombates.cartasUser.forEach((cardRevive, index) => {
                                                                         if (cardRevive.cartaCombate.vida <= 0) {
+                                                                            //// HAY QUE HACER EL BOTON PARA REVIVIR ////
                                                                             const cardDiv = document.createElement('div')
                                                                             cardDiv.className = 'card card-user'
                                                                             cardDiv.style.backgroundImage = `url(${cardRevive.cartaEnCombateUser.foto})`
@@ -993,6 +994,7 @@
                                                             console.log('Cartas end', data.cartas)
                                                             const userBoard = document.getElementsByClassName('user-board')[0]
                                                             data.cartas.cartasCombate.forEach((cardRevive, index) => {
+                                                                //// HAY QUE HACER EL BOTON PARA REVIVIR ////
                                                                 if (cardRevive.vida === 0) {
                                                                     const cardDiv = document.createElement('div')
                                                                     cardDiv.className = 'card card-user'
@@ -1017,7 +1019,7 @@
                                                                     })
 
                                                                     const cardName = document.createElement('p')
-                                                                    cardName.textContent = cardRevive.carta.nombre
+                                                                    cardName.textContent = data.cartas.cartasInfo[index].nombre
                                                                     cardName.className = 'cardName'
 
                                                                     const ataqueVida = document.createElement('p')
