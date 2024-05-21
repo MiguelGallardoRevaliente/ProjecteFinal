@@ -138,7 +138,6 @@
                                                     const userCards = document.getElementsByClassName('card-user')
                                                     for (let i = 0; i < userCards.length; i++) {
                                                         console.log('Aliado', userCards[i].id, card.cartaCombate.id_carta)
-                                                        socket.emit('special-attack-ally', { idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
                                                         if (parseInt(userCards[i].id) !== card.cartaCombate.id_carta) {
                                                             userCards[i].style.boxShadow = 'none'
                                                         }
@@ -203,6 +202,7 @@
                                             const tipo = specialAttackCard[0].tipo.split('/')
                                             if (tipo[1] === 'aliado' && card.cartaEnCombateUser.id !== specialAttackCard[0].id) {
                                                 console.log('Manolito el aliado', card.cartaCombate.id_carta)
+                                                socket.emit('special-attack-ally', { idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
                                                 const userCards = document.getElementsByClassName('card-user')
                                                 for (let i = 0; i < userCards.length; i++) {
                                                     userCards[i].style.boxShadow = 'none'
