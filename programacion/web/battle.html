@@ -992,7 +992,7 @@
                                                         }  else if (data.cartas.ataques[index].tipo === 'revive') {
                                                             console.log('Cartas end', data.cartas)
                                                             const userBoard = document.getElementsByClassName('user-board')[0]
-                                                            data.cartas.cartasCombates.forEach((cardRevive, index) => {
+                                                            data.cartas.cartasCombate.forEach((cardRevive, index) => {
                                                                 if (cardRevive.vida === 0) {
                                                                     const cardDiv = document.createElement('div')
                                                                     cardDiv.className = 'card card-user'
