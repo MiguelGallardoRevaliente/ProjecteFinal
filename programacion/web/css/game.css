@@ -2321,6 +2321,31 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "CHESTS"
 
     }
 
+    .resultado_sobre .carta .ataque-vida {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 11px 17px !important;
+        font-size: 9px !important;
+        font-weight: 600;
+        font-family: "Goldman", sans-serif;
+    }
+
+    .resultado_sobre .carta .ataque-especial {
+        position: absolute;
+        top: 75%;
+        font-size: 7px !important;
+        font-weight: 600 !important;
+        left: 20px;
+        max-width: 120px;
+    }
+
+    .resultado_sobre .carta .nombreCarta {
+        font-size: 12px;
+        left: 20px;
+        font-weight: 800;
+    }
+
     .salir {
         bottom: 2%;
     }
