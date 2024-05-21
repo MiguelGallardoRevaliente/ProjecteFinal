@@ -866,7 +866,7 @@
                             let ataqueIndex
                             data.cartas.ataques.forEach((ataque, index) => {
                                 console.log(ataque)
-                                if (carta.id_ataque === ataque.id) {
+                                if (ataque.id && carta.id_ataque === ataque.id) {
                                     ataqueIndex = index
                                 }
                             })
