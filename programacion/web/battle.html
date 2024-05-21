@@ -938,6 +938,14 @@
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
                                                             }
+                                                        } else if (data.cartas.ataques[index].tipo === 'corrosivo') {
+                                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px #B83BDA'
+                                                            }
+                                                        } else if (data.cartas.ataques[index].tipo === 'inmovil') {
+                                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                                opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
+                                                            }
                                                         }
                                                         console.log('Special Attack Card', specialAttackCard)
                                                     }
