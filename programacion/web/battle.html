@@ -135,6 +135,7 @@
                                                 if (specialAttackCard.length === 1) {
                                                     const tipo = specialAttackCard[0].tipo.split('/')
                                                     if (tipo[1] === 'aliado') {
+                                                        console.log('Aliado', card.cartaCombate.id_carta)
                                                         socket.emit('special-attack-self', { idCartaAttacking: card.cartaCombate.id_carta, idAtaque: card.ataque.id, username: localStorage.getItem('username'), tipo: card.ataque.tipo })
                                                     } else {
                                                         specialAttackCard = []
