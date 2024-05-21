@@ -2417,10 +2417,48 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 
         width: 25px;
         height: 25px;
-        color: rgb(0, 0, 0);
         font-size: 22px;
 
     }
-   
+
+    #shop .container .all .filtrer{
+        padding: 0px;
+    }
+}
+
+@media (max-width: 1100px){
+
+    #shop #allcards .shop_cards table tr th {
+        font-size: 18px;
+    }
+
+    #shop #allcards .shop_cards table tr td {
+        font-size: 18px;
+    }
+
+    #shop .container .all .filtrer form{
+        gap: 5px;
+        padding: 3px 5px;
+    }
+
+    #shop .container .all .filtrer form label{
+        font-size: 15px;
+    }
+    #shop .container .all .filtrer form input[type="text"]{
+        width: 150px;
+        font-size: 15px;
+    }
+
+    #shop .container .all .filtrer form select{
+        font-size: 15px;
+    }
+
+    #shop .container .all .filtrer form button{
+
+        width: 20px;
+        height: 20px;
+        font-size: 18px;
+
+    }   
 
 }
