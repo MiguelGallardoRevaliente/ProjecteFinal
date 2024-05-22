@@ -874,7 +874,6 @@
                             console.log('Card Vida', card.vida)
                             if (card.vida <= 0) {
                                 cardUser[i].remove()
-                                cardUser.splice(i, 1)
                                 console.log('CardUser Removed', cardUser.length)
                             }
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
@@ -883,6 +882,7 @@
                 }
 
                 for (let i = 0; i < cardUser.length; i++) {
+                    console.log('Length', cardUser.length)
                     ///// ATAQUEBOTON /////
                     ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
                     const buttonAtaque = document.createElement('button')
