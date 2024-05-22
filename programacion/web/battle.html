@@ -798,8 +798,9 @@
                     console.log(data.cartasUser)
                     data.cartasUser.cartasCombate.forEach((card, index) => {
                         console.log('Carta', card)
+                        console.log('userCardsId', userCardsId)
                         console.log('userCard', userCards)
-                        console.log('userCard', userCards[i])
+                        console.log('userCardEspecific', userCards[i])
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             const manaNumber = document.getElementById('mana-number')
                             manaNumber.textContent = data.mana
