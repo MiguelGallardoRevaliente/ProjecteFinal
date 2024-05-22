@@ -725,6 +725,7 @@ io.on('connection', async (socket) => {
       opponentId = combate[0].id_user_1_uuid
       manaUser = combate[0].mana_user_2
     }
+    console.log('ManaUser', manaUser)
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     for (const cartaCombate of cartasCombate) {
