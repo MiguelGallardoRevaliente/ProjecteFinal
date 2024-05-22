@@ -467,7 +467,7 @@
         const leaveBattle = document.getElementsByClassName('leave-battle')[0]
         leaveBattle.addEventListener('submit', (event) => {
             event.preventDefault()
-            const rewardSplit = document.getElementById('recompensa').textContent.split('')
+            const rewardSplit = document.getElementById('recompensaText').textContent.split('')
             console.log('Reward', rewardSplit)
             // socket.emit('leave-match', { username: localStorage.getItem('username') })
         })
@@ -1211,14 +1211,19 @@
                 winner.textContent = 'You win'
                 winner.classList.add('winner')
                 const recompensa = document.getElementsByClassName('recompensa')[0]
-                recompensa.textContent = 'Reward: ' + data.recompensa
+                recompensaText.textContent = 'Reward: ' + data.recompensa
+                recompensaText.className = 'recompensa-text'
+                recompensa.appendChild(recompensaText)
             } else if (data.winner === localStorage.getItem('opponent')) {
                 console.log('Has perdido la partida')
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You lost'
                 winner.classList.add('loser')
                 const recompensa = document.getElementsByClassName('recompensa')[0]
-                recompensa.textContent = 'Reward: ' + data.recompensa
+                const recompensaText = document.createElement('p')
+                recompensaText.textContent = 'Reward: ' + data.recompensa
+                recompensaText.className = 'recompensa-text'
+                recompensa.appendChild(recompensaText)
             }
         })
 
