@@ -791,95 +791,98 @@
                 const userCards = document.getElementsByClassName('card-user')
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
-                const userCardsId = []
                 for (let i = 0; i < userCards.length; i++) {
-                    const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
-                    if (index !== -1) {
-                        if (data.cartasUser.cartasCombate[index].vida <= 0) {
-                            userCards[i].remove()
-                        } else {
-                            userCardsId.push(parseInt(userCards[i].id))
-                        }
-                    }
+                    userCards[0].remove()
                 }
-                data.cartasUser.cartasCombate.forEach((card, index) => {
-                    console.log('Vida', card.vida)
-                    console.log('Cartas', userCardsId)
-                    if (userCardsId.includes(card.id_carta)) {
-                        console.log('Carta :)', card.id_carta)
-                        if (card.vida > 0) {
-                            console.log('Carta :)', card.id_carta)
-                            const cardDiv = document.createElement('div')
-                            cardDiv.className = 'card card-user'
-                            cardDiv.style.backgroundImage = `url(${data.cartasUser.cartasInfo[index].foto})`
-                            cardDiv.style.backgroundSize = 'contain'
-                            cardDiv.style.backgroundRepeat = 'no-repeat'
-                            cardDiv.style.backgroundPosition = 'center'
-                            cardDiv.id = card.id_carta
-                            cardDiv.addEventListener('click', () => {
-                                if (specialAttackCard.length === 1) {
-                                    const tipo = specialAttackCard[0].tipo.split('/')
-                                    if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
-                                        socket.emit('special-attack-ally', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
-                                        const userCards = document.getElementsByClassName('card-user')
-                                        for (let i = 0; i < userCards.length; i++) {
-                                            userCards[i].style.boxShadow = 'none'
-                                        }
-                                    } else if (tipo[0] === 'revive' && card.id_carta !== specialAttackCard[0].id && card.vida <= 0) {
-                                        socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
-                                        specialAttackCard = []
-                                        const userCards = document.getElementsByClassName('card-user')
-                                        for (let i = 0; i < userCards.length; i++) {
-                                            userCards[i].style.boxShadow = 'none'
-                                        }
-                                    }
-                                } else {
-                                    if (parseInt(userCards[i].id) === card.id_carta) {
-                                        if (card.efecto_secundario === 'inmovil') {
-                                            alert('This card is immobilized')
-                                        } else {
-                                            if (playedCardAttack.length !== 0) {
-                                                alert('Ya has puesto cartas en el tablero, no puedes atacar')
-                                            } else {
-                                                if (cardClicked.length === 1) {
-                                                    cardClicked = []
-                                                }
-                                                cardClicked.push(card.id_carta)
-                                                const opponentCards = document.getElementsByClassName('card-opponent')
-                                                for (let i = 0; i < opponentCards.length; i++) {
-                                                    opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                // const userCardsId = []
+                // for (let i = 0; i < userCards.length; i++) {
+                //     const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
+                //     if (index !== -1) {
+                //         if (data.cartasUser.cartasCombate[index].vida <= 0) {
+                //             userCards[i].remove()
+                //         } else {
+                //             userCardsId.push(parseInt(userCards[i].id))
+                //         }
+                //     }
+                // }
+                // data.cartasUser.cartasCombate.forEach((card, index) => {
+                //     console.log('Vida', card.vida)
+                //     console.log('Cartas', userCardsId)
+                //     if (userCardsId.includes(card.id_carta)) {
+                //         console.log('Carta :)', card.id_carta)
+                //         if (card.vida > 0) {
+                //             console.log('Carta :)', card.id_carta)
+                //             const cardDiv = document.createElement('div')
+                //             cardDiv.className = 'card card-user'
+                //             cardDiv.style.backgroundImage = `url(${data.cartasUser.cartasInfo[index].foto})`
+                //             cardDiv.style.backgroundSize = 'contain'
+                //             cardDiv.style.backgroundRepeat = 'no-repeat'
+                //             cardDiv.style.backgroundPosition = 'center'
+                //             cardDiv.id = card.id_carta
+                //             cardDiv.addEventListener('click', () => {
+                //                 if (specialAttackCard.length === 1) {
+                //                     const tipo = specialAttackCard[0].tipo.split('/')
+                //                     if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
+                //                         socket.emit('special-attack-ally', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                //                         const userCards = document.getElementsByClassName('card-user')
+                //                         for (let i = 0; i < userCards.length; i++) {
+                //                             userCards[i].style.boxShadow = 'none'
+                //                         }
+                //                     } else if (tipo[0] === 'revive' && card.id_carta !== specialAttackCard[0].id && card.vida <= 0) {
+                //                         socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                //                         specialAttackCard = []
+                //                         const userCards = document.getElementsByClassName('card-user')
+                //                         for (let i = 0; i < userCards.length; i++) {
+                //                             userCards[i].style.boxShadow = 'none'
+                //                         }
+                //                     }
+                //                 } else {
+                //                     if (parseInt(userCards[i].id) === card.id_carta) {
+                //                         if (card.efecto_secundario === 'inmovil') {
+                //                             alert('This card is immobilized')
+                //                         } else {
+                //                             if (playedCardAttack.length !== 0) {
+                //                                 alert('Ya has puesto cartas en el tablero, no puedes atacar')
+                //                             } else {
+                //                                 if (cardClicked.length === 1) {
+                //                                     cardClicked = []
+                //                                 }
+                //                                 cardClicked.push(card.id_carta)
+                //                                 const opponentCards = document.getElementsByClassName('card-opponent')
+                //                                 for (let i = 0; i < opponentCards.length; i++) {
+                //                                     opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                //                                 }
+                //                             }
+                //                         }
+                //                     }
+                //                 }
 
-                                const cardName = document.createElement('p')
-                                cardName.textContent = data.cartasUser.cartasInfo[index].nombre
-                                cardName.className = 'cardName'
+                //                 const cardName = document.createElement('p')
+                //                 cardName.textContent = data.cartasUser.cartasInfo[index].nombre
+                //                 cardName.className = 'cardName'
 
-                                const ataqueVida = document.createElement('p')
-                                console.log(card.ataque + '/' + card.vida)
-                                ataqueVida.textContent = card.ataque + '/' + card.vida
-                                ataqueVida.className = 'ataque-vida ataque-vida-user'
+                //                 const ataqueVida = document.createElement('p')
+                //                 console.log(card.ataque + '/' + card.vida)
+                //                 ataqueVida.textContent = card.ataque + '/' + card.vida
+                //                 ataqueVida.className = 'ataque-vida ataque-vida-user'
 
-                                if (card.ataque_especial) {
-                                    const ataqueEspecial = document.createElement('p')
-                                    console.log(data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion)
-                                    ataqueEspecial.textContent = data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion
-                                    ataqueEspecial.className = 'ataque-especial ataque-especial-user'
+                //                 if (card.ataque_especial) {
+                //                     const ataqueEspecial = document.createElement('p')
+                //                     console.log(data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion)
+                //                     ataqueEspecial.textContent = data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion
+                //                     ataqueEspecial.className = 'ataque-especial ataque-especial-user'
 
-                                    cardDiv.appendChild(ataqueEspecial)
-                                }
+                //                     cardDiv.appendChild(ataqueEspecial)
+                //                 }
 
-                                cardDiv.appendChild(cardName)
-                                cardDiv.appendChild(ataqueVida)
-                                const userBoard = document.getElementsByClassName('user-board')[0]
-                                userBoard.appendChild(cardDiv)
-                            })
-                        }
-                    }
-                })
+                //                 cardDiv.appendChild(cardName)
+                //                 cardDiv.appendChild(ataqueVida)
+                //                 const userBoard = document.getElementsByClassName('user-board')[0]
+                //                 userBoard.appendChild(cardDiv)
+                //             })
+                //         }
+                //     }
+                // })
             }
         })
 
