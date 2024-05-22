@@ -724,6 +724,33 @@
             }
         })
 
+        socket.on('special-attacked-revive', (data) => {
+            if (data.username === localStorage.getItem('opponent')) {
+                const opponentCards = document.getElementsByClassName('card-opponent')
+                const opponentCardsId = opponentCards.map(card => parseInt(card.id))
+                console.log('Cartas', opponentCardsId)
+            } else if (data.username === localStorage.getItem('username')) {
+                const userCards = document.getElementsByClassName('card-user')
+                for (let i = 0; i < userCards.length; i++) {
+                    data.opponentCards.forEach((card, index) => {
+                        if (parseInt(userCards[i].id) === card.id_carta) {
+                            if (card.vida <= 0) {
+                                userCards[i].remove()
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
+                                const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                                const ataqueVidaText = card.ataque + '/' + card.vida
+                                ataqueVida.textContent = ataqueVidaText
+                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
+                            }
+                        }
+                    })
+                    userCards[i].style.boxShadow = 'none'
+                }
+            }
+        })
+
         socket.on('special-attacked-opponent', (data) => {
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
@@ -868,13 +895,9 @@
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(async (card) =>{
-                        console.log('CardUser', cardUser[i].id)
-                        console.log('Card', card.id_carta)
                         if (parseInt(cardUser[i].id) === card.id_carta) {
-                            console.log('Card Vida', card.vida)
                             if (card.vida <= 0) {
                                 cardUser[i].remove()
-                                console.log('CardUser Removed', cardUser.length)
                             }
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
@@ -882,7 +905,6 @@
                 }
 
                 for (let i = 0; i < cardUser.length; i++) {
-                    console.log('Length', cardUser.length)
                     ///// ATAQUEBOTON /////
                     ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
                     const buttonAtaque = document.createElement('button')
@@ -1013,6 +1035,7 @@
                                                                     cardDiv.addEventListener('click', () => {
                                                                         if (specialAttackCard.length === 1 && specialAttackCard[0].tipo) {
                                                                             console.log('id carta reviviendo', cardRevive.id_carta)
+                                                                            socket.emit('special-attack-revive', { idCartaAttacked: cardRevive.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username') })
                                                                         }
                                                                     })
 
