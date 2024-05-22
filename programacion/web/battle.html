@@ -804,9 +804,10 @@
                             }
                         }
                     }
-                    console.log(card.vida)
+                    console.log('Vida', card.vida)
                     if (!userCardsId.includes(card.id_carta)) {
                         if (card.vida > 0) {
+                            console.log('Carta :)', card.id_carta)
                             const cardDiv = document.createElement('div')
                             cardDiv.className = 'card card-user'
                             cardDiv.style.backgroundImage = `url(${data.cartasUser.cartasInfo[index].foto})`
