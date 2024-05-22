@@ -685,6 +685,7 @@ io.on('connection', async (socket) => {
     let opponentId
     const ataques = []
     const cartasInfo = []
+    let manaUser = 0
 
     const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [idAtaque])
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
@@ -692,8 +693,10 @@ io.on('connection', async (socket) => {
 
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       opponentId = combate[0].id_user_2_uuid
+      manaUser = combate[0].mana_user_1
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       opponentId = combate[0].id_user_1_uuid
+      manaUser = combate[0].mana_user_2
     }
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
@@ -710,17 +713,23 @@ io.on('connection', async (socket) => {
       ataques
     }
 
+    const [cartaInfo] = await connection.execute(
+      'SELECT * FROM cartas WHERE id = ?;', [idCartaAttacked]
+    )
+
+    const [cartaCombate] = await connection.execute(
+      'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+      [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
+    )
+
     if (ataque[0].nombre === 'Spectral Revive') {
-      const [cartaInfo] = await connection.execute(
-        'SELECT * FROM cartas WHERE id = ?;', [idCartaAttacked]
-      )
-
-      const [cartaCombate] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
-      )
-
       if (cartaCombate[0].vida === 0) {
+        const mana = manaUser - cartaInfo[0].coste_mana
+        if (mana < 0) {
+          io.emit('not-enough-mana', { message: 'Not enough mana', username })
+          return
+        }
+
         const vida = Math.round(cartaInfo[0].vida / 2)
         console.log('Vida', vida)
         await connection.execute(
@@ -728,15 +737,41 @@ io.on('connection', async (socket) => {
           [vida, idCartaAttacked, combate[0].id_combate_uuid, user[0].id_uuid]
         )
 
+        if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+          await connection.execute(
+            'UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user_1) = ?;',
+            [mana, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+          await connection.execute(
+            'UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user_2) = ?;',
+            [mana, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        }
+
         await connection.execute(
           'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
           [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
         )
 
-        const [cartasUser] = await connection.execute(
+        const [cartasUserInfo] = await connection.execute(
           'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
           [user[0].id_uuid, combate[0].id_combate_uuid]
         )
+        const ataquesUser = []
+        const cartasInfo = []
+        for (const carta of cartasUserInfo) {
+          const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
+          const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaInfo[0].id_ataque])
+          ataquesUser.push(ataque[0])
+          cartasInfo.push(cartaInfo[0])
+        }
+
+        const cartasUser = {
+          cartasCombate: cartasUserInfo,
+          ataques: ataquesUser,
+          cartasInfo
+        }
 
         await connection.execute(
           'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?;',
@@ -744,7 +779,66 @@ io.on('connection', async (socket) => {
         )
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-revive', { username, cartasUser })
+        io.emit('special-attacked-revive', { username, cartasUser, mana })
+      }
+    }
+
+    if (ataque[0].nombre === 'Oceanic Rebirth') {
+      if (cartaCombate[0].vida === 0) {
+        const mana = manaUser - cartaInfo[0].coste_mana
+        if (mana < 0) {
+          io.emit('not-enough-mana', { message: 'Not enough mana', username })
+          return
+        }
+
+        await connection.execute(
+          'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [cartaInfo[0].vida, idCartaAttacked, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+          await connection.execute(
+            'UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user_1) = ?;',
+            [mana, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+          await connection.execute(
+            'UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user_2) = ?;',
+            [mana, combate[0].id_combate_uuid, user[0].id_uuid]
+          )
+        }
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        const [cartasUserInfo] = await connection.execute(
+          'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+          [user[0].id_uuid, combate[0].id_combate_uuid]
+        )
+        const ataquesUser = []
+        const cartasInfo = []
+        for (const carta of cartasUserInfo) {
+          const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
+          const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartaInfo[0].id_ataque])
+          ataquesUser.push(ataque[0])
+          cartasInfo.push(cartaInfo[0])
+        }
+
+        const cartasUser = {
+          cartasCombate: cartasUserInfo,
+          ataques: ataquesUser,
+          cartasInfo
+        }
+
+        await connection.execute(
+          'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?;',
+          [opponentId, combate[0].id_combate_uuid]
+        )
+
+        io.emit('ended-turn', { username, cartas })
+        io.emit('special-attacked-revive', { username, cartasUser, mana })
       }
     }
   })
