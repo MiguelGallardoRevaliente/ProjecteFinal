@@ -204,7 +204,8 @@ io.on('connection', async (socket) => {
           )
         }
         mana = combate[0].mana_user_2 + cartaAttackedInfo[0].costo_mana
-        console.log('Mana ataque', mana)
+        console.log('Mana ataque1', mana)
+        console.log('Costo mana1', cartaAttackedInfo[0].costo_mana)
         await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
       }
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
@@ -218,6 +219,8 @@ io.on('connection', async (socket) => {
           )
         }
         mana = combate[0].mana_user_1 + cartaAttackedInfo[0].costo_mana
+        console.log('Mana ataque2', mana)
+        console.log('Costo mana2', cartaAttackedInfo[0].costo_mana)
         await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
       }
     }
