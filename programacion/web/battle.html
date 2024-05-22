@@ -792,6 +792,7 @@
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
                 for (let i = 0; i < userCards.length; i++) {
+                    console.log('Cartas', userCards[0].id)
                     userCards[0].remove()
                 }
                 // const userCardsId = []
