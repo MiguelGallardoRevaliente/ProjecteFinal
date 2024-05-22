@@ -615,7 +615,7 @@
             } else if (data.opponent === localStorage.getItem('username')) {
                 console.log('Mana :)', data.mana)
                 const cardUser = document.getElementsByClassName('card-user')
-                for (let i = 0; i < cardUser.length; i++) {
+                for (let i = cardUser.length; i >= 0; i--) {
                     console.log('CardUser', cardUser[i].id)
                     console.log('Data', data.cardAttacked.id_carta)
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
