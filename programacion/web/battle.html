@@ -788,15 +788,18 @@
                     }
                 })
             } else if (data.username === localStorage.getItem('username')) {
+                console.log('Data', data)
+                console.log('Cartas', data.cartasUser)
                 const userCards = document.getElementsByClassName('card-user')
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
-                console.log('Lenght', userCards.length)
                 const length = userCards.length - 1
-                console.log('Length', length)
                 for (let i = length; i >= 0; i--) {
                     userCards[i].remove()
                 }
+                data.cartasUser.cartasInfo((card, index) => {
+                    console.log(card)
+                })
                 // const userCardsId = []
                 // for (let i = 0; i < userCards.length; i++) {
                 //     const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
