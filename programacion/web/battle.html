@@ -964,11 +964,13 @@
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < ataqueVidaOpponent.length; i++) {
                     data.cartas.cartasCombate.forEach(card => {
-                        if (parseInt(cardOpponent[i].id) === card.id_carta) {
-                            if (card.vida <= 0) {
-                                cardOpponent[i].remove()
-                            } else {
-                                ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
+                        if (cardOpponent.length > 0) {
+                            if (parseInt(cardOpponent[i].id) === card.id_carta) {
+                                if (card.vida <= 0) {
+                                    cardOpponent[i].remove()
+                                } else {
+                                    ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
+                                }
                             }
                         }
                     })
@@ -1007,18 +1009,20 @@
 
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 const cardUser = document.getElementsByClassName('card-user')
-                for (let i = cardUser.length; i >= 0; i--) {
-                    data.cartas.cartasCombate.forEach(async (card) =>{
-                        if (parseInt(cardUser[i].id) === card.id_carta) {
-                            if (card.vida <= 0) {
-                                cardUser[i].remove()
-                            } else {
-                                ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                if (cardUser.length > 0) {
+                    for (let i = cardUser.length; i >= 0; i--) {
+                        data.cartas.cartasCombate.forEach(async (card) =>{
+                            if (parseInt(cardUser[i].id) === card.id_carta) {
+                                if (card.vida <= 0) {
+                                    cardUser[i].remove()
+                                } else {
+                                    ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
-
+                
                 for (let i = 0; i < cardUser.length; i++) {
                     ///// ATAQUEBOTON /////
                     ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
