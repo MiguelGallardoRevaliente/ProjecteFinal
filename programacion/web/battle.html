@@ -1011,10 +1011,8 @@
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 const cardUser = document.getElementsByClassName('card-user')
                 if (cardUser.length > 0) {
-                    console.log('CardUser XD', cardUser)
                     for (let i = cardUser.length; i >= 0; i--) {
                         data.cartas.cartasCombate.forEach(async (card) =>{
-                            console.log('Card A', card)
                             if (cardUser[i]) {
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (card.vida <= 0) {
