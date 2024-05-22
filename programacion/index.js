@@ -215,14 +215,6 @@ io.on('connection', async (socket) => {
 
     const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
-    const dataEmit = {
-      cardAttacking: cartaAttacking[0],
-      cardAttacked: cartaAttacked[0],
-      vida,
-      opponent: opponent[0].user,
-      mana
-    }
-
     /* Duracion del efecto de las cartas del usuario 1 */
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       const [cartasUser1] = await connection.execute(
@@ -238,7 +230,7 @@ io.on('connection', async (socket) => {
           if (carta.estadistica_efecto === 'ataque') {
             await connection.execute(
               'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
-              [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
+              [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
             )
           } else if (carta.efecto_secundario === 'corrosivo') {
             let vida = carta.vida - carta.cambio_estadistica
@@ -251,14 +243,18 @@ io.on('connection', async (socket) => {
                 )
               }
             }
+
+            mana = combate[0].mana_user_1 + cartaInfo[0].costo_mana
+            await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
+
             await connection.execute(
               'UPDATE cartas_combates SET vida = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
-              [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
+              [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
             )
           } else {
             await connection.execute(
               'UPDATE cartas_combates SET efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
-              [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
+              [carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
             )
           }
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
@@ -274,6 +270,10 @@ io.on('connection', async (socket) => {
                 )
               }
             }
+
+            mana = combate[0].mana_user_1 + cartaInfo[0].costo_mana
+            await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
+
             await connection.execute(
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1, vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
@@ -317,6 +317,9 @@ io.on('connection', async (socket) => {
                   )
                 }
               }
+
+              mana = combate[0].mana_user_2 + cartaInfo[0].costo_mana
+              await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
               await connection.execute(
                 'UPDATE cartas_combates SET vida = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
                 [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
@@ -342,7 +345,9 @@ io.on('connection', async (socket) => {
                 )
               }
             }
-            console.log('Vida', vida)
+
+            mana = combate[0].mana_user_2 + cartaInfo[0].costo_mana
+            await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
             await connection.execute(
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1, vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
@@ -356,6 +361,14 @@ io.on('connection', async (socket) => {
           }
         }
       }
+    }
+
+    const dataEmit = {
+      cardAttacking: cartaAttacking[0],
+      cardAttacked: cartaAttacked[0],
+      vida,
+      opponent: opponent[0].user,
+      mana
     }
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])

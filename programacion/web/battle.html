@@ -613,12 +613,16 @@
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
+                console.log('Mana :)', data.mana)
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
+                    console.log('CardUser', cardUser[i].id)
+                    console.log('Data', data.cardAttacked.id_carta)
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
                             console.log('Carta eliminada', cardUser[i].id)
                             cardUser[i].remove()
+
                             const manaNumber = document.getElementById('mana-number')
                             manaNumber.textContent = data.mana
                             console.log('Mana', data.mana)
