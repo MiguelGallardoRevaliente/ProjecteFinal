@@ -805,7 +805,7 @@
                 data.cartasUser.cartasCombate.forEach((card, index) => {
                     console.log('Vida', card.vida)
                     console.log('Cartas', userCardsId)
-                    if (!userCardsId.includes(card.id_carta)) {
+                    if (userCardsId.includes(card.id_carta)) {
                         console.log('Carta :)', card.id_carta)
                         if (card.vida > 0) {
                             console.log('Carta :)', card.id_carta)
