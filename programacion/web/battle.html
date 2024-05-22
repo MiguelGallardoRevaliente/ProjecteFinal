@@ -797,8 +797,8 @@
                     userCardsId.push(parseInt(userCards[i].id))
                 }
                 data.cartasUser.cartasCombate.forEach((card, index) => {
+                    console.log(card.vida)
                     if (!userCardsId.includes(card.id_carta)) {
-                        console.log(card.vida)
                         if (card.vida > 0) {
                             const cardDiv = document.createElement('div')
                             cardDiv.className = 'card card-user'
