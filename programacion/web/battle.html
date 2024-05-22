@@ -1018,8 +1018,9 @@
                         if (parseInt(cardUser[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 cardUser[i].remove()
+                            } else {
+                                ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                             }
-                            ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }
@@ -1074,6 +1075,7 @@
                     })
 
                     data.cartas.cartasCombate.forEach((card, index) => {
+                        console.log('Card', card)
                         if (data.cartas.ataques[index]) {
                             if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
                                 const ataqueEspecialButton = document.createElement('button')
@@ -1139,10 +1141,8 @@
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
                                                             }
                                                         }  else if (data.cartas.ataques[index].tipo === 'revive') {
-                                                            console.log('Cartas end', data.cartas)
                                                             const userBoard = document.getElementsByClassName('user-board')[0]
                                                             data.cartas.cartasCombate.forEach((cardRevive, index) => {
-                                                                //// HAY QUE HACER EL BOTON PARA REVIVIR ////
                                                                 if (cardRevive.vida === 0) {
                                                                     const cardDiv = document.createElement('div')
                                                                     cardDiv.className = 'card card-user'

@@ -1050,6 +1050,7 @@ io.on('connection', async (socket) => {
           'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
           [tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCartaAttacked, combate[0].id_combate_uuid, opponentId]
         )
+        console.log('Carta Attacked', idCartaAttacked)
 
         await connection.execute(
           'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
@@ -1071,7 +1072,26 @@ io.on('connection', async (socket) => {
         [opponentId, combate[0].id_combate_uuid]
       )
 
-      io.emit('ended-turn', { username, cartas, tipo })
+      const [cartasCombate2] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [opponentId, combate[0].id_combate_uuid]
+      )
+      const ataques2 = []
+      const cartasInfo2 = []
+      for (const cartaCombate of cartasCombate2) {
+        const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
+        const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+        ataques2.push(ataque[0])
+        cartasInfo2.push(carta[0])
+      }
+
+      const cartas2 = {
+        cartasInfo: cartasInfo2,
+        cartasCombate: cartasCombate2,
+        ataques: ataques2
+      }
+
+      io.emit('ended-turn', { username, cartas: cartas2 })
       io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
     }
   })
