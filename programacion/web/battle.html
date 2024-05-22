@@ -469,7 +469,7 @@
             event.preventDefault()
             const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
             console.log('Reward', rewardSplit[1])
-            // socket.emit('leave-match', { username: localStorage.getItem('username') })
+            socket.emit('leave-match', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
         })
 
         const leaveMatchForm = document.getElementsByClassName('leave-match')[0]
