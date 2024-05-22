@@ -464,6 +464,14 @@
             socket.emit('end-turn', { username: localStorage.getItem('username') })
         })
 
+        const leaveBattle = document.getElementsByClassName('leave-battle')[0]
+        leaveBattle.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const rewardSplit = document.getElementById('recompensa').textContent.split('')
+            console.log('Reward', rewardSplit)
+            // socket.emit('leave-match', { username: localStorage.getItem('username') })
+        })
+
         const leaveMatchForm = document.getElementsByClassName('leave-match')[0]
         leaveMatchForm.addEventListener('submit', (event) => {
             event.preventDefault()
