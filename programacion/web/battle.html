@@ -799,6 +799,14 @@
                 }
                 data.cartasUser.cartasInfo.forEach((card, index) => {
                     console.log(card)
+                    const cardDiv = document.createElement('div')
+                    cardDiv.className = 'card card-user'
+                    cardDiv.style.backgroundImage = `url(${card.foto})`
+                    cardDiv.style.backgroundSize = 'contain'
+                    cardDiv.style.backgroundRepeat = 'no-repeat'
+                    cardDiv.style.backgroundPosition = 'center'
+                    cardDiv.id = data.cartasUser.cartasCombate[index].id_carta
+                    /*Mostrar nuevamente las cartas*/
                 })
                 // const userCardsId = []
                 // for (let i = 0; i < userCards.length; i++) {
