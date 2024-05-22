@@ -374,12 +374,14 @@ io.on('connection', async (socket) => {
 
     let mana = 0
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
-      const [manaInfo] = await connection.execute('SELECT mana_user_1 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
-      mana = manaInfo[0].mana_user_1
-    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       const [manaInfo] = await connection.execute('SELECT mana_user_2 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       mana = manaInfo[0].mana_user_2
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
+      const [manaInfo] = await connection.execute('SELECT mana_user_1 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+      mana = manaInfo[0].mana_user_1
     }
+
+    console.log('Mana final', mana)
 
     const dataEmit = {
       cardAttacking: cartaAttacking[0],
