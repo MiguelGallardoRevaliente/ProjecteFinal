@@ -2078,6 +2078,7 @@ app.get('/getCardsBattle', async (req, res) => {
       manaInUse += carta.cartaEnCombateUser.costo_mana
     }
     manaInUse = 16 - manaInUse
+    console.log(manaInUse)
 
     if (manaInUse !== 0) {
       if (id === combate[0].id_user_1_uuid) {
