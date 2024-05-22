@@ -168,6 +168,8 @@ io.on('connection', async (socket) => {
       mana = combate[0].mana_user_2
     }
 
+    console.log('Mana', mana)
+
     const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
     const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
     // console.log(cartaAttacked)
@@ -194,6 +196,7 @@ io.on('connection', async (socket) => {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
       if (vida === 0) {
         if (cartaAttacked[0].efecto_secundario === 'reverse') {
+          console.log('Carta atacada con reverse', cartaAttackedInfo[0])
           console.log('Reverse1', cartaAttackedInfo[0].ataque)
           await connection.execute(
             'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
