@@ -150,6 +150,7 @@ body {
     gap: 10px;
     box-shadow: 0px 0px 7px gray;
     border-radius: 10px;
+    justify-content: center;
 }
 .user-board .card, .opponent-board .card{
     width: 175px;
