@@ -801,11 +801,14 @@
                         for (let i = 0; i < userCardsRemove.length; i++) {
                             if (parseInt(userCardsRemove[i].id) === card.id_carta) {
                                 userCardsRemove[i].remove()
+                                userCardsId.splice(i, 1)
                             }
                         }
                     }
                     console.log('Vida', card.vida)
+                    console.log('Cartas', userCardsId)
                     if (!userCardsId.includes(card.id_carta)) {
+                        console.log('Carta :)', card.id_carta)
                         if (card.vida > 0) {
                             console.log('Carta :)', card.id_carta)
                             const cardDiv = document.createElement('div')
