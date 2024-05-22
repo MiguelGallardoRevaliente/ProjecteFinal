@@ -204,6 +204,7 @@ io.on('connection', async (socket) => {
           )
         }
         mana = combate[0].mana_user_2 + cartaAttackedInfo[0].costo_mana
+        console.log('Mana ataque', mana)
         await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
       }
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
@@ -375,6 +376,8 @@ io.on('connection', async (socket) => {
         }
       }
     }
+
+    console.log('Mana', mana)
 
     const dataEmit = {
       cardAttacking: cartaAttacking[0],
@@ -725,7 +728,6 @@ io.on('connection', async (socket) => {
       opponentId = combate[0].id_user_1_uuid
       manaUser = combate[0].mana_user_2
     }
-    console.log('ManaUser', manaUser)
 
     const [cartasCombate] = await connection.execute('SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [opponentId, combate[0].id_combate_uuid])
     for (const cartaCombate of cartasCombate) {
@@ -752,15 +754,12 @@ io.on('connection', async (socket) => {
       )
       if (cartaCombate[0].vida === 0) {
         const mana = manaUser - cartaInfo[0].costo_mana
-        console.log(manaUser, cartaInfo[0].costo_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
         }
-        console.log('Mana', mana)
 
         const vida = Math.round(cartaInfo[0].vida / 2)
-        console.log('Vida', vida)
         await connection.execute(
           'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
           [vida, idCartaAttacked, combate[0].id_combate_uuid, user[0].id_uuid]
