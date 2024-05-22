@@ -1015,11 +1015,13 @@
                     for (let i = cardUser.length; i >= 0; i--) {
                         data.cartas.cartasCombate.forEach(async (card) =>{
                             console.log('Card A', card)
-                            if (parseInt(cardUser[i].id) === card.id_carta) {
-                                if (card.vida <= 0) {
-                                    cardUser[i].remove()
-                                } else {
-                                    ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                            if (cardUser[i]) {
+                                if (parseInt(cardUser[i].id) === card.id_carta) {
+                                    if (card.vida <= 0) {
+                                        cardUser[i].remove()
+                                    } else {
+                                        ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                                    }
                                 }
                             }
                         })
