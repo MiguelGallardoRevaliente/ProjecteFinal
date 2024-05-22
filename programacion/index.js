@@ -713,18 +713,18 @@ io.on('connection', async (socket) => {
       ataques
     }
 
-    const [cartaInfo] = await connection.execute(
-      'SELECT * FROM cartas WHERE id = ?;', [idCartaAttacked]
-    )
-
-    const [cartaCombate] = await connection.execute(
-      'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-      [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
-    )
-
     if (ataque[0].nombre === 'Spectral Revive') {
+      const [cartaInfo] = await connection.execute(
+        'SELECT * FROM cartas WHERE id = ?;', [idCartaAttacked]
+      )
+
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
+      )
       if (cartaCombate[0].vida === 0) {
         const mana = manaUser - cartaInfo[0].coste_mana
+        console.log(manaUser, cartaInfo[0].coste_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
@@ -785,8 +785,17 @@ io.on('connection', async (socket) => {
     }
 
     if (ataque[0].nombre === 'Oceanic Rebirth') {
+      const [cartaInfo] = await connection.execute(
+        'SELECT * FROM cartas WHERE id = ?;', [idCartaAttacked]
+      )
+
+      const [cartaCombate] = await connection.execute(
+        'SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
+        [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
+      )
       if (cartaCombate[0].vida === 0) {
         const mana = manaUser - cartaInfo[0].coste_mana
+        console.log(manaUser, cartaInfo[0].coste_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
