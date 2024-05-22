@@ -878,6 +878,7 @@
                 }
 
                 for (let i = 0; i < cardUser.length; i++) {
+                    console.log('Length', cardUser.length)
                     ///// ATAQUEBOTON /////
                     ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
                     const buttonAtaque = document.createElement('button')
@@ -1010,14 +1011,6 @@
                                                                     cardDiv.addEventListener('click', () => {
                                                                         if (specialAttackCard.length === 1 && specialAttackCard[0].tipo) {
                                                                             console.log('id carta reviviendo', cardRevive.id_carta)
-                                                                        } else {
-                                                                            if (playedCard.length === 0) {
-                                                                                const user = localStorage.getItem('username')
-                                                                                socket.emit('play-card', { id: cardRevive.carta.id, user })
-                                                                                playedCard.push(cardRevive.carta.id)
-                                                                                playedCardAttack.push(cardRevive.carta.id)
-                                                                                localStorage.setItem('playedCardAttack', playedCardAttack)
-                                                                            }
                                                                         }
                                                                     })
 
