@@ -617,9 +617,11 @@
                 for (let i = 0; i < cardUser.length; i++) {
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
+                            console.log('Carta eliminada', cardUser[i].id)
                             cardUser[i].remove()
                             const manaNumber = document.getElementById('mana-number')
                             manaNumber.textContent = data.mana
+                            console.log('Mana', data.mana)
                         } else {
                             const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                             let ataqueVidaText = ataqueVida.textContent.split('/')
