@@ -1196,6 +1196,24 @@
             }
         })
 
+        socket.on('game-over', (data) => {
+            if (data.winner === localStorage.getItem('username')) {
+                console.log('Has ganado la partida')
+                const winner = document.getElementById('winner')
+                winner.textContent = 'You win'
+                winner.classList.add('winner')
+                const recompensa = document.getElementsByClassName('recompensa')[0]
+                recompensa.textContent = 'Reward: ' + data.recompensa
+            } else if (data.winner === localStorage.getItem('opponent')) {
+                console.log('Has perdido la partida')
+                const winner = document.getElementById('winner')
+                winner.textContent = 'You lost'
+                winner.classList.add('loser')
+                const recompensa = document.getElementsByClassName('recompensa')[0]
+                recompensa.textContent = 'Reward: ' + data.recompensa
+            }
+        })
+
         socket.on('left-match', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('Has abandonado la partida')
@@ -1231,6 +1249,17 @@
     <form action="" method="post" class="end-turn">
         <button type="submit" id="end-turn">End Turn</button>
     </form>
+
+    <div class="game-over">
+        <div class="game-over-container">
+            <h1>Game Over</h1>
+            <h2 id="winner"></h2>
+            <div class="recompensa"></div>
+            <form action="" method="post" class="leave-battle">
+                <button type="submit" id="leave">Leave</button>
+            </form>
+        </div> 
+    </div>
     <audio id="audio" src="img/2-hours Epic Medieval Battle Music 2-horas de Musica Epica de Batalla medieval.mp3" autoplay loop></audio>
     <script src="js/game.js"></script>
 </body>

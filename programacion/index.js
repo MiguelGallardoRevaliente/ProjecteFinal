@@ -1379,7 +1379,14 @@ io.on('connection', async (socket) => {
             'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
             [opponentId, combate[0].id_combate_uuid]
           )
+          const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
           const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
+
+          if (allOpponentCardsHaveZeroVida.length === 8) {
+            const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
+            const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
+            io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
+          }
 
           await connection.execute(
             'UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?',
@@ -1592,6 +1599,12 @@ io.on('connection', async (socket) => {
   socket.on('leave-match', async (data) => {
     const username = data.username
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
+    if (data.reward) {
+      await connection.execute(
+        'UPDATE users SET oro = oro + ? WHERE BIN_TO_UUID(id) = ?',
+        [data.reward, user[0].id_uuid]
+      )
+    }
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
 
     let idOpponent
