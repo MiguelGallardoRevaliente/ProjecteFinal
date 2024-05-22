@@ -323,7 +323,8 @@ button#leave-match:hover{
 
 .game-over {
     width: 100%;
-    height: 100%;
+    height: 100dvh;
+    position: absolute;
     z-index: 1000;
     background-color: #232323b8;
     display: flex;
