@@ -865,19 +865,19 @@
                 endTurnForm.style.display = 'block'
 
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
-                const cardUserRemove = document.getElementsByClassName('card-user')
+                const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(async (card) =>{
-                        if (parseInt(cardUserRemove[i].id) === card.id_carta) {
+                        if (parseInt(cardUser[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                await cardUserRemove[i].remove()
+                                cardUser[i].remove()
+                                cardUser.splice(i, 1)
                             }
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }
 
-                const cardUser = document.getElementsByClassName('card-user')
                 console.log('CardUser', cardUser.length)
                 for (let i = 0; i < cardUser.length; i++) {
                     console.log('Length', cardUser.length)
