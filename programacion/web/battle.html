@@ -867,10 +867,10 @@
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 const cardUserRemove = document.getElementsByClassName('card-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
-                    data.cartas.cartasCombate.forEach(card => {
+                    data.cartas.cartasCombate.forEach(async (card) =>{
                         if (parseInt(cardUserRemove[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                cardUserRemove[i].remove()
+                                await cardUserRemove[i].remove()
                             }
                             ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                         }
