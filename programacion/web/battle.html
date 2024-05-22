@@ -801,10 +801,10 @@
                         console.log('userCard', userCards)
                         console.log('userCard', userCards[i])
                         if (parseInt(userCards[i].id) === card.id_carta) {
+                            const manaNumber = document.getElementById('mana-number')
+                            manaNumber.textContent = data.mana
                             if (card.vida <= 0) {
                                 userCards[i].remove()
-                                const manaNumber = document.getElementById('mana-number')
-                                manaNumber.textContent = data.mana
                             } else {
                                 if (!userCardsId.includes(card.id_carta)) {
                                     const cardDiv = document.createElement('div')
