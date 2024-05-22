@@ -871,7 +871,7 @@
                         console.log('CardUser', cardUser[i].id)
                         console.log('Card', card.id_carta)
                         if (parseInt(cardUser[i].id) === card.id_carta) {
-                            card.vida
+                            console.log('Card Vida', card.vida)
                             if (card.vida <= 0) {
                                 cardUser[i].remove()
                                 cardUser.splice(i, 1)
