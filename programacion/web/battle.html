@@ -798,6 +798,7 @@
                 }
                 data.cartasUser.cartasCombate.forEach((card, index) => {
                     if (!userCardsId.includes(card.id_carta)) {
+                        console.log(card.vida)
                         if (card.vida > 0) {
                             const cardDiv = document.createElement('div')
                             cardDiv.className = 'card card-user'
