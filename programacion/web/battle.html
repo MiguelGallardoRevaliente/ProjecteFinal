@@ -797,6 +797,7 @@
                 for (let i = length; i >= 0; i--) {
                     userCards[i].remove()
                 }
+                const userBoard = document.getElementsByClassName('user-board')[0]
                 data.cartasUser.cartasInfo.forEach((card, index) => {
                     console.log(card)
                     const cardDiv = document.createElement('div')
