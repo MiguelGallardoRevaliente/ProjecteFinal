@@ -984,8 +984,9 @@
                         if (parseInt(cardOpponent[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
                                 cardOpponent[i].remove()
+                            } else {
+                                ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                             }
-                            ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                         }
                     })
                 }

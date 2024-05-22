@@ -723,8 +723,8 @@ io.on('connection', async (socket) => {
         [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
       )
       if (cartaCombate[0].vida === 0) {
-        const mana = manaUser - cartaInfo[0].coste_mana
-        console.log(manaUser, cartaInfo[0].coste_mana)
+        const mana = manaUser - cartaInfo[0].costo_mana
+        console.log(manaUser, cartaInfo[0].costo_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
@@ -794,8 +794,8 @@ io.on('connection', async (socket) => {
         [idCartaAttacked, user[0].id_uuid, combate[0].id_combate_uuid]
       )
       if (cartaCombate[0].vida === 0) {
-        const mana = manaUser - cartaInfo[0].coste_mana
-        console.log(manaUser, cartaInfo[0].coste_mana)
+        const mana = manaUser - cartaInfo[0].costo_mana
+        console.log(manaUser, cartaInfo[0].costo_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
