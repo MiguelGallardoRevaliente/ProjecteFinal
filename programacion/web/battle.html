@@ -868,9 +868,10 @@
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < ataqueVidaUser.length; i++) {
                     data.cartas.cartasCombate.forEach(async (card) =>{
-                        console.log('CardUser', cardUser[i])
+                        console.log('CardUser', cardUser[i].id)
                         console.log('Card', card.id_carta)
                         if (parseInt(cardUser[i].id) === card.id_carta) {
+                            card.vida
                             if (card.vida <= 0) {
                                 cardUser[i].remove()
                                 cardUser.splice(i, 1)
