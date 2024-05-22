@@ -1014,7 +1014,7 @@
                     console.log('CardUser XD', cardUser)
                     for (let i = cardUser.length; i >= 0; i--) {
                         data.cartas.cartasCombate.forEach(async (card) =>{
-                            console.log('Card', card)
+                            console.log('Card A', card)
                             if (parseInt(cardUser[i].id) === card.id_carta) {
                                 if (card.vida <= 0) {
                                     cardUser[i].remove()
