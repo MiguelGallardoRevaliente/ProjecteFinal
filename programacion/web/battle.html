@@ -803,6 +803,7 @@
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             const manaNumber = document.getElementById('mana-number')
                             manaNumber.textContent = data.mana
+                            console.log('Mana', mana)
                             if (card.vida <= 0) {
                                 userCards[i].remove()
                             } else {
