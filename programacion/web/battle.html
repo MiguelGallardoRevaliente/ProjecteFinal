@@ -790,24 +790,23 @@
                 })
             } else if (data.username === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
+                const manaNumber = document.getElementById('mana-number')
+                manaNumber.textContent = data.mana
                 const userCardsId = []
                 for (let i = 0; i < userCards.length; i++) {
                     userCardsId.push(parseInt(userCards[i].id))
                 }
-                for (let i = 0; i < userCards.length; i++) {
-                    console.log(data.cartasUser)
-                    console.log('Data', data)
-                    const manaNumber = document.getElementById('mana-number')
-                    manaNumber.textContent = data.mana
-                    data.cartasUser.cartasCombate.forEach((card, index) => {
-                        console.log('Carta', card)
-                        console.log('userCardsId', userCardsId)
-                        console.log('userCard', userCards)
-                        console.log('userCardEspecific', userCards[i])
-                        if (parseInt(userCards[i].id) === card.id_carta) {
-                            if (card.vida <= 0) {
-                                userCards[i].remove()
-                            } else {
+                data.cartasUser.cartasCombate.forEach((card, index) => {
+                    if (!userCardsId.includes(card.id_carta)) {
+                        if (card.vida > 0) {
+                            const cardDiv = document.createElement('div')
+                            cardDiv.className = 'card card-user'
+                            cardDiv.style.backgroundImage = `url(${data.cartasUser.cartasInfo[index].foto})`
+                            cardDiv.style.backgroundSize = 'contain'
+                            cardDiv.style.backgroundRepeat = 'no-repeat'
+                            cardDiv.style.backgroundPosition = 'center'
+                            cardDiv.id = card.id_carta
+                            cardDiv.addEventListener('click', () => {
                                 if (!userCardsId.includes(card.id_carta)) {
                                     const cardDiv = document.createElement('div')
                                     cardDiv.className = 'card card-user'
@@ -876,11 +875,10 @@
                                     const userBoard = document.getElementsByClassName('user-board')[0]
                                     userBoard.appendChild(cardDiv)
                                 }
-                            }
+                            })
                         }
-                    })
-                    userCards[i].style.boxShadow = 'none'
-                }
+                    }
+                })
             }
         })
 
