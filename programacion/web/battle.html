@@ -791,6 +791,7 @@
                 const userCards = document.getElementsByClassName('card-user')
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
+                console.log('Lenght', userCards.length)
                 for (let i = 0; i < userCards.length; i++) {
                     console.log('Cartas', userCards[0].id)
                     userCards[0].remove()
