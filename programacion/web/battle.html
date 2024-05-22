@@ -793,19 +793,20 @@
                 manaNumber.textContent = data.mana
                 const userCardsId = []
                 for (let i = 0; i < userCards.length; i++) {
-                    userCardsId.push(parseInt(userCards[i].id))
-                }
-                data.cartasUser.cartasCombate.forEach((card, index) => {
-                    if (card.vida <= 0) {
-                        const userCardsRemove = document.getElementsByClassName('card-user')
-                        for (let i = 0; i < userCardsRemove.length; i++) {
-                            if (parseInt(userCardsRemove[i].id) === card.id_carta) {
-                                userCardsRemove[i].remove()
-                            }
+                    const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
+                    if (index !== -1) {
+                        if (data.cartasUser.cartasCombate[index].vida <= 0) {
+                            userCards[i].remove()
+                        } else {
+                            userCardsId.push(parseInt(userCards[i].id))
                         }
                     }
+                }
+                data.cartasUser.cartasCombate.forEach((card, index) => {
                     console.log('Vida', card.vida)
+                    console.log('Cartas', userCardsId)
                     if (!userCardsId.includes(card.id_carta)) {
+                        console.log('Carta :)', card.id_carta)
                         if (card.vida > 0) {
                             console.log('Carta :)', card.id_carta)
                             const cardDiv = document.createElement('div')
