@@ -797,6 +797,14 @@
                     userCardsId.push(parseInt(userCards[i].id))
                 }
                 data.cartasUser.cartasCombate.forEach((card, index) => {
+                    if (card.vida <= 0) {
+                        const userCardsRemove = document.getElementsByClassName('card-user')
+                        for (let i = 0; i < userCardsRemove.length; i++) {
+                            if (parseInt(userCardsRemove[i].id) === card.id_carta) {
+                                userCardsRemove[i].remove()
+                            }
+                        }
+                    }
                     console.log(card.vida)
                     if (!userCardsId.includes(card.id_carta)) {
                         if (card.vida > 0) {
@@ -865,6 +873,7 @@
 
                                     if (card.ataque_especial) {
                                         const ataqueEspecial = document.createElement('p')
+                                        console.log(data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion)
                                         ataqueEspecial.textContent = data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion
                                         ataqueEspecial.className = 'ataque-especial'
 
