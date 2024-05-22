@@ -732,9 +732,62 @@
                     opponentCardsId.push(parseInt(opponentCards[i].id))
                 }
                 console.log('Cartas', opponentCardsId)
+                data.opponentCards.forEach(card => {
+                    if (!opponentCardsId.includes(card.id_carta)) {
+                        const cardDiv = document.createElement('div')
+                        cardDiv.className = 'card card-opponent'
+                        cardDiv.style.backgroundImage = `url(${card.foto})`
+                        cardDiv.style.backgroundSize = 'contain'
+                        cardDiv.style.backgroundRepeat = 'no-repeat'
+                        cardDiv.style.backgroundPosition = 'center'
+                        cardDiv.id = card.id_carta
+                        cardDiv.addEventListener('click', () => {
+                            if (specialAttackCard.length === 1) {
+                                const tipo = specialAttackCard[0].tipo.split('/')
+                                if (tipo[1] !== 'aliado') {
+                                    socket.emit('special-attack-opponent', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                                    const opponentCards = document.getElementsByClassName('card-opponent')
+                                    for (let i = 0; i < opponentCards.length; i++) {
+                                        opponentCards[i].style.boxShadow = 'none'
+                                    }
+                                }
+                            } else {
+                                if (cardClicked.length === 1) {
+                                    socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.id_carta, username: localStorage.getItem('username') })
+                                    const OpponentCards = document.getElementsByClassName('card-opponent')
+                                    for (let i = 0; i < OpponentCards.length; i++) {
+                                        OpponentCards[i].style.boxShadow = 'none'
+                                    }
+                                }
+                            }
+                        })
+
+                        const cardName = document.createElement('p')
+                        cardName.textContent = card.nombre
+                        cardName.className = 'cardName'
+
+                        const ataqueVida = document.createElement('p')
+                        ataqueVida.textContent = card.ataque + '/' + card.vida
+                        ataqueVida.className = 'ataque-vida ataque-vida-opponent'
+
+                        if (card.ataque_especial) {
+                            const ataqueEspecial = document.createElement('p')
+                            ataqueEspecial.textContent = card.ataque_especial.nombre + ' - ' + card.ataque_especial.descripcion
+                            ataqueEspecial.className = 'ataque-especial ataque-especial-opponent'
+
+                            cardDiv.appendChild(ataqueEspecial)
+                        }
+
+                        cardDiv.appendChild(cardName)
+                        cardDiv.appendChild(ataqueVida)
+                        const opponentBoard = document.getElementsByClassName('opponent-board')[0]
+                        opponentBoard.appendChild(cardDiv)
+                    }
+                })
             } else if (data.username === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
+                    console.log(data.opponentCards)
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
