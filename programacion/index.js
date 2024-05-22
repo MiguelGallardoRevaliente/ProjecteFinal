@@ -472,6 +472,8 @@ io.on('connection', async (socket) => {
             vida = cartaInfo[0].vida
           }
 
+          console.log('Vida', vida)
+
           await connection.execute(
             'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
             [vida, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
