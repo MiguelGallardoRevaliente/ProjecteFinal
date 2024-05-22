@@ -793,10 +793,9 @@
                 manaNumber.textContent = data.mana
                 console.log('Lenght', userCards.length)
                 const length = userCards.length - 1
+                console.log('Length', length)
                 for (let i = length; i >= 0; i--) {
-                    if (data.cartasUser.cartasCombate[i].vida <= 0) {
-                        userCards[i].remove()
-                    }
+                    userCards[i].remove()
                 }
                 // const userCardsId = []
                 // for (let i = 0; i < userCards.length; i++) {
