@@ -214,6 +214,15 @@
                                                                             cardDiv.style.backgroundPosition = 'center'
                                                                             cardDiv.id = cardRevive.cartaEnCombateUser.id
                                                                             cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
+                                                                            cardDiv.addEventListener('click', () => {
+                                                                                if (specialAttackCard.length === 1 && specialAttackCard[0].tipo === 'revive') {
+                                                                                    socket.emit('special-attack-revive', { idCartaAttacked: cardRevive.cartaEnCombateUser.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                                                                                    const userCards = document.getElementsByClassName('card-user')
+                                                                                    for (let i = 0; i < userCards.length; i++) {
+                                                                                        userCards[i].style.boxShadow = 'none'
+                                                                                    }
+                                                                                }
+                                                                            })
 
                                                                             const cardName = document.createElement('p')
                                                                             cardName.textContent = cardRevive.cartaEnCombateUser.nombre
@@ -1138,7 +1147,7 @@
                                                                     cardDiv.id = cardRevive.id_carta
                                                                     cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
                                                                     cardDiv.addEventListener('click', () => {
-                                                                        if (specialAttackCard.length === 1 && specialAttackCard[0].tipo) {
+                                                                        if (specialAttackCard.length === 1 && specialAttackCard[0].tipo === 'revive') {
                                                                             console.log('id carta reviviendo', cardRevive.id_carta)
                                                                             socket.emit('special-attack-revive', { idCartaAttacked: cardRevive.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username') })
                                                                         }
