@@ -727,7 +727,10 @@
         socket.on('special-attacked-revive', (data) => {
             if (data.username === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
-                const opponentCardsId = opponentCards.map(card => parseInt(card.id))
+                const opponentCardsId = []
+                for (let i = 0; i < opponentCards.length; i++) {
+                    opponentCardsId.push(parseInt(opponentCards[i].id))
+                }
                 console.log('Cartas', opponentCardsId)
             } else if (data.username === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
