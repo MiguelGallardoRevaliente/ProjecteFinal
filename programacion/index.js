@@ -729,7 +729,7 @@ io.on('connection', async (socket) => {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
         }
-        console.log('mana', mana)
+        console.log('Mana', mana)
 
         const vida = Math.round(cartaInfo[0].vida / 2)
         console.log('Vida', vida)
@@ -791,6 +791,8 @@ io.on('connection', async (socket) => {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
         }
+
+        console.log('Mana', mana)
 
         await connection.execute(
           'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
