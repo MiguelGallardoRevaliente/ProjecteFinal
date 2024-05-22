@@ -793,16 +793,12 @@
                 manaNumber.textContent = data.mana
                 const userCardsId = []
                 for (let i = 0; i < userCards.length; i++) {
-                    if (data.cartasUser.cartasCombate[i].vida <= 0) {
-                        console.log('Carta eliminada', userCards[i].id)
-                        const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
-                        if (index !== -1) {
-                            userCardsId.push(data.cartasUser.cartasCombate[index].id_carta)
-                        }
-                    } else {
-                        const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
-                        if (index !== -1) {
-                            userCardsId.push(data.cartasUser.cartasCombate[index].id_carta)
+                    const index = data.cartasUser.cartasCombate.findIndex(card => card.id_carta === parseInt(userCards[i].id))
+                    if (index !== -1) {
+                        if (data.cartasUser.cartasCombate[index].vida <= 0) {
+                            userCards[i].remove()
+                        } else {
+                            userCardsId.push(parseInt(userCards[i].id))
                         }
                     }
                 }
