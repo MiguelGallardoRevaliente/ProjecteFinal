@@ -729,6 +729,7 @@ io.on('connection', async (socket) => {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
         }
+        console.log('mana', mana)
 
         const vida = Math.round(cartaInfo[0].vida / 2)
         console.log('Vida', vida)
