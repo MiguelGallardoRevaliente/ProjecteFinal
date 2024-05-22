@@ -792,9 +792,11 @@
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
                 console.log('Lenght', userCards.length)
-                for (let i = userCards.length; i > 0; i--) {
-                    console.log('Carta', userCards[i].id)
-                    userCards[i].remove()
+                const length = userCards.length - 1
+                for (let i = length; i >= 0; i--) {
+                    if (data.cartasUser.cartasCombate[i].vida <= 0) {
+                        userCards[i].remove()
+                    }
                 }
                 // const userCardsId = []
                 // for (let i = 0; i < userCards.length; i++) {
