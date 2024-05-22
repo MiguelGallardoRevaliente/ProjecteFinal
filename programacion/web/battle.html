@@ -467,7 +467,7 @@
         const leaveBattle = document.getElementsByClassName('leave-battle')[0]
         leaveBattle.addEventListener('submit', (event) => {
             event.preventDefault()
-            const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split('')
+            const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
             console.log('Reward', rewardSplit[0])
             // socket.emit('leave-match', { username: localStorage.getItem('username') })
         })
