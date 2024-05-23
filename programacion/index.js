@@ -1648,20 +1648,16 @@ io.on('connection', async (socket) => {
       [user[0].id_uuid, user[0].id_uuid]
     )
 
-    if (combate[0].id_user_1) {
-      const [idUser1] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_1) AS id_user_1_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
-      if (idUser1[0].id_user_1_uuid === user[0].id_uuid && combate[0].id_user_2) {
-        await connection.execute('UPDATE combates SET id_user_1 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
-      } else if (idUser1[0].id_user_1_uuid === user[0].id_uuid && !combate[0].id_user_2) {
-        await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2])
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2])
+      if (opponent[0].fighting === 0) {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
-    } else if (combate[0].id_user_2) {
-      const [idUser2] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
-      if (idUser2[0].id_user_2_uuid === user[0].id_uuid && combate[0].id_user_1) {
-        await connection.execute('UPDATE combates SET id_user_2 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
-      } else if (idUser2[0].id_user_2_uuid === user[0].id_uuid && !combate[0].id_user_1) {
-        await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+    } else {
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1])
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1])
+      if (opponent[0].fighting === 0) {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
     }
