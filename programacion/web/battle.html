@@ -149,6 +149,11 @@
                                     informacionDiv.style.backgroundColor = 'white'
                                 })
 
+                                cardDiv.addEventListener('mouseout', () => {
+                                    const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                    informacionDiv.style.backgroundColor = 'green'
+                                })
+
                                 const cardName = document.createElement('p')
                                 cardName.textContent = card.cartaEnCombateUser.nombre
                                 cardName.className = 'cardName'
