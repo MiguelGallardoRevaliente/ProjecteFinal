@@ -14,6 +14,7 @@
         const socket = io()
 
         const inventory = localStorage.getItem('inventory') || 'cards'
+        const inventoryLink = document.getElementById('inventoryLink')
         inventoryLink.href = `/${inventory}`
         const username = localStorage.getItem('username')
 
@@ -118,7 +119,11 @@
                         perfil.appendChild(divUser)
                     })
                 })
-            }
+
+            const audio = document.getElementById('audio')
+            const savedVolume = localStorage.getItem('volume') || 100
+            audio.volume = savedVolume / 100
+        }
     </script>
     <style>
         html,

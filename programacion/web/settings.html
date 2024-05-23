@@ -8,42 +8,49 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/game.css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type='module'>
-        const inventory = localStorage.getItem('inventory') || 'cards'
-        inventoryLink.href = `/${inventory}`
-        const username = localStorage.getItem('username')
+        document.addEventListener('DOMContentLoaded', function() {
+            const inventory = localStorage.getItem('inventory') || 'cards'
+            const inventoryLink = document.getElementById('inventoryLink')
+            inventoryLink.href = `/${inventory}`
+            const username = localStorage.getItem('username')
 
-        if (!username && !localStorage.getItem('password')) {
-            window.location.href = '/login'
-        } else if (username && localStorage.getItem('password')) {
-            fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message !== 'userExists') {
-                        localStorage.removeItem('username')
-                        localStorage.removeItem('password')
-                        localStorage.removeItem('id')
-                        window.location.href = '/login'
-                    } else {
-                        if (data.combat) {
-                            window.location.href = '/battle?id=' + data.combat
+            if (!username && !localStorage.getItem('password')) {
+                window.location.href = '/login'
+            } else if (username && localStorage.getItem('password')) {
+                fetch(`/checkUser?username=${username}&password=${localStorage.getItem('password')}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message !== 'userExists') {
+                            localStorage.removeItem('username')
+                            localStorage.removeItem('password')
+                            localStorage.removeItem('id')
+                            window.location.href = '/login'
+                        } else {
+                            if (data.combat) {
+                                window.location.href = '/battle?id=' + data.combat
+                            }
                         }
-                    }
-                })
-        }
+                    })
+            }
 
-        const form = document.getElementsByClassName('form')[0]
+            const form = document.getElementsByClassName('form')[0]
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault()
-            localStorage.removeItem('username')
-            localStorage.removeItem('password')
-            localStorage.removeItem('id')
-            localStorage.removeItem('inventory')
-            window.location.href = '/login'
-        })
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                localStorage.removeItem('username')
+                localStorage.removeItem('password')
+                localStorage.removeItem('id')
+                localStorage.removeItem('inventory')
+                window.location.href = '/login'
+            })
 
-        volumeControl.addEventListener('input', function () {
-            audio.volume = volumeControl.value / 100
+            const volumeControl = document.getElementById('volumeControl')
+            const savedVolume = localStorage.getItem('volume') || 100
+            volumeControl.value = savedVolume
+
+            volumeControl.addEventListener('input', function () {
+                localStorage.setItem('volume', volumeControl.value)
+            })
         })
     </script>
 </head>
@@ -80,15 +87,6 @@
                         <h3>Music</h3>
                         <input type="range" id="volumeControl" min="0" max="100" value="100">
                     </div>
-                    <h2>User</h2>
-                   <div class="user">
-                        <h3>Information</h3>
-                        <p>${username}</p>
-                        <p>marc.zaragoza04@gmail.com</p>
-                        <p>Level 1</p>
-                        <p></p>
-                    </div>
-
                     <div class="logout">
                         <form action="" class="form">
                             <button type="submit">Log Out <i class='bx bx-log-out'></i></button>
