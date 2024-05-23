@@ -2378,6 +2378,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "SHOP-CHEST"
 
     #shop .container .top {
         padding: 0px 20px;
+        justify-content: center;
     }
 
     #allchests .chest {
