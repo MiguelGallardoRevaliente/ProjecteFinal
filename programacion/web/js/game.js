@@ -458,6 +458,8 @@ function confirmarCompra (idMercado, idCarta, precio) {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
+      confirmarDiv.style.display = 'none'
     })
 }
 
