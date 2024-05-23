@@ -50,6 +50,16 @@
 
             volumeControl.addEventListener('input', function () {
                 localStorage.setItem('volume', volumeControl.value)
+                localStorage.setItem('muted', false) // Desactivar silencio si el volumen cambia
+                document.getElementById('muteCheckbox').checked = false
+            })
+
+            const muteCheckbox = document.getElementById('muteCheckbox')
+            const savedMuted = localStorage.getItem('muted') === 'true'
+            muteCheckbox.checked = savedMuted
+
+            muteCheckbox.addEventListener('change', function () {
+                localStorage.setItem('muted', muteCheckbox.checked)
             })
         })
     </script>
@@ -86,6 +96,10 @@
                     <div>
                         <h3>Music</h3>
                         <input type="range" id="volumeControl" min="0" max="100" value="100">
+                    </div>
+                    <div>
+                        <label for="muteCheckbox">Mute</label>
+                        <input type="checkbox" id="muteCheckbox">
                     </div>
                     <div class="logout">
                         <form action="" class="form">
