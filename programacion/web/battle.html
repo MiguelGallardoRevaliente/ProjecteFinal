@@ -302,7 +302,9 @@
                                                     }
                                                 } else {
                                                     const userCardsRevive = document.getElementsByClassName('card-user-revive')
-                                                    for (let i = userCardsRevive.length; i >= 0; i--) {
+                                                    console.log('Cartas', userCardsRevive)
+                                                    const length = userCardsRevive.length - 1
+                                                    for (let i = length; i >= 0; i--) {
                                                         userCardsRevive[i].remove()
                                                     }
                                                 }
