@@ -87,15 +87,17 @@
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = 'none'
+                                                opponentCards[i].style.cursor = 'none'
                                             }
                                         }
                                     } else {
                                         console.log('Card Clicked', cardClicked)
                                         if (cardClicked.length === 1) {
                                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
-                                            const OpponentCards = document.getElementsByClassName('card-opponent')
-                                            for (let i = 0; i < OpponentCards.length; i++) {
-                                                OpponentCards[i].style.boxShadow = 'none'
+                                            const opponentCards = document.getElementsByClassName('card-opponent')
+                                            for (let i = 0; i < opponentCards.length; i++) {
+                                                opponentCards[i].style.boxShadow = 'none'
+                                                opponentCards[i].style.cursor = 'none'
                                             }
                                         }
                                     }
@@ -210,18 +212,22 @@
                                                                 if (card.ataque.tipo === 'unico') {
                                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
+                                                                        opponentCards[i].style.cursor = 'pointer'
                                                                     }
                                                                 } else if (card.ataque.tipo === 'power-down') {
                                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
+                                                                        opponentCards[i].style.cursor = 'pointer'
                                                                     }
                                                                 } else if (card.ataque.tipo === 'corrosivo') {
                                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #B83BDA'
+                                                                        opponentCards[i].style.cursor = 'pointer'
                                                                     }
                                                                 } else if (card.ataque.tipo === 'inmovil') {
                                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
+                                                                        opponentCards[i].style.cursor = 'pointer'
                                                                     }
                                                                 } else if (card.ataque.tipo === 'revive') {
                                                                     console.log('Cartas window', data)
@@ -313,6 +319,7 @@
                                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                                        opponentCards[i].style.cursor = 'pointer'
                                                     }
                                                 }
                                             }
@@ -331,6 +338,7 @@
                                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                                         for (let i = 0; i < opponentCards.length; i++) {
                                                             opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                                            opponentCards[i].style.cursor = 'pointer'
                                                         }
                                                     }
                                                 }
@@ -496,6 +504,7 @@
             const opponentCards = document.getElementsByClassName('card-opponent')
             for (let i = 0; i < opponentCards.length; i++) {
                 opponentCards[i].style.boxShadow = 'none'
+                opponentCards[i].style.cursor = 'none'
             }
 
             specialAttackCard = []
@@ -588,6 +597,7 @@
                                 const opponentCards = document.getElementsByClassName('card-opponent')
                                 for (let i = 0; i < opponentCards.length; i++) {
                                     opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                    opponentCards[i].style.cursor = 'pointer'
                                 }
                             }
                         
@@ -618,14 +628,16 @@
                             const opponentCards = document.getElementsByClassName('card-opponent')
                             for (let i = 0; i < opponentCards.length; i++) {
                                 opponentCards[i].style.boxShadow = 'none'
+                                opponentCards[i].style.cursor = 'none'
                             }
                         }
                     } else {
                         if (cardClicked.length === 1) {
                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.carta.id, username: localStorage.getItem('username') })
-                            const OpponentCards = document.getElementsByClassName('card-opponent')
-                            for (let i = 0; i < OpponentCards.length; i++) {
-                                OpponentCards[i].style.boxShadow = 'none'
+                            const opponentCards = document.getElementsByClassName('card-opponent')
+                            for (let i = 0; i < opponentCards.length; i++) {
+                                opponentCards[i].style.boxShadow = 'none'
+                                opponentCards[i].style.cursor = 'none'
                             }
                         }
                     }
@@ -666,6 +678,7 @@
                     }
                     if (cardOpponent[i]) {
                         cardOpponent[i].style.boxShadow = 'none'
+                        cardOpponent[i].style.cursor = 'none'
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
@@ -700,6 +713,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
+                    opponentCards[i].style.cursor = 'none'
                 }
             }
 
@@ -744,6 +758,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
+                    opponentCards[i].style.cursor = 'none'
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
@@ -791,14 +806,16 @@
                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                     for (let i = 0; i < opponentCards.length; i++) {
                                         opponentCards[i].style.boxShadow = 'none'
+                                        opponentCards[i].style.cursor = 'none'
                                     }
                                 }
                             } else {
                                 if (cardClicked.length === 1) {
                                     socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: data.cartasUser.cartasCombate[index].id_carta, username: localStorage.getItem('username') })
-                                    const OpponentCards = document.getElementsByClassName('card-opponent')
-                                    for (let i = 0; i < OpponentCards.length; i++) {
-                                        OpponentCards[i].style.boxShadow = 'none'
+                                    const opponentCards = document.getElementsByClassName('card-opponent')
+                                    for (let i = 0; i < opponentCards.length; i++) {
+                                        opponentCards[i].style.boxShadow = 'none'
+                                        opponentCards[i].style.cursor = 'none'
                                     }
                                 }
                             }
@@ -878,6 +895,7 @@
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                                opponentCards[i].style.cursor = 'pointer'
                                             }
                                         }
                                     }
@@ -929,6 +947,7 @@
                     })
                     if (opponentCards[i]){
                         opponentCards[i].style.boxShadow = 'none'
+                        opponentCards[i].style.cursor = 'none'
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
@@ -974,6 +993,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
+                    opponentCards[i].style.cursor = 'none'
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
@@ -1114,6 +1134,7 @@
                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                         for (let i = 0; i < opponentCards.length; i++) {
                                             opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                            opponentCards[i].style.cursor = 'pointer'
                                         }
                                     }
                                 }
@@ -1132,6 +1153,7 @@
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 2px yellow'
+                                                opponentCards[i].style.cursor = 'pointer'
                                             }
                                         }
                                     }
@@ -1159,6 +1181,7 @@
                                                 const opponentCards = document.getElementsByClassName('card-opponent')
                                                 for (let i = opponentCards.length - 1; i >= 0; i--) {
                                                     opponentCards[i].style.boxShadow = 'none'
+                                                    opponentCards[i].style.cursor = 'pointer'
                                                 }
                                             }
                                             specialAttackCard = []
@@ -1184,18 +1207,22 @@
                                                     if (data.cartas.ataques[index].tipo === 'unico') {
                                                         for (let i = 0; i < opponentCards.length; i++) {
                                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
+                                                            opponentCards[i].style.cursor = 'pointer'
                                                         }
                                                     } else if (data.cartas.ataques[index].tipo === 'power-down') {
                                                         for (let i = 0; i < opponentCards.length; i++) {
                                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
+                                                            opponentCards[i].style.cursor = 'pointer'
                                                         }
                                                     } else if (data.cartas.ataques[index].tipo === 'corrosivo') {
                                                         for (let i = 0; i < opponentCards.length; i++) {
                                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px #B83BDA'
+                                                            opponentCards[i].style.cursor = 'pointer'
                                                         }
                                                     } else if (data.cartas.ataques[index].tipo === 'inmovil') {
                                                         for (let i = 0; i < opponentCards.length; i++) {
                                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
+                                                            opponentCards[i].style.cursor = 'pointer'
                                                         }
                                                     }  else if (data.cartas.ataques[index].tipo === 'revive') {
                                                         const userBoard = document.getElementsByClassName('user-board')[0]
@@ -1269,18 +1296,22 @@
                                                         if (data.cartas.ataques[index].tipo === 'unico') {
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #901616'
+                                                                opponentCards[i].style.cursor = 'pointer'
                                                             }
                                                         } else if (data.cartas.ataques[index].tipo === 'power-down') {
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #F34F4F'
+                                                                opponentCards[i].style.cursor = 'pointer'
                                                             }
                                                         } else if (data.cartas.ataques[index].tipo === 'corrosivo') {
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #B83BDA'
+                                                                opponentCards[i].style.cursor = 'pointer'
                                                             }
                                                         } else if (data.cartas.ataques[index].tipo === 'inmovil') {
                                                             for (let i = 0; i < opponentCards.length; i++) {
                                                                 opponentCards[i].style.boxShadow = '0px 0px 7px 4px #C6C4C7'
+                                                                opponentCards[i].style.cursor = 'pointer'
                                                             }
                                                         }  else if (data.cartas.ataques[index].tipo === 'revive') {
                                                             const userBoard = document.getElementsByClassName('user-board')[0]
