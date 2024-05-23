@@ -87,7 +87,7 @@
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = 'none'
-                                                opponentCards[i].style.cursor = 'none'
+                                                opponentCards[i].style.cursor = 'default'
                                             }
                                         }
                                     } else {
@@ -97,7 +97,7 @@
                                             const opponentCards = document.getElementsByClassName('card-opponent')
                                             for (let i = 0; i < opponentCards.length; i++) {
                                                 opponentCards[i].style.boxShadow = 'none'
-                                                opponentCards[i].style.cursor = 'none'
+                                                opponentCards[i].style.cursor = 'default'
                                             }
                                         }
                                     }
@@ -504,7 +504,7 @@
             const opponentCards = document.getElementsByClassName('card-opponent')
             for (let i = 0; i < opponentCards.length; i++) {
                 opponentCards[i].style.boxShadow = 'none'
-                opponentCards[i].style.cursor = 'none'
+                opponentCards[i].style.cursor = 'default'
             }
 
             specialAttackCard = []
@@ -628,7 +628,7 @@
                             const opponentCards = document.getElementsByClassName('card-opponent')
                             for (let i = 0; i < opponentCards.length; i++) {
                                 opponentCards[i].style.boxShadow = 'none'
-                                opponentCards[i].style.cursor = 'none'
+                                opponentCards[i].style.cursor = 'default'
                             }
                         }
                     } else {
@@ -637,7 +637,7 @@
                             const opponentCards = document.getElementsByClassName('card-opponent')
                             for (let i = 0; i < opponentCards.length; i++) {
                                 opponentCards[i].style.boxShadow = 'none'
-                                opponentCards[i].style.cursor = 'none'
+                                opponentCards[i].style.cursor = 'default'
                             }
                         }
                     }
@@ -678,7 +678,7 @@
                     }
                     if (cardOpponent[i]) {
                         cardOpponent[i].style.boxShadow = 'none'
-                        cardOpponent[i].style.cursor = 'none'
+                        cardOpponent[i].style.cursor = 'default'
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
@@ -713,7 +713,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
-                    opponentCards[i].style.cursor = 'none'
+                    opponentCards[i].style.cursor = 'default'
                 }
             }
 
@@ -758,7 +758,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
-                    opponentCards[i].style.cursor = 'none'
+                    opponentCards[i].style.cursor = 'default'
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
@@ -806,7 +806,7 @@
                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                     for (let i = 0; i < opponentCards.length; i++) {
                                         opponentCards[i].style.boxShadow = 'none'
-                                        opponentCards[i].style.cursor = 'none'
+                                        opponentCards[i].style.cursor = 'default'
                                     }
                                 }
                             } else {
@@ -815,7 +815,7 @@
                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                     for (let i = 0; i < opponentCards.length; i++) {
                                         opponentCards[i].style.boxShadow = 'none'
-                                        opponentCards[i].style.cursor = 'none'
+                                        opponentCards[i].style.cursor = 'default'
                                     }
                                 }
                             }
@@ -947,7 +947,7 @@
                     })
                     if (opponentCards[i]){
                         opponentCards[i].style.boxShadow = 'none'
-                        opponentCards[i].style.cursor = 'none'
+                        opponentCards[i].style.cursor = 'default'
                     }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
@@ -993,7 +993,7 @@
                         }
                     })
                     opponentCards[i].style.boxShadow = 'none'
-                    opponentCards[i].style.cursor = 'none'
+                    opponentCards[i].style.cursor = 'default'
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
