@@ -203,7 +203,7 @@ body {
 
 .user-board .card .attack:hover{
     border-radius: 10px;
-    box-shadow: 0px 0px 7px 4px var(--principal-red);
+    box-shadow: 0px 0px 7px 2px #002bff;
 }
 
 
