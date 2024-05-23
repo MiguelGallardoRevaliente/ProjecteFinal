@@ -163,12 +163,11 @@
                                     }
 
                                     const ataqueVidaInfo = document.createElement('p')
-                                    ataqueVidaInfo.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
+                                    const ataqueVida = document.getElementsByClassName('ataque-vida')[0]
+                                    ataqueVidaInfo.textContent = ataqueVida.textContent
                                     ataqueVidaInfo.className = 'ataque-vida-info'
                                     
                                     informacionDiv.appendChild(ataqueVidaInfo)
-                                    
-                                    
                                 })
 
                                 cardDiv.addEventListener('mouseout', () => {
