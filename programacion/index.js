@@ -1644,12 +1644,12 @@ io.on('connection', async (socket) => {
     const username = data.username
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
     const [combate] = await connection.execute(
-      'SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;',
+      'SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;',
       [user[0].id_uuid, user[0].id_uuid]
     )
 
     if (combate[0].id_user_1) {
-      const [idUser1] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_1) AS id_user_1_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1])
+      const [idUser1] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_1) AS id_user_1_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
       if (idUser1[0].id_user_1_uuid === user[0].id_uuid && combate[0].id_user_2) {
         await connection.execute('UPDATE combates SET id_user_1 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       } else if (idUser1[0].id_user_1_uuid === user[0].id_uuid && !combate[0].id_user_2) {
@@ -1657,7 +1657,7 @@ io.on('connection', async (socket) => {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
     } else if (combate[0].id_user_2) {
-      const [idUser2] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2])
+      const [idUser2] = await connection.execute('SELECT *, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       if (idUser2[0].id_user_2_uuid === user[0].id_uuid && combate[0].id_user_1) {
         await connection.execute('UPDATE combates SET id_user_2 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       } else if (idUser2[0].id_user_2_uuid === user[0].id_uuid && !combate[0].id_user_1) {
