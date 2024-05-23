@@ -122,35 +122,6 @@ function salirResultadoSobre () {
   resultadoSobre.style.display = 'none'
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const audio = document.getElementById('audio') ?? null
-  const volumeControl = document.getElementById('volumeControl') ? document.getElementById('volumeControl').value : 100
-
-  if (audio) {
-    audio.volume = volumeControl / 100
-  }
-})
-
-const botones = document.querySelectorAll('button')
-
-function reproducirSonido () {
-  const audioClick = new Audio('img/click.mp3')
-  audioClick.play()
-}
-
-botones.forEach(function (boton) {
-  boton.addEventListener('click', function () {
-    reproducirSonido()
-  })
-})
-
-const otrosElementos = document.querySelectorAll('.otroElemento')
-otrosElementos.forEach(function (elemento) {
-  elemento.addEventListener('click', function () {
-    reproducirSonido()
-  })
-})
-
 const setProfilePicture = (event) => {
   const userFoto = document.getElementById('userFoto')
   userFoto.src = event.target.src
