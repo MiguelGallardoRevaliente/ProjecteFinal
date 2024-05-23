@@ -16,7 +16,9 @@ CREATE TABLE IF NOT EXISTS users (
     oro INT DEFAULT 0,
     foto_perfil TEXT,
     mazo_seleccionado INT,
-    first_log BOOL DEFAULT true
+    first_log BOOL DEFAULT true,
+    fighting BOOL DEFAULT false,
+    searching BOOL DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS cartas (
@@ -53,13 +55,9 @@ CREATE TABLE IF NOT EXISTS ataques (
 	id INT PRIMARY KEY auto_increment,
     nombre VARCHAR(255),
     tipo VARCHAR(255),
-    tipo_secundario VARCHAR(255),
     cambio INT,
-    cambio_secundario INT,
     estadistica VARCHAR(255),
-    estadistica_secundaria VARCHAR(255),
     duracion INT,
-    duracion_secundaria INT,
     descripcion TEXT
 );
 

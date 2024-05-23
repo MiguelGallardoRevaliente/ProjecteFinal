@@ -52,8 +52,7 @@ function mostrarShopCards () {
   shopcards.style.boxShadow = '1px 1px 5px black'
   shopcards.style.backgroundColor = 'gray'
   shopchests.style.backgroundColor = '#292929'
-  document.getElementById('titul').innerText = 'MARKET';
-
+  document.getElementById('titul').innerText = 'MARKET'
 }
 
 function mostrarShopChests () {
@@ -63,7 +62,7 @@ function mostrarShopChests () {
   shopchests.style.boxShadow = '1px 1px 5px black'
   shopchests.style.backgroundColor = 'gray'
   shopcards.style.backgroundColor = '#292929'
-  document.getElementById('titul').innerText = 'SHOP';
+  document.getElementById('titul').innerText = 'SHOP'
 
   allchests.innerHTML = ''
   fetch('/getShopChests', {
