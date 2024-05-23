@@ -1430,6 +1430,9 @@ form.form_compra_carta{
 #settings .setting div {
     width: 550px;
     margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #settings .setting div p {
@@ -1457,6 +1460,7 @@ form.form_compra_carta{
     color: red !important;
     border: none;
     gap: 15px;
+    margin-top: 10%;
 }
 
 #settings .setting form button:hover {
@@ -1468,30 +1472,6 @@ form.form_compra_carta{
     margin-top: 2%;
 }
 
-#settings .changePassword {
-    display: flex;
-    align-items: center;
-    justify-content: left !important;
-    gap: 10px;
-}
-
-#settings .changePassword label {
-    background-color: #5f5f5f;
-    box-shadow: 1px 1px 5px #000000 inset;
-    border-radius: 10px;
-    padding: 0px 10px;
-    width: 150px;
-}
-
-#settings .changePassword button {
-    background: transparent;
-    border: none;
-}
-
-#settings .changePassword button i {
-    font-size: 25px;
-    color: white;
-}
 
 
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "HEADER"*/
