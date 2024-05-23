@@ -1665,7 +1665,8 @@ io.on('connection', async (socket) => {
       console.log('4')
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       console.log('5')
-      if (opponent[0].fighting === 0) {
+      console.log(opponent[0])
+      if (!opponent[0].fighting) {
         console.log('6')
         await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
         console.log('7')
