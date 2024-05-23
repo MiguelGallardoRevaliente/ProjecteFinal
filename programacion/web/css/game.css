@@ -2553,7 +2553,7 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
     }
 
     #shop #allcards .shop_cards table tr th {
-        font-size: 15px;
+        font-size: 20px;
     }
 
     #shop #allcards .shop_cards table tr td {
@@ -2596,16 +2596,16 @@ ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE SHOP-CARDS
 @media (max-width: 500px) {
 
     shop #allcards .shop_cards table tr th {
-        font-size: 10px;
+        font-size: 20px;
     }
 
     #shop #allcards .shop_cards table tr td {
-        font-size: 10px;
+        font-size: 20px;
     }
 
     #shop #allcards .shop_cards table tr img {
 
-        width: 15px !important;
+        width: 30px !important;
     }
 
     #shop .container .all .filtrer form .info div {
