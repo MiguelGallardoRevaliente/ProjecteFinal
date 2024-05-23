@@ -1657,6 +1657,7 @@ io.on('connection', async (socket) => {
       [user[0].id_uuid, user[0].id_uuid]
     )
     console.log('2')
+    console.log(combate[0])
 
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       console.log('3')
