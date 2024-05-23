@@ -491,7 +491,7 @@
             event.preventDefault()
             const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
             console.log('Reward', rewardSplit[1])
-            socket.emit('leave-match', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
+            socket.emit('leave-battle', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
         })
 
         const leaveMatchForm = document.getElementsByClassName('leave-match')[0]
@@ -1266,6 +1266,18 @@
                 window.location.href = '/'
             } else if (data.username === localStorage.getItem('opponent')) {
                 alert('Tu oponente ha abandonado la partida')
+                localStorage.removeItem('opponent')
+                localStorage.removeItem('winner')
+                localStorage.removeItem('recompensaWinner')
+                localStorage.removeItem('loser')
+                localStorage.removeItem('recompensaLoser')
+                window.location.href = '/'
+            }
+        })
+
+        socket.on('left-battle', (data) => {
+            if (data.username === localStorage.getItem('username')) {
+                alert('Has abandonado la batalla')
                 localStorage.removeItem('opponent')
                 localStorage.removeItem('winner')
                 localStorage.removeItem('recompensaWinner')

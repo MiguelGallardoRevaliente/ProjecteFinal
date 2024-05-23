@@ -1649,12 +1649,6 @@ io.on('connection', async (socket) => {
   socket.on('leave-match', async (data) => {
     const username = data.username
     const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
-    if (data.reward) {
-      await connection.execute(
-        'UPDATE users SET oro = oro + ? WHERE BIN_TO_UUID(id) = ?',
-        [data.reward, user[0].id_uuid]
-      )
-    }
     const [combate] = await connection.execute('SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;', [user[0].id_uuid, user[0].id_uuid])
 
     let idOpponent
@@ -1676,6 +1670,38 @@ io.on('connection', async (socket) => {
     await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
 
     io.emit('left-match', { username, opponent: opponent[0].user })
+  })
+
+  socket.on('leave-battle', async (data) => {
+    const username = data.username
+    const [user] = await connection.execute('SELECT *, BIN_TO_UUID(id) AS id_uuid FROM users WHERE user = ?', [username])
+    const [combate] = await connection.execute(
+      'SELECT *, BIN_TO_UUID(id_combate) AS id_combate_uuid, BIN_TO_UUID(id_user_1) AS id_user_1_uuid, BIN_TO_UUID(id_user_2) AS id_user_2_uuid FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?;',
+      [user[0].id_uuid, user[0].id_uuid]
+    )
+
+    if (combate[0].id_user_1 === user[0].id_uuid) {
+      if (combate[0].id_user_2) {
+        await connection.execute('UPDATE combates SET id_user_1 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+      } else {
+        await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+        await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+      }
+    } else {
+      if (combate[0].id_user_1) {
+        await connection.execute('UPDATE combates SET id_user_2 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+      } else {
+        await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+        await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+      }
+    }
+
+    await connection.execute(
+      'UPDATE users SET oro = oro + ?, fighting = 0 WHERE BIN_TO_UUID(id) = ?',
+      [data.reward, user[0].id_uuid]
+    )
+
+    io.emit('left-battle', { username })
   })
 
   socket.on('disconnect', () => {
