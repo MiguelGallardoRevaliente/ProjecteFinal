@@ -1001,7 +1001,11 @@
             console.log('Ended Turn', data)
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []     
-                specialAttackCard = []        
+                specialAttackCard = []
+                const userCardsRevive = document.getElementsByClassName('card-user-revive')
+                for (let i = userCardsRevive.length - 1; i >= 0; i--) {
+                    userCardsRevive[i].remove()
+                }
                 const turno = document.getElementById('turno')
                 turno.textContent = localStorage.getItem('opponent') + ' turn'
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
