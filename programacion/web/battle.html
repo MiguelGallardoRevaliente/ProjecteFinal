@@ -1150,6 +1150,12 @@
                                     if (specialAttackCard.length === 1) {
                                         if (card.id_carta !== specialAttackCard[0].id) {
                                             const tipoSplit = specialAttackCard[0].tipo.split('/')
+                                            if (tipoSplit[0] === 'revive'){
+                                                const userCardsRevive = document.getElementsByClassName('card-user-revive')
+                                                for (let i = userCardsRevive.length - 1; i >= 0; i--) {
+                                                    userCardsRevive[i].remove()
+                                                }
+                                            }
                                             specialAttackCard = []
                                             if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
                                                 socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
