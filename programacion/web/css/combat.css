@@ -336,10 +336,11 @@ button#leave-match:hover{
     color: #000000;
 }
 
-.information{
+.informacion{
     width: 100px;
     height: 200px;
     position: absolute;
+    background-color: red;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
