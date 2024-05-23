@@ -10,6 +10,7 @@ const settings = document.getElementById('settings')
 // FUNCION PARA CAMBIAR DE PAGINA EN "SHOP"
 const shopcards = document.getElementById('shop_cards')
 const shopchests = document.getElementById('shop_chests')
+const titul = document.getElementById('titul')
 const allcards = document.getElementById('allcards')
 const allchests = document.getElementById('allchests')
 // FUNCION PARA CAMBIAR DE PAGINA EN "INVENTORY"
@@ -51,6 +52,8 @@ function mostrarShopCards () {
   shopcards.style.boxShadow = '1px 1px 5px black'
   shopcards.style.backgroundColor = 'gray'
   shopchests.style.backgroundColor = '#292929'
+  document.getElementById('titul').innerText = 'market';
+
 }
 
 function mostrarShopChests () {
@@ -60,6 +63,8 @@ function mostrarShopChests () {
   shopchests.style.boxShadow = '1px 1px 5px black'
   shopchests.style.backgroundColor = 'gray'
   shopcards.style.backgroundColor = '#292929'
+  document.getElementById('titul').innerText = 'market';
+  
   allchests.innerHTML = ''
   fetch('/getShopChests', {
     method: 'GET'
