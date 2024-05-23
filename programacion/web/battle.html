@@ -1155,6 +1155,11 @@
                                                 for (let i = userCardsRevive.length - 1; i >= 0; i--) {
                                                     userCardsRevive[i].remove()
                                                 }
+                                            } else if (tipoSplit[0] !== 'revive' && data.cartas.ataques[index].tipo === 'revive') {
+                                                const opponentCards = document.getElementsByClassName('card-opponent')
+                                                for (let i = opponentCards.length - 1; i >= 0; i--) {
+                                                    opponentCards[i].style.boxShadow = 'none'
+                                                }
                                             }
                                             specialAttackCard = []
                                             if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
