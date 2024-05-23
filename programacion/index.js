@@ -1652,7 +1652,7 @@ io.on('connection', async (socket) => {
       await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       if (opponent[0].fighting === 0) {
-        await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
+        await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
     } else {
