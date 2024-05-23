@@ -171,7 +171,9 @@
                                                             userCards[i].style.boxShadow = 'none'
                                                         }
                                                     }
-                                                } else {
+                                                } else if (tipo[0] === 'revive') {
+                                                    console.log('Manolete')
+                                                }else {
                                                     specialAttackCard = []
                                                     specialAttackCard.push({
                                                         id: card.cartaCombate.id_carta,
@@ -1121,7 +1123,9 @@
                                                     userCards[i].style.boxShadow = 'none'
                                                 }
                                             }
-                                        } else {
+                                        } else if (tipo[0] === 'revive') { 
+                                            console.log('manuel')
+                                        }else {
                                             specialAttackCard = []
                                             specialAttackCard.push({
                                                 id: card.id_carta,
@@ -1175,7 +1179,7 @@
                                                             data.cartas.cartasCombate.forEach((cardRevive, index) => {
                                                                 if (cardRevive.vida === 0) {
                                                                     const cardDiv = document.createElement('div')
-                                                                    cardDiv.className = 'card card-user'
+                                                                    cardDiv.className = 'card card-user card-user-revive'
                                                                     cardDiv.style.backgroundImage = `url(${data.cartas.cartasInfo[index].foto})`
                                                                     cardDiv.style.backgroundSize = 'contain'
                                                                     cardDiv.style.backgroundRepeat = 'no-repeat'
