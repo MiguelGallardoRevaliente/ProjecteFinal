@@ -306,6 +306,7 @@
                                                     for (let i = userCardsRevive.length - 1; i >= 0; i--) {
                                                         userCardsRevive[i].remove()
                                                     }
+                                                    specialAttackCard = []
                                                 }
                                             }
                                         } else {
@@ -1092,9 +1093,10 @@
                                         }
                                     } else {
                                         const userCardsRevive = document.getElementsByClassName('card-user-revive')
-                                        for (let i = userCardsRevive.length; i >= 0; i--) {
+                                        for (let i = userCardsRevive.length - 1; i >= 0; i--) {
                                             userCardsRevive[i].remove()
                                         }
+                                        specialAttackCard = []
                                     }
                                 }
                             } else {
