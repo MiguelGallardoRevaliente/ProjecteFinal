@@ -29,22 +29,26 @@ const openHeader = document.getElementById('open-header')
 
 const putOnMarketClass = document.getElementsByClassName('put_on_market')
 
+/* Funcion para cerrar el cuadro de añadir una carta al mercado */
 function closePutOnMarket () {
   putOnMarketClass.style.display = 'none'
 }
 
+/* Funcion para mostrar el header en responsive */
 function mostrarHeader () {
   header.style.display = 'flex'
   closeHeader.style.display = 'block'
   openHeader.style.display = 'none'
 }
 
+/* Funcion para cerrar el header en responsive */
 function cerrarHeader () {
   header.style.display = 'none'
   closeHeader.style.display = 'none'
   openHeader.style.display = 'block'
 }
 
+/* Funcion para mostrar el mercado de cartas */
 function mostrarShopCards () {
   allcards.style.display = 'block'
   allchests.style.display = 'none'
@@ -55,6 +59,7 @@ function mostrarShopCards () {
   document.getElementById('titul').innerText = 'MARKET'
 }
 
+/* Funcion para obtener todas las ofertas en la tienda de sobres */
 function mostrarShopChests () {
   allcards.style.display = 'none'
   allchests.style.display = 'block'
@@ -121,6 +126,7 @@ function salirResultadoSobre () {
   resultadoSobre.style.display = 'none'
 }
 
+/* Funcion para actualizar la foto de perfil del usuario */
 const setProfilePicture = (event) => {
   const userFoto = document.getElementById('userFoto')
   userFoto.src = event.target.src
@@ -138,6 +144,7 @@ const setProfilePicture = (event) => {
     .then(data => console.log(data))
 }
 
+/* Funcion para obtener todas las cartas de los mazos del usuario */
 function getCartas (mazoActual, idCartaMazo) {
   const cartasNoMazo = document.getElementById('cartas-no-mazo')
   const cartas = document.getElementsByClassName('cartas')[0]
@@ -187,6 +194,7 @@ function cerrarCartasNoMazo () {
   cartasNoMazo.style.display = 'none'
 }
 
+/* Funcion para guarda una carta en el mazo */
 function guardarCarta (idCarta, mazoActual, idCartaMazo) {
   fetch('/guardarCarta', {
     method: 'POST',
@@ -201,6 +209,7 @@ function guardarCarta (idCarta, mazoActual, idCartaMazo) {
     })
 }
 
+/* Cambiar el mazo seleccionado al anterior */
 function mazoAtras () {
   const mazo = document.getElementsByClassName('mazo')
   const mazoActual = document.getElementsByClassName('mazoActual')[0]
@@ -222,6 +231,7 @@ function mazoAtras () {
   }
 }
 
+/* Cambiar el mazo seleccionado al siguiente */
 function siguienteMazo () {
   const mazo = document.getElementsByClassName('mazo')
   const mazoActual = document.getElementsByClassName('mazoActual')[0]
@@ -438,6 +448,7 @@ function confirmarCompra (idMercado, idCarta, precio) {
     })
 }
 
+/* Funcion para cerrar el cuadro para confirmar la compra de una carta */
 function cancelarCompraCarta () {
   const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
   confirmarDiv.style.display = 'none'
