@@ -303,8 +303,7 @@
                                                 } else {
                                                     const userCardsRevive = document.getElementsByClassName('card-user-revive')
                                                     console.log('Cartas', userCardsRevive)
-                                                    const length = userCardsRevive.length - 1
-                                                    for (let i = length; i >= 0; i--) {
+                                                    for (let i = userCardsRevive.length - 1; i >= 0; i--) {
                                                         userCardsRevive[i].remove()
                                                     }
                                                 }
