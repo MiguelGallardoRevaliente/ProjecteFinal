@@ -1097,6 +1097,11 @@
                                             userCardsRevive[i].remove()
                                         }
                                         specialAttackCard = []
+                                        cardClicked.push(card.id_carta)
+                                        const opponentCards = document.getElementsByClassName('card-opponent')
+                                        for (let i = 0; i < opponentCards.length; i++) {
+                                            opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
+                                        }
                                     }
                                 }
                             } else {
