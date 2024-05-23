@@ -1671,7 +1671,7 @@ io.on('connection', async (socket) => {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
         console.log('8')
       }
-    } else {
+    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       console.log('9')
       await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
       console.log('10')
