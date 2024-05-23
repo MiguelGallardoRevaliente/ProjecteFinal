@@ -147,11 +147,33 @@
                                 cardDiv.addEventListener('mouseover', () => {
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
                                     informacionDiv.style.backgroundColor = 'white'
+
+                                    const nombreCarta = document.createElement('p')
+                                    nombreCarta.textContent = card.cartaEnCombateUser.nombre
+                                    nombreCarta.className = 'name'
+                                    
+                                    const ataqueEspecialInfo = document.createElement('p')
+                                    ataqueEspecialInfo.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
+                                    ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                                    const ataqueVidaInfo = document.createElement('p')
+                                    ataqueVidaInfo.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
+                                    ataqueVidaInfo.className = 'ataque-vida-info'
+                                    
+                                    informacionDiv.appendChild(nombreCarta)
+                                    informacionDiv.appendChild(ataqueEspecialInfo)
+                                    informacionDiv.appendChild(ataqueVidaInfo)
                                 })
 
                                 cardDiv.addEventListener('mouseout', () => {
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
                                     informacionDiv.style.backgroundColor = 'green'
+                                    const name = document.getElementsByClassName('name')[0]
+                                    const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                    const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                    name.remove()
+                                    ataqueEspecialInfo.remove()
+                                    ataqueVidaInfo.remove()
                                 })
 
                                 const cardName = document.createElement('p')
