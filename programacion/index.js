@@ -1661,7 +1661,7 @@ io.on('connection', async (socket) => {
 
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       console.log('3')
-      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
       console.log('4')
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       console.log('5')
@@ -1674,7 +1674,7 @@ io.on('connection', async (socket) => {
       }
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       console.log('9')
-      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       console.log('10')
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
       console.log('11')
