@@ -1205,6 +1205,7 @@
         })
 
         socket.on('game-over', (data) => {
+            console.log(data)
             if (data.winner === localStorage.getItem('username')) {
                 const gameOver = document.getElementsByClassName('game-over')[0]
                 gameOver.style.display = 'flex'
@@ -1215,7 +1216,7 @@
                 const recompensaText = document.getElementsByClassName('recompensa-text')[0]
                 console.log(data.recompensa)
                 recompensaText.textContent = 'Reward: ' + data.recompensa
-            } else if (data.winner === localStorage.getItem('opponent')) {
+            } else if (data.loser === localStorage.getItem('username')) {
                 const gameOver = document.getElementsByClassName('game-over')[0]
                 gameOver.style.display = 'flex'
                 console.log('Has perdido la partida')
