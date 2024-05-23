@@ -171,9 +171,7 @@
                                                             userCards[i].style.boxShadow = 'none'
                                                         }
                                                     }
-                                                } else if (tipo[0] === 'revive') {
-                                                    console.log('Manolete')
-                                                }else {
+                                                } else {
                                                     specialAttackCard = []
                                                     specialAttackCard.push({
                                                         id: card.cartaCombate.id_carta,
@@ -231,7 +229,7 @@
                                                                         if (cardRevive.cartaCombate.vida <= 0) {
                                                                             //// HAY QUE HACER EL BOTON PARA REVIVIR ////
                                                                             const cardDiv = document.createElement('div')
-                                                                            cardDiv.className = 'card card-user'
+                                                                            cardDiv.className = 'card card-user card-user-revivir'
                                                                             cardDiv.style.backgroundImage = `url(${cardRevive.cartaEnCombateUser.foto})`
                                                                             cardDiv.style.backgroundSize = 'contain'
                                                                             cardDiv.style.backgroundRepeat = 'no-repeat'
@@ -293,13 +291,20 @@
                                                 for (let i = 0; i < userCards.length; i++) {
                                                     userCards[i].style.boxShadow = 'none'
                                                 }
-                                            } else if (tipo[0] === 'revive' && card.cartaEnCombateUser.id !== specialAttackCard[0].id && card.vida <= 0) {
-                                                console.log('Vida', card.vida)
-                                                socket.emit('special-attack-revive', { idCartaAttacked: card.cartaEnCombateUser.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
-                                                specialAttackCard = []
-                                                const userCards = document.getElementsByClassName('card-user')
-                                                for (let i = 0; i < userCards.length; i++) {
-                                                    userCards[i].style.boxShadow = 'none'
+                                            } else if (tipo[0] === 'revive' && card.cartaEnCombateUser.id !== specialAttackCard[0].id) {
+                                                if (card.vida <= 0) {
+                                                    console.log('Vida', card.vida)
+                                                    socket.emit('special-attack-revive', { idCartaAttacked: card.cartaEnCombateUser.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                                                    specialAttackCard = []
+                                                    const userCards = document.getElementsByClassName('card-user')
+                                                    for (let i = 0; i < userCards.length; i++) {
+                                                        userCards[i].style.boxShadow = 'none'
+                                                    }
+                                                } else {
+                                                    const userCardsRevive = document.getElementsByClassName('card-user-revive')
+                                                    for (let i = userCardsRevive.length; i >= 0; i--) {
+                                                        userCardsRevive[i].remove()
+                                                    }
                                                 }
                                             }
                                         } else {
@@ -1075,13 +1080,20 @@
                                     for (let i = 0; i < userCards.length; i++) {
                                         userCards[i].style.boxShadow = 'none'
                                     }
-                                } else if (tipo === 'revive' && card.id_carta !== specialAttackCard[0].id && card.vida <= 0) {
-                                    console.log('Vida', card.vida)
-                                    socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
-                                    specialAttackCard = []
-                                    const userCards = document.getElementsByClassName('card-user')
-                                    for (let i = 0; i < userCards.length; i++) {
-                                        userCards[i].style.boxShadow = 'none'
+                                } else if (tipo === 'revive' && card.id_carta !== specialAttackCard[0].id) {
+                                    if (card.vida <= 0) {
+                                        console.log('Vida', card.vida)
+                                        socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
+                                        specialAttackCard = []
+                                        const userCards = document.getElementsByClassName('card-user')
+                                        for (let i = 0; i < userCards.length; i++) {
+                                            userCards[i].style.boxShadow = 'none'
+                                        }
+                                    } else {
+                                        const userCardsRevive = document.getElementsByClassName('card-user-revive')
+                                        for (let i = userCardsRevive.length; i >= 0; i--) {
+                                            userCardsRevive[i].remove()
+                                        }
                                     }
                                 }
                             } else {
@@ -1231,7 +1243,7 @@
         })
 
         socket.on('game-over', (data) => {
-            console.log(data)
+            console.log('Game over', data)
             if (data.winner === localStorage.getItem('username')) {
                 const gameOver = document.getElementsByClassName('game-over')[0]
                 gameOver.style.display = 'flex'
