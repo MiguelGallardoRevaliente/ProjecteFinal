@@ -163,8 +163,7 @@
                                     }
 
                                     const ataqueVidaInfo = document.createElement('p')
-                                    const ataqueVida = document.getElementsByClassName('ataque-vida')[0]
-                                    ataqueVidaInfo.textContent = ataqueVida.textContent
+                                    ataqueVidaInfo.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
                                     ataqueVidaInfo.className = 'ataque-vida-info'
                                     
                                     informacionDiv.appendChild(ataqueVidaInfo)
@@ -281,6 +280,44 @@
                                                                             cardDiv.style.backgroundPosition = 'center'
                                                                             cardDiv.id = cardRevive.cartaEnCombateUser.id
                                                                             cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
+                                                                            cardDiv.addEventListener('mouseover', () => {
+                                                                                const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                                informacionDiv.style.display = 'flex'
+
+                                                                                const nombreCarta = document.createElement('p')
+                                                                                nombreCarta.textContent = cardRevive.cartaEnCombateUser.nombre
+                                                                                nombreCarta.className = 'name'
+
+                                                                                informacionDiv.appendChild(nombreCarta)
+
+                                                                                if (cardRevive.ataque) {
+                                                                                    const ataqueEspecialInfo = document.createElement('p')
+                                                                                    ataqueEspecialInfo.textContent = cardRevive.ataque.nombre + ' - ' + cardRevive.ataque.descripcion
+                                                                                    ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                                                                                    informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                                }
+
+                                                                                const ataqueVidaInfo = document.createElement('p')
+                                                                                ataqueVidaInfo.textContent = cardRevive.cartaCombate.ataque + '/' + cardRevive.cartaCombate.vida
+                                                                                ataqueVidaInfo.className = 'ataque-vida-info'
+
+                                                                                informacionDiv.appendChild(ataqueVidaInfo)
+                                                                            })
+
+                                                                            cardDiv.addEventListener('mouseout', () => {
+                                                                                const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                                informacionDiv.style.display = 'none'
+                                                                                const name = document.getElementsByClassName('name')[0]
+                                                                                if (cardRevive.ataque) {
+                                                                                    const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                                    ataqueEspecialInfo.remove()
+                                                                                }
+                                                                                const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                                name.remove()
+                                                                                ataqueVidaInfo.remove()
+                                                                            })
+
                                                                             cardDiv.addEventListener('click', () => {
                                                                                 if (specialAttackCard.length === 1 && specialAttackCard[0].tipo === 'revive') {
                                                                                     socket.emit('special-attack-revive', { idCartaAttacked: cardRevive.cartaEnCombateUser.id, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
@@ -573,6 +610,44 @@
             cardDivPlayed.style.backgroundRepeat = 'no-repeat'
             cardDivPlayed.style.backgroundPosition = 'center'
             cardDivPlayed.id = data.carta.id
+            cardDivPlayed.addEventListener('mouseover', () => {
+                const informacionDiv = document.getElementsByClassName('informacion')[0]
+                informacionDiv.style.display = 'flex'
+
+                const nombreCarta = document.createElement('p')
+                nombreCarta.textContent = data.carta.nombre
+                nombreCarta.className = 'name'
+
+                informacionDiv.appendChild(nombreCarta)
+
+                if (data.ataque) {
+                    const ataqueEspecialInfo = document.createElement('p')
+                    ataqueEspecialInfo.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
+                    ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                    informacionDiv.appendChild(ataqueEspecialInfo)
+                }
+
+                const ataqueVidaInfo = document.createElement('p')
+                ataqueVidaInfo.textContent = data.carta.ataque + '/' + data.carta.vida
+                ataqueVidaInfo.className = 'ataque-vida-info'
+
+                informacionDiv.appendChild(ataqueVidaInfo)
+            })
+
+            cardDivPlayed.addEventListener('mouseout', () => {
+                const informacionDiv = document.getElementsByClassName('informacion')[0]
+                informacionDiv.style.display = 'none'
+                const name = document.getElementsByClassName('name')[0]
+                if (data.ataque) {
+                    const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                    ataqueEspecialInfo.remove()
+                }
+                const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                name.remove()
+                ataqueVidaInfo.remove()
+            })
+
             if (data.user === localStorage.getItem('username')) {
                 cardDivPlayed.className = 'card card-user'
             } else if (data.user === localStorage.getItem('opponent')) {
@@ -836,6 +911,7 @@
                         cardDiv.style.backgroundRepeat = 'no-repeat'
                         cardDiv.style.backgroundPosition = 'center'
                         cardDiv.id = data.cartasUser.cartasCombate[index].id_carta
+
                         cardDiv.addEventListener('click', () => {
                             if (specialAttackCard.length === 1) {
                                 const tipo = specialAttackCard[0].tipo.split('/')
@@ -901,6 +977,44 @@
                         cardDiv.style.backgroundRepeat = 'no-repeat'
                         cardDiv.style.backgroundPosition = 'center'
                         cardDiv.id = data.cartasUser.cartasCombate[index].id_carta
+                        cardDiv.addEventListener('mouseover', () => {
+                            const informacionDiv = document.getElementsByClassName('informacion')[0]
+                            informacionDiv.style.display = 'flex'
+
+                            const nombreCarta = document.createElement('p')
+                            nombreCarta.textContent = data.cartasUser.cartasInfo[index].nombre
+                            nombreCarta.className = 'name'
+
+                            informacionDiv.appendChild(nombreCarta)
+
+                            if (data.cartasUser.ataques[index]) {
+                                const ataqueEspecialInfo = document.createElement('p')
+                                ataqueEspecialInfo.textContent = data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion
+                                ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                                informacionDiv.appendChild(ataqueEspecialInfo)
+                            }
+
+                            const ataqueVidaInfo = document.createElement('p')
+                            ataqueVidaInfo.textContent = data.cartasUser.cartasCombate[index].ataque + '/' + data.cartasUser.cartasCombate[index].vida
+                            ataqueVidaInfo.className = 'ataque-vida-info'
+
+                            informacionDiv.appendChild(ataqueVidaInfo)
+                        })
+
+                        cardDiv.addEventListener('mouseout', () => {
+                            const informacionDiv = document.getElementsByClassName('informacion')[0]
+                            informacionDiv.style.display = 'none'
+                            const name = document.getElementsByClassName('name')[0]
+                            if (data.cartasUser.ataques[index]) {
+                                const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                ataqueEspecialInfo.remove()
+                            }
+                            const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                            name.remove()
+                            ataqueVidaInfo.remove()
+                        })
+
                         cardDiv.addEventListener('click', () => {
                             if (specialAttackCard.length === 1) {
                                 const tipo = specialAttackCard[0].tipo.split('/')
@@ -1274,6 +1388,44 @@
                                                                 cardDiv.style.backgroundPosition = 'center'
                                                                 cardDiv.id = cardRevive.id_carta
                                                                 cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
+                                                                cardDiv.addEventListener('mouseover', () => {
+                                                                    const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                    informacionDiv.style.display = 'flex'
+
+                                                                    const nombreCarta = document.createElement('p')
+                                                                    nombreCarta.textContent = data.cartas.cartasInfo[index].nombre
+                                                                    nombreCarta.className = 'name'
+
+                                                                    informacionDiv.appendChild(nombreCarta)
+
+                                                                    if (data.cartas.ataques[index]) {
+                                                                        const ataqueEspecialInfo = document.createElement('p')
+                                                                        ataqueEspecialInfo.textContent = data.cartas.ataques[index].nombre + ' - ' + data.cartas.ataques[index].descripcion
+                                                                        ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                                                                        informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                    }
+
+                                                                    const ataqueVidaInfo = document.createElement('p')
+                                                                    ataqueVidaInfo.textContent = data.cartas.cartasCombate[index].ataque + '/' + data.cartas.cartasCombate[index].vida
+                                                                    ataqueVidaInfo.className = 'ataque-vida-info'
+
+                                                                    informacionDiv.appendChild(ataqueVidaInfo)
+                                                                })
+
+                                                                cardDiv.addEventListener('mouseout', () => {
+                                                                    const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                    informacionDiv.style.display = 'none'
+                                                                    const name = document.getElementsByClassName('name')[0]
+                                                                    if (data.cartas.ataques[index]) {
+                                                                        const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                        ataqueEspecialInfo.remove()
+                                                                    }
+                                                                    const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                    name.remove()
+                                                                    ataqueVidaInfo.remove()
+                                                                })
+
                                                                 cardDiv.addEventListener('click', () => {
                                                                     if (specialAttackCard.length === 1 && specialAttackCard[0].tipo === 'revive') {
                                                                         console.log('id carta reviviendo', cardRevive.id_carta)
@@ -1363,6 +1515,44 @@
                                                                     cardDiv.style.backgroundPosition = 'center'
                                                                     cardDiv.id = cardRevive.id_carta
                                                                     cardDiv.style.boxShadow = '0px 0px 7px 4px #181818'
+                                                                    cardDiv.addEventListener('mouseover', () => {
+                                                                        const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                        informacionDiv.style.display = 'flex'
+
+                                                                        const nombreCarta = document.createElement('p')
+                                                                        nombreCarta.textContent = data.cartas.cartasInfo[index].nombre
+                                                                        nombreCarta.className = 'name'
+
+                                                                        informacionDiv.appendChild(nombreCarta)
+
+                                                                        if (data.cartas.ataques[index]) {
+                                                                            const ataqueEspecialInfo = document.createElement('p')
+                                                                            ataqueEspecialInfo.textContent = data.cartas.ataques[index].nombre + ' - ' + data.cartas.ataques[index].descripcion
+                                                                            ataqueEspecialInfo.className = 'ataque-especial-info'
+
+                                                                            informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                        }
+
+                                                                        const ataqueVidaInfo = document.createElement('p')
+                                                                        ataqueVidaInfo.textContent = data.cartas.cartasCombate[index].ataque + '/' + data.cartas.cartasCombate[index].vida
+                                                                        ataqueVidaInfo.className = 'ataque-vida-info'
+
+                                                                        informacionDiv.appendChild(ataqueVidaInfo)
+                                                                    })
+
+                                                                    cardDiv.addEventListener('mouseout', () => {
+                                                                        const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                                                        informacionDiv.style.display = 'none'
+                                                                        const name = document.getElementsByClassName('name')[0]
+                                                                        if (data.cartas.ataques[index]) {
+                                                                            const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                            ataqueEspecialInfo.remove()
+                                                                        }
+                                                                        const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                        name.remove()
+                                                                        ataqueVidaInfo.remove()
+                                                                    })
+
                                                                     cardDiv.addEventListener('click', () => {
                                                                         if (specialAttackCard.length === 1 && specialAttackCard[0].tipo === 'revive') {
                                                                             console.log('id carta reviviendo', cardRevive.id_carta)
