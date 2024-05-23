@@ -1680,14 +1680,14 @@ io.on('connection', async (socket) => {
       [user[0].id_uuid, user[0].id_uuid]
     )
 
-    if (combate[0].id_user_1 === user[0].id_uuid) {
+    if (combate[0].id_user_1 && combate[0].id_user_1 === user[0].id_uuid) {
       if (combate[0].id_user_2) {
         await connection.execute('UPDATE combates SET id_user_1 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       } else {
         await connection.execute('DELETE FROM cartas_combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
-    } else {
+    } else if (combate[0].id_user_2 && combate[0].id_user_2 === user[0].id_uuid) {
       if (combate[0].id_user_1) {
         await connection.execute('UPDATE combates SET id_user_2 = NULL WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       } else {
