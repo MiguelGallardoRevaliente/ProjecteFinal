@@ -148,6 +148,11 @@
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
                                     informacionDiv.style.display = 'flex'
 
+                                    if (document.getElementsByClassName('name')[0]) {
+                                        const name = document.getElementsByClassName('name')[0]
+                                        name.remove()
+                                    }
+
                                     const nombreCarta = document.createElement('p')
                                     nombreCarta.textContent = card.cartaEnCombateUser.nombre
                                     nombreCarta.className = 'name'
@@ -155,11 +160,20 @@
                                     informacionDiv.appendChild(nombreCarta)
 
                                     if (card.ataque) {
+                                        if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                            const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                            ataqueEspecialInfo.remove()
+                                        }
                                         const ataqueEspecialInfo = document.createElement('p')
                                         ataqueEspecialInfo.textContent = card.ataque.nombre + ' - ' + card.ataque.descripcion
                                         ataqueEspecialInfo.className = 'ataque-especial-info'
 
                                         informacionDiv.appendChild(ataqueEspecialInfo)
+                                    }
+
+                                    if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                        const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                        ataqueVidaInfo.remove()
                                     }
 
                                     const ataqueVidaInfo = document.createElement('p')
@@ -284,6 +298,11 @@
                                                                                 const informacionDiv = document.getElementsByClassName('informacion')[0]
                                                                                 informacionDiv.style.display = 'flex'
 
+                                                                                if (document.getElementsByClassName('name')[0]) {
+                                                                                    const name = document.getElementsByClassName('name')[0]
+                                                                                    name.remove()
+                                                                                }
+
                                                                                 const nombreCarta = document.createElement('p')
                                                                                 nombreCarta.textContent = cardRevive.cartaEnCombateUser.nombre
                                                                                 nombreCarta.className = 'name'
@@ -291,11 +310,21 @@
                                                                                 informacionDiv.appendChild(nombreCarta)
 
                                                                                 if (cardRevive.ataque) {
+                                                                                    if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                                                                        const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                                        ataqueEspecialInfo.remove()
+                                                                                    }
+
                                                                                     const ataqueEspecialInfo = document.createElement('p')
                                                                                     ataqueEspecialInfo.textContent = cardRevive.ataque.nombre + ' - ' + cardRevive.ataque.descripcion
                                                                                     ataqueEspecialInfo.className = 'ataque-especial-info'
 
                                                                                     informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                                }
+
+                                                                                if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                                                                    const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                                    ataqueVidaInfo.remove()
                                                                                 }
 
                                                                                 const ataqueVidaInfo = document.createElement('p')
@@ -614,6 +643,11 @@
                 const informacionDiv = document.getElementsByClassName('informacion')[0]
                 informacionDiv.style.display = 'flex'
 
+                if (document.getElementsByClassName('name')[0]) {
+                    const name = document.getElementsByClassName('name')[0]
+                    name.remove()
+                }
+
                 const nombreCarta = document.createElement('p')
                 nombreCarta.textContent = data.carta.nombre
                 nombreCarta.className = 'name'
@@ -621,11 +655,20 @@
                 informacionDiv.appendChild(nombreCarta)
 
                 if (data.ataque) {
+                    if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                        const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                        ataqueEspecialInfo.remove()
+                    }
                     const ataqueEspecialInfo = document.createElement('p')
                     ataqueEspecialInfo.textContent = data.ataque.nombre + ' - ' + data.ataque.descripcion
                     ataqueEspecialInfo.className = 'ataque-especial-info'
 
                     informacionDiv.appendChild(ataqueEspecialInfo)
+                }
+
+                if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                    const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                    ataqueVidaInfo.remove()
                 }
 
                 const ataqueVidaInfo = document.createElement('p')
@@ -981,6 +1024,11 @@
                             const informacionDiv = document.getElementsByClassName('informacion')[0]
                             informacionDiv.style.display = 'flex'
 
+                            if (document.getElementsByClassName('name')[0]) {
+                                const name = document.getElementsByClassName('name')[0]
+                                name.remove()
+                            }
+
                             const nombreCarta = document.createElement('p')
                             nombreCarta.textContent = data.cartasUser.cartasInfo[index].nombre
                             nombreCarta.className = 'name'
@@ -988,11 +1036,20 @@
                             informacionDiv.appendChild(nombreCarta)
 
                             if (data.cartasUser.ataques[index]) {
+                                if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                    const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                    ataqueEspecialInfo.remove()
+                                }
                                 const ataqueEspecialInfo = document.createElement('p')
                                 ataqueEspecialInfo.textContent = data.cartasUser.ataques[index].nombre + ' - ' + data.cartasUser.ataques[index].descripcion
                                 ataqueEspecialInfo.className = 'ataque-especial-info'
 
                                 informacionDiv.appendChild(ataqueEspecialInfo)
+                            }
+
+                            if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                ataqueVidaInfo.remove()
                             }
 
                             const ataqueVidaInfo = document.createElement('p')
@@ -1392,6 +1449,11 @@
                                                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
                                                                     informacionDiv.style.display = 'flex'
 
+                                                                    if (document.getElementsByClassName('name')[0]) {
+                                                                        const name = document.getElementsByClassName('name')[0]
+                                                                        name.remove()
+                                                                    }
+
                                                                     const nombreCarta = document.createElement('p')
                                                                     nombreCarta.textContent = data.cartas.cartasInfo[index].nombre
                                                                     nombreCarta.className = 'name'
@@ -1399,11 +1461,20 @@
                                                                     informacionDiv.appendChild(nombreCarta)
 
                                                                     if (data.cartas.ataques[index]) {
+                                                                        if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                                                            const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                            ataqueEspecialInfo.remove()
+                                                                        }
                                                                         const ataqueEspecialInfo = document.createElement('p')
                                                                         ataqueEspecialInfo.textContent = data.cartas.ataques[index].nombre + ' - ' + data.cartas.ataques[index].descripcion
                                                                         ataqueEspecialInfo.className = 'ataque-especial-info'
 
                                                                         informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                    }
+
+                                                                    if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                                                        const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                        ataqueVidaInfo.remove()
                                                                     }
 
                                                                     const ataqueVidaInfo = document.createElement('p')
@@ -1519,6 +1590,11 @@
                                                                         const informacionDiv = document.getElementsByClassName('informacion')[0]
                                                                         informacionDiv.style.display = 'flex'
 
+                                                                        if (document.getElementsByClassName('name')[0]) {
+                                                                            const name = document.getElementsByClassName('name')[0]
+                                                                            name.remove()
+                                                                        }
+
                                                                         const nombreCarta = document.createElement('p')
                                                                         nombreCarta.textContent = data.cartas.cartasInfo[index].nombre
                                                                         nombreCarta.className = 'name'
@@ -1526,11 +1602,20 @@
                                                                         informacionDiv.appendChild(nombreCarta)
 
                                                                         if (data.cartas.ataques[index]) {
+                                                                            if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                                                                const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                                                                ataqueEspecialInfo.remove()
+                                                                            }
                                                                             const ataqueEspecialInfo = document.createElement('p')
                                                                             ataqueEspecialInfo.textContent = data.cartas.ataques[index].nombre + ' - ' + data.cartas.ataques[index].descripcion
                                                                             ataqueEspecialInfo.className = 'ataque-especial-info'
 
                                                                             informacionDiv.appendChild(ataqueEspecialInfo)
+                                                                        }
+
+                                                                        if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                                                            const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                                                            ataqueVidaInfo.remove()
                                                                         }
 
                                                                         const ataqueVidaInfo = document.createElement('p')
