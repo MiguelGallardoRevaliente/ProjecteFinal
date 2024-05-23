@@ -435,7 +435,6 @@ button#leave-match:hover{
 
 /*animaciones*/
 
-/* Estilos cuando no hay suficiente mana */
 .card-no-mana {
     animation: no-mana 0.5s;
 }
@@ -444,52 +443,154 @@ button#leave-match:hover{
 @keyframes no-mana {
     0% {
         transform: translateX(0);
-        background-color: white;
+        border: 3px solid rgb(255, 0, 0);
     }
     25% {
-        transform: translateX(-5px);
-        background-color: #ff0000;
+        transform: translateX(-7px);
+        border: 3px solid rgb(255, 0, 0);
     }
     50% {
-        transform: translateX(5px);
-        background-color: rgb(255, 0, 0);
+        transform: translateX(7px);
+        border: 3px solid rgb(255, 0, 0);
     }
     75% {
-        transform: translateX(-5px);
-        background-color: #ff0000;
+        transform: translateX(-7px);
+        border: 3px solid rgb(255, 0, 0);
     }
     100% {
         transform: translateX(0);
-        background-color: rgb(252, 0, 0);
+        border: 3px solid rgb(255, 0, 0);
     }
+}
+
+.card-atacado {
+    animation: atacado 0.4s;
+    animation-delay: 0.2s;
 }
 
 /*atacado*/
-.card.atacado {
-    animation: atacado 0.5s;
-}
-
-/*atacador*/
-.card.atacador {
-    animation: atacador 0.5s;
-}
-
 @keyframes atacado {
-
-    0%{
-        scale: 1;
+    0% {
+        scale: 1.0;
+        border: 2px solid rgb(255, 0, 0);
+    }
+    50% {
+        scale: 1.1;
+        border: 2px solid rgb(255, 0, 0);
     }
     100%{
-        scale: 1.1;
+        scale: 1.0;
+        border: 2px solid rgb(255, 0, 0);
+    
     }
 }
 
-@keyframes atacador{
-    0%{
-        transform: translateY(0px);
-    }
+.card-atacando{
+    animation: atacando 0.4s;
+}
 
-    100%{
-        transform: translateY(-10px);
+/*atacando*/
+@keyframes atacando {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-70px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.card-heal {
+    animation: heal 1s linear;
+}
+
+@keyframes heal {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px 0 #37ff37;
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px 0 #37ff37;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px 0 #37ff37;
+    }
+}
+
+/* Estilos cuando se selecciona el ataque especial */
+.card.special-attack {
+    animation: glow 2s linear infinite alternate;
+}
+
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px 2px rgb(238, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px 7px rgb(238, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 10px 2px rgb(238, 255, 0);
+    }
+}
+
+
+.card-muere {
+    animation: fadeOutAndShrink 1s;
+}
+
+@keyframes fadeOutAndShrink {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50%{
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Estilos cuando la carta está protegida */
+.card.protected {
+    animation:borderPulse 3s linear infinite;
+
+}
+
+
+@keyframes borderPulse {
+    0% {
+        border: 5px solid #c99300;
+    }
+    50% {
+        border: 5px solid #4b3700;
+    }
+    100% {
+        border: 5px solid #b68601;
+    }
+}
+
+.card.poison {
+    animation: poison 2s infinite;
+}
+
+@keyframes poison {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+        background-color: #ba55d37a;
+    }
+    100% {
+        transform: scale(1);
     }
 }

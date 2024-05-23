@@ -476,6 +476,22 @@ header .config p {
 /*mensajes_compra_tabla*/
 .confirmar_compra_carta {
     display: none;
+    background: #595959;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px black;
+    transform: translate(-50%, -50%);
+    border: 3px solid;
+    gap: 10px;
+    align-items: center;
+}
+.confirmar_compra_carta .nombre_carta_confirmar{
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
 }
 
 .confirmar_compra_carta button {
@@ -486,7 +502,10 @@ header .config p {
     color: rgb(0, 0, 0);
     font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
+    border-radius: 10px;
+}
+form.form_compra_carta{
+    width: 50px;
 }
 
 /*shop-sobres*/
