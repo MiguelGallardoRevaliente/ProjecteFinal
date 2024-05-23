@@ -1649,14 +1649,14 @@ io.on('connection', async (socket) => {
     )
 
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
-      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2])
-      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2])
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
       if (opponent[0].fighting === 0) {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
     } else {
-      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1])
-      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1])
+      await connection.execute('UPDATE users SET fighting = 0 WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
+      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
       if (opponent[0].fighting === 0) {
         await connection.execute('DELETE FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       }
