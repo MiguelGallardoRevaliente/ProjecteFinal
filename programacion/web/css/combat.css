@@ -172,10 +172,15 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 14px 18px !important;
-    font-size: 9px !important;
+    margin: 8px 8px !important;
+    font-size: 19px !important;
     font-weight: 600;
     font-family: "Goldman", sans-serif;
+    background: #838383;
+    width: 60px;
+    clip-path: polygon(0% 15%, 8% 7%, 15% 0%, 85% 0%, 93% 8%, 100% 15%, 100% 85%, 93% 92%, 85% 100%, 15% 100%, 8% 93%, 0% 85%);
+    height: 22px;
+    text-align: center;
 }
 
 .user-board .card .cardName, .opponent-board .card .cardName{
@@ -371,4 +376,65 @@ button#leave-match:hover{
     font-size: 20px;
     font-family: 'MedievalSharp';
     cursor: pointer;
+}
+
+/*animaciones*/
+
+/* Estilos cuando no hay suficiente mana */
+.card-no-mana {
+    animation: no-mana 0.5s;
+}
+
+/*no-mana*/
+@keyframes no-mana {
+    0% {
+        transform: translateX(0);
+        background-color: white;
+    }
+    25% {
+        transform: translateX(-5px);
+        background-color: #ff0000;
+    }
+    50% {
+        transform: translateX(5px);
+        background-color: rgb(255, 0, 0);
+    }
+    75% {
+        transform: translateX(-5px);
+        background-color: #ff0000;
+    }
+    100% {
+        transform: translateX(0);
+        background-color: rgb(252, 0, 0);
+    }
+}
+
+/*atacado*/
+.card.atacado {
+    animation: atacado 0.5s;
+}
+
+/*atacador*/
+.card.atacador {
+    animation: atacador 0.5s;
+}
+
+@keyframes atacado {
+
+    0%{
+        scale: 1;
+    }
+    100%{
+        scale: 1.1;
+    }
+}
+
+@keyframes atacador{
+    0%{
+        transform: translateY(0px);
+    }
+
+    100%{
+        transform: translateY(-10px);
+    }
 }
