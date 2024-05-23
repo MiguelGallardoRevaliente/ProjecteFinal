@@ -406,6 +406,7 @@ io.on('connection', async (socket) => {
     }
 
     const allOpponentCardsHaveZeroVida = cartasCombate.every(carta => carta.vida === 0)
+    console.log('Game Over 1', allOpponentCardsHaveZeroVida)
 
     if (allOpponentCardsHaveZeroVida.length === 8) {
       const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
@@ -995,6 +996,7 @@ io.on('connection', async (socket) => {
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
+      console.log('Game Over 2', allOpponentCardsHaveZeroVida)
       if (allOpponentCardsHaveZeroVida.length === 8) {
         const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
         const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
@@ -1395,6 +1397,7 @@ io.on('connection', async (socket) => {
             [opponentId, combate[0].id_combate_uuid]
           )
           const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
+          console.log('Game Over 3', allOpponentCardsHaveZeroVida)
           const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
           if (allOpponentCardsHaveZeroVida.length === 8) {
@@ -1615,6 +1618,7 @@ io.on('connection', async (socket) => {
       )
 
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
+      console.log('Game Over 4', allOpponentCardsHaveZeroVida)
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
 
       if (allOpponentCardsHaveZeroVida.length === 8) {
@@ -1629,6 +1633,7 @@ io.on('connection', async (socket) => {
       )
 
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
+      console.log('Game Over 5', allOpponentCardsHaveZeroVida)
       const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
 
       if (allOpponentCardsHaveZeroVida.length === 8) {
