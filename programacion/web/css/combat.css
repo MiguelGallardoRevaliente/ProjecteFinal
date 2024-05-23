@@ -156,6 +156,11 @@ body {
     width: 175px;
     height: 244px;
     position: relative;
+    border-radius: 10px;
+}
+
+.user-board .card, .opponent-board .card:hover{
+    border-radius: 10px;
 }
 
 .user-board .card .ataque-especial, .opponent-board .card .ataque-especial{
