@@ -26,13 +26,10 @@ const header = document.getElementById('header')
 const closeHeader = document.getElementById('close-header')
 const openHeader = document.getElementById('open-header')
 
-const put_on_market = document.getElementsByClassName('put_on_market')
+const putOnMarketClass = document.getElementsByClassName('put_on_market')
 
-function closePutOnMarket() {
-
-  put_on_market.style.display = 'none'
-
-
+function closePutOnMarket () {
+  putOnMarketClass.style.display = 'none'
 }
 
 function mostrarHeader () {
@@ -425,14 +422,26 @@ function buyCard (idMercado, idCarta, precio, nombre) {
       } else {
         const confirmarDiv = document.getElementsByClassName('confirmar_compra_carta')[0]
         confirmarDiv.style.display = 'flex'
-        const formConfirmar = document.getElementsByClassName('form_compra_carta')[0]
+        if (document.getElementsByClassName('comprar_confirmar')[0]) {
+          document.getElementsByClassName('comprar_confirmar')[0].remove()
+        }
 
         const buttonConfirmar = document.createElement('button')
         buttonConfirmar.textContent = 'BUY'
         buttonConfirmar.className = 'comprar_confirmar'
         buttonConfirmar.setAttribute('onclick', `confirmarCompra(${idMercado}, ${idCarta}, ${precio})`)
 
-        formConfirmar.appendChild(buttonConfirmar)
+        if (document.getElementsByClassName('cancelar_compra')[0]) {
+          document.getElementsByClassName('cancelar_compra')[0].remove()
+        }
+
+        const cancelarButton = document.createElement('button')
+        cancelarButton.textContent = 'CANCEL'
+        cancelarButton.className = 'cancelar_compra'
+        cancelarButton.setAttribute('onclick', 'cancelarCompraCarta()')
+
+        confirmarDiv.appendChild(buttonConfirmar)
+        confirmarDiv.appendChild(cancelarButton)
         document.getElementsByClassName('nombre_carta_confirmar')[0].textContent = 'Are you sure you want to buy ' + nombre + ' for ' + precio + ' of gold?'
       }
     })
