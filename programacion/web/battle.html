@@ -1148,15 +1148,8 @@
                                 ataqueEspecialButton.textContent = data.cartas.ataques[index].nombre
                                 ataqueEspecialButton.addEventListener('click', () => {
                                     if (specialAttackCard.length === 1) {
-                                        const tipo = specialAttackCard[0].tipo.split('/')
-                                        if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
-                                            const userCards = document.getElementsByClassName('card-user')
-                                            for (let i = 0; i < userCards.length; i++) {
-                                                if (parseInt(userCards[i].id) !== card.id_carta) {
-                                                    userCards[i].style.boxShadow = 'none'
-                                                }
-                                            }
-                                        } else {
+                                        if (card.id_carta !== specialAttackCard[0].id) {
+                                            const tipoSplit = specialAttackCard[0].tipo.split('/')
                                             specialAttackCard = []
                                             if (data.cartas.ataques[index].tipo === 'area' || tipoSplit[1] === 'area') {
                                                 socket.emit('special-attack-area', { idCartaAttacking: card.id_carta, idAtaque: data.cartas.ataques[index].id, username: localStorage.getItem('username'), tipo: data.cartas.ataques[index].tipo })
