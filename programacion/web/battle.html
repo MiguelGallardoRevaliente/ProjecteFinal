@@ -90,6 +90,7 @@
                                             }
                                         }
                                     } else {
+                                        console.log('Card Clicked', cardClicked)
                                         if (cardClicked.length === 1) {
                                             socket.emit('attack', { cardAttacking: cardClicked[0], cardAttacked: card.cartaEnCombateOpponent.id, username: localStorage.getItem('username') })
                                             const OpponentCards = document.getElementsByClassName('card-opponent')
@@ -307,7 +308,7 @@
                                                         userCardsRevive[i].remove()
                                                     }
                                                     specialAttackCard = []
-                                                    cardClicked.push(card.id_carta)
+                                                    cardClicked = [card.id_carta]
                                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                                     for (let i = 0; i < opponentCards.length; i++) {
                                                         opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
@@ -1102,7 +1103,7 @@
                                             userCardsRevive[i].remove()
                                         }
                                         specialAttackCard = []
-                                        cardClicked.push(card.id_carta)
+                                        cardClicked = [card.id_carta]
                                         const opponentCards = document.getElementsByClassName('card-opponent')
                                         for (let i = 0; i < opponentCards.length; i++) {
                                             opponentCards[i].style.boxShadow = '0px 0px 7px 4px yellow'
