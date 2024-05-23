@@ -346,32 +346,34 @@ button#leave-match:hover{
     border-radius: 15px;
     transform: translateY(-50%);
     box-shadow: 2px 2px 5px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    display: none;
 }
 
-.informacion .nombre{
+.informacion .name{
     font-family: 'Goldman', cursive;
     font-size: 1.5rem;
     color: white;
     text-align: center;
     margin: 0px;
     padding: 10px;
-    border-bottom: 1px solid white;
 }
 
-.informacion .ataque-especial{
+.informacion .ataque-especial-info{
     font-family: 'Goldman', cursive;
     font-size: 0.7rem;
     color: white;
     text-align: center;
     margin: 0px;
     padding: 10px;
-    border-bottom: 1px solid white;
 
 }
 
-.informacion .ataque-vida{
+.informacion .ataque-vida-info{
     font-family: 'KoHo', sans-serif;
-    font-size: 0.8rem;
+    font-size: 2rem;
     color: white;
     text-align: center;
     margin: 0px;
