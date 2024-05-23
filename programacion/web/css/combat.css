@@ -337,14 +337,47 @@ button#leave-match:hover{
 }
 
 .informacion{
-    width: 100px;
-    height: 200px;
+    width: 275px;
+    height: 220px;
     position: absolute;
-    background-color: red;
+    background-color: #393939;
     top: 50%;
-    right: 5%;
+    right: 1%;
+    border-radius: 15px;
     transform: translateY(-50%);
+    box-shadow: 2px 2px 5px black;
 }
+
+.informacion .nombre{
+    font-family: 'Goldman', cursive;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+
+.informacion .ataque-especial{
+    font-family: 'Goldman', cursive;
+    font-size: 0.7rem;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid white;
+
+}
+
+.informacion .ataque-vida{
+    font-family: 'KoHo', sans-serif;
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 10px;
+}
+
 
 .game-over {
     width: 100%;
