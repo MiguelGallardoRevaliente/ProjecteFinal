@@ -144,6 +144,10 @@
                                 cardDiv.style.backgroundRepeat = 'no-repeat'
                                 cardDiv.style.backgroundPosition = 'center'
                                 cardDiv.id = card.cartaEnCombateUser.id
+                                cardDiv.addEventListener('mouseover', () => {
+                                    const informacionDiv = document.getElementsByClassName('informacion')[0]
+                                    informacionDiv.style.backgroundColor = 'white'
+                                })
 
                                 const cardName = document.createElement('p')
                                 cardName.textContent = card.cartaEnCombateUser.nombre
