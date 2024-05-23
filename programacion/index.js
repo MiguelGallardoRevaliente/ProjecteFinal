@@ -409,8 +409,8 @@ io.on('connection', async (socket) => {
     console.log('Game Over 1', allOpponentCardsHaveZeroVida)
 
     if (allOpponentCardsHaveZeroVida) {
-      const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
-      const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
+      const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
+      const recompensaLoser = Math.floor(Math.random() * (10 - 1 + 1)) + 1
       io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
     }
 
@@ -998,8 +998,8 @@ io.on('connection', async (socket) => {
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
       console.log('Game Over 2', allOpponentCardsHaveZeroVida)
       if (allOpponentCardsHaveZeroVida) {
-        const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
-        const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
+        const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
+        const recompensaLoser = Math.floor(Math.random() * (10 - 1 + 1)) + 1
         io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
       }
 
@@ -1401,8 +1401,8 @@ io.on('connection', async (socket) => {
           const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [opponentId])
 
           if (allOpponentCardsHaveZeroVida) {
-            const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
-            const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
+            const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
+            const recompensaLoser = Math.floor(Math.random() * (10 - 1 + 1)) + 1
             io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
           }
 
