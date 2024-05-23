@@ -157,6 +157,7 @@ body {
     height: 244px;
     position: relative;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .user-board .card, .opponent-board .card:hover{
