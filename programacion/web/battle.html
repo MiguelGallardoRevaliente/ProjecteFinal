@@ -1212,20 +1212,19 @@
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You win'
                 winner.classList.add('winner')
-                const recompensa = document.getElementsByClassName('recompensa')[0]
+                const recompensaText = document.getElementsByClassName('recompensa-text')[0]
+                console.log(data.recompensa)
                 recompensaText.textContent = 'Reward: ' + data.recompensa
-                recompensaText.className = 'recompensa-text'
-                recompensa.appendChild(recompensaText)
             } else if (data.winner === localStorage.getItem('opponent')) {
+                const gameOver = document.getElementsByClassName('game-over')[0]
+                gameOver.style.display = 'flex'
                 console.log('Has perdido la partida')
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You lost'
                 winner.classList.add('loser')
-                const recompensa = document.getElementsByClassName('recompensa')[0]
-                const recompensaText = document.createElement('p')
+                const recompensaText = document.getElementsByClassName('recompensa-text')[0]
+                console.log(data.recompensa)
                 recompensaText.textContent = 'Reward: ' + data.recompensa
-                recompensaText.className = 'recompensa-text'
-                recompensa.appendChild(recompensaText)
             }
         })
 
