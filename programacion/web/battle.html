@@ -1206,6 +1206,8 @@
 
         socket.on('game-over', (data) => {
             if (data.winner === localStorage.getItem('username')) {
+                const gameOver = document.getElementsByClassName('game-over')[0]
+                gameOver.style.display = 'flex'
                 console.log('Has ganado la partida')
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You win'
@@ -1268,7 +1270,7 @@
             <h1>Game Over</h1>
             <h2 id="winner"></h2>
             <div class="recompensa">
-                <p class="recompensa-text">Reward: 0</p>
+                <p class="recompensa-text"></p>
             </div>
             <form action="" method="post" class="leave-battle">
                 <button type="submit" id="leave">Leave</button>

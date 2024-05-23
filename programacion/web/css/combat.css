@@ -330,6 +330,7 @@ button#leave-match:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    display: none;
 }
 
 .game-over-container {
@@ -355,6 +356,11 @@ button#leave-match:hover{
 .game-over-container .loser {
     font-size: 30px;
     color: var(--principal-red);
+}
+
+.game-over-container p {
+    font-size: 20px;
+    color: white;
 }
 
 .game-over-container button {
