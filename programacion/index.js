@@ -1611,38 +1611,6 @@ io.on('connection', async (socket) => {
       }
     }
 
-    if (user[0].id_uuid === combate[0].id_user_1_uuid) {
-      const [opponentCards] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [combate[0].id_user_2_uuid, combate[0].id_combate_uuid]
-      )
-
-      const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
-      console.log('Game Over 4', allOpponentCardsHaveZeroVida)
-      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_2_uuid])
-
-      if (allOpponentCardsHaveZeroVida) {
-        const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
-        const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
-        io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
-      }
-    } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
-      const [opponentCards] = await connection.execute(
-        'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
-        [combate[0].id_user_1_uuid, combate[0].id_combate_uuid]
-      )
-
-      const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
-      console.log('Game Over 5', allOpponentCardsHaveZeroVida)
-      const [opponent] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [combate[0].id_user_1_uuid])
-
-      if (allOpponentCardsHaveZeroVida) {
-        const recompensaWinner = Math.floor(Math.random() * (300 - 100 + 1)) + 100
-        const recompensaLoser = Math.floor(Math.random() * (30 - 10 + 1)) + 10
-        io.emit('game-over', { winner: username, loser: opponent[0].user, recompensaWinner, recompensaLoser })
-      }
-    }
-
     io.emit('ended-turn', { username, cartas })
   })
 
