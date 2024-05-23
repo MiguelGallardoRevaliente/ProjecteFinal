@@ -146,7 +146,6 @@
                                 cardDiv.id = card.cartaEnCombateUser.id
                                 cardDiv.addEventListener('mouseover', () => {
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
-                                    informacionDiv.style.backgroundColor = 'white'
 
                                     const nombreCarta = document.createElement('p')
                                     nombreCarta.textContent = card.cartaEnCombateUser.nombre
@@ -167,7 +166,6 @@
 
                                 cardDiv.addEventListener('mouseout', () => {
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
-                                    informacionDiv.style.backgroundColor = 'green'
                                     const name = document.getElementsByClassName('name')[0]
                                     const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
                                     const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
