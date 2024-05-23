@@ -157,6 +157,9 @@ body {
     height: 244px;
     position: relative;
     border-radius: 10px;
+}
+
+.user-board .card{
     cursor: pointer;
 }
 
@@ -331,6 +334,15 @@ button#leave-match:hover{
     font-size: 30px;
     font-weight: 1000;
     color: #000000;
+}
+
+.information{
+    width: 100px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
 }
 
 .game-over {
