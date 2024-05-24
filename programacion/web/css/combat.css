@@ -42,7 +42,7 @@ p{
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #orientation-warning {
@@ -614,4 +614,12 @@ button#leave-match:hover{
     100% {
         transform: scale(1);
     }
+}
+
+@media (max-width: 600px) {
+
+    .hidden{
+        display: block !important;
+    }
+
 }
