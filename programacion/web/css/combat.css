@@ -620,7 +620,7 @@ button#leave-match:hover{
     .opponent-board, .user-board {
         width: 1150px;
         height: 202px;
-        gap: 3px;
+        gap: 6  px;
     }
     .yourCards .card{
         width: 140px;
@@ -646,6 +646,9 @@ button#leave-match:hover{
     {
         width: 145px;
         height: 202px;
+    }
+    .yourCards .card:hover{
+        transform: translateY(-58px);
     }
 }
 
