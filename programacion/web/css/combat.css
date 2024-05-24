@@ -630,7 +630,7 @@ button#leave-match:hover{
         padding: 12px 25px;
         font-size: 15px;
     }
-    .user{
+    .user .opponent{
         padding-right: 25px;
     }
     .opponent p, .user p{
@@ -650,6 +650,45 @@ button#leave-match:hover{
     .yourCards .card:hover{
         transform: translateY(-58px);
     }
+}
+
+@media (max-width: 1200px) {
+
+    .opponent-board, .user-board {
+        width: 950px;
+        height: 161px;
+        gap: 5px;
+    }
+
+    .yourCards .card{
+        width: 125px;
+        height: 174px;
+    }
+
+    .opponent, .user{
+        min-width: 50px;
+    
+    }
+    .user .opponent{
+        padding-right: 15px;
+    }
+    
+
+    .opponent p, .user p{
+        font-size: 1rem;
+    
+    }
+
+    .opponent img, .user img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-board .card, .opponent-board .card{
+        width: 115px;
+        height: 161px;
+    }
+
 }
 
 @media (max-width: 600px) {
