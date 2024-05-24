@@ -642,7 +642,7 @@ button#leave-match:hover{
         height: 50px;
     }
 
-    .user-board .card, .opponent-board .card´
+    .user-board .card, .opponent-board .card
     {
         width: 145px;
         height: 202px;
@@ -704,9 +704,7 @@ button#leave-match:hover{
     }
 
     .opponent, .user{
-        min-width: 50px;
-        padding: 3px;
-    
+        min-width: 50px;    
     }
     .user .opponent{
         padding-right: 15px;
