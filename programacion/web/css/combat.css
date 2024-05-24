@@ -793,9 +793,10 @@ button#leave-match:hover{
     #end-turn{
         padding: 10px 20px;
         font-size: 15px;
-    
+        left: 3%;
+        bottom: 3%;
 }
-
+}
 @media (max-width: 800px) {
 
     .hidden{
