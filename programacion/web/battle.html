@@ -1749,6 +1749,11 @@
     </script>
 </head>
 <body>
+    <div id="orientation-warning" class="hidden">
+        <p>Por favor, gira tu dispositivo para jugar en modo horizontal.</p>
+    </div>
+
+    <div id="game-content">
     <form action="" method="post" class="leave-match">
         <button type="submit" id="leave-match">Leave Match</button>
     </form>
@@ -1785,6 +1790,34 @@
             </form>
         </div> 
     </div>
+</div>
+<script>
+    function checkOrientationAndResolution() {
+    const minWidth = 600;
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const isNarrowScreen = window.innerWidth < minWidth;
+
+    if (isNarrowScreen && isPortrait) {
+        // El dispositivo está en modo vertical y tiene menos de 600px de ancho
+        document.getElementById('orientation-warning').classList.remove('hidden');
+        document.getElementById('game-content').classList.add('hidden');
+    } else {
+        // El dispositivo está en modo horizontal o tiene más de 600px de ancho
+        document.getElementById('orientation-warning').classList.add('hidden');
+        document.getElementById('game-content').classList.remove('hidden');
+    }
+}
+
+// Comprobar la orientación y resolución al cargar la página
+window.addEventListener('load', checkOrientationAndResolution);
+
+// Comprobar la orientación y resolución cuando cambia la orientación del dispositivo
+window.addEventListener('orientationchange', checkOrientationAndResolution);
+
+// Comprobar la orientación y resolución cuando se redimensiona la ventana
+window.addEventListener('resize', checkOrientationAndResolution);
+
+</script>
     <audio id="audio" src="img/[Non Copyrighted Music] @ScottBuckley - Phoenix [Epic].mp3" autoplay loop></audio>
     <script src="js/game.js"></script>
 </body>
