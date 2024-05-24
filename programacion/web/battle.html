@@ -1722,7 +1722,11 @@
                 localStorage.removeItem('recompensaLoser')
                 window.location.href = '/'
             } else if (data.username === localStorage.getItem('opponent')) {
-                alert('Tu oponente ha abandonado la partida')
+                if (document.getElementsByClassName('recompensa-text')[0]) {
+                    const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
+                    console.log('Reward', rewardSplit[1])
+                    socket.emit('leave-battle', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
+                }
                 localStorage.removeItem('opponent')
                 localStorage.removeItem('winner')
                 localStorage.removeItem('recompensaWinner')
