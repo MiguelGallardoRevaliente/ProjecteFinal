@@ -1315,8 +1315,6 @@
                 }
                 
                 for (let i = 0; i < cardUser.length; i++) {
-                    ///// ATAQUEBOTON /////
-                    ///// HAY QUE SEGUIR HACIENDOLO CORRECTAMENTE /////
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
@@ -1692,28 +1690,23 @@
         })
 
         socket.on('game-over', (data) => {
-            console.log('Game over', data)
             if (data.winner === localStorage.getItem('username')) {
                 const gameOver = document.getElementsByClassName('game-over')[0]
                 gameOver.style.display = 'flex'
-                console.log('Has ganado la partida')
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You win'
                 winner.classList.add('winner')
                 const recompensaText = document.getElementsByClassName('recompensa-text')[0]
-                console.log(data.recompensaWinner)
                 recompensaText.textContent = 'Reward: ' + data.recompensaWinner
                 localStorage.setItem('winner', data.winner)
                 localStorage.setItem('recompensaWinner', data.recompensaWinner)
             } else if (data.loser === localStorage.getItem('username')) {
                 const gameOver = document.getElementsByClassName('game-over')[0]
                 gameOver.style.display = 'flex'
-                console.log('Has perdido la partida')
                 const winner = document.getElementById('winner')
                 winner.textContent = 'You lost'
                 winner.classList.add('loser')
                 const recompensaText = document.getElementsByClassName('recompensa-text')[0]
-                console.log(data.recompensaLoser)
                 recompensaText.textContent = 'Reward: ' + data.recompensaLoser
                 localStorage.setItem('loser', data.loser)
                 localStorage.setItem('recompensaLoser', data.recompensaLoser)
@@ -1722,7 +1715,6 @@
 
         socket.on('left-match', (data) => {
             if (data.username === localStorage.getItem('username')) {
-                alert('Has abandonado la partida')
                 localStorage.removeItem('opponent')
                 localStorage.removeItem('winner')
                 localStorage.removeItem('recompensaWinner')
@@ -1742,7 +1734,6 @@
 
         socket.on('left-battle', (data) => {
             if (data.username === localStorage.getItem('username')) {
-                alert('Has abandonado la batalla')
                 localStorage.removeItem('opponent')
                 localStorage.removeItem('winner')
                 localStorage.removeItem('recompensaWinner')
