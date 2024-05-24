@@ -705,6 +705,7 @@ button#leave-match:hover{
 
     .opponent, .user{
         min-width: 50px;
+        padding: 3px;
     
     }
     .user .opponent{
@@ -725,60 +726,6 @@ button#leave-match:hover{
     .user-board .card, .opponent-board .card{
         width: 85px;
         height: 121px;
-    }
-
-    .yourCards .card p {
-        font-size: 8px;
-    }
-
-    .yourCards .card .cardName {
-        font-size: 8px;
-    }
-
-    .yourCards .card .ataque-vida {
-        font-size: 8px;
-    }
-
-    .yourCards .card .ataque-especial {
-        font-size: 4px;
-    }
-
-    .informacion{
-        width: 200px;
-        height: 160px;
-    }
-
-    .informacion .name{
-        font-size: 1.2rem;
-    }
-
-    .informacion .ataque-especial-info{
-        font-size: 0.8rem;
-    }
-
-    .informacion .ataque-vida-info{
-        font-size: 1.5rem;
-    }
-
-    .game-over-container h1 {
-        font-size: 30px;
-    }
-
-    .game-over-container .winner {
-        font-size: 20px;
-    }
-
-    .game-over-container .loser {
-        font-size: 20px;
-    }
-
-    .game-over-container p {
-        font-size: 15px;
-    }
-
-    .game-over-container button {
-        padding: 10px 15px;
-        font-size: 15px;
     }
 
     .mana img {
