@@ -1473,6 +1473,12 @@ form.form_compra_carta{
     margin-top: 2%;
 }
 
+input#muteCheckbox{
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    cursor: pointer;
+}
 
 
 /*ATENCION ATENCION AQUI EMPIEZA EL RESPONSIVE DE "HEADER"*/

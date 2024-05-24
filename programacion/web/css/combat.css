@@ -319,7 +319,7 @@ button#leave-match:hover{
     left: 70px;
     align-items: center;
     justify-content: center;
-    bottom: 10%;
+    bottom: 100px;
 }
 
 .mana img {
