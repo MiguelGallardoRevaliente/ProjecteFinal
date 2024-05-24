@@ -620,7 +620,7 @@ button#leave-match:hover{
     .opponent-board, .user-board {
         width: 1150px;
         height: 202px;
-        gap: 6  px;
+        gap: 6px;
     }
     .yourCards .card{
         width: 140px;
@@ -649,6 +649,78 @@ button#leave-match:hover{
     }
     .yourCards .card:hover{
         transform: translateY(-58px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .opponent-board, .user-board {
+        width: 1000px;
+        height: 176px;
+        gap: 5px;
+    }
+    .yourCards .card{
+        width: 120px;
+        height: 176px;
+    }
+    #end-turn{
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    .user{
+        padding-right: 20px;
+    }
+    .opponent p, .user p{
+        font-size: 1rem;
+    
+    }
+    .opponent img, .user img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-board .card, .opponent-board .card´
+    {
+        width: 125px;
+        height: 176px;
+    }
+    .yourCards .card:hover{
+        transform: translateY(-50px);
+    }
+}
+
+@media (max-width: 1000px) {
+    .opponent-board, .user-board {
+        width: 850px;
+        height: 150px;
+        gap: 4px;
+    }
+    .yourCards .card{
+        width: 100px;
+        height: 150px;
+    }
+    #end-turn{
+        padding: 8px 15px;
+        font-size: 10px;
+    }
+    .user{
+        padding-right: 15px;
+    }
+    .opponent p, .user p{
+        font-size: 0.9rem;
+    
+    }
+    .opponent img, .user img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .user-board .card, .opponent-board .card´
+    {
+        width: 110px;
+        height: 150px;
+    }
+    .yourCards .card:hover{
+        transform: translateY(-42px);
     }
 }
 
