@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS users (
     foto_perfil TEXT,
     mazo_seleccionado INT,
     first_log BOOL DEFAULT true,
+    sobres INT,
+    sobres_iniciales INT DEFAULT 2,
     fighting BOOL DEFAULT false,
     searching BOOL DEFAULT false
 );
