@@ -691,7 +691,7 @@ button#leave-match:hover{
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     .hidden{
         display: block !important;
