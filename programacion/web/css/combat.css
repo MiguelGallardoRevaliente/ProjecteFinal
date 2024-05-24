@@ -619,6 +619,7 @@ button#leave-match:hover{
 @media (max-width: 1400px) {
     .opponent-board, .user-board {
         width: 1100px;
+        height: 195px;
     }
     .yourCards .card{
         width: 140px;
