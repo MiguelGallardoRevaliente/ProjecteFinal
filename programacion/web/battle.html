@@ -1421,7 +1421,7 @@
             }
         })
 
-        socket.on('ended-turn', (data) => {
+        socket.on('ended-turn', async (data) => {
             console.log('Ended Turn', data)
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []     
@@ -1498,25 +1498,35 @@
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 const cardUser = document.getElementsByClassName('card-user')
                 if (cardUser.length > 0) {
+                    // Crear un array de promesas para rastrear los cambios
+                    const promises = []
+                    
                     for (let i = cardUser.length - 1; i >= 0; i--) {
-                        data.cartas.cartasCombate.forEach(async (card) =>{
+                        data.cartas.cartasCombate.forEach(card => {
                             if (cardUser[i]) {
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (card.vida <= 0) {
                                         console.log('Muere end turn', cardUser[i].id)
                                         cardUser[i].classList.remove('card-muere')
+                                        
+                                        // Crear una promesa para rastrear este cambio
+                                        const promise = new Promise(resolve => {
+                                            setTimeout(() => {
+                                                cardUser[i].classList.add('card-muere')
+                                            }, 10)
 
-                                        setTimeout(() => {
-                                            cardUser[i].classList.add('card-muere')
-                                        }, 10)
+                                            setTimeout(() => {
+                                                cardUser[i].classList.remove('card-muere')
+                                            }, 900)
 
-                                        setTimeout(() => {
-                                            cardUser[i].classList.remove('card-muere')
-                                        }, 900)
-
-                                        setTimeout(() => {
-                                            cardUser[i].remove()
-                                        }, 900)
+                                            setTimeout(() => {
+                                                cardUser[i].remove()
+                                                resolve()  // Resolviendo la promesa después de eliminar el elemento
+                                            }, 900)
+                                        })
+                                        
+                                        // Añadir la promesa al array de promesas
+                                        promises.push(promise)
                                     } else {
                                         ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                                     }
@@ -1524,8 +1534,12 @@
                             }
                         })
                     }
+                    
+                    // Esperar a que todas las promesas se resuelvan
+                    await Promise.all(promises)
                 }
 
+                // Actualizar y registrar el nuevo estado de cardUser
                 const cardUser2 = document.getElementsByClassName('card-user')
                 console.log('Card user 2', cardUser2)
                 console.log('Card User', cardUser)
