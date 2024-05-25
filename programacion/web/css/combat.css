@@ -1028,17 +1028,32 @@ button#leave-match:hover {
         width: 43px;
         padding: 10px;
         padding-right: 70px;
+        height: 15px;
+        gap: 4px;
     }
+
 
     .opponent{
         min-width: 0px;
         width: 43px;
         padding: 10px;
         padding-left: 70px;
+        height: 20px;
+        gap: 4px;
+    }
+
+    .opponent p, .user p{
+        font-size: 0.5rem;
+    }
+
+    .opponent img, .user img{
+        width: 20px;
+        border: 1px solid white;
+        height: 20px;
     }
 
     .mana{
-        bottom: 60px;
+        bottom: 45px;
         left: 40px;
     }
 
@@ -1053,10 +1068,10 @@ button#leave-match:hover {
 
     button#leave-match {
         position: absolute;
-        font-size: 15px;
+        font-size: 12px;
         color: white;
-        top: 50%;
-        left: 48px;
+        top: 45%;
+        left: 37px;
         transform: translate(-50%, -50%);
         border: none;
         background: red;
@@ -1064,6 +1079,17 @@ button#leave-match:hover {
         font-family: 'MedievalSharp';
         cursor: pointer;
         padding: 0px;
-        border-radius: 0px;
+        border-radius: 2px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        padding: 0px 3px;
     }
+
+    #turno{
+        font-size: 15px;
+    }
+    #end-turn{
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    
 }
