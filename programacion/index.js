@@ -182,27 +182,27 @@ io.on('connection', async (socket) => {
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     /* Compatibilidad de tipos */
     console.log('Tipos', cartaAttackedInfo[0].tipo, cartaAttackingInfo[0].tipo)
-    if (cartaAttackedInfo[0].tipo === 'Light' && cartaAttackingInfo[0].tipo === 'Dark') {
+    if (cartaAttackingInfo[0].tipo === 'Light' && cartaAttackedInfo[0].tipo === 'Dark') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Dark' && cartaAttackingInfo[0].tipo === 'Light') {
+    } else if (cartaAttackingInfo[0].tipo === 'Dark' && cartaAttackedInfo[0].tipo === 'Light') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Forest') {
+    } else if (cartaAttackingInfo[0].tipo === 'Fire' && cartaAttackedInfo[0].tipo === 'Forest') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
+    } else if (cartaAttackingInfo[0].tipo === 'Water' && cartaAttackedInfo[0].tipo === 'Fire') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
+    } else if (cartaAttackingInfo[0].tipo === 'Rock' && cartaAttackedInfo[0].tipo === 'Wind') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
+    } else if (cartaAttackingInfo[0].tipo === 'Rock' && cartaAttackedInfo[0].tipo === 'Forest') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
+    } else if (cartaAttackingInfo[0].tipo === 'Wind' && cartaAttackedInfo[0].tipo === 'Poison') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Water') {
+    } else if (cartaAttackingInfo[0].tipo === 'Poison' && cartaAttackedInfo[0].tipo === 'Water') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Forest') {
+    } else if (cartaAttackingInfo[0].tipo === 'Poison' && cartaAttackedInfo[0].tipo === 'Forest') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
+    } else if (cartaAttackingInfo[0].tipo === 'Fire' && cartaAttackedInfo[0].tipo === 'Wind') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
+    } else if (cartaAttackingInfo[0].tipo === 'Water' && cartaAttackedInfo[0].tipo === 'Rock') {
       vida = vida - 1
     }
     // console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
@@ -1272,9 +1272,9 @@ io.on('connection', async (socket) => {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
+      } else if (cartaAttackedInfo[0].tipo === 'Rock' && cartaAttackingInfo[0].tipo === 'Wind') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
+      } else if (cartaAttackedInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Rock') {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
         vida = vida - 1
@@ -1284,7 +1284,7 @@ io.on('connection', async (socket) => {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
+      } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Rock') {
         vida = vida - 1
       }
 
@@ -1658,9 +1658,9 @@ io.on('connection', async (socket) => {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
+          } else if (cartaInfo[0].tipo === 'Rock' && cartaAttackingInfo[0].tipo === 'Wind') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
+          } else if (cartaInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Rock') {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
             vida = vida - 1
@@ -1670,7 +1670,7 @@ io.on('connection', async (socket) => {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
+          } else if (cartaInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Rock') {
             vida = vida - 1
           }
           if (vida <= 0) {
