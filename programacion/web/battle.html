@@ -1085,10 +1085,13 @@
                                         opponentCards[i].classList.remove('card-heal')
                                     }, 600)
                                 } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'inmune') {
+                                    console.log('Inmune', card.id_carta)
                                     opponentCards[i].classList.add('card-protected')
                                 } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'reverse') {
+                                    console.log('Reverse', card.id_carta)
                                     ataqueVida.style.color = '#007d43'
                                 } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'power-up') {
+                                    console.log('Power-up', card.id_carta)
                                     ataqueSpan.style.color = '#007c85'
                                 }
                             }
@@ -1134,6 +1137,7 @@
                                         userCards[i].classList.remove('card-heal')
                                     }, 600)
                                 } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'inmune') {
+                                    console.log('Inmune', card.id_carta)
                                     userCards[i].classList.add('card-protected')
                                 } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'reverse') {
                                     ataqueVida.style.color = '#007d43'
