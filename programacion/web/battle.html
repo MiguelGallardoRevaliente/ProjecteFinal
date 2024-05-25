@@ -137,7 +137,7 @@
                                     ataqueSpan.style.color = '#dc4a01'
                                 } else if (card.cartaCombate.efecto_secundario === 'power-up') {
                                     ataqueSpan.style.color = '#007c85'
-                                } else if (card.cartaCombate.efecto_secundario === 'reverse') {}
+                                } else if (card.cartaCombate.efecto_secundario === 'reverse') {
                                     ataqueVida.style.color = '#007d43'
                                 } else {
                                     ataqueSpan.style.color = 'black'
@@ -533,12 +533,12 @@
                     profilePicture.alt = 'Profile Picture', data.user.user
                     profilePicture.classList.add('profile-picture')
 
-                    const username = document.createElement('p')
-                    username.textContent = data.user.user
-                    username.classList.add('username')
+                    const userName = document.createElement('p')
+                    userName.textContent = data.user.user
+                    userName.classList.add('username')
 
                     user.appendChild(profilePicture)
-                    user.appendChild(username)
+                    user.appendChild(userName)
 
                     // Crear el div mana fuera del div user
                     let manaDiv = null;
