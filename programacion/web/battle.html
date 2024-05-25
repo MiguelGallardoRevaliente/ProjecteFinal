@@ -1487,11 +1487,21 @@
                 const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')
                 const cardUser = document.getElementsByClassName('card-user')
                 if (cardUser.length > 0) {
-                    for (let i = cardUser.length; i >= 0; i--) {
+                    for (let i = cardUser.length - 1; i >= 0; i--) {
                         data.cartas.cartasCombate.forEach(async (card) =>{
                             if (cardUser[i]) {
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (card.vida <= 0) {
+                                        console.log('Muere end turn', cardUser[i].id)
+                                        cardUser[i].classList.remove('card-muere')
+
+                                        setTimeout(() => {
+                                            cardUser[i].classList.add('card-muere')
+                                        }, 10)
+
+                                        setTimeout(() => {
+                                            cardUser[i].remove()
+                                        }, 900)
                                         cardUser[i].remove()
                                     } else {
                                         ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
