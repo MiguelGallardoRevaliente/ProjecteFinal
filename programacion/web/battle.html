@@ -223,26 +223,8 @@
                                     }
 
                                     const ataqueVidaInfo = document.createElement('p')
-                                    const ataqueSpan = document.createElement('span')
-                                    ataqueSpan.textContent = card.cartaCombate.ataque
-                                    const barra = document.createElement('span')
-                                    barra.textContent = '/'
-                                    const vidaSpan = document.createElement('span')
-                                    vidaSpan.textContent = card.cartaCombate.vida
-                                    ataqueVidaInfo.appendChild(ataqueSpan)
-                                    ataqueVidaInfo.appendChild(barra)
-                                    ataqueVidaInfo.appendChild(vidaSpan)
+                                    ataqueVidaInfo.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
                                     ataqueVidaInfo.className = 'ataque-vida-info'
-
-                                    if (card.cartaCombate.efecto_secundario === 'power-down') {
-                                        ataqueSpan.style.color = '#dc4a01'
-                                    } else if (card.cartaCombate.efecto_secundario === 'power-up') {
-                                        ataqueSpan.style.color = '#007c85'
-                                    } else if (card.cartaCombate.efecto_secundario === 'reverse') {
-                                        ataqueVidaInfo.style.color = '#007d43'
-                                    } else {
-                                        ataqueSpan.style.color = 'black'
-                                    }
                                     
                                     informacionDiv.appendChild(ataqueVidaInfo)
                                 })
@@ -265,8 +247,26 @@
                                 cardName.className = 'cardName'
 
                                 const ataqueVida = document.createElement('p')
-                                ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
+                                const ataqueSpan = document.createElement('span')
+                                ataqueSpan.textContent = card.cartaCombate.ataque
+                                const barra = document.createElement('span')
+                                barra.textContent = '/'
+                                const vidaSpan = document.createElement('span')
+                                vidaSpan.textContent = card.cartaCombate.vida
+                                ataqueVida.appendChild(ataqueSpan)
+                                ataqueVida.appendChild(barra)
+                                ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-user'
+
+                                if (card.cartaCombate.efecto_secundario === 'power-down') {
+                                    ataqueSpan.style.color = '#dc4a01'
+                                } else if (card.cartaCombate.efecto_secundario === 'power-up') {
+                                    ataqueSpan.style.color = '#007c85'
+                                } else if (card.cartaCombate.efecto_secundario === 'reverse') {
+                                    ataqueVida.style.color = '#007d43'
+                                } else {
+                                    ataqueSpan.style.color = 'black'
+                                }
 
                                 if (card.ataque) {
                                     const ataqueEspecial = document.createElement('p')
