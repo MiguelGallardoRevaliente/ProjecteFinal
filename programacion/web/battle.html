@@ -70,6 +70,7 @@
                     // Aqui van las cartas en el tablero del oponente 
                     const opponentBoard = document.getElementsByClassName('opponent-board')[0]
                     if (data.cartasCombates.cartasOpponent) {
+                        console.log('Cartas opp', data.cartasCombates.cartasOpponent)
                         const cartasOpponent = data.cartasCombates.cartasOpponent
                         cartasOpponent.forEach(card => {
                             if (card.cartaCombate.vida > 0) {
@@ -130,6 +131,7 @@
                     // Aqui van las cartas en el tablero del usuario
                     const userBoard = document.getElementsByClassName('user-board')[0]
                     if (data.cartasCombates.cartasUser) {
+                        console.log('Cartas use', data.cartasCombates.cartasUser)
                         const cartasUser = data.cartasCombates.cartasUser
                         const userDeckId = data.userDeckCards.map(card => card.carta.id)
                         cartasUser.forEach(card => {

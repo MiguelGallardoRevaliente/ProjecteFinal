@@ -629,7 +629,7 @@ button#leave-match:hover {
     }
 }
 
-
+/* Este no */
 .card-muere {
     animation: fadeOutAndShrink 1s;
 }
@@ -652,7 +652,7 @@ button#leave-match:hover {
 }
 
 /* Estilos cuando la carta está protegida */
-.card.protected {
+.card-protected {
     animation: borderPulse 3s linear infinite;
 }
 
@@ -671,22 +671,24 @@ button#leave-match:hover {
     }
 }
 
-.card.poison {
+.card-poison {
     animation: poison 2s infinite;
 }
 
 @keyframes poison {
     0% {
         transform: scale(1);
+        border: none;
     }
 
     50% {
         transform: scale(0.95);
-        background-color: #ba55d37a;
+        border: 5px solid #ba55d37a;
     }
 
     100% {
         transform: scale(1);
+        border: none;
     }
 }
 
@@ -1049,20 +1051,19 @@ button#leave-match:hover {
         height: 25px;
     }
 
-    button#leave-match{
-    position: absolute;
-    font-size: 15px;
-    color: white;
-    top: 50%;
-    left: 48px;
-    transform: translate(-50%, -50%);
-    border: none;
-    background: red;
-    background: linear-gradient(180deg, rgba(204, 0, 0, 1) 0%, rgba(237, 0, 0, 1) 35%, rgb(255 0 0) 100%);
-    font-family: 'MedievalSharp';
-    cursor: pointer;
-    padding: 0px;
-    border-radius: 0px;
-}
+    button#leave-match {
+        position: absolute;
+        font-size: 15px;
+        color: white;
+        top: 50%;
+        left: 48px;
+        transform: translate(-50%, -50%);
+        border: none;
+        background: red;
+        background: linear-gradient(180deg, rgba(204, 0, 0, 1) 0%, rgba(237, 0, 0, 1) 35%, rgb(255 0 0) 100%);
+        font-family: 'MedievalSharp';
+        cursor: pointer;
+        padding: 0px;
+        border-radius: 0px;
     }
 }
