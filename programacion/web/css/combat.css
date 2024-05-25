@@ -1046,7 +1046,7 @@ button#leave-match:hover {
     }
 
     .mana{
-        bottom: 60px;
+        bottom: 45px;
         left: 40px;
     }
 
@@ -1075,5 +1075,9 @@ button#leave-match:hover {
         border-radius: 0px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         padding: 0px 3px;
+    }
+
+    #turno{
+        font-size: 15px;
     }
 }
