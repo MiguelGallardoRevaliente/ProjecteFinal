@@ -1459,6 +1459,18 @@
                                 if (card.vida <= 0) {
                                     cardOpponent[i].remove()
                                 } else {
+                                    if (card.efecto_secundario === 'inmune') {
+                                        cardOpponent[i].classList.add('card-protected')
+                                    } else if (card.efecto_secundario === 'inmovil') {
+                                        cardOpponent[i].classList.add('card-immobilized')
+                                    } else if (card.efecto_secundario === 'corrosivo') {
+                                        cardOpponent[i].classList.add('card-poison')
+                                    } else {
+                                        cardOpponent[i].classList.remove('card-protected')
+                                        cardOpponent[i].classList.remove('card-immobilized')
+                                        cardOpponent[i].classList.remove('card-poison')
+                                    }
+
                                     const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')[i]
                                     ataqueVidaOpponent.remove()
                                     const ataqueVida = document.createElement('p')
@@ -1530,7 +1542,43 @@
                                 if (card.vida <= 0) {
                                     cardUser[i].remove()
                                 } else {
-                                    ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
+                                    if (card.efecto_secundario === 'inmune') {
+                                        cardUser[i].classList.add('card-protected')
+                                    } else if (card.efecto_secundario === 'inmovil') {
+                                        cardUser[i].classList.add('card-immobilized')
+                                    } else if (card.efecto_secundario === 'corrosivo') {
+                                        cardUser[i].classList.add('card-poison')
+                                    } else {
+                                        cardUser[i].classList.remove('card-protected')
+                                        cardUser[i].classList.remove('card-immobilized')
+                                        cardUser[i].classList.remove('card-poison')
+                                    }
+
+                                    const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')[i]
+                                    ataqueVidaOpponent.remove()
+                                    const ataqueVida = document.createElement('p')
+                                    ataqueVida.className = 'ataque-vida ataque-vida-opponent'
+                                    const ataqueSpan = document.createElement('span')
+                                    ataqueSpan.textContent = card.ataque
+                                    const barra = document.createElement('span')
+                                    barra.textContent = '/'
+                                    const vidaSpan = document.createElement('span')
+                                    vidaSpan.textContent = card.vida
+                                    ataqueVida.appendChild(ataqueSpan)
+                                    ataqueVida.appendChild(barra)
+                                    ataqueVida.appendChild(vidaSpan)
+
+                                    cardOpponent[i].appendChild(ataqueVida)
+
+                                    if (card.efecto_secundario === 'power-down') {
+                                        ataqueSpan.style.color = '#dc4a01'
+                                    } else if (card.efecto_secundario === 'power-up') {
+                                        ataqueSpan.style.color = '#007c85'
+                                    } else if (card.efecto_secundario === 'reverse') {
+                                        ataqueVidaOpponent[i].style.color = '#007d43'
+                                    } else {
+                                        ataqueSpan.style.color = 'black'
+                                    }
                                 }
                             }
                         })
@@ -1540,7 +1588,6 @@
                 for (let i = 0; i < cardUser.length; i++) {
                     if (data.cartas.cartasCombate[i].vida > 0){
                         cardUser[i].addEventListener('mouseover', () => {
-                            console.log(cardUser[i].id)
                             const informacionDiv = document.getElementsByClassName('informacion')[0]
                             informacionDiv.style.display = 'flex'
 
