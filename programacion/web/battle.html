@@ -1363,17 +1363,6 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
-                                // if (data.idCartaAttacking === card.id_carta && data.tipo === 'unico') {
-                                //     userCards[i].classList.remove('card-atacado')
-
-                                //     setTimeout(() => {
-                                //         userCards[i].classList.add('card-atacado')
-                                //     }, 10)
-
-                                //     setTimeout(() => {
-                                //         userCards[i].classList.remove('card-atacado')
-                                //     }, 600)
-                                // }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
@@ -1483,6 +1472,7 @@
                                 if (card.vida <= 0) {
                                     cardOpponent[i].remove()
                                 } else {
+                                    console.log('Efecto', card.efecto_secundario)
                                     if (card.efecto_secundario === 'inmune') {
                                         cardOpponent[i].classList.add('card-protected')
                                     } else if (card.efecto_secundario === 'inmovil') {
