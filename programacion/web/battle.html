@@ -1103,6 +1103,7 @@
             /* Cambios para el usuario que usa la habilidad */
             } else if (data.opponent === localStorage.getItem('username')) {
                 console.log('Usuario')
+                console.log('Carta Habilidad', data)
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
                     data.opponentCards.forEach((card, index) => {
