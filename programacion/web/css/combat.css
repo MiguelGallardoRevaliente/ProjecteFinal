@@ -352,7 +352,7 @@ button#leave-match:hover {
     justify-content: center;
 }
 
-.ataque-especial-img {
+.ataque-especial-button img {
     width: 8px;
     height: 8px;
 }
