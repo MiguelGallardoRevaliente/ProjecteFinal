@@ -1048,8 +1048,9 @@
 
         /* Cuando se usa habilidad especial sobre si mismo */
         socket.on('special-attacked-self', (data) => {
-            /* Cambios para el oponente */
+            /* Cambios para el usuario */
             if (data.opponent === localStorage.getItem('opponent')) {
+                console.log('Usuario')
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
@@ -1100,7 +1101,7 @@
                     opponentCards[i].style.boxShadow = 'none'
                     opponentCards[i].style.cursor = 'default'
                 }
-            /* Cambios para el usuario */
+            /* Cambios para el oponente */
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
