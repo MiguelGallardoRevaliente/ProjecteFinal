@@ -1325,6 +1325,7 @@
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
+                                console.log('Carta' + card.id_carta + ', ' + card.vida)
                                 opponentCards[i].classList.remove('card-muere')
 
                                 setTimeout(() => {
@@ -1379,6 +1380,7 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
+                                console.log('Carta' + card.id_carta + ', ' + card.vida)
                                 userCards[i].classList.remove('card-muere')
 
                                 setTimeout(() => {
