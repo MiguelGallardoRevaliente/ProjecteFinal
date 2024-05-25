@@ -860,17 +860,17 @@
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
-                            console.log('Card muere attack', cardOpponent[i].id)
-                            cardOpponent[i].classList.remove('card-muere')
+                            // console.log('Card muere attack', cardOpponent[i].id)
+                            // cardOpponent[i].classList.remove('card-muere')
 
-                            setTimeout(() => {
-                                cardOpponent[i].classList.add('card-muere')
-                            }, 10)
+                            // setTimeout(() => {
+                            //     cardOpponent[i].classList.add('card-muere')
+                            // }, 10)
 
-                            setTimeout(() => {
-                                cardOpponent[i].classList.remove('card-muere')
-                            }, 900)
-                            cardOpponent[i].remove()
+                            // setTimeout(() => {
+                            //     cardOpponent[i].classList.remove('card-muere')
+                            // }, 900)
+                            // cardOpponent[i].remove()
                         } else {
                             cardOpponent[i].classList.remove('card-atacado')
 
@@ -1444,7 +1444,9 @@
                                         cardOpponent[i].classList.remove('card-muere')
                                     }, 900)
 
-                                    cardOpponent[i].remove()
+                                    setTimeout(() => {
+                                        cardOpponent[i].remove()
+                                    }, 900)
                                 } else {
                                     ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                                 }
@@ -1500,9 +1502,12 @@
                                         }, 10)
 
                                         setTimeout(() => {
+                                            cardUser[i].classList.remove('card-muere')
+                                        }, 900)
+
+                                        setTimeout(() => {
                                             cardUser[i].remove()
                                         }, 900)
-                                        cardUser[i].remove()
                                     } else {
                                         ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                                     }
