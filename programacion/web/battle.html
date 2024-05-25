@@ -1459,16 +1459,19 @@
                                 if (card.vida <= 0) {
                                     cardOpponent[i].remove()
                                 } else {
-                                    const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
+                                    const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')[i]
+                                    ataqueVidaOpponent.remove()
+                                    const ataqueVida = document.createElement('p')
+                                    ataqueVida.className = 'ataque-vida ataque-vida-opponent'
                                     const ataqueSpan = document.createElement('span')
                                     ataqueSpan.textContent = card.ataque
                                     const barra = document.createElement('span')
                                     barra.textContent = '/'
                                     const vidaSpan = document.createElement('span')
                                     vidaSpan.textContent = card.vida
-                                    ataqueVidaOpponent[i].appendChild(ataqueSpan)
-                                    ataqueVidaOpponent[i].appendChild(barra)
-                                    ataqueVidaOpponent[i].appendChild(vidaSpan)
+                                    ataqueVida.appendChild(ataqueSpan)
+                                    ataqueVida.appendChild(barra)
+                                    ataqueVida.appendChild(vidaSpan)
 
                                     if (card.efecto_secundario === 'power-down') {
                                         ataqueSpan.style.color = '#dc4a01'
