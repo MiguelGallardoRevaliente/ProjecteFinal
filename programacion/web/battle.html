@@ -860,6 +860,7 @@
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
+                            console.log('Card muere attack')
                             cardOpponent[i].classList.remove('card-muere')
 
                             setTimeout(() => {
@@ -1432,6 +1433,7 @@
                         if (cardOpponent.length > 0) {
                             if (parseInt(cardOpponent[i].id) === card.id_carta) {
                                 if (card.vida <= 0) {
+                                    console.log('Muere end turn')
                                     cardOpponent[i].classList.remove('card-muere')
 
                                     setTimeout(() => {
