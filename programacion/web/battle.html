@@ -87,11 +87,11 @@
                                 } else if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                     cardDiv.classList.add('card-immobilized')
                                 } else if (card.cartaCombate.efecto_secundario === 'corrosivo') {
-                                    cardDiv.classList.add('card-corrosive')
+                                    cardDiv.classList.add('card-poison')
                                 } else {
                                     cardDiv.classList.remove('card-protected')
                                     cardDiv.classList.remove('card-immobilized')
-                                    cardDiv.classList.remove('card-corrosive')
+                                    cardDiv.classList.remove('card-poison')
                                 }
 
                                 cardDiv.addEventListener('click', () => {
@@ -181,11 +181,11 @@
                                 } else if (card.cartaCombate.efecto_secundario === 'inmovil') {
                                     cardDiv.classList.add('card-immobilized')
                                 } else if (card.cartaCombate.efecto_secundario === 'corrosivo') {
-                                    cardDiv.classList.add('card-corrosive')
+                                    cardDiv.classList.add('card-poison')
                                 } else {
                                     cardDiv.classList.remove('card-protected')
                                     cardDiv.classList.remove('card-immobilized')
-                                    cardDiv.classList.remove('card-corrosive')
+                                    cardDiv.classList.remove('card-poison')
                                 }
 
                                 cardDiv.addEventListener('mouseover', () => {
