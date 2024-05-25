@@ -637,6 +637,7 @@
         socket.on('played-card', (data) => {
             console.log('Carta jugada', data)
             if (data.user === localStorage.getItem('username') || data.user === localStorage.getItem('opponent')) {
+                playedCard = []
                 const cardDivPlayed = document.createElement('div')
                 cardDivPlayed.style.backgroundImage = `url(${data.carta.foto})`
                 cardDivPlayed.style.backgroundSize = 'contain'
@@ -645,7 +646,6 @@
                 cardDivPlayed.id = data.carta.id
 
                 if (data.user === localStorage.getItem('username')) {
-                    playedCard = []
                     cardDivPlayed.className = 'card card-user'
                     cardDivPlayed.addEventListener('mouseover', () => {
                         const informacionDiv = document.getElementsByClassName('informacion')[0]
