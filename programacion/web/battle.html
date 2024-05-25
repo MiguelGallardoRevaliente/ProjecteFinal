@@ -2034,7 +2034,7 @@
             }
         })
 
-        /* Cuando se sale alguien de la partida */
+        /* Cuando se sale alguien de la partida en mitad de esta */
         socket.on('left-match', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 localStorage.removeItem('opponent')
@@ -2045,11 +2045,6 @@
                 window.location.href = '/'
             } else if (data.username === localStorage.getItem('opponent')) {
                 alert('Your opponent left the match')
-                if (document.getElementsByClassName('recompensa-text')[0]) {
-                    const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
-                    console.log('Reward', rewardSplit[1])
-                    socket.emit('leave-battle', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
-                }
                 localStorage.removeItem('opponent')
                 localStorage.removeItem('winner')
                 localStorage.removeItem('recompensaWinner')
@@ -2059,6 +2054,7 @@
             }
         })
 
+        /* Cuando se sale alguien de la partida al acabar esta */
         socket.on('left-battle', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 localStorage.removeItem('opponent')
@@ -2067,6 +2063,13 @@
                 localStorage.removeItem('loser')
                 localStorage.removeItem('recompensaLoser')
                 window.location.href = '/'
+            } else if (data.username === localStorage.getItem('opponent')) {
+                if (document.getElementsByClassName('recompensa-text')[0]) {
+                    const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
+                    console.log('Reward', rewardSplit[1])
+                    socket.emit('leave-battle', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
+                }
+                alert('Your opponent left the match')
             }
         })
     </script>
