@@ -677,18 +677,15 @@ button#leave-match:hover {
 
 @keyframes poison {
     0% {
-        transform: scale(1);
-        border: none;
+        border: 2px solid #eca0ff;
     }
 
     50% {
-        transform: scale(0.95);
-        border: 5px solid #ba55d37a;
+        border: 5px solid #ba55d3;
     }
 
     100% {
-        transform: scale(1);
-        border: none;
+        border: 2px solid #eca0ff;
     }
 }
 
