@@ -1088,6 +1088,21 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')[i]
+                                ataqueVidaUser.remove()
+                                const ataqueVida = document.createElement('p')
+                                const ataqueSpan = document.createElement('span')
+                                ataqueSpan.textContent = card.ataque
+                                const barra = document.createElement('span')
+                                barra.textContent = '/'
+                                const vidaSpan = document.createElement('span')
+                                vidaSpan.textContent = card.vida
+                                ataqueVida.appendChild(ataqueSpan)
+                                ataqueVida.appendChild(barra)
+                                ataqueVida.appendChild(vidaSpan)
+                                ataqueVida.className = 'ataque-vida ataque-vida-user'
+                                ataqueVida.style.color = '#007d43'
+                                userCards[i].appendChild(ataqueVida)
                                 if (card.id_carta === data.idCarta && data.estadistica === 'vida') {
                                     userCards[i].classList.remove('card-heal')
 
@@ -1098,11 +1113,13 @@
                                     setTimeout(() => {
                                         userCards[i].classList.remove('card-heal')
                                     }, 600)
+                                } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'inmune') {
+                                    userCards[i].classList.add('card-protected')
+                                } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'reverse') {
+                                    ataqueVida.style.color = '#007d43'
+                                } else if (card.id_carta === data.idCarta && card.efecto_secundario === 'power-up') {
+                                    ataqueSpan.style.color = '#007c85'
                                 }
-                                const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
-                                const ataqueVidaText = card.ataque + '/' + card.vida
-                                ataqueVida.textContent = ataqueVidaText
-                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                         }
                     })
