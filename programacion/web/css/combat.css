@@ -510,7 +510,6 @@ button#leave-match:hover {
 
     50% {
         transform: translateX(7px);
-        transform: translateY(-57px);
         border: 3px solid rgb(255, 0, 0);
     }
 
