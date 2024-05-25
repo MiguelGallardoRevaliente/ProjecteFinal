@@ -299,7 +299,7 @@ header .config p {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px rgb(95, 95, 95);
     color: white;
 }
 
