@@ -1674,7 +1674,7 @@
                                     for (let i = 0; i < userCards.length; i++) {
                                         userCards[i].style.boxShadow = 'none'
                                     }
-                                } else if (tipo === 'revive') {
+                                } else if (tipo[0] === 'revive') {
                                     if (card.vida <= 0 && card.id_carta !== specialAttackCard[0].id) {
                                         console.log('Vida', card.vida)
                                         socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
