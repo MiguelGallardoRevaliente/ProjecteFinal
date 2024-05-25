@@ -215,7 +215,10 @@
                                     if (data.combate.turno_uuid === data.user.id_uuid && card.cartaCombate.ataque_especial === 0) {
                                         const ataqueEspecialButton = document.createElement('button')
                                         ataqueEspecialButton.className = 'ataque-especial-button'
-                                        ataqueEspecialButton.textContent = card.ataque.nombre
+                                        const img = document.createElement('img')
+                                        img.src = 'img/spiral.svg'
+                                        img.alt = 'Spiral SVG'
+                                        ataqueEspecialButton.appendChild(img)
                                         ataqueEspecialButton.addEventListener('click', () => {
                                             if (specialAttackCard.length === 1) {
                                                 const tipo = specialAttackCard[0].tipo.split('/')
