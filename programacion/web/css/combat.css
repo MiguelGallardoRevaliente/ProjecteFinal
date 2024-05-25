@@ -356,6 +356,7 @@ button#leave-match:hover {
     width: 17px;
     height: 17px;
 }
+
 .mana {
     position: absolute;
     display: flex;
@@ -693,7 +694,7 @@ button#leave-match:hover {
 
     .opponent-board,
     .user-board {
-        width: 1150px;
+        width: 1200px;
         height: 202px;
         gap: 6px;
     }
@@ -701,6 +702,23 @@ button#leave-match:hover {
     .yourCards .card {
         width: 140px;
         height: 202px;
+    }
+
+    .yourCards .card .cardName {
+        top: 56.5%;
+        left: 13px;
+        font-size: 7px;
+    }
+
+    .yourCards .card .ataque-especial {
+        font-size: 5px !important;
+        left: 17px;
+        max-width: 110px;
+    }
+
+    .yourCards .card .ataque-vida {
+        margin: 11px 13px !important;
+        font-size: 9px !important;
     }
 
     #end-turn {
@@ -733,243 +751,270 @@ button#leave-match:hover {
     .yourCards .card:hover {
         transform: translateY(-58px);
     }
-}
-
-@media (max-width: 1200px) {
-
-    .opponent-board,
-    .user-board {
-        width: 950px;
-        height: 161px;
-        gap: 5px;
-    }
-
-    .yourCards .card {
-        width: 125px;
-        height: 174px;
-    }
-
-    .opponent,
-    .user {
-        min-width: 50px;
-
-    }
-
-    .user .opponent {
-        padding-right: 15px;
-    }
-
-
-    .opponent p,
-    .user p {
-        font-size: 1rem;
-
-    }
-
-    .opponent img,
-    .user img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .user-board .card,
-    .opponent-board .card {
-        width: 115px;
-        height: 161px;
-    }
 
     .user-board .card .cardName,
     .opponent-board .card .cardName {
-        font-size: 6px;
-        left: 11px;
         top: 56.5%;
-
+        left: 14px;
+        font-size: 8px;
     }
 
     .user-board .card .ataque-especial,
     .opponent-board .card .ataque-especial {
-        font-size: 4px !important;
-        font-weight: 600 !important;
-        left: 14px;
-        max-width: 85px;
-
-    }
-    .user-board .card .ataque-vida, .opponent-board .card .ataque-vida{
-        font-size: 16px !important;
-        width: 45px;
-        height: 17px;
-        border: 1px solid black;
-        margin: 4px 4px !important;
+        top: 74%;
+        font-size: 5px !important;
+        left: 18px;
+        max-width: 110px;
     }
 
-    .yourCards .card .cardName{
-        font-size: 6px;
-        top: 57%;
-        left: 11px;
+}
+    @media (max-width: 1200px) {
+
+        .opponent-board,
+        .user-board {
+            width: 950px;
+            height: 161px;
+            gap: 5px;
+        }
+
+        .yourCards .card {
+            width: 125px;
+            height: 174px;
+        }
+
+        .opponent,
+        .user {
+            min-width: 50px;
+
+        }
+
+        .user .opponent {
+            padding-right: 15px;
+        }
+
+
+        .opponent p,
+        .user p {
+            font-size: 1rem;
+
+        }
+
+        .opponent img,
+        .user img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .user-board .card,
+        .opponent-board .card {
+            width: 115px;
+            height: 161px;
+        }
+
+        .user-board .card .cardName,
+        .opponent-board .card .cardName {
+            font-size: 6px;
+            left: 11px;
+            top: 56.5%;
+
+        }
+
+        .user-board .card .ataque-especial,
+        .opponent-board .card .ataque-especial {
+            font-size: 4px !important;
+            font-weight: 600 !important;
+            left: 14px;
+            max-width: 85px;
+
+        }
+
+        .user-board .card .ataque-vida,
+        .opponent-board .card .ataque-vida {
+            font-size: 16px !important;
+            width: 45px;
+            height: 17px;
+            border: 1px solid black;
+            margin: 4px 4px !important;
+        }
+
+        .yourCards .card .cardName {
+            font-size: 6px;
+            top: 57%;
+            left: 11px;
+        }
+
+        .yourCards .card .ataque-especial {
+            font-size: 4px !important;
+            left: 15px;
+            max-width: 95px;
+        }
+
+        .yourCards .card .ataque-vida {
+            margin: 10px 13px !important;
+            font-size: 8px !important;
+        }
+
+        .yourCards .card:hover {
+            transform: translateY(-57px);
+        }
+
     }
 
-    .yourCards .card .ataque-especial{
-        font-size: 4px !important;
-        left: 15px;
-        max-width: 95px;
+    @media (max-width: 1000px) {
+
+        .opponent-board,
+        .user-board {
+            width: 750px;
+            height: 121px;
+            gap: 4px;
+        }
+
+        .yourCards .card {
+            width: 100px;
+            height: 141px;
+        }
+
+        .yourCards .card:hover {
+            transform: translateY(-53px);
+        }
+
+        .yourCards .card .cardName {
+            font-size: 6px;
+            top: 56%;
+            left: 9px;
+        }
+
+        .yourCards .card .ataque-especial {
+            top: 78%;
+            font-size: 3.5px !important;
+            left: 13px;
+            max-width: 78px;
+        }
+
+        .yourCards .card .ataque-vida {
+            margin: 7px 9px !important;
+            font-size: 7px !important;
+        }
+
+        .opponent,
+        .user {
+            min-width: 50px;
+        }
+
+        .user .opponent {
+            padding-right: 15px;
+        }
+
+
+        .opponent p,
+        .user p {
+            font-size: 0.8rem;
+
+        }
+
+        .opponent img,
+        .user img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .user-board .card,
+        .opponent-board .card {
+            width: 87px;
+            height: 121px;
+        }
+
+        .mana img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .mana p {
+            font-size: 20px;
+        }
+
+        #end-turn {
+            padding: 10px 20px;
+            font-size: 15px;
+            right: 3%;
+            bottom: 3%;
+        }
+
+        .user-board .card .ataque-vida,
+        .opponent-board .card .ataque-vida {
+            font-size: 13px !important;
+            width: 35px;
+            height: 15px;
+            margin: 3px 3px !important;
+            border: 1px solid black;
+
+        }
+
+        .user-board .card .cardName,
+        .opponent-board .card .cardName {
+            font-size: 4.5px;
+            left: 8px;
+        }
+
+        .user-board .card .ataque-especial,
+        .opponent-board .card .ataque-especial {
+            top: 73%;
+            font-size: 3px !important;
+            left: 11px;
+            max-width: 65px;
+        }
+
+        .informacion {
+            width: 205px;
+            height: 175px;
+        }
+
+        .informacion .name {
+            font-size: 1rem;
+        }
+
+        .informacion .ataque-especial-info {
+            font-size: 0.6rem;
+        }
+
+        .informacion .ataque-vida-info {
+            font-size: 1rem;
+        }
+
+        .ataque-especial-button {
+            font-size: 9px;
+            padding: 2px;
+        }
+
+        .ataque-especial-img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .mana {
+            bottom: 70px;
+        }
+
+        #turno {
+            font-size: 20px;
+
+        }
     }
 
-    .yourCards .card .ataque-vida{
-        margin: 10px 13px !important;
-        font-size: 8px !important;
+    @media (max-width: 800px) {
+
+        .hidden {
+            display: block !important;
+        }
+
+    }
+
+@media (max-height: 400px){
+    .yourCards .card{
+        margin: -70px -30px;
     }
 
     .yourCards .card:hover{
-        transform: translateY(-57px);
+        transform: translateY(-70px);
     }
-
-}
-
-@media (max-width: 1000px) {
-
-    .opponent-board,
-    .user-board {
-        width: 750px;
-        height: 121px;
-        gap: 4px;
-    }
-
-    .yourCards .card {
-        width: 100px;
-        height: 141px;
-    }
-
-    .yourCards .card:hover {
-        transform: translateY(-53px);
-    }
-
-    .yourCards .card .cardName {
-        font-size: 6px;
-        top: 56%;
-        left: 9px;
-    }
-
-    .yourCards .card .ataque-especial {
-        top: 78%;
-        font-size: 3.5px !important;
-        left: 13px;
-        max-width: 78px;
-    }
-
-    .yourCards .card .ataque-vida {
-        margin: 7px 9px !important;
-        font-size: 7px !important;
-    }
-
-    .opponent,
-    .user {
-        min-width: 50px;
-    }
-
-    .user .opponent {
-        padding-right: 15px;
-    }
-
-
-    .opponent p,
-    .user p {
-        font-size: 0.8rem;
-
-    }
-
-    .opponent img,
-    .user img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .user-board .card,
-    .opponent-board .card {
-        width: 87px;
-        height: 121px;
-    }
-
-    .mana img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .mana p {
-        font-size: 20px;
-    }
-
-    #end-turn {
-        padding: 10px 20px;
-        font-size: 15px;
-        right: 3%;
-        bottom: 3%;
-    }
-
-    .user-board .card .ataque-vida,
-    .opponent-board .card .ataque-vida {
-        font-size: 13px !important;
-        width: 35px;
-        height: 15px;
-        margin: 3px 3px !important;
-        border: 1px solid black;
-
-    }
-
-    .user-board .card .cardName,
-    .opponent-board .card .cardName {
-        font-size: 4.5px;
-        left: 8px;
-    }
-
-    .user-board .card .ataque-especial,
-    .opponent-board .card .ataque-especial {
-        top: 73%;
-        font-size: 3px !important;
-        left: 11px;
-        max-width: 65px;
-    }
-
-    .informacion {
-        width: 205px;
-        height: 175px;
-    }
-
-    .informacion .name {
-        font-size: 1rem;
-    }
-
-    .informacion .ataque-especial-info {
-        font-size: 0.6rem;
-    }
-
-    .informacion .ataque-vida-info {
-        font-size: 1rem;
-    }
-
-    .ataque-especial-button {
-        font-size: 9px;
-        padding: 2px;
-    }
-
-    .ataque-especial-img{
-        width: 20px;
-        height: 20px;
-    }
-
-    .mana {
-        bottom: 70px;
-    }
-
-    #turno {
-        font-size: 20px;
-
-    }
-}
-
-@media (max-width: 800px) {
-
-    .hidden {
-        display: block !important;
-    }
-
 }
