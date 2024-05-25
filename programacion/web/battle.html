@@ -859,15 +859,6 @@
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
-                        cardOpponent[i].classList.remove('card-atacado')
-
-                        setTimeout(() => {
-                            cardOpponent[i].classList.add('card-atacado')
-                        }, 10)
-
-                        setTimeout(() => {
-                            cardOpponent[i].classList.remove('card-atacado')
-                        }, 600)
                         if (data.vida <= 0) {
                             cardOpponent[i].classList.remove('card-muere')
 
@@ -880,6 +871,15 @@
                             }, 900)
                             cardOpponent[i].remove()
                         } else {
+                            cardOpponent[i].classList.remove('card-atacado')
+
+                            setTimeout(() => {
+                                cardOpponent[i].classList.add('card-atacado')
+                            }, 10)
+
+                            setTimeout(() => {
+                                cardOpponent[i].classList.remove('card-atacado')
+                            }, 600)
                             const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                             let ataqueVidaText = ataqueVida.textContent.split('/')
                             ataqueVidaText = ataqueVidaText[0] + '/' + data.vida
