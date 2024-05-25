@@ -126,6 +126,8 @@ body {
     transition: 0.5s ease;
     margin: -50px -30px;
     position: relative;
+    border-radius: 15px;
+    border: 2px solid transparent;
 }
 
 .yourCards .card:hover {
@@ -595,6 +597,7 @@ button#leave-match:hover {
 @keyframes heal {
     0% {
         transform: scale(1);
+        
         box-shadow: 0 0 10px 0 #37ff37;
     }
 
@@ -660,14 +663,20 @@ button#leave-match:hover {
 @keyframes borderPulse {
     0% {
         border: 5px solid #c99300;
+        border-radius: 15px;
+
     }
 
     50% {
         border: 5px solid #4b3700;
+        border-radius: 15px;
+
     }
 
     100% {
         border: 5px solid #b68601;
+        border-radius: 15px;
+
     }
 }
 
@@ -678,14 +687,20 @@ button#leave-match:hover {
 @keyframes poison {
     0% {
         border: 5px solid #eca0ff;
+        border-radius: 15px;
+
     }
 
     50% {
         border: 5px solid #ba55d3;
+        border-radius: 15px;
+
     }
 
     100% {
         border: 5px solid #eca0ff;
+        border-radius: 15px;
+
     }
 }
 
