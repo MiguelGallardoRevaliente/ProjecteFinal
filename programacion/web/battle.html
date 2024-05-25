@@ -1363,7 +1363,19 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].remove()
+                                userCards[i].classList.remove('card-muere')
+
+                                setTimeout(() => {
+                                    userCards[i].classList.add('card-muere')
+                                }, 10)
+
+                                setTimeout(() => {
+                                    userCards[i].classList.remove('card-muere')
+                                }, 900)
+
+                                setTimeout(() => {
+                                    userCards[i].remove()
+                                }, 900)
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
