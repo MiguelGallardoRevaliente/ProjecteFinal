@@ -1325,7 +1325,7 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
-                                if (data.estadistica === 'vida' && tipo === 'power-up') {
+                                if (data.estadistica === 'vida' && data.tipo === 'power-up') {
                                     userCards[i].classList.remove('card-heal')
 
                                     setTimeout(() => {
