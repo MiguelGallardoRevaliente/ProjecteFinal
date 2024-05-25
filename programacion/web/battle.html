@@ -81,6 +81,19 @@
                                 cardDiv.style.backgroundRepeat = 'no-repeat'
                                 cardDiv.style.backgroundPosition = 'center'
                                 cardDiv.id = card.cartaEnCombateOpponent.id
+
+                                if (card.cartaCombate.efecto_secundario === 'inmune') {
+                                    cardDiv.classList.add('card-protected')
+                                } else if (card.cartaCombate.efecto_secundario === 'inmovil') {
+                                    cardDiv.classList.add('card-immobilized')
+                                } else if (card.cartaCombate.efecto_secundario === 'corrosivo') {
+                                    cardDiv.classList.add('card-corrosive')
+                                } else {
+                                    cardDiv.classList.remove('card-protected')
+                                    cardDiv.classList.remove('card-immobilized')
+                                    cardDiv.classList.remove('card-corrosive')
+                                }
+
                                 cardDiv.addEventListener('click', () => {
                                     if (specialAttackCard.length === 1) {
                                         const tipo = specialAttackCard[0].tipo.split('/')
@@ -110,8 +123,23 @@
                                 cardName.className = 'cardName'
 
                                 const ataqueVida = document.createElement('p')
-                                ataqueVida.textContent = card.cartaCombate.ataque + '/' + card.cartaCombate.vida
+                                const ataqueSpan = document.createElement('span')
+                                ataqueSpan.textContent = card.cartaCombate.ataque
+                                const barra = document.createElement('span')
+                                barra.textContent = '/'
+                                const vidaSpan = document.createElement('span')
+                                vidaSpan.textContent = card.cartaCombate.vida
+                                ataqueVida.appendChild(ataqueSpan)
+                                ataqueVida.appendChild(barra)
+                                ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-opponent'
+                                if (card.cartaCombate.efecto_secundario === 'power-down') {
+                                    ataqueSpan.style.color = 'red'
+                                } else if (card.cartaCombate.efecto_secundario === 'power-up') {
+                                    ataqueSpan.style.color = 'green'
+                                } else {
+                                    ataqueSpan.style.color = 'black'
+                                }
 
                                 if (card.ataque) {
                                     const ataqueEspecial = document.createElement('p')
@@ -147,6 +175,19 @@
                                 cardDiv.style.backgroundRepeat = 'no-repeat'
                                 cardDiv.style.backgroundPosition = 'center'
                                 cardDiv.id = card.cartaEnCombateUser.id
+
+                                if (card.cartaCombate.efecto_secundario === 'inmune') {
+                                    cardDiv.classList.add('card-protected')
+                                } else if (card.cartaCombate.efecto_secundario === 'inmovil') {
+                                    cardDiv.classList.add('card-immobilized')
+                                } else if (card.cartaCombate.efecto_secundario === 'corrosivo') {
+                                    cardDiv.classList.add('card-corrosive')
+                                } else {
+                                    cardDiv.classList.remove('card-protected')
+                                    cardDiv.classList.remove('card-immobilized')
+                                    cardDiv.classList.remove('card-corrosive')
+                                }
+
                                 cardDiv.addEventListener('mouseover', () => {
                                     const informacionDiv = document.getElementsByClassName('informacion')[0]
                                     informacionDiv.style.display = 'flex'
