@@ -1242,8 +1242,22 @@ io.on('connection', async (socket) => {
         [opponentId, combate[0].id_combate_uuid]
       )
 
+      const ataques2 = []
+      const cartasInfo2 = []
+      for (const cartaCombate of opponentCards) {
+        const [carta] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cartaCombate.id_carta])
+        const [ataque] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [carta[0].id_ataque])
+        ataques2.push(ataque[0])
+        cartasInfo2.push(carta[0])
+      }
+      const cartas2 = {
+        cartasInfo: cartasInfo2,
+        cartasCombate: opponentCards,
+        ataques: ataques2
+      }
+
+      io.emit('ended-turn', { username, cartas: cartas2 })
       io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
-      io.emit('ended-turn', { username, cartas })
     }
 
     if (tipoSplited[1] === 'area') {
