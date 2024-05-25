@@ -1554,10 +1554,10 @@
                                         cardUser[i].classList.remove('card-poison')
                                     }
 
-                                    const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')[i]
-                                    ataqueVidaOpponent.remove()
+                                    const ataqueVidaUser = document.getElementsByClassName('ataque-vida-user')[i]
+                                    ataqueVidaUser.remove()
                                     const ataqueVida = document.createElement('p')
-                                    ataqueVida.className = 'ataque-vida ataque-vida-opponent'
+                                    ataqueVida.className = 'ataque-vida ataque-vida-user'
                                     const ataqueSpan = document.createElement('span')
                                     ataqueSpan.textContent = card.ataque
                                     const barra = document.createElement('span')
@@ -1575,7 +1575,7 @@
                                     } else if (card.efecto_secundario === 'power-up') {
                                         ataqueSpan.style.color = '#007c85'
                                     } else if (card.efecto_secundario === 'reverse') {
-                                        ataqueVidaOpponent[i].style.color = '#007d43'
+                                        ataqueVidaUser[i].style.color = '#007d43'
                                     } else {
                                         ataqueSpan.style.color = 'black'
                                     }
