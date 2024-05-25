@@ -818,6 +818,9 @@
                 }
                 const card = document.getElementsByClassName('card' + data.idCarta)[0]
                 card.classList.add('card-no-mana')
+                setInterval(() => {
+                    card.classList.remove('card-no-mana')
+                }, 600)
             }
         })
 
