@@ -1048,9 +1048,8 @@
 
         /* Cuando se usa habilidad especial sobre si mismo */
         socket.on('special-attacked-self', (data) => {
-            /* Cambios para el usuario */
+            /* Cambios para el oponente de quien usa la habilidad */
             if (data.opponent === localStorage.getItem('opponent')) {
-                console.log('Usuario')
                 const opponentCards = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
@@ -1101,12 +1100,15 @@
                     opponentCards[i].style.boxShadow = 'none'
                     opponentCards[i].style.cursor = 'default'
                 }
-            /* Cambios para el oponente */
+            /* Cambios para el usuario que usa la habilidad */
             } else if (data.opponent === localStorage.getItem('username')) {
+                console.log('Usuario')
                 const userCards = document.getElementsByClassName('card-user')
                 for (let i = 0; i < userCards.length; i++) {
                     data.opponentCards.forEach((card, index) => {
+                        console.log('IDs', parseInt(userCards[i].id), card.id_carta)
                         if (parseInt(userCards[i].id) === card.id_carta) {
+                            console.log('VidaCarta', card.vida)
                             if (card.vida <= 0) {
                                 userCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
@@ -1127,6 +1129,7 @@
                                 ataqueVida.className = 'ataque-vida ataque-vida-user'
                                 ataqueVida.style.color = 'black'
                                 userCards[i].appendChild(ataqueVida)
+                                console.log('Carta', card.id_carta, data.idCarta, data.estadistica)
                                 if (card.id_carta === data.idCarta && data.estadistica === 'vida') {
                                     userCards[i].classList.remove('card-heal')
 
