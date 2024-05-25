@@ -1635,12 +1635,16 @@
                                     cardUser[i].appendChild(ataqueVida)
 
                                     if (card.efecto_secundario === 'power-down') {
+                                        console.log('Power down', card.id_carta)
                                         ataqueSpan.style.color = '#dc4a01'
                                     } else if (card.efecto_secundario === 'power-up') {
+                                        console.log('Power up', card.id_carta)
                                         ataqueSpan.style.color = '#007c85'
                                     } else if (card.efecto_secundario === 'reverse') {
+                                        console.log('Reverse', card.id_carta)
                                         ataqueVida.style.color = '#007d43'
                                     } else {
+                                        console.log('Normal', card.id_carta)
                                         ataqueSpan.style.color = 'black'
                                     }
                                 }
