@@ -1494,15 +1494,16 @@
                     cardUser[i].addEventListener('mouseout', () => {
                         const informacionDiv = document.getElementsByClassName('informacion')[0]
                         informacionDiv.style.display = 'none'
-                        const name = document.getElementsByClassName('name')[0]
-                        console.log('Name', name)
-                        if (data.cartas.ataques[i]) {
-                            const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
-                            ataqueEspecialInfo.remove()
-                        }
-                        const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
-                        name.remove()
-                        ataqueVidaInfo.remove()
+                        
+                        // const name = document.getElementsByClassName('name')[0]
+                        // console.log('Name', name)
+                        // if (data.cartas.ataques[i]) {
+                        //     const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                        //     ataqueEspecialInfo.remove()
+                        // }
+                        // const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                        // name.remove()
+                        // ataqueVidaInfo.remove()
                     })
 
                     const buttonAtaque = document.createElement('button')
