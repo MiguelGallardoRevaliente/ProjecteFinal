@@ -1324,7 +1324,11 @@
                 for (let i = opponentCards.length - 1; i >= 0; i--) {
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
-                            if (card.vida > 0) {
+                            if (card.vida <= 0) {
+                                opponentCards[i].classList.add('card-muere')
+                                opponentCards[i].classList.remove('card-muere')
+                                opponentCards[i].remove()
+                            } else {
                                 if (data.estadistica === 'vida' && data.tipo === 'power-up') {
                                     opponentCards[i].classList.remove('card-heal')
 
