@@ -1017,4 +1017,52 @@ button#leave-match:hover {
     .yourCards .card:hover{
         transform: translateY(-70px);
     }
+
+}
+
+@media (max-height: 390px){
+    .user{
+        min-width: 0px;
+        width: 43px;
+        padding: 10px;
+        padding-right: 70px;
+    }
+
+    .opponent{
+        min-width: 0px;
+        width: 43px;
+        padding: 10px;
+        padding-left: 70px;
+    }
+
+    .mana{
+        bottom: 60px;
+        left: 40px;
+    }
+
+    .mana p{
+        font-size: 15px;
+    }
+
+    .mana img{
+        width: 25px;
+        height: 25px;
+    }
+
+    button#leave-match{
+    position: absolute;
+    font-size: 15px;
+    color: white;
+    top: 50%;
+    left: 48px;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: red;
+    background: linear-gradient(180deg, rgba(204, 0, 0, 1) 0%, rgba(237, 0, 0, 1) 35%, rgb(255 0 0) 100%);
+    font-family: 'MedievalSharp';
+    cursor: pointer;
+    padding: 0px;
+    border-radius: 0px;
+}
+    }
 }
