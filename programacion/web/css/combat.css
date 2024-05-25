@@ -1028,9 +1028,10 @@ button#leave-match:hover {
         width: 43px;
         padding: 10px;
         padding-right: 70px;
-        height: 20px;
+        height: 15px;
         gap: 4px;
     }
+
 
     .opponent{
         min-width: 0px;
@@ -1043,6 +1044,12 @@ button#leave-match:hover {
 
     .opponent p, .user p{
         font-size: 0.5rem;
+    }
+
+    .opponent img, .user img{
+        width: 20px;
+        border: 1px solid white;
+        height: 20px;
     }
 
     .mana{
@@ -1072,7 +1079,7 @@ button#leave-match:hover {
         font-family: 'MedievalSharp';
         cursor: pointer;
         padding: 0px;
-        border-radius: 0px;
+        border-radius: 2px;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         padding: 0px 3px;
     }
@@ -1084,4 +1091,5 @@ button#leave-match:hover {
         padding: 5px 10px;
         font-size: 10px;
     }
+    
 }
