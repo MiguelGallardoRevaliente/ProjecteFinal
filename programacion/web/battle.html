@@ -1499,6 +1499,7 @@
                 for (let i = 0; i < cardUser.length; i++) {
                     if (data.cartas.cartasCombate[i].vida <= 0){
                         cardUser[i].addEventListener('mouseover', () => {
+                            console.log(cardUser[i].id)
                             const informacionDiv = document.getElementsByClassName('informacion')[0]
                             informacionDiv.style.display = 'flex'
 
