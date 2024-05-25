@@ -1272,22 +1272,10 @@
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
-                            if (card.vida <= 0) {
-                                opponentCards[i].classList.remove('card-muere')
-                                
-                                setTimeout(() => {
-                                    opponentCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    opponentCards[i].classList.remove('card-muere')
-                                }, 900)
-                                opponentCards[i].remove()
-                            } else {
+                            if (card.vida > 0) {
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
-                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                         }
                     })
@@ -1302,19 +1290,20 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    userCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    userCards[i].classList.remove('card-muere')
-                                }, 900)
-                                userCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                // if (data.idCartaAttacking === card.id_carta && data.tipo === 'unico') {
+                                //     userCards[i].classList.remove('card-atacado')
+
+                                //     setTimeout(() => {
+                                //         userCards[i].classList.add('card-atacado')
+                                //     }, 10)
+
+                                //     setTimeout(() => {
+                                //         userCards[i].classList.remove('card-atacado')
+                                //     }, 600)
+                                // }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
@@ -1335,10 +1324,7 @@
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
-                            if (card.vida <= 0) {
-                                const manaNumber = document.getElementById('mana-number')
-                                manaNumber.textContent = data.mana
-                            } else {
+                            if (card.vida > 0) {
                                 if (data.estadistica === 'vida' && data.tipo === 'power-up') {
                                     opponentCards[i].classList.remove('card-heal')
 
@@ -1349,11 +1335,20 @@
                                     setTimeout(() => {
                                         opponentCards[i].classList.remove('card-heal')
                                     }, 900)
+                                } else if (data.tipo === 'area'){
+                                    opponentCards[i].classList.remove('card-atacado')
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.add('card-atacado')
+                                    }, 10)
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.remove('card-atacado')
+                                    }, 600)
                                 }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
-                                ////////////////// AQUI LO QUE HACE LA CARTA AL SER ATACADA //////////////////
                             }
                         }
                     })

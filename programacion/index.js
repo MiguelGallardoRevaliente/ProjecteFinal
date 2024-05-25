@@ -1006,7 +1006,7 @@ io.on('connection', async (socket) => {
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, mana })
+      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, mana, idCartaAttacking, tipo })
     }
 
     if (tipo === 'power-down') {
@@ -1082,7 +1082,7 @@ io.on('connection', async (socket) => {
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
+      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, idCartaAttacking, tipo })
     }
 
     if (tipo === 'inmovil') {
@@ -1138,7 +1138,7 @@ io.on('connection', async (socket) => {
       }
 
       io.emit('ended-turn', { username, cartas: cartas2 })
-      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards })
+      io.emit('special-attacked-opponent', { opponent: opponent[0].user, opponentCards, idCartaAttacking, tipo })
     }
   })
 
