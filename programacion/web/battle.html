@@ -1363,19 +1363,6 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    userCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    userCards[i].classList.remove('card-muere')
-                                }, 900)
-
-                                setTimeout(() => {
-                                    userCards[i].remove()
-                                }, 900)
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
@@ -1421,22 +1408,7 @@
                     data.cartas.cartasCombate.forEach(card => {
                         if (cardOpponent.length > 0) {
                             if (parseInt(cardOpponent[i].id) === card.id_carta) {
-                                if (card.vida <= 0) {
-                                    console.log('Muere end turn', cardOpponent[i].id)
-                                    cardOpponent[i].classList.remove('card-muere')
-
-                                    setTimeout(() => {
-                                        cardOpponent[i].classList.add('card-muere')
-                                    }, 10)
-
-                                    setTimeout(() => {
-                                        cardOpponent[i].classList.remove('card-muere')
-                                    }, 900)
-
-                                    setTimeout(() => {
-                                        cardOpponent[i].remove()
-                                    }, 900)
-                                } else {
+                                if (card.vida > 0) {
                                     ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
                                 }
                             }
@@ -1488,6 +1460,7 @@
                                 console.log('if', card.vida)
                                 if (card.vida <= 0) {
                                     cardUser[i].classList.add('card-muere')
+                                    cardUser[i].classList.remove('card-muere')
                                     cardUser[i].remove()
                                 } else {
                                     ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
