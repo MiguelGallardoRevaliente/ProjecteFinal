@@ -677,7 +677,7 @@ button#leave-match:hover {
 
 @keyframes poison {
     0% {
-        border: 2px solid #eca0ff;
+        border: 5px solid #eca0ff;
     }
 
     50% {
@@ -685,7 +685,7 @@ button#leave-match:hover {
     }
 
     100% {
-        border: 2px solid #eca0ff;
+        border: 5px solid #eca0ff;
     }
 }
 
