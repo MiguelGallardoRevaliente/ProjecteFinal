@@ -1336,16 +1336,6 @@
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                opponentCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    opponentCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    opponentCards[i].remove()
-                                }, 600)
-                                opponentCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
@@ -1367,8 +1357,10 @@
                             }
                         }
                     })
-                    opponentCards[i].style.boxShadow = 'none'
-                    opponentCards[i].style.cursor = 'default'
+                    if (opponentCards[i]) {
+                        opponentCards[i].style.boxShadow = 'none'
+                        opponentCards[i].style.cursor = 'default'
+                    }
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
@@ -1376,16 +1368,6 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    userCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    userCards[i].classList.remove('card-muere')
-                                }, 900)
-                                userCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
