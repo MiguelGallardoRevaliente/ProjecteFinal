@@ -1428,7 +1428,7 @@
 
                 const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
                 const cardOpponent = document.getElementsByClassName('card-opponent')
-                for (let i = 0; i < ataqueVidaOpponent.length; i++) {
+                for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     data.cartas.cartasCombate.forEach(card => {
                         if (cardOpponent.length > 0) {
                             if (parseInt(cardOpponent[i].id) === card.id_carta) {
