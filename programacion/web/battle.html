@@ -1321,7 +1321,7 @@
         socket.on('special-attacked-area', (data) => {
             if (data.opponent === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
-                for (let i = 0; i < opponentCards.length; i++) {
+                for (let i = opponentCards.length - 1; i >= 0; i--) {
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
@@ -1337,7 +1337,7 @@
 
                                 setTimeout(() => {
                                     opponentCards[i].remove()
-                                }, 500)
+                                }, 900)
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
@@ -1375,7 +1375,7 @@
                 }
             } else if (data.opponent === localStorage.getItem('username')) {
                 const userCards = document.getElementsByClassName('card-user')
-                for (let i = 0; i < userCards.length; i++) {
+                for (let i = userCards.length - 1; i >= 0; i--) {
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
