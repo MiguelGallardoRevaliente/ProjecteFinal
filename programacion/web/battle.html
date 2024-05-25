@@ -1525,8 +1525,9 @@
                         })
                     }
                 }
-                
-                for (let i = 0; i < cardUser.length; i++) {
+
+                const cardUser2 = document.getElementsByClassName('card-user')
+                for (let i = 0; i < cardUser2.length; i++) {
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
                     buttonAtaque.addEventListener('click', () => {
@@ -1567,7 +1568,7 @@
                                     }
                                 }
                             } else {
-                                if (parseInt(cardUser[i].id) === card.id_carta) {
+                                if (parseInt(cardUser2[i].id) === card.id_carta) {
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
                                     } else {
@@ -1592,7 +1593,7 @@
 
                     data.cartas.cartasCombate.forEach((card, index) => {
                         if (data.cartas.ataques[index]) {
-                            if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
+                            if (card.id_carta === parseInt(cardUser2[i].id) && card.ataque_especial === 0) {
                                 const ataqueEspecialButton = document.createElement('button')
                                 ataqueEspecialButton.className = 'ataque-especial-button'
                                 ataqueEspecialButton.textContent = data.cartas.ataques[index].nombre
@@ -1749,7 +1750,7 @@
                                             }
                                         }
                                     } else {
-                                        if (parseInt(cardUser[i].id) === card.id_carta) {
+                                        if (parseInt(cardUser2[i].id) === card.id_carta) {
                                             if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                                 alert('This card is immobilized')
                                             } else {
@@ -1892,11 +1893,11 @@
                                         }
                                     }
                                 })
-                                cardUser[i].appendChild(ataqueEspecialButton)
+                                cardUser2[i].appendChild(ataqueEspecialButton)
                             }
                         }
                     })
-                    cardUser[i].appendChild(buttonAtaque)
+                    cardUser2[i].appendChild(buttonAtaque)
                 }
             }
         })
