@@ -1242,8 +1242,8 @@ io.on('connection', async (socket) => {
         [opponentId, combate[0].id_combate_uuid]
       )
 
-      io.emit('ended-turn', { username, cartas })
       io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
+      io.emit('ended-turn', { username, cartas })
     }
 
     if (tipoSplited[1] === 'area') {
