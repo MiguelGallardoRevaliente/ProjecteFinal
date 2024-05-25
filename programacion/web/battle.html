@@ -1451,7 +1451,6 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
-                const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     data.cartas.cartasCombate.forEach(card => {
@@ -1460,7 +1459,26 @@
                                 if (card.vida <= 0) {
                                     cardOpponent[i].remove()
                                 } else {
-                                    ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
+                                    const ataqueVidaOpponent = document.getElementsByClassName('ataque-vida-opponent')
+                                    const ataqueSpan = document.createElement('span')
+                                    ataqueSpan.textContent = card.ataque
+                                    const barra = document.createElement('span')
+                                    barra.textContent = '/'
+                                    const vidaSpan = document.createElement('span')
+                                    vidaSpan.textContent = card.vida
+                                    ataqueVidaOpponent[i].appendChild(ataqueSpan)
+                                    ataqueVidaOpponent[i].appendChild(barra)
+                                    ataqueVidaOpponent[i].appendChild(vidaSpan)
+
+                                    if (card.efecto_secundario === 'power-down') {
+                                        ataqueSpan.style.color = '#dc4a01'
+                                    } else if (card.efecto_secundario === 'power-up') {
+                                        ataqueSpan.style.color = '#007c85'
+                                    } else if (card.efecto_secundario === 'reverse') {
+                                        ataqueVidaOpponent[i].style.color = '#007d43'
+                                    } else {
+                                        ataqueSpan.style.color = 'black'
+                                    }
                                 }
                             }
                         }
