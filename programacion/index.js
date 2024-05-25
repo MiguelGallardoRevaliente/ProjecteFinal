@@ -181,6 +181,7 @@ io.on('connection', async (socket) => {
 
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     /* Compatibilidad de tipos */
+    console.log('Tipos', cartaAttackedInfo[0].tipo, cartaAttackingInfo[0].tipo)
     if (cartaAttackedInfo[0].tipo === 'Light' && cartaAttackingInfo[0].tipo === 'Dark') {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Dark' && cartaAttackingInfo[0].tipo === 'Light') {
@@ -205,12 +206,15 @@ io.on('connection', async (socket) => {
       vida = vida - 1
     }
     // console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
+    console.log('Vida', vida)
     if (vida <= 0) {
       vida = 0
     }
 
+    /* Actualizamos la vida */
     if (user[0].id_uuid === combate[0].id_user_1_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid])
+      /* Si muere le sumamos el mana al rival */
       if (vida === 0) {
         if (cartaAttacked[0].efecto_secundario === 'reverse') {
           console.log('Carta atacada con reverse', cartaAttackedInfo[0])
