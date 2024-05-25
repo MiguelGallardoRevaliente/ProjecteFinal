@@ -883,7 +883,22 @@
                         cardOpponent[i].style.cursor = 'default'
                     }
                 }
-            } else if (data.opponent === localStorage.getItem('username')) { 
+            } else if (data.opponent === localStorage.getItem('username')) {
+                const cardOpponent = document.getElementsByClassName('card-opponent')
+                for (let i = 0; i < cardOpponent.length; i++) {
+                    if (parseInt(cardOpponent[i].id) === data.cardAttacking.id_carta) {
+                        cardOpponent[i].classList.remove('card-atacando-oponente')
+
+                        setTimeout(() => {
+                            cardOpponent[i].classList.add('card-atacando-oponente')
+                        }, 10)
+
+                        setTimeout(() => {
+                            cardOpponent[i].classList.remove('card-atacando-oponente')
+                        }, 600)
+                    }
+                }
+
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = 0; i < cardUser.length; i++) {
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {

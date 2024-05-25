@@ -523,6 +523,23 @@ button#leave-match:hover{
     }
 }
 
+.card-atacando-oponente{
+    animation: atacando-oponente 0.4s;
+}
+
+/*atacando-oponente*/
+@keyframes atacando-oponente {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(70px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .card-heal {
     animation: heal 1s linear;
 }
