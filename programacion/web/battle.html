@@ -29,6 +29,11 @@
                 })
         }
 
+        /* Funcion para hacer un tiempo de espera */
+        async function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
         if (localStorage.getItem('winner') && localStorage.getItem('recompensaWinner') && localStorage.getItem('winner') === localStorage.getItem('username')) {
             const gameOver = document.getElementsByClassName('game-over')[0]
             gameOver.style.display = 'flex'
@@ -1490,18 +1495,14 @@
                                     console.log('Muere end turn', cardUser[i].id)
                                     cardUser[i].classList.remove('card-muere')
 
-                                    setTimeout(() => {
-                                        cardUser[i].classList.add('card-muere')
-                                    }, 10)
-
-                                    setTimeout(() => {
-                                        cardUser[i].classList.remove('card-muere')
-                                    }, 900)
-
-                                    setTimeout(() => {
-                                        cardUser[i].remove()
-                                        console.log('Card user :)', cardUser)
-                                    }, 900)
+                                    await delay(10)
+                                    cardUser[i].classList.add('card-muere')
+                                    await delay(900)
+                                    cardUser[i].classList.remove('card-muere')
+                                    await delay(900)
+                                    
+                                    cardUser[i].remove()
+                                    console.log('Card user :)', cardUser)
                                 } else {
                                     ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                                 }
