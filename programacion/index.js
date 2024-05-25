@@ -1482,13 +1482,6 @@ io.on('connection', async (socket) => {
               'UPDATE cartas_combates SET vida = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
             )
-          // Efecto de intercambiar la vida por el ataque
-          } else if (carta.efecto_secundario === 'reverse') {
-            console.log('Reverse10', cartaInfo[0].ataque)
-            await connection.execute(
-              'UPDATE cartas_combates SET ataque = ?, vida = ?, efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
-              [carta.vida, carta.ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid] // Asegúrate del id_user correcto
-            )
           } else {
             await connection.execute(
               'UPDATE cartas_combates SET efecto_secundario = NULL, duracion_efecto = NULL, estadistica_efecto = NULL, cambio_estadistica = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
