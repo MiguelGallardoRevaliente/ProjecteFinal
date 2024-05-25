@@ -817,11 +817,18 @@
                     }
                 }
                 const card = document.getElementsByClassName('card' + data.idCarta)[0]
-                card.classList.add('card-no-mana')
-                setInterval(() => {
+                card.classList.remove('card-no-mana') // Remover la clase primero para asegurar que se reinicie la animación
+
+                // Usar un timeout corto para forzar la re-renderización
+                setTimeout(() => {
+                    card.classList.add('card-no-mana')
+                }, 10) // 10ms es suficiente para la mayoría de los navegadores
+
+                // Remover la clase después de que la animación haya terminado
+                setTimeout(() => {
                     card.classList.remove('card-no-mana')
-                }, 600)
-            }
+                }, 600) // Asegúrate de que el tiempo aquí sea igual a la duración de la animación
+                    }
         })
 
         socket.on('not-your-turn', (data) => {
