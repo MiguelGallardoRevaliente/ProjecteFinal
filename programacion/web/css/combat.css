@@ -689,6 +689,24 @@ button#leave-match:hover {
     }
 }
 
+.card-immobilized {
+    animation: inmovil 2s infinite;
+}
+
+@keyframes inmovil {
+    0% {
+        border: 5px solid #9a9a9a;
+    }
+
+    50% {
+        border: 5px solid #4f4f4f;
+    }
+
+    100% {
+        border: 5px solid #9a9a9a;
+    }
+}
+
 @media (max-width: 1450px) {
 
     .opponent-board,
