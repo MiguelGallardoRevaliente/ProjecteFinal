@@ -1072,7 +1072,6 @@
                                 ataqueVida.appendChild(barra)
                                 ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-opponent'
-                                ataqueVida.style.color = 'black'
                                 opponentCards[i].appendChild(ataqueVida)
                                 if (data.estadistica === 'vida') {
                                     opponentCards[i].classList.remove('card-heal')
@@ -1085,14 +1084,13 @@
                                         opponentCards[i].classList.remove('card-heal')
                                     }, 600)
                                 } else if (card.efecto_secundario === 'inmune') {
-                                    console.log('Inmune', card.id_carta)
                                     opponentCards[i].classList.add('card-protected')
                                 } else if (card.efecto_secundario === 'reverse') {
-                                    console.log('Reverse', card.id_carta)
                                     ataqueVida.style.color = '#007d43'
                                 } else if (card.efecto_secundario === 'power-up') {
-                                    console.log('Power-up', card.id_carta)
                                     ataqueSpan.style.color = '#007c85'
+                                } else {
+                                    ataqueVida.style.color = 'black'
                                 }
                             }
                         }
@@ -1124,7 +1122,6 @@
                                 ataqueVida.appendChild(barra)
                                 ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-user'
-                                ataqueVida.style.color = 'black'
                                 userCards[i].appendChild(ataqueVida)
                                 if (data.estadistica === 'vida') {
                                     userCards[i].classList.remove('card-heal')
@@ -1143,6 +1140,8 @@
                                     ataqueVida.style.color = '#007d43'
                                 } else if (card.efecto_secundario === 'power-up') {
                                     ataqueSpan.style.color = '#007c85'
+                                } else {
+                                    ataqueVida.style.color = 'black'
                                 }
                             }
                         }
