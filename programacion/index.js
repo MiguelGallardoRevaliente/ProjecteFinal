@@ -1208,8 +1208,8 @@ io.on('connection', async (socket) => {
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, opponentId]
                 )
               }
-              mana = combate[0].mana_user_1 + cartaInfo[0].costo_mana
-              await connection.execute('UPDATE combates SET mana_user_1 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
+              await connection.execute('UPDATE combates SET mana_user_1 = mana_user_1 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
+              mana = await connection.execute('SELECT mana_user_1 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
             } else if (opponentId === combate[0].id_user_2_uuid) {
               if (carta.efecto_secundario === 'reverse') {
                 console.log('Reverse8', cartaInfo[0].ataque)
@@ -1218,8 +1218,8 @@ io.on('connection', async (socket) => {
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, opponentId]
                 )
               }
-              mana = combate[0].mana_user_2 + cartaInfo[0].costo_mana
-              await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
+              await connection.execute('UPDATE combates SET mana_user_2 = mana_user_2 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
+              mana = await connection.execute('SELECT mana_user_2 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
             }
           }
           await connection.execute(
