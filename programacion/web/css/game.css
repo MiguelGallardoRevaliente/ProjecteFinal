@@ -292,6 +292,22 @@ header .config p {
 
 }
 
+#information .container button{
+    padding: 10px;
+    font-size: 15px;
+    background: var(--principal-red);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgb(95, 95, 95);
+    color: white;
+}
+
+#information .container button:hover{
+    background: #ff1b1b;
+}
+
+
 #information .container h1 {
     font-size: 2em;
     border-left: 20px solid #ffffff;
