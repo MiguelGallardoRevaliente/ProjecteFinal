@@ -340,21 +340,21 @@ button#leave-match:hover {
 
 .ataque-especial-button {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 6px;
+    left: 6px;
     background: linear-gradient(180deg, rgba(204, 174, 0, 1) 0%, rgba(233, 227, 12, 1) 25%, rgba(248, 255, 142, 1) 50%, rgba(255, 248, 0, 1) 100%);
     border: none;
     cursor: pointer;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .ataque-especial-button img {
-    width: 8px;
-    height: 8px;
+    width: 17px;
+    height: 17px;
 }
 .mana {
     position: absolute;
