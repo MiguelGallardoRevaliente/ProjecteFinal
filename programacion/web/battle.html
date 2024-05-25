@@ -1450,7 +1450,7 @@
                 }
                 
                 for (let i = 0; i < cardUser.length; i++) {
-                    cardUser.addEventListener('mouseover', () => {
+                    cardUser[i].addEventListener('mouseover', () => {
                         const informacionDiv = document.getElementsByClassName('informacion')[0]
                         informacionDiv.style.display = 'flex'
 
@@ -1489,7 +1489,7 @@
                         informacionDiv.appendChild(ataqueVidaInfo)
                     })
 
-                    cardUser.addEventListener('mouseout', () => {
+                    cardUser[i].addEventListener('mouseout', () => {
                         const informacionDiv = document.getElementsByClassName('informacion')[0]
                         informacionDiv.style.display = 'none'
                         const name = document.getElementsByClassName('name')[0]
