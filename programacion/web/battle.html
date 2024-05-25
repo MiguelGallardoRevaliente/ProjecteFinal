@@ -860,16 +860,6 @@
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
                         if (data.vida <= 0) {
-                            // console.log('Card muere attack', cardOpponent[i].id)
-                            // cardOpponent[i].classList.remove('card-muere')
-
-                            // setTimeout(() => {
-                            //     cardOpponent[i].classList.add('card-muere')
-                            // }, 10)
-
-                            // setTimeout(() => {
-                            //     cardOpponent[i].classList.remove('card-muere')
-                            // }, 900)
                             // cardOpponent[i].remove()
                         } else {
                             cardOpponent[i].classList.remove('card-atacado')
@@ -912,8 +902,6 @@
                 for (let i = cardUser.length - 1; i >= 0; i--) {
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
                         if (data.cardAttacked.vida <= 0) {
-                            cardUser[i].classList.add('card-muere')
-                            cardUser[i].classList.remove('card-muere')
                             cardUser[i].remove()
                         } else {
                             cardUser[i].classList.remove('card-atacado')
@@ -954,16 +942,6 @@
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                opponentCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    opponentCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    opponentCards[i].remove()
-                                }, 600)
-
                                 opponentCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
@@ -985,16 +963,6 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    userCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    userCards[i].remove()
-                                }, 600)
-
                                 userCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
@@ -1335,8 +1303,6 @@
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                opponentCards[i].classList.add('card-muere')
-                                opponentCards[i].classList.remove('card-muere')
                                 opponentCards[i].remove()
                             } else {
                                 if (data.estadistica === 'vida' && data.tipo === 'power-up') {
@@ -1377,8 +1343,6 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                userCards[i].classList.add('card-muere')
-                                userCards[i].classList.remove('card-muere')
                                 userCards[i].remove()
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
@@ -1426,8 +1390,6 @@
                         if (cardOpponent.length > 0) {
                             if (parseInt(cardOpponent[i].id) === card.id_carta) {
                                 if (card.vida <= 0) {
-                                    cardOpponent[i].classList.add('card-muere')
-                                    cardOpponent[i].classList.remove('card-muere')
                                     cardOpponent[i].remove()
                                 } else {
                                     ataqueVidaOpponent[i].textContent = card.ataque + '/' + card.vida
@@ -1480,8 +1442,6 @@
                             if (parseInt(cardUser[i].id) === card.id_carta) {
                                 console.log('if', card.vida)
                                 if (card.vida <= 0) {
-                                    cardUser[i].classList.add('card-muere')
-                                    cardUser[i].classList.remove('card-muere')
                                     cardUser[i].remove()
                                 } else {
                                     ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
