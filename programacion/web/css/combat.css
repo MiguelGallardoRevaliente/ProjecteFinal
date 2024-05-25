@@ -603,7 +603,7 @@ button#leave-match:hover{
 
 /* Estilos cuando la carta está protegida */
 .card.protected {
-    animation:borderPulse 3s linear infinite;
+    animation: borderPulse 3s linear infinite;
 }
 
 

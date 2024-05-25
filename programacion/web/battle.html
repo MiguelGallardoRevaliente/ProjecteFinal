@@ -1337,7 +1337,7 @@
 
                                 setTimeout(() => {
                                     opponentCards[i].remove()
-                                }, 900)
+                                }, 500)
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
@@ -1932,6 +1932,7 @@
                 localStorage.removeItem('recompensaLoser')
                 window.location.href = '/'
             } else if (data.username === localStorage.getItem('opponent')) {
+                alert('Your opponent left the match')
                 if (document.getElementsByClassName('recompensa-text')[0]) {
                     const rewardSplit = document.getElementsByClassName('recompensa-text')[0].textContent.split(' ')
                     console.log('Reward', rewardSplit[1])

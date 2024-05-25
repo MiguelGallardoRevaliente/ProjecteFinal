@@ -1815,7 +1815,11 @@ app.get('/getDecks', async (req, res) => {
             const cartaId = cartas[0].id
             const mazoCartaId = mazoCarta[0].id_mazo
 
-            if (!arrayCartasDeck.some(obj => obj.cards[0].id === cartaId && obj.mazoCarta === mazoCartaId && obj.ataques[0].id === ataques[0].id)) {
+            if (!arrayCartasDeck.some(obj =>
+              obj.cards && obj.cards[0] && obj.cards[0].id === cartaId &&
+              obj.mazoCarta === mazoCartaId &&
+              obj.ataques && obj.ataques[0] && obj.ataques[0].id === ataques[0].id
+            )) {
               const cartaObj = {
                 cards: cartas,
                 ataques,
@@ -1836,6 +1840,7 @@ app.get('/getDecks', async (req, res) => {
     return res.status(200).json(datos)
   } catch (err) {
     console.error(err)
+    return res.status(500).json({ error: 'Internal Server Error' })
   }
 })
 
