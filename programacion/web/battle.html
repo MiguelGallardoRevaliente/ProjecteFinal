@@ -816,19 +816,20 @@
                         userCardsRevive[i].remove()
                     }
                 }
-                const card = document.getElementsByClassName('card' + data.idCarta)[0]
-                card.classList.remove('card-no-mana') // Remover la clase primero para asegurar que se reinicie la animación
-
-                // Usar un timeout corto para forzar la re-renderización
-                setTimeout(() => {
-                    card.classList.add('card-no-mana')
-                }, 10) // 10ms es suficiente para la mayoría de los navegadores
-
-                // Remover la clase después de que la animación haya terminado
-                setTimeout(() => {
+                /* Fem que si no tenim mana per jugar la carta, aquesta faci una animació */
+                if (data.idCarta && document.getElementsByClassName('card' + data.idCarta)[0]) {
+                    const card = document.getElementsByClassName('card' + data.idCarta)[0]
                     card.classList.remove('card-no-mana')
-                }, 600) // Asegúrate de que el tiempo aquí sea igual a la duración de la animación
-                    }
+
+                    setTimeout(() => {
+                        card.classList.add('card-no-mana')
+                    }, 10) 
+
+                    setTimeout(() => {
+                        card.classList.remove('card-no-mana')
+                    }, 600) 
+                }
+            }
         })
 
         socket.on('not-your-turn', (data) => {
@@ -840,9 +841,33 @@
 
         socket.on('attacked', (data) => {
             if (data.opponent === localStorage.getItem('opponent')) {
+                const cardUser = document.getElementsByClassName('card-user')
+                for (let i = 0; i < cardUser.length; i++) {
+                    if (parseInt(cardUser[i].id) === data.cardAttacking.id_carta) {
+                        cardUser[i].classList.remove('card-atacando')
+
+                        setTimeout(() => {
+                            cardUser[i].classList.add('card-atacando')
+                        }, 10)
+
+                        setTimeout(() => {
+                            cardUser[i].classList.remove('card-atacando')
+                        }, 600)
+                    }
+                }
+
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = 0; i < cardOpponent.length; i++) {
                     if (parseInt(cardOpponent[i].id) === data.cardAttacked.id_carta) {
+                        cardOpponent[i].classList.remove('card-atacado')
+
+                        setTimeout(() => {
+                            cardOpponent[i].classList.add('card-atacado')
+                        }, 10)
+
+                        setTimeout(() => {
+                            cardOpponent[i].classList.remove('card-atacado')
+                        }, 600)
                         if (data.vida <= 0) {
                             cardOpponent[i].remove()
                         } else {
@@ -858,7 +883,24 @@
                         cardOpponent[i].style.cursor = 'default'
                     }
                 }
-            } else if (data.opponent === localStorage.getItem('username')) {                
+            } else if (data.opponent === localStorage.getItem('username')) { 
+                const cardUser = document.getElementsByClassName('card-user')
+                for (let i = 0; i < cardUser.length; i++) {
+                    if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
+                        cardUser[i].classList.remove('card-atacado')
+
+                        setTimeout(() => {
+                            cardUser[i].classList.add('card-atacado')
+                        }, 10)
+
+                        setTimeout(() => {
+                            cardUser[i].classList.remove('card-atacado')
+                        }, 600)
+                    }
+                    if (cardUser[i]) {
+                        cardUser[i].style.boxShadow = 'none'
+                    }
+                }               
                 console.log('Mana :)', data.mana)
                 const manaNumber = document.getElementById('mana-number')
                 manaNumber.textContent = data.mana
