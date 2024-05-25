@@ -190,17 +190,17 @@ io.on('connection', async (socket) => {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Air') {
+    } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Air' && cartaAttackingInfo[0].tipo === 'Poison') {
+    } else if (cartaAttackedInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Water') {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Forest') {
       vida = vida - 1
-    } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Air') {
+    } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
       vida = vida - 1
     } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
       vida = vida - 1
@@ -1272,17 +1272,17 @@ io.on('connection', async (socket) => {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Air') {
+      } else if (cartaAttackedInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Air' && cartaAttackingInfo[0].tipo === 'Poison') {
+      } else if (cartaAttackedInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Water') {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Forest') {
         vida = vida - 1
-      } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Air') {
+      } else if (cartaAttackedInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
         vida = vida - 1
       } else if (cartaAttackedInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
         vida = vida - 1
@@ -1658,17 +1658,17 @@ io.on('connection', async (socket) => {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Fire') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Air') {
+          } else if (cartaInfo[0].tipo === 'Earth' && cartaAttackingInfo[0].tipo === 'Wind') {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Forest' && cartaAttackingInfo[0].tipo === 'Earth') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Air' && cartaAttackingInfo[0].tipo === 'Poison') {
+          } else if (cartaInfo[0].tipo === 'Wind' && cartaAttackingInfo[0].tipo === 'Poison') {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Water') {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Poison' && cartaAttackingInfo[0].tipo === 'Forest') {
             vida = vida - 1
-          } else if (cartaInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Air') {
+          } else if (cartaInfo[0].tipo === 'Fire' && cartaAttackingInfo[0].tipo === 'Wind') {
             vida = vida - 1
           } else if (cartaInfo[0].tipo === 'Water' && cartaAttackingInfo[0].tipo === 'Earth') {
             vida = vida - 1
