@@ -484,6 +484,7 @@ button#leave-match:hover{
     }
 }
 
+/* puesta */
 .card-atacado {
     animation: atacado 0.4s;
     animation-delay: 0.2s;
@@ -506,6 +507,7 @@ button#leave-match:hover{
     }
 }
 
+/* puesta */
 .card-atacando{
     animation: atacando 0.4s;
 }
@@ -523,6 +525,7 @@ button#leave-match:hover{
     }
 }
 
+/* puesta */
 .card-atacando-oponente{
     animation: atacando-oponente 0.4s;
 }

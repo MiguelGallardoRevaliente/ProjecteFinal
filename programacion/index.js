@@ -476,40 +476,34 @@ io.on('connection', async (socket) => {
         [idCarta, user[0].id_uuid, combate[0].id_combate_uuid]
       )
 
-      if (!cartaCombate[0].efecto_secundario) {
-        if (ataque[0].estadistica === 'vida') {
-          let vida = cartaCombate[0].vida + ataque[0].cambio
-          if (vida > cartaInfo[0].vida) {
-            vida = cartaInfo[0].vida
-          }
-
-          console.log('Vida Subida', vida)
-
-          await connection.execute(
-            'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [vida, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
-
-          await connection.execute(
-            'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
-        } else if (ataque[0].estadistica === 'ataque') {
-          const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
-          await connection.execute(
-            'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
-
-          await connection.execute(
-            'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
+      if (ataque[0].estadistica === 'vida') {
+        let vida = cartaCombate[0].vida + ataque[0].cambio
+        if (vida > cartaInfo[0].vida) {
+          vida = cartaInfo[0].vida
         }
-      } else {
-        console.log('Ya tiene efecto')
-        io.emit('already-has-effect', { message: 'Already has effect', username })
-        return
+
+        console.log('Vida Subida', vida)
+
+        await connection.execute(
+          'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [vida, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+      } else if (ataque[0].estadistica === 'ataque') {
+        const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [ataqueNumber, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
+
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
       }
 
       const [opponentCards] = await connection.execute(
@@ -608,32 +602,31 @@ io.on('connection', async (socket) => {
         [idCarta, user[0].id_uuid, combate[0].id_combate_uuid]
       )
 
-      if (!cartaCombate[0].efecto_secundario) {
-        if (ataque[0].estadistica === 'vida') {
-          let vida = cartaCombate[0].vida + ataque[0].cambio
-          if (vida > cartaInfo[0].vida) {
-            vida = cartaInfo[0].vida
-          }
-          await connection.execute(
-            'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
-        } else if (ataque[0].estadistica === 'ataque') {
-          const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
-          await connection.execute(
-            'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-            [ataqueNumber, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
-          )
+      if (ataque[0].estadistica === 'vida') {
+        let vida = cartaCombate[0].vida + ataque[0].cambio
+        if (vida > cartaInfo[0].vida) {
+          vida = cartaInfo[0].vida
         }
-
         await connection.execute(
-          'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-          [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+          'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [vida, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
         )
-      } else {
-        io.emit('already-has-effect', { message: 'Already has effect', username })
-        return
+      } else if (ataque[0].estadistica === 'ataque') {
+        if (cartaCombate[0].efecto_secundario) {
+          io.emit('already-has-effect', { message: 'Already has effect', username })
+          return
+        }
+        const ataqueNumber = cartaCombate[0].ataque + ataque[0].cambio
+        await connection.execute(
+          'UPDATE cartas_combates SET ataque = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+          [ataqueNumber, tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+        )
       }
+
+      await connection.execute(
+        'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+        [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+      )
 
       const [opponentCards] = await connection.execute(
         'SELECT * FROM cartas_combates WHERE BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;',
@@ -647,7 +640,7 @@ io.on('connection', async (socket) => {
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-self', { opponent: username, username: opponent[0].user, opponentCards })
+      io.emit('special-attacked-self', { opponent: username, username: opponent[0].user, opponentCards, idCarta, estadistica: ataque[0].estadistica })
     }
 
     if (tipo === 'inmune') {
@@ -1250,7 +1243,7 @@ io.on('connection', async (socket) => {
       )
 
       io.emit('ended-turn', { username, cartas })
-      io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+      io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
     }
 
     if (tipoSplited[1] === 'area') {
@@ -1260,24 +1253,19 @@ io.on('connection', async (socket) => {
         for (const carta of cartasAliadas) {
           const [cartaInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
           if (ataque[0].estadistica === 'vida') {
-            if (!carta.efecto_secundario) {
-              let vida = carta.vida + ataque[0].cambio
-              if (vida > cartaInfo[0].vida) {
-                vida = cartaInfo[0].vida
-              }
-              await connection.execute(
-                'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-                [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
-              )
-
-              await connection.execute(
-                'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
-                [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
-              )
-            } else {
-              io.emit('already-has-effect', { message: 'Already has effect', username })
-              return
+            let vida = carta.vida + ataque[0].cambio
+            if (vida > cartaInfo[0].vida) {
+              vida = cartaInfo[0].vida
             }
+            await connection.execute(
+              'UPDATE cartas_combates SET vida = ?, efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+              [vida, tipoSplited[0], ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, carta.id_carta, combate[0].id_combate_uuid, user[0].id_uuid]
+            )
+
+            await connection.execute(
+              'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
+              [idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
+            )
           } else if (ataque[0].estadistica === 'ataque') {
             if (!carta.efecto_secundario) {
               const ataqueNumber = carta.ataque + ataque[0].cambio
@@ -1303,7 +1291,7 @@ io.on('connection', async (socket) => {
         await connection.execute('UPDATE combates SET turno = UUID_TO_BIN(?) WHERE BIN_TO_UUID(id_combate) = ?', [opponentId, combate[0].id_combate_uuid])
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana })
+        io.emit('special-attacked-area', { opponent: username, username: opponent[0].user, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
       }
 
       if (tipoSplited[0] === 'power-down') {
@@ -1337,7 +1325,7 @@ io.on('connection', async (socket) => {
         )
 
         io.emit('ended-turn', { username, cartas })
-        io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+        io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
       }
 
       if (tipoSplited[0] === 'inmovil') {
@@ -1376,7 +1364,7 @@ io.on('connection', async (socket) => {
           }
 
           io.emit('ended-turn', { username, cartas, tipo: tipoSplited[0] })
-          io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, ataques: ataquesOpponent })
+          io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, ataques: ataquesOpponent, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
         }
       }
 
@@ -1427,7 +1415,7 @@ io.on('connection', async (socket) => {
           }
 
           io.emit('ended-turn', { username, cartas })
-          io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana })
+          io.emit('special-attacked-area', { opponent: opponent[0].user, username, opponentCards, mana, estadistica: ataque[0].estadistica, tipo: tipoSplited[0] })
         }
       }
     }

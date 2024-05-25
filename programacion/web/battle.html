@@ -984,6 +984,17 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                if (card.id_carta === data.idCarta && data.estadistica === 'vida') {
+                                    opponentCards[i].classList.remove('card-heal')
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.add('card-heal')
+                                    }, 10)
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.remove('card-heal')
+                                    }, 600)
+                                }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
@@ -1004,6 +1015,17 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                if (card.id_carta === data.idCarta && data.estadistica === 'vida') {
+                                    userCards[i].classList.remove('card-heal')
+
+                                    setTimeout(() => {
+                                        userCards[i].classList.add('card-heal')
+                                    }, 10)
+
+                                    setTimeout(() => {
+                                        userCards[i].classList.remove('card-heal')
+                                    }, 600)
+                                }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
@@ -1272,6 +1294,17 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                if (data.estadistica === 'vida' && tipo === 'power-up') {
+                                    opponentCards[i].classList.remove('card-heal')
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.add('card-heal')
+                                    }, 10)
+
+                                    setTimeout(() => {
+                                        opponentCards[i].classList.remove('card-heal')
+                                    }, 600)
+                                }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-opponent')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
@@ -1292,6 +1325,17 @@
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
+                                if (data.estadistica === 'vida' && tipo === 'power-up') {
+                                    userCards[i].classList.remove('card-heal')
+
+                                    setTimeout(() => {
+                                        userCards[i].classList.add('card-heal')
+                                    }, 10)
+
+                                    setTimeout(() => {
+                                        userCards[i].classList.remove('card-heal')
+                                    }, 600)
+                                }
                                 const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
                                 const ataqueVidaText = card.ataque + '/' + card.vida
                                 ataqueVida.textContent = ataqueVidaText
