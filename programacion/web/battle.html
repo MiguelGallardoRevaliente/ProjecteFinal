@@ -911,15 +911,25 @@
                 const cardUser = document.getElementsByClassName('card-user')
                 for (let i = cardUser.length - 1; i >= 0; i--) {
                     if (parseInt(cardUser[i].id) === data.cardAttacked.id_carta) {
-                        cardUser[i].classList.remove('card-atacado')
-
-                        setTimeout(() => {
-                            cardUser[i].classList.add('card-atacado')
-                        }, 10)
-
-                        setTimeout(() => {
+                        if (data.cardAttacked.vida <= 0) {
+                            cardUser[i].classList.add('card-muere')
+                            cardUser[i].classList.remove('card-muere')
+                            cardUser[i].remove()
+                        } else {
                             cardUser[i].classList.remove('card-atacado')
-                        }, 600)
+
+                            setTimeout(() => {
+                                cardUser[i].classList.add('card-atacado')
+                            }, 10)
+
+                            setTimeout(() => {
+                                cardUser[i].classList.remove('card-atacado')
+                            }, 600)
+                            const ataqueVida = document.getElementsByClassName('ataque-vida-user')[i]
+                            let ataqueVidaText = ataqueVida.textContent.split('/')
+                            ataqueVidaText = ataqueVidaText[0] + '/' + data.cardAttacked.vida
+                            ataqueVida.textContent = ataqueVidaText
+                        }
                     }
                     if (cardUser[i]) {
                         cardUser[i].style.boxShadow = 'none'
