@@ -1324,7 +1324,23 @@
                 for (let i = 0; i < opponentCards.length; i++) {
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
-                            if (card.vida > 0) {
+                            if (card.vida <= 0) {
+                                opponentCards[i].classList.remove('card-muere')
+
+                                setTimeout(() => {
+                                    opponentCards[i].classList.add('card-muere')
+                                }, 10)
+
+                                setTimeout(() => {
+                                    opponentCards[i].classList.remove('card-muere')
+                                }, 900)
+
+                                setTimeout(() => {
+                                    opponentCards[i].remove()
+                                }, 900)
+                                const manaNumber = document.getElementById('mana-number')
+                                manaNumber.textContent = data.mana
+                            } else {
                                 if (data.estadistica === 'vida' && data.tipo === 'power-up') {
                                     opponentCards[i].classList.remove('card-heal')
 
@@ -1363,6 +1379,20 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
+                                userCards[i].classList.remove('card-muere')
+
+                                setTimeout(() => {
+                                    userCards[i].classList.add('card-muere')
+                                }, 10)
+
+                                setTimeout(() => {
+                                    userCards[i].classList.remove('card-muere')
+                                }, 900)
+
+                                setTimeout(() => {
+                                    userCards[i].remove()
+                                }, 900)
+                                
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
