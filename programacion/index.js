@@ -124,7 +124,7 @@ io.on('connection', async (socket) => {
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       mana = combate[0].mana_user_2 - carta[0].costo_mana
       if (mana < 0) {
-        io.emit('not-enough-mana', { message: 'Not enough mana', username })
+        io.emit('not-enough-mana', { message: 'Not enough mana', username, idCarta })
         return
       } else {
         await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [mana, combate[0].id_combate_uuid])
