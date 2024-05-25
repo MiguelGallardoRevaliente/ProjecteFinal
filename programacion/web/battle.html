@@ -1325,22 +1325,7 @@
                     data.opponentCards.forEach(card => {
                         if (parseInt(opponentCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                console.log('Carta' + card.id_carta + ', ' + card.vida)
-                                opponentCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    opponentCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    opponentCards[i].classList.remove('card-muere')
-                                }, 900)
-
-                                setTimeout(() => {
-                                    opponentCards[i].remove()
-                                }, 900)
-                                const manaNumber = document.getElementById('mana-number')
-                                manaNumber.textContent = data.mana
+                                console.log('Mueren')
                             } else {
                                 if (data.estadistica === 'vida' && data.tipo === 'power-up') {
                                     opponentCards[i].classList.remove('card-heal')
@@ -1380,21 +1365,6 @@
                     data.opponentCards.forEach((card, index) => {
                         if (parseInt(userCards[i].id) === card.id_carta) {
                             if (card.vida <= 0) {
-                                console.log('Carta' + card.id_carta + ', ' + card.vida)
-                                userCards[i].classList.remove('card-muere')
-
-                                setTimeout(() => {
-                                    userCards[i].classList.add('card-muere')
-                                }, 10)
-
-                                setTimeout(() => {
-                                    userCards[i].classList.remove('card-muere')
-                                }, 900)
-
-                                setTimeout(() => {
-                                    userCards[i].remove()
-                                }, 900)
-                                
                                 const manaNumber = document.getElementById('mana-number')
                                 manaNumber.textContent = data.mana
                             } else {
@@ -1520,7 +1490,7 @@
 
                                     setTimeout(() => {
                                         cardUser[i].remove()
-                                        console.log('Card user', cardUser)
+                                        console.log('Card user :)', cardUser)
                                     }, 900)
                                 } else {
                                     ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
