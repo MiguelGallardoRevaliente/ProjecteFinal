@@ -845,15 +845,15 @@ button#leave-match:hover {
     }
 
     .informacion .name{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .informacion .ataque-especial-info{
-        font-size: 0.8rem;
+        font-size: 0.5rem;
     }
 
     .informacion .ataque-vida-info{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .ataque-especial-button{
