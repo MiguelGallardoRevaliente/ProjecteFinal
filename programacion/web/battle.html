@@ -1421,7 +1421,7 @@
             }
         })
 
-        socket.on('ended-turn', async (data) => {
+        socket.on('ended-turn', (data) => {
             console.log('Ended Turn', data)
             if (data.username === localStorage.getItem('username')) {
                 cardClicked = []     
@@ -1516,6 +1516,7 @@
 
                                         setTimeout(() => {
                                             cardUser[i].remove()
+                                            cardUser.splice(i, 1)
                                         }, 900)
                                     } else {
                                         ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
@@ -1526,7 +1527,8 @@
                     }
                 }
 
-                const cardUser2 = await document.getElementsByClassName('card-user')
+                
+                const cardUser2 = document.getElementsByClassName('card-user')
                 console.log('Card user 2', cardUser2)
                 console.log('Card User', cardUser)
                 for (let i = 0; i < cardUser2.length; i++) {
