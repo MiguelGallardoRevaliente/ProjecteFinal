@@ -134,9 +134,11 @@
                                 ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-opponent'
                                 if (card.cartaCombate.efecto_secundario === 'power-down') {
-                                    ataqueSpan.style.color = 'red'
+                                    ataqueSpan.style.color = '#dc4a01'
                                 } else if (card.cartaCombate.efecto_secundario === 'power-up') {
-                                    ataqueSpan.style.color = 'green'
+                                    ataqueSpan.style.color = '#007c85'
+                                } else if (card.cartaCombate.efecto_secundario === 'reverse') {}
+                                    ataqueVida.style.color = '#007d43'
                                 } else {
                                     ataqueSpan.style.color = 'black'
                                 }
