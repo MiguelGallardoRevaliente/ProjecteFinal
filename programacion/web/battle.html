@@ -1504,9 +1504,19 @@
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (card.vida <= 0) {
                                         console.log('Muere end turn', cardUser[i].id)
-                                        cardUser[i].classList.add('card-muere')
+                                        cardUser[i].classList.remove('card-muere')
 
-                                        cardUser[i].remove()
+                                        setTimeout(() => {
+                                            cardUser[i].classList.add('card-muere')
+                                        }, 10)
+
+                                        setTimeout(() => {
+                                            cardUser[i].classList.remove('card-muere')
+                                        }, 900)
+
+                                        setTimeout(() => {
+                                            cardUser[i].remove()
+                                        }, 900)
                                     } else {
                                         ataqueVidaUser[i].textContent = card.ataque + '/' + card.vida
                                     }
