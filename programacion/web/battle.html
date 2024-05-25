@@ -1497,59 +1497,61 @@
                 }
                 
                 for (let i = 0; i < cardUser.length; i++) {
-                    cardUser[i].addEventListener('mouseover', () => {
-                        const informacionDiv = document.getElementsByClassName('informacion')[0]
-                        informacionDiv.style.display = 'flex'
+                    if (data.cartas.cartasCombate[i].vida <= 0){
+                        cardUser[i].addEventListener('mouseover', () => {
+                            const informacionDiv = document.getElementsByClassName('informacion')[0]
+                            informacionDiv.style.display = 'flex'
 
-                        if (document.getElementsByClassName('name')[0]) {
-                            const name = document.getElementsByClassName('name')[0]
-                            name.remove()
-                        }
-
-                        const nombreCarta = document.createElement('p')
-                        nombreCarta.textContent = data.cartas.cartasInfo[i].nombre
-                        nombreCarta.className = 'name'
-
-                        informacionDiv.appendChild(nombreCarta)
-
-                        if (data.cartas.ataques[i]) {
-                            if (document.getElementsByClassName('ataque-especial-info')[0]) {
-                                const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
-                                ataqueEspecialInfo.remove()
+                            if (document.getElementsByClassName('name')[0]) {
+                                const name = document.getElementsByClassName('name')[0]
+                                name.remove()
                             }
-                            const ataqueEspecialInfo = document.createElement('p')
-                            ataqueEspecialInfo.textContent = data.cartas.ataques[i].nombre + ' - ' + data.cartas.ataques[i].descripcion
-                            ataqueEspecialInfo.className = 'ataque-especial-info'
 
-                            informacionDiv.appendChild(ataqueEspecialInfo)
-                        }
+                            const nombreCarta = document.createElement('p')
+                            nombreCarta.textContent = data.cartas.cartasInfo[i].nombre
+                            nombreCarta.className = 'name'
 
-                        if (document.getElementsByClassName('ataque-vida-info')[0]) {
-                            const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
-                            ataqueVidaInfo.remove()
-                        }
+                            informacionDiv.appendChild(nombreCarta)
 
-                        const ataqueVidaInfo = document.createElement('p')
-                        ataqueVidaInfo.textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
-                        ataqueVidaInfo.className = 'ataque-vida-info'
+                            if (data.cartas.ataques[i]) {
+                                if (document.getElementsByClassName('ataque-especial-info')[0]) {
+                                    const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                                    ataqueEspecialInfo.remove()
+                                }
+                                const ataqueEspecialInfo = document.createElement('p')
+                                ataqueEspecialInfo.textContent = data.cartas.ataques[i].nombre + ' - ' + data.cartas.ataques[i].descripcion
+                                ataqueEspecialInfo.className = 'ataque-especial-info'
 
-                        informacionDiv.appendChild(ataqueVidaInfo)
-                    })
+                                informacionDiv.appendChild(ataqueEspecialInfo)
+                            }
 
-                    cardUser[i].addEventListener('mouseout', () => {
-                        const informacionDiv = document.getElementsByClassName('informacion')[0]
-                        informacionDiv.style.display = 'none'
-                        
-                        // const name = document.getElementsByClassName('name')[0]
-                        // console.log('Name', name)
-                        // if (data.cartas.ataques[i]) {
-                        //     const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
-                        //     ataqueEspecialInfo.remove()
-                        // }
-                        // const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
-                        // name.remove()
-                        // ataqueVidaInfo.remove()
-                    })
+                            if (document.getElementsByClassName('ataque-vida-info')[0]) {
+                                const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                                ataqueVidaInfo.remove()
+                            }
+
+                            const ataqueVidaInfo = document.createElement('p')
+                            ataqueVidaInfo.textContent = data.cartas.cartasCombate[i].ataque + '/' + data.cartas.cartasCombate[i].vida
+                            ataqueVidaInfo.className = 'ataque-vida-info'
+
+                            informacionDiv.appendChild(ataqueVidaInfo)
+                        })
+
+                        cardUser[i].addEventListener('mouseout', () => {
+                            const informacionDiv = document.getElementsByClassName('informacion')[0]
+                            informacionDiv.style.display = 'none'
+                            
+                            // const name = document.getElementsByClassName('name')[0]
+                            // console.log('Name', name)
+                            // if (data.cartas.ataques[i]) {
+                            //     const ataqueEspecialInfo = document.getElementsByClassName('ataque-especial-info')[0]
+                            //     ataqueEspecialInfo.remove()
+                            // }
+                            // const ataqueVidaInfo = document.getElementsByClassName('ataque-vida-info')[0]
+                            // name.remove()
+                            // ataqueVidaInfo.remove()
+                        })
+                    }
 
                     const buttonAtaque = document.createElement('button')
                     buttonAtaque.className = 'attack'
