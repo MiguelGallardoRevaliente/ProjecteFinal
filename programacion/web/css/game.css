@@ -922,6 +922,7 @@ form.form_compra_carta{
     height: 420px;
     position: relative;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 #cartas-no-mazo {
