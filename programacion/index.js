@@ -45,7 +45,6 @@ io.on('connection', async (socket) => {
     const [mazo] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_mazo = ?', [mazoSeleccionado[0].id])
 
     if (mazo.length !== 8) {
-      console.log('No se puede buscar partida sin un mazo completo')
       if (user[0].searching === 1) {
         await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
       }
@@ -55,12 +54,9 @@ io.on('connection', async (socket) => {
 
     if (user[0].searching === 1) {
       await connection.execute('UPDATE users SET searching = 0 WHERE user = ?', [data.username])
-      console.log('Búsqueda de partida cancelada')
       io.emit('battle-cancelled', { username: data.username })
       return
     }
-
-    console.log('Se recibió una solicitud de búsqueda de partida')
 
     await connection.execute('UPDATE users SET searching = 1 WHERE user = ?', [data.username])
 
@@ -147,7 +143,6 @@ io.on('connection', async (socket) => {
   })
 
   socket.on('attack', async (data) => {
-    console.log('Ataque')
     const cardAttackingId = data.cardAttacking
     const cardAttackedId = data.cardAttacked
     const username = data.username
@@ -167,21 +162,17 @@ io.on('connection', async (socket) => {
 
     const [cartaAttackedInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackedId])
     const [cartaAttacked] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
-    // console.log(cartaAttacked)
 
     if (cartaAttacked[0].efecto_secundario && cartaAttacked[0].efecto_secundario === 'inmune') {
-      console.log('Carta inmune')
       io.emit('immune-card', { message: 'Card is immune', username })
       return
     }
 
     const [cartaAttackingInfo] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [cardAttackingId])
     const [cartaAttacking] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?;', [cardAttackingId, user[0].id_uuid, combate[0].id_combate_uuid])
-    // console.log(cartaAttacking)
 
     let vida = cartaAttacked[0].vida - cartaAttacking[0].ataque
     /* Compatibilidad de tipos */
-    console.log('Tipos', cartaAttackedInfo[0].tipo, cartaAttackingInfo[0].tipo)
     if (cartaAttackingInfo[0].tipo === 'Light' && cartaAttackedInfo[0].tipo === 'Dark') {
       vida = vida - 1
     } else if (cartaAttackingInfo[0].tipo === 'Dark' && cartaAttackedInfo[0].tipo === 'Light') {
@@ -205,8 +196,6 @@ io.on('connection', async (socket) => {
     } else if (cartaAttackingInfo[0].tipo === 'Water' && cartaAttackedInfo[0].tipo === 'Rock') {
       vida = vida - 1
     }
-    // console.log(cartaAttacked[0].vida, cartaAttacking[0].ataque)
-    console.log('Vida', vida)
     if (vida <= 0) {
       vida = 0
     }
@@ -217,29 +206,24 @@ io.on('connection', async (socket) => {
       /* Si muere le sumamos el mana al rival */
       if (vida === 0) {
         if (cartaAttacked[0].efecto_secundario === 'reverse') {
-          console.log('Carta atacada con reverse', cartaAttackedInfo[0])
-          console.log('Reverse1', cartaAttackedInfo[0].ataque)
           await connection.execute(
             'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
             [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
           )
         }
 
-        console.log('Costo mana1', cartaAttackedInfo[0].costo_mana)
         await connection.execute('UPDATE combates SET mana_user_2 = mana_user_2 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaAttackedInfo[0].costo_mana, combate[0].id_combate_uuid])
       }
     } else if (user[0].id_uuid === combate[0].id_user_2_uuid) {
       await connection.execute('UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;', [vida, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid])
       if (vida === 0) {
         if (cartaAttacked[0].efecto_secundario === 'reverse') {
-          console.log('Reverse2', cartaAttackedInfo[0].ataque)
           await connection.execute(
             'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
             [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
           )
         }
 
-        console.log('Costo mana2', cartaAttackedInfo[0].costo_mana)
         await connection.execute('UPDATE combates SET mana_user_1 = mana_user_1 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaAttackedInfo[0].costo_mana, combate[0].id_combate_uuid])
       }
     }
@@ -268,14 +252,12 @@ io.on('connection', async (socket) => {
             if (vida <= 0) {
               vida = 0
               if (cartaAttacked[0].efecto_secundario === 'reverse') {
-                console.log('Reverse3', cartaAttackedInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
                 )
               }
 
-              console.log('Mana', cartaInfo[0].costo_mana)
               await connection.execute('UPDATE combates SET mana_user_1 = mana_user_1 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
             }
 
@@ -296,14 +278,12 @@ io.on('connection', async (socket) => {
             if (vida < 0) {
               vida = 0
               if (cartaAttacked[0].efecto_secundario === 'reverse') {
-                console.log('Reverse4', cartaAttackedInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
                 )
               }
 
-              console.log('Mana', cartaInfo[0].costo_mana)
               await connection.execute('UPDATE combates SET mana_user_1 = mana_user_1 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
             }
 
@@ -344,13 +324,12 @@ io.on('connection', async (socket) => {
               if (vida < 0) {
                 vida = 0
                 if (cartaAttacked[0].efecto_secundario === 'reverse') {
-                  console.log('Reverse5', cartaAttackedInfo[0].ataque)
                   await connection.execute(
                     'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                     [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
                   )
                 }
-                console.log('Mana', cartaInfo[0].costo_mana)
+
                 await connection.execute('UPDATE combates SET mana_user_2 = mana_user_2 + ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
               }
 
@@ -368,7 +347,6 @@ io.on('connection', async (socket) => {
         } else if (carta.duracion_efecto && carta.duracion_efecto > 1) {
           // Efecto sigue activo
           if (carta.efecto_secundario === 'corrosivo') {
-            console.log('Corrosivo')
             let vida = carta.vida - carta.cambio_estadistica
             if (vida < 0) {
               vida = 0
@@ -378,7 +356,7 @@ io.on('connection', async (socket) => {
                   [cartaAttackedInfo[0].ataque, cardAttackedId, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
                 )
               }
-              console.log('Mana', cartaInfo[0].costo_mana)
+
               await connection.execute('UPDATE combates SET mana_user_2 = ? WHERE BIN_TO_UUID(id_combate) = ?', [cartaInfo[0].costo_mana, combate[0].id_combate_uuid])
             }
 
@@ -386,7 +364,6 @@ io.on('connection', async (socket) => {
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1, vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
               [vida, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
             )
-            console.log('Corrosivo2')
           } else {
             await connection.execute(
               'UPDATE cartas_combates SET duracion_efecto = duracion_efecto - 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?',
@@ -405,8 +382,6 @@ io.on('connection', async (socket) => {
       const [manaInfo] = await connection.execute('SELECT mana_user_1 FROM combates WHERE BIN_TO_UUID(id_combate) = ?', [combate[0].id_combate_uuid])
       mana = manaInfo[0].mana_user_1
     }
-
-    console.log('Mana final', mana)
 
     const [cardAttackedUpdated] = await connection.execute('SELECT * FROM cartas_combates WHERE id_carta = ? AND BIN_TO_UUID(id_user) = ? AND BIN_TO_UUID(id_combate) = ?', [cardAttackedId, opponentId, combate[0].id_combate_uuid])
 
@@ -434,7 +409,6 @@ io.on('connection', async (socket) => {
 
     if (cartasCombate.length === 8) {
       const allOpponentCardsHaveZeroVida = cartasCombate.every(carta => carta.vida === 0)
-      console.log('Game Over 1', allOpponentCardsHaveZeroVida)
 
       if (allOpponentCardsHaveZeroVida) {
         const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
@@ -509,8 +483,6 @@ io.on('connection', async (socket) => {
           vida = cartaInfo[0].vida
         }
 
-        console.log('Vida Subida', vida)
-
         await connection.execute(
           'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
           [vida, idCarta, combate[0].id_combate_uuid, user[0].id_uuid]
@@ -564,7 +536,6 @@ io.on('connection', async (socket) => {
           [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
         )
       } else {
-        console.log('Ya tiene efecto')
         io.emit('already-has-effect', { message: 'Already has effect', username })
         return
       }
@@ -1047,13 +1018,10 @@ io.on('connection', async (socket) => {
       )
       if (cartaCombate[0].vida === 0) {
         const mana = manaUser - cartaInfo[0].costo_mana
-        console.log(manaUser, cartaInfo[0].costo_mana)
         if (mana < 0) {
           io.emit('not-enough-mana', { message: 'Not enough mana', username })
           return
         }
-
-        console.log('Mana', mana)
 
         await connection.execute(
           'UPDATE cartas_combates SET vida = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
@@ -1314,8 +1282,6 @@ io.on('connection', async (socket) => {
         }
       }
 
-      console.log(mana)
-
       await connection.execute(
         'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
         [idCartaAttacking, combate[0].id_combate_uuid, user[0].id_uuid]
@@ -1330,7 +1296,6 @@ io.on('connection', async (socket) => {
 
       if (opponentCards.length === 8) {
         const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
-        console.log('Game Over 2', allOpponentCardsHaveZeroVida)
         if (allOpponentCardsHaveZeroVida) {
           const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
           const recompensaLoser = Math.floor(Math.random() * (10 - 1 + 1)) + 1
@@ -1434,7 +1399,6 @@ io.on('connection', async (socket) => {
           'UPDATE cartas_combates SET efecto_secundario = ?, duracion_efecto = ?, estadistica_efecto = ?, cambio_estadistica = ? WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
           [tipo, ataque[0].duracion, ataque[0].estadistica, ataque[0].cambio, idCartaAttacked, combate[0].id_combate_uuid, opponentId]
         )
-        console.log('Carta Attacked', idCartaAttacked)
 
         await connection.execute(
           'UPDATE cartas_combates SET ataque_especial = 1 WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
@@ -1582,7 +1546,6 @@ io.on('connection', async (socket) => {
 
     if (opponentCards.length === 8) {
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
-      console.log('Game Over 3', allOpponentCardsHaveZeroVida)
 
       if (allOpponentCardsHaveZeroVida) {
         const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
@@ -1677,7 +1640,6 @@ io.on('connection', async (socket) => {
             vida = 0
             if (opponentId === combate[0].id_user_1_uuid) {
               if (carta.efecto_secundario === 'reverse') {
-                console.log('Reverse7', cartaInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, opponentId]
@@ -1688,7 +1650,6 @@ io.on('connection', async (socket) => {
               mana = manaUser1[0].mana_user_1
             } else if (opponentId === combate[0].id_user_2_uuid) {
               if (carta.efecto_secundario === 'reverse') {
-                console.log('Reverse8', cartaInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, opponentId]
@@ -2002,7 +1963,6 @@ io.on('connection', async (socket) => {
 
     if (opponentCards.length === 8) {
       const allOpponentCardsHaveZeroVida = opponentCards.every(carta => carta.vida === 0)
-      console.log('Game Over 3', allOpponentCardsHaveZeroVida)
 
       if (allOpponentCardsHaveZeroVida) {
         const recompensaWinner = Math.floor(Math.random() * (100 - 50 + 1)) + 50
@@ -2045,7 +2005,6 @@ io.on('connection', async (socket) => {
             if (vida < 0) {
               vida = 0
               if (cartaInfo.efecto_secundario === 'reverse') {
-                console.log('Reverse9', cartaInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
@@ -2069,7 +2028,6 @@ io.on('connection', async (socket) => {
             if (vida < 0) {
               vida = 0
               if (cartaInfo.efecto_secundario === 'reverse') {
-                console.log('Reverse11', cartaInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_1_uuid]
@@ -2112,7 +2070,6 @@ io.on('connection', async (socket) => {
               if (vida < 0) {
                 vida = 0
                 if (cartaInfo.efecto_secundario === 'reverse') {
-                  console.log('Reverse12', cartaInfo[0].ataque)
                   await connection.execute(
                     'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                     [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
@@ -2137,7 +2094,6 @@ io.on('connection', async (socket) => {
             if (vida < 0) {
               vida = 0
               if (cartaInfo.efecto_secundario === 'reverse') {
-                console.log('Reverse13', cartaInfo[0].ataque)
                 await connection.execute(
                   'UPDATE cartas_combates SET ataque = ?, efecto_secundario = NULL, duracion_efecto = NULL WHERE id_carta = ? AND BIN_TO_UUID(id_combate) = ? AND BIN_TO_UUID(id_user) = ?;',
                   [cartaInfo[0].ataque, carta.id_carta, combate[0].id_combate_uuid, combate[0].id_user_2_uuid]
@@ -2761,7 +2717,6 @@ app.post('/login', async (req, res) => {
     }
     const firstLog = rows[0].first_log
     if (rows.length > 0) {
-      console.log('Autenticación exitosa')
       return res.status(200).json({ message: 'Credenciales correctas', isFirstLog: firstLog, id: rows[0].id })
     } else {
       return res.status(200).json({ message: 'Credenciales incorrectas' })
@@ -2878,7 +2833,6 @@ app.post('/guardarCarta', async (req, res) => {
     const idCarta = req.body.idCarta
     const idCartaMazo = req.body.idCartaMazo
     const mazoActual = req.body.mazoActual
-    console.log('Mazo', idCarta, idCartaMazo, mazoActual)
 
     const [cartaExiste] = await connection.execute(
       'SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?', [idCarta, mazoActual]

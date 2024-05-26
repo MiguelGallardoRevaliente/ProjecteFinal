@@ -75,7 +75,6 @@ function mostrarShopChests () {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       data.forEach(chest => {
         const chestDiv = document.createElement('div')
         chestDiv.className = 'chest'
@@ -130,7 +129,6 @@ function salirResultadoSobre () {
 const setProfilePicture = (event) => {
   const userFoto = document.getElementById('userFoto')
   userFoto.src = event.target.src
-  console.log(event.target.src)
   const idUser = localStorage.getItem('id')
   document.getElementById('changeFoto').style.display = 'none'
   fetch('/changeProfilePicture', {
@@ -141,7 +139,6 @@ const setProfilePicture = (event) => {
     body: JSON.stringify({ profilePicture: event.target.src, id: idUser })
   })
     .then(response => response.json())
-    .then(data => console.log(data))
 }
 
 /* Funcion para obtener todas las cartas de los mazos del usuario */
@@ -196,7 +193,6 @@ function cerrarCartasNoMazo () {
 
 /* Funcion para guarda una carta en el mazo */
 function guardarCarta (idCarta, mazoActual, idCartaMazo) {
-  console.log(idCarta, mazoActual, idCartaMazo)
   fetch('/guardarCarta', {
     method: 'POST',
     headers: {
@@ -206,7 +202,6 @@ function guardarCarta (idCarta, mazoActual, idCartaMazo) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       window.location.reload()
     })
 }
@@ -472,7 +467,6 @@ function comprarChest (precio, cantidad) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       if (data.message === 'Not enough gold') {
         alert('Not enough gold')
       } else {
