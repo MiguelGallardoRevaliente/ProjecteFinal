@@ -2380,37 +2380,40 @@ app.get('/getDecks', async (req, res) => {
   try {
     const arrayCartasDeck = []
     const id = req.query.id
-    const [mazoActual] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?;', [id])
-    const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ?;', [id])
+
+    const [mazoActual] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
+    const [decks] = await connection.execute('SELECT * FROM mazos WHERE BIN_TO_UUID(id_user) = ?', [id])
     const mazoCartasArray = []
+
     for (const deck of decks) {
-      const [mazoCartas2] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?;', [deck.id])
-      mazoCartasArray.push(mazoCartas2)
+      const [mazoCartas2] = await connection.execute('SELECT id_carta FROM mazo_cartas WHERE id_mazo = ?', [deck.id])
+      mazoCartasArray.push({ deckId: deck.id, cartas: mazoCartas2 })
     }
 
-    for (const mazoCartas of mazoCartasArray) {
-      for (const deck of decks) {
-        for (const carta of mazoCartas) {
-          const [cartas] = await connection.execute('SELECT * FROM cartas WHERE id = ?;', [carta.id_carta])
-          const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?;', [carta.id_carta, deck.id])
+    for (const { deckId, cartas } of mazoCartasArray) {
+      for (const carta of cartas) {
+        const [cartasData] = await connection.execute('SELECT * FROM cartas WHERE id = ?', [carta.id_carta])
+        const [mazoCarta] = await connection.execute('SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?', [carta.id_carta, deckId])
 
-          if (mazoCarta.length > 0) {
-            const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?;', [cartas[0].id_ataque])
-            const cartaId = cartas[0].id
-            const mazoCartaId = mazoCarta[0].id_mazo
+        if (mazoCarta.length > 0) {
+          const [ataques] = await connection.execute('SELECT * FROM ataques WHERE id = ?', [cartasData[0].id_ataque])
+          const cartaId = cartasData[0].id
+          const mazoCartaId = mazoCarta[0].id_mazo
 
-            if (!arrayCartasDeck.some(obj =>
-              obj.cards && obj.cards[0] && obj.cards[0].id === cartaId &&
-              obj.mazoCarta === mazoCartaId &&
-              obj.ataques && obj.ataques[0] && obj.ataques[0].id === ataques[0].id
-            )) {
-              const cartaObj = {
-                cards: cartas,
-                ataques,
-                mazoCarta: mazoCartaId
-              }
-              arrayCartasDeck.push(cartaObj)
+          // Verificación de duplicados
+          const isDuplicate = arrayCartasDeck.some(obj =>
+            obj.cards && obj.cards[0] && obj.cards[0].id === cartaId &&
+            obj.mazoCarta === mazoCartaId &&
+            obj.ataques && obj.ataques[0] && obj.ataques[0].id === ataques[0].id
+          )
+
+          if (!isDuplicate) {
+            const cartaObj = {
+              cards: cartasData,
+              ataques,
+              mazoCarta: mazoCartaId
             }
+            arrayCartasDeck.push(cartaObj)
           }
         }
       }
@@ -2421,6 +2424,7 @@ app.get('/getDecks', async (req, res) => {
       arrayCartasDeck,
       mazoActual: mazoActual[0].mazo_seleccionado
     }
+
     return res.status(200).json(datos)
   } catch (err) {
     console.error(err)
