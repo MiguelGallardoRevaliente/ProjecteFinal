@@ -2871,6 +2871,7 @@ app.post('/guardarCarta', async (req, res) => {
         await connection.execute(
           'UPDATE mazo_cartas SET id_carta = ? WHERE id_carta = ? AND id_mazo = ?', [idCarta, idCartaMazo, mazoActual]
         )
+        console.log('UPDATE', idCarta, idCartaMazo, mazoActual)
       }
     }
 
