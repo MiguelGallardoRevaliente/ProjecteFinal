@@ -29,6 +29,7 @@
                 })
         }
 
+        /* Comprueba si la partida ya ha acabado */
         if (localStorage.getItem('winner') && localStorage.getItem('recompensaWinner') && localStorage.getItem('winner') === localStorage.getItem('username')) {
             const gameOver = document.getElementsByClassName('game-over')[0]
             gameOver.style.display = 'flex'
@@ -673,6 +674,7 @@
         }
 
         /* Formularios */
+        /* Cuando pulsas el boton de pasar turno */
         const endTurnForm = document.getElementsByClassName('end-turn')[0]
         endTurnForm.addEventListener('submit', (event) => {
             playedCardAttack = []
@@ -694,6 +696,7 @@
             socket.emit('end-turn', { username: localStorage.getItem('username') })
         })
 
+        /* Boton al finalizar partida */
         const leaveBattle = document.getElementsByClassName('leave-battle')[0]
         leaveBattle.addEventListener('submit', (event) => {
             event.preventDefault()
@@ -702,6 +705,7 @@
             socket.emit('leave-battle', { username: localStorage.getItem('username'), reward: parseInt(rewardSplit[1]) })
         })
 
+        /* Boton para salirte de la partida en mitad de esta */
         const leaveMatchForm = document.getElementsByClassName('leave-match')[0]
         leaveMatchForm.addEventListener('submit', (event) => {
             event.preventDefault()
@@ -709,6 +713,7 @@
         })
 
         /* Recibir mensajes del servidor */
+        /* Cuando pones una carta en el tablero */
         socket.on('played-card', (data) => {
             if (data.user === localStorage.getItem('username') || data.user === localStorage.getItem('opponent')) {
                 playedCard = []
@@ -870,6 +875,7 @@
             }
         })
 
+        /* Cuando no tienes mana suficiente al intentar jugar una carta */
         socket.on('not-enough-mana', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No tienes suficiente mana para jugar esa carta')
@@ -901,13 +907,17 @@
             }
         })
 
+        /* Si no es tu turno */
         socket.on('not-your-turn', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('No es tu turno')
                 playedCard = []
+                playedCardAttack = []
+                localStorage.setItem('playedCardAttack', playedCardAttack)
             }
         })
 
+        /* Cuando haces un ataque normal con una carta */
         socket.on('attacked', (data) => {
             if (data.opponent === localStorage.getItem('opponent')) {
                 const cardUser = document.getElementsByClassName('card-user')
@@ -998,12 +1008,14 @@
             }
         })
 
+        /* Si la carta es inmune */
         socket.on('immune-card', (data) => {
             if (data.username === localStorage.getItem('username')) {
                 alert('This card is immune')
             }
         })
 
+        /* Cuando se usa una habilidad sobre un aliado */
         socket.on('special-attacked-ally', (data) => {
             if (data.username === localStorage.getItem('opponent')) {
                 const opponentCards = document.getElementsByClassName('card-opponent')
@@ -1268,6 +1280,7 @@
                 const userBoard = document.getElementsByClassName('user-board')[0]
                 data.cartasUser.cartasInfo.forEach((card, index) => {
                     console.log(card)
+                    // Mostrar las cartas ya muertas
                     if (data.cartasUser.cartasCombate[index].vida > 0){
                         const cardDiv = document.createElement('div')
                         cardDiv.className = 'card card-user'
@@ -1517,6 +1530,7 @@
                 const endTurnForm = document.getElementsByClassName('end-turn')[0]
                 endTurnForm.style.display = 'none'
 
+                // Aplicar las animaciones y estilos correspondientes a los efectos secundarios
                 const cardOpponent = document.getElementsByClassName('card-opponent')
                 for (let i = cardOpponent.length - 1; i >= 0; i--) {
                     data.cartas.cartasCombate.forEach(card => {
@@ -1667,6 +1681,7 @@
                             if (specialAttackCard.length === 1) {
                                 console.log('Special attack card', specialAttackCard[0])
                                 const tipo = specialAttackCard[0].tipo.split('/')
+                                // Si se usa una habilidad a un aliado
                                 if (tipo[1] === 'aliado' && card.id_carta !== specialAttackCard[0].id) {
                                     socket.emit('special-attack-ally', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
                                     specialAttackCard = []
@@ -1675,6 +1690,7 @@
                                         userCards[i].style.boxShadow = 'none'
                                     }
                                 } else if (tipo[0] === 'revive') {
+                                    // Si se intenta revivir una carta muerta
                                     if (card.vida <= 0 && card.id_carta !== specialAttackCard[0].id) {
                                         console.log('Vida', card.vida)
                                         socket.emit('special-attack-revive', { idCartaAttacked: card.id_carta, idCartaAttacking: specialAttackCard[0].id, idAtaque: specialAttackCard[0].idAtaque, username: localStorage.getItem('username'), tipo: specialAttackCard[0].tipo })
@@ -1683,6 +1699,7 @@
                                         for (let i = 0; i < userCards.length; i++) {
                                             userCards[i].style.boxShadow = 'none'
                                         }
+                                    // Si pulsas en una carta ya viva mientras intentas revivir
                                     } else {
                                         console.log('No se revive pide')
                                         const userCardsRevive = document.getElementsByClassName('card-user-revive')
@@ -1701,6 +1718,7 @@
                                     }
                                 }
                             } else {
+                                // Si no estas usando ningun ataque especial
                                 if (parseInt(cardUser[i].id) === card.id_carta) {
                                     if (data.tipo === 'inmovil' || card.efecto_secundario === 'inmovil') {
                                         alert('This card is immobilized')
@@ -1726,6 +1744,7 @@
 
                     data.cartas.cartasCombate.forEach((card, index) => {
                         if (data.cartas.ataques[index]) {
+                            // Boton de ataque especial
                             if (card.id_carta === parseInt(cardUser[i].id) && card.ataque_especial === 0) {
                                 const ataqueEspecialButton = document.createElement('button')
                                 ataqueEspecialButton.className = 'ataque-especial-button'
@@ -1768,6 +1787,7 @@
                                                         }
                                                     }
                                                 } else {
+                                                    // Tipos de ataques especiales
                                                     const opponentCards = document.getElementsByClassName('card-opponent')
                                                     if (data.cartas.ataques[index].tipo === 'unico') {
                                                         for (let i = 0; i < opponentCards.length; i++) {

@@ -205,7 +205,8 @@ function guardarCarta (idCarta, mazoActual, idCartaMazo) {
   })
     .then(response => response.json())
     .then(data => {
-      window.location.reload()
+      console.log(data)
+      // window.location.reload()
     })
 }
 
