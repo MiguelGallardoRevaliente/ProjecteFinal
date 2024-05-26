@@ -196,6 +196,7 @@ function cerrarCartasNoMazo () {
 
 /* Funcion para guarda una carta en el mazo */
 function guardarCarta (idCarta, mazoActual, idCartaMazo) {
+  console.log(idCarta, mazoActual, idCartaMazo)
   fetch('/guardarCarta', {
     method: 'POST',
     headers: {
