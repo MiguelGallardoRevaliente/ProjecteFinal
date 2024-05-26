@@ -2854,6 +2854,7 @@ app.post('/guardarCarta', async (req, res) => {
     const idCarta = req.body.idCarta
     const idCartaMazo = req.body.idCartaMazo
     const mazoActual = req.body.mazoActual
+    console.log('Mazo', idCarta, idCartaMazo, mazoActual)
 
     if (idCartaMazo === 0) {
       await connection.execute(
