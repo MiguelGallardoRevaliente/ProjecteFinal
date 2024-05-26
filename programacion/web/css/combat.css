@@ -187,6 +187,7 @@ body {
     height: 244px;
     position: relative;
     border-radius: 10px;
+    border-radius: 15px;
 }
 
 .user-board .card {
