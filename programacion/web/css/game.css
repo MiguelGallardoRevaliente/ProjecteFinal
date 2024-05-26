@@ -468,6 +468,7 @@ header .config p {
 #shop #allcards .shop_cards table {
     width: 100%;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 #shop #allcards .shop_cards table tr {
