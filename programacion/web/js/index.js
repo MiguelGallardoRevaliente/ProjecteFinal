@@ -33,7 +33,7 @@ function mostrarHowtoplay () {
   howtoplayContainer.style.display = 'block'
 }
 
-function atrasHowToPlay (){
+function atrasHowToPlay () {
   const introContainer = document.getElementById('intro')
   const howtoplayContainer = document.getElementById('howtoplay')
 
@@ -44,7 +44,7 @@ function atrasHowToPlay (){
   howtoplayContainer.style.display = 'none'
 }
 
-function mostrarLegend (){
+function mostrarLegend () {
   const howtoplayContainer = document.getElementById('howtoplay')
   const legendContainer = document.getElementById('legend')
 
@@ -55,7 +55,7 @@ function mostrarLegend (){
   legendContainer.style.display = 'block'
 }
 
-function atrasLegend (){
+function atrasLegend () {
   const howtoplayContainer = document.getElementById('howtoplay')
   const legendContainer = document.getElementById('legend')
 

@@ -49,7 +49,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 const decks = data.decks
                 const cartas = data.arrayCartasDeck
                 decks.forEach(deck => {

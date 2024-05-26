@@ -47,16 +47,13 @@
         socket.on('battle-found', (data) => {
             if(username === data.user1) {
                 localStorage.setItem('opponent', data.user2)
-                console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
                 window.location.href = '/battle?id=' + data.id_combate
             } else if (username === data.user2) {
                 localStorage.setItem('opponent', data.user1)
-                console.log('¡Partida encontrada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
                 window.location.href = '/battle?id=' + data.id_combate
             } else if (username === data.user1 && username === data.user2) {
-                console.log('¡Error al buscar partida!')
                 alert('Error al buscar partida')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
             }
@@ -64,14 +61,12 @@
 
         socket.on('battle-cancelled', (data) => {
             if (data.username === username) {
-                console.log('¡Partida cancelada!')
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
             }
         })
 
         socket.on('battle-error', (data) => {
             if (data.username === username) {
-                console.log('¡Error al buscar partida!')
                 alert(data.message)
                 document.getElementById('searchGame').innerHTML = 'SEARCH BATTLE'
             }

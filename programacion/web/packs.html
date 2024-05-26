@@ -167,7 +167,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if (data.sobres >= 0) {
                     allChests.style.display = 'none'
                 } else {
@@ -264,7 +263,6 @@
 
                             oroTotal += oroCarta
                             localStorage.setItem('oroTotal', oroTotal)
-                            console.log(oroTotal)
                             const quickSell = document.createElement('button')
                             quickSell.innerHTML = 'Quick sell'
                             quickSell.id = 'quickSell'
@@ -287,7 +285,6 @@
                         cardDiv.appendChild(ataqueVida)
                         resultado.appendChild(cardDiv)
                     })
-                    console.log(localStorage.getItem('oroTotal'))
                     localStorage.setItem('cartaClassArray', JSON.stringify(cartaClassArray))
 
                     const divSalir = document.createElement('div')
@@ -321,7 +318,6 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     if (data.error) {
                         alert(data.error)
                     } else {
@@ -333,13 +329,9 @@
                         rareza.remove()
                         cartaIdInput.remove()
                         const cartas = JSON.parse(localStorage.getItem('cartas'))
-                        console.log(cartas)
                         const cartaIndex = cartas.findIndex(carta => carta.carta.id === cartaId)
                         cartas.splice(cartaIndex, 1)
                         const cartaClassArray = JSON.parse(localStorage.getItem('cartaClassArray'))
-                        console.log(cartaClassArray)
-                        console.log(cartaIndex)
-                        console.log(cartaClassArray[cartaIndex])
                         const carta = document.getElementsByClassName(cartaClassArray[cartaIndex])[0]
                         carta.remove()
                         cartaClassArray.splice(cartaIndex, 1)

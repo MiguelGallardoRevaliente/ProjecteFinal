@@ -48,7 +48,6 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     const length = data.filteredCards.length
                     for (let i = 0; i < length; i++) {
                         const card = data.filteredCards[i]
@@ -100,7 +99,6 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
                     const length = data.filteredCards.length
                     for (let i = 0; i < length; i++) {
                         const card = data.filteredCards[i]
