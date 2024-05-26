@@ -1137,7 +1137,7 @@
                                 ataqueVida.appendChild(vidaSpan)
                                 ataqueVida.className = 'ataque-vida ataque-vida-user'
                                 userCards[i].appendChild(ataqueVida)
-                                if (data.estadistica === 'vida') {
+                                if (data.estadistica === 'vida' && data.idCarta === card.id_carta) {
                                     userCards[i].classList.remove('card-heal')
 
                                     setTimeout(() => {
