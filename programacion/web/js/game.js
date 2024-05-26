@@ -27,10 +27,18 @@ const header = document.getElementById('header')
 const closeHeader = document.getElementById('close-header')
 const openHeader = document.getElementById('open-header')
 
-const putOnMarketClass = document.getElementsByClassName('put_on_market')
+const putOnMarketClass = document.getElementsByClassName('put_on_market')[0]
 
 /* Funcion para cerrar el cuadro de añadir una carta al mercado */
 function closePutOnMarket () {
+  const inputRareza = document.getElementById('rareza')
+  inputRareza.remove()
+  const inputIdCarta = document.getElementById('idCarta')
+  inputIdCarta.remove()
+  const precio = document.getElementById('precio')
+  precio.value = ''
+  const maxAndMin = document.getElementById('maxAndMin')
+  maxAndMin.innerHTML = ''
   putOnMarketClass.style.display = 'none'
 }
 
