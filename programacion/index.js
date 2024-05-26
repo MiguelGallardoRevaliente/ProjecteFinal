@@ -2258,6 +2258,7 @@ io.on('connection', async (socket) => {
   })
 })
 
+/* Comprueba si las credenciales del usuario son correctas */
 app.get('/checkUser', async (req, res) => {
   try {
     const username = req.query.username
@@ -2269,7 +2270,10 @@ app.get('/checkUser', async (req, res) => {
           throw err
         }
         if (result) {
-          const [combat] = await connection.execute('SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?', [user[0].id_uuid, user[0].id_uuid])
+          const [combat] = await connection.execute(
+            'SELECT BIN_TO_UUID(id_combate) AS id FROM combates WHERE BIN_TO_UUID(id_user_1) = ? OR BIN_TO_UUID(id_user_2) = ?',
+            [user[0].id_uuid, user[0].id_uuid]
+          )
           if (combat.length > 0) {
             return res.status(200).json({ message: 'userExists', user: user[0], combat: combat[0].id })
           } else {
@@ -2336,6 +2340,7 @@ app.get('/packs', async (req, res) => {
   res.sendFile(join(__dirname, 'web/packs.html'))
 })
 
+/* Devuelve todas las cartas del usuario */
 app.get('/getCards', async (req, res) => {
   try {
     const id = req.query.id
@@ -2344,6 +2349,7 @@ app.get('/getCards', async (req, res) => {
     )
 
     let query = 'SELECT * FROM cartas'
+    // Si se usa el filtro de cartas
     const orderBy = req.query.ordenType || 'tipo'
     const orderDirection = req.query.orden || 'DESC'
 
@@ -2376,6 +2382,7 @@ app.get('/getCards', async (req, res) => {
   }
 })
 
+/* Devuelve los mazos del usuario */
 app.get('/getDecks', async (req, res) => {
   try {
     const arrayCartasDeck = []
@@ -2432,6 +2439,7 @@ app.get('/getDecks', async (req, res) => {
   }
 })
 
+/* Devuelve las cartas que el usuario no tiene en el mazo */
 app.get('/getCardsDeck', async (req, res) => {
   try {
     const mazo = req.query.mazo
@@ -2468,6 +2476,7 @@ app.get('/getCardsDeck', async (req, res) => {
   }
 })
 
+/* Devuelve la cantidad de sobres que tiene el usuario */
 app.get('/checkPacks', async (req, res) => {
   try {
     const id = req.query.id
@@ -2563,6 +2572,7 @@ app.get('/shop', (req, res) => {
   res.sendFile(join(__dirname, 'web/shop.html'))
 })
 
+/* Devuelve todas las cartas en el mercado */
 app.get('/getShopCards', async (req, res) => {
   const id = req.query.id
   const [shop] = await connection.execute('SELECT * FROM mercado_cartas WHERE BIN_TO_UUID(id_user) != ?;', [id])
@@ -2582,6 +2592,7 @@ app.get('/getShopCards', async (req, res) => {
   return res.status(200).json(arrayCartas)
 })
 
+/* Filtro de cartas del mercado */
 app.get('/filterMarket', async (req, res) => {
   const id = req.query.id
   const name = req.query.name
@@ -2625,6 +2636,7 @@ app.get('/filterMarket', async (req, res) => {
   return res.status(200).json(arrayCartas)
 })
 
+/* Devuelve las ofertas de sobres */
 app.get('/getShopChests', async (req, res) => {
   try {
     const [chestsShop] = await connection.execute('SELECT * FROM tienda_sobres;')
@@ -2644,6 +2656,7 @@ app.get('/settings', (req, res) => {
   res.sendFile(join(__dirname, 'web/settings.html'))
 })
 
+/* Devuelve la página de combate si hay o existe el id */
 app.get('/battle', async (req, res) => {
   if (!req.query.id) return res.status(404)
   const id = req.query.id
@@ -2656,6 +2669,7 @@ app.get('/battle', async (req, res) => {
   res.sendFile(join(__dirname, '/web/battle.html'))
 })
 
+/* Devuelve las cartas del mazo del usuario y las cartas en juego en el combate */
 app.get('/getCardsBattle', async (req, res) => {
   try {
     const id = req.query.id
@@ -2735,7 +2749,7 @@ app.get('/getCardsBattle', async (req, res) => {
 })
 
 /* SOLICITUDES POST */
-
+/* Comprueba las credenciales para logear al usuario */
 app.post('/login', async (req, res) => {
   try {
     const { usernameLogin, passwordLogin } = req.body
@@ -2758,6 +2772,7 @@ app.post('/login', async (req, res) => {
   }
 })
 
+/* Registra un usuario si las credenciales son correctas */
 app.post('/register', async (req, res) => {
   try {
     const { name, surname, email, username, password, rPassword } = req.body
@@ -2790,6 +2805,7 @@ app.post('/register', async (req, res) => {
   }
 })
 
+/* Envia el mail para cambiar la contraseña si el email existe en la bbdd */
 app.post('/forgot', async (req, res) => {
   const { email } = req.body
   const [users] = await connection.execute('SELECT password, BIN_TO_UUID(id) AS id FROM users WHERE email = ?', [email])
@@ -2807,6 +2823,7 @@ app.post('/forgot', async (req, res) => {
   return res.status(200).json({ message: 'changed' })
 })
 
+/* Comprueba si la nueva contraseña es valida */
 app.post('/change-password', async (req, res) => {
   const { id, newPassword, newPasswordR } = req.body
 
@@ -2829,6 +2846,7 @@ app.post('/change-password', async (req, res) => {
   return res.status(200).json({ message: 'changed' })
 })
 
+/* Cambia la base de datos para saber que el usuario ya se ha logeado minimo 1 vez */
 app.post('/start', async (req, res) => {
   try {
     const { username } = req.body
@@ -2841,6 +2859,7 @@ app.post('/start', async (req, res) => {
   }
 })
 
+/* Cambio de foto de perfil del usuario */
 app.post('/changeProfilePicture', async (req, res) => {
   try {
     const { profilePicture, id } = req.body
@@ -2853,6 +2872,7 @@ app.post('/changeProfilePicture', async (req, res) => {
   }
 })
 
+/* Guarda la carta seleccionada en el mazo seleccionado */
 app.post('/guardarCarta', async (req, res) => {
   try {
     const idCarta = req.body.idCarta
@@ -2864,6 +2884,7 @@ app.post('/guardarCarta', async (req, res) => {
       'SELECT * FROM mazo_cartas WHERE id_carta = ? AND id_mazo = ?', [idCarta, mazoActual]
     )
 
+    /* Si intentan poner una carta que ya esta en el mazo, no te deja */
     if (cartaExiste.length === 0) {
       if (idCartaMazo === 0) {
         await connection.execute(
@@ -2874,14 +2895,17 @@ app.post('/guardarCarta', async (req, res) => {
           'UPDATE mazo_cartas SET id_carta = ? WHERE id_carta = ? AND id_mazo = ?', [idCarta, idCartaMazo, mazoActual]
         )
       }
+
+      return res.status(200).json({ message: 'updated' })
     }
 
-    return res.status(200).json({ message: 'updated' })
+    return res.status(200).json({ message: 'alreadyExists' })
   } catch (err) {
     console.error(err)
   }
 })
 
+/* Cambia el mazo seleccionado por el usuario */
 app.post('/nuevoMazo', async (req, res) => {
   try {
     const id = req.body.id
@@ -2895,6 +2919,7 @@ app.post('/nuevoMazo', async (req, res) => {
   }
 })
 
+/* Cuando se vende rapido una carta, suma el oro al usuario */
 app.post('/quickSell', async (req, res) => {
   try {
     const id = req.body.id
@@ -2908,29 +2933,38 @@ app.post('/quickSell', async (req, res) => {
   }
 })
 
+/* Pone la carta seleccionada en el mercado */
 app.post('/putOnMarket', async (req, res) => {
   try {
     const id = req.body.id
     const idCarta = req.body.idCarta
     const precio = req.body.precio
 
-    await connection.execute('INSERT INTO mercado_cartas (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)', [id, idCarta, precio])
+    await connection.execute(
+      'INSERT INTO mercado_cartas (id_user, id_carta, precio) VALUES (UUID_TO_BIN(?), ?, ?)',
+      [id, idCarta, precio]
+    )
     return res.status(200).json({ message: 'Uploaded into the market' })
   } catch (err) {
     console.error(err)
   }
 })
 
+/* Confirmacion de si el usuario puede comprar la carta del mercado */
 app.post('/confirmBuy', async (req, res) => {
   try {
     const id = req.body.id
     const idCarta = req.body.idCarta
     const precio = req.body.precio
     const [user] = await connection.execute('SELECT * FROM users WHERE BIN_TO_UUID(id) = ?', [id])
-    const [userCard] = await connection.execute('SELECT * FROM users_cartas WHERE id_carta = ? AND id_user = UUID_TO_BIN(?)', [idCarta, id])
+
     if (user[0].oro < precio) {
       return res.status(200).json({ message: 'Not enough gold' })
     }
+
+    const [userCard] = await connection.execute(
+      'SELECT * FROM users_cartas WHERE id_carta = ? AND id_user = UUID_TO_BIN(?)', [idCarta, id]
+    )
 
     if (userCard.length > 0) {
       return res.status(200).json({ message: 'Card in possession' })
@@ -2942,6 +2976,7 @@ app.post('/confirmBuy', async (req, res) => {
   }
 })
 
+/* Se efectua la compra de una carta por el usuario, se elimina de la tabla de mercado_cartas y se le añade al usuario */
 app.post('/buyCard', async (req, res) => {
   try {
     const id = req.body.id
@@ -2964,6 +2999,7 @@ app.post('/buyCard', async (req, res) => {
   }
 })
 
+/* Compra un sobre de las ofertas disponibles */
 app.post('/buyChest', async (req, res) => {
   try {
     const id = req.body.id
